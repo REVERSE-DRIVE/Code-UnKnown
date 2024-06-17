@@ -1,0 +1,79 @@
+{
+    "name": "MainInput",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "02f01a02-e0c1-468e-a804-058712f6cd8e",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "PassThrough",
+                    "id": "a1e346a4-b02b-4169-9525-6d5895addeef",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6e8bc319-9916-4290-8dcb-1bd0b7e1d34c",
+                    "path": "<AndroidJoystick>/stick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Android",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7bad0d40-154b-4b39-b172-8e0d97511ddb",
+                    "path": "<AndroidJoystick>/stick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Android",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5205c47f-4b3c-4a7f-a96e-bf48452b638e",
+                    "path": "<AndroidJoystick>/stick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Android",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea89c64b-757a-4791-8381-4d6b26906773",
+                    "path": "<AndroidJoystick>/stick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Android",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Android",
+            "bindingGroup": "Android",
+            "devices": [
+                {
+                    "devicePath": "<AndroidJoystick>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
