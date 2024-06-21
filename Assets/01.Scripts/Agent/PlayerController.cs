@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : AgentMovement
 {
     [SerializeField] private float speed = 5f;
     private Vector2 _direction;
