@@ -16,6 +16,7 @@ public class Player : Agent
 
     public override void SetDead()
     {
-        throw new System.NotImplementedException();
+        isDead = true;
+        
     }
 }

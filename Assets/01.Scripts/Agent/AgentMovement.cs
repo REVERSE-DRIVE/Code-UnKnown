@@ -1,11 +1,9 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AgentMovement : MonoBehaviour, IMovement
 {
     protected Agent _agent;
     protected Rigidbody2D _rigidCompo;
-
 
     private Vector2 _velocity;
     public Vector2 Velocity => _velocity;
@@ -19,17 +17,20 @@ public class AgentMovement : MonoBehaviour, IMovement
 
     public void SetMovement(Vector2 movement)
     {
-        throw new NotImplementedException();
+        
+        
     }
 
     public void StopImmediately()
     {
-        throw new NotImplementedException();
+        _rigidCompo.velocity = Vector2.zero;
+        
     }
 
     
     public void GetKnockBack(Vector2 force)
     {
-        throw new NotImplementedException();
+        StopImmediately();
+        _rigidCompo.AddForce(force, ForceMode2D.Impulse);
     }
 }

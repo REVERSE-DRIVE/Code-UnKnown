@@ -10,7 +10,6 @@ public class Health : MonoBehaviour, IDamageable
     public int CurrentHealth => _currentHealth;
     public int maxHealth;
     
-    
     public void Initialize(int max)
     {
         maxHealth = max;

@@ -2,7 +2,6 @@
 
 namespace WeaponManage
 {
-    [CreateAssetMenu(menuName = "SO/WeaponInfo")]
     public class WeaponInfoSO : ScriptableObject
     {
         public int id;
