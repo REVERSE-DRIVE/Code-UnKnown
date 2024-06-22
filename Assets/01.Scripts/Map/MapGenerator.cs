@@ -1,0 +1,446 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.Tilemaps;
+
+public struct BridgeBase {
+    public Vector2Int start;
+    public Vector2Int end;
+    
+    public RoomBase room1;
+    public RoomBase room2;
+
+    public readonly RoomBase GetOtherRoom(RoomBase room) {
+        if (room1 != room) return room1;
+        else return room2;
+    }
+}
+
+public class MapGenerator : MonoBehaviour
+{
+    [SerializeField] RoomBase[] createRooms;
+    int nowCreateIdx = -1;
+
+    [SerializeField] Tilemap wallTile;
+    [SerializeField] Tilemap bridgeTile;
+    [SerializeField] Tilemap groundTile;
+
+    [SerializeField] TileBase wallBase;
+    [SerializeField] TileBase bridgeBase;
+
+    [SerializeField] Vector2Int bridgeSize;
+
+    Dictionary<Vector2Int, RoomBase> map;
+    // List<RoomBase> rooms = new();
+    List<BridgeBase> bridges = new();
+
+    public enum Direction {
+        Top,
+        Left,
+        Right,
+        Bottom
+    }
+
+    private void Awake() {
+        map = new();
+        // Generate();
+        BoxGenerate(Direction.Top, null);
+    }
+
+    float time = 0;
+    private void Update() {
+        time += Time.deltaTime;
+
+        if (time > 1) {
+            time = 0;
+            nowCreateIdx = -1;
+
+            wallTile.ClearAllTiles();
+            bridgeTile.ClearAllTiles();
+            groundTile.ClearAllTiles();
+
+            map = new();
+            bridges = new();
+            BoxGenerate(Direction.Top, null);
+        }
+    }
+
+    void Generate() {
+        bool first = true;
+        Direction dir = Direction.Top;
+        Vector2Int bridgeEnd = new Vector2Int(0,0);
+
+        Vector2Int nowMapCoords = new Vector2Int(0,0);
+
+        foreach (var item in createRooms)
+        {
+            var room = Instantiate(item);
+            room.SetSize();
+
+            if (first) {
+                first = false;
+            } else {
+                nowMapCoords += GetDirection(dir);
+            }
+            map[nowMapCoords] = room;
+            print(nowMapCoords);
+
+
+            Vector2Int minPos = Vector2Int.zero;
+            Vector2Int maxPos = Vector2Int.zero;
+
+            if (dir == Direction.Top) {
+                minPos = new Vector2Int(bridgeEnd.x - (room.Size.x / 2), bridgeEnd.y + 1);
+                maxPos = new Vector2Int(bridgeEnd.x + (room.Size.x / 2), bridgeEnd.y + room.Size.y);
+            } else if (dir == Direction.Bottom) {
+                minPos = new Vector2Int(bridgeEnd.x - (room.Size.x / 2), bridgeEnd.y - room.Size.y);
+                maxPos = new Vector2Int(bridgeEnd.x + (room.Size.x / 2), bridgeEnd.y - 1);
+            } else if (dir == Direction.Right) {
+                minPos = new Vector2Int(bridgeEnd.x + 1, bridgeEnd.y - (room.Size.y / 2));
+                maxPos = new Vector2Int(bridgeEnd.x + room.Size.x, bridgeEnd.y + (room.Size.y / 2));
+            } else if (dir == Direction.Left) {
+                minPos = new Vector2Int(bridgeEnd.x - room.Size.x, bridgeEnd.y - (room.Size.y / 2));
+                maxPos = new Vector2Int(bridgeEnd.x - 1, bridgeEnd.y + (room.Size.y / 2));
+            }
+
+            for (int i = minPos.y; i <= maxPos.y; i++)
+            {
+                for (int k = minPos.x; k <= maxPos.x; k++)
+                {
+                    if (i == minPos.y || i == maxPos.y || k == minPos.x || k == maxPos.x) {
+                        wallTile.SetTile(new Vector3Int(k,i,0), wallBase);
+                    }
+                    groundTile.SetTile(new Vector3Int(k,i,0), room.GetGroundTile());
+                }
+            }
+
+            dir = (Direction)Random.Range(0,4);
+            while (map.TryGetValue(nowMapCoords + GetDirection(dir), out var _)) {
+                dir = (Direction)Random.Range(0,4);
+            }
+            print(dir);
+
+            /// 다리 제작
+            Vector2Int bridgeStart = GetDoorPos(minPos, maxPos, dir);
+            Vector2Int bridgeEndPos = bridgeStart;
+
+            if (dir == Direction.Left || dir == Direction.Right) {
+                bridgeEnd = bridgeStart + (new Vector2Int(bridgeSize.y, bridgeSize.x) * GetDirection(dir));
+            } else {
+                bridgeEnd = bridgeStart + (bridgeSize * GetDirection(dir));
+            }
+
+            if (dir == Direction.Bottom) {
+                bridgeStart.y -= bridgeSize.y;
+                bridgeStart.x -= bridgeSize.x / 2;
+
+                bridgeEndPos.x += bridgeSize.x / 2;
+                bridgeEndPos.y -= 1;
+            } else if (dir == Direction.Top) {
+                bridgeEndPos.y += bridgeSize.y;
+                bridgeEndPos.x += bridgeSize.x / 2;
+
+                bridgeStart.x -= bridgeSize.x / 2;
+                bridgeStart.y += 1;
+            } else if (dir == Direction.Right) {
+                bridgeStart.y -= bridgeSize.x / 2;
+
+                bridgeEndPos.y += bridgeSize.x / 2;
+                bridgeEndPos.x += bridgeSize.y;
+
+                bridgeStart.x += 1;
+            } else if (dir == Direction.Left) {
+                bridgeStart.x -= bridgeSize.y;
+                bridgeStart.y -= bridgeSize.x / 2;
+
+                bridgeEndPos.y += bridgeSize.x / 2;
+                bridgeEndPos.x -= 1;
+            }
+
+            for (int i = bridgeStart.y; i <= bridgeEndPos.y; i++)
+            {
+                for (int k = bridgeStart.x; k <= bridgeEndPos.x; k++)
+                {
+                    bridgeTile.SetTile(new Vector3Int(k,i), bridgeBase);
+                }
+            }
+        
+        }
+    }
+    
+    bool BoxGenerate(Direction lastDir, RoomBase lastRoom) {
+        if (createRooms.Length <= nowCreateIdx + 1) {
+            return false;
+        }
+
+
+        // 다리 만들기
+        Vector2Int bridgeEnd = Vector2Int.zero;
+        Vector2Int bridgeStart = Vector2Int.zero;
+        Vector2Int bridgeEndPos = Vector2Int.zero;
+        BridgeBase bridge = new BridgeBase();
+
+        if (lastRoom) {
+            bridgeStart = GetDoorPos(lastRoom.MinPos, lastRoom.MaxPos, lastDir);
+            bridgeEndPos = bridgeStart;
+
+            if (lastDir == Direction.Left || lastDir == Direction.Right) {
+                bridgeEnd = bridgeStart + (new Vector2Int(bridgeSize.y, bridgeSize.x) * GetDirection(lastDir));
+            } else {
+                bridgeEnd = bridgeStart + (bridgeSize * GetDirection(lastDir));
+            }
+
+            if (lastDir == Direction.Bottom) {
+                bridgeStart.y -= bridgeSize.y;
+                bridgeStart.x -= bridgeSize.x / 2;
+
+                bridgeEndPos.x += bridgeSize.x / 2;
+                bridgeEndPos.y -= 1;
+            } else if (lastDir == Direction.Top) {
+                bridgeEndPos.y += bridgeSize.y;
+                bridgeEndPos.x += bridgeSize.x / 2;
+
+                bridgeStart.x -= bridgeSize.x / 2;
+                bridgeStart.y += 1;
+            } else if (lastDir == Direction.Right) {
+                bridgeStart.y -= bridgeSize.x / 2;
+
+                bridgeEndPos.y += bridgeSize.x / 2;
+                bridgeEndPos.x += bridgeSize.y;
+
+                bridgeStart.x += 1;
+            } else if (lastDir == Direction.Left) {
+                bridgeStart.x -= bridgeSize.y;
+                bridgeStart.y -= bridgeSize.x / 2;
+
+                bridgeEndPos.y += bridgeSize.x / 2;
+                bridgeEndPos.x -= 1;
+            }
+
+            bridge.start = bridgeStart;
+            bridge.end = bridgeEndPos;
+        }
+
+        // 방 만들기
+        var room = Instantiate(createRooms[nowCreateIdx + 1]);
+        room.SetSize();
+
+        Vector2Int minPos = Vector2Int.zero;
+        Vector2Int maxPos = Vector2Int.zero;
+
+        if (lastDir == Direction.Top) {
+            minPos = new Vector2Int(bridgeEnd.x - (room.Size.x / 2), bridgeEnd.y + 1);
+            maxPos = new Vector2Int(bridgeEnd.x + (room.Size.x / 2), bridgeEnd.y + room.Size.y);
+        } else if (lastDir == Direction.Bottom) {
+            minPos = new Vector2Int(bridgeEnd.x - (room.Size.x / 2), bridgeEnd.y - room.Size.y);
+            maxPos = new Vector2Int(bridgeEnd.x + (room.Size.x / 2), bridgeEnd.y - 1);
+        } else if (lastDir == Direction.Right) {
+            minPos = new Vector2Int(bridgeEnd.x + 1, bridgeEnd.y - (room.Size.y / 2));
+            maxPos = new Vector2Int(bridgeEnd.x + room.Size.x, bridgeEnd.y + (room.Size.y / 2));
+        } else if (lastDir == Direction.Left) {
+            minPos = new Vector2Int(bridgeEnd.x - room.Size.x, bridgeEnd.y - (room.Size.y / 2));
+            maxPos = new Vector2Int(bridgeEnd.x - 1, bridgeEnd.y + (room.Size.y / 2));
+        }
+
+        // 충돌 확인
+        foreach (var item in map)
+        {
+            var min = item.Value.MinPos;
+            var max = item.Value.MaxPos;
+            if (maxPos.x < min.x || minPos.x > max.x) continue;
+            if (maxPos.y < min.y || minPos.y > max.y) continue;
+
+            // 박스 겹침 (만들기 중단)
+            return false;
+        }
+        foreach (var item in bridges)
+        {
+            var min = item.start;
+            var max = item.end;
+            if (maxPos.x < min.x || minPos.x > max.x) continue;
+            if (maxPos.y < min.y || minPos.y > max.y) continue;
+
+            // 박스 겹침 (만들기 중단)
+            return false;
+        }
+        
+        // bridge room 연결
+        
+
+        Vector2Int mapPos = lastRoom ? lastRoom.MapPos + GetDirection(lastDir) : Vector2Int.zero;
+        map[mapPos] = room;
+
+        room.SetRoomPos(minPos, maxPos, mapPos);
+
+        // 나중에 계산 후 타일 만듬
+        for (int i = 0; i < 4; i++)
+        {
+            Direction dir = (Direction)i;
+            if (dir == ReverseD_irection(lastDir)) continue;
+            if (!map.TryGetValue(room.MapPos + GetDirection(dir), out RoomBase otherRoom)) continue;
+
+            Vector2Int bridgePoint;
+            int halfWidthBridge = bridgeSize.x / 2;
+            int sameCount = 0;
+            if (dir == Direction.Bottom || dir == Direction.Top) {
+                for (int k = room.MinPos.x + halfWidthBridge; k <= room.MaxPos.x - halfWidthBridge; k++)
+                {
+                    if (otherRoom.MinPos.x <= k && otherRoom.MaxPos.x >= k) {
+                        sameCount++;
+                    }
+                }
+            } else if (dir == Direction.Left || dir == Direction.Right) {
+                for (int k = room.MinPos.y + halfWidthBridge; k <= room.MaxPos.y - halfWidthBridge; k++)
+                {
+                    if (otherRoom.MinPos.y <= k && otherRoom.MaxPos.y >= k) {
+                        sameCount++;
+                    }
+                }
+            }
+            
+            print($"[{mapPos.x}, {mapPos.y}] ({dir.ToString()}) => {sameCount}");
+            if (sameCount >= bridgeSize.x) {
+                
+            }
+        }
+
+        // 다리
+        if (lastRoom) {
+            bridge.room1 = room;
+            bridge.room2 = lastRoom;
+            bridges.Add(bridge);
+            lastRoom.SetBridge(lastDir, bridge);
+            room.SetBridge(ReverseD_irection(lastDir), bridge);
+
+            for (int i = bridgeStart.y; i <= bridgeEndPos.y; i++)
+            {
+                for (int k = bridgeStart.x; k <= bridgeEndPos.x; k++)
+                {
+                    bridgeTile.SetTile(new Vector3Int(k,i), bridgeBase);
+                }
+            }
+        }
+
+        // 바닥 / 벽
+        for (int i = minPos.y; i <= maxPos.y; i++)
+        {
+            for (int k = minPos.x; k <= maxPos.x; k++)
+            {
+                if (i == minPos.y || i == maxPos.y || k == minPos.x || k == maxPos.x) {
+                    wallTile.SetTile(new Vector3Int(k,i,0), wallBase);
+                }
+                groundTile.SetTile(new Vector3Int(k,i,0), room.GetGroundTile());
+            }
+        }
+
+        // 다 됐으면
+        nowCreateIdx++;
+
+        foreach (Direction item in GetRandomArray().Select(v => (Direction)v))
+        {
+            BoxGenerate(item, room);
+        }
+
+        return true;
+    }
+
+    Vector2Int GetDirection(Direction dir) {
+        switch (dir)
+        {
+            case Direction.Top:
+                return Vector2Int.up;
+            case Direction.Left:
+                return Vector2Int.left;
+            case Direction.Right:
+                return Vector2Int.right;
+            case Direction.Bottom:
+                return -Vector2Int.up;
+        }
+
+        return Vector2Int.zero;
+    }
+    Direction ReverseD_irection(Direction dir) {
+        return dir switch
+        {
+            Direction.Top => Direction.Bottom,
+            Direction.Left => Direction.Right,
+            Direction.Right => Direction.Left,
+            Direction.Bottom => Direction.Top,
+            _ => 0,
+        };
+    }
+
+    // min,max,dir 으로 문 위치(중점) 구하기
+    Vector2Int GetDoorPos(Vector2Int min, Vector2Int max, Direction dir) {
+        if (dir == Direction.Top) {
+            return new Vector2Int(min.x + (max.x - min.x) / 2, max.y);
+        } else if (dir == Direction.Left) {
+            return new Vector2Int(min.x, min.y + (max.y - min.y) / 2);
+        } else if (dir == Direction.Right) {
+            return new Vector2Int(max.x, min.y + (max.y - min.y) / 2);
+        } else if (dir == Direction.Bottom) {
+            return new Vector2Int(min.x + (max.x - min.x) / 2, min.y);
+        }
+
+        return Vector2Int.zero;
+    }
+
+    int[] GetRandomArray() {
+        int[] arr = new int[4];
+        for (int i = 0; i < 4; i++)
+        {
+            arr[i] = i;
+        }
+
+        for (int i = 0; i < 4; i++)
+        {
+            int rand = Random.Range(0,4);
+            int temp = arr[i];
+            arr[i] = arr[rand];
+            arr[rand] = temp;
+        }
+
+        return arr;
+    }
+
+    // point 기점으로 다리 범위 구함
+    BridgeBase CreateBridge(Vector2Int point, Direction dir) {
+        Vector2Int bridgeStart = point;
+        Vector2Int bridgeEndPos = point;
+
+        if (dir == Direction.Bottom) {
+            bridgeStart.y -= bridgeSize.y;
+            bridgeStart.x -= bridgeSize.x / 2;
+
+            bridgeEndPos.x += bridgeSize.x / 2;
+            bridgeEndPos.y -= 1;
+        } else if (dir == Direction.Top) {
+            bridgeEndPos.y += bridgeSize.y;
+            bridgeEndPos.x += bridgeSize.x / 2;
+
+            bridgeStart.x -= bridgeSize.x / 2;
+            bridgeStart.y += 1;
+        } else if (dir == Direction.Right) {
+            bridgeStart.y -= bridgeSize.x / 2;
+
+            bridgeEndPos.y += bridgeSize.x / 2;
+            bridgeEndPos.x += bridgeSize.y;
+
+            bridgeStart.x += 1;
+        } else if (dir == Direction.Left) {
+            bridgeStart.x -= bridgeSize.y;
+            bridgeStart.y -= bridgeSize.x / 2;
+
+            bridgeEndPos.y += bridgeSize.x / 2;
+            bridgeEndPos.x -= 1;
+        }
+
+        BridgeBase bridge = new()
+        {
+            start = bridgeStart,
+            end = bridgeEndPos
+        };
+        return bridge;
+    }
+}
