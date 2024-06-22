@@ -49,11 +49,13 @@ public class MapGenerator : MonoBehaviour
     }
 
     float time = 0;
+    int functionCall = 0;
     private void Update() {
         time += Time.deltaTime;
 
         if (time > 1) {
             time = 0;
+            functionCall = 0;
             nowCreateIdx = -1;
 
             wallTile.ClearAllTiles();
@@ -170,6 +172,7 @@ public class MapGenerator : MonoBehaviour
     }
     
     bool BoxGenerate(Direction lastDir, RoomBase lastRoom) {
+        functionCall ++;
         if (createRooms.Length <= nowCreateIdx + 1) {
             return false;
         }
@@ -280,14 +283,15 @@ public class MapGenerator : MonoBehaviour
             if (dir == ReverseD_irection(lastDir)) continue;
             if (!map.TryGetValue(room.MapPos + GetDirection(dir), out RoomBase otherRoom)) continue;
 
-            Vector2Int bridgePoint;
             int halfWidthBridge = bridgeSize.x / 2;
             int sameCount = 0;
+            int? startPos = null;
             if (dir == Direction.Bottom || dir == Direction.Top) {
                 for (int k = room.MinPos.x + halfWidthBridge; k <= room.MaxPos.x - halfWidthBridge; k++)
                 {
                     if (otherRoom.MinPos.x <= k && otherRoom.MaxPos.x >= k) {
                         sameCount++;
+                        startPos ??= k; 
                     }
                 }
             } else if (dir == Direction.Left || dir == Direction.Right) {
@@ -295,13 +299,81 @@ public class MapGenerator : MonoBehaviour
                 {
                     if (otherRoom.MinPos.y <= k && otherRoom.MaxPos.y >= k) {
                         sameCount++;
+                        startPos ??= k; 
                     }
                 }
             }
             
             print($"[{mapPos.x}, {mapPos.y}] ({dir.ToString()}) => {sameCount}");
+            print($"[{mapPos.x}, {mapPos.y}] center {GetDoorPos(minPos, maxPos, dir)}");
+            print($"[{mapPos.x}, {mapPos.y}] call {functionCall} {lastRoom}");
             if (sameCount >= bridgeSize.x) {
+                Vector2Int modifySize = bridgeSize;
+                Vector2Int endPoint = GetDoorPos(minPos, maxPos, dir);
                 
+                if (dir == Direction.Bottom) {
+                    modifySize.y = minPos.y - otherRoom.MaxPos.y;
+                    endPoint.x = startPos.Value + (sameCount / 2);
+                } else if (dir == Direction.Top) {
+                    modifySize.y = otherRoom.MinPos.y - maxPos.y;
+                    endPoint.x = startPos.Value + (sameCount / 2);
+                } else if (dir == Direction.Left) {
+                    modifySize.y = minPos.x - otherRoom.MaxPos.x;
+                    endPoint.y = startPos.Value + (sameCount / 2);
+                } else if (dir == Direction.Right) {
+                    modifySize.y = otherRoom.MinPos.x - maxPos.x;
+                    endPoint.y = startPos.Value + (sameCount / 2);
+                }
+                modifySize.y --;
+
+                var subBridge = CreateBridge(endPoint, dir, modifySize);
+                bool isStop = false;
+
+                foreach (var item in map)
+                {
+                    var min = item.Value.MinPos;
+                    var max = item.Value.MaxPos;
+                    if (subBridge.end.x < min.x || subBridge.start.x > max.x) continue;
+                    if (subBridge.end.y < min.y || subBridge.start.y > max.y) continue;
+
+                    // 박스 겹침 (만들기 중단)
+                    isStop = true;
+                    break;
+                }
+                foreach (var item in bridges)
+                {
+                    var min = item.start;
+                    var max = item.end;
+                    if (subBridge.end.x < min.x || subBridge.start.x > max.x) continue;
+                    if (subBridge.end.y < min.y || subBridge.start.y > max.y) continue;
+
+                    // 박스 겹침 (만들기 중단)
+                    isStop = true;
+                    break;
+                }
+                if (isStop) continue;
+                
+
+                for (int v = subBridge.start.y; v <= subBridge.end.y; v++)
+                {
+                    for (int r = subBridge.start.x; r <= subBridge.end.x; r++)
+                    {
+                        bridgeTile.SetTile(new Vector3Int(r,v), bridgeBase);
+                    }
+                }
+
+                bridgeTile.SetTile((Vector3Int)endPoint, bridgeBase);
+
+                subBridge.room1 = room;
+                subBridge.room2 = otherRoom;
+
+                room.SetBridge(dir, subBridge);
+                otherRoom.SetBridge(ReverseD_irection(dir), subBridge);
+
+                bridges.Add(subBridge);
+
+                print(modifySize);
+                print(endPoint);
             }
         }
 
@@ -405,34 +477,36 @@ public class MapGenerator : MonoBehaviour
     }
 
     // point 기점으로 다리 범위 구함
-    BridgeBase CreateBridge(Vector2Int point, Direction dir) {
+    BridgeBase CreateBridge(Vector2Int point, Direction dir) => CreateBridge(point, dir, bridgeSize);
+    BridgeBase CreateBridge(Vector2Int point, Direction dir, Vector2Int customSize) {
+        print($"CreateBridge({point},{dir},{customSize})");
         Vector2Int bridgeStart = point;
         Vector2Int bridgeEndPos = point;
 
         if (dir == Direction.Bottom) {
-            bridgeStart.y -= bridgeSize.y;
-            bridgeStart.x -= bridgeSize.x / 2;
+            bridgeStart.y -= customSize.y;
+            bridgeStart.x -= customSize.x / 2;
 
-            bridgeEndPos.x += bridgeSize.x / 2;
+            bridgeEndPos.x += customSize.x / 2;
             bridgeEndPos.y -= 1;
         } else if (dir == Direction.Top) {
-            bridgeEndPos.y += bridgeSize.y;
-            bridgeEndPos.x += bridgeSize.x / 2;
+            bridgeEndPos.y += customSize.y;
+            bridgeEndPos.x += customSize.x / 2;
 
-            bridgeStart.x -= bridgeSize.x / 2;
+            bridgeStart.x -= customSize.x / 2;
             bridgeStart.y += 1;
         } else if (dir == Direction.Right) {
-            bridgeStart.y -= bridgeSize.x / 2;
+            bridgeStart.y -= customSize.x / 2;
 
-            bridgeEndPos.y += bridgeSize.x / 2;
-            bridgeEndPos.x += bridgeSize.y;
+            bridgeEndPos.y += customSize.x / 2;
+            bridgeEndPos.x += customSize.y;
 
             bridgeStart.x += 1;
         } else if (dir == Direction.Left) {
-            bridgeStart.x -= bridgeSize.y;
-            bridgeStart.y -= bridgeSize.x / 2;
+            bridgeStart.x -= customSize.y;
+            bridgeStart.y -= customSize.x / 2;
 
-            bridgeEndPos.y += bridgeSize.x / 2;
+            bridgeEndPos.y += customSize.x / 2;
             bridgeEndPos.x -= 1;
         }
 
