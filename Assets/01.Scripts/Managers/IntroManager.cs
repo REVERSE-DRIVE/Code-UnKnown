@@ -18,7 +18,7 @@ public class IntroManager : MonoBehaviour
     private IEnumerator IntroCoroutine()
     {
         _fadeInOut.Fade(0.5f, 0f);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitUntil(() => Input.anyKey);
         _fadeInOut.Fade(0.5f, 1f);
         yield return new WaitForSeconds(3f);
         _warningText.enabled = false;
