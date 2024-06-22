@@ -1,11 +1,27 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
-public class Agent : MonoBehaviour
+public abstract class Agent : MonoBehaviour
 {
+    #region Components List
+    
+    public Animator AnimatorCompo { get; protected set; }
     public AgentMovement MovementCompo { get; protected set; }
     public AgentVFX VFXCompo { get; protected set; }
     public AgentEffectController EffectCompo { get; protected set; }
 
+    public Health HealthCompo { get; protected set; }
+
+    #endregion
+    
+    
+    
+    public bool CanStateChangeable { get; protected set; } = true;
+    public bool isDead;
+
+    
+    
     // Agent
     [field: SerializeField] public AgentStat Stat { get; protected set; }
     
@@ -14,9 +30,21 @@ public class Agent : MonoBehaviour
         MovementCompo = GetComponent<AgentMovement>();
         VFXCompo = GetComponent<AgentVFX>();
         EffectCompo = GetComponent<AgentEffectController>();
+        HealthCompo = GetComponent<Health>();
 
         Stat = Instantiate(Stat);
     }
     
+    public Coroutine StartDelayCallback(float time, Action Callback)
+    {
+        return StartCoroutine(DelayCoroutine(time, Callback));
+    }
+
+    protected IEnumerator DelayCoroutine(float time, Action Callback)
+    {
+        yield return new WaitForSeconds(time);
+        Callback?.Invoke();
+    }
     
+    public abstract void SetDead();
 }
