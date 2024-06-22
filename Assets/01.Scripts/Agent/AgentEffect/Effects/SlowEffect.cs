@@ -2,6 +2,11 @@
 
 public class SlowEffect : Effect
 {
+    public SlowEffect(Agent owner, int level, float duration) : base(owner, level, duration)
+    {
+        
+    }
+    
     public override void Enter()
     {
         
@@ -17,4 +22,6 @@ public class SlowEffect : Effect
     {
         throw new System.NotImplementedException();
     }
+
+    
 }

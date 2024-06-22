@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 [CreateAssetMenu(menuName = "SO/Stat")]
 public class AgentStat : ScriptableObject
 {

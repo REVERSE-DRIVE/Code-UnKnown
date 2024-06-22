@@ -3,6 +3,11 @@
     public int level;
     public float duration;
     protected Agent _owner;
+
+    public Effect(Agent owner, int level, float duration)
+    {
+        
+    }
     
     
     public abstract void Enter();
