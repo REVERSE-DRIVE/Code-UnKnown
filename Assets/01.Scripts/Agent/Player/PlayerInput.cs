@@ -8,9 +8,9 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private Button _actionButton;
     [SerializeField] private Button _skillButton;
 
-    public Action<Vector2> OnMovementEvent;
-    public Action OnActionEvent;
-    public Action OnSkillEvent;
+    public event Action<Vector2> OnMovementEvent;
+    public event Action OnActionEvent;
+    public event Action OnSkillEvent;
 
     [SerializeField] private Vector2 _inputDirection;
     
