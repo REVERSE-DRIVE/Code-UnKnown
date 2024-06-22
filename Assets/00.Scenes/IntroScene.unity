@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 44249150}
   - component: {fileID: 44249152}
   m_Layer: 5
-  m_Name: Image
+  m_Name: FadeImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 332965550}
   - component: {fileID: 332965549}
   m_Layer: 5
-  m_Name: Image
+  m_Name: RImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -446,6 +446,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _warningText: {fileID: 423032210}
+  _fadeInOut: {fileID: 44249152}
+  _logoEffect: {fileID: 29967955}
 --- !u!4 &369118780
 Transform:
   m_ObjectHideFlags: 0
@@ -619,7 +621,7 @@ GameObject:
   - component: {fileID: 1083883556}
   - component: {fileID: 1083883555}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: DImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
