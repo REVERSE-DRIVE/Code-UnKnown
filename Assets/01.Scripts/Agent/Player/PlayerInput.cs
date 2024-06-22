@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerInput : MonoBehaviour
@@ -7,10 +8,12 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private Button _actionButton;
     [SerializeField] private Button _skillButton;
 
-    public Action OnMovementEvent;
+    public Action<Vector2> OnMovementEvent;
     public Action OnActionEvent;
     public Action OnSkillEvent;
 
+    [SerializeField] private Vector2 _inputDirection;
+    
     private void Awake()
     {
         _actionButton.onClick.AddListener(HandleActionEvent);
@@ -18,9 +21,14 @@ public class PlayerInput : MonoBehaviour
         
     }
 
-    public void HandleMovementEvent()
+    private void Update()
     {
-        OnMovementEvent?.Invoke();
+        OnMovementEvent?.Invoke(_inputDirection);
+    }
+
+    public void OnMove(InputValue value)
+    {
+        _inputDirection = value.Get<Vector2>();
     }
 
     public void HandleActionEvent()
