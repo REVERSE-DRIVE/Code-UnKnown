@@ -41,6 +41,7 @@ namespace ObjectManage
         public void HandleDie()
         {
             // 풀링을 통해 없애야한다
+            PoolingManager.Instance.Push(this);
         }
 
         
