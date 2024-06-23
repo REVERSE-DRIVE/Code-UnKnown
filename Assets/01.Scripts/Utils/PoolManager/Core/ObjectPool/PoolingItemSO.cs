@@ -10,17 +10,32 @@ namespace ObjectPooling
         public string poolingName;
         public string description;
         public int poolCount;
-        public PoolableMono prefab;
+        public GameObject prefabObject;
 
+        public IPoolable prefab;
+        
         private void OnValidate()
         {
-            if (prefab != null)
+            if (prefab == null)
             {
-                if (enumName != prefab.type.ToString())
+                if (prefabObject.TryGetComponent(out IPoolable poolable))
                 {
-                    prefab = null;
-                    Debug.LogWarning("Type missmatch!");
+                    prefab = poolable;
+                    if (enumName != prefab.type.ToString())
+                    {
+                        
+                        prefab = null;
+                        prefabObject = null;
+                        Debug.LogWarning("Type missMatch!");
+                    }
+                    
                 }
+                else
+                {
+                    prefabObject = null;
+                    Debug.LogWarning("Not Poolable");
+                }
+               
             }
         }
     }

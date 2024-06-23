@@ -1,11 +1,16 @@
 ﻿using System;
+using ObjectPooling;
 using UnityEngine;
 
 namespace ObjectManage
 {
     
-    public class EffectObject : MonoBehaviour, ILifeTimeLimited
+    public class EffectObject : MonoBehaviour, ILifeTimeLimited, IPoolable
     {
+        
+        [field: SerializeField] public PoolingType type { get; set; }
+        public GameObject ObjectPrefab => gameObject;
+        
         [SerializeField] protected float _lifeTime;
         protected float _currentLifeTime;
     
@@ -36,6 +41,12 @@ namespace ObjectManage
         public void HandleDie()
         {
             // 풀링을 통해 없애야한다
+        }
+
+        
+        public void ResetItem()
+        {
+            throw new NotImplementedException();
         }
     }
 }

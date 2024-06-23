@@ -4,13 +4,9 @@ namespace ObjectPooling
 {
     public interface IPoolable
     {
-        [field: SerializeField] public PoolingType type { get; protected set; }
-        public GameObject thisObject { get; protected set; }
-
-        public void Initialize(GameObject thisObject)
-        {
-            this.thisObject = thisObject;
-        }
+        public PoolingType type { get; set; }
+        public GameObject ObjectPrefab { get; }
+        
         public void ResetItem();
     }
 }
