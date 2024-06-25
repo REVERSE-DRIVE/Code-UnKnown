@@ -23,5 +23,7 @@ namespace WeaponManage
         }
 
         protected abstract void HandleAttackEvent();
+
+        public abstract void HandleRotateWeapon(Vector2 direction);
     }
 }

@@ -12,11 +12,11 @@ namespace ObjectPooling
         public int poolCount;
         public GameObject prefabObject;
 
-        public IPoolable prefab;
+        public IPoolable prefab = null;
         
         private void OnValidate()
         {
-            if (prefab == null)
+            if (prefabObject != null)
             {
                 if (prefabObject.TryGetComponent(out IPoolable poolable))
                 {

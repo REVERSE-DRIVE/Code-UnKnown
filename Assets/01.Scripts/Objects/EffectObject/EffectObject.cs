@@ -4,10 +4,8 @@ using UnityEngine;
 
 namespace ObjectManage
 {
-    
     public class EffectObject : MonoBehaviour, ILifeTimeLimited, IPoolable
     {
-        
         [field: SerializeField] public PoolingType type { get; set; }
         public GameObject ObjectPrefab => gameObject;
         

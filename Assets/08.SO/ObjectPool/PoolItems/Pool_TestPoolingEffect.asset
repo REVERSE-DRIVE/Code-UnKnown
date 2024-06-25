@@ -16,4 +16,4 @@ MonoBehaviour:
   poolingName: TestPoolingEffect
   description: 
   poolCount: 5
-  prefabObject: {fileID: 62268563553071915, guid: c6681e090f9bd7a488a4c0590de0e90e, type: 3}
+  prefabObject: {fileID: 0}

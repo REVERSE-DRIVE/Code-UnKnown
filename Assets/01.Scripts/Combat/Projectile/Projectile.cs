@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using ObjectPooling;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable
+public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageable
 {
     [field: SerializeField] public PoolingType type { get; set; }
     public GameObject ObjectPrefab => gameObject;
@@ -14,29 +11,37 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable
     [SerializeField] protected float _speed;
     [SerializeField] protected float _lifeTime;
 
-    private Rigidbody2D _rigidCompo;
-    private bool _isActive;
+    protected Rigidbody2D _rigidCompo;
+    protected bool _isActive;
     
     protected float _currentLifeTime = 0;
+    protected Transform _visualTrm;
+    
     float ILifeTimeLimited.CurrentLifeTime
     {
         get => _currentLifeTime;
         set => _currentLifeTime = value;
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _rigidCompo = GetComponent<Rigidbody2D>();
-        
+        _visualTrm = transform.Find("Visual");
     }
 
-    protected virtual void Update()
+    protected virtual bool Update()
     {
-        if (!_isActive) return;
+        if (!_isActive) return false;
         
         _currentLifeTime += Time.deltaTime;
+        return true;
     }
-    
+
+    [ContextMenu("DebugShootLeft")]
+    private void DebugShoot()
+    {
+        Shoot(Vector2.left);
+    }
     
     public void Initialize(int damage, float speed, float lifeTime)
     {
@@ -60,6 +65,16 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable
 
     }
 
+    public void TakeDamage(int amount)
+    {
+        HandleDie();
+    }
+
+    public void RestoreHealth(int amount)
+    {
+        // SOLID 위배이지만 그냥 넘어가자
+    }
+
     public void CheckDie()
     {
         if (_currentLifeTime >= _lifeTime)
@@ -72,5 +87,13 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable
     {
         PoolingManager.Instance.Pop(_destroyParticlePoolingType);
         PoolingManager.Instance.Push(this);
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.transform.TryGetComponent(out Health health))
+        {
+            health.TakeDamage(_damage);
+        }
     }
 }
