@@ -9978,6 +9978,7 @@ GameObject:
   - component: {fileID: 1835329017}
   - component: {fileID: 1835329019}
   - component: {fileID: 1835329018}
+  - component: {fileID: 1835329020}
   m_Layer: 5
   m_Name: SlamShopBG
   m_TagString: Untagged
@@ -10044,6 +10045,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835329016}
   m_CullTransparentMesh: 1
+--- !u!114 &1835329020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835329016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adc100a34b6da442ba0358a8e42d98e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _openPosition: {x: 0, y: 0}
+  _closePosition: {x: 0, y: 1000}
+  _duration: 0.5
+  _ease: 11
 --- !u!1 &1856891777
 GameObject:
   m_ObjectHideFlags: 0
