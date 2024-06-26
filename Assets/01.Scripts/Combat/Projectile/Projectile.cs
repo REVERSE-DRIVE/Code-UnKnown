@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
     
     protected float _currentLifeTime = 0;
     protected Transform _visualTrm;
-    
+    protected Vector2 _direction;
     float ILifeTimeLimited.CurrentLifeTime
     {
         get => _currentLifeTime;
@@ -53,6 +53,7 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
 
     public void Shoot(Vector2 direction)
     {
+        _direction = direction;
         _rigidCompo.velocity = direction * _speed;
         _isActive = true;
     }
@@ -64,6 +65,8 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
         _currentLifeTime = 0;
 
     }
+    
+    
 
     public void TakeDamage(int amount)
     {
