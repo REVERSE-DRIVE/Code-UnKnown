@@ -7,6 +7,6 @@ namespace ObjectManage
         public Action OnDetectedEvent { get; protected set; }
         public Action OnUnDetectedEvent { get; protected set; }
         
-        public void Interact(Agent interactOwner);
+        public void Interact(InteractData data);
     }
 }

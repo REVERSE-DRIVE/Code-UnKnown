@@ -34,7 +34,7 @@ namespace ObjectManage
 
         
 
-        public void Interact(Agent interactOwner)
+        public virtual void Interact(InteractData data)
         {
             OnInteractEvent?.Invoke();
         }
