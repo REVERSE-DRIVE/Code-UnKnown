@@ -221,6 +221,15 @@ public class MapGenerator : MonoBehaviour
                 bridgeEndPos.x -= 1;
             }
 
+            // 테두리
+            if (lastDir == Direction.Top || lastDir == Direction.Bottom) {
+                bridgeStart.x -= 1;
+                bridgeEndPos.x += 1;
+            } else if (lastDir == Direction.Left || lastDir == Direction.Right) {
+                bridgeStart.y -= 1;
+                bridgeEndPos.y += 1;  
+            }
+
             bridge.start = bridgeStart;
             bridge.end = bridgeEndPos;
         }
@@ -389,6 +398,10 @@ public class MapGenerator : MonoBehaviour
             {
                 for (int k = bridgeStart.x; k <= bridgeEndPos.x; k++)
                 {
+                    if (((lastDir == Direction.Top || lastDir == Direction.Bottom) && (k == bridgeStart.x || k == bridgeEndPos.x)) || (lastDir == Direction.Left || lastDir == Direction.Right) && (i == bridgeStart.y || i == bridgeEndPos.y)) {
+                        wallTile.SetTile(new Vector3Int(k,i), wallBase);
+                    }
+
                     bridgeTile.SetTile(new Vector3Int(k,i), bridgeBase);
                 }
             }
