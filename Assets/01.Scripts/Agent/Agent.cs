@@ -31,6 +31,7 @@ public abstract class Agent : MonoBehaviour
         VFXCompo = GetComponent<AgentVFX>();
         EffectCompo = GetComponent<AgentEffectController>();
         HealthCompo = GetComponent<Health>();
+        AnimatorCompo = GetComponent<Animator>();
 
         Stat = Instantiate(Stat);
     }
