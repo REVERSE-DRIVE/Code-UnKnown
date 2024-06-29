@@ -23,6 +23,7 @@ public abstract class Enemy : Agent
     protected override void Awake()
     {
         base.Awake();
+        MovementCompo.Initialize(this);
         _defaultMoveSpeed = Stat.moveSpeed;
         _enemyCheckColliders = new Collider2D[_maxCheckEnemy];
     }

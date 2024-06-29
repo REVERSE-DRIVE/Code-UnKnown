@@ -16,7 +16,8 @@ public class CommonIdleState : EnemyState<CommonStateEnum>
         
         if (!_enemyBase.IsObstacleDetected(direction.magnitude, direction.normalized))
         {
-            _stateMachine.ChangeState(CommonStateEnum.Attack);
+            _enemyBase.targetTrm = target.transform;
+            _stateMachine.ChangeState(CommonStateEnum.Battle);
         }
     }
 }

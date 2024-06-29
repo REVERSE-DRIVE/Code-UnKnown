@@ -12,7 +12,7 @@ public class AgentMovement : MonoBehaviour, IMovement
     public void Initialize(Agent agent)
     {
         _agent = agent;
-        
+        _rigidCompo = agent.GetComponent<Rigidbody2D>();
     }
 
     public void SetMovement(Vector2 movement)

@@ -3,6 +3,7 @@
 public enum CommonStateEnum
 {
     Idle,
+    Battle,
     Attack,
     Dead
 }
@@ -17,6 +18,7 @@ public class CommonEnemy : Enemy
         StateMachine = new EnemyStateMachine<CommonStateEnum>();
         
         StateMachine.AddState(CommonStateEnum.Idle, new CommonIdleState(this, StateMachine, "Idle"));
+        StateMachine.AddState(CommonStateEnum.Battle, new CommonBattleState(this, StateMachine, "Battle"));
         StateMachine.AddState(CommonStateEnum.Attack, new CommonAttackState(this, StateMachine, "Attack"));
         StateMachine.AddState(CommonStateEnum.Dead, new CommonDeadState(this, StateMachine, "Dead"));   
     }
