@@ -5,6 +5,7 @@ using UnityEngine;
 public class JunkFileObject : InteractObject
 {
     private Rigidbody2D _rigidCompo;
+    [Serializable] private bool _collisionDestroy;
     [SerializeField] private float _pushPower;
     private Vector2 _origin;
     [SerializeField] private int _damage = 3;
@@ -32,6 +33,7 @@ public class JunkFileObject : InteractObject
 
     private void OnCollisionEnter(Collision other)
     {
+        if (!_collisionDestroy) return;
         if(other.transform.TryGetComponent(out Health health))
             HandleCollisionEvent(health);
     }
