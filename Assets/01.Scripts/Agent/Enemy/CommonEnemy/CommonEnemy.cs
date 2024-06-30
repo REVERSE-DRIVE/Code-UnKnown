@@ -1,13 +1,5 @@
-﻿using System;
-using UnityEngine;
-
-public enum CommonStateEnum
-{
-    Idle,
-    Battle,
-    Attack,
-    Dead
-}
+﻿using UnityEngine;
+using EnemyManage;
 
 public class CommonEnemy : Enemy
 {

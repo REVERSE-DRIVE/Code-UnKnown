@@ -1,35 +1,40 @@
 ﻿using System;
 using UnityEngine;
 
-public class EnemyState<T> where T : Enum
+namespace EnemyManage
 {
-    protected EnemyStateMachine<T> _stateMachine;
-    protected Enemy _enemyBase;
-    protected bool _endTriggerCalled;
-    protected int _animBoolHash;
-    
-    public EnemyState(Enemy enemyBase, EnemyStateMachine<T> stateMachine, string animBoolName)
+    public class EnemyState<T> where T : Enum
     {
-        _enemyBase = enemyBase;
-        _stateMachine = stateMachine;
-        _animBoolHash = Animator.StringToHash(animBoolName);
-    }
+        protected EnemyStateMachine<T> _stateMachine;
+        protected Enemy _enemyBase;
+        protected bool _endTriggerCalled;
+        protected int _animBoolHash;
 
-    public virtual void UpdateState() { }
+        public EnemyState(Enemy enemyBase, EnemyStateMachine<T> stateMachine, string animBoolName)
+        {
+            _enemyBase = enemyBase;
+            _stateMachine = stateMachine;
+            _animBoolHash = Animator.StringToHash(animBoolName);
+        }
 
-    public virtual void Enter()
-    {
-        _endTriggerCalled = false;
-        _enemyBase.AnimatorCompo.SetBool(_animBoolHash, true);
-    }
-    
-    public virtual void Exit()
-    {
-        _enemyBase.AnimatorCompo.SetBool(_animBoolHash, false);
-    }
-    
-    public void AnimationTrigger()
-    {
-        _endTriggerCalled = true;
+        public virtual void UpdateState()
+        {
+        }
+
+        public virtual void Enter()
+        {
+            _endTriggerCalled = false;
+            _enemyBase.AnimatorCompo.SetBool(_animBoolHash, true);
+        }
+
+        public virtual void Exit()
+        {
+            _enemyBase.AnimatorCompo.SetBool(_animBoolHash, false);
+        }
+
+        public void AnimationTrigger()
+        {
+            _endTriggerCalled = true;
+        }
     }
 }

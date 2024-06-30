@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using EnemyManage;
 
 public class CommonAttackState : EnemyState<CommonStateEnum>
 {

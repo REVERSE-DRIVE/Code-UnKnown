@@ -1,32 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class EnemyStateMachine<T> where T : Enum
+namespace EnemyManage
 {
-    public EnemyState<T> CurrentState { get; private set; }
-    public Dictionary<T, EnemyState<T>> StateDictionary = new Dictionary<T, EnemyState<T>>();
-    private Enemy _enemyBase;
-    
-    public void Initialize(T startState, Enemy enemyBase)
+    public class EnemyStateMachine<T> where T : Enum
     {
-        _enemyBase = enemyBase;
-        CurrentState = StateDictionary[startState];
-        CurrentState.Enter();
-    }
+        public EnemyState<T> CurrentState { get; private set; }
+        public Dictionary<T, EnemyState<T>> StateDictionary = new Dictionary<T, EnemyState<T>>();
+        private Enemy _enemyBase;
 
-    public void ChangeState(T newState, bool forceMode = false)
-    {
-        if (_enemyBase.CanStateChangeable == false && forceMode == false) return;
-        
-        if (_enemyBase.isDead) return;
-        
-        CurrentState.Exit();
-        CurrentState = StateDictionary[newState];
-        CurrentState.Enter();
-    }
+        public void Initialize(T startState, Enemy enemyBase)
+        {
+            _enemyBase = enemyBase;
+            CurrentState = StateDictionary[startState];
+            CurrentState.Enter();
+        }
 
-    public void AddState(T stateEnum, EnemyState<T> state)
-    {
-        StateDictionary.Add(stateEnum, state);
+        public void ChangeState(T newState, bool forceMode = false)
+        {
+            if (_enemyBase.CanStateChangeable == false && forceMode == false) return;
+
+            if (_enemyBase.isDead) return;
+
+            CurrentState.Exit();
+            CurrentState = StateDictionary[newState];
+            CurrentState.Enter();
+        }
+
+        public void AddState(T stateEnum, EnemyState<T> state)
+        {
+            StateDictionary.Add(stateEnum, state);
+        }
     }
 }

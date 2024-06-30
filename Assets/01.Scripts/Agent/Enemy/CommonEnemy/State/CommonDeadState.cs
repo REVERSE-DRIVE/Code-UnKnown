@@ -1,4 +1,6 @@
-﻿public class CommonDeadState : EnemyState<CommonStateEnum>
+﻿using EnemyManage;
+
+public class CommonDeadState : EnemyState<CommonStateEnum>
 {
     public CommonDeadState(Enemy enemyBase, EnemyStateMachine<CommonStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
