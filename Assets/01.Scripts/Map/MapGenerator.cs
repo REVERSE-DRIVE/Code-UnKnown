@@ -293,6 +293,8 @@ public class MapGenerator : MonoBehaviour
             if (!map.TryGetValue(room.MapPos + GetDirection(dir), out RoomBase otherRoom)) continue;
 
             int halfWidthBridge = bridgeSize.x / 2;
+            halfWidthBridge += 2; // 겉에 벽
+
             int sameCount = 0;
             int? startPos = null;
             if (dir == Direction.Bottom || dir == Direction.Top) {
@@ -367,6 +369,13 @@ public class MapGenerator : MonoBehaviour
                 {
                     for (int r = subBridge.start.x; r <= subBridge.end.x; r++)
                     {
+                        if (
+                            ((dir == Direction.Bottom || dir == Direction.Top) && (r == subBridge.start.x || r == subBridge.end.x))
+                            ||  ((dir == Direction.Left || dir == Direction.Right) && (v == subBridge.start.y || v == subBridge.end.y))
+                        ) {
+                            wallTile.SetTile(new Vector3Int(r,v), wallBase);
+                        }
+                        
                         bridgeTile.SetTile(new Vector3Int(r,v), bridgeBase);
                     }
                 }
