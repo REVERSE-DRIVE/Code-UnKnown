@@ -24,8 +24,6 @@ public class CommonAttackState : EnemyState<CommonStateEnum>
     public override void UpdateState()
     {
         base.UpdateState();
-        // 종료라면
-        // 다시 배틀상태
         if (_endTriggerCalled)
         {
             _stateMachine.ChangeState(CommonStateEnum.Idle);

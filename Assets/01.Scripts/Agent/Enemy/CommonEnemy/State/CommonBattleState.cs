@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class CommonBattleState : EnemyState<CommonStateEnum>
 {
-    //protected readonly int _velocityHash = Animator.StringToHash("Velocity");
+    protected readonly int _velocityHash = Animator.StringToHash("Velocity");
     private EnemyMovement movementCompo;
+    private Coroutine _randomMoveCoroutine;
+    bool isChasing = false;
+    
     public CommonBattleState(Enemy enemyBase, EnemyStateMachine<CommonStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
         movementCompo = _enemyBase.MovementCompo as EnemyMovement;
@@ -20,8 +23,10 @@ public class CommonBattleState : EnemyState<CommonStateEnum>
         float distance = (_targetDestination - _enemyBase.transform.position).magnitude;
         if (distance > 0.5f)
         {
+            isChasing = false;
             SetDestination(_enemyBase.targetTrm.position);
         }
+        
         
         
         float targetDistance = (_enemyBase.targetTrm.position - _enemyBase.transform.position).magnitude;
@@ -34,13 +39,36 @@ public class CommonBattleState : EnemyState<CommonStateEnum>
         }
         else if (playerInRange)
         {
-            _enemyBase.MovementCompo.StopImmediately();
             movementCompo.LookToTarget(_enemyBase.targetTrm.position);
-            
+            movementCompo.StopImmediately();
+        }
+        else
+        {
+            if (_randomMoveCoroutine == null)
+            {
+                _randomMoveCoroutine = _enemyBase.StartCoroutine(RandomMove());
+            }
         }
         
-        //float velocity = _enemyBase.MovementCompo.Velocity.magnitude;
-        //_enemyBase.AnimatorCompo.SetFloat(_velocityHash, velocity);
+        float velocity = _enemyBase.MovementCompo.Velocity.magnitude;
+        _enemyBase.AnimatorCompo.SetFloat(_velocityHash, velocity);
+    }
+
+    private IEnumerator RandomMove()
+    {
+        if (isChasing)
+        {
+            yield break;
+        }
+        isChasing = true;
+        while (true)
+        {
+            Vector3 randomPos = _enemyBase.GetRandomPosition();
+            SetDestination(randomPos);
+            yield return new WaitForSeconds(0.5f);
+            movementCompo.StopImmediately();
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     public override void Enter()

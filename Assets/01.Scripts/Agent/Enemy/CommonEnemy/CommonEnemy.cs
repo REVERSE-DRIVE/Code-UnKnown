@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public enum CommonStateEnum
 {
@@ -30,6 +31,7 @@ public class CommonEnemy : Enemy
 
     private void Update()
     {
+        Debug.Log(StateMachine.CurrentState);
         StateMachine.CurrentState.UpdateState();
     }
 

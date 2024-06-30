@@ -18,7 +18,8 @@ public class AgentMovement : MonoBehaviour, IMovement
     public void SetMovement(Vector2 movement)
     {
         
-        
+        Vector2 direction = ((Vector3)movement - transform.position).normalized;
+        _rigidCompo.velocity = direction * _agent.Stat.moveSpeed;
     }
 
     public void StopImmediately()

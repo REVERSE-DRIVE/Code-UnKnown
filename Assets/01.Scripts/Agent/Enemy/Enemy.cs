@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class Enemy : Agent
 {
@@ -44,5 +45,17 @@ public abstract class Enemy : Agent
     public override void SetDead()
     {
         isDead = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackDistance);
+    }
+
+    public Vector3 GetRandomPosition()
+    {
+        Vector3 randomPos = new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 0.5f), 0).normalized;
+        return transform.position + randomPos;
     }
 }

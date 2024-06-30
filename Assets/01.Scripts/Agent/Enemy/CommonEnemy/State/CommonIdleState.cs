@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class CommonIdleState : EnemyState<CommonStateEnum>
 {
@@ -6,9 +7,16 @@ public class CommonIdleState : EnemyState<CommonStateEnum>
     {
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        _enemyBase.MovementCompo.StopImmediately();
+    }
+
     public override void UpdateState()
     {
         base.UpdateState();
+        
         Collider2D target = _enemyBase.IsPlayerDetected();
         if (target == null) return;
         
