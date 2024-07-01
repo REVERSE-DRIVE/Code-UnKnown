@@ -532,6 +532,15 @@ public class MapGenerator : MonoBehaviour
             bridgeEndPos.x -= 1;
         }
 
+        // 테두리
+        if (dir == Direction.Top || dir == Direction.Bottom) {
+            bridgeStart.x -= 1;
+            bridgeEndPos.x += 1;
+        } else if (dir == Direction.Left || dir == Direction.Right) {
+            bridgeStart.y -= 1;
+            bridgeEndPos.y += 1;  
+        }
+
         BridgeBase bridge = new()
         {
             start = bridgeStart,
