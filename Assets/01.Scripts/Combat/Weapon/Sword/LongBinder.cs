@@ -4,10 +4,7 @@ namespace WeaponManage
 {
     public class LongBinder : Sword
     {
-        public override void Initialize()
-        {
-            throw new System.NotImplementedException();
-        }
+        
 
         protected override void HandleAttackEvent()
         {

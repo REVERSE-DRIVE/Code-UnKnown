@@ -1023,7 +1023,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1562008083}
   m_Layer: 0
-  m_Name: TestWeapon
+  m_Name: LongBinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1328,7 +1328,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 623063220, guid: 89b4b87faf947a24cb8f7f5121be5500, type: 3}
+  m_Sprite: {fileID: 712081738, guid: 89b4b87faf947a24cb8f7f5121be5500, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
