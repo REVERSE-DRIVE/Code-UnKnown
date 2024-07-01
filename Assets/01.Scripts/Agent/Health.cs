@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class Health : MonoBehaviour, IDamageable
+public class Health : MonoBehaviour, IDamageable, IHealable
 {
     public Action OnHealthChangedEvent;
     public Action OnDieEvent;

@@ -73,11 +73,6 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
         HandleDie();
     }
 
-    public void RestoreHealth(int amount)
-    {
-        // SOLID 위배이지만 그냥 넘어가자
-    }
-
     public void CheckDie()
     {
         if (_currentLifeTime >= _lifeTime)

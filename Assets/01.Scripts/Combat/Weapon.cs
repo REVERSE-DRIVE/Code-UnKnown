@@ -14,11 +14,17 @@ namespace WeaponManage
         protected Vector2 _previousDirection;
         protected bool _isWeaponRotateLock = false;
 
-
+        // 공격 쿨타임 로직을 만들어야함
+        // animator 기반으로 작동하는 자동 쿨타이밍 로직으로 짤 예정
+        //
+        // Animation에 이벤트 추가해야됨
+        
         protected virtual void Awake()
         {
             OnAttackEvent += HandleAttackEvent;
         }
+
+        
 
         public void Attack()
         {

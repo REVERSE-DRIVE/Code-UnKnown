@@ -23,7 +23,13 @@ namespace WeaponManage
             
         }
         
-        
+        protected override void HandleAttackEvent()
+        {
+            DetectTargets();
+            AttackLogic();
+        }
+
+        protected abstract void AttackLogic();
 
         protected void DetectTargets()
         {
