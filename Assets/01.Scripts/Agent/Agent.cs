@@ -10,7 +10,6 @@ public abstract class Agent : MonoBehaviour
     public AgentMovement MovementCompo { get; protected set; }
     public AgentVFX VFXCompo { get; protected set; }
     public AgentEffectController EffectCompo { get; protected set; }
-
     public Health HealthCompo { get; protected set; }
 
     #endregion
@@ -28,7 +27,8 @@ public abstract class Agent : MonoBehaviour
     protected virtual void Awake()
     {
         MovementCompo = GetComponent<AgentMovement>();
-        VFXCompo = GetComponent<AgentVFX>();
+        MovementCompo.Initialize(this);
+        VFXCompo = transform.Find("AgentVFX").GetComponent<AgentVFX>();
         EffectCompo = GetComponent<AgentEffectController>();
         HealthCompo = GetComponent<Health>();
 
