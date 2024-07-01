@@ -270,12 +270,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1207526870}
   - component: {fileID: 1207526869}
-  - component: {fileID: 1207526868}
   - component: {fileID: 1207526867}
   - component: {fileID: 1207526864}
   - component: {fileID: 1207526871}
   - component: {fileID: 1207526872}
   - component: {fileID: 1207526873}
+  - component: {fileID: 1207526874}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -316,34 +316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09482242ff74c840bc36948fd9660f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1207526868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207526863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4a079a540844d4d8d893fd8ad1faa2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDead: 0
-  <Stat>k__BackingField: {fileID: 11400000, guid: a33b0555a5bb88640aa4184bdd3ab387, type: 2}
-  battleTime: 10
-  isActive: 1
-  _whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _whatIsObstacle:
-    serializedVersion: 2
-    m_Bits: 0
-  runAwayDistance: 10
-  attackDistance: 1
-  attackCooldown: 1
-  _maxCheckEnemy: 1
-  lastAttackTime: 0
-  targetTrm: {fileID: 0}
 --- !u!212 &1207526869
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -485,6 +457,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1207526874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207526863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78fbbd4daa7745d88b667372a649d7ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDead: 0
+  <Stat>k__BackingField: {fileID: 11400000, guid: a33b0555a5bb88640aa4184bdd3ab387, type: 2}
+  battleTime: 1
+  isActive: 0
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _whatIsObstacle:
+    serializedVersion: 2
+    m_Bits: 0
+  runAwayDistance: 10
+  attackDistance: 1
+  attackCooldown: 1
+  _maxCheckEnemy: 1
+  lastAttackTime: 0
+  targetTrm: {fileID: 0}
 --- !u!1 &1735273339
 GameObject:
   m_ObjectHideFlags: 0

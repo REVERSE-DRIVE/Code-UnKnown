@@ -18,4 +18,9 @@ public class EnemyMovement : AgentMovement
     {
        
     }
+    
+    public Vector3 GetRandomPosition()
+    {
+        return new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0);
+    }
 }
