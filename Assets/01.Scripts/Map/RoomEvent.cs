@@ -16,6 +16,7 @@ public class RoomEvent : MonoBehaviour
         new(1,0),
         new(-1,0)
     };
+    RoomBase lastJoinRoom = null;
 
     private void Awake() {
         tilemap = GetComponent<Tilemap>();
@@ -35,11 +36,18 @@ public class RoomEvent : MonoBehaviour
             if (room != null) break;
         }
         if (room == null) return;
+        
+        if (lastJoinRoom != null)
+            lastJoinRoom.RoomLeave();
 
         room.RoomEnter();
+        lastJoinRoom = room;
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        Vector3Int pos = tilemap.WorldToCell(other.transform.position);
+        if (lastJoinRoom == null) return;
+
+        lastJoinRoom.RoomLeave();
+        lastJoinRoom = null;
     }
 }
