@@ -5,9 +5,9 @@ using UnityEngine;
 public class JunkFileObject : InteractObject
 {
     private Rigidbody2D _rigidCompo;
-    [Serializable] private bool _collisionDestroy;
+    [SerializeField] private bool _collisionDestroy;
     [SerializeField] private float _pushPower;
-    private Vector2 _origin;
+    private Vector2 _origin = Vector2.zero;
     [SerializeField] private int _damage = 3;
     private bool _isActive;
     

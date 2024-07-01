@@ -3,12 +3,11 @@ using UnityEngine;
 
 namespace WeaponManage
 {
-    
     public abstract class Weapon : MonoBehaviour
     {
         public WeaponInfoSO weaponInfo;
         [SerializeField] protected ParticleSystem _attackParticle;
-
+        [SerializeField] protected Animator _animatorCompo;
         public Action OnAttackEvent;
         public abstract void Initialize();
 
