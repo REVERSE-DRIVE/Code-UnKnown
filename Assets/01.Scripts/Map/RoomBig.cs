@@ -8,4 +8,14 @@ public class RoomBig : RoomBase
     {
         Size = new Vector2Int(Random.Range(10, 100), Random.Range(10, 100));
     }
+
+    public override void RoomEnter()
+    {
+        print("RoomEtner RoomBig");
+    }
+
+    public override void RoomLeave()
+    {
+        print("RoomLeave RoomBig");
+    }
 }

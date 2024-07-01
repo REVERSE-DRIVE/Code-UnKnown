@@ -30,10 +30,10 @@ public class RoomBase : MonoBehaviour
     public TileBase GetGroundTile() => groundTile;
 
     public virtual void RoomEnter() {
-        
+        print("RoomEtner RoomBase");
     }
 
     public virtual void RoomLeave() {
-        
+        print("RoomLeave RoomBase");
     }
 }

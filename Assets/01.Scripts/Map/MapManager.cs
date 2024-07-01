@@ -34,4 +34,15 @@ public class MapManager : MonoSingleton<MapManager>
         foreach (var item in bridges)
             yield return item;
     }
+
+    public RoomBase FindRoomByCoords(Vector2 pos) {
+        foreach (var item in map)
+        {
+            if (pos.x >= item.Value.MinPos.x && pos.x <= item.Value.MaxPos.x && pos.y >= item.Value.MinPos.y && pos.y <= item.Value.MaxPos.y) {
+                return item.Value;
+            }
+        }
+
+        return null;
+    }
 }

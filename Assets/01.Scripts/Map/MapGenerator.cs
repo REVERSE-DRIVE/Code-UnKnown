@@ -50,21 +50,21 @@ public class MapGenerator : MonoBehaviour
     float time = 0;
     int functionCall = 0;
     private void Update() {
-        time += Time.deltaTime;
+        // time += Time.deltaTime;
 
-        if (time > 1) {
-            time = 0;
-            functionCall = 0;
-            nowCreateIdx = -1;
+        // if (time > 1) {
+        //     time = 0;
+        //     functionCall = 0;
+        //     nowCreateIdx = -1;
 
-            wallTile.ClearAllTiles();
-            bridgeTile.ClearAllTiles();
-            groundTile.ClearAllTiles();
+        //     wallTile.ClearAllTiles();
+        //     bridgeTile.ClearAllTiles();
+        //     groundTile.ClearAllTiles();
 
-            MapManager.Instance.Clear();
+        //     MapManager.Instance.Clear();
 
-            BoxGenerate(Direction.Top, null);
-        }
+        //     BoxGenerate(Direction.Top, null);
+        // }
     }
 
     void Generate() {
