@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PlayerPartsManage
 {
-    public class PlayerPart : MonoBehaviour
+    public abstract class PlayerPart : MonoBehaviour
     {
         protected Player _owner;
         
@@ -13,7 +13,9 @@ namespace PlayerPartsManage
         {
             _owner = owner;
         }
-    
+
+        public abstract void UseSkill();
+
     }
 
 }

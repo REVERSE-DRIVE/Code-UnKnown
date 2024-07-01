@@ -10,12 +10,12 @@ namespace PlayerPartsManage
         
         public void SkillTrigger(PartType type)
         {
-            
+            partList[(int)type].UseSkill();
         }
 
-        public void ChangePart()
+        public void ChangePart(PartType type, PlayerPartDataSO anotherPart)
         {
-            
+            // 플레이어 파츠 변경을 구현 해야한다
         }
         
         
