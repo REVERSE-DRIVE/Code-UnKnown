@@ -31,9 +31,9 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField] Vector2Int bridgeSize;
 
-    Dictionary<Vector2Int, RoomBase> map;
+    
     // List<RoomBase> rooms = new();
-    List<BridgeBase> bridges = new();
+    
 
     public enum Direction {
         Top,
@@ -43,7 +43,6 @@ public class MapGenerator : MonoBehaviour
     }
 
     private void Awake() {
-        map = new();
         // Generate();
         BoxGenerate(Direction.Top, null);
     }
@@ -62,8 +61,8 @@ public class MapGenerator : MonoBehaviour
             bridgeTile.ClearAllTiles();
             groundTile.ClearAllTiles();
 
-            map = new();
-            bridges = new();
+            MapManager.Instance.Clear();
+
             BoxGenerate(Direction.Top, null);
         }
     }
@@ -85,7 +84,7 @@ public class MapGenerator : MonoBehaviour
             } else {
                 nowMapCoords += GetDirection(dir);
             }
-            map[nowMapCoords] = room;
+            MapManager.Instance.SetRoom(nowMapCoords, room);
             print(nowMapCoords);
 
 
@@ -118,7 +117,7 @@ public class MapGenerator : MonoBehaviour
             }
 
             dir = (Direction)Random.Range(0,4);
-            while (map.TryGetValue(nowMapCoords + GetDirection(dir), out var _)) {
+            while (MapManager.Instance.GetRoomByCoords(nowMapCoords + GetDirection(dir)) != null) {
                 dir = (Direction)Random.Range(0,4);
             }
             print(dir);
@@ -256,7 +255,7 @@ public class MapGenerator : MonoBehaviour
         }
 
         // 충돌 확인
-        foreach (var item in map)
+        foreach (var item in MapManager.Instance.GetMapIterator())
         {
             var min = item.Value.MinPos;
             var max = item.Value.MaxPos;
@@ -266,7 +265,7 @@ public class MapGenerator : MonoBehaviour
             // 박스 겹침 (만들기 중단)
             return false;
         }
-        foreach (var item in bridges)
+        foreach (var item in MapManager.Instance.GetBridgeIterator())
         {
             var min = item.start;
             var max = item.end;
@@ -281,7 +280,7 @@ public class MapGenerator : MonoBehaviour
         
 
         Vector2Int mapPos = lastRoom ? lastRoom.MapPos + GetDirection(lastDir) : Vector2Int.zero;
-        map[mapPos] = room;
+        MapManager.Instance.SetRoom(mapPos, room);
 
         room.SetRoomPos(minPos, maxPos, mapPos);
 
@@ -290,7 +289,8 @@ public class MapGenerator : MonoBehaviour
         {
             Direction dir = (Direction)i;
             if (dir == ReverseD_irection(lastDir)) continue;
-            if (!map.TryGetValue(room.MapPos + GetDirection(dir), out RoomBase otherRoom)) continue;
+            RoomBase otherRoom = MapManager.Instance.GetRoomByCoords(room.MapPos + GetDirection(dir));
+            if (otherRoom == null) continue;
 
             int halfWidthBridge = bridgeSize.x / 2;
             halfWidthBridge += 2; // 겉에 벽
@@ -340,7 +340,7 @@ public class MapGenerator : MonoBehaviour
                 var subBridge = CreateBridge(endPoint, dir, modifySize);
                 bool isStop = false;
 
-                foreach (var item in map)
+                foreach (var item in MapManager.Instance.GetMapIterator())
                 {
                     var min = item.Value.MinPos;
                     var max = item.Value.MaxPos;
@@ -351,7 +351,7 @@ public class MapGenerator : MonoBehaviour
                     isStop = true;
                     break;
                 }
-                foreach (var item in bridges)
+                foreach (var item in MapManager.Instance.GetBridgeIterator())
                 {
                     var min = item.start;
                     var max = item.end;
@@ -388,7 +388,7 @@ public class MapGenerator : MonoBehaviour
                 room.SetBridge(dir, subBridge);
                 otherRoom.SetBridge(ReverseD_irection(dir), subBridge);
 
-                bridges.Add(subBridge);
+                MapManager.Instance.AddBrdige(bridge);
 
                 print(modifySize);
                 print(endPoint);
@@ -399,7 +399,7 @@ public class MapGenerator : MonoBehaviour
         if (lastRoom) {
             bridge.room1 = room;
             bridge.room2 = lastRoom;
-            bridges.Add(bridge);
+            MapManager.Instance.AddBrdige(bridge);
             lastRoom.SetBridge(lastDir, bridge);
             room.SetBridge(ReverseD_irection(lastDir), bridge);
 
