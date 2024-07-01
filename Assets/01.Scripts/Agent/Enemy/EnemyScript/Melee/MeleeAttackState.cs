@@ -6,7 +6,13 @@ public class MeleeAttackState : EnemyState<MeleeStateEnum>
     public MeleeAttackState(Enemy enemyBase, EnemyStateMachine<MeleeStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
     }
-    
+
+    public override void Enter()
+    {
+        base.Enter();
+        //var bullet =
+    }
+
     public override void UpdateState()
     {
         base.UpdateState();
