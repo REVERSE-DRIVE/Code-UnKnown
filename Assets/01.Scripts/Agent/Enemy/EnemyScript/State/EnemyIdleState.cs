@@ -2,10 +2,10 @@
 using EnemyManage;
 using UnityEngine;
 
-public class RangedIdleState : EnemyState<EnemyStateEnum>
+public class EnemyIdleState : EnemyState<EnemyStateEnum>
 {
     private EnemyMovement _movementCompo;
-    public RangedIdleState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public EnemyIdleState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
         _movementCompo = _enemyBase.MovementCompo as EnemyMovement;
     }
