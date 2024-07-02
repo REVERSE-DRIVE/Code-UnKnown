@@ -10,7 +10,7 @@ public class PlayerInteractController : MonoBehaviour
     private Player _player;
 
     private InteractObject _currentInteractObject;
-    
+    private Collider2D _hitTarget;
     private void FixedUpdate()
     {
         DetectObjects();
@@ -18,15 +18,23 @@ public class PlayerInteractController : MonoBehaviour
 
     private void DetectObjects()
     {
-        Collider2D hit =  Physics2D.OverlapCircle(transform.position, _interactRange, _objectLayeer);
+        _hitTarget = Physics2D.OverlapCircle(transform.position, _interactRange, _objectLayeer);
         
-        if (hit == null)
+        if (_hitTarget == null)
         {
             if (_currentInteractObject == null)
                 return;
+            _currentInteractObject.UnDetected();
+            _currentInteractObject = null;
             // _currentInteractObject 에서 나갈때 이벤트 실행
+            return;
         }
+        
         // 감지되었을때 이벤트 실행
+        if (_hitTarget.TryGetComponent(out InteractObject interactTarget))
+        {
+            interactTarget.Detected();
+        }    
     }
 
 }
