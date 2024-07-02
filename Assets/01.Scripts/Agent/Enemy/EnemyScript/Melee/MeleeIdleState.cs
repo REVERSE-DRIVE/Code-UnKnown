@@ -6,12 +6,6 @@ public class MeleeIdleState : EnemyState<MeleeStateEnum>
     public MeleeIdleState(Enemy enemyBase, EnemyStateMachine<MeleeStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
     }
-    
-    public override void Enter()
-    {
-        base.Enter();
-        _enemyBase.MovementCompo.StopImmediately();
-    }
 
     public override void UpdateState()
     {

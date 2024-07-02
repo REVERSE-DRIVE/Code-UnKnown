@@ -16,10 +16,11 @@ namespace EnemyManage
 
         [Header("Attack Settings")] public float runAwayDistance;
         public float attackDistance;
+        public float chaseDistance;
         public float attackCooldown;
-        [SerializeField] protected int _maxCheckEnemy = 1;
-        [HideInInspector] public float lastAttackTime;
-        [HideInInspector] public Transform targetTrm;
+        protected int _maxCheckEnemy = 1;
+        public float lastAttackTime;
+        public Transform targetTrm;
         protected Collider2D[] _enemyCheckColliders;
 
         protected override void Awake()
@@ -32,7 +33,7 @@ namespace EnemyManage
 
         public virtual Collider2D IsPlayerDetected()
         {
-            int cnt = Physics2D.OverlapCircleNonAlloc(transform.position, attackDistance, _enemyCheckColliders,
+            int cnt = Physics2D.OverlapCircleNonAlloc(transform.position, chaseDistance, _enemyCheckColliders,
                 _whatIsPlayer);
 
             return cnt >= 1 ? _enemyCheckColliders[0] : null;
@@ -54,6 +55,8 @@ namespace EnemyManage
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, attackDistance);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, chaseDistance);
         }
 
         public Vector3 GetRandomPosition()

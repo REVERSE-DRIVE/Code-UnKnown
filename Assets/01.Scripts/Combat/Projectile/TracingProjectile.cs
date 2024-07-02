@@ -26,6 +26,7 @@ public class TracingProjectile : Projectile
     protected override bool Update()
     {
         if (!base.Update()) return false;
+        Debug.Log(base.Update());
         
         TraceTarget();
         return true;

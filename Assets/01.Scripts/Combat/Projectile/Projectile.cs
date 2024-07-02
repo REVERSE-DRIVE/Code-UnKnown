@@ -97,6 +97,7 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
         if (other.transform.TryGetComponent(out Health health))
         {
             health.TakeDamage(_damage);
+            HandleDie();
         }
     }
 }

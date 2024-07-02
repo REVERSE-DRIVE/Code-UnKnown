@@ -1,4 +1,5 @@
 ﻿using EnemyManage;
+using ObjectPooling;
 using UnityEngine;
 
 public class MeleeAttackState : EnemyState<MeleeStateEnum>
@@ -7,15 +8,10 @@ public class MeleeAttackState : EnemyState<MeleeStateEnum>
     {
     }
 
-    public override void Enter()
-    {
-        base.Enter();
-        //var bullet =
-    }
-
     public override void UpdateState()
     {
         base.UpdateState();
+        
         if (_endTriggerCalled)
         {
             Debug.Log("Attack");
