@@ -31,7 +31,7 @@ public abstract class Agent : MonoBehaviour
         VFXCompo = transform.Find("AgentVFX").GetComponent<AgentVFX>();
         EffectCompo = GetComponent<AgentEffectController>();
         HealthCompo = GetComponent<Health>();
-        AnimatorCompo = GetComponent<Animator>();
+        AnimatorCompo = transform.Find("Visual").GetComponent<Animator>();
 
         Stat = Instantiate(Stat);
     }

@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 1207526873}
   - component: {fileID: 1207526874}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Type_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -481,10 +481,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   runAwayDistance: 10
-  attackDistance: 4
-  chaseDistance: 7
+  attackDistance: 2
+  chaseDistance: 5
   attackCooldown: 1
-  _maxCheckEnemy: 1
   lastAttackTime: 0
   targetTrm: {fileID: 0}
 --- !u!1 &1435493018
