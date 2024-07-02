@@ -13,8 +13,6 @@ namespace ObjectManage
         [SerializeField] protected SpriteRenderer _visualRenderer;
         private Material _defaultMaterial;
 
-        
-
         protected virtual void Start()
         {
             _defaultMaterial = _visualRenderer.material;

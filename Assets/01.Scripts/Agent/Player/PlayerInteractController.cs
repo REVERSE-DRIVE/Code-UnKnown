@@ -22,6 +22,7 @@ public class PlayerInteractController : MonoBehaviour
         
         if (_hitTarget == null)
         {
+            _player.PlayerInputCompo.controlButtons.HandleAttackMode();
             if (_currentInteractObject == null)
                 return;
             _currentInteractObject.UnDetected();
@@ -34,6 +35,7 @@ public class PlayerInteractController : MonoBehaviour
         if (_hitTarget.TryGetComponent(out InteractObject interactTarget))
         {
             interactTarget.Detected();
+            _player.PlayerInputCompo.controlButtons.HandleInteractMode();
         }    
     }
 

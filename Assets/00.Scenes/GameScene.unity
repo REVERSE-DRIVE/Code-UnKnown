@@ -343,10 +343,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -448,8 +448,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6800fa18c9c17549b41031ca9d32670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactButton: {fileID: 0}
-  _buttonSprites: []
+  _controlButton: {fileID: 1997351964}
+  _buttonSprites:
+  - {fileID: -1618839063, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
+  - {fileID: 93553912, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
 --- !u!1 &435634821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,37 +1153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1825726274
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1825726275}
-  m_Layer: 0
-  m_Name: InteractObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1825726275
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825726274}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1923281802
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,7 +1205,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9b2f7f23d8d4f3c4098109f51a709a28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1255,7 +1226,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1402029152, guid: c9a2e4a8ebfb0d542959918964c5b755, type: 3}
+  m_Sprite: {fileID: 93553912, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1477,12 +1448,11 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 657289549}
   - {fileID: 229503594}
   - {fileID: 899788072}
   - {fileID: 319232986}
   - {fileID: 435634824}
-  - {fileID: 1825726275}
-  - {fileID: 657289549}
-  - {fileID: 1008521642}
   - {fileID: 1401247475}
   - {fileID: 5043262373099526136}
+  - {fileID: 1008521642}
