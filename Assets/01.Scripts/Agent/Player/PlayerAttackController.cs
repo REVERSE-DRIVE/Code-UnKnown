@@ -19,13 +19,13 @@ public class PlayerAttackController : MonoBehaviour
             _currentWeapon = Instantiate(_currentWeaponInfo.WeaponPrefab, _weaponHandleTrm);
         }
 
-        WeaponInit();
+        
     }
 
     private void Start()
     {
         // 무기 회전에 대한 함수를 구독해준다
-        _player.PlayerInputCompo.OnMovementEvent += _currentWeapon.HandleRotateWeapon;
+        WeaponInit();
     }
 
     public void Initialize(Player player)
