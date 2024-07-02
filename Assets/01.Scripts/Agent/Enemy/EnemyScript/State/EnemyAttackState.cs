@@ -2,9 +2,9 @@
 using ObjectPooling;
 using UnityEngine;
 
-public class RangedAttackState : EnemyState<RangedStateEnum>
+public class EnemyAttackState : EnemyState<EnemyStateEnum>
 {
-    public RangedAttackState(Enemy enemyBase, EnemyStateMachine<RangedStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public EnemyAttackState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
     }
     
@@ -23,7 +23,7 @@ public class RangedAttackState : EnemyState<RangedStateEnum>
         if (_endTriggerCalled)
         {
             Debug.Log("Attack");
-            _stateMachine.ChangeState(RangedStateEnum.Idle);
+            _stateMachine.ChangeState(EnemyStateEnum.Idle);
         }
     }
 }

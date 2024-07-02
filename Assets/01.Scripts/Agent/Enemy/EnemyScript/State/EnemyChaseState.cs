@@ -2,9 +2,9 @@
 using EnemyManage;
 using UnityEngine;
 
-public class RangedChaseState : EnemyState<RangedStateEnum>
+public class EnemyChaseState : EnemyState<EnemyStateEnum>
 {
-    public RangedChaseState(Enemy enemyBase, EnemyStateMachine<RangedStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public EnemyChaseState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
     }
 
@@ -23,11 +23,11 @@ public class RangedChaseState : EnemyState<RangedStateEnum>
         else if (distance <= _enemyBase.attackDistance)
         {
             Debug.Log("Attack");
-            _stateMachine.ChangeState(RangedStateEnum.Attack);
+            _stateMachine.ChangeState(EnemyStateEnum.Attack);
         }
         else
         {
-            _stateMachine.ChangeState(RangedStateEnum.Idle);
+            _stateMachine.ChangeState(EnemyStateEnum.Idle);
         }
     }
     

@@ -2,10 +2,10 @@
 using EnemyManage;
 using UnityEngine;
 
-public class RangedIdleState : EnemyState<RangedStateEnum>
+public class RangedIdleState : EnemyState<EnemyStateEnum>
 {
     private EnemyMovement _movementCompo;
-    public RangedIdleState(Enemy enemyBase, EnemyStateMachine<RangedStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public RangedIdleState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
         _movementCompo = _enemyBase.MovementCompo as EnemyMovement;
     }
@@ -30,7 +30,7 @@ public class RangedIdleState : EnemyState<RangedStateEnum>
         {
             _enemyBase.StopAllCoroutines();
             _enemyBase.targetTrm = target.transform;
-            _stateMachine.ChangeState(RangedStateEnum.Chase);
+            _stateMachine.ChangeState(EnemyStateEnum.Chase);
         }
     }
     

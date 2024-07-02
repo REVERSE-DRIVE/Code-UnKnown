@@ -1,9 +1,6 @@
 ﻿namespace EnemyManage
 {
-    /// <summary>
-    /// 원거리 적 상태
-    /// </summary>
-    public enum RangedStateEnum
+    public enum EnemyStateEnum
     {
         Idle,
         Chase,
