@@ -18,10 +18,7 @@ namespace WeaponManage
             _targetColliders = new Collider2D[swordInfo.limitTargetAmount];
             _targetLayer = LayerMask.GetMask("Enemy", "Projectile");
         }
-        public override void Initialize()
-        {
-            
-        }
+        
         
         protected override void HandleAttackEvent()
         {

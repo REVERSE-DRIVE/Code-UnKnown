@@ -8,12 +8,15 @@ namespace WeaponManage
         public WeaponInfoSO weaponInfo;
         [SerializeField] protected ParticleSystem _attackParticle;
         [SerializeField] protected Animator _animatorCompo;
+        [SerializeField] protected Player _player;
         public Action OnAttackEvent;
-        public abstract void Initialize();
         protected Vector2 _controlDirection;
         protected Vector2 _previousDirection;
         protected bool _isWeaponRotateLock = false;
 
+        
+
+        
         // 공격 쿨타임 로직을 만들어야함
         // animator 기반으로 작동하는 자동 쿨타이밍 로직으로 짤 예정
         //
@@ -23,7 +26,12 @@ namespace WeaponManage
         {
             OnAttackEvent += HandleAttackEvent;
         }
-
+        
+        public virtual void Initialize(Player player)
+        {
+            _player = player;
+            
+        }
         
 
         public void Attack()

@@ -6,7 +6,13 @@ namespace WeaponManage
     {
         protected override void AttackLogic()
         {
-            throw new System.NotImplementedException();
+            for (int i = 0; i < _targetAmount; i++)
+            {
+                if (_targetColliders[i].TryGetComponent(out IDamageable hit))
+                {
+                    hit.TakeDamage(swordInfo.damage);
+                }
+            }
         }
     }
 }
