@@ -37,13 +37,13 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -5504859350979041977}
-    m_Position: {x: 270, y: -20, z: 0}
+    m_Position: {x: 240, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8770483141031955953}
     m_Position: {x: 250, y: -100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1711876168219087792}
-    m_Position: {x: 200, y: 50, z: 0}
+    m_Position: {x: 240, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3947110270044546345}
     m_Position: {x: 60, y: 140, z: 0}
@@ -94,7 +94,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Battle
+  m_Name: Chase
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -119,7 +119,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CommonEnemy
+  m_Name: TypeAEnemy
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Idle
