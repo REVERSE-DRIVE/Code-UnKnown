@@ -1,7 +1,11 @@
 ﻿using EnemyManage;
+using ObjectPooling;
+using UnityEngine;
 
-public class EnemyBase : Enemy
+public class EnemyBase : Enemy, IPoolable
 {
+    [field:SerializeField] public PoolingType type { get; set; }
+    public GameObject ObjectPrefab => gameObject;
     public EnemyStateMachine<EnemyStateEnum> StateMachine { get; protected set; }
 
     protected override void Awake()
@@ -18,5 +22,10 @@ public class EnemyBase : Enemy
     public override void AnimationEndTrigger()
     {
         StateMachine.CurrentState.AnimationTrigger();
+    }
+
+    public void ResetItem()
+    {
+        
     }
 }
