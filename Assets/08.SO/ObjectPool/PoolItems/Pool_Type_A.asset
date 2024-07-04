@@ -16,5 +16,5 @@ MonoBehaviour:
   poolingName: Type_A
   description: "Type_A Enemy\n\uD50C\uB808\uC774\uC5B4\uB97C \uD5A5\uD574 \uCD1D\uC54C
     \uBC1C\uC0AC"
-  poolCount: 0
-  prefabObject: {fileID: 0}
+  poolCount: 10
+  prefabObject: {fileID: 5627968206905763583, guid: 4f5b4c14183660b43ac271b8e86f1feb, type: 3}

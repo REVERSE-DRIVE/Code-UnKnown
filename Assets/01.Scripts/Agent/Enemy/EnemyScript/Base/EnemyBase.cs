@@ -13,6 +13,11 @@ public class EnemyBase : Enemy, IPoolable
         base.Awake();
         StateMachine = new EnemyStateMachine<EnemyStateEnum>();
     }
+    
+    public virtual void Start()
+    {
+        StateMachine.Initialize(EnemyStateEnum.Idle, this);
+    }
 
     private void Update()
     {
