@@ -4,19 +4,15 @@ namespace WeaponManage
 {
     public class LongBinder : Sword
     {
-        public override void Initialize()
+        protected override void AttackLogic()
         {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void HandleAttackEvent()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void HandleRotateWeapon(Vector2 direction)
-        {
-            throw new System.NotImplementedException();
+            for (int i = 0; i < _targetAmount; i++)
+            {
+                if (_targetColliders[i].TryGetComponent(out IDamageable hit))
+                {
+                    hit.TakeDamage(swordInfo.damage);
+                }
+            }
         }
     }
 }

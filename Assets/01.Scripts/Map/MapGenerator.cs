@@ -388,7 +388,7 @@ public class MapGenerator : MonoBehaviour
                 room.SetBridge(dir, subBridge);
                 otherRoom.SetBridge(ReverseD_irection(dir), subBridge);
 
-                MapManager.Instance.AddBrdige(bridge);
+                MapManager.Instance.AddBridge(bridge);
 
                 print(modifySize);
                 print(endPoint);
@@ -399,7 +399,7 @@ public class MapGenerator : MonoBehaviour
         if (lastRoom) {
             bridge.room1 = room;
             bridge.room2 = lastRoom;
-            MapManager.Instance.AddBrdige(bridge);
+            MapManager.Instance.AddBridge(bridge);
             lastRoom.SetBridge(lastDir, bridge);
             room.SetBridge(ReverseD_irection(lastDir), bridge);
 

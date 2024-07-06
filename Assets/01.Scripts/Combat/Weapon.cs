@@ -8,21 +8,77 @@ namespace WeaponManage
         public WeaponInfoSO weaponInfo;
         [SerializeField] protected ParticleSystem _attackParticle;
         [SerializeField] protected Animator _animatorCompo;
+        [SerializeField] protected Player _player;
         public Action OnAttackEvent;
-        public abstract void Initialize();
+        protected Vector2 _controlDirection;
+        protected Vector2 _previousDirection;
+        protected bool _isWeaponRotateLock = false;
+        [SerializeField] protected bool _isCooldowned = true;
 
+
+        private int _attackAnimationHash;
+        
+        // 공격 쿨타임 로직을 만들어야함
+        // animator 기반으로 작동하는 자동 쿨타이밍 로직으로 짤 예정
+        //
+        // Animation에 이벤트 추가해야됨
+        
         protected virtual void Awake()
         {
+            _attackAnimationHash = Animator.StringToHash("IsAttack");
             OnAttackEvent += HandleAttackEvent;
         }
+        
+        public virtual void Initialize(Player player)
+        {
+            _player = player;
+            
+        }
+        
 
         public void Attack()
         {
+            if (!_isCooldowned) return;
+            // AnimationEndTrigger에서 해제해준다
+            _isCooldowned = false;
+            _animatorCompo.SetBool(_attackAnimationHash, true);
+            _isWeaponRotateLock = true; 
+           
             OnAttackEvent?.Invoke();
         }
 
         protected abstract void HandleAttackEvent();
 
-        public abstract void HandleRotateWeapon(Vector2 direction);
+        public void HandleRotateWeapon(Vector2 direction)
+        {
+            _controlDirection = direction;
+            if (_isWeaponRotateLock) return;
+            if (direction.sqrMagnitude == 0)
+                return;
+            // 오프셋 부분 수정해야될 수도 있움
+            Quaternion rotate = Quaternion.Euler(0, 0,
+                Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
+            transform.rotation = rotate;
+            if (Mathf.Abs(rotate.z) > 0.7f)  // z rotation값 재계산 해야함
+            {
+                transform.parent.localScale = new Vector2(-1, 1);
+                transform.localScale = -Vector2.one;
+            }
+            else
+            {
+                transform.parent.localScale = Vector2.one;
+                transform.localScale = Vector2.one;
+            }
+        }
+
+        public virtual void AnimationEndTrigger()
+        {
+            print("Animation End");
+            _animatorCompo.SetBool(_attackAnimationHash, false);
+
+            _isWeaponRotateLock = false;
+            _isCooldowned = true;
+
+        }
     }
 }

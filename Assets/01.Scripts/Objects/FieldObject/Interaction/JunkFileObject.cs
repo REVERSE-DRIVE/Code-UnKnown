@@ -5,6 +5,8 @@ using UnityEngine;
 public class JunkFileObject : InteractObject
 {
     private Rigidbody2D _rigidCompo;
+    [SerializeField] private Material _hitMaterial;
+
     [SerializeField] private bool _collisionDestroy;
     [SerializeField] private float _pushPower;
     private Vector2 _origin = Vector2.zero;
@@ -42,6 +44,7 @@ public class JunkFileObject : InteractObject
     {
         base.Interact(data);
         _origin = data.interactOriginPosition;
+        print("정크 파일 상호작용됨");
     }
 
     private void HandlePush()
