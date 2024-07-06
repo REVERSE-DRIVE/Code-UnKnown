@@ -263,6 +263,7 @@ public class MapGenerator : MonoBehaviour
             if (maxPos.y < min.y || minPos.y > max.y) continue;
 
             // 박스 겹침 (만들기 중단)
+            Destroy(room.gameObject);
             return false;
         }
         foreach (var item in MapManager.Instance.GetBridgeIterator())
@@ -273,6 +274,7 @@ public class MapGenerator : MonoBehaviour
             if (maxPos.y < min.y || minPos.y > max.y) continue;
 
             // 박스 겹침 (만들기 중단)
+            Destroy(room.gameObject);
             return false;
         }
         
