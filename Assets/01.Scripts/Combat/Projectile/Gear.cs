@@ -10,6 +10,7 @@ public class Gear : MonoBehaviour
     [SerializeField] private int _damage = 10;
     private float _angle;
     
+    
     public void SetRotate(bool value, float speed, float radius, float initialAngle)
     {
         _isRotate = value;

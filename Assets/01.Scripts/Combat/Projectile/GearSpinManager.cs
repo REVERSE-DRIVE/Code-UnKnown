@@ -1,20 +1,27 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
 public class GearSpinManager : MonoBehaviour
 {
-    [SerializeField] protected List<Gear> _gears;
-    [SerializeField] protected float _spinSpeed = 100f;
-    [SerializeField] protected float _moveDuration = 1f;
-    [SerializeField] protected float _spinDuration = 1f;
-    [SerializeField] protected float _spinRadius = 1f;
+    [SerializeField] private List<Gear> _gears;
+    [SerializeField] private float _spinSpeed = 100f;
+    [SerializeField] private float _moveDuration = 1f;
+    [SerializeField] private float _spinDuration = 1f;
+    [SerializeField] private float _spinRadius = 1f;
     
     private List<Vector3> _deltaPositionList;
     private bool _isSpinning = false;
-    
-    protected virtual void Start()
+
+    private void Awake()
+    {
+        _gears = GetComponentsInChildren<Gear>().ToList();
+    }
+
+    private void Start()
     {
         _deltaPositionList = new List<Vector3>();
         for (int i = 0; i < _gears.Count; i++)
