@@ -11,13 +11,14 @@ struct DoorData {
 public class RoomBase : MonoBehaviour
 {
     [SerializeField] TileBase groundTile;
+
     public Vector2Int Size { get; protected set; }
 
     public Vector2Int MinPos { get; private set; }
     public Vector2Int MaxPos { get; private set; }
     public Vector2Int MapPos { get; private set; }
     private Dictionary<MapGenerator.Direction, DoorData> doors = new();
-    
+
     public virtual void SetSize() {
         Size = new Vector2Int(19,19);
     }
@@ -67,6 +68,11 @@ public class RoomBase : MonoBehaviour
                 MapManager.Instance.DeleteWall(min, max);
             }
         }
+    }
+
+    // 방 만들어짐 (bridge, min, max 등 값 안전)
+    public virtual void OnComplete() {
+        
     }
 
     #if UNITY_EDITOR

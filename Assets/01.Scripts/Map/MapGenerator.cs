@@ -453,7 +453,8 @@ public class MapGenerator : MonoBehaviour
         {
             BoxGenerate(item, room);
         }
-
+        
+        room.OnComplete();
         return true;
     }
 
