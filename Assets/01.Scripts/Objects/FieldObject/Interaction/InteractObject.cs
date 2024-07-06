@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ObjectManage
 {
@@ -12,7 +13,7 @@ namespace ObjectManage
         [SerializeField] protected Material _detectMaterial;
         [SerializeField] protected SpriteRenderer _visualRenderer;
         private Material _defaultMaterial;
-
+        public bool isDetected;
         protected virtual void Start()
         {
             _defaultMaterial = _visualRenderer.material;
@@ -38,11 +39,17 @@ namespace ObjectManage
 
         protected void HandleDetected()
         {
+            if (isDetected) return;
+            print("Detected");
+            isDetected = true;
             _visualRenderer.material = _detectMaterial;
         }
 
         protected void HandleUnDetected()
         {
+            if (!isDetected) return;
+            print("Undetected");
+            isDetected = false;
             _visualRenderer.material = _defaultMaterial;
         }
         

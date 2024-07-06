@@ -18,7 +18,7 @@ public class PlayerAttackController : MonoBehaviour
         {
             _currentWeapon = Instantiate(_currentWeaponInfo.WeaponPrefab, _weaponHandleTrm);
         }
-
+        
         
     }
 
@@ -45,10 +45,16 @@ public class PlayerAttackController : MonoBehaviour
     {
         _currentWeapon.Initialize(_player);
         _player.PlayerInputCompo.OnMovementEvent += _currentWeapon.HandleRotateWeapon;
+        _player.PlayerInputCompo.controlButtons.OnAttackEvent += HandleAttack;
     }
 
     public void HandleAttack()
     {
+        if (_currentWeapon == null)
+        {
+            Debug.LogWarning("Weapon Is NULL");
+            return;
+        }
         _currentWeapon.Attack();      
     }
 

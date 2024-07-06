@@ -10,8 +10,6 @@ public class PlayerInput : MonoBehaviour
     private Button _skillButton;
 
     public event Action<Vector2> OnMovementEvent;
-    public event Action OnActionEvent;
-    public event Action OnSkillEvent;
 
     [SerializeField] private Vector2 _inputDirection;
     
@@ -19,10 +17,6 @@ public class PlayerInput : MonoBehaviour
     {
         _actionButton = controlButtons.actionButton;
         _skillButton = controlButtons.skillButton;
-        
-        _actionButton.onClick.AddListener(HandleActionEvent);
-        _skillButton.onClick.AddListener(HandleSkillEvent);
-        
     }
 
     private void Update()
@@ -35,15 +29,5 @@ public class PlayerInput : MonoBehaviour
         _inputDirection = value.Get<Vector2>();
     }
 
-    public void HandleActionEvent()
-    {
-        OnActionEvent?.Invoke();
-    }
-
-    public void HandleSkillEvent()
-    {
-        OnSkillEvent?.Invoke();
-    }
-
-
+    
 }
