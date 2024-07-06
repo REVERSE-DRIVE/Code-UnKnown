@@ -17,15 +17,15 @@ public class RoomObstacleBase : RoomBase
         
         obstacles = new();
 
-        // int createObj = Random.Range(0, (Size.x > Size.y ? Size.y : Size.x) / 3); // 장애물 갯수
-        int createObj = 10; // 장애물 갯수
+        int createObj = Random.Range(0, (Size.x > Size.y ? Size.y : Size.x) / 3); // 장애물 갯수
+        // int createObj = 10; // 장애물 갯수
         int tryCount = 0; // 시도 횟수 (너무많이 실패하면 빠져나가기 위해)
         
         while (obstacles.Count < createObj && tryCount < 50) {
             // Vector2Int min = MinPos - Vector2Int.one + new Vector2Int(Random.Range(0, Size.x - 1), Random.Range(0, Size.y - 1));
             // Vector2Int max = new Vector2Int( Random.Range(min.x, MaxPos.x), Random.Range(min.y, MaxPos.y) );
 
-            Vector2Int size = new(Random.Range(0, Size.x), Random.Range(0, Size.y));
+            Vector2Int size = new(Random.Range((int)(Size.x * 0.1f), Size.x), Random.Range((int)(Size.y * 0.1f), Size.y));
             if (size.x > size.y) {
                 size.x = Random.Range(1, 3);
             } else if (size.x < size.y) {
@@ -37,27 +37,35 @@ public class RoomObstacleBase : RoomBase
 
             bool isStop = false;
 
+            int rand = Random.Range(1, 4);
             if (size.x > size.y) {
                 min.y = Random.Range(MinPos.y + size.y + 1, MaxPos.y - 1 - size.y * 2);
                 max.y = min.y + size.y;
 
-                if (Random.Range(1, 3) == Random.Range(1, 3)) {
+                if (rand == 1) {
                     min.x = MinPos.x + 1;
                     max.x = min.x + size.x;
-                } else {
+                } else if (rand == 2) {
                     max.x = MaxPos.x - 1;
                     min.x = max.x - size.x;
+                } else {
+                    min.x = Random.Range(MinPos.x + 1, (MinPos.x + 1) + (Size.x - 2 - size.x));
+                    max.x = min.x + size.x;
                 }
             } else if (size.x < size.y) {
                 min.x = Random.Range(MinPos.x + size.x + 1, MaxPos.x - 1 - size.x * 2);
                 max.x = min.x + size.x;
 
-                if (Random.Range(1, 3) == Random.Range(1, 3)) {
+
+                if (rand == 1) {
                     min.y = MinPos.y + 1;
                     max.y = min.y + size.y;
-                } else {
+                } else if (rand == 2) {
                     max.y = MaxPos.y - 1;
                     min.y = max.y - size.y;
+                } else if (rand == 3) {
+                    min.y = Random.Range(MinPos.y + 1, (MinPos.y + 1) + (Size.y - 2 - size.y));
+                    max.y = min.y + size.y;
                 }
             } else {
                 min.x = Random.Range(MinPos.x, MaxPos.x - size.x);
