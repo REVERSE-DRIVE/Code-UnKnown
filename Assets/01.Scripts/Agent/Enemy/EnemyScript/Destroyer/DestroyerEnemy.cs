@@ -1,5 +1,6 @@
 ﻿using EnemyManage;
 
+// 플레이어를 향해 폭발하는 에너지 구체를 던짐. 에너지 구체에 피격시 넉백 효과가 동반됨.
 public class DestroyerEnemy : EnemyBase
 {
     protected override void Awake()

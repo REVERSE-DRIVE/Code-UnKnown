@@ -1,5 +1,6 @@
 ﻿using EnemyManage;
 
+// 플레이어를 향해 총알 발사
 public class TypeAEnemy : EnemyBase
 {
     protected override void Awake()

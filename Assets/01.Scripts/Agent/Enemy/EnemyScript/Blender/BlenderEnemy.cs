@@ -1,5 +1,6 @@
 ﻿using EnemyManage;
 
+// 플레이어를 향해 다가오며 주위의 톱니바퀴를 돌림
 public class BlenderEnemy : EnemyBase
 {
     protected override void Awake()
