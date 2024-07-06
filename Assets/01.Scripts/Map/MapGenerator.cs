@@ -566,4 +566,26 @@ public class MapGenerator : MonoBehaviour
         };
         return bridge;
     }
+
+    public void CreateWall(Vector2Int min, Vector2Int max) {
+        for (int i = min.y; i <= max.y; i++)
+        {
+            for (int k = min.x; k <= max.x; k++)
+            {
+                if (i == min.y || i == max.y || k == min.x || k == max.x) {
+                    wallTile.SetTile(new Vector3Int(k,i,0), wallBase);
+                }
+            }
+        }
+    }
+    
+    public void DeleteWall(Vector2Int min, Vector2Int max) {
+        for (int i = min.y; i <= max.y; i++)
+        {
+            for (int k = min.x; k <= max.x; k++)
+            {
+                wallTile.SetTile(new Vector3Int(k,i,0), null);
+            }
+        }
+    }
 }
