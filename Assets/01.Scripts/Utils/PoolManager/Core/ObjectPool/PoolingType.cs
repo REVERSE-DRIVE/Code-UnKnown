@@ -2,6 +2,6 @@ namespace ObjectPooling
 {
     public enum PoolingType
     {
-        TestPoolingEffect,
+        TestPoolingEffect,EnemyLaser,Type_A,Type_A_Upgrade,
     }
 }

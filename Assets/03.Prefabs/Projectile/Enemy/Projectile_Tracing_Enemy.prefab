@@ -112,7 +112,7 @@ MonoBehaviour:
   <type>k__BackingField: 0
   _destroyParticlePoolingType: 0
   _damage: 3
-  _speed: 0.5
+  _speed: 1
   _lifeTime: 100
   _targetTrm: {fileID: 0}
   _isPlayerTarget: 0
