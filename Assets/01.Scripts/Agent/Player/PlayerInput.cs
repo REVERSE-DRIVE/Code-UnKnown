@@ -5,20 +5,18 @@ using UnityEngine.UI;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] private Button _actionButton;
-    [SerializeField] private Button _skillButton;
+    public ControlButtons controlButtons;
+    private Button _actionButton;
+    private Button _skillButton;
 
     public event Action<Vector2> OnMovementEvent;
-    public event Action OnActionEvent;
-    public event Action OnSkillEvent;
 
     [SerializeField] private Vector2 _inputDirection;
     
     private void Awake()
     {
-        _actionButton.onClick.AddListener(HandleActionEvent);
-        _skillButton.onClick.AddListener(HandleSkillEvent);
-        
+        _actionButton = controlButtons.actionButton;
+        _skillButton = controlButtons.skillButton;
     }
 
     private void Update()
@@ -31,15 +29,5 @@ public class PlayerInput : MonoBehaviour
         _inputDirection = value.Get<Vector2>();
     }
 
-    public void HandleActionEvent()
-    {
-        OnActionEvent?.Invoke();
-    }
-
-    public void HandleSkillEvent()
-    {
-        OnSkillEvent?.Invoke();
-    }
-
-
+    
 }

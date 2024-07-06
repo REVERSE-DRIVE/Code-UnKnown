@@ -1,52 +1,55 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ObjectManage
 {
     public class InteractObject : FieldObject, IInteractable
     {
         public event Action OnInteractEvent;
-        private Action _onDetectedEvent;
-        private Action _onUnDetectedEvent;
+        public Action OnDetectedEvent;
+        public Action OnUnDetectedEvent;
 
         [SerializeField] protected Material _detectMaterial;
         [SerializeField] protected SpriteRenderer _visualRenderer;
         private Material _defaultMaterial;
-
-        Action IInteractable.OnDetectedEvent
-        {
-            get => _onDetectedEvent;
-            set => _onDetectedEvent = value;
-        }
-
-        Action IInteractable.OnUnDetectedEvent
-        {
-            get => _onUnDetectedEvent;
-            set => _onUnDetectedEvent = value;
-        }
-
+        public bool isDetected;
         protected virtual void Start()
         {
             _defaultMaterial = _visualRenderer.material;
-            _onDetectedEvent += HandleDetected;
-            _onUnDetectedEvent += HandleUnDetected;
+            OnDetectedEvent += HandleDetected;
+            OnUnDetectedEvent += HandleUnDetected;
         }
 
-        
+        public virtual void Detected()
+        {
+            OnDetectedEvent?.Invoke();
+        }
 
         public virtual void Interact(InteractData data)
         {
             OnInteractEvent?.Invoke();
         }
 
+        public virtual void UnDetected()
+        {
+            OnUnDetectedEvent?.Invoke();
+        }
+
 
         protected void HandleDetected()
         {
+            if (isDetected) return;
+            print("Detected");
+            isDetected = true;
             _visualRenderer.material = _detectMaterial;
         }
 
         protected void HandleUnDetected()
         {
+            if (!isDetected) return;
+            print("Undetected");
+            isDetected = false;
             _visualRenderer.material = _defaultMaterial;
         }
         

@@ -15,8 +15,8 @@ TagManager:
   - Enemy
   - DeadBody
   - Object
-  - PlayerProjectile
-  - EnemyProjectile
+  - Projectile
+  - 
   - 
   - 
   - 
@@ -46,4 +46,10 @@ TagManager:
     locked: 0
   - name: Object
     uniqueID: 3465460035
+    locked: 0
+  - name: Agent
+    uniqueID: 3250463677
+    locked: 0
+  - name: Particles
+    uniqueID: 1277970697
     locked: 0
