@@ -448,7 +448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6800fa18c9c17549b41031ca9d32670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlButton: {fileID: 1997351964}
+  actionButton: {fileID: 1997351964}
+  skillButton: {fileID: 1495788399}
   _buttonSprites:
   - {fileID: -1618839063, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
   - {fileID: 93553912, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
@@ -755,7 +756,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1413,6 +1414,10 @@ PrefabInstance:
       propertyPath: _actionButton
       value: 
       objectReference: {fileID: 1997351964}
+    - target: {fileID: 6863284896352316412, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: controlButtons
+      value: 
+      objectReference: {fileID: 325271706}
     - target: {fileID: 7042404186746062641, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: m_Name
       value: Player
