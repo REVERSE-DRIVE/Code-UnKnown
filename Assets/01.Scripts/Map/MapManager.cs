@@ -16,7 +16,7 @@ public class MapManager : MonoSingleton<MapManager>
         map[coords] = room;
     }
 
-    public void AddBrdige(BridgeBase bridge) {
+    public void AddBridge(BridgeBase bridge) {
         bridges.Add(bridge);
     }
 
