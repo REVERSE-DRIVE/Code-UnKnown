@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+struct DoorData {
+    public Vector2Int size;
+    public BridgeBase bridge;
+}
+
 public class RoomBase : MonoBehaviour
 {
     [SerializeField] TileBase groundTile;
@@ -11,7 +16,7 @@ public class RoomBase : MonoBehaviour
     public Vector2Int MinPos { get; private set; }
     public Vector2Int MaxPos { get; private set; }
     public Vector2Int MapPos { get; private set; }
-    private Dictionary<MapGenerator.Direction, BridgeBase> bridges = new();
+    private Dictionary<MapGenerator.Direction, DoorData> doors = new();
     
     public virtual void SetSize() {
         Size = new Vector2Int(19,19);
@@ -23,8 +28,11 @@ public class RoomBase : MonoBehaviour
         MapPos = mapPos;
     }
 
-    public void SetBridge(MapGenerator.Direction dir, BridgeBase bridge) {
-        bridges[dir] = bridge;
+    public void SetDoor(MapGenerator.Direction dir, Vector2Int size, BridgeBase bridge) {
+        doors[dir] = new() {
+            size = size,
+            bridge = bridge           
+        };
     }
 
     public TileBase GetGroundTile() => groundTile;
@@ -36,4 +44,44 @@ public class RoomBase : MonoBehaviour
     public virtual void RoomLeave() {
         print("RoomLeave RoomBase");
     }
+
+    public virtual void SetDoor(bool active) {
+        // 코드...
+    }
+
+    #if UNITY_EDITOR
+    private void OnDrawGizmosSelected() {
+        // 모든 문 끝쪽
+        foreach (var item in doors)
+        {
+            Vector2Int coords;
+            if (item.Key == MapGenerator.Direction.Top || item.Key == MapGenerator.Direction.Right) {
+                coords = MaxPos;
+            } else {
+                coords = MinPos;
+            }
+
+            {
+                if (item.Key == MapGenerator.Direction.Top || item.Key == MapGenerator.Direction.Bottom) {
+                    coords.x = item.Value.size.x;
+                } else {
+                    coords.y = item.Value.size.x;
+                }
+                
+                Gizmos.DrawWireCube(new(coords.x, coords.y, 0), Vector3.one);
+            }
+
+            {
+                if (item.Key == MapGenerator.Direction.Top || item.Key == MapGenerator.Direction.Bottom) {
+                    coords.x = item.Value.size.y;
+                } else {
+                    coords.y = item.Value.size.y;
+                }
+                
+                Gizmos.DrawWireCube(new(coords.x, coords.y, 0), Vector3.one);
+            }
+
+        }
+    }
+    #endif
 }
