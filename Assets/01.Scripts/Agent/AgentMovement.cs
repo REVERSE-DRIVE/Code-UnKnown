@@ -9,12 +9,13 @@ public class AgentMovement : MonoBehaviour, IMovement
     protected Vector2 _velocity;
     public Vector2 Velocity => _velocity;
     protected Vector2 _movementInput;
+    protected Transform _visualTrm;
 
 
     private void Awake()
     {
         _rigidCompo = GetComponent<Rigidbody2D>();
-
+        _visualTrm = transform.Find("Visual");
     }
 
     public void Initialize(Agent agent)

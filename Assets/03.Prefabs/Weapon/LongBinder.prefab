@@ -50,6 +50,7 @@ MonoBehaviour:
   _attackParticle: {fileID: 0}
   _animatorCompo: {fileID: 8385197835677143277}
   _player: {fileID: 0}
+  _isCooldowned: 1
 --- !u!95 &8385197835677143277
 Animator:
   serializedVersion: 5
@@ -141,9 +142,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1044503619
+  m_SortingLayer: 3
+  m_SortingOrder: 100
   m_Sprite: {fileID: 712081738, guid: 89b4b87faf947a24cb8f7f5121be5500, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

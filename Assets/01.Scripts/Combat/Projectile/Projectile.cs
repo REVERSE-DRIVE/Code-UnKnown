@@ -55,6 +55,7 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
     {
         _direction = direction;
         _rigidCompo.velocity = direction * _speed;
+        transform.right = direction;
         _isActive = true;
     }
     
