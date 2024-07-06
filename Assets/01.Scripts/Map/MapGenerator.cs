@@ -573,9 +573,7 @@ public class MapGenerator : MonoBehaviour
         {
             for (int k = min.x; k <= max.x; k++)
             {
-                if (i == min.y || i == max.y || k == min.x || k == max.x) {
-                    wallTile.SetTile(new Vector3Int(k,i,0), wallBase);
-                }
+                wallTile.SetTile(new Vector3Int(k,i,0), wallBase);
             }
         }
     }

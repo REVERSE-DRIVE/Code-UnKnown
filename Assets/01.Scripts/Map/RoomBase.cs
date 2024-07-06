@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-struct DoorData {
+public struct RoomDoorData {
     public Vector2Int size;
     public BridgeBase bridge;
 }
@@ -17,7 +17,7 @@ public class RoomBase : MonoBehaviour
     public Vector2Int MinPos { get; private set; }
     public Vector2Int MaxPos { get; private set; }
     public Vector2Int MapPos { get; private set; }
-    private Dictionary<MapGenerator.Direction, DoorData> doors = new();
+    protected Dictionary<MapGenerator.Direction, RoomDoorData> doors = new();
 
     public virtual void SetSize() {
         Size = new Vector2Int(19,19);
@@ -72,7 +72,7 @@ public class RoomBase : MonoBehaviour
 
     // 방 만들어짐 (bridge, min, max 등 값 안전)
     public virtual void OnComplete() {
-        
+
     }
 
     #if UNITY_EDITOR
