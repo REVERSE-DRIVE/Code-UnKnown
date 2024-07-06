@@ -13,9 +13,10 @@ namespace WeaponManage
         protected Vector2 _controlDirection;
         protected Vector2 _previousDirection;
         protected bool _isWeaponRotateLock = false;
+        [SerializeField] protected bool _isCooldowned = true;
 
-        
 
+        private int _attackAnimationHash;
         
         // 공격 쿨타임 로직을 만들어야함
         // animator 기반으로 작동하는 자동 쿨타이밍 로직으로 짤 예정
@@ -24,6 +25,7 @@ namespace WeaponManage
         
         protected virtual void Awake()
         {
+            _attackAnimationHash = Animator.StringToHash("IsAttack");
             OnAttackEvent += HandleAttackEvent;
         }
         
@@ -36,6 +38,12 @@ namespace WeaponManage
 
         public void Attack()
         {
+            if (!_isCooldowned) return;
+            // AnimationEndTrigger에서 해제해준다
+            _isCooldowned = false;
+            _animatorCompo.SetBool(_attackAnimationHash, true);
+            _isWeaponRotateLock = true; 
+           
             OnAttackEvent?.Invoke();
         }
 
@@ -61,6 +69,16 @@ namespace WeaponManage
                 transform.parent.localScale = Vector2.one;
                 transform.localScale = Vector2.one;
             }
+        }
+
+        public virtual void AnimationEndTrigger()
+        {
+            print("Animation End");
+            _animatorCompo.SetBool(_attackAnimationHash, false);
+
+            _isWeaponRotateLock = false;
+            _isCooldowned = true;
+
         }
     }
 }
