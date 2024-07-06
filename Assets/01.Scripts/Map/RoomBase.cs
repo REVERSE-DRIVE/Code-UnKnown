@@ -46,7 +46,27 @@ public class RoomBase : MonoBehaviour
     }
 
     public virtual void SetDoor(bool active) {
-        // 코드...
+        foreach (var item in doors)
+        {
+            Vector2Int coords = (item.Key == MapGenerator.Direction.Top || item.Key == MapGenerator.Direction.Right) ? MaxPos : MinPos;
+            
+            Vector2Int min = coords;
+            Vector2Int max = coords;
+
+            if (item.Key == MapGenerator.Direction.Top || item.Key == MapGenerator.Direction.Bottom) {
+                min.x = item.Value.size.x + 1;
+                max.x = item.Value.size.y - 1;
+            } else {
+                min.y = item.Value.size.x + 1;
+                max.y = item.Value.size.y - 1;
+            }
+
+            if (active) {
+                MapManager.Instance.CreateWall(min, max);
+            } else {
+                MapManager.Instance.DeleteWall(min, max);
+            }
+        }
     }
 
     #if UNITY_EDITOR
