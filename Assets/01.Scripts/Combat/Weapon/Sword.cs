@@ -1,6 +1,8 @@
-﻿using ObjectManage;
+﻿using System;
+using ObjectManage;
 using ObjectPooling;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace WeaponManage
 {
@@ -30,7 +32,7 @@ namespace WeaponManage
 
         protected abstract void AttackLogic();
 
-        protected void DetectTargets()
+        protected virtual void DetectTargets()
         {
             Vector2 origin = (Vector2)transform.position + (swordInfo.attackOffset * _controlDirection.normalized);
             int amount = Physics2D.OverlapCircleNonAlloc(
@@ -51,6 +53,12 @@ namespace WeaponManage
             
         }
 
-       
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(
+                (Vector2)transform.position + (swordInfo.attackOffset * _controlDirection.normalized),
+                swordInfo.attackRadius);
+        }
     }
 }

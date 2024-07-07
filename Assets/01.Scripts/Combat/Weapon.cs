@@ -52,6 +52,7 @@ namespace WeaponManage
 
         public void HandleRotateWeapon(Vector2 direction)
         {
+            if (direction.magnitude < 0.1f) return;
             _controlDirection = direction;
             if (_isWeaponRotateLock) return;
             if (direction.sqrMagnitude == 0)

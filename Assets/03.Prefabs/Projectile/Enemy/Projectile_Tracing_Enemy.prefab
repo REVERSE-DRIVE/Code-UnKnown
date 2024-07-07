@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2330838117238645589}
   - component: {fileID: 3885789458946391963}
   - component: {fileID: 3651661093225048801}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Projectile_Tracing_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <type>k__BackingField: 0
-  _destroyParticlePoolingType: 0
+  _destroyParticlePoolingType: 5
   _damage: 3
   _speed: 1
   _lifeTime: 100
@@ -127,7 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5458660145594214848}
   - component: {fileID: 3204418837645698296}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

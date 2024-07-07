@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c849feb582448d42a8491aa630deaca, type: 3}
-  m_Name: Pool_TestPoolingEffect
+  m_Name: Pool_Projectile_Tracing
   m_EditorClassIdentifier: 
-  enumName: TestPoolingEffect
-  poolingName: TestPoolingEffect
+  enumName: Projectile_Tracing
+  poolingName: Projectile_Tracing
   description: 
   poolCount: 5
   prefabObject: {fileID: 520948808652910275, guid: bc026049063c6d34a96cfaffaba26bf5, type: 3}
