@@ -8,7 +8,7 @@ public class UndefinedEnemy : EnemyBase
     {
         base.Awake();
         StateMachine.AddState(EnemyStateEnum.Idle, new EnemyIdleState(this, StateMachine, "Idle"));
-        StateMachine.AddState(EnemyStateEnum.Chase, new EnemyChaseState(this, StateMachine, "Chase"));
+        StateMachine.AddState(EnemyStateEnum.Chase, new UndefinedChaseState(this, StateMachine, "Chase"));
         StateMachine.AddState(EnemyStateEnum.Attack, new UndefinedAttackState(this, StateMachine, "Attack"));
         StateMachine.AddState(EnemyStateEnum.Dead, new EnemyDeadState(this, StateMachine, "Dead"));
     }
