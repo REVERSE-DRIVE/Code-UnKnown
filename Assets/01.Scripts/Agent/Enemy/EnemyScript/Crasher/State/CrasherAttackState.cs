@@ -11,6 +11,6 @@ public class CrasherAttackState : EnemyAttackState
     {
         base.Enter();
         _enemyBase.MovementCompo.StopImmediately();
-        _enemyBase.RigidCompo.AddForce(_enemyBase.targetTrm.forward * 1000f, ForceMode2D.Impulse);
+        _enemyBase.RigidCompo.AddForce((_enemyBase.targetTrm.position - _enemyBase.transform.position).normalized * 10, ForceMode2D.Impulse);
     }
 }
