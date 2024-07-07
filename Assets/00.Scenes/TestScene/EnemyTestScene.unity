@@ -675,30 +675,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jail
       objectReference: {fileID: 0}
-    - target: {fileID: 5162441822254039741, guid: 64dc717e79b69ec43ab1e565802dc370, type: 3}
-      propertyPath: _scale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5162441822254039741, guid: 64dc717e79b69ec43ab1e565802dc370, type: 3}
-      propertyPath: _scale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5162441822254039741, guid: 64dc717e79b69ec43ab1e565802dc370, type: 3}
-      propertyPath: _scale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6863100659211205786, guid: 64dc717e79b69ec43ab1e565802dc370, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6863100659211205786, guid: 64dc717e79b69ec43ab1e565802dc370, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6863100659211205786, guid: 64dc717e79b69ec43ab1e565802dc370, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
