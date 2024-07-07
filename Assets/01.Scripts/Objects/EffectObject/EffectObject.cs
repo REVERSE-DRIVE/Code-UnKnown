@@ -30,6 +30,16 @@ namespace ObjectManage
         
         }
 
+        public void Initialize(ActionData actionData)
+        {
+            // 구현해야함   
+        }
+
+        public void Initialize(Vector2 position)
+        {
+            transform.position = position;
+        }
+
         public void Play()
         {
             for (int i = 0; i < _particles.Length; i++)

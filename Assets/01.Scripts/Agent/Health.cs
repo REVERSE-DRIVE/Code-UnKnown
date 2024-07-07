@@ -1,4 +1,5 @@
 ﻿using System;
+using ObjectPooling;
 using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable, IHealable
@@ -9,7 +10,7 @@ public class Health : MonoBehaviour, IDamageable, IHealable
     [SerializeField] private int _currentHealth;
     public int CurrentHealth => _currentHealth;
     public int maxHealth;
-    
+   
     public void Initialize(int max)
     {
         maxHealth = max;
