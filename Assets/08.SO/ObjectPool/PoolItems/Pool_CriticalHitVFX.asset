@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c849feb582448d42a8491aa630deaca, type: 3}
-  m_Name: Pool_TestPoolingEffect
+  m_Name: Pool_CriticalHitVFX
   m_EditorClassIdentifier: 
-  enumName: TestPoolingEffect
-  poolingName: TestPoolingEffect
-  description: 
-  poolCount: 5
-  prefabObject: {fileID: 520948808652910275, guid: bc026049063c6d34a96cfaffaba26bf5, type: 3}
+  enumName: CriticalHitVFX
+  poolingName: CriticalHitVFX
+  description: "\uCE58\uBA85\uC801 \uACF5\uACA9 \uD30C\uD2F0\uD074"
+  poolCount: 10
+  prefabObject: {fileID: 2041246829155142475, guid: e0f1171e2f9a14c4fab1e2722ed82307, type: 3}

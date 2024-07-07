@@ -1,3 +1,4 @@
+using ObjectManage;
 using ObjectPooling;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
     [SerializeField] protected int _damage;
     [SerializeField] protected float _speed;
     [SerializeField] protected float _lifeTime;
-
+    [SerializeField] protected bool _isEnemy = true;
     protected Rigidbody2D _rigidCompo;
     protected bool _isActive;
     
@@ -55,6 +56,7 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
     {
         _direction = direction;
         _rigidCompo.velocity = direction * _speed;
+        transform.right = direction;
         _isActive = true;
     }
     
@@ -83,15 +85,20 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
 
     public void HandleDie()
     {
-        PoolingManager.Instance.Pop(_destroyParticlePoolingType);
+        EffectObject effect = PoolingManager.Instance.Pop(_destroyParticlePoolingType) as EffectObject;
+        effect.transform.position = transform.position;
+        _isActive = false;
         PoolingManager.Instance.Push(this);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
+        if (_isEnemy && other.CompareTag("Enemy")) return;
+        if (!_isEnemy && other.CompareTag("Player")) return;
         if (other.transform.TryGetComponent(out Health health))
         {
             health.TakeDamage(_damage);
         }
+        HandleDie();
     }
 }

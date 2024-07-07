@@ -11,6 +11,7 @@ namespace WeaponManage
                 if (_targetColliders[i].TryGetComponent(out IDamageable hit))
                 {
                     hit.TakeDamage(swordInfo.damage);
+                    //GenerateHitVFX(_targetColliders[i].transform.position);
                 }
             }
         }

@@ -9,7 +9,7 @@ public class TypeAAttackState : EnemyAttackState
     public override void Enter()
     {
         base.Enter();
-        var bullet = PoolingManager.Instance.Pop(PoolingType.TestPoolingEffect) as TracingProjectile;
+        var bullet = PoolingManager.Instance.Pop(PoolingType.Projectile_Tracing) as TracingProjectile;
         bullet.transform.position = _enemyBase.transform.position;
         bullet.Shoot(_enemyBase.targetTrm.position - _enemyBase.transform.position);
     }
