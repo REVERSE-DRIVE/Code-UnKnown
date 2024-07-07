@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1216360307901057636}
   - component: {fileID: 8731224214622160054}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1998881474100888456}
   - component: {fileID: 966311547966417035}
   - component: {fileID: 6775934879233721429}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Projectile_Spin_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,8 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07479aa57aa46499915f4f26f6c4872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <type>k__BackingField: 0
-  _destroyParticlePoolingType: 0
+  <type>k__BackingField: 6
+  _destroyParticlePoolingType: 4
   _damage: 2
   _speed: 1
   _lifeTime: 0

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace WeaponManage
@@ -51,6 +52,7 @@ namespace WeaponManage
 
         public void HandleRotateWeapon(Vector2 direction)
         {
+            if (direction.magnitude < 0.1f) return;
             _controlDirection = direction;
             if (_isWeaponRotateLock) return;
             if (direction.sqrMagnitude == 0)
@@ -74,11 +76,16 @@ namespace WeaponManage
         public virtual void AnimationEndTrigger()
         {
             print("Animation End");
-            _animatorCompo.SetBool(_attackAnimationHash, false);
 
+            StartCoroutine(AnimationEndCoroutine());
+        }
+
+        private IEnumerator AnimationEndCoroutine()
+        {
+            _animatorCompo.SetBool(_attackAnimationHash, false);
+            yield return new WaitForSeconds(0.1f);
             _isWeaponRotateLock = false;
             _isCooldowned = true;
-
         }
     }
 }

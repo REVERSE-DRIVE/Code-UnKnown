@@ -1,15 +1,17 @@
 ﻿using System;
+using ObjectPooling;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour, IDamageable, IHealable
 {
-    public Action OnHealthChangedEvent;
-    public Action OnDieEvent;
+    public UnityEvent OnHealthChangedEvent;
+    public UnityEvent OnDieEvent;
     
     [SerializeField] private int _currentHealth;
     public int CurrentHealth => _currentHealth;
     public int maxHealth;
-    
+   
     public void Initialize(int max)
     {
         maxHealth = max;
