@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace WeaponManage
@@ -74,11 +75,16 @@ namespace WeaponManage
         public virtual void AnimationEndTrigger()
         {
             print("Animation End");
-            _animatorCompo.SetBool(_attackAnimationHash, false);
 
+            StartCoroutine(AnimationEndCoroutine());
+        }
+
+        private IEnumerator AnimationEndCoroutine()
+        {
+            _animatorCompo.SetBool(_attackAnimationHash, false);
+            yield return new WaitForSeconds(0.1f);
             _isWeaponRotateLock = false;
             _isCooldowned = true;
-
         }
     }
 }

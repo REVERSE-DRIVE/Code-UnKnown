@@ -51,6 +51,7 @@ MonoBehaviour:
   _animatorCompo: {fileID: 8385197835677143277}
   _player: {fileID: 0}
   _isCooldowned: 1
+  _hitVFXPoolType: 5
 --- !u!95 &8385197835677143277
 Animator:
   serializedVersion: 5
