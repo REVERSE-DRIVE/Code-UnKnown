@@ -15,8 +15,13 @@ public class HierarchyCustomizer
         GameObject obj = EditorUtility.InstanceIDToObject(instanceId) as GameObject;
         if (obj != null)
         {
+            // 오른쪽 끝에 토글버튼
+            Rect toggleRect = new Rect(selectionRect.x + selectionRect.width - 25, selectionRect.y, 20, 20);
+            obj.SetActive(EditorGUI.Toggle(toggleRect, obj.activeSelf));
+            
+            
             // 아이콘을 그릴 위치 설정 (오브젝트 이름 오른쪽에 붙도록)
-            Rect iconRect = new Rect(selectionRect.x + selectionRect.width - 50, selectionRect.y, 18, 18);
+            Rect iconRect = new Rect(selectionRect.x + selectionRect.width - 65, selectionRect.y, 18, 18);
 
             // 오브젝트에 붙어있는 컴포넌트 가져오기 (Transform 제외)
             Component[] components = obj.GetComponents<Component>();
