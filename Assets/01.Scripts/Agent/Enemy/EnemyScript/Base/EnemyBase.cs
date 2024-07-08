@@ -17,6 +17,7 @@ public class EnemyBase : Enemy, IPoolable
     public virtual void Start()
     {
         StateMachine.Initialize(EnemyStateEnum.Idle, this);
+        HealthCompo.Initialize(Stat.health);
     }
 
     private void Update()
@@ -29,8 +30,17 @@ public class EnemyBase : Enemy, IPoolable
         StateMachine.CurrentState.AnimationTrigger();
     }
 
+    public override void SetDead()
+    {
+        base.SetDead();
+        isDead = true;
+        StateMachine.ChangeState(EnemyStateEnum.Dead);
+    }
+
     public void ResetItem()
     {
-        
+        HealthCompo.Initialize(Stat.health);
+        isDead = false;
+        StateMachine.ChangeState(EnemyStateEnum.Idle);
     }
 }

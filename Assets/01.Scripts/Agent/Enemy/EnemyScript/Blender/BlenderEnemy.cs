@@ -8,9 +8,9 @@ public class BlenderEnemy : EnemyBase
     {
         base.Awake();
         GearSpinManager = GetComponentInChildren<GearSpinManager>();
-        StateMachine.AddState(EnemyStateEnum.Idle, new EnemyIdleState(this, StateMachine, "Idle"));
+        StateMachine.AddState(EnemyStateEnum.Idle, new BlenderIdleState(this, StateMachine, "Idle"));
         StateMachine.AddState(EnemyStateEnum.Chase, new EnemyChaseState(this, StateMachine, "Chase"));
-        StateMachine.AddState(EnemyStateEnum.Attack, new BlenderAttackState(this, StateMachine, "Attack"));
-        StateMachine.AddState(EnemyStateEnum.Dead, new EnemyDeadState(this, StateMachine, "Dead"));
+        StateMachine.AddState(EnemyStateEnum.Attack, new EnemyAttackState(this, StateMachine, "Attack"));
+        StateMachine.AddState(EnemyStateEnum.Dead, new BlenderDeadState(this, StateMachine, "Dead"));
     }
 }

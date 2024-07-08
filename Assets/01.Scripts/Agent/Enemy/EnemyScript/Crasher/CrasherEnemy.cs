@@ -11,6 +11,4 @@ public class CrasherEnemy : EnemyBase
         StateMachine.AddState(EnemyStateEnum.Attack, new CrasherAttackState(this, StateMachine, "Attack"));
         StateMachine.AddState(EnemyStateEnum.Dead, new EnemyDeadState(this, StateMachine, "Dead"));
     }
-    
-    
 }

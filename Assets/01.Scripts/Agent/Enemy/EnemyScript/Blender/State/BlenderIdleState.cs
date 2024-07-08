@@ -1,9 +1,9 @@
 ﻿using EnemyManage;
 
-public class BlenderAttackState : EnemyAttackState
+public class BlenderIdleState : EnemyIdleState
 {
     private BlenderEnemy BlenderEnemy => (BlenderEnemy) _enemyBase;
-    public BlenderAttackState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public BlenderIdleState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
     }
     
