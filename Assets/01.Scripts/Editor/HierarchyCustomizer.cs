@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.EventSystems;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 [InitializeOnLoad]
 public class HierarchyCustomizer
@@ -29,7 +32,7 @@ public class HierarchyCustomizer
 
             foreach (Component component in components)
             {
-                if (component is Transform) continue;
+                if (IsComponentIgnored(component)) continue;
                 if (iconCount >= 2) break;
 
                 // 컴포넌트 아이콘 가져오기
@@ -45,5 +48,17 @@ public class HierarchyCustomizer
                 }
             }
         }
+    }
+    
+    private static bool IsComponentIgnored(Component component)
+    {
+        return
+            component is Transform ||
+            component is CanvasRenderer ||
+            component is CanvasScaler ||
+            component is GraphicRaycaster ||
+            component is AudioListener ||
+            component is UniversalAdditionalCameraData ||
+            component is StandaloneInputModule;
     }
 }
