@@ -35,12 +35,10 @@ public class EnemyBase : Enemy, IPoolable
         base.SetDead();
         isDead = true;
         StateMachine.ChangeState(EnemyStateEnum.Dead);
-        HealthCompo.OnDieEvent -= SetDead;
     }
 
     public void ResetItem()
     {
-        HealthCompo.OnDieEvent += SetDead;
         HealthCompo.Initialize(Stat.health);
         isDead = false;
         StateMachine.ChangeState(EnemyStateEnum.Idle);
