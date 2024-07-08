@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using ObjectManage;
 using UnityEngine;
 
@@ -6,13 +7,13 @@ public class JunkFileObject : InteractObject
 {
     private Rigidbody2D _rigidCompo;
     [SerializeField] private Material _hitMaterial;
-
     [SerializeField] private bool _collisionDestroy;
     [SerializeField] private float _pushPower;
     private Vector2 _origin = Vector2.zero;
     [SerializeField] private int _damage = 3;
     private bool _isActive;
-    
+    private WaitForSeconds ws = new WaitForSeconds(0.05f);
+    [SerializeField] private ParticleSystem _pushVFX;
     private void Awake()
     {
         _rigidCompo = GetComponent<Rigidbody2D>();
@@ -44,6 +45,7 @@ public class JunkFileObject : InteractObject
     {
         base.Interact(data);
         _origin = data.interactOriginPosition;
+        _pushVFX.Play();
         print("정크 파일 상호작용됨");
     }
 
@@ -51,11 +53,30 @@ public class JunkFileObject : InteractObject
     {
         Vector2 direction = (Vector2)transform.position - _origin;
         _rigidCompo.AddForce(direction.normalized * _pushPower, ForceMode2D.Impulse);
+        StartCoroutine(PushCoroutine());
     }
 
     private void HandleCollisionEvent(Health hit)
     {
         hit.TakeDamage(_damage);
+    }
+
+    private IEnumerator PushCoroutine()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            // _visualRenderer.material = _hitMaterial;
+            // yield return ws;
+            // _visualRenderer.material = _defaultMaterial;
+            // yield return ws;
+
+            _visualRenderer.color = Color.red;
+            yield return ws;
+            _visualRenderer.color = Color.white;
+            yield return ws;
+
+        }
+        
     }
     
     
