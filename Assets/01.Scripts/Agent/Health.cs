@@ -3,10 +3,13 @@ using ObjectPooling;
 using UnityEngine;
 using UnityEngine.Events;
 
+public delegate void OnValueChangedEvent(int prevValue, int newValue, int max);
+
 public class Health : MonoBehaviour, IDamageable, IHealable
 {
     public UnityEvent OnHealthChangedEvent;
     public UnityEvent OnDieEvent;
+    public OnValueChangedEvent OnHealthChangedValueEvent;
     
     [SerializeField] private int _currentHealth;
     public int CurrentHealth => _currentHealth;
@@ -22,20 +25,28 @@ public class Health : MonoBehaviour, IDamageable, IHealable
     {
         _currentHealth -= amount;
         CheckDie();
-        OnHealthChangedEvent?.Invoke();
+        HandleHealthChange(-amount);
     }
 
     public void RestoreHealth(int amount)
     {
         _currentHealth += amount;
         CheckDie();
-        OnHealthChangedEvent?.Invoke();
+        HandleHealthChange(amount);
     }
 
     public void SetHealth(int amount)
     {
+        int before = _currentHealth;
         _currentHealth = amount;
+        HandleHealthChange(before > _currentHealth ? before - _currentHealth : _currentHealth - before);
+    }
+
+    private void HandleHealthChange(int change)
+    {
         OnHealthChangedEvent?.Invoke();
+        print("체력 갱신");
+        OnHealthChangedValueEvent?.Invoke(_currentHealth-change, _currentHealth, maxHealth);
     }
 
     public void CheckDie()
