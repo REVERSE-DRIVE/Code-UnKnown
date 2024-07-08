@@ -312,6 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundTile: {fileID: 11400000, guid: 182940aa9985bfa4a99d06cc689d7c25, type: 2}
+  defaultDoor: 0
 --- !u!1 &713113021
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundTile: {fileID: 11400000, guid: 4e0442d1f992aad43b1955c7bc0391c1, type: 2}
+  defaultDoor: 0
 --- !u!1 &1454806902
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,6 +524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundTile: {fileID: 11400000, guid: 182940aa9985bfa4a99d06cc689d7c25, type: 2}
+  defaultDoor: 0
 --- !u!1 &1651452654
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,6 +798,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6681b326bef1c9f47bbd385fa3408eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testTemplte:
+  - {fileID: 752532364}
+  - {fileID: 707049421}
   generator: {fileID: 2016025047}
 --- !u!4 &1721935215
 Transform:

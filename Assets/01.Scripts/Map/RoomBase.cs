@@ -11,6 +11,7 @@ public struct RoomDoorData {
 public class RoomBase : MonoBehaviour
 {
     [SerializeField] TileBase groundTile;
+    [SerializeField] bool defaultDoor = false;
 
     public Vector2Int Size { get; protected set; }
 
@@ -72,7 +73,7 @@ public class RoomBase : MonoBehaviour
 
     // 방 만들어짐 (bridge, min, max 등 값 안전)
     public virtual void OnComplete() {
-
+        SetDoor(defaultDoor);
     }
 
     #if UNITY_EDITOR

@@ -44,27 +44,31 @@ public class MapGenerator : MonoBehaviour
 
     private void Awake() {
         // Generate();
-        BoxGenerate(Direction.Top, null);
+        // BoxGenerate(Direction.Top, null);
     }
 
     float time = 0;
-    int functionCall = 0;
-    private void Update() {
-        // time += Time.deltaTime;
+    int functionCall;
 
-        // if (time > 1) {
-        //     time = 0;
-        //     functionCall = 0;
-        //     nowCreateIdx = -1;
+    public void StartGenerate() {
+        nowCreateIdx = -1;
+        functionCall = 0;
+        time = Time.time;
 
-        //     wallTile.ClearAllTiles();
-        //     bridgeTile.ClearAllTiles();
-        //     groundTile.ClearAllTiles();
+        BoxGenerate(Direction.Top, null);
 
-        //     MapManager.Instance.Clear();
+        print($"[MapGenerator] 맵 생성 완료. (호출횟수: {functionCall} / 걸린시간: {Time.time - time})");
+    }
 
-        //     BoxGenerate(Direction.Top, null);
-        // }
+    public void StartGenerate(RoomBase[] templates) {
+        createRooms = templates;
+        StartGenerate();
+    }
+    
+    public void Clear() {
+        wallTile.ClearAllTiles();
+        bridgeTile.ClearAllTiles();
+        groundTile.ClearAllTiles();
     }
 
     void Generate() {
