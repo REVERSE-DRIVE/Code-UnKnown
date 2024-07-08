@@ -38,6 +38,9 @@ public abstract class Agent : MonoBehaviour
         // Agent에 만드는건 SOLID위반이 됨, 나중에 Enemy로 옮겨야함
         Stat = Instantiate(Stat);
 
+        HealthCompo.maxHealth = Stat.health;
+        HealthCompo.SetHealth(Stat.health);
+
     }
     
     public Coroutine StartDelayCallback(float time, Action Callback)
