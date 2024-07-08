@@ -985,6 +985,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1f1addea84f294682df101f7a96195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetRenderer: {fileID: 0}
+  _targetRenderer: {fileID: 8869498966359883568}
   _blinkTime: 0.2
-  _targetMaterial: {fileID: 0}
+  _targetMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}

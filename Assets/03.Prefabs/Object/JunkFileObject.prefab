@@ -288,7 +288,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.7
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -752,7 +752,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.0001
+      value: 0.1
       mode: 0
       spread: 0
       speed:
@@ -5002,7 +5002,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &3428563939568420150
 MonoBehaviour:
@@ -5016,7 +5016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19b59354d7843278ca702ff4b01e9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 4
+  _currentHealth: 1
   OnOutsideInteractEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5025,7 +5025,7 @@ MonoBehaviour:
   isDetected: 0
   _hitMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}
   _collisionDestroy: 1
-  _pushPower: 3
+  _pushPower: 10
   _damage: 3
   _pushVFX: {fileID: 4151086571237567316}
 --- !u!1 &3896284102763019947
@@ -5080,7 +5080,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: f103add838270974cb73311f514ebfdc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5101,7 +5101,7 @@ SpriteRenderer:
   m_SortingLayerID: -829507261
   m_SortingLayer: 2
   m_SortingOrder: 50
-  m_Sprite: {fileID: -669757395, guid: 0db48c4ec848d8e45924d87926bca058, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 17e0d1fb42c29e94e93f953f678a9e01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5781,7 +5781,7 @@ ParticleSystem:
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
-    radiusThickness: 0
+    radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
@@ -5864,7 +5864,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.3
+      value: 1
       mode: 0
       spread: 0
       speed:
