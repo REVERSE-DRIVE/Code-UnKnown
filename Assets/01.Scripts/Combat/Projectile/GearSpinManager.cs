@@ -10,7 +10,6 @@ public class GearSpinManager : MonoBehaviour
     [SerializeField] private List<Gear> _gears;
     [SerializeField] private float _spinSpeed = 100f;
     [SerializeField] private float _moveDuration = 1f;
-    [SerializeField] private float _spinDuration = 1f;
     [SerializeField] private float _spinRadius = 1f;
     
     private List<Vector3> _deltaPositionList;
@@ -72,12 +71,10 @@ public class GearSpinManager : MonoBehaviour
             float initialAngle = (360f / _gears.Count) * i;
             _gears[i].SetRotate(true, _spinSpeed, _spinRadius, initialAngle);
         }
-        StartCoroutine(StopRotation());
     }
 
-    private IEnumerator StopRotation()
+    public void StopRotation()
     {
-        yield return new WaitForSeconds(_spinDuration);
         for (int i = 0; i < _gears.Count; i++)
         {
             _gears[i].SetRotate(false, 0, 0, 0);

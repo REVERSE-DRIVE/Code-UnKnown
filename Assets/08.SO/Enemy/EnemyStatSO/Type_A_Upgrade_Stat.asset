@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Type_A_Upgrade_Stat
   m_EditorClassIdentifier: 
   atk: 0
-  health: 0
+  health: 10
   moveSpeed: 1

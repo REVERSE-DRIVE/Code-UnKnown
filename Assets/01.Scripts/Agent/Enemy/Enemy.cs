@@ -6,13 +6,11 @@ namespace EnemyManage
 {
     public abstract class Enemy : Agent
     {
-        [Header("Common settings")] public float battleTime;
-        public bool isActive;
-
-        protected float _defaultMoveSpeed;
-
+        [Header("Common settings")]
         [SerializeField] protected LayerMask _whatIsPlayer;
         [SerializeField] protected LayerMask _whatIsObstacle;
+        public Rigidbody2D RigidCompo { get; protected set; }
+        public SpriteRenderer RendererCompo { get; protected set; }
 
         [Header("Attack Settings")] public float runAwayDistance;
         public float attackDistance;
@@ -26,8 +24,9 @@ namespace EnemyManage
         protected override void Awake()
         {
             base.Awake();
+            RigidCompo = GetComponent<Rigidbody2D>();
+            RendererCompo = transform.Find("Visual").GetComponent<SpriteRenderer>();
             MovementCompo.Initialize(this);
-            _defaultMoveSpeed = Stat.moveSpeed;
             _enemyCheckColliders = new Collider2D[_maxCheckEnemy];
         }
 
