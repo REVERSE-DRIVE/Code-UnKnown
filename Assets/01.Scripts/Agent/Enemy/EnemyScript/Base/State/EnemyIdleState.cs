@@ -14,7 +14,7 @@ public class EnemyIdleState : EnemyState<EnemyStateEnum>
     {
         base.Enter();
         _enemyBase.MovementCompo.StopImmediately();
-        _enemyBase.StartCoroutine(ChaseRoutine());
+        
     }
 
     public override void UpdateState()
@@ -34,16 +34,5 @@ public class EnemyIdleState : EnemyState<EnemyStateEnum>
         }
     }
     
-    private IEnumerator ChaseRoutine()
-    {
-        while (true)
-        {
-            Debug.Log("Chaseaaaaaaaaaaaaaaaaaa");
-            Vector3 randomDir = _movementCompo.GetRandomPosition();
-            _enemyBase.MovementCompo.SetMovement(randomDir);
-            yield return new WaitForSeconds(0.5f);
-            _enemyBase.MovementCompo.StopImmediately();
-            yield return new WaitForSeconds(0.5f);
-        }
-    }
+    
 }
