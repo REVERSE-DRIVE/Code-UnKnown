@@ -591,4 +591,8 @@ public class MapGenerator : MonoBehaviour
             }
         }
     }
+
+    public Vector3 GetWorldCoordsByGroundCell(Vector2Int coords) {
+        return groundTile.CellToWorld((Vector3Int)coords);
+    }
 }

@@ -10,15 +10,17 @@ public class MapManager : MonoSingleton<MapManager>
     List<BridgeBase> bridges = new();
 
     ///////////////////////////////// TEST
-    // private void Start() {
-    //     Generate();
-    // }
+    private void Start() {
+        Generate();
+    }
     ///////////////////////////////// TEST END
 
     public RoomBase GetRoomByCoords(Vector2Int coords) {
         bool result = map.TryGetValue(coords, out var room);
         return result ? room : null;
     }
+    
+    public Vector3 GetWorldPosByCell(Vector2Int cell) => generator.GetWorldCoordsByGroundCell(cell);
 
     public void SetRoom(Vector2Int coords, RoomBase room) {
         map[coords] = room;
