@@ -18,7 +18,7 @@ public class EnemyBase : Enemy, IPoolable
         _defaultMaterial = _spriteRenderer.material;
     }
     
-    public virtual void OnEnable()
+    public virtual void Start()
     {
         StateMachine.Initialize(EnemyStateEnum.Idle, this);
         HealthCompo.Initialize(Stat.health);
@@ -57,6 +57,6 @@ public class EnemyBase : Enemy, IPoolable
     {
         HealthCompo.Initialize(Stat.health);
         isDead = false;
-        StateMachine.ChangeState(EnemyStateEnum.Idle);
+        StateMachine.Initialize(EnemyStateEnum.Idle, this);
     }
 }
