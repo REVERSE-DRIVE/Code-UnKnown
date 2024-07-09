@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using ObjectManage;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class JunkFileObject : InteractObject
@@ -15,17 +13,28 @@ public class JunkFileObject : InteractObject
     private bool _isActive;
     private WaitForSeconds ws = new WaitForSeconds(0.05f);
     [SerializeField] private ParticleSystem _pushVFX;
-
+    [SerializeField] private Transform _arrowTrm;
     private Collider2D _collider;
     private int _dissolveHash;
+    private Agent _agent;
+    private Vector2 _direction;
     
     private void Awake()
     {
         _rigidCompo = GetComponent<Rigidbody2D>();
-
+        // 나중에 _agent에 기본으로 플레이어를 할당해주어야함
         OnInteractEvent += HandlePush;
         _collider = GetComponent<Collider2D>();
         _dissolveHash = Shader.PropertyToID("_DissolveLevel");
+        
+        OnDetectedEvent += HandleDetected;
+        OnUnDetectedEvent += HandleUnDetected;
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        _agent = PlayerManager.Instance.player;
     }
 
     private void Update()
@@ -33,6 +42,11 @@ public class JunkFileObject : InteractObject
         if (!_isActive)
         {
             _rigidCompo.velocity = Vector2.zero;
+            if (isDetected)
+            {
+                Vector2 direction = transform.position - _agent.transform.position;
+                _arrowTrm.right = direction;
+            }
             return;
 
         }
@@ -44,6 +58,16 @@ public class JunkFileObject : InteractObject
             
         }
     }
+
+    private void HandleDetected()
+    {
+        _arrowTrm.gameObject.SetActive(true);
+    }
+    private void HandleUnDetected()
+    {
+        _arrowTrm.gameObject.SetActive(false);
+    }
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (!_isActive) return;
@@ -70,16 +94,16 @@ public class JunkFileObject : InteractObject
 
     private void HandlePush()
     {
-        Vector2 direction = (Vector2)transform.position - _origin;
+        _direction = ((Vector2)transform.position - _origin).normalized;
         //_rigidCompo.AddForce(direction.normalized * _pushPower, ForceMode2D.Impulse);
-        _rigidCompo.velocity = direction.normalized * _pushPower;
+        _rigidCompo.velocity = _direction * _pushPower;
         StartCoroutine(PushCoroutine());
     }
 
     private void HandleCollisionEvent(Health hit)
     {
         hit.TakeDamage(_damage);
-        
+        CameraManager.Instance.Shake(5, 0.1f);
     }
 
     private IEnumerator PushCoroutine()
@@ -100,10 +124,14 @@ public class JunkFileObject : InteractObject
         
     }
 
+   
+    
     private void Destroy()
     {
         _collider.enabled = false;
         _visualRenderer.material = _defaultMaterial;
+        _rigidCompo.velocity = Vector2.zero;
+        
         StartCoroutine(DestroyCoroutine());
     }
 

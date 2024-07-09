@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DefaultDissolve
+  m_Name: JunkFileDissolve
   m_Shader: {fileID: -6465566751694194690, guid: 768aed277ba601e41acef35827515f78, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -45,8 +45,11 @@ Material:
     - _EdgeWidth: 0.01
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Range: 0.1
     m_Colors:
     - _EdgeColor: {r: 9.159563, g: 0.14385594, b: 0, a: 1}
+    - _EmissionColor: {r: 2.6701565, g: 0.026178008, b: 0.026178008, a: 0}
+    - _MaskColor: {r: 0.61960787, g: 0.14117648, b: 0.14117648, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &985540898047545964
 MonoBehaviour:
