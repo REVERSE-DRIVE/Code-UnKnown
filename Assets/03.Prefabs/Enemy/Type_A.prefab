@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4819433869334006861}
   - component: {fileID: 7778424488185776390}
   - component: {fileID: 6971493464847962528}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,15 +75,15 @@ SpriteRenderer:
   m_SortingLayerID: -1044503619
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 2094967649, guid: d6875cc705efae149b9e38c5ee82a5ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.75, y: 0.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &7778424488185776390
@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4795962268147055582}
   - component: {fileID: 1391334671062160369}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AgentVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 1212457753605843167}
   - component: {fileID: 6002369016692123841}
   - component: {fileID: 1620958085919903754}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Type_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,8 +294,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   <Stat>k__BackingField: {fileID: 11400000, guid: a33b0555a5bb88640aa4184bdd3ab387, type: 2}
-  battleTime: 1
-  isActive: 0
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -303,12 +301,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   runAwayDistance: 10
-  attackDistance: 2
+  attackDistance: 1.5
   chaseDistance: 3
   attackCooldown: 1
   lastAttackTime: 0
   targetTrm: {fileID: 0}
   <type>k__BackingField: 2
+  _hitMaterial: {fileID: 2100000, guid: 979f9c282926f844caccf69f0916820c, type: 2}
 --- !u!114 &6002369016692123841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +315,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5627968206905763583}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94496b48b5f74692ac387ee3d00f49e4, type: 3}
   m_Name: 
@@ -333,5 +332,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f090166ede544bba10032260fe15fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHealthChangedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1212457753605843167}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SetHitMaterial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDieEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1212457753605843167}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SetDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _currentHealth: 0
   maxHealth: 0

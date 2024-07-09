@@ -1,18 +1,19 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.Events;
 
 namespace ObjectManage
 {
     public class InteractObject : FieldObject, IInteractable
     {
+        public UnityEvent OnOutsideInteractEvent;
         public event Action OnInteractEvent;
         public Action OnDetectedEvent;
         public Action OnUnDetectedEvent;
 
         [SerializeField] protected Material _detectMaterial;
         [SerializeField] protected SpriteRenderer _visualRenderer;
-        private Material _defaultMaterial;
+        protected Material _defaultMaterial;
         public bool isDetected;
         protected virtual void Start()
         {
@@ -29,6 +30,7 @@ namespace ObjectManage
         public virtual void Interact(InteractData data)
         {
             OnInteractEvent?.Invoke();
+            OnOutsideInteractEvent?.Invoke();
         }
 
         public virtual void UnDetected()
