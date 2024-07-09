@@ -10,10 +10,11 @@ namespace WeaponManage
     {
         public SwordsWeaponInfoSO swordInfo { get; protected set; }
         [SerializeField] protected PoolingType _hitVFXPoolType;
+        [SerializeField] protected PoolingType _attackVFX;
         protected Collider2D[] _targetColliders;
         protected int _targetAmount = 0;
         protected LayerMask _targetLayer; // enemy와 projectile타입이 해당된다
-
+        protected Vector2 _origin;
         
         protected override void Awake()
         {
@@ -34,9 +35,9 @@ namespace WeaponManage
 
         protected virtual void DetectTargets()
         {
-            Vector2 origin = (Vector2)transform.position + (swordInfo.attackOffset * _controlDirection.normalized);
+            _origin = (Vector2)transform.position + (swordInfo.attackOffset * _controlDirection.normalized);
             int amount = Physics2D.OverlapCircleNonAlloc(
-                origin, swordInfo.attackRadius, _targetColliders, _targetLayer);
+                _origin, swordInfo.attackRadius, _targetColliders, _targetLayer);
 
             _targetAmount = amount;
         }

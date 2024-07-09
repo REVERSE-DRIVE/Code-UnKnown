@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ActionData
+public struct ActionData
 {
     public int damage;
     public Vector2 origin;

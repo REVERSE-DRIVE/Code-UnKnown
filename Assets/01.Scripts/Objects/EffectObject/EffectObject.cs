@@ -6,14 +6,14 @@ namespace ObjectManage
 {
     public class EffectObject : MonoBehaviour, ILifeTimeLimited, IPoolable
     {
-        [SerializeField] private ParticleSystem[] _particles;
+        [SerializeField] protected ParticleSystem[] _particles;
         [SerializeField] private bool _playOnSpawn;
         [field: SerializeField] public PoolingType type { get; set; }
         public GameObject ObjectPrefab => gameObject;
         
         [SerializeField] protected float _lifeTime;
         protected float _currentLifeTime;
-        private bool _isActive;
+        protected bool _isActive;
         
         
         float ILifeTimeLimited.CurrentLifeTime
