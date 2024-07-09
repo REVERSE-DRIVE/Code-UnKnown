@@ -18,7 +18,7 @@ public class EnemyBase : Enemy, IPoolable
         _defaultMaterial = _spriteRenderer.material;
     }
     
-    public virtual void Start()
+    public virtual void OnEnable()
     {
         StateMachine.Initialize(EnemyStateEnum.Idle, this);
         HealthCompo.Initialize(Stat.health);
