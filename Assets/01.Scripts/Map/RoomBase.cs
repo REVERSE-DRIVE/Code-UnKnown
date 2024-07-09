@@ -36,6 +36,40 @@ public class RoomBase : MonoBehaviour
             bridge = bridge           
         };
     }
+    
+    public Vector2Int GetCenterPosDoor(MapGenerator.Direction dir) {
+        var door = doors[dir];
+
+        int centerNum = (door.size.x + door.size.y) / 2;
+
+        if (dir == MapGenerator.Direction.Top) {
+            return new(centerNum, MaxPos.y);
+        } else if (dir == MapGenerator.Direction.Bottom) {
+            return new(centerNum, MinPos.y);
+        } else if (dir == MapGenerator.Direction.Left) {
+            return new(MinPos.x, centerNum);
+        } else {
+            return new(MaxPos.x, centerNum);
+        }
+    }
+
+    public MapGenerator.Direction ClosestDoor(Vector2Int pos) {
+        MapGenerator.Direction nearDir = MapGenerator.Direction.Top;
+        float nearDistance = float.MaxValue;
+
+        foreach (var item in doors)
+        {
+            Vector2Int doorPos = GetCenterPosDoor(item.Key);
+            float distance = Vector2Int.Distance(pos, doorPos);
+
+            if (nearDistance > distance) {
+                nearDistance = distance;
+                nearDir = item.Key;
+            }
+        }
+
+        return nearDir;
+    }
 
     public virtual Vector2Int FindPossibleRandomPos(int spacing) {
         Vector2Int pos = new(Random.Range(MinPos.x + 1 /* 테두리 */, MaxPos.x), Random.Range(MinPos.y + 1, MaxPos.y));

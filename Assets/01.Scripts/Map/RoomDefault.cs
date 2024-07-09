@@ -27,6 +27,7 @@ public class RoomDefault : RoomObstacleBase
         
         process = true;
         SetDoor(true);
+        // PlayerManager.Instance.player.transform.position;
         
         ////// enemy 소환
         enemys = new();
