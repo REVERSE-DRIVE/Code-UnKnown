@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3229677783245156830}
   - component: {fileID: 9216920814439530013}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AgentVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 7227609198659480049}
   - component: {fileID: 1542675034705952586}
   - component: {fileID: 5639685923420124783}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Crasher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,6 +110,7 @@ MonoBehaviour:
   lastAttackTime: 0
   targetTrm: {fileID: 0}
   <type>k__BackingField: 0
+  _hitMaterial: {fileID: 2100000, guid: 979f9c282926f844caccf69f0916820c, type: 2}
 --- !u!114 &1023934701268953149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,10 +199,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnHealthChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1389316757611723018}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SetHitMaterial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDieEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1389316757611723018}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SetDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _currentHealth: 0
   maxHealth: 0
 --- !u!114 &5639685923420124783
@@ -228,7 +253,7 @@ GameObject:
   - component: {fileID: 5031098180536444074}
   - component: {fileID: 7504729587278545293}
   - component: {fileID: 1473987252922948040}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

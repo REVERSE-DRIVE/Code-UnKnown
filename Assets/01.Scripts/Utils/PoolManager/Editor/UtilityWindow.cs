@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using ItemManage;
 using ObjectPooling;
 using UnityEditor;
 using UnityEngine;
@@ -9,7 +10,8 @@ using Object = UnityEngine.Object;
 
 public enum UtilType
 {
-    Pool
+    Pool,
+    Item,
 }
 
 public class UtilityWindow : EditorWindow
@@ -29,12 +31,15 @@ public class UtilityWindow : EditorWindow
     #region 각 데이터 테이블 모음
     private readonly string _poolDirectory = "Assets/08.SO/ObjectPool";
     private PoolingTableSO _poolTable;
+    
+    private readonly string _itemDirectory = "Assets/08.SO/Item";
+    private ItemTableSO _itemTable; 
     #endregion
     
-    [MenuItem("ObjectPool/PoolManager")]
+    [MenuItem("Util/UtilManager")]
     private static void OpenWindow()
     {
-        UtilityWindow window = GetWindow<UtilityWindow>("PoolManager");
+        UtilityWindow window = GetWindow<UtilityWindow>("UtilManager");
         window.minSize = new Vector2(700, 500);
         window.Show();
     }
@@ -51,6 +56,10 @@ public class UtilityWindow : EditorWindow
         {
             Directory.CreateDirectory(_poolDirectory);
         }
+        if (Directory.Exists(_itemDirectory) == false)
+        {
+            Directory.CreateDirectory(_itemDirectory);
+        }
     }
 
     private void OnDisable()
@@ -61,6 +70,7 @@ public class UtilityWindow : EditorWindow
 
     private void SetUpUtility()
     {
+        #region Editor Style Setting
         _selectTexture = new Texture2D(1, 1); // 1픽셀짜리 텍스쳐 그림
         _selectTexture.SetPixel(0, 0, new Color(0.24f, 0.48f, 0.9f, 0.4f));
         _selectTexture.Apply();
@@ -78,7 +88,9 @@ public class UtilityWindow : EditorWindow
             if (selectedItem.ContainsKey(type) == false)
                 selectedItem[type] = null;
         }
+        #endregion
 
+        #region Pool Setting
         if (_poolTable == null)
         {
             _poolTable = AssetDatabase.LoadAssetAtPath<PoolingTableSO>
@@ -93,6 +105,7 @@ public class UtilityWindow : EditorWindow
                 Debug.Log($"Create Pooling Table at {fileName}");
             }
         }
+        #endregion
         
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
@@ -113,11 +126,151 @@ public class UtilityWindow : EditorWindow
             case 0:
                 DrawPoolItems();
                 break;
+            case 1:
+                DrawItems();
+                break;
         }
     }
 
+    private void DrawItems()
+    {
+        #region Item Table Input
+        EditorGUILayout.BeginHorizontal();
+        {
+            EditorGUILayout.LabelField(_itemTable == null ? "Item Table" : _itemTable.name);
+            _itemTable = EditorGUILayout.ObjectField("", _itemTable, typeof(ItemTableSO), false) as ItemTableSO;
+        }
+        EditorGUILayout.EndHorizontal();    
+        #endregion
+
+        if (_itemTable == null)
+            return;
+
+        #region SO Create
+        EditorGUILayout.BeginHorizontal();
+        {
+            if (GUILayout.Button("Create Item SO"))
+            {
+                CreateItemSO();
+            }
+        }
+        EditorGUILayout.EndHorizontal();
+        #endregion
+        
+        #region Item List
+        EditorGUILayout.BeginHorizontal();
+        {
+            #region Scroll View Set
+            EditorGUILayout.BeginVertical(EditorStyles.helpBox, GUILayout.Width(300f));
+            {
+                EditorGUILayout.LabelField("Item list");
+                EditorGUILayout.Space(3f);
+                
+                #region Scroll View
+                scrollPositions[UtilType.Item] = EditorGUILayout.BeginScrollView
+                    (scrollPositions[UtilType.Item], false, true,
+                        GUIStyle.none, GUI.skin.verticalScrollbar, GUIStyle.none);
+                {
+                    foreach (ItemSO itemSo in _itemTable.itemSOList)
+                    {
+                        GUIStyle style = selectedItem[UtilType.Item] == itemSo
+                            ? _selectStyle
+                            : GUIStyle.none;
+                        
+                        EditorGUILayout.BeginHorizontal(style, GUILayout.Height(40f));
+                        {
+                            EditorGUILayout.LabelField(itemSo.itemName, 
+                                GUILayout.Height(40f), GUILayout.Width(240f));
+
+                            #region Delete Button
+                            EditorGUILayout.BeginVertical();
+                            {
+                                EditorGUILayout.Space(10f);
+                                GUI.color = Color.red;
+                                if (GUILayout.Button("X", GUILayout.Width(20f)))
+                                {
+                                    _itemTable.itemSOList.Remove(itemSo);
+                                    AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(itemSo));
+                                    EditorUtility.SetDirty(_itemTable);
+                                    AssetDatabase.SaveAssets();
+                                }
+                                GUI.color = Color.white;
+                            }
+                            EditorGUILayout.EndVertical();
+                            #endregion
+                        }
+                        EditorGUILayout.EndHorizontal();
+                        
+                        // 마지막으로 그린 사각형 정보를 알아옴
+                        Rect lastRect = GUILayoutUtility.GetLastRect();
+
+                        if (Event.current.type == EventType.MouseDown
+                            && lastRect.Contains(Event.current.mousePosition)) 
+                        {
+                            inspectorScroll = Vector2.zero;
+                            selectedItem[UtilType.Item] = itemSo;
+                            Event.current.Use();
+                        }
+                        
+                        // 삭제 확인 break;
+                        if (itemSo == null)
+                            break;
+                    }
+                }
+                EditorGUILayout.EndScrollView();
+                #endregion
+            }
+            EditorGUILayout.EndVertical();
+            #endregion
+            
+            // 인스펙터 그리기
+            if (selectedItem[UtilType.Item] != null)
+            {
+                inspectorScroll = EditorGUILayout.BeginScrollView(inspectorScroll);
+                {
+                    EditorGUILayout.Space(2f);
+                    Editor.CreateCachedEditor(
+                        selectedItem[UtilType.Item], null, ref _cachedEditor);
+                        
+                    _cachedEditor.OnInspectorGUI();
+                }
+                EditorGUILayout.EndScrollView();
+            }
+        }
+        EditorGUILayout.EndHorizontal();
+        #endregion
+    }
+
+    private void CreateItemTable()
+    {
+        _itemTable = CreateInstance<ItemTableSO>();
+        string fileName = AssetDatabase.GenerateUniqueAssetPath($"{_itemDirectory}/ItemTable.asset");
+        AssetDatabase.CreateAsset(_itemTable, fileName);
+        EditorUtility.SetDirty(_itemTable);
+        AssetDatabase.SaveAssets();
+    }
+
+    private void CreateItemSO()
+    {
+        ItemSO itemSo = CreateInstance<ItemSO>();
+        string _path = $"{_itemDirectory}/{_itemTable.name}";
+        if (Directory.Exists(_path) == false)
+        {
+            Directory.CreateDirectory(_path);
+        }
+        Guid guid = Guid.NewGuid();
+        itemSo.itemName = guid.ToString();
+        string fileName = AssetDatabase.GenerateUniqueAssetPath($"{_itemDirectory}/{_itemTable.name}/Item_{itemSo.itemName}.asset");
+        AssetDatabase.CreateAsset(itemSo, fileName);
+        _itemTable.itemSOList.Add(itemSo);
+        EditorUtility.SetDirty(_itemTable);
+        AssetDatabase.SaveAssets();
+    }
+
+    #region Pooling
     private void DrawPoolItems()
     {
+        #region Pool Menu Set
         //상단에 메뉴 2개를 만들자.
         EditorGUILayout.BeginHorizontal();
         {
@@ -134,11 +287,13 @@ public class UtilityWindow : EditorWindow
             }
         }
         EditorGUILayout.EndHorizontal();
+        #endregion
 
         GUI.color = Color.white; //원래 색상으로 복귀.
 
         EditorGUILayout.BeginHorizontal();
         {
+            #region Pooling List
             // 왼쪽 풀리스트 출력부분
             EditorGUILayout.BeginVertical(EditorStyles.helpBox, GUILayout.Width(300f));
             {
@@ -161,6 +316,7 @@ public class UtilityWindow : EditorWindow
                             EditorGUILayout.LabelField(item.enumName, 
                                 GUILayout.Height(40f), GUILayout.Width(240f));
 
+                            #region Delete Button
                             EditorGUILayout.BeginVertical();
                             {
                                 EditorGUILayout.Space(10f);
@@ -175,6 +331,7 @@ public class UtilityWindow : EditorWindow
                                 GUI.color = Color.white;
                             }
                             EditorGUILayout.EndVertical();
+                            #endregion
                             
                         }
                         EditorGUILayout.EndHorizontal();
@@ -202,6 +359,7 @@ public class UtilityWindow : EditorWindow
                 
             }
             EditorGUILayout.EndVertical();
+            #endregion
             
             // 인스펙터 그리기
             if (selectedItem[UtilType.Pool] != null)
@@ -252,6 +410,5 @@ public class UtilityWindow : EditorWindow
         File.WriteAllText(path, code);
         AssetDatabase.Refresh();
     }
-
-    
+    #endregion
 }
