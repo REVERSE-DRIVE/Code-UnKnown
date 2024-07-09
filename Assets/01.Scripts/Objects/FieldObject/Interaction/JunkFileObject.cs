@@ -61,8 +61,8 @@ public class JunkFileObject : InteractObject
 
     public override void Interact(InteractData data)
     {
-        base.Interact(data);
         _origin = data.interactOriginPosition;
+        base.Interact(data);
         _isActive = true;
         _pushVFX.Play();
         print("정크 파일 상호작용됨");
