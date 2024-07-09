@@ -57,6 +57,6 @@ public class EnemyBase : Enemy, IPoolable
     {
         HealthCompo.Initialize(Stat.health);
         isDead = false;
-        StateMachine.ChangeState(EnemyStateEnum.Idle);
+        StateMachine.Initialize(EnemyStateEnum.Idle, this);
     }
 }
