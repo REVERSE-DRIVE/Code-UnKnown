@@ -263,6 +263,7 @@ public class MapGenerator : MonoBehaviour
             if (maxPos.y < min.y || minPos.y > max.y) continue;
 
             // 박스 겹침 (만들기 중단)
+            Destroy(room.gameObject);
             return false;
         }
         foreach (var item in MapManager.Instance.GetBridgeIterator())
@@ -273,6 +274,7 @@ public class MapGenerator : MonoBehaviour
             if (maxPos.y < min.y || minPos.y > max.y) continue;
 
             // 박스 겹침 (만들기 중단)
+            Destroy(room.gameObject);
             return false;
         }
         
@@ -380,13 +382,20 @@ public class MapGenerator : MonoBehaviour
                     }
                 }
 
-                bridgeTile.SetTile((Vector3Int)endPoint, bridgeBase);
+                // bridgeTile.SetTile((Vector3Int)endPoint, bridgeBase);
 
                 subBridge.room1 = room;
                 subBridge.room2 = otherRoom;
 
-                room.SetBridge(dir, subBridge);
-                otherRoom.SetBridge(ReverseD_irection(dir), subBridge);
+                Vector2Int doorSize;
+                if (dir == Direction.Left || dir == Direction.Right) {
+                    doorSize = new(subBridge.start.y, subBridge.end.y);
+                } else {
+                    doorSize = new(subBridge.start.x, subBridge.end.x);
+                }
+
+                room.SetDoor(dir, doorSize, subBridge);
+                otherRoom.SetDoor(ReverseD_irection(dir), doorSize, subBridge);
 
                 MapManager.Instance.AddBridge(bridge);
 
@@ -400,8 +409,17 @@ public class MapGenerator : MonoBehaviour
             bridge.room1 = room;
             bridge.room2 = lastRoom;
             MapManager.Instance.AddBridge(bridge);
-            lastRoom.SetBridge(lastDir, bridge);
-            room.SetBridge(ReverseD_irection(lastDir), bridge);
+
+            Vector2Int doorSize;
+            int doorHeight = (bridgeSize.x / 2) + 1 /* 테투리 포함 */;
+            if (lastDir == Direction.Left || lastDir == Direction.Right) {
+                doorSize = new(bridgeEnd.y - doorHeight, bridgeEnd.y + doorHeight);
+            } else {
+                doorSize = new(bridgeEnd.x - doorHeight, bridgeEnd.x + doorHeight);
+            }
+
+            lastRoom.SetDoor(lastDir, doorSize, bridge);
+            room.SetDoor(ReverseD_irection(lastDir), doorSize, bridge);
 
             for (int i = bridgeStart.y; i <= bridgeEndPos.y; i++)
             {
@@ -435,7 +453,8 @@ public class MapGenerator : MonoBehaviour
         {
             BoxGenerate(item, room);
         }
-
+        
+        room.OnComplete();
         return true;
     }
 
@@ -547,5 +566,25 @@ public class MapGenerator : MonoBehaviour
             end = bridgeEndPos
         };
         return bridge;
+    }
+
+    public void CreateWall(Vector2Int min, Vector2Int max) {
+        for (int i = min.y; i <= max.y; i++)
+        {
+            for (int k = min.x; k <= max.x; k++)
+            {
+                wallTile.SetTile(new Vector3Int(k,i,0), wallBase);
+            }
+        }
+    }
+    
+    public void DeleteWall(Vector2Int min, Vector2Int max) {
+        for (int i = min.y; i <= max.y; i++)
+        {
+            for (int k = min.x; k <= max.x; k++)
+            {
+                wallTile.SetTile(new Vector3Int(k,i,0), null);
+            }
+        }
     }
 }

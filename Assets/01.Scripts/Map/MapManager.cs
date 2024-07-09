@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MapManager : MonoSingleton<MapManager>
 {
+    [SerializeField] MapGenerator generator;
+
     Dictionary<Vector2Int, RoomBase> map = new();
     List<BridgeBase> bridges = new();
 
@@ -44,5 +46,12 @@ public class MapManager : MonoSingleton<MapManager>
         }
 
         return null;
+    }
+
+    public void CreateWall(Vector2Int min, Vector2Int max) {
+        generator.CreateWall(min, max);
+    }
+    public void DeleteWall(Vector2Int min, Vector2Int max) {
+        generator.DeleteWall(min, max);
     }
 }
