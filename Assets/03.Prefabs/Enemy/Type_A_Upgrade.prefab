@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6205732641437290579}
   - component: {fileID: 5208807043665482881}
   - component: {fileID: 724165070083301713}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Type_A_Upgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,8 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   <Stat>k__BackingField: {fileID: 11400000, guid: b814c27a170b27641a342045438d158a, type: 2}
-  battleTime: 1
-  isActive: 0
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -68,6 +66,7 @@ MonoBehaviour:
   lastAttackTime: 0
   targetTrm: {fileID: 0}
   <type>k__BackingField: 3
+  _hitMaterial: {fileID: 2100000, guid: 979f9c282926f844caccf69f0916820c, type: 2}
 --- !u!114 &980620692920643155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +153,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f090166ede544bba10032260fe15fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHealthChangedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5942649219212315973}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SetHitMaterial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDieEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5942649219212315973}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SetDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _currentHealth: 0
   maxHealth: 0
 --- !u!114 &724165070083301713
@@ -180,7 +209,7 @@ GameObject:
   - component: {fileID: 7287757745587689957}
   - component: {fileID: 7438000623576307841}
   - component: {fileID: 5814929158304495744}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8462311858918463770}
   - component: {fileID: 4342448643449309435}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AgentVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4819433869334006861}
   - component: {fileID: 7778424488185776390}
   - component: {fileID: 6971493464847962528}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4795962268147055582}
   - component: {fileID: 1391334671062160369}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AgentVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 1212457753605843167}
   - component: {fileID: 6002369016692123841}
   - component: {fileID: 1620958085919903754}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Type_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,6 +307,7 @@ MonoBehaviour:
   lastAttackTime: 0
   targetTrm: {fileID: 0}
   <type>k__BackingField: 2
+  _hitMaterial: {fileID: 2100000, guid: 979f9c282926f844caccf69f0916820c, type: 2}
 --- !u!114 &6002369016692123841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,9 +334,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnHealthChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1212457753605843167}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SetHitMaterial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDieEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1212457753605843167}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SetDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _currentHealth: 0
   maxHealth: 0

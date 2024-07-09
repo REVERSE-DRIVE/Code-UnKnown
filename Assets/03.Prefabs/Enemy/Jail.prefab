@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6905343186149520260}
   - component: {fileID: 25975655924737295}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AgentVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 2716446120495470408}
   - component: {fileID: 1409149170008073690}
   - component: {fileID: 8274665758922385711}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Jail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,6 +111,7 @@ MonoBehaviour:
   lastAttackTime: 0
   targetTrm: {fileID: 0}
   <type>k__BackingField: 0
+  _hitMaterial: {fileID: 2100000, guid: 979f9c282926f844caccf69f0916820c, type: 2}
 --- !u!114 &1192672070019200016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +198,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f090166ede544bba10032260fe15fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHealthChangedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6228317903687909218}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SetHitMaterial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDieEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6228317903687909218}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SetDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _currentHealth: 0
   maxHealth: 0
 --- !u!114 &8274665758922385711
@@ -223,7 +254,7 @@ GameObject:
   - component: {fileID: 6191948438878047742}
   - component: {fileID: 8806359895806272769}
   - component: {fileID: 7912552061590313943}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +377,7 @@ GameObject:
   - component: {fileID: 1227541128339909550}
   - component: {fileID: 3456514245676844205}
   - component: {fileID: 5162441822254039741}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}

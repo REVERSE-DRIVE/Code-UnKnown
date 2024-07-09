@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5612766334745667551}
   - component: {fileID: 2499578130714635559}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AgentVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 1839720652524205532}
   - component: {fileID: 7506695015195665660}
   - component: {fileID: 4665191098948342280}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Blender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,6 +111,7 @@ MonoBehaviour:
   lastAttackTime: 0
   targetTrm: {fileID: 0}
   <type>k__BackingField: 0
+  _hitMaterial: {fileID: 2100000, guid: 979f9c282926f844caccf69f0916820c, type: 2}
 --- !u!114 &1002054400334001017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +198,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f090166ede544bba10032260fe15fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHealthChangedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2320555601579596097}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SetHitMaterial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDieEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2320555601579596097}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SetDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _currentHealth: 0
   maxHealth: 0
 --- !u!114 &4665191098948342280
@@ -222,7 +253,7 @@ GameObject:
   - component: {fileID: 2651215172018993532}
   - component: {fileID: 9001819182881975644}
   - component: {fileID: 1971672526437927225}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +356,7 @@ GameObject:
   - component: {fileID: 4537386172383024958}
   - component: {fileID: 6593241646004296245}
   - component: {fileID: 5379005934891970091}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7958150940444355937}
   - component: {fileID: 2328514523033411317}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GearSpinManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,7 +530,7 @@ GameObject:
   - component: {fileID: 4004024104802046591}
   - component: {fileID: 2469606186658427509}
   - component: {fileID: 4394343436013250008}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

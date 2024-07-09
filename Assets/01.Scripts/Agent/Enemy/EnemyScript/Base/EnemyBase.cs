@@ -1,10 +1,13 @@
-﻿using EnemyManage;
+﻿using System.Collections;
+using EnemyManage;
 using ObjectPooling;
 using UnityEngine;
 
 public class EnemyBase : Enemy, IPoolable
 {
     [field:SerializeField] public PoolingType type { get; set; }
+    [SerializeField] private Material _hitMaterial;
+    private Material _defaultMaterial;
     public GameObject ObjectPrefab => gameObject;
     public EnemyStateMachine<EnemyStateEnum> StateMachine { get; protected set; }
 
@@ -12,6 +15,7 @@ public class EnemyBase : Enemy, IPoolable
     {
         base.Awake();
         StateMachine = new EnemyStateMachine<EnemyStateEnum>();
+        _defaultMaterial = _spriteRenderer.material;
     }
     
     public virtual void Start()
@@ -35,6 +39,18 @@ public class EnemyBase : Enemy, IPoolable
         base.SetDead();
         isDead = true;
         StateMachine.ChangeState(EnemyStateEnum.Dead);
+    }
+    
+    public void SetHitMaterial()
+    {
+        StartCoroutine(ChangeMaterial());
+    }
+
+    private IEnumerator ChangeMaterial()
+    {
+        _spriteRenderer.material = _hitMaterial;
+        yield return new WaitForSeconds(0.1f);
+        _spriteRenderer.material = _defaultMaterial;
     }
 
     public void ResetItem()
