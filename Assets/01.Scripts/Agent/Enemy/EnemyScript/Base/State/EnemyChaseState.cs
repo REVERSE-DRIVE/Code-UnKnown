@@ -4,28 +4,60 @@ using UnityEngine;
 
 public class EnemyChaseState : EnemyState<EnemyStateEnum>
 {
+    private EnemyMovement _movementCompo;
+    private bool _isChase = false;
     public EnemyChaseState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
+        _movementCompo = _enemyBase.MovementCompo as EnemyMovement;
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+        _enemyBase.StartCoroutine(ChaseRoutine());
+        Debug.Log("Chase Enter");
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
+        _movementCompo.LookToTarget(_enemyBase.targetTrm.position);
         float distance = (_enemyBase.targetTrm.position - _enemyBase.transform.position).magnitude;
         
         if (distance <= _enemyBase.chaseDistance && distance > _enemyBase.attackDistance)
         {
+            _enemyBase.StopAllCoroutines();
+            _isChase = false;
             _enemyBase.MovementCompo.StopImmediately();
             _enemyBase.MovementCompo.SetMovement(_enemyBase.targetTrm.position - _enemyBase.transform.position);
             
         }
         else if (distance <= _enemyBase.attackDistance)
         {
+            _enemyBase.StopAllCoroutines();
+            _isChase = false;
             _stateMachine.ChangeState(EnemyStateEnum.Attack);
         }
         else
         {
-            _stateMachine.ChangeState(EnemyStateEnum.Idle);
+            _enemyBase.StartCoroutine(ChaseRoutine());
+        }
+    }
+    
+    private IEnumerator ChaseRoutine()
+    {
+        Debug.Log("ChaseRoutine");
+        if (_isChase) yield break;
+        _isChase = true;
+        while (true)
+        {
+            Debug.Log("Chaseaaaaaaaaaaaaaaaaaa");
+            Vector3 randomDir = _movementCompo.GetRandomPosition();
+            _enemyBase.MovementCompo.SetMovement(randomDir);
+            _movementCompo.LookToTarget(randomDir);
+            yield return new WaitForSeconds(0.5f);
+            _enemyBase.MovementCompo.StopImmediately();
+            yield return new WaitForSeconds(0.5f);
         }
     }
     
