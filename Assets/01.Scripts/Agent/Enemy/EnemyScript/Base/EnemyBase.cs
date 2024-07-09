@@ -49,7 +49,7 @@ public class EnemyBase : Enemy, IPoolable
     private IEnumerator ChangeMaterial()
     {
         _spriteRenderer.material = _hitMaterial;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         _spriteRenderer.material = _defaultMaterial;
     }
 
