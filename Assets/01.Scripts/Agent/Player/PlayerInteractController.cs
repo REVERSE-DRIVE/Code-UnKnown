@@ -36,6 +36,7 @@ public class PlayerInteractController : MonoBehaviour
             _currentInteractObject.Interact(
                 new InteractData()
                 {
+                    
                     interactOwner = _player,
                     interactOriginPosition = transform.position
                 }
