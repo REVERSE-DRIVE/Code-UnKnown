@@ -30,7 +30,7 @@ namespace ObjectManage
         
         }
 
-        public void Initialize(ActionData actionData)
+        public virtual void Initialize(ActionData actionData)
         {
             // 구현해야함   
         }
