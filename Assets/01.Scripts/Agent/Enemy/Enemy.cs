@@ -1,4 +1,5 @@
 ﻿using System;
+using ItemManage;
 using UnityEngine;
 
 
@@ -7,6 +8,9 @@ namespace EnemyManage
     public abstract class Enemy : Agent
     {
         [Header("Common settings")]
+        [SerializeField] private ItemType _itemType;
+        [SerializeField] private int _id;
+        
         [SerializeField] protected LayerMask _whatIsPlayer;
         [SerializeField] protected LayerMask _whatIsObstacle;
         public Rigidbody2D RigidCompo { get; protected set; }
@@ -48,6 +52,7 @@ namespace EnemyManage
         public override void SetDead()
         {
             isDead = true;
+            ItemDropManager.Instance.DropItem(_itemType, _id, transform.position);
         }
 
         private void OnDrawGizmos()

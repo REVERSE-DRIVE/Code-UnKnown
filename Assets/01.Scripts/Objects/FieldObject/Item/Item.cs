@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using DG.Tweening;
 using ObjectManage;
 using TMPro;
 using UnityEngine;
