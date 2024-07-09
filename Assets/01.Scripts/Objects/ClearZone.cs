@@ -50,9 +50,11 @@ public class ClearZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             IDamageable player = other.transform.GetComponent<IDamageable>();
+            CameraManager.Instance.Shake(10,0.3f);
             player.TakeDamage(_damage);
             _isCoolDowned = false;
             _currentTime = 0;
+            // 나중에 감염도 알림을 띄워야한다.
             SetZoneActive(false);
         }
     }
