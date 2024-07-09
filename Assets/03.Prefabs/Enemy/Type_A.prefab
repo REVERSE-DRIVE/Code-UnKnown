@@ -75,15 +75,15 @@ SpriteRenderer:
   m_SortingLayerID: -1044503619
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 2094967649, guid: d6875cc705efae149b9e38c5ee82a5ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.75, y: 0.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &7778424488185776390
@@ -294,8 +294,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   <Stat>k__BackingField: {fileID: 11400000, guid: a33b0555a5bb88640aa4184bdd3ab387, type: 2}
-  battleTime: 1
-  isActive: 0
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -303,7 +301,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   runAwayDistance: 10
-  attackDistance: 2
+  attackDistance: 1.5
   chaseDistance: 3
   attackCooldown: 1
   lastAttackTime: 0
@@ -316,7 +314,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5627968206905763583}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94496b48b5f74692ac387ee3d00f49e4, type: 3}
   m_Name: 
@@ -333,5 +331,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f090166ede544bba10032260fe15fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHealthChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _currentHealth: 0
   maxHealth: 0
