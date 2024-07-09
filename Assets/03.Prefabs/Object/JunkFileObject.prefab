@@ -5049,7 +5049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19b59354d7843278ca702ff4b01e9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 1
+  _currentHealth: 5
   OnOutsideInteractEvent:
     m_PersistentCalls:
       m_Calls: []
