@@ -37,7 +37,7 @@ public class EnemyBase : Enemy, IPoolable
     public override void SetDead()
     {
         base.SetDead();
-        isDead = true;
+        Debug.Log("Enemy Dead");
         StateMachine.ChangeState(EnemyStateEnum.Dead);
     }
     
@@ -58,5 +58,6 @@ public class EnemyBase : Enemy, IPoolable
         HealthCompo.Initialize(Stat.health);
         isDead = false;
         StateMachine.Initialize(EnemyStateEnum.Idle, this);
+        _spriteRenderer.material = _defaultMaterial;
     }
 }
