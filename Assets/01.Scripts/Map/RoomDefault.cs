@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RoomDefault : RoomObstacleBase
 {
@@ -10,6 +11,7 @@ public class RoomDefault : RoomObstacleBase
     bool isClear = false;
 
     List<EnemyBase> enemys;
+    List<UnityAction> enemyDieEvents;
 
     public override void SetSize()
     {
@@ -38,6 +40,7 @@ public class RoomDefault : RoomObstacleBase
 
         ////// enemy 소환
         enemys = new();
+        enemyDieEvents = new();
 
         for (int i = 0; i < Random.Range(enemyCount.x, enemyCount.y); i++)
         {
@@ -45,6 +48,11 @@ public class RoomDefault : RoomObstacleBase
             enemys.Add(enemy);
 
             enemy.transform.position = MapManager.Instance.GetWorldPosByCell(FindPossibleRandomPos(1));
+
+            int idx = i;
+            enemyDieEvents.Add(() => OnEnemyDied(idx, enemy));
+
+            enemy.HealthCompo.OnDieEvent.AddListener(enemyDieEvents[i]);
         }
     }
 
@@ -52,5 +60,19 @@ public class RoomDefault : RoomObstacleBase
     {
         if (isClear || process) return;
 
+    }
+
+    void OnEnemyDied(int callbackIdx, EnemyBase enemy) {
+        enemy.HealthCompo.OnDieEvent.RemoveListener(enemyDieEvents[callbackIdx]);
+
+        enemys.Remove(enemy);
+
+        if (enemys.Count > 0) return;
+        
+        // 끝
+        isClear = true;
+        process = false;
+        
+        SetDoor(false);
     }
 }

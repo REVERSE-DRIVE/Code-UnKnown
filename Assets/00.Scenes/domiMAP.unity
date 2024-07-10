@@ -1692,7 +1692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d6e26b953507d45b7fe050b1a6cf18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemPrefab: {fileID: 0}
+  _itemPrefab: {fileID: 1056380664780486099, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
   _itemTableSOList:
   - {fileID: 11400000, guid: 0e6cbb10c18360a4f872a3ece2767b72, type: 2}
   - {fileID: 11400000, guid: 065bac5e4da00bd4e8dfe7997d15c70b, type: 2}
