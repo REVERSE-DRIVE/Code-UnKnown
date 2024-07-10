@@ -51,8 +51,7 @@ namespace EnemyManage
 
         public override void SetDead()
         {
-            isDead = true;
-            ItemDropManager.Instance.DropItem(_itemType, _id, transform.position);
+            //ItemDropManager.Instance.DropItem(_itemType, _id, transform.position);
         }
 
         private void OnDrawGizmos()
