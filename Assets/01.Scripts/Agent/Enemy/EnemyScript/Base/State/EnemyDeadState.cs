@@ -1,4 +1,5 @@
 ﻿using EnemyManage;
+using UnityEngine;
 
 public class EnemyDeadState : EnemyState<EnemyStateEnum>
 {
@@ -9,9 +10,11 @@ public class EnemyDeadState : EnemyState<EnemyStateEnum>
     public override void UpdateState()
     {
         base.UpdateState();
+        Debug.Log("Dead State");
         if (_endTriggerCalled)
         {
-            _enemyBase.SetDead();
+            Debug.Log("Enemy Dead");
+            _enemyBase.isDead = true;
         }
     }
 }
