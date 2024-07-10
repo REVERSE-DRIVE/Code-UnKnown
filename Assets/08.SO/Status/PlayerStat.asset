@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atk: 2
   health: 20
-  moveSpeed: 4
+  moveSpeed: 6
