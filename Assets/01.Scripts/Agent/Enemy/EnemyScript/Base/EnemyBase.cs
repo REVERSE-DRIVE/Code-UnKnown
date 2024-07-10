@@ -22,6 +22,7 @@ public class EnemyBase : Enemy, IPoolable
     {
         StateMachine.Initialize(EnemyStateEnum.Idle, this);
         HealthCompo.Initialize(Stat.health);
+        _spriteRenderer.material = _defaultMaterial;
     }
 
     private void Update()
