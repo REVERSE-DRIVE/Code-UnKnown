@@ -27,8 +27,15 @@ public class RoomDefault : RoomObstacleBase
         
         process = true;
         SetDoor(true);
-        // PlayerManager.Instance.player.transform.position;
-        
+
+        Transform player = PlayerManager.Instance.player.transform;
+        Vector2Int playerPos = MapManager.Instance.GetCellByWorldPos(player.position);
+
+        MapGenerator.Direction doorDir = ClosestDoor(playerPos);
+        Vector2Int doorPos = GetCenterPosDoor(doorDir) +  -MapGenerator.GetDirection(doorDir) * 2;
+
+        player.position = MapManager.Instance.GetWorldPosByCell(doorPos);
+
         ////// enemy 소환
         enemys = new();
 

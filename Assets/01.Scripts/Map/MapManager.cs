@@ -21,6 +21,7 @@ public class MapManager : MonoSingleton<MapManager>
     }
     
     public Vector3 GetWorldPosByCell(Vector2Int cell) => generator.GetWorldCoordsByGroundCell(cell);
+    public Vector2Int GetCellByWorldPos(Vector3 cell) => generator.GetGroundCellByWorldCoords(cell);
 
     public void SetRoom(Vector2Int coords, RoomBase room) {
         map[coords] = room;

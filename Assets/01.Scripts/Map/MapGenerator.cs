@@ -462,7 +462,7 @@ public class MapGenerator : MonoBehaviour
         return true;
     }
 
-    Vector2Int GetDirection(Direction dir) {
+    public static Vector2Int GetDirection(Direction dir) {
         switch (dir)
         {
             case Direction.Top:
@@ -477,7 +477,7 @@ public class MapGenerator : MonoBehaviour
 
         return Vector2Int.zero;
     }
-    Direction ReverseD_irection(Direction dir) {
+    public static Direction ReverseD_irection(Direction dir) {
         return dir switch
         {
             Direction.Top => Direction.Bottom,
@@ -594,5 +594,9 @@ public class MapGenerator : MonoBehaviour
 
     public Vector3 GetWorldCoordsByGroundCell(Vector2Int coords) {
         return groundTile.CellToWorld((Vector3Int)coords);
+    }
+
+    public Vector2Int GetGroundCellByWorldCoords(Vector3 coords) {
+        return (Vector2Int)groundTile.WorldToCell(coords);
     }
 }

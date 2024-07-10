@@ -7,6 +7,8 @@ using UnityEngine.Tilemaps;
 
 public class RoomEvent : MonoBehaviour
 {
+    [SerializeField] LayerMask allowLayer;
+
     Tilemap tilemap;
     new Collider2D collider;
     Vector2Int[] crossDir = new Vector2Int[] {
@@ -23,7 +25,11 @@ public class RoomEvent : MonoBehaviour
         collider = GetComponent<Collider2D>();
     }
 
+    bool HasLayer(Collider2D other) => (( 1 << other.gameObject.layer) & allowLayer.value) != 0;
+
     private void OnTriggerEnter2D(Collider2D other) {
+        if (!HasLayer(other)) return;
+
         // 충돌 지점
         Vector2 point = collider.ClosestPoint(other.transform.position);
         Vector2Int tilePos = (Vector2Int)tilemap.WorldToCell(point);
@@ -45,7 +51,7 @@ public class RoomEvent : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (lastJoinRoom == null) return;
+        if (!HasLayer(other) || lastJoinRoom == null) return;
 
         lastJoinRoom.RoomLeave();
         lastJoinRoom = null;
