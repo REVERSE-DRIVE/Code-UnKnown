@@ -97,6 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   <Stat>k__BackingField: {fileID: 11400000, guid: e915f3cceb91dda4a926191feb387d75, type: 2}
+  _itemType: 0
+  _id: 0
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -110,7 +112,7 @@ MonoBehaviour:
   lastAttackTime: 0
   targetTrm: {fileID: 0}
   <type>k__BackingField: 0
-  _hitMaterial: {fileID: 2100000, guid: 979f9c282926f844caccf69f0916820c, type: 2}
+  _hitMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}
 --- !u!114 &1023934701268953149
 MonoBehaviour:
   m_ObjectHideFlags: 0
