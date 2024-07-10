@@ -9,10 +9,19 @@ public class MapManager : MonoSingleton<MapManager>
     Dictionary<Vector2Int, RoomBase> map = new();
     List<BridgeBase> bridges = new();
 
+    ///////////////////////////////// TEST
+    private void Start() {
+        Generate();
+    }
+    ///////////////////////////////// TEST END
+
     public RoomBase GetRoomByCoords(Vector2Int coords) {
         bool result = map.TryGetValue(coords, out var room);
         return result ? room : null;
     }
+    
+    public Vector3 GetWorldPosByCell(Vector2Int cell) => generator.GetWorldCoordsByGroundCell(cell);
+    public Vector2Int GetCellByWorldPos(Vector3 cell) => generator.GetGroundCellByWorldCoords(cell);
 
     public void SetRoom(Vector2Int coords, RoomBase room) {
         map[coords] = room;
@@ -21,10 +30,18 @@ public class MapManager : MonoSingleton<MapManager>
     public void AddBridge(BridgeBase bridge) {
         bridges.Add(bridge);
     }
+    
+    public void Generate() => generator.StartGenerate();
+
+    public void Generate(RoomBase[] templates) {
+        generator.StartGenerate(templates);
+        // (비동기가 아니기 때문에 이 밑에는 맵 생성이 완료된거임)
+    }
 
     public void Clear() {
         map.Clear();
         bridges.Clear();
+        generator.Clear();
     }
 
     public IEnumerable<KeyValuePair<Vector2Int, RoomBase>> GetMapIterator() {

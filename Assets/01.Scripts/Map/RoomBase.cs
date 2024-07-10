@@ -11,6 +11,7 @@ public struct RoomDoorData {
 public class RoomBase : MonoBehaviour
 {
     [SerializeField] TileBase groundTile;
+    [SerializeField] bool defaultDoor = false;
 
     public Vector2Int Size { get; protected set; }
 
@@ -34,6 +35,53 @@ public class RoomBase : MonoBehaviour
             size = size,
             bridge = bridge           
         };
+    }
+    
+    public Vector2Int GetCenterPosDoor(MapGenerator.Direction dir) {
+        var door = doors[dir];
+
+        int centerNum = (door.size.x + door.size.y) / 2;
+
+        if (dir == MapGenerator.Direction.Top) {
+            return new(centerNum, MaxPos.y);
+        } else if (dir == MapGenerator.Direction.Bottom) {
+            return new(centerNum, MinPos.y);
+        } else if (dir == MapGenerator.Direction.Left) {
+            return new(MinPos.x, centerNum);
+        } else {
+            return new(MaxPos.x, centerNum);
+        }
+    }
+
+    public MapGenerator.Direction ClosestDoor(Vector2Int pos) {
+        MapGenerator.Direction nearDir = MapGenerator.Direction.Top;
+        float nearDistance = float.MaxValue;
+
+        foreach (var item in doors)
+        {
+            Vector2Int doorPos = GetCenterPosDoor(item.Key);
+            float distance = Vector2Int.Distance(pos, doorPos);
+
+            if (nearDistance > distance) {
+                nearDistance = distance;
+                nearDir = item.Key;
+            }
+        }
+
+        return nearDir;
+    }
+
+    public virtual Vector2Int FindPossibleRandomPos(int spacing) {
+        Vector2Int pos = new(Random.Range(MinPos.x + 1 /* 테두리 */, MaxPos.x), Random.Range(MinPos.y + 1, MaxPos.y));
+        
+        Vector2Int min = pos - (Vector2Int.one * spacing);
+        Vector2Int max = pos + (Vector2Int.one * spacing);
+
+        if (MinPos.x > min.x || MinPos.y > min.y || MaxPos.x < max.x || MaxPos.y < max.y) {
+            return FindPossibleRandomPos(spacing); // 다시
+        }
+
+        return pos;
     }
 
     public TileBase GetGroundTile() => groundTile;
@@ -72,7 +120,7 @@ public class RoomBase : MonoBehaviour
 
     // 방 만들어짐 (bridge, min, max 등 값 안전)
     public virtual void OnComplete() {
-
+        SetDoor(defaultDoor);
     }
 
     #if UNITY_EDITOR
