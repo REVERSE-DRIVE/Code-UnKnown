@@ -10,12 +10,14 @@ public class EnemyBase : Enemy, IPoolable
     private Material _defaultMaterial;
     public GameObject ObjectPrefab => gameObject;
     public EnemyStateMachine<EnemyStateEnum> StateMachine { get; protected set; }
+    private bool isInitEnd;
 
     protected override void Awake()
     {
         base.Awake();
         StateMachine = new EnemyStateMachine<EnemyStateEnum>();
         _defaultMaterial = _spriteRenderer.material;
+        isInitEnd = false;
     }
     
     public virtual void Start()
@@ -25,11 +27,12 @@ public class EnemyBase : Enemy, IPoolable
 
     private void Init()
     {
+        isInitEnd = false;
         _spriteRenderer.material = _defaultMaterial;
         if (_spriteRenderer.material == _hitMaterial)
             _spriteRenderer.material = _defaultMaterial;
         StateMachine.Initialize(EnemyStateEnum.Idle, this);
-        HealthCompo.Initialize(Stat.health);
+        isInitEnd = true;
     }
 
     private void Update()
@@ -52,7 +55,8 @@ public class EnemyBase : Enemy, IPoolable
     public void SetHitMaterial()
     {
         if (isDead) return;
-        StartCoroutine(ChangeMaterial());
+        if (isInitEnd)
+            StartCoroutine(ChangeMaterial());
     }
 
     private IEnumerator ChangeMaterial()

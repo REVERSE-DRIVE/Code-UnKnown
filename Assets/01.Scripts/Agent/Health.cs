@@ -45,7 +45,7 @@ public class Health : MonoBehaviour, IDamageable, IHealable
     private void HandleHealthChange(int change)
     {
         OnHealthChangedEvent?.Invoke();
-        print("체력 갱신");
+        print($"체력 갱신 - {gameObject.name}");
         OnHealthChangedValueEvent?.Invoke(_currentHealth-change, _currentHealth, maxHealth);
     }
 
