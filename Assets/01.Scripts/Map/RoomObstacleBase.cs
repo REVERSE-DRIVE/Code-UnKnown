@@ -147,4 +147,26 @@ public class RoomObstacleBase : RoomBase
             print($"ming / {min} ~ {max}");
         }
     }
+
+    public override Vector2Int FindPossibleRandomPos(int spacing) {
+        Vector2Int pos = new(Random.Range(MinPos.x + 1 /* 테두리 */, MaxPos.x), Random.Range(MinPos.y + 1, MaxPos.y));
+        
+        Vector2Int min = pos - (Vector2Int.one * spacing);
+        Vector2Int max = pos + (Vector2Int.one * spacing);
+
+        if (MinPos.x > min.x || MinPos.y > min.y || MaxPos.x < max.x || MaxPos.y < max.y) {
+            return FindPossibleRandomPos(spacing); // 다시
+        }
+
+        foreach (var item in obstacles)
+        {
+            if (item.max.x < min.x || item.min.x > max.x) continue;
+            if (item.max.y < min.y || item.min.y > max.y) continue;
+
+            // 박스 겹침
+            return FindPossibleRandomPos(spacing);
+        }
+
+        return pos;
+    }
 }

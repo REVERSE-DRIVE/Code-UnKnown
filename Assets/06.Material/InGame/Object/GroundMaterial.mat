@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_UnlitDissolve
-  m_Shader: {fileID: -6465566751694194690, guid: 768aed277ba601e41acef35827515f78, type: 3}
+  m_Name: GroundMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 32af6f542ddbdf14c848f17d8c971910, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -41,14 +41,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DissolveLevel: 1
-    - _EdgeWidth: 0.01
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Speed: 0.1
+    - _WaveSpeed: 0.1
+    - _Width: 22.84
     m_Colors:
-    - _EdgeColor: {r: 9.159563, g: 0.14385594, b: 0, a: 1}
+    - _EmissionColor: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
+    - _MaskColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &985540898047545964
+--- !u!114 &3616238017782440959
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

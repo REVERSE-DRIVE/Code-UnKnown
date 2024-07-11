@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerStat
   m_EditorClassIdentifier: 
   atk: 2
-  health: 100
-  moveSpeed: 4
+  health: 20
+  moveSpeed: 6

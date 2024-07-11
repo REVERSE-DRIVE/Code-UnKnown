@@ -18,7 +18,6 @@ public class Player : Agent
 
     private void Start()
     {
-        
     }
 
     public override void SetDead()

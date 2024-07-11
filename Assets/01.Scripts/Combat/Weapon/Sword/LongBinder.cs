@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using ObjectManage;
+using UnityEngine;
 
 namespace WeaponManage
 {
@@ -6,6 +7,9 @@ namespace WeaponManage
     {
         protected override void AttackLogic()
         {
+            DirectionVFXObject dirVFX = PoolingManager.Instance.Pop(_attackVFX) as DirectionVFXObject;
+            dirVFX.Initialize(new ActionData { direction = _controlDirection, origin = _origin });
+            
             for (int i = 0; i < _targetAmount; i++)
             {
                 if (_targetColliders[i].TryGetComponent(out IDamageable hit))
