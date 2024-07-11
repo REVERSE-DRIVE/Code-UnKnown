@@ -3573,7 +3573,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 32af6f542ddbdf14c848f17d8c971910, type: 3}
+  - {fileID: 2100000, guid: 9f781b4ff4276dd4cae3dd37f9de74bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4308,46 +4308,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createRooms:
   - {fileID: 1385689896}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
-  - {fileID: 1687507131}
   - {fileID: 1687507131}
   - {fileID: 1687507131}
   - {fileID: 1687507131}
