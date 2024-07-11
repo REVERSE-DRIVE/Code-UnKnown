@@ -48,6 +48,7 @@ public class EnemyBase : Enemy, IPoolable
     public override void SetDead()
     {
         base.SetDead();
+        
         Debug.Log("Enemy Dead");
         StateMachine.ChangeState(EnemyStateEnum.Dead);
     }
@@ -62,7 +63,7 @@ public class EnemyBase : Enemy, IPoolable
     private IEnumerator ChangeMaterial()
     {
         _spriteRenderer.material = _hitMaterial;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         _spriteRenderer.material = _defaultMaterial;
     }
 
