@@ -98,6 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   <Stat>k__BackingField: {fileID: 11400000, guid: e1b6f709dc000e844a95eda61a6fd202, type: 2}
+  _itemType: 0
+  _id: 0
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -228,8 +230,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _currentHealth: 0
-  maxHealth: 0
+  _currentHealth: 10
+  maxHealth: 10
 --- !u!114 &4665191098948342280
 MonoBehaviour:
   m_ObjectHideFlags: 0

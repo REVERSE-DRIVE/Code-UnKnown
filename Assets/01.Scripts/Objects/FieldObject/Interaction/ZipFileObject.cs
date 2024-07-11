@@ -3,7 +3,7 @@ using ItemManage;
 using ObjectManage;
 using Random = UnityEngine.Random;
 
-public class ZipFileOpject : InteractObject
+public class ZipFileObject : InteractObject
 {
     private void OnEnable()
     {
