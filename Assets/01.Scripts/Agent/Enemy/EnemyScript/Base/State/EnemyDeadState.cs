@@ -14,6 +14,7 @@ public class EnemyDeadState : EnemyState<EnemyStateEnum>
         if (_endTriggerCalled)
         {
             Debug.Log("Enemy Dead");
+            PoolingManager.Instance.Push(_enemyBase as EnemyBase);
             _enemyBase.isDead = true;
         }
     }

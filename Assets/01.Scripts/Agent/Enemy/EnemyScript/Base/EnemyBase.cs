@@ -40,7 +40,7 @@ public class EnemyBase : Enemy, IPoolable
         base.SetDead();
         Debug.Log("Enemy Dead");
         StateMachine.ChangeState(EnemyStateEnum.Dead);
-        PoolingManager.Instance.Push(this);
+        
     }
     
     public void SetHitMaterial()
