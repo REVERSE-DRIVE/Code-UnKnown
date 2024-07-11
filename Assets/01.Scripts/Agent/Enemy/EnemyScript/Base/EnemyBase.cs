@@ -20,9 +20,16 @@ public class EnemyBase : Enemy, IPoolable
     
     public virtual void Start()
     {
+        Init();
+    }
+
+    private void Init()
+    {
+        _spriteRenderer.material = _defaultMaterial;
+        if (_spriteRenderer.material == _hitMaterial)
+            _spriteRenderer.material = _defaultMaterial;
         StateMachine.Initialize(EnemyStateEnum.Idle, this);
         HealthCompo.Initialize(Stat.health);
-        _spriteRenderer.material = _defaultMaterial;
     }
 
     private void Update()
@@ -40,11 +47,11 @@ public class EnemyBase : Enemy, IPoolable
         base.SetDead();
         Debug.Log("Enemy Dead");
         StateMachine.ChangeState(EnemyStateEnum.Dead);
-        
     }
     
     public void SetHitMaterial()
     {
+        if (isDead) return;
         StartCoroutine(ChangeMaterial());
     }
 
@@ -57,9 +64,7 @@ public class EnemyBase : Enemy, IPoolable
 
     public void ResetItem()
     {
-        HealthCompo.Initialize(Stat.health);
         isDead = false;
-        StateMachine.Initialize(EnemyStateEnum.Idle, this);
-        _spriteRenderer.material = _defaultMaterial;
+        Init();
     }
 }
