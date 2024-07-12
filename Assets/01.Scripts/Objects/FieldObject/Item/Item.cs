@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using DG.Tweening;
-using ObjectManage;
+﻿using ObjectManage;
 using ObjectPooling;
 using TMPro;
 using UnityEngine;
@@ -11,9 +8,10 @@ namespace ItemManage
     public class Item : InteractObject, IPoolable
     {
         [field:SerializeField] public PoolingType type { get; set; }
-        public GameObject ObjectPrefab => gameObject;
         [field:SerializeField] public ItemSO ItemSO { get; private set; }
-        public TextMeshPro _itemNameText;
+        [SerializeField] private TextMeshPro _itemNameText;
+        [SerializeField] private ItemType _itemType;
+        public GameObject ObjectPrefab => gameObject;
 
         private void Awake()
         {
@@ -25,6 +23,7 @@ namespace ItemManage
             ItemSO = itemSO;
             _itemNameText.text = ItemSO.itemName;
             _visualRenderer.sprite = ItemSO.itemIcon;
+            _itemType = ItemSO.itemType;
         }
 
         public override void Detected()
