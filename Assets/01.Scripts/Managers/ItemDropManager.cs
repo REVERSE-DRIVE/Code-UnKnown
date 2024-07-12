@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class ItemDropManager : MonoSingleton<ItemDropManager>
 {
-    [SerializeField] private Item _itemPrefab;
     [SerializeField] private List<ItemTableSO> _itemTableSOList;
 
     public Item DropItem(ItemType type, int id, Vector2 position)
