@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using ItemManage;
+using ObjectPooling;
 using UnityEngine;
 
 public class ItemDropManager : MonoSingleton<ItemDropManager>
@@ -12,10 +13,10 @@ public class ItemDropManager : MonoSingleton<ItemDropManager>
     public Item DropItem(ItemType type, int id, Vector2 position)
     {
         ItemSO itemSO = FindItemSo(type, id);
-        Item item = Instantiate(_itemPrefab, position, Quaternion.identity);
+        Item item = PoolingManager.Instance.Pop(PoolingType.ItemBase) as Item;
         item.SetItem(itemSO);
-        item.gameObject.name = itemSO.itemName;
-        return item;
+        item.transform.position = position;
+        return null;
     }
 
     private ItemSO FindItemSo(ItemType type, int id)

@@ -1349,6 +1349,10 @@ MonoBehaviour:
   _detectMaterial: {fileID: 2100000, guid: 9b2f7f23d8d4f3c4098109f51a709a28, type: 2}
   _visualRenderer: {fileID: 1876921422}
   isDetected: 0
+  _resourceDropPercent: 50
+  _weaponDropPercent: 50
+  _minDropAmount: 1
+  _maxDropAmount: 3
 --- !u!4 &803015078
 Transform:
   m_ObjectHideFlags: 0

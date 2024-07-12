@@ -56,6 +56,7 @@ MonoBehaviour:
   isDetected: 0
   <ItemSO>k__BackingField: {fileID: 0}
   _itemNameText: {fileID: 8316715013320359837}
+  <type>k__BackingField: 10
 --- !u!61 &3473447056630540512
 BoxCollider2D:
   m_ObjectHideFlags: 0
