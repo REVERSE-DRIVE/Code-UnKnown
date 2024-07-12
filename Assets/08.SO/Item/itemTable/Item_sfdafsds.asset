@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   itemName: sfdafsds
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 5319586363640823999, guid: 0188a161e4b41dd4e9f1af0d86375a03, type: 3}

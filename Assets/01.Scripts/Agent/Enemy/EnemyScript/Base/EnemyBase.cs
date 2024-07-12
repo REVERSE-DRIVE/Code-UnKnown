@@ -10,19 +10,29 @@ public class EnemyBase : Enemy, IPoolable
     private Material _defaultMaterial;
     public GameObject ObjectPrefab => gameObject;
     public EnemyStateMachine<EnemyStateEnum> StateMachine { get; protected set; }
+    private bool isInitEnd;
 
     protected override void Awake()
     {
         base.Awake();
         StateMachine = new EnemyStateMachine<EnemyStateEnum>();
         _defaultMaterial = _spriteRenderer.material;
+        isInitEnd = false;
     }
     
     public virtual void Start()
     {
-        StateMachine.Initialize(EnemyStateEnum.Idle, this);
-        HealthCompo.Initialize(Stat.health);
+        Init();
+    }
+
+    private void Init()
+    {
+        isInitEnd = false;
         _spriteRenderer.material = _defaultMaterial;
+        if (_spriteRenderer.material == _hitMaterial)
+            _spriteRenderer.material = _defaultMaterial;
+        StateMachine.Initialize(EnemyStateEnum.Idle, this);
+        isInitEnd = true;
     }
 
     private void Update()
@@ -38,28 +48,28 @@ public class EnemyBase : Enemy, IPoolable
     public override void SetDead()
     {
         base.SetDead();
+        
         Debug.Log("Enemy Dead");
         StateMachine.ChangeState(EnemyStateEnum.Dead);
-        
     }
     
     public void SetHitMaterial()
     {
-        StartCoroutine(ChangeMaterial());
+        if (isDead) return;
+        if (isInitEnd)
+            StartCoroutine(ChangeMaterial());
     }
 
     private IEnumerator ChangeMaterial()
     {
         _spriteRenderer.material = _hitMaterial;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         _spriteRenderer.material = _defaultMaterial;
     }
 
     public void ResetItem()
     {
-        HealthCompo.Initialize(Stat.health);
         isDead = false;
-        StateMachine.Initialize(EnemyStateEnum.Idle, this);
-        _spriteRenderer.material = _defaultMaterial;
+        Init();
     }
 }
