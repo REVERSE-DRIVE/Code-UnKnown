@@ -14,6 +14,7 @@ public class ItemDropManager : MonoSingleton<ItemDropManager>
         ItemSO itemSO = FindItemSo(type, id);
         Item item = Instantiate(_itemPrefab, position, Quaternion.identity);
         item.SetItem(itemSO);
+        item.gameObject.name = itemSO.itemName;
         return item;
     }
 

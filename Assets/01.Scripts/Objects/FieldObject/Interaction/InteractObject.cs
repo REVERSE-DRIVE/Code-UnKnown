@@ -42,7 +42,7 @@ namespace ObjectManage
         protected void HandleDetected()
         {
             if (isDetected) return;
-            print("Detected");
+            print("Detected" + gameObject.name);
             isDetected = true;
             _visualRenderer.material = _detectMaterial;
         }

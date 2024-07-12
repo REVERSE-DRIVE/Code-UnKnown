@@ -21,13 +21,13 @@ public class ZipFileObject : InteractObject
         if (random < 0.5f)
         {
             ItemType type = ItemType.Weapon;
-            int id = Random.Range(0, 2);
+            int id = 0;
             ItemDropManager.Instance.DropItem(type, id, transform.position);
         }
         else
         {
             ItemType type = ItemType.Resource;
-            int id = Random.Range(0, 2);
+            int id = 0;
             ItemDropManager.Instance.DropItem(type, id, transform.position);
         }
     }
