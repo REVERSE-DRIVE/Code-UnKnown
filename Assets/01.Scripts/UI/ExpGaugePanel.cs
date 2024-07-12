@@ -18,8 +18,9 @@ public class ExpGaugePanel : MonoBehaviour
     
     public void Refresh(int current, int max)
     {
+        ResetGauge();
         float ratio = (float)current / max;
-
+        
         _seq = DOTween.Sequence();
         _seq.Append(_subGaugeFill.DOFillAmount(ratio, _duration));
         _seq.Append(_gaugeFill.DOFillAmount(ratio, _duration));

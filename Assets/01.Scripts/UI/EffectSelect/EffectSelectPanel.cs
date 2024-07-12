@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EffectSelectPanel : MonoBehaviour
 {
+    [SerializeField]
     private CanvasGroup _canvasGroup;
     // 중첩 레벨업을 대비하여 이를 저장
     private int _levelUpAmount;

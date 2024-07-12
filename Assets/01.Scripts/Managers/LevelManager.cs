@@ -1,8 +1,7 @@
 using System;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : MonoSingleton<LevelManager>
 {
     [SerializeField] private ExpGaugePanel _expPanel;
     [SerializeField] private int _currentExp;
