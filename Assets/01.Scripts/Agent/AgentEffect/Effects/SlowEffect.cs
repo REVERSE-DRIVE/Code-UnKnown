@@ -20,7 +20,7 @@ public class SlowEffect : Effect
 
     public override void Exit()
     {
-        _owner.Stat.AddModifier(StatType.MoveSpeed, level);       
+        _owner.Stat.RemoveModifier(StatType.MoveSpeed, -level);       
     }
 
     
