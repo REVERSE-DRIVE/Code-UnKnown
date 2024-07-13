@@ -21,6 +21,6 @@ public class UnLockSkillEffectSO : PowerUpEffectSO
 
     private void OnValidate()
     {
-        type = EffectType.SkillUnlock;
+        type = PowerUpEffectType.SkillUnlock;
     }
 }
