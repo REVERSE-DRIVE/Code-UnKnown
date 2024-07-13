@@ -1,6 +1,4 @@
-﻿
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "SO/Items/PowerUp/Effect/StatInc")]
 public class StatIncUpEffectSO : PowerUpEffectSO
