@@ -37,9 +37,10 @@ public abstract class Agent : MonoBehaviour
         // Player는 SpriteRenderer가 여러곳에 분산되어있기 때문에
         // Agent에 만드는건 SOLID위반이 됨, 나중에 Enemy로 옮겨야함
         Stat = Instantiate(Stat);
+        Stat.SetOwner(this);
 
-        HealthCompo.maxHealth = Stat.health;
-        HealthCompo.SetHealth(Stat.health);
+        HealthCompo.Initialize(this);
+        //HealthCompo.SetHealth(Stat.health);
 
     }
     

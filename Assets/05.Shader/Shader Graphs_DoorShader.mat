@@ -45,12 +45,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AlertAmount: 1
     - _Amount: 1
+    - _LineAmount: -1.95
+    - _LineWidth: 0.45
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Range: 0.1
     m_Colors:
-    - _AlertColor: {r: 1, g: 0, b: 0, a: 1}
+    - _AlertColor: {r: 1, g: 0.20396024, b: 0, a: 1}
+    - _LineColor: {r: 1.9999998, g: 0, b: 0, a: 1}
     - _MaskColor: {r: 0.18431373, g: 0.6156863, b: 0.6156863, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &1970331618527153539

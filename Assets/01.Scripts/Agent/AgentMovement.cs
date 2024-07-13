@@ -26,7 +26,7 @@ public class AgentMovement : MonoBehaviour, IMovement
 
     public void SetMovement(Vector2 movement)
     {
-        _velocity = movement.normalized * _agent.Stat.moveSpeed;
+        _velocity = movement.normalized * _agent.Stat.moveSpeed.GetValue();
         _rigidCompo.velocity = _velocity;
 
     }
