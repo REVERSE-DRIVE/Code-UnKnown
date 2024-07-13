@@ -12,4 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f71b1304eddbd47b73833d86722ee3, type: 3}
   m_Name: table
   m_EditorClassIdentifier: 
-  datas: []
+  datas:
+  - {fileID: 11400000, guid: c39183e0d9dd9384594cf82e00546537, type: 2}
+  - {fileID: 11400000, guid: 49bfefa20fb5a7c449f39b6fa558e9d9, type: 2}
+  - {fileID: 11400000, guid: 5d129a0b3bfb459418dd411ccb0bece5, type: 2}
+  - {fileID: 11400000, guid: 7f23fb160cd380845879161d3eb6a4d2, type: 2}
+  - {fileID: 11400000, guid: 5a5687f58a2dec64d9a5aed3645e3fac, type: 2}
+  - {fileID: 11400000, guid: cc376ad98e3d84c42abca0c55c3a87c1, type: 2}
+  - {fileID: 11400000, guid: 510a0ca36afff4843a432d36851e1ade, type: 2}
+  - {fileID: 11400000, guid: fe9ed689cb1bb5c408be8e680bd4868e, type: 2}
+  - {fileID: 11400000, guid: 9fb95c25ae9f5ee4c94b194dfa98c8f2, type: 2}
+  - {fileID: 11400000, guid: 27bc55252cbd54141af37e4849161a8b, type: 2}
+  - {fileID: 11400000, guid: a3e8882669fd62c4cb17f9c5128bc1c3, type: 2}

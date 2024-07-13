@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PlayerArrow
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -11,12 +13,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - DeadBody
+  - Object
+  - Projectile
+  - Wall
   - 
   - 
   - 
@@ -40,4 +42,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: TileMap
+    uniqueID: 2841517443
+    locked: 0
+  - name: Object
+    uniqueID: 3465460035
+    locked: 0
+  - name: Agent
+    uniqueID: 3250463677
+    locked: 0
+  - name: Particles
+    uniqueID: 1277970697
     locked: 0

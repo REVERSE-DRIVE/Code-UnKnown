@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c849feb582448d42a8491aa630deaca, type: 3}
+  m_Name: Pool_Type_A
+  m_EditorClassIdentifier: 
+  enumName: Type_A
+  poolingName: Type_A
+  description: "Type_A Enemy\n\uD50C\uB808\uC774\uC5B4\uB97C \uD5A5\uD574 \uCD1D\uC54C
+    \uBC1C\uC0AC"
+  poolCount: 10
+  prefabObject: {fileID: 5627968206905763583, guid: 4f5b4c14183660b43ac271b8e86f1feb, type: 3}

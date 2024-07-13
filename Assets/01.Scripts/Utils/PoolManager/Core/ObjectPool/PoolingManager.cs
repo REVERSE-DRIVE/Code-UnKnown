@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PoolingManager : MonoSingleton<PoolingManager>
 {
-    private Dictionary<PoolingType, Pool<PoolableMono>> _pools
-        = new Dictionary<PoolingType, Pool<PoolableMono>>();
+    private Dictionary<PoolingType, Pool> _pools
+        = new Dictionary<PoolingType, Pool>();
 
     public PoolingTableSO listSO;
 
@@ -19,11 +19,11 @@ public class PoolingManager : MonoSingleton<PoolingManager>
 
     private void CreatePool(PoolingItemSO item)
     {
-        var pool = new Pool<PoolableMono>(item.prefab, item.prefab.type, transform, item.poolCount);
+        var pool = new Pool(item.prefab, item.prefab.type, transform, item.poolCount);
         _pools.Add(item.prefab.type, pool);
     }
 
-    public PoolableMono Pop(PoolingType type)
+    public IPoolable Pop(PoolingType type)
     {
         if (_pools.ContainsKey(type) == false)
         {
@@ -31,15 +31,15 @@ public class PoolingManager : MonoSingleton<PoolingManager>
             return null;
         }
         
-        PoolableMono item = _pools[type].Pop();
+        IPoolable item = _pools[type].Pop();
         item.ResetItem();
         return item;
     }
 
-    public void Push(PoolableMono obj, bool resetParent = false)
+    public void Push(IPoolable obj, bool resetParent = false)
     {
         if (resetParent)
-            obj.transform.SetParent(transform);
+            obj.ObjectPrefab.transform.SetParent(transform);
         _pools[obj.type].Push(obj);
     }
 }
