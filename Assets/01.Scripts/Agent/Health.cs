@@ -15,10 +15,13 @@ public class Health : MonoBehaviour, IDamageable, IHealable
     public int CurrentHealth => _currentHealth;
     public int maxHealth;
    
-    public void Initialize(int max)
+    private Agent _owner;
+    private Rigidbody _rigid;
+    public void Initialize(Agent agent)
     {
-        maxHealth = max;
-        _currentHealth = max;
+        _owner = agent;
+        _currentHealth = _owner.Stat.maxHealth.GetValue(); //  최대체력으로 세팅
+
     }
     
     public void TakeDamage(int amount)
@@ -45,7 +48,7 @@ public class Health : MonoBehaviour, IDamageable, IHealable
     private void HandleHealthChange(int change)
     {
         OnHealthChangedEvent?.Invoke();
-        print("체력 갱신");
+        print($"체력 갱신 - {gameObject.name}");
         OnHealthChangedValueEvent?.Invoke(_currentHealth-change, _currentHealth, maxHealth);
     }
 

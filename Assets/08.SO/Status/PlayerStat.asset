@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf980066c3a4aadac5bf4e4fe4ff15f, type: 3}
   m_Name: PlayerStat
   m_EditorClassIdentifier: 
-  atk: 2
-  health: 20
-  moveSpeed: 6
+  damage:
+    _baseValue: 2
+    modifiers: 
+    isPercent: 0
+  maxHealth:
+    _baseValue: 100
+    modifiers: 
+    isPercent: 0
+  moveSpeed:
+    _baseValue: 6
+    modifiers: 
+    isPercent: 0
