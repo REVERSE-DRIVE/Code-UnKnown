@@ -114,6 +114,7 @@ MonoBehaviour:
   _damage: 3
   _speed: 1
   _lifeTime: 100
+  _isEnemy: 1
   _targetTrm: {fileID: 0}
   _isPlayerTarget: 0
   _accuracy: 0.5

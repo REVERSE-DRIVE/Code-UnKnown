@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 public class AgentStat : ScriptableObject
 {
     public Stat damage;
-    public Stat health;
+    public Stat maxHealth;
     public Stat moveSpeed;
     
     protected Agent _owner;

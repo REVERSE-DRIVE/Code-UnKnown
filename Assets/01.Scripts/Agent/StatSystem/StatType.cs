@@ -2,7 +2,5 @@
 {
     Damage,
     MaxHealth,
-    CriticalChance,
-    CriticalDamage,
     MoveSpeed,
 }

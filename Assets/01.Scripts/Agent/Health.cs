@@ -20,7 +20,7 @@ public class Health : MonoBehaviour, IDamageable, IHealable
     public void Initialize(Agent agent)
     {
         _owner = agent;
-        _currentHealth = _owner.Stat.health.GetValue(); //  최대체력으로 세팅
+        _currentHealth = _owner.Stat.maxHealth.GetValue(); //  최대체력으로 세팅
 
     }
     
