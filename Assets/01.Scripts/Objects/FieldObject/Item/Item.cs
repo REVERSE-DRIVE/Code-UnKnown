@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using DG.Tweening;
 using ObjectManage;
 using ObjectPooling;
@@ -16,7 +17,9 @@ namespace ItemManage
         [SerializeField] private Material _activeMaterial;
         public GameObject ObjectPrefab => gameObject;
         
-        private readonly int _activeMaterialRadius = Shader.PropertyToID("_Radius");
+        private bool isInteracted;
+        private bool isSpawnig;
+        private readonly int _activeMaterialViewOffset = Shader.PropertyToID("_ViewOffset");
 
         private void Awake()
         {
@@ -33,26 +36,35 @@ namespace ItemManage
 
         public override void Detected()
         {
-            base.Detected();
-            _itemNameText.gameObject.SetActive(true);
+            if (!isInteracted || !isSpawnig)
+            {
+                base.Detected();
+            }
+
+            ItemNameTextActive(true);
         }
         
         public override void UnDetected()
         {
-            base.UnDetected();
-            _itemNameText.gameObject.SetActive(false);
+            if (!isInteracted || !isSpawnig)
+            {
+                base.UnDetected();
+            }
+
+            ItemNameTextActive(false);
         }
 
         public override void Interact(InteractData data)
         {
+            if (isInteracted || isSpawnig) return;
             base.Interact(data);
             StartCoroutine(InteractCoroutine());
         }
 
         private IEnumerator InteractCoroutine()
         {
-            _visualRenderer.material = _activeMaterial;
-            _visualRenderer.material.DOFloat(0, _activeMaterialRadius, 0.5f);
+            isInteracted = true;
+            ChangeActiveMaterial(1.1f, 0f, 0.5f);
             yield return new WaitForSeconds(0.5f);
             PoolingManager.Instance.Push(this);
         }
@@ -60,11 +72,23 @@ namespace ItemManage
 
         public void ResetItem()
         {
-            _itemNameText.gameObject.SetActive(false);
-            _visualRenderer.material = _activeMaterial;
+            isSpawnig = true;
+            ItemNameTextActive(false);
             isDetected = false;
-            _visualRenderer.material.SetFloat(_activeMaterialRadius, 0);
-            _visualRenderer.material.DOFloat(1.5f, _activeMaterialRadius, 0.5f);
+            isInteracted = false;
+            ChangeActiveMaterial(0f, 1.1f, 0.5f, () => isSpawnig = false);
+        }
+
+        private void ItemNameTextActive(bool isActive)
+        {
+            _itemNameText.gameObject.SetActive(isActive);
+        }
+
+        private void ChangeActiveMaterial(float firstViewOffsetValue, float changeViewOffsetValue, float duration, TweenCallback onCompleteCallback = null)
+        {
+            _visualRenderer.material = _activeMaterial;
+            _visualRenderer.material.SetFloat(_activeMaterialViewOffset, firstViewOffsetValue);
+            _visualRenderer.material.DOFloat(changeViewOffsetValue, _activeMaterialViewOffset, duration).OnComplete(onCompleteCallback);
         }
     }
 }
