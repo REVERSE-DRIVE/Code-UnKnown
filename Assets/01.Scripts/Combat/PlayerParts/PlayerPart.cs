@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace PlayerPartsManage
@@ -7,8 +6,12 @@ namespace PlayerPartsManage
     public abstract class PlayerPart : MonoBehaviour
     {
         protected Player _owner;
-        
-        
+
+        protected virtual void Awake()
+        {
+        }
+
+
         public PlayerPart(Player owner)
         {
             _owner = owner;

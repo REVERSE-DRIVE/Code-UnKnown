@@ -4,6 +4,6 @@
     {
         Leg,
         Body,
-        Pole
+        Bolt
     }
 }
