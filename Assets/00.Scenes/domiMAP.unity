@@ -1757,6 +1757,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTile: {fileID: 11400000, guid: 182940aa9985bfa4a99d06cc689d7c25, type: 2}
   defaultDoor: 0
+--- !u!1 &1612139746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1612139747}
+  - component: {fileID: 1612139748}
+  m_Layer: 0
+  m_Name: RoomScriptPufify
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1612139747
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612139746}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2016025046}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1612139748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612139746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55686c0ac47de8d87b854b6a3c09a52a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundTile: {fileID: 11400000, guid: 182940aa9985bfa4a99d06cc689d7c25, type: 2}
+  defaultDoor: 0
+  mapTemplate: {fileID: 7096924795576456087, guid: d1330eca39210a8899639eab70a34863, type: 3}
+  tile: {fileID: 11400000, guid: 3ad7b8790a241874c9c59868a9db2ec3, type: 2}
+  failtile: {fileID: 11400000, guid: 4e0442d1f992aad43b1955c7bc0391c1, type: 2}
+  doortile: {fileID: 0}
 --- !u!1 &1643169398
 GameObject:
   m_ObjectHideFlags: 0
@@ -2166,7 +2216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f68563fb09a8a01b07ea92118a103a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  template: {fileID: 7096924795576456087, guid: d1330eca39210a8899639eab70a34863, type: 3}
   root: {fileID: 2016025046}
 --- !u!1001 &1745853866
 PrefabInstance:
@@ -2605,6 +2654,7 @@ Transform:
   - {fileID: 752532363}
   - {fileID: 707049420}
   - {fileID: 1137990274}
+  - {fileID: 1612139747}
   - {fileID: 1651452655}
   - {fileID: 368225348}
   - {fileID: 713113022}
@@ -2626,8 +2676,8 @@ MonoBehaviour:
   - {fileID: 1454806904}
   - {fileID: 1137990275}
   - {fileID: 1137990275}
-  - {fileID: 1137990275}
-  - {fileID: 1137990275}
+  - {fileID: 1612139748}
+  - {fileID: 1612139748}
   wallTile: {fileID: 713113024}
   bridgeTile: {fileID: 368225346}
   groundTile: {fileID: 1651452657}
