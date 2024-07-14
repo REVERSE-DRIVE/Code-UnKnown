@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf980066c3a4aadac5bf4e4fe4ff15f, type: 3}
   m_Name: Type_A_Upgrade_Stat
   m_EditorClassIdentifier: 
-  atk: 0
-  health: 10
-  moveSpeed: 1
+  damage:
+    _baseValue: 0
+    modifiers: 
+    isPercent: 0
+  maxHealth:
+    _baseValue: 20
+    modifiers: 
+    isPercent: 0
+  moveSpeed:
+    _baseValue: 4
+    modifiers: 
+    isPercent: 0

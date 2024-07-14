@@ -11,13 +11,13 @@ public class Stat
 
     public int GetValue()
     {
-        int final = _baseValue;
+        int total = _baseValue;
         foreach (int value in modifiers)
         {
-            _baseValue += value;
+            total += value;
         }
 
-        return final;
+        return total;
     }
 
     public void AddModifier(int value)

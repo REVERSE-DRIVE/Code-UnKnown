@@ -16,7 +16,7 @@ MonoBehaviour:
     _baseValue: 2
     modifiers: 
     isPercent: 0
-  health:
+  maxHealth:
     _baseValue: 100
     modifiers: 
     isPercent: 0
