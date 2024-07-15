@@ -1,69 +1,39 @@
 ﻿using System;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyDirectionArrow : MonoBehaviour
 {
-    [SerializeField] private RectTransform _arrowTrm;
-    [SerializeField] private Transform _targetTrm;
-    [SerializeField] private LayerMask _whatIsEnemy;
+    [SerializeField] private Image _arrowImage;
+    [SerializeField] private Transform _target;
 
-    private Collider2D[] _colliders;
-    private bool isFindTarget;
-    private Image _arrowImage;
-
-    private void Awake()
-    {
-        _arrowImage = GetComponent<Image>();
-    }
-
-    private void Start()
-    {
-        _colliders = new Collider2D[1];
-    }
+    private Vector3 _offset;
 
     private void Update()
     {
-        Debug.Log("Update");
-        LookToEnemy();
-        FindClosestEnemy();
-        TargetInScreen();
-        _arrowImage.enabled = !isFindTarget;
-    }
-    
-    private void TargetInScreen()
-    {
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(_targetTrm.position);
-        if (screenPos.x < 0 || screenPos.x > Screen.width || screenPos.y < 0 || screenPos.y > Screen.height)
-        {
-            isFindTarget = false;
-        }
-    }
-    
-    
-
-    private void FindClosestEnemy()
-    {
-        if (isFindTarget) return;
-        int hits = Physics2D.OverlapCircleNonAlloc(transform.position, 10f, _colliders, _whatIsEnemy);
-        if (hits > 0)
-        {
-            isFindTarget = true;
-            _targetTrm = _colliders[0].transform;
-        }
+        LookToTarget();
+        OnScreenArrow();
+        
     }
 
-    private void OnDrawGizmos()
+    private void OnScreenArrow()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 10f);
+        Vector3 screenPos = Camera.main.WorldToViewportPoint(_target.position);
+        screenPos.x = Mathf.Clamp(screenPos.x, 0.1f, 0.9f);
+        screenPos.y = Mathf.Clamp(screenPos.y, 0.1f, 0.9f);
+        
+        float x = (screenPos.x - 0.5f) * Screen.width;
+        float y = (screenPos.y - 0.5f) * Screen.height;
+        
+        Vector3 pos = new Vector3(x, y, 0);
+        
+        transform.localPosition = pos;
     }
 
-    private void LookToEnemy()
+    private void LookToTarget()
     {
-        Vector3 dir = _targetTrm.position - transform.position;
+        Vector3 dir = _target.position - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        _arrowTrm.rotation = Quaternion.Euler(0, 0, angle);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 }
