@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8592836091162291304
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1155980433810045956, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+      propertyPath: m_Name
+      value: ItemBase Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431818847504931302, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431818847504931302, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431818847504931302, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431818847504931302, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431818847504931302, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431818847504931302, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431818847504931302, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431818847504931302, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431818847504931302, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431818847504931302, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1056380664780486099, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1155980433810045956, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 2091124791559542080}
+  m_SourcePrefab: {fileID: 100100000, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+--- !u!114 &312167673242604533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8316715013320359837, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+  m_PrefabInstance: {fileID: 8592836091162291304}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!212 &6574949952855998553 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3170825235135360049, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+  m_PrefabInstance: {fileID: 8592836091162291304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7436917368115089516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1155980433810045956, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+  m_PrefabInstance: {fileID: 8592836091162291304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2091124791559542080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7436917368115089516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b43828878354eeb97ce28184f766d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHealth: 0
+  OnOutsideInteractEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _detectMaterial: {fileID: 2100000, guid: 9b2f7f23d8d4f3c4098109f51a709a28, type: 2}
+  _visualRenderer: {fileID: 6574949952855998553}
+  isDetected: 0
+  <type>k__BackingField: 10
+  <ItemSO>k__BackingField: {fileID: 0}
+  _itemNameText: {fileID: 312167673242604533}
+  _itemType: 0
+  _activeMaterial: {fileID: 2100000, guid: 02b6253de25c40b449a0e470435636fb, type: 2}
+  _resourceRank: 10

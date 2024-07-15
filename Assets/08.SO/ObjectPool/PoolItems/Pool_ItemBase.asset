@@ -16,4 +16,4 @@ MonoBehaviour:
   poolingName: ItemBase
   description: "\uB4DC\uB78D\uB418\uB294 \uC544\uC774\uD15C\uC758 Base Prefab"
   poolCount: 10
-  prefabObject: {fileID: 1155980433810045956, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+  prefabObject: {fileID: 7436917368115089516, guid: 46eb9201f2d8d3a409e996f93eecfc51, type: 3}
