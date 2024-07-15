@@ -19,5 +19,5 @@ MonoBehaviour:
   range: 4.5
   weaponPrefab: {fileID: 2128876930062006932, guid: 5b95020d41fd9c04badc4c987b7b96f6, type: 3}
   limitTargetAmount: 5
-  attackRadius: 1.5
+  attackRadius: 2.3
   attackOffset: 0.3
