@@ -5462,9 +5462,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gaugeFill: {fileID: 989822248}
+  _duration: 0.3
   _levelTmp: {fileID: 1771957413}
   _expTmp: {fileID: 488902765}
-  _duration: 0.3
+  _textBeginColor: {r: 0, g: 1, b: 0.48263836, a: 1}
+  _textEndColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!222 &2094971664
 CanvasRenderer:
   m_ObjectHideFlags: 0
