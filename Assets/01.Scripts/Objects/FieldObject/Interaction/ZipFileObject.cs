@@ -11,6 +11,7 @@ public class ZipFileObject : InteractObject
     [SerializeField] private int _weaponDropPercent;
     [SerializeField] private int _minDropAmount;
     [SerializeField] private int _maxDropAmount;
+    [SerializeField] private ParticleSystem _openParticle;
     private void OnEnable()
     {
         OnInteractEvent += HandleInteract;
@@ -23,6 +24,7 @@ public class ZipFileObject : InteractObject
 
     private void HandleInteract()
     {
+        Instantiate(_openParticle, transform.position, Quaternion.identity);
         StartCoroutine(Drop());
     }
 

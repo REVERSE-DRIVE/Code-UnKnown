@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using EnemyManage;
 using ObjectPooling;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class EnemyBase : Enemy, IPoolable
     public GameObject ObjectPrefab => gameObject;
     public EnemyStateMachine<EnemyStateEnum> StateMachine { get; protected set; }
     private bool isInitEnd;
+    private bool isHit;
 
     protected override void Awake()
     {
@@ -23,15 +25,16 @@ public class EnemyBase : Enemy, IPoolable
     public virtual void Start()
     {
         Init();
+        HealthCompo.OnHealthChangedEvent.AddListener(SetHitMaterial);
+        HealthCompo.OnDieEvent.AddListener(SetDead);
     }
 
     private void Init()
     {
         isInitEnd = false;
         _spriteRenderer.material = _defaultMaterial;
-        if (_spriteRenderer.material == _hitMaterial)
-            _spriteRenderer.material = _defaultMaterial;
         StateMachine.Initialize(EnemyStateEnum.Idle, this);
+        HealthCompo.SetHealth(Stat.maxHealth.GetValue());
         isInitEnd = true;
     }
 
@@ -62,9 +65,16 @@ public class EnemyBase : Enemy, IPoolable
 
     private IEnumerator ChangeMaterial()
     {
+        if (isHit) yield break;
+        isHit = true;
         _spriteRenderer.material = _hitMaterial;
         yield return new WaitForSeconds(0.2f);
         _spriteRenderer.material = _defaultMaterial;
+        if (_spriteRenderer.material == _hitMaterial)
+        {
+            _spriteRenderer.material = _defaultMaterial;
+        }
+        isHit = false;
     }
 
     public void ResetItem()
@@ -72,4 +82,5 @@ public class EnemyBase : Enemy, IPoolable
         isDead = false;
         Init();
     }
+
 }

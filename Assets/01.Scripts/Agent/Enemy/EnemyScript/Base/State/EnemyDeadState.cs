@@ -7,6 +7,12 @@ public class EnemyDeadState : EnemyState<EnemyStateEnum>
     {
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        _enemyBase.MovementCompo.StopImmediately();
+    }
+
     public override void UpdateState()
     {
         base.UpdateState();

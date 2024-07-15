@@ -5,9 +5,14 @@ using UnityEngine;
 public class MapManager : MonoSingleton<MapManager>
 {
     [SerializeField] MapGenerator generator;
+    public MapTileManager TileManager { get; private set; }
 
     Dictionary<Vector2Int, RoomBase> map = new();
     List<BridgeBase> bridges = new();
+
+    private void Awake() {
+        TileManager = GetComponent<MapTileManager>();
+    }
 
     ///////////////////////////////// TEST
     private void Start() {

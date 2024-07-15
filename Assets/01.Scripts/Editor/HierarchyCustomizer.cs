@@ -15,8 +15,25 @@ public class HierarchyCustomizer
     private static void HandleHierarchyWindowItemOnGUI(int instanceId, Rect selectionRect)
     {
         GameObject obj = EditorUtility.InstanceIDToObject(instanceId) as GameObject;
+        
         if (obj != null)
         {
+            if (obj.name.Contains("==="))
+            {
+                obj.transform.position = new Vector3(0, 0, 0);
+                Rect rect = new Rect(selectionRect);
+                rect.x = 0;
+                rect.width = 1000;
+                EditorGUI.DrawRect(rect, new Color(0.1f, 0.1f, 0.1f, 0.5f));
+                EditorGUI.LabelField(rect, obj.name, new GUIStyle()
+                {
+                    normal = new GUIStyleState()
+                    {
+                        textColor = Color.white
+                    },
+                    alignment = TextAnchor.MiddleCenter
+                });
+            }
             // 오른쪽 끝에 토글버튼
             Rect toggleRect = new Rect(selectionRect.x + selectionRect.width - 25, selectionRect.y - 2.5f, 20, 20);
             obj.SetActive(EditorGUI.Toggle(toggleRect, obj.activeSelf));
