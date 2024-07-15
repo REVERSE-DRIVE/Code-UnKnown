@@ -13,7 +13,6 @@ public class RoomPurify : RoomBase
     [SerializeField] Tilemap mapTemplate;
     [SerializeField] TileBase tile;
     [SerializeField] TileBase failtile;
-    [SerializeField] TileBase doortile;
 
     List<PurifyData> purifies = new();
 
