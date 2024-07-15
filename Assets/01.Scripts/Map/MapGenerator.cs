@@ -25,9 +25,11 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] Tilemap wallTile;
     [SerializeField] Tilemap bridgeTile;
     [SerializeField] Tilemap groundTile;
+    [SerializeField] Tilemap doorTile;
 
     [SerializeField] TileBase wallBase;
     [SerializeField] TileBase bridgeBase;
+    [SerializeField] TileBase doorBase;
 
     [SerializeField] Vector2Int bridgeSize;
 
@@ -290,6 +292,19 @@ public class MapGenerator : MonoBehaviour
 
         room.SetRoomPos(minPos, maxPos, mapPos);
 
+        // 바닥 / 벽
+        for (int i = minPos.y; i <= maxPos.y; i++)
+        {
+            for (int k = minPos.x; k <= maxPos.x; k++)
+            {
+                if (i == minPos.y || i == maxPos.y || k == minPos.x || k == maxPos.x) {
+                    wallTile.SetTile(new Vector3Int(k,i,0), wallBase);
+                }
+                groundTile.SetTile(new Vector3Int(k,i,0), room.GetGroundTile());
+            }
+        }
+
+
         // 나중에 계산 후 타일 만듬
         for (int i = 0; i < 4; i++)
         {
@@ -401,13 +416,17 @@ public class MapGenerator : MonoBehaviour
                 room.SetDoor(dir, doorSize, subBridge);
                 otherRoom.SetDoor(ReverseD_irection(dir), doorSize, subBridge);
 
+                // 문벽 삭제
+                RemoveWallDoor(room, dir, doorSize);
+                // 문벽 삭제 (전 방)
+                RemoveWallDoor(otherRoom, ReverseD_irection(dir), doorSize);
+
                 MapManager.Instance.AddBridge(bridge);
 
                 print(modifySize);
                 print(endPoint);
             }
         }
-
         // 다리
         if (lastRoom) {
             bridge.room1 = room;
@@ -425,6 +444,11 @@ public class MapGenerator : MonoBehaviour
             lastRoom.SetDoor(lastDir, doorSize, bridge);
             room.SetDoor(ReverseD_irection(lastDir), doorSize, bridge);
 
+            // 문벽 삭제
+            RemoveWallDoor(room, ReverseD_irection(lastDir), doorSize);
+            // 문벽 삭제 (전 방)
+            RemoveWallDoor(lastRoom, lastDir, doorSize);
+
             for (int i = bridgeStart.y; i <= bridgeEndPos.y; i++)
             {
                 for (int k = bridgeStart.x; k <= bridgeEndPos.x; k++)
@@ -438,17 +462,6 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
-        // 바닥 / 벽
-        for (int i = minPos.y; i <= maxPos.y; i++)
-        {
-            for (int k = minPos.x; k <= maxPos.x; k++)
-            {
-                if (i == minPos.y || i == maxPos.y || k == minPos.x || k == maxPos.x) {
-                    wallTile.SetTile(new Vector3Int(k,i,0), wallBase);
-                }
-                groundTile.SetTile(new Vector3Int(k,i,0), room.GetGroundTile());
-            }
-        }
 
         // 다 됐으면
         nowCreateIdx++;
@@ -460,6 +473,23 @@ public class MapGenerator : MonoBehaviour
         
         room.OnComplete();
         return true;
+    }
+
+    void RemoveWallDoor(RoomBase room, Direction dir, Vector2Int size) {
+        for (int i = size.x + 1; i <= size.y - 1; i++) {
+            Vector2Int pos = Vector2Int.zero;
+            if (dir == Direction.Top) {
+                pos = new(i, room.MaxPos.y);
+            } else if (dir == Direction.Right) {
+                pos = new(room.MaxPos.x, i);
+            } else if (dir == Direction.Left) {
+                pos = new(room.MinPos.x, i);
+            } else if (dir == Direction.Bottom) {
+                pos = new(i, room.MinPos.y);
+            }
+
+            wallTile.SetTile(new Vector3Int(pos.x, pos.y, 0), null);
+        }
     }
 
     public static Vector2Int GetDirection(Direction dir) {
@@ -588,6 +618,26 @@ public class MapGenerator : MonoBehaviour
             for (int k = min.x; k <= max.x; k++)
             {
                 wallTile.SetTile(new Vector3Int(k,i,0), null);
+            }
+        }
+    }
+
+    public void CreateDoor(Vector2Int min, Vector2Int max) {
+        for (int i = min.y; i <= max.y; i++)
+        {
+            for (int k = min.x; k <= max.x; k++)
+            {
+                doorTile.SetTile(new Vector3Int(k,i,0), doorBase);
+            }
+        }
+    }
+    
+    public void DeleteDoor(Vector2Int min, Vector2Int max) {
+        for (int i = min.y; i <= max.y; i++)
+        {
+            for (int k = min.x; k <= max.x; k++)
+            {
+                doorTile.SetTile(new Vector3Int(k,i,0), null);
             }
         }
     }

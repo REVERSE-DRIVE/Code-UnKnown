@@ -111,9 +111,9 @@ public class RoomBase : MonoBehaviour
             }
 
             if (active) {
-                MapManager.Instance.CreateWall(min, max);
+                MapManager.Instance.Generator.CreateDoor(min, max);
             } else {
-                MapManager.Instance.DeleteWall(min, max);
+                MapManager.Instance.Generator.DeleteDoor(min, max);
             }
         }
     }
