@@ -2079,8 +2079,7 @@ MonoBehaviour:
   groundTile: {fileID: 11400000, guid: 182940aa9985bfa4a99d06cc689d7c25, type: 2}
   defaultDoor: 0
   mapTemplate: {fileID: 7096924795576456087, guid: d1330eca39210a8899639eab70a34863, type: 3}
-  tile: {fileID: 11400000, guid: 3ad7b8790a241874c9c59868a9db2ec3, type: 2}
-  failtile: {fileID: 11400000, guid: 4e0442d1f992aad43b1955c7bc0391c1, type: 2}
+  tile: {fileID: 11400000, guid: 4e0442d1f992aad43b1955c7bc0391c1, type: 2}
 --- !u!1 &1643169398
 GameObject:
   m_ObjectHideFlags: 0
@@ -2550,7 +2549,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8577186893356440498, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
 --- !u!4 &1745853867 stripped
 Transform:
@@ -2950,11 +2952,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createRooms:
   - {fileID: 1454806904}
-  - {fileID: 1137990275}
-  - {fileID: 1137990275}
-  - {fileID: 1612139748}
   - {fileID: 1612139748}
   - {fileID: 491024335}
+  - {fileID: 1612139748}
+  - {fileID: 1137990275}
   wallTile: {fileID: 713113024}
   bridgeTile: {fileID: 368225346}
   groundTile: {fileID: 1651452657}
