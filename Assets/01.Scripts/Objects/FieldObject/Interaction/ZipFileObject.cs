@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using ItemManage;
@@ -8,9 +7,13 @@ using Random = UnityEngine.Random;
 
 public class ZipFileObject : InteractObject
 {
+    [Header("Drop Setting")]
     [SerializeField] private ItemType _dropType;
+    [SerializeField] private int _dropItemId;
     [SerializeField] private int _minDropAmount;
     [SerializeField] private int _maxDropAmount;
+    
+    [Header("Visual Setting")]
     [SerializeField] private ParticleSystem _openParticle;
     [SerializeField] private Material _dissolveMaterial;
     
@@ -43,23 +46,23 @@ public class ZipFileObject : InteractObject
 
     protected virtual void HandleInteract()
     {
-        Instantiate(_openParticle, transform.position, Quaternion.identity);
+        
         StartCoroutine(Drop());
     }
 
     private IEnumerator Drop()
     {
         _animator.SetTrigger(Open);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.7f);
+        Instantiate(_openParticle, transform.position, Quaternion.identity);    
         Dissolve();
-        yield return new WaitForSeconds(0.5f);
         
         int dropAmount = Random.Range(_minDropAmount, _maxDropAmount);
         Vector3 position = transform.position;
         for (int i = 0; i < dropAmount; i++)
         {
             position += new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
-            ItemDropManager.Instance.DropItem(_dropType, 0, position);
+            ItemDropManager.Instance.DropItem(_dropType, _dropItemId, transform.position, position);
             yield return new WaitForSeconds(0.5f);
         }
         yield return new WaitForSeconds(0.5f);
