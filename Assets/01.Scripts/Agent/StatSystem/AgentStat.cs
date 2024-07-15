@@ -32,7 +32,7 @@ public class AgentStat : ScriptableObject
         yield return new WaitForSeconds(duration);
         targetStat.RemoveModifier(value);
     }
-
+    
     protected virtual void OnEnable()
     {
         _statDictionary = new Dictionary<StatType, Stat>();
@@ -86,11 +86,18 @@ public class AgentStat : ScriptableObject
 
     public void AddModifier(StatType type, int value)
     {
-        _statDictionary[type].AddModifier(value);
+        if (_statDictionary.TryGetValue(type, out Stat stat))
+        {
+            stat.AddModifier(value);
+        }
+        //_statDictionary[type].AddModifier(value);
     }
 
     public void RemoveModifier(StatType type, int value)
     {
-        _statDictionary[type].RemoveModifier(value);
+        if (_statDictionary.TryGetValue(type, out Stat stat))
+            stat.RemoveModifier(value);
+        else 
+            Debug.LogError($"{type.ToString()} : Modifier is Not Exist. (value:{value})");
     }
 }
