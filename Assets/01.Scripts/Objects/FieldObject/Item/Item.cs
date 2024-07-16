@@ -26,7 +26,7 @@ namespace ItemManage
             _defaultMaterial = _visualRenderer.material;
         }
 
-        public void SetItem(ItemSO itemSO)
+        public virtual void SetItem(ItemSO itemSO)
         {
             ItemSO = itemSO;
             _itemNameText.text = ItemSO.itemName;
