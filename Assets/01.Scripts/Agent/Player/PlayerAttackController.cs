@@ -37,7 +37,7 @@ public class PlayerAttackController : MonoBehaviour
     {
         _player.PlayerInputCompo.OnMovementEvent -= _currentWeapon.HandleRotateWeapon;
         _currentWeaponInfo = newWeaponSO;
-        Destroy(_currentWeapon);
+        Destroy(_currentWeapon.gameObject);
         _currentWeapon = Instantiate(_currentWeaponInfo.WeaponPrefab, _weaponHandleTrm);
         WeaponInit();
         
