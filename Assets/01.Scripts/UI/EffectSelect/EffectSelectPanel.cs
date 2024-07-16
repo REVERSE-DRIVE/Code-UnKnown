@@ -13,7 +13,7 @@ public class EffectSelectPanel : MonoBehaviour, IWindowPanel
     // 중첩 레벨업을 대비하여 이를 저장
     private int _levelUpAmount;
 
-    private bool _isTween = false;
+    private bool _isActive = false;
     
     private void Awake()
     {
@@ -45,8 +45,10 @@ public class EffectSelectPanel : MonoBehaviour, IWindowPanel
 
     public void Open()
     {
+        print("EffectSelect창 열림");
+        // if () return;
         _levelUpAmount++;
-        if (_levelUpAmount > 0) return;
+
         SetUpPowerUpCards();
         _canvasGroup.DOFade(1, 0.3f).SetUpdate(true).OnComplete(() => SetInteract(true));
     }

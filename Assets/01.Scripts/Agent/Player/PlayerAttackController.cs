@@ -33,10 +33,12 @@ public class PlayerAttackController : MonoBehaviour
         _player = player;
     }
 
-    public void ChangeWeapon(Weapon newWeapon)
+    public void ChangeWeapon(WeaponInfoSO newWeaponSO)
     {
         _player.PlayerInputCompo.OnMovementEvent -= _currentWeapon.HandleRotateWeapon;
-        _currentWeapon = newWeapon;
+        _currentWeaponInfo = newWeaponSO;
+        Destroy(_currentWeapon);
+        _currentWeapon = Instantiate(_currentWeaponInfo.WeaponPrefab, _weaponHandleTrm);
         WeaponInit();
         
     }
