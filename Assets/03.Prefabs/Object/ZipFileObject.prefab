@@ -54,6 +54,7 @@ MonoBehaviour:
   _visualRenderer: {fileID: 6111720997015479615}
   isDetected: 0
   _dropType: 0
+  _dropItemId: 0
   _minDropAmount: 1
   _maxDropAmount: 3
   _openParticle: {fileID: 5357645379088792373, guid: a6c1b430eea8a39489d6eb9e7f421aa3, type: 3}
@@ -101,7 +102,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!1 &4011623235578332501
 GameObject:
@@ -176,7 +177,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -829507261
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -7475264199937239886, guid: b1e21a059c40dab488bda5d26cfe6da9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
