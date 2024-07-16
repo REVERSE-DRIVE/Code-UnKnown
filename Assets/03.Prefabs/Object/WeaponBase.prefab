@@ -90,11 +90,12 @@ MonoBehaviour:
   _detectMaterial: {fileID: 2100000, guid: 9b2f7f23d8d4f3c4098109f51a709a28, type: 2}
   _visualRenderer: {fileID: 1528213012724095601}
   isDetected: 0
-  <type>k__BackingField: 0
+  <type>k__BackingField: 10
   <ItemSO>k__BackingField: {fileID: 0}
   _itemNameText: {fileID: 5358911228783938013}
   _itemType: 10
   _activeMaterial: {fileID: 2100000, guid: 02b6253de25c40b449a0e470435636fb, type: 2}
+  _weaponInfoSO: {fileID: 0}
 --- !u!114 &5358911228783938013 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8316715013320359837, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
