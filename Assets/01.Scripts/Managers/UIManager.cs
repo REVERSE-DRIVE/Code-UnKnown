@@ -18,7 +18,7 @@ public class UIManager : MonoSingleton<UIManager>
         panelDictionary = new Dictionary<WindowEnum, IWindowPanel>();
         foreach (WindowEnum windowEnum in Enum.GetValues(typeof(WindowEnum)))
         {
-            IWindowPanel panel = _canvasTrm.GetComponent($"{windowEnum.ToString()}Panel") as IWindowPanel;
+            IWindowPanel panel = _canvasTrm.Find($"{windowEnum.ToString()}Panel").GetComponent<IWindowPanel>();
             panelDictionary.Add(windowEnum, panel);
         }
     }
