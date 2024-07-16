@@ -57,7 +57,7 @@ MonoBehaviour:
   <type>k__BackingField: 10
   <ItemSO>k__BackingField: {fileID: 0}
   _itemNameText: {fileID: 8316715013320359837}
-  _itemType: 0
+  _itemType: 10
   _activeMaterial: {fileID: 2100000, guid: 02b6253de25c40b449a0e470435636fb, type: 2}
 --- !u!61 &3473447056630540512
 BoxCollider2D:

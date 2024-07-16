@@ -13,7 +13,7 @@ public class ItemDropManager : MonoSingleton<ItemDropManager>
     public Item DropItem(ItemType type, int id, Vector2 position)
     {
         ItemSO itemSO = FindItemSo(type, id);
-        Item item = PoolingManager.Instance.Pop(PoolingType.ItemBase) as Item;
+        Item item = PoolingManager.Instance.Pop((PoolingType)(int)type) as Item;
         item.SetItem(itemSO);
         item.transform.position = position;
         return item;
@@ -22,7 +22,7 @@ public class ItemDropManager : MonoSingleton<ItemDropManager>
     public Item DropItem(ItemType type, int id, Vector2 startPosition, Vector2 endPosition)
     {
         ItemSO itemSO = FindItemSo(type, id);
-        Item item = PoolingManager.Instance.Pop(PoolingType.ItemBase) as Item;
+        Item item = PoolingManager.Instance.Pop((PoolingType)((int)type)) as Item;
         item.SetItem(itemSO);
         item.transform.position = startPosition;
         item.transform.DOJump(endPosition, 1.5f, 1, 1);
