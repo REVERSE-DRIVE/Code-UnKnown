@@ -6,14 +6,12 @@ namespace ItemManage
     [CustomEditor(typeof(ItemSO))]
     public class ItemSOCustomEditor : Editor
     {
-        private SerializedProperty _itemType;
         private SerializedProperty _id;
         private SerializedProperty _itemName;
         private SerializedProperty _itemIcon;
         
         private void OnEnable()
         {
-            _itemType = serializedObject.FindProperty("itemType");
             _id = serializedObject.FindProperty("id");
             _itemName = serializedObject.FindProperty("itemName");
             _itemIcon = serializedObject.FindProperty("itemIcon");
@@ -32,7 +30,6 @@ namespace ItemManage
 
                 EditorGUILayout.BeginVertical();
                 {
-                    EditorGUILayout.PropertyField(_itemType);
                     EditorGUILayout.PropertyField(_id);
                     EditorGUI.BeginChangeCheck();
                     string prevName = _itemName.stringValue;

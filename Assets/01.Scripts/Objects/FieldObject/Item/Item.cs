@@ -17,8 +17,8 @@ namespace ItemManage
         [SerializeField] private Material _activeMaterial;
         public GameObject ObjectPrefab => gameObject;
         
-        private bool isInteracted;
-        private bool isSpawnig;
+        private bool _isInteracted;
+        private bool _isSpawnig;
         private readonly int _activeMaterialViewOffset = Shader.PropertyToID("_ViewOffset");
 
         private void Awake()
@@ -31,12 +31,11 @@ namespace ItemManage
             ItemSO = itemSO;
             _itemNameText.text = ItemSO.itemName;
             _visualRenderer.sprite = ItemSO.itemIcon;
-            _itemType = ItemSO.itemType;
         }
 
         public override void Detected()
         {
-            if (!isInteracted || !isSpawnig)
+            if (!_isInteracted || !_isSpawnig)
             {
                 base.Detected();
             }
@@ -46,7 +45,7 @@ namespace ItemManage
         
         public override void UnDetected()
         {
-            if (!isInteracted || !isSpawnig)
+            if (!_isInteracted || !_isSpawnig)
             {
                 base.UnDetected();
             }
@@ -56,14 +55,14 @@ namespace ItemManage
 
         public override void Interact(InteractData data)
         {
-            if (isInteracted || isSpawnig) return;
+            if (_isInteracted || _isSpawnig) return;
             base.Interact(data);
             StartCoroutine(InteractCoroutine());
         }
 
         private IEnumerator InteractCoroutine()
         {
-            isInteracted = true;
+            _isInteracted = true;
             ChangeActiveMaterial(1.1f, 0f, 0.5f);
             yield return new WaitForSeconds(0.5f);
             PoolingManager.Instance.Push(this);
@@ -72,11 +71,11 @@ namespace ItemManage
 
         public void ResetItem()
         {
-            isSpawnig = true;
-            ItemNameTextActive(false);
+            _isSpawnig = true;
             isDetected = false;
-            isInteracted = false;
-            ChangeActiveMaterial(0f, 1.1f, 0.5f, () => isSpawnig = false);
+            _isInteracted = false;
+            ItemNameTextActive(false);
+            ChangeActiveMaterial(0f, 1.1f, 0.5f, () => _isSpawnig = false);
         }
 
         private void ItemNameTextActive(bool isActive)
