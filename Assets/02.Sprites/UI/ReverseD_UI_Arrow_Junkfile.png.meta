@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 61fd12d2a2257bf4f9ee2b944a755ce4
+guid: bc21ec2e30de2fb4b814684a8158d2ae
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ReverseD_UI_Arrow_0
+      name: ReverseD_UI_Arrow_Junkfile_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e9c80ebe29b3b5a50800000000000000
-      internalID: 6510863188502809758
+      spriteID: 0543f3f76e3f4cff0800000000000000
+      internalID: -16620327299763120
       vertices: []
       indices: 
       edges: []
@@ -154,7 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ReverseD_UI_Arrow_0: 6510863188502809758
+      ReverseD_UI_Arrow_Junkfile_0: -16620327299763120
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
