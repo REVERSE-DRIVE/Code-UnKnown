@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1066204932706900731, guid: c192c68643fd78042adfe9d91ff24c3a, type: 3}
       propertyPath: m_Name
-      value: ZipFileObject Variant
+      value: ZipFileObject_Green
       objectReference: {fileID: 0}
     - target: {fileID: 1748003064566870012, guid: c192c68643fd78042adfe9d91ff24c3a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,6 +52,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6111720997015479615, guid: c192c68643fd78042adfe9d91ff24c3a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7265286103925634420, guid: 2b4ca718852b1fb418da85efa6efb7c0, type: 3}
+    - target: {fileID: 7349526899989436177, guid: c192c68643fd78042adfe9d91ff24c3a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: e82c5ef2b27154e428521eb807ebf36a, type: 2}
     - target: {fileID: 8109547459878698714, guid: c192c68643fd78042adfe9d91ff24c3a, type: 3}
       propertyPath: _dropItemId
       value: 0

@@ -19,9 +19,7 @@ public class ZipFileObject : InteractObject
     
     private Transform _visualTransform;
     
-    protected Material _defaultMaterial;
     protected Animator _animator;
-    protected SpriteRenderer _visualRenderer;
     
     private static readonly int Open = Animator.StringToHash("Open");
     private static readonly int DissolveLevel = Shader.PropertyToID("_DissolveLevel");
