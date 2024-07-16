@@ -17,6 +17,12 @@ public class MapManager : MonoSingleton<MapManager>
     ///////////////////////////////// TEST
     private void Start() {
         Generate();
+        
+        // 만든 후 준비 방으로 플레이어 이동
+        RoomBase room = GetRoomByCoords(Vector2Int.zero);
+        Vector3 centerPos = room.GetCenterCoords();
+
+        PlayerManager.Instance.player.transform.position = centerPos;
     }
     ///////////////////////////////// TEST END
 
