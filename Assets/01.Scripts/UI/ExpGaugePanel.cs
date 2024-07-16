@@ -1,21 +1,21 @@
 ﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class ExpGaugePanel : MonoBehaviour
 {
     [Header("Gauge Setting")]
     [SerializeField] private Image _gaugeFill;
-    [SerializeField] private Color _fillBeginColor;
-    [SerializeField] private Color _fillEndColor;
     [SerializeField] private float _duration = 0.5f;
     private readonly int _maxLevel = 25;
 
     [Header("Text Setting")]
     [SerializeField] private TextMeshProUGUI _levelTmp;
     [SerializeField] private TextMeshProUGUI _expTmp;
-    
+    [SerializeField] private Color _textBeginColor;
+    [SerializeField] private Color _textEndColor;
     private Sequence _seq;
     private int _prevLevel = -1;
     public void ResetGauge()
@@ -28,7 +28,7 @@ public class ExpGaugePanel : MonoBehaviour
         if (_prevLevel < currentLevel)
         {
             _prevLevel = currentLevel;
-            _levelTmp.color = Color.Lerp(_fillBeginColor, _fillEndColor, (float)currentLevel/_maxLevel);
+            _levelTmp.color = Color.Lerp(_textBeginColor, _textEndColor, (float)currentLevel/_maxLevel);
             _levelTmp.text = currentLevel.ToString();
             ResetGauge();
         }
