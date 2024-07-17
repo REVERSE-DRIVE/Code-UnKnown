@@ -17,8 +17,8 @@ namespace ItemManage
         [SerializeField] private Material _activeMaterial;
         public GameObject ObjectPrefab => gameObject;
         
-        private bool _isInteracted;
-        private bool _isSpawnig;
+        protected bool _isInteracted;
+        protected bool _isSpawnig;
         private readonly int _activeMaterialViewOffset = Shader.PropertyToID("_ViewOffset");
 
         private void Awake()
