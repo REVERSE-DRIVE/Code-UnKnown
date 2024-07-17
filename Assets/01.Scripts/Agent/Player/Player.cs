@@ -18,6 +18,7 @@ public class Player : Agent
         PlayerAttackCompo.Initialize(this);
         
         additionalStat = Instantiate(additionalStat);
+        additionalStat.SetOwner(this);
     }
 
     private void Start()
