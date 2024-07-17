@@ -56,13 +56,14 @@ namespace ItemManage
         public override void Interact(InteractData data)
         {
             if (_isInteracted || _isSpawnig) return;
+            
+            _isInteracted = true;
             base.Interact(data);
             StartCoroutine(InteractCoroutine());
         }
 
         private IEnumerator InteractCoroutine()
         {
-            _isInteracted = true;
             ChangeActiveMaterial(1.1f, 0f, 0.5f);
             yield return new WaitForSeconds(0.5f);
             PoolingManager.Instance.Push(this);
