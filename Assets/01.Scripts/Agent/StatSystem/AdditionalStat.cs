@@ -23,7 +23,7 @@ public class AdditionalStat : ScriptableObject
     {
         _statDictionary = new Dictionary<AddStatType, Stat>();
 
-        Type agentStatType = typeof(AgentStat); //이 클래스의 타입정보를 불러와서
+        Type agentStatType = typeof(AdditionalStat); //이 클래스의 타입정보를 불러와서
 
         foreach(AddStatType typeEnum in Enum.GetValues(typeof(AddStatType)))
         {

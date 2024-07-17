@@ -1,5 +1,6 @@
 ﻿public enum ImmediateEffectType
 {
-    Heal,
+    HealByPercent,
+    NormalHeal,
     
 }
