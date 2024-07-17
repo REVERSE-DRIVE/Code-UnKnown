@@ -5,6 +5,7 @@ using UnityEngine;
 public class CustomPowerUp : Editor
 {
     private SerializedProperty codeProp;
+    private SerializedProperty rankProp;
     private SerializedProperty shouldBeUnlockProp;
     private SerializedProperty titleProp;
     private SerializedProperty descProp;
@@ -20,6 +21,7 @@ public class CustomPowerUp : Editor
         //왜했는지 기억나니? 텍스트 입력에 포커스 
         GUIUtility.keyboardControl = 0;
         codeProp = serializedObject.FindProperty("code");
+        rankProp = serializedObject.FindProperty("powerUpRank");
         shouldBeUnlockProp = serializedObject.FindProperty("shouldBeUnlock");
         titleProp = serializedObject.FindProperty("title");
         descProp = serializedObject.FindProperty("description");
@@ -86,6 +88,7 @@ public class CustomPowerUp : Editor
                 }
                 EditorGUILayout.EndHorizontal();
 
+                EditorGUILayout.PropertyField(rankProp);
                 EditorGUILayout.PropertyField(shouldBeUnlockProp);
                 EditorGUILayout.PropertyField(titleProp);
             }
