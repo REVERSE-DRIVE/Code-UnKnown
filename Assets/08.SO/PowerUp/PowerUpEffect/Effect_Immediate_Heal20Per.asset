@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0683c48d3494d6880734a1dea34d110, type: 3}
-  m_Name: Effect_Immediate_Heal10Per
+  m_Name: Effect_Immediate_Heal20Per
   m_EditorClassIdentifier: 
-  code: Immediate_Heal10Per
+  code: Immediate_Heal20Per
   type: 0
   effectType: 0
-  effectValue: 0
+  effectValue: 20

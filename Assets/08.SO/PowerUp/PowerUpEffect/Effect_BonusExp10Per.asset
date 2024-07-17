@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8e5839230a74b0c9dc8ca54d204e9e8, type: 3}
-  m_Name: Effect_BonusExp5Per
+  m_Name: Effect_BonusExp10Per
   m_EditorClassIdentifier: 
-  code: BonusExp5Per
+  code: BonusExp10Per
   type: 0
   targetType: 0
-  increaseValue: 0
+  increaseValue: 10
