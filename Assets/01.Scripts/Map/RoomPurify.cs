@@ -12,7 +12,6 @@ public class RoomPurify : RoomBase
 {
     [SerializeField] Tilemap mapTemplate;
     [SerializeField] TileBase tile;
-    [SerializeField] TileBase failtile;
 
     List<PurifyData> purifies = new();
 
@@ -30,7 +29,9 @@ public class RoomPurify : RoomBase
             purifyMap = MapManager.Instance.TileManager.CreateMap(TileMapType.Purify, mapTemplate);
 
         int createNum = Random.Range(1, 5);
+        // int createNum = Random.Range(1, 2); // TEST
         int created = 0, failCount = 0;
+        int nearSize = 3;
 
         while (createNum > created && failCount < 50) {
             Vector2Int size;
@@ -39,9 +40,9 @@ public class RoomPurify : RoomBase
 
             bool width = Random.Range(0, 2) == 1;
             if (width) {
-                size = new(Random.Range((int)((Size.x - 2) * 0.1f), Size.x - 1), Random.Range(3, 6));
+                size = new(Random.Range((int)((Size.x - 2) * 0.1f), Size.x - 2 - nearSize), Random.Range(3, 6));
             } else {
-                size = new(Random.Range(3, 6), Random.Range((int)((Size.y - 2) * 0.1f), Size.y - 1));
+                size = new(Random.Range(3, 6), Random.Range((int)((Size.y - 2) * 0.1f), Size.y - 2 - nearSize));
             }
 
             // 크기 차단
@@ -55,13 +56,46 @@ public class RoomPurify : RoomBase
                 continue;
             }
 
-            minPos.x = Random.Range( MinPos.x + 1, ((MaxPos.x - 1) - size.x) + 1 );
-            minPos.y = Random.Range( MinPos.y + 1, ((MaxPos.y - 1) - size.y) + 1 );
-
+            minPos.x = Random.Range( MinPos.x + 1, (MaxPos.x - size.x) + 1 );
+            minPos.y = Random.Range( MinPos.y + 1, (MaxPos.y - size.y) + 1 );
+            
             maxPos = minPos + size - Vector2Int.one;
 
+            // min, max 로 룸 min max 거리 확인하고 nearDoor 보다 작으면 만들기 취소 (거리가 0일때는 그냥 함)
+            Vector2Int minPosAbs = new Vector2Int(Mathf.Abs(minPos.x), Mathf.Abs(minPos.y));
+            Vector2Int mapMinPosAbs = new Vector2Int(Mathf.Abs(MinPos.x), Mathf.Abs(MinPos.y));
+
+            int maxAbsX = Mathf.Max(minPosAbs.x, mapMinPosAbs.x);
+            int maxAbsY = Mathf.Max(minPosAbs.y, mapMinPosAbs.y);
+            int minAbsX = Mathf.Min(minPosAbs.x, mapMinPosAbs.x);
+            int minAbsY = Mathf.Min(minPosAbs.y, mapMinPosAbs.y);
+
+
+            Vector2Int boxDistanceMin = new Vector2Int(maxAbsX - minAbsX, maxAbsY - minAbsY) - Vector2Int.one /* 테두리 제외 */;
+            if ((boxDistanceMin.x != 0 && boxDistanceMin.x < nearSize) || (boxDistanceMin.y != 0 && boxDistanceMin.y < nearSize)) {
+                failCount++;
+                continue;
+            }
+
+
+            // MaxPos 로 비교
+
+            Vector2Int maxPosAbs = new Vector2Int(Mathf.Abs(maxPos.x), Mathf.Abs(maxPos.y));
+            Vector2Int mapMaxPosAbs = new Vector2Int(Mathf.Abs(MaxPos.x), Mathf.Abs(MaxPos.y));
+            
+            maxAbsX = Mathf.Max(maxPosAbs.x, mapMaxPosAbs.x);
+            maxAbsY = Mathf.Max(maxPosAbs.y, mapMaxPosAbs.y);
+            minAbsX = Mathf.Min(maxPosAbs.x, mapMaxPosAbs.x);
+            minAbsY = Mathf.Min(maxPosAbs.y, mapMaxPosAbs.y);
+
+            boxDistanceMin = new Vector2Int(maxAbsX - minAbsX, maxAbsY - minAbsY) - Vector2Int.one;
+            if ((boxDistanceMin.x != 0 && boxDistanceMin.x < nearSize) || (boxDistanceMin.y != 0 && boxDistanceMin.y < nearSize)) {
+                failCount++;
+                continue;
+            }
+
+
             // 문 가까운지 확인
-            int nearSize = 3;
             foreach (var item in doors)
             {
                 Vector2Int minPos2 = new();
@@ -104,7 +138,6 @@ public class RoomPurify : RoomBase
                 failCount ++;
                 continue;
             }
-
             // 정화구역 만들때 다른 구역 비교해서 구멍이 너무 작을 경우 스탑 처리
             foreach (var item in purifies) {
                 // 겹치면 상관없다.

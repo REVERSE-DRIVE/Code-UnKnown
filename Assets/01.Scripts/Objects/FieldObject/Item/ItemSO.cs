@@ -18,8 +18,14 @@ namespace ItemManage
         {
             if (itemType == ItemType.Weapon)
             {
+                if (weaponInfoSO == null)
+                {
+                    Debug.LogWarning("[WeaponSO is Null] Insert WeaponSO");
+                    return;
+                }
                 id = weaponInfoSO.id;
                 itemName = weaponInfoSO.weaponName;
+                
             }
         }
     }

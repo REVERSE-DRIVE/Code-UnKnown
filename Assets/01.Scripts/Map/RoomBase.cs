@@ -84,6 +84,14 @@ public class RoomBase : MonoBehaviour
         return pos;
     }
 
+    public Vector3 GetCenterCoords() {
+        Vector3 worldMin = MapManager.Instance.GetWorldPosByCell(MinPos);
+        Vector3 worldMax = MapManager.Instance.GetWorldPosByCell(MaxPos + Vector2Int.one);
+        
+        return (worldMin + worldMax) / 2f;
+    }
+    
+
     public TileBase GetGroundTile() => groundTile;
 
     public virtual void RoomEnter() {

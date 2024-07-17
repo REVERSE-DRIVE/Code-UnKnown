@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class Player : Agent
 {
@@ -6,6 +7,8 @@ public class Player : Agent
     public PlayerVFX PlayerVFXCompo { get; protected set; }
     public PlayerAttackController PlayerAttackCompo { get; protected set; }
 
+    [field:SerializeField] public AdditionalStat additionalStat { get; protected set; }
+    
     protected override void Awake()
     {
         base.Awake();
@@ -13,7 +16,9 @@ public class Player : Agent
         PlayerVFXCompo = VFXCompo  as PlayerVFX;
         PlayerAttackCompo = GetComponent<PlayerAttackController>();
         PlayerAttackCompo.Initialize(this);
-
+        
+        additionalStat = Instantiate(additionalStat);
+        additionalStat.SetOwner(this);
     }
 
     private void Start()
