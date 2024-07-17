@@ -13,7 +13,7 @@ public class StatIncUpEffectSO : PowerUpEffectSO
 
     public override bool CanUpgradeEffect()
     {
-        return true; // 스챗 최대치를 설정했다면 그냥 true하면 안딤
+        return true; // 스탯 최대치를 설정했다면 그냥 true하면 안딤
     }
 
     private void OnValidate()

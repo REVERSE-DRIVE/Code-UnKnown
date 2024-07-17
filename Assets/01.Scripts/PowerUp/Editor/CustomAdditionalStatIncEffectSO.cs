@@ -1,9 +1,9 @@
-using System;
+﻿using System;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(StatIncUpEffectSO))]
-public class CustomStatIncEffectSO : CustomPowerEffectSO
+[CustomEditor(typeof(AdditionStatIncEffectSO))]
+public class CustomAdditionalStatIncEffectSO: CustomPowerEffectSO
 {
     private SerializedProperty targetStatProp;
     private SerializedProperty increaseValueProp;
@@ -11,7 +11,7 @@ public class CustomStatIncEffectSO : CustomPowerEffectSO
     protected override void OnEnable()
     {
         base.OnEnable();
-        targetStatProp = serializedObject.FindProperty("targetStat");
+        targetStatProp = serializedObject.FindProperty("targetType");
         increaseValueProp = serializedObject.FindProperty("increaseValue");
     }
 
