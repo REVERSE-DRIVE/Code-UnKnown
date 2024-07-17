@@ -16,6 +16,8 @@ public class LevelManager : MonoSingleton<LevelManager>
     private int _gainExp;
     public event Action OnExpGainEvent;
     public event Action OnLevelUpEvent;
+
+    private Player _player;
     
     private void Awake()
     {
@@ -23,9 +25,14 @@ public class LevelManager : MonoSingleton<LevelManager>
         OnLevelUpEvent += HandleLevelUp;
     }
 
+    private void Start()
+    {
+        _player = PlayerManager.Instance.player;
+    }
+
     public void ApplyExp(int amount)
     {
-        _currentExp += amount;
+        _currentExp += amount + amount;
         _expPanel.Refresh(_currentLevel, _currentExp, MaxExp);
 
         OnExpGainEvent?.Invoke();
