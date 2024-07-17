@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class Gear : MonoBehaviour
+public class SpikeGear : MonoBehaviour
 {
     [SerializeField] private Transform _centerTrm;
     [SerializeField] private float _speed;

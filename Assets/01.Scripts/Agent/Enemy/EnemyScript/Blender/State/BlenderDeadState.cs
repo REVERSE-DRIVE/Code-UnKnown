@@ -11,6 +11,6 @@ public class BlenderDeadState : EnemyDeadState
     {
         base.Enter();
         _enemyBase.MovementCompo.StopImmediately();
-        BlenderEnemy.GearSpinManager.StopRotation();
+        BlenderEnemy.SpikeGearSpinManager.StopRotation();
     }
 }

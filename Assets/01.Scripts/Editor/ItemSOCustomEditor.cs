@@ -37,32 +37,31 @@ namespace ItemManage
                 EditorGUILayout.BeginVertical();
                 {
                     EditorGUILayout.PropertyField(_itemType);
-                    EditorGUILayout.PropertyField(_id);
-                    EditorGUI.BeginChangeCheck();
-                    string prevName = _itemName.stringValue;
-                    EditorGUILayout.DelayedTextField(_itemName);
-
-                    if (EditorGUI.EndChangeCheck())
-                    {
-                        string assetPath = AssetDatabase.GetAssetPath(target);
-                        string newName = $"Item_{_itemName.stringValue}";
-                        serializedObject.ApplyModifiedProperties();
-
-                        string msg = AssetDatabase.RenameAsset(assetPath, newName);
-
-                        if (string.IsNullOrEmpty(msg))
-                        {
-                            target.name = newName;
-                            EditorGUILayout.EndVertical();
-                            EditorGUILayout.EndHorizontal();
-                            return;
-                        }
-
-                        _itemName.stringValue = prevName;
-                    }
-                    
                     if (_itemType.enumValueFlag == (int)ItemType.Resource)
                     {
+                        EditorGUILayout.PropertyField(_id);
+                        EditorGUI.BeginChangeCheck();
+                        string prevName = _itemName.stringValue;
+                        EditorGUILayout.DelayedTextField(_itemName);
+
+                        if (EditorGUI.EndChangeCheck())
+                        {
+                            string assetPath = AssetDatabase.GetAssetPath(target);
+                            string newName = $"Item_{_itemName.stringValue}";
+                            serializedObject.ApplyModifiedProperties();
+
+                            string msg = AssetDatabase.RenameAsset(assetPath, newName);
+
+                            if (string.IsNullOrEmpty(msg))
+                            {
+                                target.name = newName;
+                                EditorGUILayout.EndVertical();
+                                EditorGUILayout.EndHorizontal();
+                                return;
+                            }
+
+                            _itemName.stringValue = prevName;
+                        }
                         EditorGUILayout.PropertyField(_resourceRank);
                     }
                     else if (_itemType.enumValueFlag == (int)ItemType.Weapon)

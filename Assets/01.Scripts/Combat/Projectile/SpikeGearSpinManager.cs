@@ -5,9 +5,9 @@ using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
-public class GearSpinManager : MonoBehaviour
+public class SpikeGearSpinManager : MonoBehaviour
 {
-    [SerializeField] private List<Gear> _gears;
+    [SerializeField] private List<SpikeGear> _gears;
     [SerializeField] private float _spinSpeed = 100f;
     [SerializeField] private float _moveDuration = 1f;
     [SerializeField] private float _spinRadius = 1f;
@@ -17,7 +17,7 @@ public class GearSpinManager : MonoBehaviour
 
     private void Awake()
     {
-        _gears = GetComponentsInChildren<Gear>().ToList();
+        _gears = GetComponentsInChildren<SpikeGear>().ToList();
     }
 
     private void Start()
@@ -51,14 +51,14 @@ public class GearSpinManager : MonoBehaviour
 
         for(int i = 0; i < _gears.Count; i++)
         {
-            Gear gear = _gears[i];
+            SpikeGear spikeGear = _gears[i];
             Vector3 pos = _deltaPositionList[i];
 
-            gear.transform.localPosition = Vector3.zero;
-            gear.transform.localScale = Vector3.one * 0.5f;
-            gear.gameObject.SetActive(true);
+            spikeGear.transform.localPosition = Vector3.zero;
+            spikeGear.transform.localScale = Vector3.one * 0.5f;
+            spikeGear.gameObject.SetActive(true);
 
-            seq.Join(gear.transform.DOLocalMove(pos, _moveDuration));
+            seq.Join(spikeGear.transform.DOLocalMove(pos, _moveDuration));
         }
 
         seq.OnComplete(StartSkill);
@@ -84,8 +84,8 @@ public class GearSpinManager : MonoBehaviour
         Sequence seq = DOTween.Sequence();
         for (int i = 0; i < _gears.Count; i++)
         {
-            Gear gear = _gears[i];
-            seq.Join(gear.transform.DOLocalMove(Vector3.zero, _moveDuration));
+            SpikeGear spikeGear = _gears[i];
+            seq.Join(spikeGear.transform.DOLocalMove(Vector3.zero, _moveDuration));
         }
         seq.OnComplete(() =>
         {
