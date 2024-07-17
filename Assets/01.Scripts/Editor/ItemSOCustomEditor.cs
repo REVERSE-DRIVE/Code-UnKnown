@@ -67,6 +67,7 @@ namespace ItemManage
                     else if (_itemType.enumValueFlag == (int)ItemType.Weapon)
                     {
                         EditorGUILayout.PropertyField(_weaponInfoSO);
+                        AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(target), $"Item_{_itemName.stringValue}");
                     }
                 }
                 EditorGUILayout.EndVertical();
