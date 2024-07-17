@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "SO/Items/PowerUp/Effect/ImmediateEffect")]
 public class ImmediateEffectSO : PowerUpEffectSO
 {
     public ImmediateEffectType effectType;
