@@ -15,6 +15,6 @@ public class ResourceItem : Item
     {
         if (_isInteracted) return;
         base.Interact(data);
-        LevelManager.Instance.ApplyExp((int)_resourceRank);
+        LevelManager.Instance.ApplyExp(ItemSO.resourceValue);
     }
 }
