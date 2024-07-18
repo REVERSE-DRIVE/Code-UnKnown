@@ -35,7 +35,7 @@ public class PlayerAttacker : MonoBehaviour
 
     private void Start()
     {
-         _player.PlayerInputCompo.controlButtons.actionButton.onClick.AddListener(HandleAttack);
+         _player.PlayerInputCompo.controlButtons.actionButton.OnTapEvent += HandleAttack;
          _player.PlayerInputCompo.OnMovementEvent += HandleAiming;
         _attackRange = _player.additionalStat.attackRange;
     }
@@ -107,9 +107,8 @@ public class PlayerAttacker : MonoBehaviour
         if (_currentTime < 0.1f) return;
         if (_isTargeting && !_isAttacking)
         {
-            
+            print("true");
             _isAttacking = true;
-            _currentTime = 0;
             Vector2 attackDirection = _currentTargetTrm.position - transform.position;
             _attackEffect.Play(attackDirection.normalized);
             EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
@@ -125,6 +124,8 @@ public class PlayerAttacker : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         _movementCompo.GetKnockBack(_direction.normalized * _boundPower, 0.23f);
+        _currentTime = 0;
+        print("false");
         _isAttacking = false;
     }
 

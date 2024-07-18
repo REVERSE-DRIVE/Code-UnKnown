@@ -2,15 +2,21 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using UnityEngine.UI;
 
 public class HoldButton : MonoBehaviour
 {
     private MainInput _mainInput;
     [SerializeField] private bool _isHold;
+    public event Action OnTapEvent;
+    public event Action OnHoldEvent;
+    public Image buttonImage;
+    
     
     private void Awake()
     {
         _mainInput = new MainInput();
+        buttonImage = GetComponent<Image>();
     }
 
     private void OnEnable()
@@ -38,12 +44,12 @@ public class HoldButton : MonoBehaviour
         
         if (context.interaction is HoldInteraction)
         {
-            Debug.Log("Hold");
+            OnHoldEvent?.Invoke();
         }
 
         if (context.interaction is TapInteraction)
         {
-            Debug.Log("Tap");
+            OnTapEvent?.Invoke();
         }
     }
 }
