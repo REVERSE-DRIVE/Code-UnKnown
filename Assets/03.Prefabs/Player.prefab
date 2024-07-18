@@ -6002,7 +6002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _detectDistance: 8
   _detectDegree: 80
-  _rayAmount: 20
+  _rayAmount: 50
   layerMask:
     serializedVersion: 2
     m_Bits: 128

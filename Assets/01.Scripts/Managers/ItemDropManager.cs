@@ -33,6 +33,8 @@ public class ItemDropManager : MonoSingleton<ItemDropManager>
     {
         ItemTableSO itemTableSO = _itemTableSOList.Find(x => x.itemType == type);
         ItemSO itemSO = itemTableSO.itemSOList.Find(x => x.id == id);
+        if(itemSO == null)
+            Debug.LogWarning($"not exist ID : {id}");
         return itemSO;
     }
 }
