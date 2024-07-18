@@ -30,9 +30,4 @@ public class PlayerAttackEffect : MonoBehaviour
 
     }
     
-    private IEnumerator PlayCoroutine()
-    {
-        yield return new WaitForSeconds(0.3f);
-
-    }
 }

@@ -6591,6 +6591,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2805213979845114094, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: _boundPower
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805213979845114094, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: numberOfRays
       value: 15
       objectReference: {fileID: 0}

@@ -1,3 +1,4 @@
+using System.Collections;
 using ObjectManage;
 using ObjectPooling;
 using UnityEngine;
@@ -5,12 +6,12 @@ using UnityEngine;
 public class PlayerAttacker : MonoBehaviour
 {
     private Player _player;
-    private Rigidbody2D _rigid; // movement랑 연동해야하나?
+    private IMovement _movementCompo;
     [SerializeField] private float _detectDistance = 5.0f;  // 레이의 거리
     [SerializeField] private float _detectDegree = 70f;
     [SerializeField] private int _rayAmount = 10;
     [SerializeField] private LayerMask layerMask;    // 충돌할 레이어 설정
-
+    [SerializeField] private float _boundPower = 30f;
     private Stat _attackRange;
     [SerializeField] private PlayerAttackEffect _attackEffect;
     [SerializeField] private PoolingType _hitVFX;
@@ -24,11 +25,12 @@ public class PlayerAttacker : MonoBehaviour
 
     private Vector2 _direction;
     private Vector2 _origin;
-    private float _currenTime;
+    private float _currentTime = 0;
     
     private void Awake()
     {
         _player = GetComponent<Player>();
+        _movementCompo = GetComponent<IMovement>();
     }
 
     private void Start()
@@ -41,6 +43,7 @@ public class PlayerAttacker : MonoBehaviour
     private void Update()
     {
         DetectEnemy();
+        _currentTime += Time.deltaTime;
     }
 
     public void Initialize(Player player)
@@ -49,20 +52,7 @@ public class PlayerAttacker : MonoBehaviour
         
     }
 
-    public void HandleAttack()
-    {
-        // 공격 구현하자
-        if (_isTargeting)
-        {
-            _isAttacking = true;
-            _attackEffect.Play(_direction);
-            EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
-            effect.Initialize(_currentTargetTrm.position);
-            transform.position = _currentTargetTrm.position;
-            _currentTarget.TakeDamage(_player.Stat.GetDamage());
-        }
-    }
-
+   
     public void HandleAiming(Vector2 direction)
     {
         if (direction.magnitude < 0.1f) return;
@@ -110,4 +100,32 @@ public class PlayerAttacker : MonoBehaviour
         }        
     }
     
+    public void HandleAttack()
+    {
+        // 공격 구현하자
+
+        if (_currentTime < 0.1f) return;
+        if (_isTargeting && !_isAttacking)
+        {
+            
+            _isAttacking = true;
+            _currentTime = 0;
+            Vector2 attackDirection = _currentTargetTrm.position - transform.position;
+            _attackEffect.Play(attackDirection.normalized);
+            EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
+            effect.Initialize(_currentTargetTrm.position);
+            transform.position = _currentTargetTrm.position;
+            _currentTarget.TakeDamage(_player.Stat.GetDamage());
+            StartCoroutine(AttackCoroutine(attackDirection));
+            
+        }
+    }
+
+    private IEnumerator AttackCoroutine(Vector2 boundDir)
+    {
+        yield return new WaitForSeconds(0.1f);
+        _movementCompo.GetKnockBack(_direction.normalized * _boundPower, 0.23f);
+        _isAttacking = false;
+    }
+
 }
