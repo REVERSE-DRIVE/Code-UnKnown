@@ -7,6 +7,7 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
     private EnemyMovement _movementCompo;
     private bool _isChase = false;
     private Coroutine _chaseCoroutine;
+    
     public EnemyChaseState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
         _movementCompo = _enemyBase.MovementCompo as EnemyMovement;
@@ -45,14 +46,13 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
         }
     }
     
-    private IEnumerator ChaseRoutine()
+    protected virtual IEnumerator ChaseRoutine()
     {
         Debug.Log("ChaseRoutine");
         if (_isChase) yield break;
         _isChase = true;
         while (true)
         {
-            Debug.Log("Chaseaaaaaaaaaaaaaaaaaa");
             Vector3 randomDir = _movementCompo.GetRandomPosition();
             _enemyBase.MovementCompo.SetMovement(randomDir);
             _movementCompo.LookToTarget(randomDir);
