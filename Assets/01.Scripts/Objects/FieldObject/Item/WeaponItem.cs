@@ -15,6 +15,6 @@ public class WeaponItem : Item
     {
         if (_isInteracted) return;
         base.Interact(data);
-        PlayerManager.Instance.player.PlayerAttackCompo.ChangeWeapon(_weaponInfoSO);
+        //PlayerManager.Instance.player.PlayerAttackCompo.ChangeWeapon(_weaponInfoSO);
     }
 }

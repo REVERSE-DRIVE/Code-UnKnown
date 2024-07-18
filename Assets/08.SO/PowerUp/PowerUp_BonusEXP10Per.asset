@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PowerUp_BonusEXP10Per
   m_EditorClassIdentifier: 
   code: BonusEXP10Per
+  powerUpRank: 5
   shouldBeUnlock: 0
   title: "\uBE60\uB978 \uC801\uC751"
   description: "\uC801\uC751\uB825\uC744 10% \uCD94\uAC00\uB85C \uD68D\uB4DD\uD569\uB2C8\uB2E4."

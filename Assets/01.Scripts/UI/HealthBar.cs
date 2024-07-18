@@ -42,7 +42,6 @@ public class HealthBar : MonoBehaviour
         if (prevValue > newValue)
         { // 감소한 경우
             ShakeBar();
-            print("newfill: "+ newFill);
             _seq.Append(_mainFillBar.DOFillAmount(newFill, _changeTime));
             _seq.AppendInterval(_changeTerm);
             _seq.Append(_subFillBar.DOFillAmount(newFill, _changeTime));
