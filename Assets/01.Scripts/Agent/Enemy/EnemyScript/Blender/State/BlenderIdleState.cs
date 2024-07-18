@@ -10,6 +10,6 @@ public class BlenderIdleState : EnemyIdleState
     public override void Enter()
     {
         base.Enter();
-        BlenderEnemy.GearSpinManager.StartSpin();
+        BlenderEnemy.SpikeGearSpinManager.StartSpin();
     }
 }

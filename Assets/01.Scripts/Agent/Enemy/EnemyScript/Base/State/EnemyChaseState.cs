@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyChaseState : EnemyState<EnemyStateEnum>
 {
-    private EnemyMovement _movementCompo;
-    private bool _isChase = false;
+    protected EnemyMovement _movementCompo;
+    protected bool _isChase = false;
+    private Coroutine _chaseCoroutine;
+    
     public EnemyChaseState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
         _movementCompo = _enemyBase.MovementCompo as EnemyMovement;
@@ -14,7 +16,7 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
     public override void Enter()
     {
         base.Enter();
-        _enemyBase.StartCoroutine(ChaseRoutine());
+        _chaseCoroutine = _enemyBase.StartCoroutine(ChaseRoutine());
         Debug.Log("Chase Enter");
     }
 
@@ -26,7 +28,7 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
         
         if (distance <= _enemyBase.chaseDistance && distance > _enemyBase.attackDistance)
         {
-            _enemyBase.StopAllCoroutines();
+            _enemyBase.StopCoroutine(_chaseCoroutine);
             _isChase = false;
             _enemyBase.MovementCompo.StopImmediately();
             _enemyBase.MovementCompo.SetMovement(_enemyBase.targetTrm.position - _enemyBase.transform.position);
@@ -34,7 +36,7 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
         }
         else if (distance <= _enemyBase.attackDistance)
         {
-            _enemyBase.StopAllCoroutines();
+            _enemyBase.StopCoroutine(_chaseCoroutine);
             _isChase = false;
             _stateMachine.ChangeState(EnemyStateEnum.Attack);
         }
@@ -44,14 +46,13 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
         }
     }
     
-    private IEnumerator ChaseRoutine()
+    protected virtual IEnumerator ChaseRoutine()
     {
         Debug.Log("ChaseRoutine");
         if (_isChase) yield break;
         _isChase = true;
         while (true)
         {
-            Debug.Log("Chaseaaaaaaaaaaaaaaaaaa");
             Vector3 randomDir = _movementCompo.GetRandomPosition();
             _enemyBase.MovementCompo.SetMovement(randomDir);
             _movementCompo.LookToTarget(randomDir);

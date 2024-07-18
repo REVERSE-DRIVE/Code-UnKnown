@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using WeaponManage;
 
 namespace ItemManage
@@ -11,6 +12,22 @@ namespace ItemManage
         public string itemName;
         public Sprite itemIcon;
         public ResourceRank resourceRank;
+        public int resourceValue;
         public WeaponInfoSO weaponInfoSO;
+
+        private void OnValidate()
+        {
+            if (itemType == ItemType.Weapon)
+            {
+                if (weaponInfoSO == null)
+                {
+                    Debug.LogWarning("[WeaponSO is Null] Insert WeaponSO");
+                    return;
+                }
+                id = weaponInfoSO.id;
+                itemName = weaponInfoSO.weaponName;
+                
+            }
+        }
     }
 }

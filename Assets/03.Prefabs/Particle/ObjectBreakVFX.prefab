@@ -4904,7 +4904,7 @@ MonoBehaviour:
   - {fileID: 3724141017333859905}
   _playOnSpawn: 1
   <type>k__BackingField: 7
-  _lifeTime: 0
+  _lifeTime: 2
 --- !u!1 &5603894351210205528
 GameObject:
   m_ObjectHideFlags: 0

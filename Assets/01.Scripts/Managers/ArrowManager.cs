@@ -7,6 +7,7 @@ public class ArrowManager : MonoBehaviour
     [SerializeField] private List<EnemyDirectionArrow> _arrows;
     [SerializeField] private Transform _playerTrm;
     [SerializeField] private LayerMask _whatIsEnemy;
+    [SerializeField] private float _detectRange;
     
     private Collider2D[] _colliders = new Collider2D[5];
 
@@ -31,7 +32,7 @@ public class ArrowManager : MonoBehaviour
 
     private void FindClosestEnemy(int index)
     {
-        int hitCount = Physics2D.OverlapCircleNonAlloc(_playerTrm.position, 10f, _colliders, _whatIsEnemy);
+        int hitCount = Physics2D.OverlapCircleNonAlloc(_playerTrm.position, _detectRange, _colliders, _whatIsEnemy);
         if (hitCount == 0) return;
 
         float minDistance = float.MaxValue;

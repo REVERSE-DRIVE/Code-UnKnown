@@ -13,7 +13,8 @@ public class ResourceItem : Item
 
     public override void Interact(InteractData data)
     {
-        LevelManager.Instance.ApplyExp((int)_resourceRank);
+        if (_isInteracted) return;
         base.Interact(data);
+        LevelManager.Instance.ApplyExp(ItemSO.resourceValue);
     }
 }

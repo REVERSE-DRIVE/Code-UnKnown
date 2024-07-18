@@ -6,6 +6,7 @@ using UnityEngine;
 public class PowerUpSO : ScriptableObject
 {
     public string code;
+    public PowerUpRank powerUpRank;
     public PlayerSkill shouldBeUnlock;
     public string title;
     [TextArea] public string description;

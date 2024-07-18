@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStat
   m_EditorClassIdentifier: 
   damage:
-    _baseValue: 0
+    _baseValue: 3
     modifiers: 
     isPercent: 0
   maxHealth:
@@ -22,5 +22,21 @@ MonoBehaviour:
     isPercent: 0
   moveSpeed:
     _baseValue: 8
+    modifiers: 
+    isPercent: 0
+  criticalRate:
+    _baseValue: 0
+    modifiers: 
+    isPercent: 0
+  defence:
+    _baseValue: 0
+    modifiers: 
+    isPercent: 0
+  badEffectResistance:
+    _baseValue: 0
+    modifiers: 
+    isPercent: 0
+  reviveCount:
+    _baseValue: 0
     modifiers: 
     isPercent: 0
