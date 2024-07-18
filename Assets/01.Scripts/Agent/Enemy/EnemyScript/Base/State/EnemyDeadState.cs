@@ -11,6 +11,7 @@ public class EnemyDeadState : EnemyState<EnemyStateEnum>
     {
         base.Enter();
         _enemyBase.MovementCompo.StopImmediately();
+        _enemyBase.ColliderCompo.enabled = false;
     }
 
     public override void UpdateState()
