@@ -1070,6 +1070,7 @@ GameObject:
   m_Component:
   - component: {fileID: 325271705}
   - component: {fileID: 325271706}
+  - component: {fileID: 325271707}
   m_Layer: 5
   m_Name: ControlButtons
   m_TagString: Untagged
@@ -1115,6 +1116,19 @@ MonoBehaviour:
   _buttonSprites:
   - {fileID: -1618839063, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
   - {fileID: 93553912, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
+--- !u!114 &325271707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325271704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74f5ee50eded463daab04de7ce70046b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isHold: 0
 --- !u!1 &412444215
 GameObject:
   m_ObjectHideFlags: 0
