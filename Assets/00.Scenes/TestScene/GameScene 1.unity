@@ -5167,6 +5167,10 @@ PrefabInstance:
       propertyPath: _playerTrm
       value: 
       objectReference: {fileID: 5043262373099526137}
+    - target: {fileID: 4241497716940069874, guid: 0b262ace39e4cc54d83b766f2347d36a, type: 3}
+      propertyPath: _detectRange
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4858371185871885122, guid: 0b262ace39e4cc54d83b766f2347d36a, type: 3}
       propertyPath: m_IsActive
       value: 1
