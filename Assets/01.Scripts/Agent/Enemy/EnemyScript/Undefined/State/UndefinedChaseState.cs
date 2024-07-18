@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using DG.Tweening;
 using EnemyManage;
+using ObjectPooling;
 using UnityEngine;
 
 public class UndefinedChaseState : EnemyChaseState
@@ -13,15 +14,8 @@ public class UndefinedChaseState : EnemyChaseState
     {
         base.Enter();
         _enemyBase.MovementCompo.StopImmediately();
-        _enemyBase.StartCoroutine(Attack());
-    }
-
-    private IEnumerator Attack()
-    {
-        _enemyBase.RendererCompo.DOFade(0, 0.5f);
-        yield return new WaitForSeconds(0.5f);
-        _enemyBase.transform.position = _enemyBase.targetTrm.position;
-        yield return new WaitForSeconds(3f);
-        _stateMachine.ChangeState(EnemyStateEnum.Attack);
+        var projectile =
+            PoolingManager.Instance.Pop(PoolingType.Projectile_Tracing) as TracingProjectile;
+        projectile.Shoot(_enemyBase.targetTrm.position);
     }
 }
