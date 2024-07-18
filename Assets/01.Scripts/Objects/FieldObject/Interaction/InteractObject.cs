@@ -42,7 +42,6 @@ namespace ObjectManage
         protected void HandleDetected()
         {
             if (isDetected) return;
-            print("Detected" + gameObject.name);
             isDetected = true;
             _visualRenderer.material = _detectMaterial;
         }
@@ -50,7 +49,6 @@ namespace ObjectManage
         protected void HandleUnDetected()
         {
             if (!isDetected) return;
-            print("Undetected");
             isDetected = false;
             _visualRenderer.material = _defaultMaterial;
         }

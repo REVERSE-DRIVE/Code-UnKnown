@@ -7,8 +7,8 @@ public class PlayerInput : MonoBehaviour
 {
     private MainInput _mainInput;
     public ControlButtons controlButtons;
-    private Button _actionButton;
-    private Button _skillButton;
+    private HoldButton _actionButton;
+    private HoldButton _skillButton;
 
     public event Action<Vector2> OnMovementEvent;
 

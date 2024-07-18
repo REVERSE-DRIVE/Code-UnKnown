@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResourceBase
       objectReference: {fileID: 0}
+    - target: {fileID: 3473447056630540512, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7431818847504931302, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
