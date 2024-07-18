@@ -2402,6 +2402,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989822246}
   m_CullTransparentMesh: 1
+--- !u!1 &1016004566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7042404186746062641, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+  m_PrefabInstance: {fileID: 5043262373099526136}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1068565315
 GameObject:
   m_ObjectHideFlags: 0
@@ -4239,6 +4244,7 @@ GameObject:
   - component: {fileID: 1495788401}
   - component: {fileID: 1495788400}
   - component: {fileID: 1495788399}
+  - component: {fileID: 1495788402}
   m_Layer: 5
   m_Name: SkillButton
   m_TagString: Untagged
@@ -4347,6 +4353,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495788397}
   m_CullTransparentMesh: 1
+--- !u!114 &1495788402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495788397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Gamepad>/buttonSouth
 --- !u!1 &1606635858
 GameObject:
   m_ObjectHideFlags: 0
@@ -5148,6 +5167,10 @@ PrefabInstance:
       propertyPath: _playerTrm
       value: 
       objectReference: {fileID: 5043262373099526137}
+    - target: {fileID: 4241497716940069874, guid: 0b262ace39e4cc54d83b766f2347d36a, type: 3}
+      propertyPath: _detectRange
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4858371185871885122, guid: 0b262ace39e4cc54d83b766f2347d36a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -5885,6 +5908,7 @@ GameObject:
   - component: {fileID: 1997351963}
   - component: {fileID: 1997351962}
   - component: {fileID: 1997351964}
+  - component: {fileID: 1997351965}
   m_Layer: 5
   m_Name: ActionButton
   m_TagString: Untagged
@@ -5956,7 +5980,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997351960}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -5993,6 +6017,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1997351965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997351960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Gamepad>/buttonNorth
 --- !u!1 &2032295509
 GameObject:
   m_ObjectHideFlags: 0
@@ -6312,6 +6349,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7042404186746062641, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5043262373099526148}
     - targetCorrespondingSourceObject: {fileID: 8577186893356440498, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -6326,12 +6366,25 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4132606152164250800, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
   m_PrefabInstance: {fileID: 5043262373099526136}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1016004566}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c688b440dcf8a704ca82edfeaa6b41e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5043262373099526148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016004566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74f5ee50eded463daab04de7ce70046b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isHold: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
