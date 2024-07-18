@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class HoldButton : MonoBehaviour
 {
@@ -8,8 +10,31 @@ public class HoldButton : MonoBehaviour
     private void Awake()
     {
         _mainInput = new MainInput();
-        _mainInput.Player.Attack.performed += _ => _isHold = true;
-        _mainInput.Player.Attack.canceled += _ => _isHold = false;
+        Start();
+    }
+
+    private void Start()
+    {
+        _mainInput.Player.Attack.performed += Performed;
+        _mainInput.Player.Attack.canceled += Canceled;
         _mainInput.Player.Attack.Enable();
+    }
+
+    private void Canceled(InputAction.CallbackContext context)
+    {
+        
+    }
+
+    private void Performed(InputAction.CallbackContext context)
+    {
+        if (context.interaction is HoldInteraction)
+        {
+            Debug.Log("Hold");
+        }
+
+        if (context.interaction is TapInteraction)
+        {
+            Debug.Log("Tap");
+        }
     }
 }
