@@ -17,6 +17,7 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
     {
         base.Enter();
         _chaseCoroutine = _enemyBase.StartCoroutine(ChaseRoutine());
+        if (_chaseCoroutine == null) Debug.LogWarning("Coroutine is null");
         Debug.Log("Chase Enter");
     }
 

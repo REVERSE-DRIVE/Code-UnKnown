@@ -33,6 +33,7 @@ public class EnemyBase : Enemy, IPoolable
     {
         isInitEnd = false;
         _spriteRenderer.material = _defaultMaterial;
+        ColliderCompo.enabled = true;
         StateMachine.Initialize(EnemyStateEnum.Idle, this);
         HealthCompo.SetHealth(Stat.maxHealth.GetValue());
         isInitEnd = true;
