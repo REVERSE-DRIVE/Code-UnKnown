@@ -13,6 +13,7 @@ public class WeaponItem : Item
 
     public override void Interact(InteractData data)
     {
+        if (_isInteracted) return;
         base.Interact(data);
         //PlayerManager.Instance.player.PlayerAttackCompo.ChangeWeapon(_weaponInfoSO);
     }

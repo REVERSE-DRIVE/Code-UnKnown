@@ -18,7 +18,7 @@ namespace PlayerPartsManage
 
         public override void UseSkill()
         {
-            
+            _spriteRenderer.color = Color.red;
         }
     }
 }

@@ -23,6 +23,7 @@ public class ZipFileObject : InteractObject
     
     private static readonly int Open = Animator.StringToHash("Open");
     private static readonly int DissolveLevel = Shader.PropertyToID("_DissolveLevel");
+    private bool _isInteracted = false;
 
     private void Awake()
     {
@@ -44,12 +45,13 @@ public class ZipFileObject : InteractObject
 
     protected virtual void HandleInteract()
     {
-        
+        if (_isInteracted) return;
         StartCoroutine(Drop());
     }
 
     private IEnumerator Drop()
     {
+        _isInteracted = true;
         _animator.SetTrigger(Open);
         yield return new WaitForSeconds(0.7f);
         Instantiate(_openParticle, transform.position, Quaternion.identity);    
