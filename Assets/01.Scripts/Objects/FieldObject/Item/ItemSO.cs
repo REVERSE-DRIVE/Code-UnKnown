@@ -12,6 +12,7 @@ namespace ItemManage
         public string itemName;
         public Sprite itemIcon;
         public ResourceRank resourceRank;
+        public int resourceValue;
         public WeaponInfoSO weaponInfoSO;
 
         private void OnValidate()

@@ -10,6 +10,7 @@ namespace ItemManage
         private SerializedProperty _id;
         private SerializedProperty _itemName;
         private SerializedProperty _itemIcon;
+        private SerializedProperty _resourceAmount;
         private SerializedProperty _resourceRank;
         private SerializedProperty _weaponInfoSO;
         
@@ -19,6 +20,7 @@ namespace ItemManage
             _id = serializedObject.FindProperty("id");
             _itemName = serializedObject.FindProperty("itemName");
             _itemIcon = serializedObject.FindProperty("itemIcon");
+            _resourceAmount = serializedObject.FindProperty("resourceValue");
             _resourceRank = serializedObject.FindProperty("resourceRank");
             _weaponInfoSO = serializedObject.FindProperty("weaponInfoSO");
         }
@@ -62,6 +64,7 @@ namespace ItemManage
 
                             _itemName.stringValue = prevName;
                         }
+                        EditorGUILayout.PropertyField(_resourceAmount);
                         EditorGUILayout.PropertyField(_resourceRank);
                     }
                     else if (_itemType.enumValueFlag == (int)ItemType.Weapon)
