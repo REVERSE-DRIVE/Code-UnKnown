@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 
@@ -10,15 +11,22 @@ public class HoldButton : MonoBehaviour
     private void Awake()
     {
         _mainInput = new MainInput();
-        Start();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         _mainInput.Player.Attack.performed += Performed;
         _mainInput.Player.Attack.canceled += Canceled;
-        _mainInput.Player.Attack.Enable();
+        _mainInput.Player.Enable();
     }
+
+    private void OnDisable()
+    {
+        _mainInput.Player.Attack.performed -= Performed;
+        _mainInput.Player.Attack.canceled -= Canceled;
+        _mainInput.Player.Disable();
+    }
+
 
     private void Canceled(InputAction.CallbackContext context)
     {
@@ -27,6 +35,7 @@ public class HoldButton : MonoBehaviour
 
     private void Performed(InputAction.CallbackContext context)
     {
+        
         if (context.interaction is HoldInteraction)
         {
             Debug.Log("Hold");
