@@ -1,34 +1,40 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using ObjectManage;
+using ObjectPooling;
 using UnityEngine;
 
 public class PlayerAttacker : MonoBehaviour
 {
-    [SerializeField] private float distance = 5.0f;  // 레이의 거리
-    public float angle = 45.0f;    // 부채꼴 각도
-    public int numberOfRays = 10;  // 발사할 레이의 수
-    public LayerMask layerMask;    // 충돌할 레이어 설정
     private Player _player;
     private Rigidbody2D _rigid; // movement랑 연동해야하나?
-    [SerializeField] private float _detectDegree;
+    [SerializeField] private float _detectDistance = 5.0f;  // 레이의 거리
+    [SerializeField] private float _detectDegree = 70f;
     [SerializeField] private int _rayAmount = 10;
+    [SerializeField] private LayerMask layerMask;    // 충돌할 레이어 설정
+
     private Stat _attackRange;
+    [SerializeField] private PlayerAttackEffect _attackEffect;
+    [SerializeField] private PoolingType _hitVFX;
 
     [Header("Current State")] 
+    [SerializeField] private bool _isTargeting;
     [SerializeField] private bool _isAttacking;
     [field:SerializeField] public int comboCount { get; private set; } = 0;
     private IDamageable _currentTarget;
+    private Transform _currentTargetTrm;
 
     private Vector2 _direction;
+    private Vector2 _origin;
+    private float _currenTime;
+    
     private void Awake()
     {
-        _player.PlayerInputCompo.controlButtons.actionButton.onClick.AddListener(HandleAttack);
-        _player.PlayerInputCompo.OnMovementEvent += HandleAiming;
+        _player = GetComponent<Player>();
     }
 
     private void Start()
     {
+         _player.PlayerInputCompo.controlButtons.actionButton.onClick.AddListener(HandleAttack);
+         _player.PlayerInputCompo.OnMovementEvent += HandleAiming;
         _attackRange = _player.additionalStat.attackRange;
     }
 
@@ -46,38 +52,62 @@ public class PlayerAttacker : MonoBehaviour
     public void HandleAttack()
     {
         // 공격 구현하자
-        
+        if (_isTargeting)
+        {
+            _isAttacking = true;
+            _attackEffect.Play(_direction);
+            EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
+            effect.Initialize(_currentTargetTrm.position);
+            transform.position = _currentTargetTrm.position;
+            _currentTarget.TakeDamage(_player.Stat.GetDamage());
+        }
     }
 
     public void HandleAiming(Vector2 direction)
     {
+        if (direction.magnitude < 0.1f) return;
         _direction = direction;
     }
 
-    void DetectEnemy()
+    private void DetectEnemy()
     {
-        Vector2 origin = transform.position;
+        _origin = transform.position;
 
         // 부채꼴 각도의 절반을 계산
-        float halfAngle = angle / 2.0f;
+        float halfAngle = _detectDegree / 2.0f;
 
-        float angleStep = angle / (numberOfRays - 1);
+        float angleStep = _detectDegree / (_rayAmount - 1);
 
-        for (int i = 0; i < numberOfRays; i++)
+        bool isNoTarget = true;
+        for (int i = 0; i < _rayAmount; i++)
         {
             // 각 레이의 각도를 계산
             float currentAngle = -halfAngle + (angleStep * i);
-            Vector2 rayDirection = Quaternion.Euler(0, 0, currentAngle) * _direction;
+            Vector2 rayDirection = (Quaternion.Euler(0, 0, currentAngle) * _direction).normalized;
 
             // 레이캐스트를 발사
-            RaycastHit2D hit = Physics2D.Raycast(origin, rayDirection, distance, layerMask);
-            Debug.DrawRay(origin, rayDirection * distance, Color.red);
-
-            if (hit.collider != null)
+            RaycastHit2D hit = Physics2D.Raycast(_origin, rayDirection, _detectDistance, layerMask);
+            Debug.DrawRay(_origin, rayDirection * _detectDistance, Color.red);
+            
+            if (hit.collider == null)
             {
-                // 충돌한 오브젝트가 있다면 여기서 처리
-                Debug.Log("Hit: " + hit.collider.name);
+                continue;
+            }
+
+            if (_isTargeting) continue;
+            if(hit.transform.TryGetComponent(out IDamageable target))
+            {
+                _isTargeting = true;
+                _currentTargetTrm = hit.transform;
+                _currentTarget = target;
+                return;
             }
         }
+
+        if (isNoTarget)
+        {
+            _isTargeting = false;
+        }        
     }
+    
 }

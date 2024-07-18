@@ -16,4 +16,4 @@ MonoBehaviour:
   poolingName: AttackVFX_1
   description: "\uACF5\uACA9 \uC774\uD399\uD2B8"
   poolCount: 4
-  prefabObject: {fileID: 719221765642121654, guid: a91069921e8d1b347be06e3c4cad832a, type: 3}
+  prefabObject: {fileID: 7688155230995429522, guid: 6f72c8808d7588048aa07f7d12ad23ec, type: 3}
