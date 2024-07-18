@@ -14,6 +14,6 @@ public class WeaponItem : Item
     public override void Interact(InteractData data)
     {
         base.Interact(data);
-        PlayerManager.Instance.player.PlayerAttackCompo.ChangeWeapon(_weaponInfoSO);
+        //PlayerManager.Instance.player.PlayerAttackCompo.ChangeWeapon(_weaponInfoSO);
     }
 }
