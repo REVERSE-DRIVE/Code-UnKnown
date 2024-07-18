@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyChaseState : EnemyState<EnemyStateEnum>
 {
-    private EnemyMovement _movementCompo;
-    private bool _isChase = false;
+    protected EnemyMovement _movementCompo;
+    protected bool _isChase = false;
     private Coroutine _chaseCoroutine;
     
     public EnemyChaseState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
