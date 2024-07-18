@@ -8,6 +8,6 @@ public interface IMovement
     public void SetMovement(Vector2 movement);
     public void StopImmediately();
     //public void SetDestination(Vector2 destination);
-    public void GetKnockBack(Vector2 force);
+    public void GetKnockBack(Vector2 force, float duration);
     
 }

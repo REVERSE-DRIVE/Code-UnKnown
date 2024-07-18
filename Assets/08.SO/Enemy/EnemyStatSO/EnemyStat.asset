@@ -17,10 +17,26 @@ MonoBehaviour:
     modifiers: 
     isPercent: 0
   maxHealth:
-    _baseValue: 0
+    _baseValue: 10
     modifiers: 
     isPercent: 0
   moveSpeed:
     _baseValue: 10
+    modifiers: 
+    isPercent: 0
+  criticalRate:
+    _baseValue: 0
+    modifiers: 
+    isPercent: 0
+  defence:
+    _baseValue: 0
+    modifiers: 
+    isPercent: 0
+  badEffectResistance:
+    _baseValue: 0
+    modifiers: 
+    isPercent: 0
+  reviveCount:
+    _baseValue: 0
     modifiers: 
     isPercent: 0

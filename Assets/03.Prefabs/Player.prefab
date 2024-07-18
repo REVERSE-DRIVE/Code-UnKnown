@@ -5707,7 +5707,7 @@ GameObject:
   - component: {fileID: 6863284896352316412}
   - component: {fileID: 1402747337107004081}
   - component: {fileID: 4913586636251692978}
-  - component: {fileID: 8085672697319409619}
+  - component: {fileID: 2805213979845114094}
   - component: {fileID: 2834253321769687102}
   - component: {fileID: 5108899912060835987}
   m_Layer: 6
@@ -5813,6 +5813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   <Stat>k__BackingField: {fileID: 11400000, guid: 7f5b8260ea7f2f74eb79464cd8ad76bc, type: 2}
+  <additionalStat>k__BackingField: {fileID: 11400000, guid: 03934eac470a390428106d5dc51584af, type: 2}
 --- !u!114 &2533831242762906027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5901,7 +5902,7 @@ MonoBehaviour:
       m_Calls: []
   _currentHealth: 5
   maxHealth: 5
---- !u!114 &8085672697319409619
+--- !u!114 &2805213979845114094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5910,11 +5911,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7042404186746062641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 625c7700d72b4e4eb8e98f292b587cf6, type: 3}
+  m_Script: {fileID: 11500000, guid: bb390396e4bcec244a9ae7042ba17769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentWeaponInfo: {fileID: 11400000, guid: 0258a46c402193e48b90c71ceef03938, type: 2}
-  _currentWeapon: {fileID: 0}
 --- !u!114 &2834253321769687102
 MonoBehaviour:
   m_ObjectHideFlags: 0

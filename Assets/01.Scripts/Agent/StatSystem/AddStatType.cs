@@ -2,5 +2,5 @@
 {
     BonusExp,
     BonusResource,
-    AttackScale
+    AttackRange
 }
