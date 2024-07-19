@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class RoomDefault : RoomObstacleBase
 {
     [SerializeField] Vector2Int enemyCount;
+    [SerializeField] RewardRandomData[] randomData;
 
     bool process = false;
     bool isClear = false;
@@ -74,5 +75,18 @@ public class RoomDefault : RoomObstacleBase
         process = false;
         
         SetDoor(false);
+
+        // 보상
+        foreach (var item in randomData)
+        {
+            RandomPercentUtil<GameObject> randUtil = new(item.list);
+            
+            for (int i = 0; i < item.amount; i++)
+            {
+                GameObject entity = randUtil.GetValue();
+                Vector3 pos = MapManager.Instance.GetWorldPosByCell(FindPossibleRandomPos(3));
+                Instantiate(entity, pos, Quaternion.identity);
+            }
+        }
     }
 }
