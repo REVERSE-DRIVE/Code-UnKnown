@@ -15,6 +15,7 @@ MonoBehaviour:
   itemType: 11
   id: 1
   itemName: fdsdfdsfs
-  itemIcon: {fileID: -170623123, guid: c1f79a481323808489d1aeb5d122ec76, type: 3}
-  resourceRank: 5
+  itemIcon: {fileID: 21300000, guid: 5b9141bde8af3a44aaf31c84d0ef2e68, type: 3}
+  resourceRank: 1
+  resourceValue: 0
   weaponInfoSO: {fileID: 0}

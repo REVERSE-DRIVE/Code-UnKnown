@@ -15,7 +15,7 @@ MonoBehaviour:
   itemType: 11
   id: 0
   itemName: asd
-  itemIcon: {fileID: -1344260747, guid: 2f47a463e1bf78a4ba9447ee9224bfad, type: 3}
-  resourceRank: 10
+  itemIcon: {fileID: 21300000, guid: 5b9141bde8af3a44aaf31c84d0ef2e68, type: 3}
+  resourceRank: 0
   resourceValue: 0
   weaponInfoSO: {fileID: 0}
