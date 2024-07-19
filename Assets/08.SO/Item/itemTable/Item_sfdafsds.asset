@@ -15,6 +15,7 @@ MonoBehaviour:
   itemType: 11
   id: 2
   itemName: sfdafsds
-  itemIcon: {fileID: 5319586363640823999, guid: 0188a161e4b41dd4e9f1af0d86375a03, type: 3}
-  resourceRank: 3
+  itemIcon: {fileID: 21300000, guid: 5b9141bde8af3a44aaf31c84d0ef2e68, type: 3}
+  resourceRank: 2
+  resourceValue: 0
   weaponInfoSO: {fileID: 0}
