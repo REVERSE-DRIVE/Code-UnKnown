@@ -29,7 +29,10 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
         
         if (distance <= _enemyBase.chaseDistance && distance > _enemyBase.attackDistance)
         {
-            _enemyBase.StopCoroutine(_chaseCoroutine);
+            if (_chaseCoroutine != null)
+            {
+                _enemyBase.StopCoroutine(_chaseCoroutine);
+            }
             _isChase = false;
             _enemyBase.MovementCompo.StopImmediately();
             _enemyBase.MovementCompo.SetMovement(_enemyBase.targetTrm.position - _enemyBase.transform.position);
@@ -37,7 +40,10 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
         }
         else if (distance <= _enemyBase.attackDistance)
         {
-            _enemyBase.StopCoroutine(_chaseCoroutine);
+            if (_chaseCoroutine != null)
+            {
+                _enemyBase.StopCoroutine(_chaseCoroutine);
+            }
             _isChase = false;
             _stateMachine.ChangeState(EnemyStateEnum.Attack);
         }

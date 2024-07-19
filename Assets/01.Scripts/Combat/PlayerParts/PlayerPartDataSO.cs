@@ -11,6 +11,5 @@ namespace PlayerPartsManage
         public int id;
         public string partName;
         public string description;
-        
     }
 }
