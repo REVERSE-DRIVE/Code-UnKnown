@@ -7,6 +7,7 @@ public class PlayerAttacker : MonoBehaviour
 {
     private Player _player;
     private IMovement _movementCompo;
+    [Header("Attack Setting")]
     [SerializeField] private float _detectDistance = 5.0f;  // 레이의 거리
     [SerializeField] private float _detectDegree = 70f;
     [SerializeField] private int _rayAmount = 10;
@@ -16,10 +17,16 @@ public class PlayerAttacker : MonoBehaviour
     [SerializeField] private PlayerAttackEffect _attackEffect;
     [SerializeField] private PoolingType _hitVFX;
 
+    [Header("Combo Setting")] 
+    [SerializeField] private float _comboCancelTime;
+    private float _comboTime = 0;
+    public bool IsCombo => _comboTime < _comboCancelTime;
+    [field:SerializeField] public int comboCount { get; private set; } = 0;
+
+    
     [Header("Current State")] 
     [SerializeField] private bool _isTargeting;
     [SerializeField] private bool _isAttacking;
-    [field:SerializeField] public int comboCount { get; private set; } = 0;
     private IDamageable _currentTarget;
     private Transform _currentTargetTrm;
 
@@ -48,6 +55,7 @@ public class PlayerAttacker : MonoBehaviour
             _attackEffect.SetTarget(_currentTargetTrm.position);
         }
         _currentTime += Time.deltaTime;
+        _comboTime += Time.deltaTime;
     }
 
     public void Initialize(Player player)
@@ -123,12 +131,19 @@ public class PlayerAttacker : MonoBehaviour
 
     private IEnumerator AttackCoroutine(Vector2 boundDir)
     {
+        if (IsCombo)
+            comboCount++;
+        else
+            comboCount = 0;    
+        _comboTime = 0f;
+
+        
         float duration = Mathf.Clamp01(0.5f - _player.additionalStat.dashSpeed.GetValue() * 0.1f) * boundDir.magnitude / 10;
         yield return _player.PlayerController.Dash(_currentTargetTrm.position, duration);
         _attackEffect.Play(boundDir.normalized);
         EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
         effect.Initialize(_currentTargetTrm.position);
-        _currentTarget.TakeDamage(_player.Stat.GetDamage());
+        _currentTarget.TakeDamage(_player.Stat.GetDamage() + comboCount);
         yield return new WaitForSeconds(0.1f);
         _attackEffect.SetTrailActive(true);
 
@@ -137,8 +152,10 @@ public class PlayerAttacker : MonoBehaviour
         _currentTime = 0;
         _attackEffect.SetTrailActive(false);
         _isAttacking = false;
+        
+        
     }
-
+    
     private void DashCoroutine()
     {
         
