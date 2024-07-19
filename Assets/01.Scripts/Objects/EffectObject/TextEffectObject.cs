@@ -25,8 +25,10 @@ public class TextEffectObject : MonoBehaviour, IPoolable
     [SerializeField] private float _lifeTime;
     private bool _isActive;
 
-    public void Initialize(TextContent content)
+    public void Initialize(TextContent content, Vector2 position)
     {
+        transform.position = position;
+        
         _tmp.text = content.content;
         _tmp.color = content.color;
         _tmp.fontSize = content.size;
@@ -37,8 +39,8 @@ public class TextEffectObject : MonoBehaviour, IPoolable
     public void Play()
     {
         _isActive = true;
-        transform.DOScale(Vector2.zero, _lifeTime);
-        transform.DOMoveY(_yDelta, _lifeTime).OnComplete(()=> HandleDie());
+        transform.DOScale(Vector2.zero, _lifeTime).SetEase(Ease.InExpo);
+        transform.DOMoveY(transform.position.y+_yDelta, _lifeTime).OnComplete(()=> HandleDie());
     }
 
     private void HandleDie()

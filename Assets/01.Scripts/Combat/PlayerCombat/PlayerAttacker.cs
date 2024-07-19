@@ -132,7 +132,18 @@ public class PlayerAttacker : MonoBehaviour
     private IEnumerator AttackCoroutine(Vector2 boundDir)
     {
         if (IsCombo)
+        {
             comboCount++;
+            TextEffectObject textEffect = PoolingManager.Instance.Pop(PoolingType.TextEffectObject) as TextEffectObject;
+            textEffect.Initialize(new TextContent
+            {
+                color = Color.Lerp(Color.white, Color.red, comboCount / 10f),
+                content = $"{comboCount}<color=red>HIT</color>",
+                size = 11,
+                lifeTime = 0.7f
+            }, ((Vector2)_currentTargetTrm.position + Random.insideUnitCircle * 2));
+            textEffect.Play();
+        }
         else
             comboCount = 0;    
         _comboTime = 0f;

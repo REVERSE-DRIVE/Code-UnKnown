@@ -7238,18 +7238,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2805213979845114094, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
-      propertyPath: _detectDegree
-      value: 210
-      objectReference: {fileID: 0}
-    - target: {fileID: 2805213979845114094, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
-      propertyPath: _comboCancelTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108899912060835987, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
-      propertyPath: partList.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6863284896352316412, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: controlButtons
       value: 
@@ -7259,8 +7247,7 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 8064475817322903665, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8577186893356440498, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}

@@ -16,4 +16,4 @@ MonoBehaviour:
   poolingName: TextEffectObject
   description: "\uD14D\uC2A4\uD2B8 \uD6A8\uACFC\uB97C \uD45C\uD604\uD55C\uB2E4"
   poolCount: 10
-  prefabObject: {fileID: 0}
+  prefabObject: {fileID: 8852458424221403024, guid: 6d9319903fc99ec4fb5c299ecd24dc65, type: 3}
