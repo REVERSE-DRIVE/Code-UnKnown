@@ -12,6 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14504386ddfa4662a9e9230595e29e5e, type: 3}
   m_Name: PlayerAdditionalStat
   m_EditorClassIdentifier: 
-  bonusExp: 0
-  bonusResource: 0
-  attackScale: 1
+  bonusExp:
+    _baseValue: 0
+    modifiers: 
+    isPercent: 0
+  bonusResource:
+    _baseValue: 0
+    modifiers: 
+    isPercent: 0
+  dashSpeed:
+    _baseValue: 0
+    modifiers: 
+    isPercent: 0
+  attackRange:
+    _baseValue: 8
+    modifiers: 
+    isPercent: 0

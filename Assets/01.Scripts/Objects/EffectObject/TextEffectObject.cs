@@ -1,63 +1,53 @@
-﻿using ObjectPooling;
+﻿using System.Collections;
+using DG.Tweening;
+using ObjectPooling;
 using TMPro;
 using UnityEngine;
 
 public struct TextContent
 {
     public string content;
+    public int size;
     public Color color;
     public float lifeTime;
 }
 
-public class TextEffectObject : MonoBehaviour, ILifeTimeLimited, IPoolable
+public class TextEffectObject : MonoBehaviour, IPoolable
 {
     [field:SerializeField] public PoolingType type { get; set; }
     public GameObject ObjectPrefab => gameObject;
+
+    [Header("TextEffect Setting")] 
+    [SerializeField] private float _yDelta;
     
+    [Header("Content Setting")]
     [SerializeField] private TextMeshPro _tmp;
     [SerializeField] private float _lifeTime;
-    private float _currentLifeTime;
     private bool _isActive;
 
-    float ILifeTimeLimited.CurrentLifeTime
+    public void Initialize(TextContent content, Vector2 position)
     {
-        get => _currentLifeTime;
-        set => _currentLifeTime = value;
-    }
-
-    private void Update()
-    {
-        _currentLifeTime += Time.deltaTime;
-    }
-
-    public void Initialize(TextContent content)
-    {
+        transform.position = position;
+        
         _tmp.text = content.content;
         _tmp.color = content.color;
+        _tmp.fontSize = content.size;
         _lifeTime = content.lifeTime;
-        
-        
+        transform.localScale = Vector2.one;
     }
 
     public void Play()
     {
-        
+        _isActive = true;
+        transform.DOScale(Vector2.zero, _lifeTime).SetEase(Ease.InExpo);
+        transform.DOMoveY(transform.position.y+_yDelta, _lifeTime).OnComplete(()=> HandleDie());
     }
 
-    public void CheckDie()
-    {
-        if (_currentLifeTime > _lifeTime)
-        {
-            
-        }
-    }
-
-    public void HandleDie()
+    private void HandleDie()
     {
         PoolingManager.Instance.Push(this);
     }
 
-    
     public void ResetItem()
     {
         
