@@ -16,7 +16,8 @@ public class AgentStat : ScriptableObject
     public Stat defence; // 방어력과 같은 작용 ( 데미지 - def) => 실질 데미지
     public Stat badEffectResistance; // 악효과 저항수치 %
     public Stat reviveCount; // 부활 횟수
-    
+    public bool isResist;
+
     protected Agent _owner;
     protected Dictionary<StatType, Stat> _statDictionary;
 

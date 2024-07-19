@@ -27,6 +27,7 @@ public class Health : MonoBehaviour, IDamageable, IHealable
     
     public void TakeDamage(int amount)
     {
+        if (_owner.Stat.isResist) return;
         _currentHealth -= amount;
         CheckDie();
         HandleHealthChange(-amount);
