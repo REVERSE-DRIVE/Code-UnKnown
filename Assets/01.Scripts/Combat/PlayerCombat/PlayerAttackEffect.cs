@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -10,11 +11,18 @@ public class PlayerAttackEffect : MonoBehaviour
     [SerializeField] private Transform _impactTrm;
     [SerializeField] private Transform _targetMarkTrm;
     [SerializeField] private float _impactSize = 0.6f;
+    private TrailRenderer _trailRenderer;
 
     [Header("Setting")] 
     [SerializeField] private float _impactDuration = 0.3f;
 
     private Sequence _seq;
+
+    private void Awake()
+    {
+        _trailRenderer = GetComponent<TrailRenderer>();
+    }
+
     public void Play(Vector2 direction)
     {
         _impactTrm.right = direction;
@@ -39,6 +47,11 @@ public class PlayerAttackEffect : MonoBehaviour
     {
         SetTargetActive(true);
         _targetMarkTrm.position = position;
+    }
+
+    public void SetTrailActive(bool value)
+    {
+        _trailRenderer.enabled = value;
     }
     
 }

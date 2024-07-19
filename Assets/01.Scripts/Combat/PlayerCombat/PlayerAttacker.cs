@@ -113,14 +113,9 @@ public class PlayerAttacker : MonoBehaviour
         if (_currentTime < 0.1f) return;
         if (_isTargeting && !_isAttacking)
         {
-            print("true");
             _isAttacking = true;
             Vector2 attackDirection = _currentTargetTrm.position - transform.position;
-            _attackEffect.Play(attackDirection.normalized);
-            EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
-            effect.Initialize(_currentTargetTrm.position);
-            transform.position = _currentTargetTrm.position;
-            _currentTarget.TakeDamage(_player.Stat.GetDamage());
+            
             StartCoroutine(AttackCoroutine(attackDirection));
             
         }
@@ -128,11 +123,25 @@ public class PlayerAttacker : MonoBehaviour
 
     private IEnumerator AttackCoroutine(Vector2 boundDir)
     {
+        float duration = Mathf.Clamp01(0.5f - _player.additionalStat.dashSpeed.GetValue() * 0.1f) * boundDir.magnitude / 10;
+        yield return _player.PlayerController.Dash(_currentTargetTrm.position, duration);
+        _attackEffect.Play(boundDir.normalized);
+        EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
+        effect.Initialize(_currentTargetTrm.position);
+        _currentTarget.TakeDamage(_player.Stat.GetDamage());
         yield return new WaitForSeconds(0.1f);
+        _attackEffect.SetTrailActive(true);
+
         _movementCompo.GetKnockBack(_direction.normalized * _boundPower, 0.23f);
+        yield return new WaitForSeconds(0.2f);
         _currentTime = 0;
-        print("false");
+        _attackEffect.SetTrailActive(false);
         _isAttacking = false;
+    }
+
+    private void DashCoroutine()
+    {
+        
     }
 
 }

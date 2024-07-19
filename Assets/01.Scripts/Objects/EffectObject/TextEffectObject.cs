@@ -16,6 +16,7 @@ public class TextEffectObject : MonoBehaviour, ILifeTimeLimited, IPoolable
     
     [SerializeField] private TextMeshPro _tmp;
     [SerializeField] private float _lifeTime;
+    [SerializeField]
     private float _currentLifeTime;
     private bool _isActive;
 
@@ -41,7 +42,6 @@ public class TextEffectObject : MonoBehaviour, ILifeTimeLimited, IPoolable
 
     public void Play()
     {
-        
     }
 
     public void CheckDie()
