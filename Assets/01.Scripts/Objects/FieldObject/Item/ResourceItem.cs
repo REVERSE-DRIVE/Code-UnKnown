@@ -17,7 +17,7 @@ public class ResourceItem : Item
     {
         FollowPlayer();
     }
-
+    
     private void FollowPlayer()
     {
         // 마인크래프트 exp 스타일로 플레이어를 따라다님
