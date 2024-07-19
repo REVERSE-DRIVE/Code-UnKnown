@@ -1999,6 +1999,19 @@ MonoBehaviour:
   groundTile: {fileID: 11400000, guid: 182940aa9985bfa4a99d06cc689d7c25, type: 2}
   defaultDoor: 0
   enemyCount: {x: 3, y: 15}
+  randomData:
+  - amount: 6
+    list:
+    - percent: 60
+      entity: {fileID: 1066204932706900731, guid: c192c68643fd78042adfe9d91ff24c3a, type: 3}
+    - percent: 30
+      entity: {fileID: 6541604824621382590, guid: 80c0d2ebe9a2ecd44bf3220f001387f9, type: 3}
+    - percent: 10
+      entity: {fileID: 6361362326390487407, guid: 1eb7da8ef4544cb479d65e8e1b46d767, type: 3}
+  - amount: 1
+    list:
+    - percent: 100
+      entity: {fileID: 7009222893961563268, guid: b6d7929404efc7f21968cfef3c42739d, type: 3}
 --- !u!1 &1377564526
 GameObject:
   m_ObjectHideFlags: 0
@@ -3012,11 +3025,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createRooms:
+  - {fileID: 1454806904}
   - {fileID: 890347235}
-  - {fileID: 890347235}
-  - {fileID: 890347235}
-  - {fileID: 890347235}
-  - {fileID: 890347235}
+  - {fileID: 1137990275}
+  - {fileID: 1137990275}
   wallTile: {fileID: 713113024}
   bridgeTile: {fileID: 368225346}
   groundTile: {fileID: 1651452657}
