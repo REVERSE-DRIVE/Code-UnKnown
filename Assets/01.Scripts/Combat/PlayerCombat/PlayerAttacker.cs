@@ -96,13 +96,13 @@ public class PlayerAttacker : MonoBehaviour
                 continue;
             }
 
-            if (_isTargeting) continue;
             if(hit.transform.TryGetComponent(out IDamageable target))
             {
                 _isTargeting = true;
+                isNoTarget = false;
                 _currentTargetTrm = hit.transform;
                 _currentTarget = target;
-                return;
+                break;
             }
         }
 
@@ -149,7 +149,7 @@ public class PlayerAttacker : MonoBehaviour
         _comboTime = 0f;
 
         
-        float duration = Mathf.Clamp01(0.5f - _player.additionalStat.dashSpeed.GetValue() * 0.1f) * boundDir.magnitude / 10;
+        float duration = Mathf.Clamp01(0.5f - _player.additionalStat.dashSpeed.GetValue() * 0.1f) * boundDir.magnitude / 15;
         yield return _player.PlayerController.Dash(_currentTargetTrm.position, duration);
         _attackEffect.Play(boundDir.normalized);
         EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;

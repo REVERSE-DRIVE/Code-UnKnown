@@ -2825,11 +2825,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2652026675448607524, guid: 01d5cf980528f504ab3d327263f2e135, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 2652026675448607524, guid: 01d5cf980528f504ab3d327263f2e135, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 300
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 2652026675448607524, guid: 01d5cf980528f504ab3d327263f2e135, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2861,11 +2861,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2652026675448607524, guid: 01d5cf980528f504ab3d327263f2e135, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 250
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 2652026675448607524, guid: 01d5cf980528f504ab3d327263f2e135, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 250
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 2652026675448607524, guid: 01d5cf980528f504ab3d327263f2e135, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4512,8 +4512,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -150, y: 500}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: -150, y: 450}
+  m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1495788400
 MonoBehaviour:
@@ -6689,8 +6689,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -270, y: 220}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchoredPosition: {x: -230, y: 220}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1997351962
 MonoBehaviour:
@@ -7002,6 +7002,14 @@ PrefabInstance:
     - target: {fileID: 344745458288087132, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805213979845114094, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: _detectDegree
+      value: 105
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805213979845114094, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: _detectDistance
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6863284896352316412, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: controlButtons
