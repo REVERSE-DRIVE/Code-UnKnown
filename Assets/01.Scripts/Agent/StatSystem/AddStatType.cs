@@ -2,5 +2,6 @@
 {
     BonusExp,
     BonusResource,
+    DashSpeed,
     AttackRange
 }

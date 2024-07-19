@@ -16,6 +16,16 @@ namespace ObjectPooling
         
         private void OnValidate()
         {
+            CheckInterface();
+        }
+
+        private void OnEnable()
+        {
+            CheckInterface();
+        }
+
+        private void CheckInterface()
+        {
             if (prefabObject != null)
             {
                 if (prefabObject.TryGetComponent(out IPoolable poolable))
@@ -23,7 +33,6 @@ namespace ObjectPooling
                     prefab = poolable;
                     if (enumName != prefab.type.ToString())
                     {
-                        
                         prefab = null;
                         prefabObject = null;
                         Debug.LogWarning("Type missMatch!");

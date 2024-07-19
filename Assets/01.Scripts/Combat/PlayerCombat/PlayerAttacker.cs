@@ -7,6 +7,7 @@ public class PlayerAttacker : MonoBehaviour
 {
     private Player _player;
     private IMovement _movementCompo;
+    [Header("Attack Setting")]
     [SerializeField] private float _detectDistance = 5.0f;  // 레이의 거리
     [SerializeField] private float _detectDegree = 70f;
     [SerializeField] private int _rayAmount = 10;
@@ -16,10 +17,16 @@ public class PlayerAttacker : MonoBehaviour
     [SerializeField] private PlayerAttackEffect _attackEffect;
     [SerializeField] private PoolingType _hitVFX;
 
+    [Header("Combo Setting")] 
+    [SerializeField] private float _comboCancelTime;
+    private float _comboTime = 0;
+    public bool IsCombo => _comboTime < _comboCancelTime;
+    [field:SerializeField] public int comboCount { get; private set; } = 0;
+
+    
     [Header("Current State")] 
     [SerializeField] private bool _isTargeting;
     [SerializeField] private bool _isAttacking;
-    [field:SerializeField] public int comboCount { get; private set; } = 0;
     private IDamageable _currentTarget;
     private Transform _currentTargetTrm;
 
@@ -43,7 +50,12 @@ public class PlayerAttacker : MonoBehaviour
     private void Update()
     {
         DetectEnemy();
+        if (_isTargeting)
+        {
+            _attackEffect.SetTarget(_currentTargetTrm.position);
+        }
         _currentTime += Time.deltaTime;
+        _comboTime += Time.deltaTime;
     }
 
     public void Initialize(Player player)
@@ -96,6 +108,8 @@ public class PlayerAttacker : MonoBehaviour
 
         if (isNoTarget)
         {
+            
+            _attackEffect.SetTargetActive(false);
             _isTargeting = false;
         }        
     }
@@ -107,14 +121,9 @@ public class PlayerAttacker : MonoBehaviour
         if (_currentTime < 0.1f) return;
         if (_isTargeting && !_isAttacking)
         {
-            print("true");
             _isAttacking = true;
             Vector2 attackDirection = _currentTargetTrm.position - transform.position;
-            _attackEffect.Play(attackDirection.normalized);
-            EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
-            effect.Initialize(_currentTargetTrm.position);
-            transform.position = _currentTargetTrm.position;
-            _currentTarget.TakeDamage(_player.Stat.GetDamage());
+            
             StartCoroutine(AttackCoroutine(attackDirection));
             
         }
@@ -122,11 +131,45 @@ public class PlayerAttacker : MonoBehaviour
 
     private IEnumerator AttackCoroutine(Vector2 boundDir)
     {
+        if (IsCombo)
+        {
+            comboCount++;
+            TextEffectObject textEffect = PoolingManager.Instance.Pop(PoolingType.TextEffectObject) as TextEffectObject;
+            textEffect.Initialize(new TextContent
+            {
+                color = Color.Lerp(Color.white, Color.red, comboCount / 10f),
+                content = $"{comboCount}<color=red>HIT</color>",
+                size = 11,
+                lifeTime = 0.7f
+            }, ((Vector2)_currentTargetTrm.position + Random.insideUnitCircle * 2));
+            textEffect.Play();
+        }
+        else
+            comboCount = 0;    
+        _comboTime = 0f;
+
+        
+        float duration = Mathf.Clamp01(0.5f - _player.additionalStat.dashSpeed.GetValue() * 0.1f) * boundDir.magnitude / 10;
+        yield return _player.PlayerController.Dash(_currentTargetTrm.position, duration);
+        _attackEffect.Play(boundDir.normalized);
+        EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
+        effect.Initialize(_currentTargetTrm.position);
+        _currentTarget.TakeDamage(_player.Stat.GetDamage() + comboCount);
         yield return new WaitForSeconds(0.1f);
+        _attackEffect.SetTrailActive(true);
+
         _movementCompo.GetKnockBack(_direction.normalized * _boundPower, 0.23f);
+        yield return new WaitForSeconds(0.2f);
         _currentTime = 0;
-        print("false");
+        _attackEffect.SetTrailActive(false);
         _isAttacking = false;
+        
+        
+    }
+    
+    private void DashCoroutine()
+    {
+        
     }
 
 }

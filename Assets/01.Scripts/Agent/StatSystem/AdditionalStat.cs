@@ -8,6 +8,7 @@ public class AdditionalStat : ScriptableObject
 {
     public Stat bonusExp;
     public Stat bonusResource;
+    public Stat dashSpeed;
     public Stat attackRange; // 기본이 10이다
     //public bool canRevive;
     
