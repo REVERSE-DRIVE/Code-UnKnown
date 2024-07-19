@@ -43,6 +43,10 @@ public class PlayerAttacker : MonoBehaviour
     private void Update()
     {
         DetectEnemy();
+        if (_isTargeting)
+        {
+            _attackEffect.SetTarget(_currentTargetTrm.position);
+        }
         _currentTime += Time.deltaTime;
     }
 
@@ -96,6 +100,8 @@ public class PlayerAttacker : MonoBehaviour
 
         if (isNoTarget)
         {
+            
+            _attackEffect.SetTargetActive(false);
             _isTargeting = false;
         }        
     }

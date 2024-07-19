@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using ButtonAttribute;
 using DG.Tweening;
 using UnityEngine;
 
@@ -21,7 +20,7 @@ public class WindowPanel : MonoBehaviour
         
     }
     
-    [InspectorButton("Open", 10, true, "Open Window")]
+    //[InspectorButton("Open", 10, true, "Open Window")]
     public void Open()
     {
         if (_isOpen)
@@ -31,7 +30,7 @@ public class WindowPanel : MonoBehaviour
         _rectTrm.DOAnchorPos(_openPosition, _duration).SetEase(_ease);
     }
     
-    [InspectorButton("Close", 10, true, "Close Window")]
+    //[InspectorButton("Close", 10, true, "Close Window")]
     public void Close()
     {
         if (!_isOpen)
