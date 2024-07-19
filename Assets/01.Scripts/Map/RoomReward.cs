@@ -3,15 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-struct RewardRandomData {
+public struct RewardRandomData {
     public int amount; // 뽑을꺼
-    public PercentGameObject[] list; // 리스트
-}
-
-[System.Serializable]
-struct PercentGameObject {
-    public int percent;
-    public GameObject entity;
+    public RandomPercentUtil<GameObject>.Value[] list; // 리스트
 }
 
 public class RoomReward : RoomBase
@@ -28,23 +22,13 @@ public class RoomReward : RoomBase
         List<GameObject> spawnObjects = new();
         foreach (var item in randomData)
         {
-            int[] cumulatives = GetCumulatives(item.list);
-            int k, rand;
+            RandomPercentUtil<GameObject> randUtil = new(item.list);
             
             for (int i = 0; i < item.amount; i++)
             {
-                rand = Random.Range(0, 100 + 1);
-                k = 0;
-                foreach (int cum in cumulatives)
-                {
-                    if (rand < cum) {
-                        spawnObjects.Add(item.list[k].entity);
-                        break;
-                    }
-                    k++;    
-                }
+                GameObject entity = randUtil.GetValue();
+                spawnObjects.Add(entity);
             }
-            
         }
 
         for (int i = 0; i < spawnObjects.Count; i++)
@@ -71,19 +55,5 @@ public class RoomReward : RoomBase
         pos.y += Random.Range(0, sizeHalf.y * limit) * (Random.Range(0, 2) == 1 ? 1 :-1);
         
         return pos;
-    }
-
-    int[] GetCumulatives(PercentGameObject[] list) {
-        int[] result = new int[list.Length];
-
-        int i = 0, total = 0;
-        foreach (var item in list)
-        {
-            total += item.percent;
-            result[i] = total;
-            i++;
-        }
-
-        return result;
     }
 }
