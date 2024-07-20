@@ -10,9 +10,10 @@ public class PlayerAttackEffect : MonoBehaviour
     private bool _isPlaying;
     [SerializeField] private Transform _impactTrm;
     [SerializeField] private Transform _targetMarkTrm;
+    [SerializeField] private Transform _rangeTrm;
+    [SerializeField] private LineRenderer _targetingLine;
     [SerializeField] private float _impactSize = 0.6f;
     private TrailRenderer _trailRenderer;
-
     [Header("Setting")] 
     [SerializeField] private float _impactDuration = 0.3f;
 
@@ -52,6 +53,22 @@ public class PlayerAttackEffect : MonoBehaviour
     public void SetTrailActive(bool value)
     {
         _trailRenderer.enabled = value;
+    }
+
+    public void SetRangeActive(bool value)
+    {
+        _rangeTrm.gameObject.SetActive(value);
+    }
+
+    public void SetLineActive(bool value)
+    {
+        _targetingLine.enabled = value;
+    }
+
+    public void RefreshLine(Vector2 targetPos)
+    {
+        _targetingLine.SetPosition(0, transform.position);
+        _targetingLine.SetPosition(1, targetPos);
     }
     
 }
