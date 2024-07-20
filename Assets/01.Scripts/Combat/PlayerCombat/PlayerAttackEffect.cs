@@ -77,6 +77,11 @@ public class PlayerAttackEffect : MonoBehaviour
         _rangeTrm.gameObject.SetActive(value);
     }
 
+    public void SetRangeSize(float radius)
+    {
+        _rangeTrm.localScale = Vector2.one * radius * 2;
+    }
+
     public void SetLineActive(bool value)
     {
         _targetingLine.enabled = value;

@@ -14,6 +14,7 @@ public class PlayerAttacker : MonoBehaviour
     [SerializeField] private LayerMask layerMask;    // 충돌할 레이어 설정
     [SerializeField] private float _boundPower = 30f;
     private Stat _attackRange;
+    private Stat _comboRate;
     [SerializeField] private PlayerAttackEffect _attackEffect;
     [SerializeField] private PoolingType _hitVFX;
 
@@ -45,6 +46,7 @@ public class PlayerAttacker : MonoBehaviour
          _player.PlayerInputCompo.controlButtons.actionButton.OnTapEvent += HandleAttack;
          _player.PlayerInputCompo.OnMovementEvent += HandleAiming;
         _attackRange = _player.additionalStat.attackRange;
+        _comboRate = _player.additionalStat.comboBonusRate;
     }
 
     private void Update()
@@ -74,12 +76,9 @@ public class PlayerAttacker : MonoBehaviour
     private void DetectEnemy()
     {
         _origin = transform.position;
-
         // 부채꼴 각도의 절반을 계산
         float halfAngle = _detectDegree / 2.0f;
-
         float angleStep = _detectDegree / (_rayAmount - 1);
-
         bool isNoTarget = true;
         for (int i = 0; i < _rayAmount; i++)
         {
@@ -88,8 +87,8 @@ public class PlayerAttacker : MonoBehaviour
             Vector2 rayDirection = (Quaternion.Euler(0, 0, currentAngle) * _direction).normalized;
 
             // 레이캐스트를 발사
-            RaycastHit2D hit = Physics2D.Raycast(_origin, rayDirection, _detectDistance, layerMask);
-            Debug.DrawRay(_origin, rayDirection * _detectDistance, Color.red);
+            RaycastHit2D hit = Physics2D.Raycast(_origin, rayDirection, _attackRange.GetValue(), layerMask);
+            Debug.DrawRay(_origin, rayDirection * _attackRange.GetValue(), Color.red);
             
             if (hit.collider == null)
             {
@@ -98,39 +97,46 @@ public class PlayerAttacker : MonoBehaviour
 
             if(hit.transform.TryGetComponent(out IDamageable target))
             {
-                _isTargeting = true;
-                _attackEffect.SetLineActive(true);
-                _attackEffect.SetRangeActive(false);
                 isNoTarget = false;
                 _currentTargetTrm = hit.transform;
                 _currentTarget = target;
-                _attackEffect.RefreshLine(_currentTargetTrm.position);
-
+                HandleTargeted();
                 break;
             }
         }
 
         if (isNoTarget)
         {
-            _attackEffect.SetLineActive(false);
-            _attackEffect.SetRangeActive(true);
-            _attackEffect.SetTargetActive(false);
-            _isTargeting = false;
-        }        
+            HandleTargetEmpty();
+        }       
+    }
+
+    private void HandleTargeted()
+    {
+        _isTargeting = true;
+        _attackEffect.SetLineActive(true);
+        _attackEffect.SetRangeActive(false);
+        _attackEffect.RefreshLine(_currentTargetTrm.position);
+
+    }
+    
+    private void HandleTargetEmpty()
+    {
+        _attackEffect.SetLineActive(false);
+        _attackEffect.SetRangeActive(true);
+        _attackEffect.SetRangeSize(_attackRange.GetValue());
+        _attackEffect.SetTargetActive(false);
+        _isTargeting = false;
     }
     
     public void HandleAttack()
     {
-        // 공격 구현하자
-
         if (_currentTime < 0.1f) return;
         if (_isTargeting && !_isAttacking)
         {
             _isAttacking = true;
             Vector2 attackDirection = _currentTargetTrm.position - transform.position;
-            
             StartCoroutine(AttackCoroutine(attackDirection));
-            
         }
     }
 
@@ -146,7 +152,7 @@ public class PlayerAttacker : MonoBehaviour
         _attackEffect.Play(boundDir.normalized);
         EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
         effect.Initialize(_currentTargetTrm.position);
-        _currentTarget.TakeDamage(_player.Stat.GetDamage() + comboCount);
+        _currentTarget.TakeDamage(CalcDamage());
         yield return new WaitForSeconds(0.2f);
         _attackEffect.SetTrailActive(true);
         _attackEffect.SetTargetAttack(false);
@@ -158,6 +164,15 @@ public class PlayerAttacker : MonoBehaviour
         _player.Stat.isResist = false;
         
         
+    }
+
+    private int CalcDamage()
+    {
+        int damage = _player.Stat.GetDamage();
+        if (Random.Range(0, 10) < _comboRate.GetValue())
+            damage += comboCount;
+
+        return damage;
     }
     
     private void DashCoroutine()
