@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RoomDefault : RoomBase, IRoomObstacle
+public class RoomEnemy : RoomBase
 {
     [SerializeField] Vector2Int enemyCount;
     [SerializeField] RewardRandomData[] randomData;
@@ -15,17 +15,9 @@ public class RoomDefault : RoomBase, IRoomObstacle
     List<UnityAction> enemyDieEvents;
 
     
-    List<ObstacleData> IRoomObstacle.Obstacles { get; set; }
-
     public override void SetSize()
     {
         Size = new Vector2Int(Random.Range(30, 50), Random.Range(25, 40));
-    }
-
-    public override void OnComplete()
-    {
-        base.OnComplete();
-        (this as IRoomObstacle).ObstacleInit(this);
     }
 
     public override void RoomEnter()
@@ -93,6 +85,4 @@ public class RoomDefault : RoomBase, IRoomObstacle
             }
         }
     }
-
-    public override Vector2Int FindPossibleRandomPos(int spacing) => (this as IRoomObstacle).FindPossibleRandomPos(this, spacing);
 }
