@@ -10,7 +10,8 @@ public class AdditionalStat : ScriptableObject
     public Stat bonusResource;
     public Stat dashSpeed;
     public Stat attackRange; // 기본이 10이다
-    //public bool canRevive;
+    public Stat comboBonus;
+    public bool isStrongAttack;
     
     protected Agent _owner;
     protected Dictionary<AddStatType, Stat> _statDictionary;

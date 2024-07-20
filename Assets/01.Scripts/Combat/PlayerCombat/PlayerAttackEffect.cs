@@ -12,6 +12,7 @@ public class PlayerAttackEffect : MonoBehaviour
     [SerializeField] private float _impactSize = 0.6f;
     private TrailRenderer _trailRenderer;
     [Header("Setting")] 
+    [SerializeField] private Sprite[] _targetMarkSprites;
     [SerializeField] private float _impactDuration = 0.3f;
 
     private Sequence _seq;
