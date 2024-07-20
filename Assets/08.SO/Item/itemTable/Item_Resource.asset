@@ -17,5 +17,5 @@ MonoBehaviour:
   itemName: Resource
   itemIcon: {fileID: 21300000, guid: 5b9141bde8af3a44aaf31c84d0ef2e68, type: 3}
   resourceRank: 3
-  resourceValue: 0
+  resourceValue: 1
   weaponInfoSO: {fileID: 0}

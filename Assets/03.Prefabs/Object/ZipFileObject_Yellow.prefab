@@ -46,14 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c08c640851c354790835d8b59f33e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 0
   OnOutsideInteractEvent:
     m_PersistentCalls:
       m_Calls: []
   _detectMaterial: {fileID: 2100000, guid: 9b2f7f23d8d4f3c4098109f51a709a28, type: 2}
   _visualRenderer: {fileID: 6111720997015479615}
   isDetected: 0
-  _dropType: 0
+  _dropType: 11
   _dropItemId: 0
   _minDropAmount: 1
   _maxDropAmount: 3
