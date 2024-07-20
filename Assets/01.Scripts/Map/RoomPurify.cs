@@ -96,7 +96,7 @@ public class RoomPurify : RoomBase
 
 
             // 문 가까운지 확인
-            foreach (var item in doors)
+            foreach (var item in Doors)
             {
                 Vector2Int minPos2 = new();
                 Vector2Int maxPos2 = new();

@@ -3029,6 +3029,10 @@ MonoBehaviour:
   - {fileID: 890347235}
   - {fileID: 1137990275}
   - {fileID: 1137990275}
+  - {fileID: 707049421}
+  - {fileID: 707049421}
+  - {fileID: 707049421}
+  - {fileID: 707049421}
   wallTile: {fileID: 713113024}
   bridgeTile: {fileID: 368225346}
   groundTile: {fileID: 1651452657}
@@ -3087,8 +3091,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6800fa18c9c17549b41031ca9d32670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionButton: {fileID: 399030827}
-  skillButton: {fileID: 1057292347}
+  actionButton: {fileID: 0}
+  skillButton: {fileID: 0}
   _buttonSprites:
   - {fileID: -1618839063, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
   - {fileID: 93553912, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
