@@ -96,19 +96,24 @@ public class PlayerAttacker : MonoBehaviour
                 continue;
             }
 
-            if (_isTargeting) continue;
             if(hit.transform.TryGetComponent(out IDamageable target))
             {
                 _isTargeting = true;
+                _attackEffect.SetLineActive(true);
+                _attackEffect.SetRangeActive(false);
+                isNoTarget = false;
                 _currentTargetTrm = hit.transform;
                 _currentTarget = target;
-                return;
+                _attackEffect.RefreshLine(_currentTargetTrm.position);
+
+                break;
             }
         }
 
         if (isNoTarget)
         {
-            
+            _attackEffect.SetLineActive(false);
+            _attackEffect.SetRangeActive(true);
             _attackEffect.SetTargetActive(false);
             _isTargeting = false;
         }        
@@ -131,6 +136,37 @@ public class PlayerAttacker : MonoBehaviour
 
     private IEnumerator AttackCoroutine(Vector2 boundDir)
     {
+        Combo();
+        
+        _player.Stat.isResist = true;
+        float duration = Mathf.Clamp01(0.5f - _player.additionalStat.dashSpeed.GetValue() * 0.1f) * boundDir.magnitude / 15;
+        _attackEffect.SetTargetAttack(true);
+
+        yield return _player.PlayerController.Dash(_currentTargetTrm.position, duration);
+        _attackEffect.Play(boundDir.normalized);
+        EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
+        effect.Initialize(_currentTargetTrm.position);
+        _currentTarget.TakeDamage(_player.Stat.GetDamage() + comboCount);
+        yield return new WaitForSeconds(0.2f);
+        _attackEffect.SetTrailActive(true);
+        _attackEffect.SetTargetAttack(false);
+        _movementCompo.GetKnockBack(_direction.normalized * _boundPower, 0.2f);
+        yield return new WaitForSeconds(0.2f);
+        _currentTime = 0;
+        _attackEffect.SetTrailActive(false);
+        _isAttacking = false;
+        _player.Stat.isResist = false;
+        
+        
+    }
+    
+    private void DashCoroutine()
+    {
+        
+    }
+
+    private void Combo()
+    {
         if (IsCombo)
         {
             comboCount++;
@@ -147,29 +183,6 @@ public class PlayerAttacker : MonoBehaviour
         else
             comboCount = 0;    
         _comboTime = 0f;
-
-        
-        float duration = Mathf.Clamp01(0.5f - _player.additionalStat.dashSpeed.GetValue() * 0.1f) * boundDir.magnitude / 10;
-        yield return _player.PlayerController.Dash(_currentTargetTrm.position, duration);
-        _attackEffect.Play(boundDir.normalized);
-        EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
-        effect.Initialize(_currentTargetTrm.position);
-        _currentTarget.TakeDamage(_player.Stat.GetDamage() + comboCount);
-        yield return new WaitForSeconds(0.1f);
-        _attackEffect.SetTrailActive(true);
-
-        _movementCompo.GetKnockBack(_direction.normalized * _boundPower, 0.23f);
-        yield return new WaitForSeconds(0.2f);
-        _currentTime = 0;
-        _attackEffect.SetTrailActive(false);
-        _isAttacking = false;
-        
-        
-    }
-    
-    private void DashCoroutine()
-    {
-        
     }
 
 }

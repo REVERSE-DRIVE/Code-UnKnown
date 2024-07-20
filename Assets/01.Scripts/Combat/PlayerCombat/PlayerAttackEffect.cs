@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -10,10 +7,12 @@ public class PlayerAttackEffect : MonoBehaviour
     private bool _isPlaying;
     [SerializeField] private Transform _impactTrm;
     [SerializeField] private Transform _targetMarkTrm;
+    [SerializeField] private Transform _rangeTrm;
+    [SerializeField] private LineRenderer _targetingLine;
     [SerializeField] private float _impactSize = 0.6f;
     private TrailRenderer _trailRenderer;
-
     [Header("Setting")] 
+    [SerializeField] private Sprite[] _targetMarkSprites;
     [SerializeField] private float _impactDuration = 0.3f;
 
     private Sequence _seq;
@@ -49,9 +48,44 @@ public class PlayerAttackEffect : MonoBehaviour
         _targetMarkTrm.position = position;
     }
 
+    /**
+     * <summary>
+     * 공격 상태로 전활될때 타게팅 마크 효과 
+     * </summary>
+     */
+    public void SetTargetAttack(bool value)
+    {
+        if (value)
+        {
+            _targetMarkTrm.rotation = Quaternion.Euler(0,0,45f);
+            _targetMarkTrm.localScale = Vector2.one * 2;
+        }
+        else
+        {
+            _targetMarkTrm.rotation = Quaternion.identity;
+            _targetMarkTrm.localScale = Vector2.one * 2.3f;
+        }
+    }
+
     public void SetTrailActive(bool value)
     {
         _trailRenderer.enabled = value;
+    }
+
+    public void SetRangeActive(bool value)
+    {
+        _rangeTrm.gameObject.SetActive(value);
+    }
+
+    public void SetLineActive(bool value)
+    {
+        _targetingLine.enabled = value;
+    }
+
+    public void RefreshLine(Vector2 targetPos)
+    {
+        _targetingLine.SetPosition(0, transform.position);
+        _targetingLine.SetPosition(1, targetPos);
     }
     
 }

@@ -8,7 +8,7 @@ public class Stat
     [SerializeField] private int _baseValue;
     public List<int> modifiers;
     public bool isPercent;
-
+    
     public int GetValue()
     {
         int total = _baseValue;
