@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -48,6 +45,25 @@ public class PlayerAttackEffect : MonoBehaviour
     {
         SetTargetActive(true);
         _targetMarkTrm.position = position;
+    }
+
+    /**
+     * <summary>
+     * 공격 상태로 전활될때 타게팅 마크 효과 
+     * </summary>
+     */
+    public void SetTargetAttack(bool value)
+    {
+        if (value)
+        {
+            _targetMarkTrm.rotation = Quaternion.Euler(0,0,45f);
+            _targetMarkTrm.localScale = Vector2.one * 2;
+        }
+        else
+        {
+            _targetMarkTrm.rotation = Quaternion.identity;
+            _targetMarkTrm.localScale = Vector2.one * 2.3f;
+        }
     }
 
     public void SetTrailActive(bool value)

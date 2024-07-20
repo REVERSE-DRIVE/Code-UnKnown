@@ -6226,8 +6226,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 0, z: -10}
-  m_XDamping: 1
-  m_YDamping: 1
+  m_XDamping: 0.7
+  m_YDamping: 0.7
   m_ZDamping: 1
   m_AngularDampingMode: 0
   m_PitchDamping: 0
@@ -7005,6 +7005,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4219708058677381247, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6051324242736730689, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -7036,6 +7040,22 @@ PrefabInstance:
     - target: {fileID: 7042404186746062641, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423503386353977252, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423503386353977252, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423503386353977252, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423503386353977252, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

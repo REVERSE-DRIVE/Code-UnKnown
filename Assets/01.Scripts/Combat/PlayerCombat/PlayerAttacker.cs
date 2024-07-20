@@ -137,9 +137,11 @@ public class PlayerAttacker : MonoBehaviour
     private IEnumerator AttackCoroutine(Vector2 boundDir)
     {
         Combo();
-
+        
         _player.Stat.isResist = true;
         float duration = Mathf.Clamp01(0.5f - _player.additionalStat.dashSpeed.GetValue() * 0.1f) * boundDir.magnitude / 15;
+        _attackEffect.SetTargetAttack(true);
+
         yield return _player.PlayerController.Dash(_currentTargetTrm.position, duration);
         _attackEffect.Play(boundDir.normalized);
         EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
@@ -147,13 +149,14 @@ public class PlayerAttacker : MonoBehaviour
         _currentTarget.TakeDamage(_player.Stat.GetDamage() + comboCount);
         yield return new WaitForSeconds(0.2f);
         _attackEffect.SetTrailActive(true);
-
+        _attackEffect.SetTargetAttack(false);
         _movementCompo.GetKnockBack(_direction.normalized * _boundPower, 0.2f);
         yield return new WaitForSeconds(0.2f);
         _currentTime = 0;
         _attackEffect.SetTrailActive(false);
         _isAttacking = false;
         _player.Stat.isResist = false;
+        
         
     }
     
