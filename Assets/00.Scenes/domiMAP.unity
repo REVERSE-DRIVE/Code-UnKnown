@@ -195,7 +195,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 183983181}
+    m_ColliderPaths: []
   m_CompositePaths:
     m_Paths: []
   m_VertexDistance: 0.0005
@@ -260,7 +262,7 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
@@ -1275,7 +1277,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 713113027}
+    m_ColliderPaths: []
   m_CompositePaths:
     m_Paths: []
   m_VertexDistance: 0.0005
@@ -1340,7 +1344,7 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
@@ -2091,6 +2095,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTile: {fileID: 11400000, guid: 182940aa9985bfa4a99d06cc689d7c25, type: 2}
   defaultDoor: 0
+  enemyCount: {x: 3, y: 15}
+  randomData:
+  - amount: 4
+    list:
+    - percent: 30
+      entity: {fileID: 1066204932706900731, guid: c192c68643fd78042adfe9d91ff24c3a, type: 3}
+    - percent: 50
+      entity: {fileID: 6541604824621382590, guid: 80c0d2ebe9a2ecd44bf3220f001387f9, type: 3}
+    - percent: 20
+      entity: {fileID: 6361362326390487407, guid: 1eb7da8ef4544cb479d65e8e1b46d767, type: 3}
+  - amount: 2
+    list:
+    - percent: 100
+      entity: {fileID: 7009222893961563268, guid: b6d7929404efc7f21968cfef3c42739d, type: 3}
   mapTemplate: {fileID: 7096924795576456087, guid: d1330eca39210a8899639eab70a34863, type: 3}
   tile: {fileID: 11400000, guid: 4e0442d1f992aad43b1955c7bc0391c1, type: 2}
 --- !u!1 &1643169398
@@ -2968,9 +2986,11 @@ MonoBehaviour:
   - {fileID: 1454806904}
   - {fileID: 890347235}
   - {fileID: 1137990275}
-  - {fileID: 1137990275}
   - {fileID: 707049421}
-  - {fileID: 707049421}
+  - {fileID: 1612139748}
+  - {fileID: 1612139748}
+  - {fileID: 1612139748}
+  - {fileID: 1612139748}
   wallTile: {fileID: 713113024}
   bridgeTile: {fileID: 368225346}
   groundTile: {fileID: 1651452657}
