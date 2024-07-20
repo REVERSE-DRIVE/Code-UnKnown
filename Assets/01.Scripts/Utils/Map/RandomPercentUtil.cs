@@ -27,7 +27,7 @@ public class RandomPercentUtil<T>
     }
 
     public T GetValue() {
-        int rand = Random.Range(0, 100 + 1);
+        int rand = Random.Range(0, 100);
         
         for (int i = 0; i < percents.Length; i++)
         {
