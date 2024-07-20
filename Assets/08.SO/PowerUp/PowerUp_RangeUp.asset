@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05a1b71727e24c458e1f9b51a645071a, type: 3}
-  m_Name: PowerUp_HealthUp
+  m_Name: PowerUp_RangeUp
   m_EditorClassIdentifier: 
-  code: HealthUp
-  powerUpRank: 4
+  code: RangeUp
+  powerUpRank: 3
   shouldBeUnlock: 0
-  title: "\uC678\uAC11 \uC554\uD638\uD654"
-  description: "\uCD5C\uB300\uCCB4\uB825\uC744 20 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+  title: "\uBC94\uC704"
+  description: "\uACF5\uACA9 \uBC94\uC704\uB97C 1 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4"
   icon: {fileID: 0}
   effectList:
-  - {fileID: 11400000, guid: 9b5c464d514e00a438b77c6d06277277, type: 2}
+  - {fileID: 11400000, guid: c08a3b18d324b0a4bae630bcc25d2fc4, type: 2}
