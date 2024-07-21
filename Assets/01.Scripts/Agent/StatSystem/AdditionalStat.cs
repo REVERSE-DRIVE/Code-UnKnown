@@ -11,6 +11,7 @@ public class AdditionalStat : ScriptableObject
     public Stat dashSpeed;
     public Stat attackRange; // 기본이 10이다
     public Stat comboBonusRate; // 기본 10, 1당 10%
+    public Stat junkUsability;
     
     public bool isStrongAttack;
     

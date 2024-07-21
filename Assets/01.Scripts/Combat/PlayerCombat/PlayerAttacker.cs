@@ -55,6 +55,7 @@ public class PlayerAttacker : MonoBehaviour
         if (_isTargeting)
         {
             _attackEffect.SetTarget(_currentTargetTrm.position);
+            _attackEffect.SetStrongAttackMode(_player.additionalStat.isStrongAttack);
         }
         _currentTime += Time.deltaTime;
         _comboTime += Time.deltaTime;
@@ -171,7 +172,11 @@ public class PlayerAttacker : MonoBehaviour
         int damage = _player.Stat.GetDamage();
         if (Random.Range(0, 10) < _comboRate.GetValue())
             damage += comboCount;
-
+        if (_player.additionalStat.isStrongAttack)
+        {
+            damage = (int)(damage * 1.5f);
+            _player.additionalStat.isStrongAttack = false;
+        }
         return damage;
     }
     

@@ -6,13 +6,13 @@ public class PlayerAttackEffect : MonoBehaviour
     [SerializeField] private ParticleSystem[] _attackParticle;
     private bool _isPlaying;
     [SerializeField] private Transform _impactTrm;
+    [SerializeField] private TargetMarkObject _targetMark;
     [SerializeField] private Transform _targetMarkTrm;
     [SerializeField] private Transform _rangeTrm;
     [SerializeField] private LineRenderer _targetingLine;
     [SerializeField] private float _impactSize = 0.6f;
     private TrailRenderer _trailRenderer;
     [Header("Setting")] 
-    [SerializeField] private Sprite[] _targetMarkSprites;
     [SerializeField] private float _impactDuration = 0.3f;
 
     private Sequence _seq;
@@ -55,16 +55,12 @@ public class PlayerAttackEffect : MonoBehaviour
      */
     public void SetTargetAttack(bool value)
     {
-        if (value)
-        {
-            _targetMarkTrm.rotation = Quaternion.Euler(0,0,45f);
-            _targetMarkTrm.localScale = Vector2.one * 2;
-        }
-        else
-        {
-            _targetMarkTrm.rotation = Quaternion.identity;
-            _targetMarkTrm.localScale = Vector2.one * 2.3f;
-        }
+        _targetMark.SetAttack(value);
+    }
+
+    public void SetStrongAttackMode(bool value)
+    {
+        _targetMark.SetStrongAttackMode(value);
     }
 
     public void SetTrailActive(bool value)
