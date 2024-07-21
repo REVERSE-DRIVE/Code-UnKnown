@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class QuestListSO
+namespace QuestManage
 {
-    public List<QuestSO> questList;
-
-    public QuestSO FineQuest(int id)
+    [CreateAssetMenu(menuName = "SO/Quest/QuestListSO")]
+    public class QuestListSO : ScriptableObject
     {
-        return null;
+        public List<QuestSO> questList;
+
+        public QuestSO FineQuest(int id)
+        {
+            return null;
+        }
     }
 }

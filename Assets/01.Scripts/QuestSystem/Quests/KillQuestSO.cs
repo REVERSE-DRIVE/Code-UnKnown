@@ -1,4 +1,10 @@
-﻿public class KillQuestSO : QuestSO
+﻿using UnityEngine;
+
+namespace QuestManage
 {
-    // EnemyType을 통해 감지하자
+    [CreateAssetMenu(menuName = "SO/Quest/KillQuestSO")]
+    public class KillQuestSO : QuestSO
+    {
+        // EnemyType을 통해 감지하자
+    }
 }
