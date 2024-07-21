@@ -13,8 +13,8 @@ namespace EnemyManage
         
         [SerializeField] protected LayerMask _whatIsPlayer;
         [SerializeField] protected LayerMask _whatIsObstacle;
+        [field:SerializeField] public SpriteRenderer RendererCompo { get; protected set; }
         public Rigidbody2D RigidCompo { get; protected set; }
-        public SpriteRenderer RendererCompo { get; protected set; }
         public Collider2D ColliderCompo { get; protected set; }
 
         [Header("Attack Settings")] public float runAwayDistance;
@@ -31,7 +31,6 @@ namespace EnemyManage
             base.Awake();
             RigidCompo = GetComponent<Rigidbody2D>();
             ColliderCompo = GetComponent<Collider2D>();
-            RendererCompo = transform.Find("Visual").GetComponent<SpriteRenderer>();
             MovementCompo.Initialize(this);
             _enemyCheckColliders = new Collider2D[_maxCheckEnemy];
         }

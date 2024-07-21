@@ -84,12 +84,13 @@ public class HierarchyCustomizer
     private static bool IsComponentIgnored(Component component)
     {
         return
-            component is Transform ||
-            component is CanvasRenderer ||
-            component is CanvasScaler ||
-            component is GraphicRaycaster ||
-            component is AudioListener ||
-            component is UniversalAdditionalCameraData ||
-            component is StandaloneInputModule;
+            component is 
+                Transform or 
+                CanvasRenderer or 
+                CanvasScaler or 
+                GraphicRaycaster or 
+                AudioListener or
+                UniversalAdditionalCameraData or
+                StandaloneInputModule;
     }
 }
