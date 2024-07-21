@@ -2,9 +2,11 @@
 using ObjectManage;
 using UnityEngine;
 
-public class JunkFileObject : InteractObject
+public class JunkFileObject : InteractObject, IDamageable
 {
     private Rigidbody2D _rigidCompo;
+    [SerializeField] protected int _currentHealth;
+
     [SerializeField] private Material _hitMaterial;
     [SerializeField] private bool _collisionDestroy;
     [SerializeField] private float _pushPower;
@@ -85,11 +87,11 @@ public class JunkFileObject : InteractObject
 
     public override void Interact(InteractData data)
     {
+        if (_isActive) return;
         _origin = data.interactOriginPosition;
         base.Interact(data);
         _isActive = true;
         _pushVFX.Play();
-        print("정크 파일 상호작용됨");
     }
 
     private void HandlePush()
@@ -145,6 +147,29 @@ public class JunkFileObject : InteractObject
             _defaultMaterial.SetFloat(_dissolveHash, Mathf.Lerp(1f, 0f, currentTime / dissolveTime));
             yield return null;
             
+        }
+    }
+    
+    public void TakeDamage(int amount)
+    {
+        _currentHealth -= amount;
+        Player player = PlayerManager.Instance.player;
+        Interact(new InteractData{interactOriginPosition = player.transform.position, interactOwner = player});
+        CheckDie();
+        
+    }
+
+    public void RestoreHealth(int amount)
+    {
+        _currentHealth += amount;
+        CheckDie();
+    }
+
+    public void CheckDie()
+    {
+        if (_currentHealth <= 0)
+        {
+            OnDestroyEvent?.Invoke();
         }
     }
     

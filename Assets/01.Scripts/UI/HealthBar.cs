@@ -53,8 +53,6 @@ public class HealthBar : MonoBehaviour
             _seq.Append(_mainFillBar.DOFillAmount(newFill, _changeTime));
 
         }
-        
-
     }
 
    
@@ -62,7 +60,7 @@ public class HealthBar : MonoBehaviour
     {
         if (_isShaking) return;
         _isShaking = true;
-        _currentShakeTween = _rectTrm.DOShakeAnchorPos(0.1f).OnComplete(() => { _isShaking = false;});
+        _currentShakeTween = _rectTrm.DOShakeAnchorPos(0.1f, 40f).OnComplete(() => { _isShaking = false;});
     }
 
 }

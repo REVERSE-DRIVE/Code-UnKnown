@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_DoorShader
-  m_Shader: {fileID: -6465566751694194690, guid: a3a7989d3e81e444385219c4c67d8d14, type: 3}
+  m_Name: TargetRangeShader
+  m_Shader: {fileID: -6465566751694194690, guid: 3bf5d8a54e58104419063617601cc4a1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,14 +23,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _AlertTexture:
-        m_Texture: {fileID: 2800000, guid: e9521f8370f787f4e83d2136f5c994f9, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 0370e282b9bf42d4d8b72da3a01fc79a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -45,19 +37,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlertAmount: 1
-    - _Amount: 1
-    - _LineAmount: -1.95
-    - _LineWidth: 0.45
+    - _OutLineWidth: 0.113
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Range: 0.1
     m_Colors:
-    - _AlertColor: {r: 1, g: 0.20396024, b: 0, a: 1}
-    - _LineColor: {r: 1.9999998, g: 0, b: 0, a: 1}
-    - _MaskColor: {r: 0.18431373, g: 0.6156863, b: 0.6156863, a: 1}
+    - _LightColor: {r: 1.4980391, g: 0.025828263, b: 0, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &1970331618527153539
+--- !u!114 &8584958419460607027
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

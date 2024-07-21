@@ -2,30 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-struct ObstacleData {
+public struct ObstacleData {
     public Vector2Int min;
     public Vector2Int max;
 }
 
-public class RoomObstacleBase : RoomBase
+
+public interface IRoomObstacle
 {
-    List<ObstacleData> obstacles;
+    List<ObstacleData> Obstacles { get; protected set; }
 
-    public override void OnComplete()
-    {
-        base.OnComplete();
-        
-        obstacles = new();
+    void ObstacleInit(RoomBase room) {
+        Obstacles = new();
 
-        int createObj = Random.Range(0, (Size.x > Size.y ? Size.y : Size.x) / 3); // 장애물 갯수
+        int createObj = Random.Range(0, (room.Size.x > room.Size.y ? room.Size.y : room.Size.x) / 3); // 장애물 갯수
         // int createObj = 10; // 장애물 갯수
         int tryCount = 0; // 시도 횟수 (너무많이 실패하면 빠져나가기 위해)
         
-        while (obstacles.Count < createObj && tryCount < 50) {
-            // Vector2Int min = MinPos - Vector2Int.one + new Vector2Int(Random.Range(0, Size.x - 1), Random.Range(0, Size.y - 1));
-            // Vector2Int max = new Vector2Int( Random.Range(min.x, MaxPos.x), Random.Range(min.y, MaxPos.y) );
+        while (Obstacles.Count < createObj && tryCount < 50) {
+            // Vector2Int min = room.MinPos - Vector2Int.one + new Vector2Int(Random.Range(0, room.Size.x - 1), Random.Range(0, room.Size.y - 1));
+            // Vector2Int max = new Vector2Int( Random.Range(min.x, room.MaxPos.x), Random.Range(min.y, room.MaxPos.y) );
 
-            Vector2Int size = new(Random.Range((int)(Size.x * 0.1f), Size.x), Random.Range((int)(Size.y * 0.1f), Size.y));
+            Vector2Int size = new(Random.Range((int)(room.Size.x * 0.1f), room.Size.x), Random.Range((int)(room.Size.y * 0.1f), room.Size.y));
             if (size.x > size.y) {
                 size.x = Random.Range(1, 3);
             } else if (size.x < size.y) {
@@ -39,50 +37,50 @@ public class RoomObstacleBase : RoomBase
 
             int rand = Random.Range(1, 4);
             if (size.x > size.y) {
-                min.y = Random.Range(MinPos.y + size.y + 1, MaxPos.y - 1 - size.y * 2);
+                min.y = Random.Range(room.MinPos.y + size.y + 1, room.MaxPos.y - 1 - size.y * 2);
                 max.y = min.y + size.y;
 
                 if (rand == 1) {
-                    min.x = MinPos.x + 1;
+                    min.x = room.MinPos.x + 1;
                     max.x = min.x + size.x;
                 } else if (rand == 2) {
-                    max.x = MaxPos.x - 1;
+                    max.x = room.MaxPos.x - 1;
                     min.x = max.x - size.x;
                 } else {
-                    min.x = Random.Range(MinPos.x + 1, (MinPos.x + 1) + (Size.x - 2 - size.x));
+                    min.x = Random.Range(room.MinPos.x + 1, (room.MinPos.x + 1) + (room.Size.x - 2 - size.x));
                     max.x = min.x + size.x;
                 }
             } else if (size.x < size.y) {
-                min.x = Random.Range(MinPos.x + size.x + 1, MaxPos.x - 1 - size.x * 2);
+                min.x = Random.Range(room.MinPos.x + size.x + 1, room.MaxPos.x - 1 - size.x * 2);
                 max.x = min.x + size.x;
 
 
                 if (rand == 1) {
-                    min.y = MinPos.y + 1;
+                    min.y = room.MinPos.y + 1;
                     max.y = min.y + size.y;
                 } else if (rand == 2) {
-                    max.y = MaxPos.y - 1;
+                    max.y = room.MaxPos.y - 1;
                     min.y = max.y - size.y;
                 } else if (rand == 3) {
-                    min.y = Random.Range(MinPos.y + 1, (MinPos.y + 1) + (Size.y - 2 - size.y));
+                    min.y = Random.Range(room.MinPos.y + 1, (room.MinPos.y + 1) + (room.Size.y - 2 - size.y));
                     max.y = min.y + size.y;
                 }
             } else {
-                min.x = Random.Range(MinPos.x, MaxPos.x - size.x);
-                min.y = Random.Range(MinPos.y, MaxPos.y - size.y);
+                min.x = Random.Range(room.MinPos.x, room.MaxPos.x - size.x);
+                min.y = Random.Range(room.MinPos.y, room.MaxPos.y - size.y);
 
                 max = min;
                 max += size;
             }
 
             // 크기가 너무 큼 / 크기가 너무 작음
-            if (size.x + 2 + 3 >= Size.x || size.y + 2 + 3 >= Size.y || (size.x < 3 && size.y < 3)) {
+            if (size.x + 2 + 3 >= room.Size.x || size.y + 2 + 3 >= room.Size.y || (size.x < 3 && size.y < 3)) {
                 tryCount ++;
                 continue;
             }
 
             // 겹침 확인
-            foreach (var item in obstacles)
+            foreach (var item in Obstacles)
             {
                 if (item.max.x < min.x - 3 || item.min.x > max.x + 3) continue;
                 if (item.max.y < min.y - 3 || item.min.y > max.y + 3) continue;
@@ -93,35 +91,35 @@ public class RoomObstacleBase : RoomBase
 
             // 문 가까운지 확인
             int nearSize = 5;
-            foreach (var item in doors)
+            foreach (var item in room.Doors)
             {
                 Vector2Int minPos = new();
                 Vector2Int maxPos = new();
 
                 if (item.Key == MapGenerator.Direction.Top) {
-                    minPos.y = MaxPos.y - nearSize;
+                    minPos.y = room.MaxPos.y - nearSize;
                     minPos.x = item.Value.size.x;
                     
-                    maxPos.y = MaxPos.y;
+                    maxPos.y = room.MaxPos.y;
                     maxPos.x = item.Value.size.y;
                 } else if (item.Key == MapGenerator.Direction.Bottom) {
-                    minPos.y = MinPos.y;
+                    minPos.y = room.MinPos.y;
                     minPos.x = item.Value.size.x;
 
-                    maxPos.y = MinPos.y + nearSize;
+                    maxPos.y = room.MinPos.y + nearSize;
                     maxPos.x = item.Value.size.y;
                 } else if (item.Key == MapGenerator.Direction.Left) {
                     minPos.y = item.Value.size.x;
-                    minPos.x = MinPos.x;
+                    minPos.x = room.MinPos.x;
 
                     maxPos.y = item.Value.size.y;
-                    maxPos.x = MinPos.x + nearSize;
+                    maxPos.x = room.MinPos.x + nearSize;
                 } else if (item.Key == MapGenerator.Direction.Right) {
                     minPos.y = item.Value.size.x;
-                    minPos.x = MaxPos.x - nearSize;
+                    minPos.x = room.MaxPos.x - nearSize;
 
                     maxPos.y = item.Value.size.y;
-                    maxPos.x = MaxPos.x;
+                    maxPos.x = room.MaxPos.x;
                 }
 
                 if (maxPos.x < min.x - 1 || minPos.x > max.x + 1) continue;
@@ -137,34 +135,34 @@ public class RoomObstacleBase : RoomBase
             }
 
             // 확정
-            obstacles.Add(new ObstacleData() {
+            Obstacles.Add(new ObstacleData() {
                 min = min,
                 max = max
             });
             tryCount = 0;
 
             MapManager.Instance.CreateWall(min, max);
-            print($"ming / {min} ~ {max}");
-        }
+            Debug.Log($"ming / {min} ~ {max}");
     }
+}
 
-    public override Vector2Int FindPossibleRandomPos(int spacing) {
-        Vector2Int pos = new(Random.Range(MinPos.x + 1 /* 테두리 */, MaxPos.x), Random.Range(MinPos.y + 1, MaxPos.y));
+    public Vector2Int FindPossibleRandomPos(RoomBase room, int spacing) {
+        Vector2Int pos = new(Random.Range(room.MinPos.x + 1 /* 테두리 */, room.MaxPos.x), Random.Range(room.MinPos.y + 1, room.MaxPos.y));
         
         Vector2Int min = pos - (Vector2Int.one * spacing);
         Vector2Int max = pos + (Vector2Int.one * spacing);
 
-        if (MinPos.x > min.x || MinPos.y > min.y || MaxPos.x < max.x || MaxPos.y < max.y) {
-            return FindPossibleRandomPos(spacing); // 다시
+        if (room.MinPos.x > min.x || room.MinPos.y > min.y || room.MaxPos.x < max.x || room.MaxPos.y < max.y) {
+            return FindPossibleRandomPos(room, spacing); // 다시
         }
 
-        foreach (var item in obstacles)
+        foreach (var item in Obstacles)
         {
             if (item.max.x < min.x || item.min.x > max.x) continue;
             if (item.max.y < min.y || item.min.y > max.y) continue;
 
             // 박스 겹침
-            return FindPossibleRandomPos(spacing);
+            return FindPossibleRandomPos(room, spacing);
         }
 
         return pos;

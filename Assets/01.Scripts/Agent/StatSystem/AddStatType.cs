@@ -3,5 +3,6 @@
     BonusExp,
     BonusResource,
     DashSpeed,
-    AttackRange
+    AttackRange,
+    ComboBonusRate
 }

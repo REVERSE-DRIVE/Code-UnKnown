@@ -20,10 +20,6 @@ public class EffectSelectPanel : MonoBehaviour, IWindowPanel
         _canvasGroup = GetComponent<CanvasGroup>();
         
     }
-
-
-   
-
     
     private void SetUpPowerUpCards()
     {
@@ -45,11 +41,12 @@ public class EffectSelectPanel : MonoBehaviour, IWindowPanel
 
     public void Open()
     {
-        print("EffectSelect창 열림");
-        // if () return;
         _levelUpAmount++;
+        if (_levelUpAmount > 1) return;
 
+        Time.timeScale = 0;
         SetUpPowerUpCards();
+        UIManager.Instance.Open(WindowEnum.Dark);
         _canvasGroup.DOFade(1, 0.3f).SetUpdate(true).OnComplete(() => SetInteract(true));
     }
 
@@ -61,7 +58,10 @@ public class EffectSelectPanel : MonoBehaviour, IWindowPanel
             SetUpPowerUpCards();
             return;
         }
+
+        Time.timeScale = 1;
         SetInteract(false);
+        UIManager.Instance.Close(WindowEnum.Dark);
         _canvasGroup.DOFade(0, 0.3f).SetUpdate(false);
     }
 

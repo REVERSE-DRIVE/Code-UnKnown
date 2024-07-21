@@ -25,6 +25,11 @@ MonoBehaviour:
     modifiers: 
     isPercent: 0
   attackRange:
-    _baseValue: 8
+    _baseValue: 5
     modifiers: 
     isPercent: 0
+  comboBonusRate:
+    _baseValue: 1
+    modifiers: 
+    isPercent: 0
+  isStrongAttack: 0

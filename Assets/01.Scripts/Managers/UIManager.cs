@@ -5,7 +5,8 @@ using UnityEngine;
 
 public enum WindowEnum
 {
-    EffectSelect
+    EffectSelect,
+    Dark
 }
 
 public class UIManager : MonoSingleton<UIManager>

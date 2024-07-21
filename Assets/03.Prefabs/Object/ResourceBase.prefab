@@ -106,7 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b43828878354eeb97ce28184f766d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 0
   OnOutsideInteractEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -118,4 +117,4 @@ MonoBehaviour:
   _itemNameText: {fileID: 312167673242604533}
   _itemType: 11
   _activeMaterial: {fileID: 2100000, guid: 02b6253de25c40b449a0e470435636fb, type: 2}
-  _resourceRank: 10
+  _resourceRank: 3
