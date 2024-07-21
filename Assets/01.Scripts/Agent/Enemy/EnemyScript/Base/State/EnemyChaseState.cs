@@ -18,7 +18,6 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
         base.Enter();
         _chaseCoroutine = _enemyBase.StartCoroutine(ChaseRoutine());
         if (_chaseCoroutine == null) Debug.LogWarning("Coroutine is null");
-        Debug.Log("Chase Enter");
     }
 
     public override void UpdateState()
@@ -55,7 +54,6 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
     
     protected virtual IEnumerator ChaseRoutine()
     {
-        Debug.Log("ChaseRoutine");
         if (_isChase) yield break;
         _isChase = true;
         while (true)
