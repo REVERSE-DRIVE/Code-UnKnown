@@ -61,6 +61,7 @@ MonoBehaviour:
   _whatIsObstacle:
     serializedVersion: 2
     m_Bits: 0
+  <RendererCompo>k__BackingField: {fileID: 5799715234792316084}
   runAwayDistance: 10
   attackDistance: 1.5
   chaseDistance: 3

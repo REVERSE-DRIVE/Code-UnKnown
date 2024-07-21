@@ -176,10 +176,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6909941471593448326}
+  - component: {fileID: 1212457753605843167}
   - component: {fileID: 7740423660447197507}
   - component: {fileID: 8372225103064624684}
   - component: {fileID: 4073783358191414210}
-  - component: {fileID: 1212457753605843167}
   - component: {fileID: 6002369016692123841}
   - component: {fileID: 1620958085919903754}
   m_Layer: 7
@@ -206,6 +206,37 @@ Transform:
   - {fileID: 3356217614490052571}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1212457753605843167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5627968206905763583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78fbbd4daa7745d88b667372a649d7ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDead: 0
+  <Stat>k__BackingField: {fileID: 11400000, guid: 8245a9ceb99c50c4ca6496d089f977d9, type: 2}
+  _itemType: 11
+  _id: 0
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _whatIsObstacle:
+    serializedVersion: 2
+    m_Bits: 0
+  <RendererCompo>k__BackingField: {fileID: 4819433869334006861}
+  runAwayDistance: 10
+  attackDistance: 1.5
+  chaseDistance: 3
+  attackCooldown: 1
+  lastAttackTime: 0
+  targetTrm: {fileID: 0}
+  <type>k__BackingField: 2
+  _hitMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}
 --- !u!114 &7740423660447197507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,36 +312,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1212457753605843167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5627968206905763583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78fbbd4daa7745d88b667372a649d7ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDead: 0
-  <Stat>k__BackingField: {fileID: 11400000, guid: 8245a9ceb99c50c4ca6496d089f977d9, type: 2}
-  _itemType: 11
-  _id: 0
-  _whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _whatIsObstacle:
-    serializedVersion: 2
-    m_Bits: 0
-  runAwayDistance: 10
-  attackDistance: 1.5
-  chaseDistance: 3
-  attackCooldown: 1
-  lastAttackTime: 0
-  targetTrm: {fileID: 0}
-  <type>k__BackingField: 2
-  _hitMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}
 --- !u!114 &6002369016692123841
 MonoBehaviour:
   m_ObjectHideFlags: 0

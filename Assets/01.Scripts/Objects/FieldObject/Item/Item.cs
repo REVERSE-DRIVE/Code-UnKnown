@@ -62,7 +62,7 @@ namespace ItemManage
             StartCoroutine(InteractCoroutine());
         }
 
-        private IEnumerator InteractCoroutine()
+        protected IEnumerator InteractCoroutine()
         {
             ChangeActiveMaterial(1.1f, 0f, 0.5f);
             yield return new WaitForSeconds(0.5f);
