@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8835db730168a74cb30381e4493f019, type: 3}
-  m_Name: New Player Part Table SO
+  m_Name: LegParts
   m_EditorClassIdentifier: 
   partType: 0
   playerPartDataSOList:
-  - {fileID: 11400000, guid: 5da6934b9a078644e8a51547d7105321, type: 2}
+  - {fileID: 11400000, guid: d59a96bf198f74f4e9a0ffa98d61eb54, type: 2}

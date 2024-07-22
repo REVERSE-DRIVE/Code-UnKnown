@@ -838,6 +838,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &182689253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5153498254258576577, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+  m_PrefabInstance: {fileID: 5043262373099526136}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeda19a0e12f4b2dbe51499c54b4f499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &229503591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,6 +1441,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &405519954 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7932395404599207750, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+  m_PrefabInstance: {fileID: 5043262373099526136}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfbb98d1bf0b4ca69f11b46acfb21de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &422571918
 GameObject:
   m_ObjectHideFlags: 0
@@ -6185,6 +6207,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5108899912060835987, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: defaultPart
+      value: 
+      objectReference: {fileID: 11400000, guid: d59a96bf198f74f4e9a0ffa98d61eb54, type: 2}
+    - target: {fileID: 5108899912060835987, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: defaultLegPart
+      value: 
+      objectReference: {fileID: 11400000, guid: 97ec915218cfcf24ab6021ef4460bf9c, type: 2}
+    - target: {fileID: 5108899912060835987, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: defaultLegPartType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108899912060835987, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: partList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108899912060835987, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: partList.Array.data[0]
+      value: 
+      objectReference: {fileID: 182689253}
+    - target: {fileID: 5108899912060835987, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: partList.Array.data[1]
+      value: 
+      objectReference: {fileID: 405519954}
     - target: {fileID: 6051324242736730689, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: m_Enabled
       value: 0
