@@ -11,8 +11,21 @@ namespace PlayerPartsManage
         public PlayerPart[] partList;
         public PlayerPartTableSO[] playerPartTableSO;
         
+        private Transform _visualTrm;
+        private Transform _bodyTrm;
+        private Transform _legLeftTrm;
+        private Transform _legRightTrm;
+        
         [SerializeField] PlayerPartDataSO defaultPart;
         [SerializeField] PartType defaultPartType;
+        
+        private void Awake()
+        {
+            _visualTrm = transform.Find("Visual");
+            _bodyTrm = _visualTrm.Find("Body");
+            _legLeftTrm = _visualTrm.Find("Leg Left");
+            _legRightTrm = _visualTrm.Find("Leg Right");
+        }
         
         [InspectorButton]
         public void InitParts()
@@ -30,26 +43,34 @@ namespace PlayerPartsManage
 
             if (type == PartType.Body)
             {
-                var sr = partList[(int)type].GetComponent<SpriteRenderer>();
+                SpriteRenderer sr = _bodyTrm.GetComponent<SpriteRenderer>();
                 PlayerBodyPartDataSO bodyPartData = (PlayerBodyPartDataSO) anotherPart;
                 sr.sprite = bodyPartData.bodyPartSprite;
             }
             else if (type == PartType.Leg)
             {
-                var leftLeg = transform.Find("Visual").Find("Leg Left");
-                var rightLeg = transform.Find("Visual").Find("Leg Right");
-                Debug.Log(leftLeg);
-                Debug.Log(rightLeg);
-                List<SpriteRenderer> sr = leftLeg.GetComponentsInChildren<SpriteRenderer>().ToList();
-                sr.AddRange(rightLeg.GetComponentsInChildren<SpriteRenderer>().ToList());
-                
+                SpriteRenderer[] sr = GetSpriteRenderers(_legLeftTrm, _legRightTrm);
                 PlayerLegPartDataSO legPartData = (PlayerLegPartDataSO) anotherPart;
-                for (int i = 0; i < sr.Count; i++)
+                for (int i = 0; i < sr.Length; i++)
                 {
                     sr[i].sprite = legPartData.legPartSprite[i];
                 }
             }
+            
+            Destroy(partList[(int)type].gameObject);
+            partList[(int)type] = Instantiate(anotherPart.partPrefab, _visualTrm);
+            
+        }
+        
+        private SpriteRenderer[] GetSpriteRenderers(params Transform[] trms)
+        {
+            List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
+            foreach (var trm in trms)
+            {
+                spriteRenderers.AddRange(trm.GetComponentsInChildren<SpriteRenderer>());
+            }
 
+            return spriteRenderers.ToArray();
         }
         
     }

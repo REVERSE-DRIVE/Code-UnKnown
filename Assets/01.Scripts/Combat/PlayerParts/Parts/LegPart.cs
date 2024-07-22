@@ -4,10 +4,7 @@ namespace PlayerPartsManage
 {
     public class LegPart : PlayerPart
     {
-        [field:SerializeField] private SpriteRenderer[] _spriteRenderers;
-        
-        public SpriteRenderer[] SpriteRenderers => _spriteRenderers;
-        
+        private SpriteRenderer[] _spriteRenderers;
         public LegPart(Player owner) : base(owner)
         {
         }
