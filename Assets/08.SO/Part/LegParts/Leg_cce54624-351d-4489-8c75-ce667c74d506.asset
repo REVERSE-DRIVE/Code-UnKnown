@@ -16,6 +16,7 @@ MonoBehaviour:
   id: 0
   partName: cce54624-351d-4489-8c75-ce667c74d506
   description: 
+  partPrefab: {fileID: 4689970539849961176, guid: a1b5bc8b553f49a4bb4f2daea7a5baf3, type: 3}
   legPartSprite:
   - {fileID: 281013081, guid: 2f47a463e1bf78a4ba9447ee9224bfad, type: 3}
   - {fileID: -1439708140, guid: 2f47a463e1bf78a4ba9447ee9224bfad, type: 3}
