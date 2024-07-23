@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d78d1a2009b44bfbae3e4d65a839264, type: 3}
-  m_Name: NormalBody
+  m_Script: {fileID: 11500000, guid: d8835db730168a74cb30381e4493f019, type: 3}
+  m_Name: BodyParts
   m_EditorClassIdentifier: 
   partType: 1
-  id: 0
-  partName: 
-  description: 
-  bodyPartSprite: {fileID: 0}
+  playerPartDataSOList:
+  - {fileID: 11400000, guid: a38ae90c251ea0347aa85657db111be2, type: 2}

@@ -1,5 +1,4 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace PlayerPartsManage
 {
@@ -11,5 +10,6 @@ namespace PlayerPartsManage
         public int id;
         public string partName;
         public string description;
+        public PlayerPart partPrefab;
     }
 }

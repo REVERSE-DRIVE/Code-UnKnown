@@ -6,6 +6,7 @@ namespace PlayerPartsManage
     public abstract class PlayerPart : MonoBehaviour
     {
         protected Player _owner;
+        protected PlayerPartDataSO _data;
 
         protected virtual void Awake()
         {
@@ -18,7 +19,6 @@ namespace PlayerPartsManage
         }
 
         public abstract void UseSkill();
-
     }
 
 }

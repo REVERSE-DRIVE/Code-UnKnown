@@ -1,5 +1,6 @@
-﻿using DG.Tweening;
-using EnemyManage;
+﻿using EnemyManage;
+using ObjectPooling;
+using UnityEngine;
 
 public class UndefinedAttackState : EnemyAttackState
 {
@@ -10,8 +11,10 @@ public class UndefinedAttackState : EnemyAttackState
     public override void Enter()
     {
         base.Enter();
-        _enemyBase.MovementCompo.StopImmediately();
-        _enemyBase.RendererCompo.DOFade(1, 0.5f);
+        var projectile =
+            PoolingManager.Instance.Pop(PoolingType.Projectile_Tracing) as TracingProjectile;
+        Vector3 dir = _enemyBase.targetTrm.position - _enemyBase.transform.position;
+        projectile.Shoot(dir);
+        
     }
-    
 }

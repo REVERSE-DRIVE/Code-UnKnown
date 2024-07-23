@@ -12,7 +12,8 @@ public enum UtilType
 {
     Pool,
     Item,
-    PowerUp
+    PowerUp,
+    Part
 }
 
 public partial class UtilityWindow : EditorWindow
@@ -111,6 +112,9 @@ public partial class UtilityWindow : EditorWindow
                 break;
             case 2:
                 DrawPowerUpItems();
+                break;
+            case 3:
+                DrawPartItems();
                 break;
         }
     }
