@@ -407,6 +407,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7423503386353977252}
   - component: {fileID: 6707999185626259477}
+  - component: {fileID: 1474768218252350555}
   m_Layer: 6
   m_Name: TargetMark
   m_TagString: Untagged
@@ -422,13 +423,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4219708058677381247}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.34, y: -1.87, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8844528757856931296}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6707999185626259477
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -481,6 +482,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1474768218252350555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219708058677381247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 884b1b9f4ec94e9e914a5cf58274d5c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetMarkSprites:
+  - {fileID: 21300000, guid: 5296e681da555454fb6c8fd168cfd866, type: 3}
+  - {fileID: 21300000, guid: e12f095a8dc874448a8a3fe7f2a2091b, type: 3}
 --- !u!1 &4488565443719262188
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,12 +775,11 @@ Transform:
   m_GameObject: {fileID: 5172075989360420752}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.4, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6798508545133765380}
-  m_Father: {fileID: 344745458288087132}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 861635579454413348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2628381806272895851
 SpriteRenderer:
@@ -808,7 +823,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8947083dfdc48cd4c85cfd8666408fa4, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -847,7 +862,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3105438521678253351}
   m_Father: {fileID: 8844528757856931296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8056453570972374353
@@ -1154,15 +1170,15 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1277970697
-  m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingLayerID: -1044503619
+  m_SortingLayer: 3
+  m_SortingOrder: -10
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.2
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -1270,7 +1286,6 @@ Transform:
   - {fileID: 7247410712544652552}
   - {fileID: 2637402778113794856}
   - {fileID: 4868542278230410431}
-  - {fileID: 3105438521678253351}
   - {fileID: 8844528757856931296}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1457,7 +1472,7 @@ MonoBehaviour:
   _rayAmount: 50
   layerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   _boundPower: 40
   _attackEffect: {fileID: 1974523866699344486}
   _hitVFX: 9
@@ -1647,6 +1662,7 @@ Transform:
   m_Children:
   - {fileID: 4384527338617734021}
   - {fileID: 7423503386353977252}
+  - {fileID: 6798508545133765380}
   - {fileID: 861635579454413348}
   - {fileID: 8207339025211397867}
   m_Father: {fileID: 344745458288087132}
@@ -1665,6 +1681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackParticle: []
   _impactTrm: {fileID: 4384527338617734021}
+  _targetMark: {fileID: 1474768218252350555}
   _targetMarkTrm: {fileID: 7423503386353977252}
   _rangeTrm: {fileID: 861635579454413348}
   _targetingLine: {fileID: 6051324242736730689}
@@ -1819,10 +1836,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3105438521678253351}
+  m_Father: {fileID: 8844528757856931296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1843985243336895912
 SpriteRenderer:
