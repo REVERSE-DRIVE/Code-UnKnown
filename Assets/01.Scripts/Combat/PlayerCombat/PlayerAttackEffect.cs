@@ -9,6 +9,7 @@ public class PlayerAttackEffect : MonoBehaviour
     [SerializeField] private TargetMarkObject _targetMark;
     [SerializeField] private Transform _targetMarkTrm;
     [SerializeField] private Transform _rangeTrm;
+    private SpriteRenderer _rangeRenderer;
     [SerializeField] private LineRenderer _targetingLine;
     [SerializeField] private float _impactSize = 0.6f;
     private TrailRenderer _trailRenderer;
@@ -20,6 +21,7 @@ public class PlayerAttackEffect : MonoBehaviour
     private void Awake()
     {
         _trailRenderer = GetComponent<TrailRenderer>();
+        _rangeRenderer = _rangeTrm.GetComponent<SpriteRenderer>();
     }
 
     public void Play(Vector2 direction)
@@ -70,7 +72,8 @@ public class PlayerAttackEffect : MonoBehaviour
 
     public void SetRangeActive(bool value)
     {
-        _rangeTrm.gameObject.SetActive(value);
+        _rangeRenderer.enabled = value;
+        //_rangeTrm.gameObject.SetActive(value);
     }
 
     public void SetRangeSize(float radius)

@@ -5956,7 +5956,7 @@ MonoBehaviour:
   bridgeTile: {fileID: 1150824858}
   groundTile: {fileID: 1475095301}
   doorTile: {fileID: 1678802437}
-  wallBase: {fileID: 11400000, guid: c9d03f3b9748ad945b775dcb94fc98e5, type: 2}
+  wallBase: {fileID: 11400000, guid: 962d50ba78feff44aaf016886e689351, type: 2}
   bridgeBase: {fileID: 11400000, guid: bb09ad80cc5da974cb384c70b32318f9, type: 2}
   doorBase: {fileID: 11400000, guid: 8edd45e4a6399ec4586fb95e430d77d9, type: 2}
   bridgeSize: {x: 5, y: 12}
@@ -6395,6 +6395,10 @@ PrefabInstance:
     - target: {fileID: 344745458288087132, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843985243336895912, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: m_Color.a
+      value: 0.0627451
       objectReference: {fileID: 0}
     - target: {fileID: 6863284896352316412, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: controlButtons

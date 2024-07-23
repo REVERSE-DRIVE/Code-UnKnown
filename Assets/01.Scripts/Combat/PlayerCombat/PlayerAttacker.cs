@@ -146,7 +146,7 @@ public class PlayerAttacker : MonoBehaviour
         Combo();
         
         _player.Stat.isResist = true;
-        float duration = Mathf.Clamp01(0.5f - _player.additionalStat.dashSpeed.GetValue() * 0.1f) * boundDir.magnitude / 15;
+        float duration = Mathf.Clamp01(1.5f - _player.additionalStat.dashSpeed.GetValue() * 0.3f) * boundDir.magnitude / 15;
         _attackEffect.SetTargetAttack(true);
 
         yield return _player.PlayerController.Dash(_currentTargetTrm.position, duration);
