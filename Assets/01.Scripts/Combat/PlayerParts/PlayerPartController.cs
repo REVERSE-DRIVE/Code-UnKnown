@@ -12,9 +12,9 @@ namespace PlayerPartsManage
         public PlayerPartTableSO[] playerPartTableSO;
         
         private Transform _visualTrm;
-        private Transform _bodyTrm;
-        private Transform _legLeftTrm;
-        private Transform _legRightTrm;
+        
+        [SerializeField] private SpriteRenderer _bodySpriteRenderer;
+        [SerializeField] private SpriteRenderer[] _legSpriteRenderers;
         
         [SerializeField] PlayerPartDataSO defaultPart;
         [SerializeField] PartType defaultPartType;
@@ -22,9 +22,6 @@ namespace PlayerPartsManage
         private void Awake()
         {
             _visualTrm = transform.Find("Visual");
-            _bodyTrm = _visualTrm.Find("Body");
-            _legLeftTrm = _visualTrm.Find("Leg Left");
-            _legRightTrm = _visualTrm.Find("Leg Right");
         }
         
         [InspectorButton]
@@ -40,38 +37,25 @@ namespace PlayerPartsManage
 
         public void ChangePart(PartType type, PlayerPartDataSO anotherPart)
         {
-
-            if (type == PartType.Body)
-            {
-                SpriteRenderer sr = _bodyTrm.GetComponent<SpriteRenderer>();
-                PlayerBodyPartDataSO bodyPartData = (PlayerBodyPartDataSO) anotherPart;
-                sr.sprite = bodyPartData.bodyPartSprite;
-            }
-            else if (type == PartType.Leg)
-            {
-                SpriteRenderer[] sr = GetSpriteRenderers(_legLeftTrm, _legRightTrm);
-                PlayerLegPartDataSO legPartData = (PlayerLegPartDataSO) anotherPart;
-                for (int i = 0; i < sr.Length; i++)
-                {
-                    sr[i].sprite = legPartData.legPartSprite[i];
-                }
-            }
-            
             Destroy(partList[(int)type].gameObject);
             partList[(int)type] = Instantiate(anotherPart.partPrefab, _visualTrm);
-            
+            if (type == PartType.Body)
+                ChangeSprite(anotherPart as PlayerBodyPartDataSO);
+            else if (type == PartType.Leg)
+                ChangeSprite(anotherPart as PlayerLegPartDataSO);
         }
-        
-        private SpriteRenderer[] GetSpriteRenderers(params Transform[] trms)
-        {
-            List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
-            foreach (var trm in trms)
-            {
-                spriteRenderers.AddRange(trm.GetComponentsInChildren<SpriteRenderer>());
-            }
 
-            return spriteRenderers.ToArray();
+        private void ChangeSprite(PlayerLegPartDataSO anotherPart)
+        {
+            for (int i = 0; i < _legSpriteRenderers.Length; i++)
+            {
+                _legSpriteRenderers[i].sprite = anotherPart.legPartSprite[i];
+            }
         }
-        
+
+        private void ChangeSprite(PlayerBodyPartDataSO anotherPart)
+        {
+            _bodySpriteRenderer.sprite = anotherPart.bodyPartSprite;
+        }
     }
 }
