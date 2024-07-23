@@ -154,6 +154,7 @@ public class JunkFileObject : InteractObject, IDamageable
     {
         _currentHealth -= amount;
         Player player = PlayerManager.Instance.player;
+        player.additionalStat.isStrongAttack = true;
         Interact(new InteractData{interactOriginPosition = player.transform.position, interactOwner = player});
         CheckDie();
         
