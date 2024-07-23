@@ -19,7 +19,6 @@ namespace QuestManage
             // EnemyType을 받아와서 킬 카운트 적립
             for (int i = 0; i < currentQuestDatas.Length; i++)
             {
-                
             }
         }
 
