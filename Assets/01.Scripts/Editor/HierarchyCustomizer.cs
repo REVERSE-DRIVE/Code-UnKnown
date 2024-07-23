@@ -63,6 +63,7 @@ public class HierarchyCustomizer
 
             foreach (Component component in components)
             {
+                if (component is null) continue;
                 if (IsComponentIgnored(component)) continue;
                 if (iconCount >= 2) break;
 
