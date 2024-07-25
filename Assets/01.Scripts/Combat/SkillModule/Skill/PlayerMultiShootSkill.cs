@@ -55,7 +55,7 @@ namespace CombatSkillManage
             SetTargetMark();
             yield return new WaitForSeconds(0.1f);
 
-
+            SetTargetMarksDisable();
             Time.timeScale = 1f;
         }
 

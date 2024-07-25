@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ButtonAttribute;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace PlayerPartsManage
 {
@@ -24,7 +21,6 @@ namespace PlayerPartsManage
             _visualTrm = transform.Find("Visual");
         }
         
-        [InspectorButton]
         public void InitParts()
         {
             ChangePart(defaultPartType, defaultPart);
