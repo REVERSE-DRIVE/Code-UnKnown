@@ -16,12 +16,6 @@ public class RoomEnemy : RoomBase
     List<EnemyBase> enemys;
     List<UnityAction> enemyDieEvents;
 
-    
-    public override void SetSize()
-    {
-        Size = new Vector2Int(Random.Range(30, 50), Random.Range(25, 40));
-    }
-
     public override void RoomEnter()
     {
         if (isClear || process) return;
