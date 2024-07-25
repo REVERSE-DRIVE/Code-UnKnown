@@ -10,6 +10,7 @@ namespace QuestManage
         public int id;
         public string title;
         public QuestDifficultyEnum difficulty;
+        [TextArea(3, 10)]
         public string description;
 
         public int goalValue;

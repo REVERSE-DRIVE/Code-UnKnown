@@ -1,4 +1,5 @@
-﻿using QuestManage;
+﻿using System.IO;
+using QuestManage;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,6 +17,105 @@ public partial class UtilityWindow
             return;
         
         CreateQuestSODraw();
+
+        #region Quest List
+        GUI.color = Color.white;
+        EditorGUILayout.BeginHorizontal();
+        {
+            #region Scroll View
+
+            EditorGUILayout.BeginVertical(EditorStyles.helpBox, GUILayout.Width(300f));
+            {
+                EditorGUILayout.LabelField("Quest List", EditorStyles.boldLabel);
+                EditorGUILayout.Space(3f);
+                
+                scrollPositions[UtilType.Quest] = EditorGUILayout.BeginScrollView(
+                    scrollPositions[UtilType.Quest], false, true,
+                    GUIStyle.none, GUI.skin.verticalScrollbar, GUIStyle.none);
+                {
+                    DrawQuestTable();
+                }
+                EditorGUILayout.EndScrollView();
+            }
+            EditorGUILayout.EndVertical();
+
+            #endregion
+            
+            DrawQuestInspector();
+        }
+        EditorGUILayout.EndHorizontal();
+        #endregion
+    }
+
+    private void DrawQuestInspector()
+    {
+        if (selectedItem[UtilType.Quest] != null)
+        {
+            Vector2 scroll = Vector2.zero;
+            EditorGUILayout.BeginScrollView(scroll);
+            {
+                EditorGUILayout.Space(2f);
+                Editor.CreateCachedEditor(
+                    selectedItem[UtilType.Quest], null, ref _cachedEditor);
+
+                _cachedEditor.OnInspectorGUI();
+            }
+            EditorGUILayout.EndScrollView();
+        }
+    }
+
+    private void DrawQuestTable()
+    {
+        foreach (QuestSO data in _questTable.questList)
+        {
+            GUIStyle style = selectedItem[UtilType.Quest] == data
+                ? _selectStyle
+                : GUIStyle.none;
+            
+            EditorGUILayout.BeginHorizontal(style, GUILayout.Height(40f));
+            {
+                string label = data.title == string.Empty ? data.id.ToString() : data.title;
+                EditorGUILayout.LabelField(label, GUILayout.Width(240f), GUILayout.Height(40f));
+                
+                EditorGUILayout.BeginVertical();
+                {
+                    EditorGUILayout.Space(10f);
+                    QuestDeleteButton(data);
+                }
+                EditorGUILayout.EndVertical();
+            }
+            EditorGUILayout.EndHorizontal();
+            
+            if (data == null)
+                break;
+            
+            GetQuestRect(data);
+        }
+    }
+
+    private void GetQuestRect(QuestSO data)
+    {
+        Rect rect = GUILayoutUtility.GetLastRect();
+        
+        if (Event.current.type == EventType.MouseDown && rect.Contains(Event.current.mousePosition))
+        {
+            inspectorScroll = Vector2.zero;
+            selectedItem[UtilType.Quest] = data;
+            Event.current.Use();
+        }
+    }
+
+    private void QuestDeleteButton(QuestSO data)
+    {
+        GUI.color = Color.red;
+        if (GUILayout.Button("X", GUILayout.Width(20f)))
+        {
+            _questTable.questList.Remove(data);
+            AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(data));
+            EditorUtility.SetDirty(_questTable);
+            AssetDatabase.SaveAssets();
+        }
+        GUI.color = Color.white;
     }
 
     private void CreateQuestSODraw()
@@ -27,12 +127,29 @@ public partial class UtilityWindow
             GUI.color = new Color(0.19f, 0.76f, 0.08f);
             if (GUILayout.Button("New Quest Item"))
             {
-
-                EditorUtility.SetDirty(_playerPartTableSO);
+                CreateQuestSO();
+                EditorUtility.SetDirty(_questTable);
                 AssetDatabase.SaveAssets();
             }
         }
         EditorGUILayout.EndHorizontal();
+    }
+
+    private void CreateQuestSO()
+    {
+        QuestSO newData = CreateInstance<QuestSO>();
+        string path = $"{_questDirectory}/{_questTable.name}";
+        if (Directory.Exists(path) == false)
+        {
+            Directory.CreateDirectory(path);
+        }
+
+        newData.id = _questTable.questList.Count;
+        AssetDatabase.CreateAsset(newData, $"{path}/Quest_{newData.id}.asset");
+        _questTable.questList.Add(newData);
+        
+        EditorUtility.SetDirty(_questTable);
+        AssetDatabase.SaveAssets();
     }
 
     private void InputQuestTable()
