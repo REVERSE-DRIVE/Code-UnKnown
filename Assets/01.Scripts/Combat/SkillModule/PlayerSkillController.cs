@@ -1,5 +1,3 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,8 +26,8 @@ namespace CombatSkillManage
 
         private void Update()
         {
-            
-            _currentTime += Time.deltaTime;
+            if (_currentSkill == null) return;
+            _currentTime += Time.deltaTime * _currentSkill.coolingPower;
             Refresh();
         }
 
