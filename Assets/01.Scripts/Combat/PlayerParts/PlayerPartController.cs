@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ButtonAttribute;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace PlayerPartsManage
 {
@@ -22,12 +19,6 @@ namespace PlayerPartsManage
         private void Awake()
         {
             _visualTrm = transform.Find("Visual");
-        }
-        
-        [InspectorButton]
-        public void InitParts()
-        {
-            ChangePart(defaultPartType, defaultPart);
         }
         
         public void SkillTrigger(PartType type)
