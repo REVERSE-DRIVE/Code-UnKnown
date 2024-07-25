@@ -5,7 +5,6 @@ using UnityEngine;
 [CustomEditor(typeof(PlayerLegPartDataSO))]
 public class PlayerLegPartDataCustomEditor : Editor
 {
-    private SerializedProperty partType;
     private SerializedProperty id;
     private SerializedProperty partName;
     private SerializedProperty description;
@@ -14,7 +13,6 @@ public class PlayerLegPartDataCustomEditor : Editor
     
     private void OnEnable()
     {
-        partType = serializedObject.FindProperty("partType");
         id = serializedObject.FindProperty("id");
         partName = serializedObject.FindProperty("partName");
         description = serializedObject.FindProperty("description");
@@ -30,7 +28,8 @@ public class PlayerLegPartDataCustomEditor : Editor
         {
             EditorGUILayout.BeginVertical();
             {
-                EditorGUILayout.PropertyField(partType);
+                EditorGUILayout.LabelField("Leg Part Data", EditorStyles.boldLabel);
+                EditorGUILayout.Space(10);
                 EditorGUILayout.PropertyField(id);
 
                 #region PartName

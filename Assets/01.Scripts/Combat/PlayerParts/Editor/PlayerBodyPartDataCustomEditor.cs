@@ -5,7 +5,6 @@ using UnityEngine;
 [CustomEditor(typeof(PlayerBodyPartDataSO))]
 public class PlayerBodyPartDataCustomEditor : Editor
 {
-    private SerializedProperty _partType;
     private SerializedProperty _id;
     private SerializedProperty _partName;
     private SerializedProperty _description;
@@ -14,7 +13,6 @@ public class PlayerBodyPartDataCustomEditor : Editor
     
     private void OnEnable()
     {
-        _partType = serializedObject.FindProperty("partType");
         _id = serializedObject.FindProperty("id");
         _partName = serializedObject.FindProperty("partName");
         _description = serializedObject.FindProperty("description");
@@ -36,7 +34,8 @@ public class PlayerBodyPartDataCustomEditor : Editor
                 GUILayout.Width(65));
             EditorGUILayout.BeginVertical();
             {
-                EditorGUILayout.PropertyField(_partType);
+                EditorGUILayout.LabelField("Body Part Data", EditorStyles.boldLabel);
+                EditorGUILayout.Space(10);
                 EditorGUILayout.PropertyField(_id);
 
                 #region PartName
