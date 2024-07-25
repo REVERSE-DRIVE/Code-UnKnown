@@ -46,10 +46,20 @@ public class PlayerBodyPartDataCustomEditor : Editor
                 
                 if (EditorGUI.EndChangeCheck())
                 {
-                    if (string.IsNullOrEmpty(_partName.stringValue))
+                    string assetPath = AssetDatabase.GetAssetPath(target);
+                    string newName = $"Body_{_partName.stringValue}";
+                    
+                    serializedObject.ApplyModifiedProperties();
+                    string msg = AssetDatabase.RenameAsset(assetPath, newName);
+                    if (string.IsNullOrEmpty(msg))
                     {
-                        _partName.stringValue = part;
+                        target.name = newName;
+                        EditorGUILayout.EndVertical();
+                        EditorGUILayout.EndHorizontal();
+                        return;
                     }
+                    _partName.stringValue = part;
+                    
                 }
                 #endregion
                 EditorGUILayout.PropertyField(_description);
