@@ -49,7 +49,7 @@ namespace PlayerPartsManage
         {
             for (int i = 0; i < _legSpriteRenderers.Length; i++)
             {
-                _legSpriteRenderers[i].sprite = anotherPart.legPartSprite[i];
+                _legSpriteRenderers[i].sprite = anotherPart.legPartSprites[i];
             }
         }
 

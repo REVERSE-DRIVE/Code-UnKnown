@@ -42,7 +42,7 @@ public class PlayerBodyPartDataCustomEditor : Editor
                 #region PartName
                 EditorGUI.BeginChangeCheck();
                 string part = _partName.stringValue;
-                EditorGUILayout.DelayedTextField(_partName, GUIContent.none);
+                EditorGUILayout.DelayedTextField(_partName);
                 
                 if (EditorGUI.EndChangeCheck())
                 {
