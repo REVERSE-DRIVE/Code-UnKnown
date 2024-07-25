@@ -13,7 +13,7 @@ public class RoomBase : MonoBehaviour
     [SerializeField] TileBase groundTile;
     [SerializeField] bool defaultDoor = false;
 
-    public Vector2Int Size { get; protected set; }
+    [field: SerializeField] public Vector2Int Size { get; protected set; }
 
     public Vector2Int MinPos { get; private set; }
     public Vector2Int MaxPos { get; private set; }

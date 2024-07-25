@@ -245,7 +245,7 @@ public class MapGenerator : MonoBehaviour
 
         // 방 만들기
         var room = Instantiate(createRooms[nowCreateIdx + 1]);
-        room.SetSize();
+        // room.SetSize();
 
         Vector2Int minPos = Vector2Int.zero;
         Vector2Int maxPos = Vector2Int.zero;
