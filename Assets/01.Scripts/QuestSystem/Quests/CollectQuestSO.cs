@@ -3,7 +3,7 @@
 namespace QuestManage
 {
     [CreateAssetMenu(menuName = "SO/Quest/CollectQuest")]
-    public class CollectQuestSO
+    public class CollectQuestSO : QuestSO
     {
         // 이 아이템도 뭔가 타입을 추가해야될듯
     }

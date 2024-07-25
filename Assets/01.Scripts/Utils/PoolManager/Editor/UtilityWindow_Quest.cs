@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using QuestManage;
 using UnityEditor;
 using UnityEngine;
@@ -7,6 +8,7 @@ public partial class UtilityWindow
 {
     private readonly string _questDirectory = "Assets/08.SO/Quest";
     private QuestListSO _questTable;
+    private string _questType;
 
 
     private void DrawQuestItems()
@@ -124,9 +126,18 @@ public partial class UtilityWindow
         
         EditorGUILayout.BeginHorizontal();
         {
+            // Quest Type 입력
+            _questType = EditorGUILayout.TextField("Quest Type", _questType);
             GUI.color = new Color(0.19f, 0.76f, 0.08f);
             if (GUILayout.Button("New Quest Item"))
             {
+                if (_questType == string.Empty)
+                {
+                    Debug.LogError("Quest Type을 입력해주세요.");
+                    EditorGUILayout.EndHorizontal();
+                    return;
+                }
+                Debug.Log(_questType);
                 CreateQuestSO();
                 EditorUtility.SetDirty(_questTable);
                 AssetDatabase.SaveAssets();
@@ -137,7 +148,14 @@ public partial class UtilityWindow
 
     private void CreateQuestSO()
     {
-        QuestSO newData = CreateInstance<QuestSO>();
+        Type type = Type.GetType($"QuestManage.{_questType}QuestSO, Assembly-CSharp");
+        if (type == null)
+        {
+            Debug.LogError("Quest Type을 확인해주세요.");
+            return;
+        }
+        
+        QuestSO newData = (QuestSO) CreateInstance(type);
         string path = $"{_questDirectory}/{_questTable.name}";
         if (Directory.Exists(path) == false)
         {
