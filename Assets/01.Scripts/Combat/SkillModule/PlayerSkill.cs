@@ -9,7 +9,7 @@ namespace CombatSkillManage
         public float coolingPower = 1;
         [SerializeField] protected LayerMask _targetLayer;
         
-        public void Initialize(Player player)
+        public virtual void Initialize(Player player)
         {
             _player = player;
         }

@@ -13,7 +13,7 @@ namespace CombatSkillManage
         private PlayerSkill _currentSkill;
         private Player _player;
 
-        private float _currentTime;
+        [SerializeField] private float _currentTime;
         [SerializeField] private bool _canUseSkill;
         
         public bool IsCoolDown => _currentTime >= _currentSkillSO.coolTime;
@@ -22,6 +22,8 @@ namespace CombatSkillManage
         {
             _player = PlayerManager.Instance.player;
             _player.PlayerInputCompo.controlButtons.OnSkillEvent += HandleUseSkill;
+            
+            Initialize();
         }
 
         private void Update()
