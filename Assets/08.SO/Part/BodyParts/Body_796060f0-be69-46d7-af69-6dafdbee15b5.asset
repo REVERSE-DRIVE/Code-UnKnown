@@ -17,4 +17,4 @@ MonoBehaviour:
   partName: 796060f0-be69-46d7-af69-6dafdbee15b5
   description: 
   partPrefab: {fileID: 4689970539849961176, guid: a1b5bc8b553f49a4bb4f2daea7a5baf3, type: 3}
-  bodyPartSprite: {fileID: 1370691813, guid: 96164d9dd6d47a94eb9c22c4f6fc5647, type: 3}
+  bodyPartSprite: {fileID: 437015925, guid: 96164d9dd6d47a94eb9c22c4f6fc5647, type: 3}
