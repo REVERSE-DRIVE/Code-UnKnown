@@ -52,6 +52,7 @@ namespace CombatSkillManage
             
             DetectTargets();
             Time.timeScale = 0.4f;
+            VolumeEffectManager.Instance.SetGrayScale(-80f, 0.4f, 0.1f);
             SetTargetMark();
             yield return new WaitForSeconds(0.2f);
 
