@@ -48,6 +48,11 @@ MonoBehaviour:
   defaultDoor: 0
   <Size>k__BackingField: {x: 25, y: 25}
   enemyCount: {x: 3, y: 15}
+  enemyList:
+  - percent: 70
+    entity: 2
+  - percent: 30
+    entity: 3
   randomData:
   - amount: 6
     list:
