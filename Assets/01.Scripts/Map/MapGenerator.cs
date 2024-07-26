@@ -19,7 +19,8 @@ public struct BridgeBase {
 
 public class MapGenerator : MonoBehaviour
 {
-    [SerializeField] RoomBase[] createRooms;
+    RoomBase[] createRooms;
+    [SerializeField] MapGenerateSO option;
     int nowCreateIdx = -1;
 
     [SerializeField] Tilemap wallTile;
@@ -31,7 +32,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] TileBase bridgeBase;
     [SerializeField] TileBase doorBase;
 
-    [SerializeField] Vector2Int bridgeSize;
+    Vector2Int bridgeSize;
 
     
     // List<RoomBase> rooms = new();
@@ -53,6 +54,9 @@ public class MapGenerator : MonoBehaviour
     int functionCall;
 
     public void StartGenerate() {
+        createRooms = option.GetRandomRooms();
+        bridgeSize = option.BridgeSize;
+
         nowCreateIdx = -1;
         functionCall = 0;
         time = Time.time;

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using ObjectPooling;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class RoomEnemy : RoomBase
 {
     [SerializeField] Vector2Int enemyCount;
+    [SerializeField] RandomPercentUtil<PoolingType>.Value[] enemyList;
     [SerializeField] RewardRandomData[] randomData;
 
     bool process = false;
@@ -13,12 +15,6 @@ public class RoomEnemy : RoomBase
 
     List<EnemyBase> enemys;
     List<UnityAction> enemyDieEvents;
-
-    
-    public override void SetSize()
-    {
-        Size = new Vector2Int(Random.Range(30, 50), Random.Range(25, 40));
-    }
 
     public override void RoomEnter()
     {
@@ -39,9 +35,10 @@ public class RoomEnemy : RoomBase
         enemys = new();
         enemyDieEvents = new();
 
+        RandomPercentUtil<PoolingType> randUtil = new(enemyList);
         for (int i = 0; i < Random.Range(enemyCount.x, enemyCount.y); i++)
         {
-            var enemy = PoolingManager.Instance.Pop(ObjectPooling.PoolingType.Type_A) as EnemyBase;
+            var enemy = PoolingManager.Instance.Pop(randUtil.GetValue()) as EnemyBase;
             enemys.Add(enemy);
 
             enemy.transform.position = MapManager.Instance.GetWorldPosByCell(FindPossibleRandomPos(1));

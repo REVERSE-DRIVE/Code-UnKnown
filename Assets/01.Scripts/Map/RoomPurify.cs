@@ -15,11 +15,6 @@ public class RoomPurify : RoomEnemy
 
     List<PurifyData> purifies = new();
 
-    public override void SetSize()
-    {
-        Size = new(30, 30);
-    }
-
     public override void OnComplete()
     {
         base.OnComplete();
