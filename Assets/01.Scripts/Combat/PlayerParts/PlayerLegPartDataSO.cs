@@ -5,6 +5,6 @@ namespace PlayerPartsManage
     [CreateAssetMenu(menuName = "SO/PlayerParts/LegPartData")]
     public class PlayerLegPartDataSO : PlayerPartDataSO
     {
-        public Sprite[] legPartSprite;
+        public Sprite[] legPartSprites;
     }
 }

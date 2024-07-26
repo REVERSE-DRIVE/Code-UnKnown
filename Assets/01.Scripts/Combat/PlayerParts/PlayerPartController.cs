@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ButtonAttribute;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace PlayerPartsManage
 {
@@ -24,12 +21,6 @@ namespace PlayerPartsManage
             _visualTrm = transform.Find("Visual");
         }
         
-        [InspectorButton]
-        public void InitParts()
-        {
-            ChangePart(defaultPartType, defaultPart);
-        }
-        
         public void SkillTrigger(PartType type)
         {
             partList[(int)type].UseSkill();
@@ -49,7 +40,7 @@ namespace PlayerPartsManage
         {
             for (int i = 0; i < _legSpriteRenderers.Length; i++)
             {
-                _legSpriteRenderers[i].sprite = anotherPart.legPartSprite[i];
+                _legSpriteRenderers[i].sprite = anotherPart.legPartSprites[i];
             }
         }
 
