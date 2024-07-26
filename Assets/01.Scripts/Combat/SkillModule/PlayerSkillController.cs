@@ -3,19 +3,18 @@ using UnityEngine.UI;
 
 namespace CombatSkillManage
 {
-    
     public class PlayerSkillController : MonoBehaviour
     {
         [SerializeField] private PlayerSkillSO _currentSkillSO;
+        private PlayerSkill _currentSkill;
+
         [SerializeField] private Image _skillIconImage;
         [SerializeField] private Image _skillCooltimeGaugeImage;
-        
-        private PlayerSkill _currentSkill;
-        private Player _player;
-
         [SerializeField] private float _currentTime;
         [SerializeField] private bool _canUseSkill;
         
+        private Player _player;
+
         public bool IsCoolDown => _currentTime >= _currentSkillSO.coolTime;
         
         private void Start()

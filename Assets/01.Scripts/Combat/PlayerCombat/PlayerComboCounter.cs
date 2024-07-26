@@ -14,7 +14,7 @@ public class PlayerComboCounter : MonoBehaviour
 
     }
     
-     public void CountCombo()
+    public void CountCombo()
     {
         if (IsCombo)
             comboCount++;
@@ -22,4 +22,11 @@ public class PlayerComboCounter : MonoBehaviour
             comboCount = 0;    
         _comboTime = 0f;
     }
+
+    public void ResetCombo()
+    {
+        comboCount = 0;
+    }
+    
+
 }
