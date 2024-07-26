@@ -1296,7 +1296,9 @@ GameObject:
   - component: {fileID: 6863284896352316412}
   - component: {fileID: 1402747337107004081}
   - component: {fileID: 4913586636251692978}
+  - component: {fileID: 916732877018019658}
   - component: {fileID: 2805213979845114094}
+  - component: {fileID: 7144478277773107146}
   - component: {fileID: 2834253321769687102}
   - component: {fileID: 5108899912060835987}
   m_Layer: 6
@@ -1492,6 +1494,20 @@ MonoBehaviour:
       m_Calls: []
   _currentHealth: 5
   maxHealth: 5
+--- !u!114 &916732877018019658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042404186746062641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db0509a4a56431b820a6abdf6638ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _comboCancelTime: 1.6
+  <comboCount>k__BackingField: 0
 --- !u!114 &2805213979845114094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1513,10 +1529,20 @@ MonoBehaviour:
   _boundPower: 40
   _attackEffect: {fileID: 1974523866699344486}
   _hitVFX: 9
-  _comboCancelTime: 2
-  <comboCount>k__BackingField: 0
   _isTargeting: 0
   _isAttacking: 0
+--- !u!114 &7144478277773107146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042404186746062641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b4d4335f5324b109ee769c3bed730b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2834253321769687102
 MonoBehaviour:
   m_ObjectHideFlags: 0

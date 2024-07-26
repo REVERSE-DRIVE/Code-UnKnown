@@ -25,6 +25,7 @@ namespace CombatSkillManage
         private int _targetAmount;
         private TrailRenderer _trailRenderer;
         private Transform _playerTrm;
+        private Vector2 _beforePosition;
 
         private void Awake()
         {
@@ -51,6 +52,7 @@ namespace CombatSkillManage
         {
             
             DetectTargets();
+            _beforePosition = transform.position;
             Time.timeScale = 0.4f;
             VolumeEffectManager.Instance.SetGrayScale(-80f, 0.4f, 0.1f);
             SetTargetMark();
@@ -61,10 +63,10 @@ namespace CombatSkillManage
             yield return new WaitForSeconds(0.2f);
             
             SetTargetMarksDisable();
-
+            transform.position = _beforePosition;
             Time.timeScale = 1f;
             _burstParticle.Play();
-
+            
             AttackBurstAllTargets();
         }
 

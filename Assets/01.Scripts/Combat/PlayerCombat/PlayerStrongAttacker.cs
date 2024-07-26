@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerStrongAttacker : MonoBehaviour
 {
+    public Action OnHoldAttackEvent;
+
     private Player _player;
     private PlayerComboCounter _comboCounter;
 
@@ -19,6 +21,9 @@ public class PlayerStrongAttacker : MonoBehaviour
 
     public void HandleStrongAttack()
     {
-        
+        print("홀드 공격 시작");
+        //_comboCounter
     }
+    
+    
 }

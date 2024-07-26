@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerComboCounter : MonoBehaviour
 {
@@ -15,13 +14,10 @@ public class PlayerComboCounter : MonoBehaviour
 
     }
     
-    public void CountCombo()
+     public void CountCombo()
     {
         if (IsCombo)
-        {
             comboCount++;
-            
-        }
         else
             comboCount = 0;    
         _comboTime = 0f;
