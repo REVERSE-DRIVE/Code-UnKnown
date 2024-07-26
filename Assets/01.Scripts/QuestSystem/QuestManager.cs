@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using DG.Tweening;
-using QuestManage;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace QuestManage
@@ -13,8 +10,12 @@ namespace QuestManage
         [SerializeField] private QuestUI _questUI;
         
         private List<QuestSO> _currentQuests = new List<QuestSO>();
+        [field:SerializeField] public List<QuestData> AcceptQuestDatas { get; set; }
 
 
+        /**
+         * 퀘스트를 랜덤하게 설정
+         */
         private void GetRandomQuest(int index)
         {
             var randomQuest = _questListSO.GetRandomQuest();
@@ -22,12 +23,17 @@ namespace QuestManage
             _questWindowUI[index].SetQuest(randomQuest);
         }
 
+        /**
+         * 퀘스트 UI 오픈
+         */
         private void SpawnQuestWindow()
         {
             _questUI.OpenQuestWindow();
         }
         
-        [ContextMenu("SettingQuestWindow")]
+        /**
+         * 퀘스트 UI 속 퀘스트 설정
+         */
         private void SettingQuestWindow()
         {
             for (int i = 0; i < _questWindowUI.Length; i++)
@@ -36,5 +42,12 @@ namespace QuestManage
             }
         }
 
+        /**
+         * 퀘스트 수락 메서드
+         */
+        public void AcceptQuest(QuestData getQuestData)
+        {
+            AcceptQuestDatas.Add(getQuestData);
+        }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace QuestManage
@@ -7,7 +6,7 @@ namespace QuestManage
     public class QuestObserver : MonoSingleton<QuestObserver>
     {
         [SerializeField] private QuestListSO _list;
-        public List<QuestData> currentQuestDatas;
+        public QuestData[] currentQuestDatas;
 
 
         private void Awake()
@@ -18,7 +17,7 @@ namespace QuestManage
         public void KillTrigger()
         {
             // EnemyType을 받아와서 킬 카운트 적립
-            for (int i = 0; i < currentQuestDatas.Count; i++)
+            for (int i = 0; i < currentQuestDatas.Length; i++)
             {
             }
         }

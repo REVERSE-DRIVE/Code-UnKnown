@@ -9,15 +9,20 @@ public class QuestUI : MonoBehaviour
     {
         _questWindowTransform = transform as RectTransform;
     }
-    [ContextMenu("Open Quest Window")]
+    
+    /**
+     * 퀘스트 UI 열기
+     */
     public void OpenQuestWindow()
     {
         _questWindowTransform.DOAnchorPos(Vector2.zero, 0.5f);
     }
     
-    [ContextMenu("Close Quest Window")]
+    /**
+     * 퀘스트 UI 닫기
+     */
     public void CloseQuestWindow()
     {
-        _questWindowTransform.DOAnchorPos(new Vector2(0, -1000), 0.5f);
+        _questWindowTransform.DOAnchorPos(new Vector2(1000, 0), 0.5f);
     }
 }

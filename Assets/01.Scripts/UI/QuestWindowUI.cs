@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using QuestManage;
 using TMPro;
 using UnityEngine;
@@ -13,7 +11,8 @@ public class QuestWindowUI : MonoBehaviour, IPointerClickHandler
     [SerializeField] private TextMeshProUGUI _difficultyText;
     [SerializeField] private TextMeshProUGUI _descriptionText;
     [SerializeField] private Image _icon;
-
+    private bool _isAccept;
+    
     private void OnValidate()
     {
         if (_quest == null) return;
@@ -21,6 +20,9 @@ public class QuestWindowUI : MonoBehaviour, IPointerClickHandler
     }
 
 
+    /**
+     * 퀘스트 데이터를 설정
+     */
     public void SetQuest(QuestSO quest)
     {
         _quest = quest;
@@ -30,6 +32,9 @@ public class QuestWindowUI : MonoBehaviour, IPointerClickHandler
         _icon.sprite = quest.icon;
     }
     
+    /**
+     * 퀘스트 데이터를 반환합니다.
+     */
     public QuestData GetQuestData()
     {
         return new QuestData(_quest.id, _quest.goalValue);
@@ -38,6 +43,8 @@ public class QuestWindowUI : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        QuestObserver.Instance.currentQuestDatas.Add(GetQuestData());
+        if (_isAccept) return;
+        _isAccept = true;
+        QuestManager.Instance.AcceptQuest(GetQuestData());
     }
 }

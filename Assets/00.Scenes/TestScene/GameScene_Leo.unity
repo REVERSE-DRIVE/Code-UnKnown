@@ -3664,7 +3664,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73b3c94e7c14915934ce50de26937eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _list: {fileID: 11400000, guid: a7d21b5a021e3994f90fdb40bd34d0dd, type: 2}
   currentQuestDatas: []
 --- !u!4 &1196616766
 Transform:
@@ -7746,7 +7745,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 189483608}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.52363634
+  m_Size: 0.51610184
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
