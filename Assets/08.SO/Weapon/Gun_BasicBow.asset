@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679d906b0f034dea829ddca33e5aa134, type: 3}
+  m_Name: Gun_BasicBow
+  m_EditorClassIdentifier: 
+  id: 0
+  weaponName: BasicBow
+  damage: 1
+  coolTime: 1
+  range: 3
+  weaponPrefab: {fileID: 3168042506031048070, guid: 16a5b7aac5677844c82169d9a7749fae, type: 3}
+  projectilePoolType: 0
+  maxBullets: 3

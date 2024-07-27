@@ -6,6 +6,16 @@ public class RoomBig : RoomBase
 {
     public override void SetSize()
     {
-        Size = new Vector2Int(Random.Range(10, 100), Random.Range(10, 100));
+        Size = new Vector2Int(Random.Range(10, 60), Random.Range(10, 60));
+    }
+
+    public override void RoomEnter()
+    {
+        print("RoomEnter RoomBig");
+    }
+
+    public override void RoomLeave()
+    {
+        print("RoomLeave RoomBig");
     }
 }

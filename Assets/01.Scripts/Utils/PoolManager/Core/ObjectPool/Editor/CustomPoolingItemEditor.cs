@@ -22,7 +22,7 @@ public class CustomPoolingItemEditor : Editor
         poolingNameProp = serializedObject.FindProperty("poolingName");
         descriptionProp = serializedObject.FindProperty("description");
         poolCountProp = serializedObject.FindProperty("poolCount");
-        prefabProp = serializedObject.FindProperty("prefab");
+        prefabProp = serializedObject.FindProperty("prefabObject");
     }
 
     private void StyleSetup()

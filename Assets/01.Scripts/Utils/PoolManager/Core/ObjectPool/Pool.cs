@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace ObjectPooling
 {
-    public class Pool<T> where T : PoolableMono
+    public class Pool
     {
-        private Stack<T> _pool = new Stack<T>();
-        private T _prefab;
+        private Stack<IPoolable> _pool = new Stack<IPoolable>();
+        private IPoolable _prefab;
         private Transform _parent;
         
         private PoolingType _type;
 
-        public Pool(T prefab, PoolingType type, Transform parent, int count)
+        public Pool(IPoolable prefab, PoolingType type, Transform parent, int count)
         {
             _prefab = prefab;
             _type = type;
@@ -19,35 +19,39 @@ namespace ObjectPooling
 
             for (int i = 0; i < count; i++)
             {
-                T obj = GameObject.Instantiate(_prefab, _parent);
-                obj.type = _type;
+                GameObject obj = GameObject.Instantiate(_prefab.ObjectPrefab, _parent);
+                
                 obj.gameObject.name = _type.ToString();
                 obj.gameObject.SetActive(false);
-                _pool.Push(obj);
+                IPoolable item = obj.GetComponent<IPoolable>();
+                item.type = _type;
+                _pool.Push(item);
             }
         }
 
-        public T Pop()
+        public IPoolable Pop()
         {
-            T obj = null;
+            IPoolable item;
             if (_pool.Count <= 0)
             {
-                obj = GameObject.Instantiate(_prefab, _parent);
-                obj.type = _type;
+                // 부족하면 새로 보충하는 부분
+                GameObject obj = GameObject.Instantiate(_prefab.ObjectPrefab, _parent);
                 obj.gameObject.name = _type.ToString();
+                item = obj.GetComponent<IPoolable>();
+                item.type = _type;
             }
             else
             {
-                obj = _pool.Pop();
-                obj.gameObject.SetActive(true);
+                item = _pool.Pop();
+                item.ObjectPrefab.SetActive(true);
             }
 
-            return obj;
+            return item;
         }
         
-        public void Push(T obj)
+        public void Push(IPoolable obj)
         {
-            obj.gameObject.SetActive(false);
+            obj.ObjectPrefab.SetActive(false);
             _pool.Push(obj);
         }
     }

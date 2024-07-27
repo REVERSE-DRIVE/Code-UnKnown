@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a1b71727e24c458e1f9b51a645071a, type: 3}
+  m_Name: PowerUp_BonusEXP10Per
+  m_EditorClassIdentifier: 
+  code: BonusEXP10Per
+  powerUpRank: 5
+  shouldBeUnlock: 0
+  title: "\uBE60\uB978 \uC801\uC751"
+  description: "\uC801\uC751\uB825\uC744 10% \uCD94\uAC00\uB85C \uD68D\uB4DD\uD569\uB2C8\uB2E4."
+  icon: {fileID: 0}
+  effectList:
+  - {fileID: 11400000, guid: 6756ed8dfa1649443befd27bd09f7908, type: 2}

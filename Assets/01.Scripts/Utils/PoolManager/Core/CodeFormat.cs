@@ -8,4 +8,10 @@ public class CodeFormat
         {0}
     }}
 }}";
+    
+    public static string EnemyTypeFormat =
+@"public enum EnemyType
+{{
+{0}
+}}";
 }
