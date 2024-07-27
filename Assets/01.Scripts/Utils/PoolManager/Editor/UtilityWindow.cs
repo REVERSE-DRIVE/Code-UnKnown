@@ -13,7 +13,8 @@ public enum UtilType
     Pool,
     Item,
     PowerUp,
-    Part
+    Part,
+    Quest
 }
 
 public partial class UtilityWindow : EditorWindow
@@ -41,19 +42,17 @@ public partial class UtilityWindow : EditorWindow
 
     private void OnEnable()
     {
-        CreateDirectory();
+        CreateDirectory(_poolDirectory);
+        CreateDirectory(_itemDirectory);
+        CreateDirectory(_questDirectory);
         SetUpUtility();
     }
 
-    private void CreateDirectory()
+    private void CreateDirectory(string directoryPath)
     {
-        if (Directory.Exists(_poolDirectory) == false)
+        if (Directory.Exists(directoryPath) == false)
         {
-            Directory.CreateDirectory(_poolDirectory);
-        }
-        if (Directory.Exists(_itemDirectory) == false)
-        {
-            Directory.CreateDirectory(_itemDirectory);
+            Directory.CreateDirectory(directoryPath);
         }
     }
 
@@ -115,6 +114,9 @@ public partial class UtilityWindow : EditorWindow
                 break;
             case 3:
                 DrawPartItems();
+                break;
+            case 4:
+                DrawQuestItems();
                 break;
         }
     }

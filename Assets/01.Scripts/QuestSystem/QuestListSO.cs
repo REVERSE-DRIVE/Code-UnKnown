@@ -10,7 +10,12 @@ namespace QuestManage
 
         public QuestSO FineQuest(int id)
         {
-            return null;
+            return questList.Find(quest => quest.id == id);
+        }
+        
+        public QuestSO GetRandomQuest()
+        {
+            return questList[Random.Range(0, questList.Count)];
         }
     }
 }

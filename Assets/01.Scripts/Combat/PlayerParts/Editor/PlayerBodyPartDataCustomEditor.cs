@@ -5,7 +5,6 @@ using UnityEngine;
 [CustomEditor(typeof(PlayerBodyPartDataSO))]
 public class PlayerBodyPartDataCustomEditor : Editor
 {
-    private SerializedProperty _partType;
     private SerializedProperty _id;
     private SerializedProperty _partName;
     private SerializedProperty _description;
@@ -14,7 +13,6 @@ public class PlayerBodyPartDataCustomEditor : Editor
     
     private void OnEnable()
     {
-        _partType = serializedObject.FindProperty("partType");
         _id = serializedObject.FindProperty("id");
         _partName = serializedObject.FindProperty("partName");
         _description = serializedObject.FindProperty("description");
@@ -36,20 +34,31 @@ public class PlayerBodyPartDataCustomEditor : Editor
                 GUILayout.Width(65));
             EditorGUILayout.BeginVertical();
             {
-                EditorGUILayout.PropertyField(_partType);
+                EditorGUILayout.LabelField("Body Part Data", EditorStyles.boldLabel);
+                EditorGUILayout.Space(10);
                 EditorGUILayout.PropertyField(_id);
 
                 #region PartName
                 EditorGUI.BeginChangeCheck();
                 string part = _partName.stringValue;
-                EditorGUILayout.DelayedTextField(_partName, GUIContent.none);
+                EditorGUILayout.DelayedTextField(_partName);
                 
                 if (EditorGUI.EndChangeCheck())
                 {
-                    if (string.IsNullOrEmpty(_partName.stringValue))
+                    string assetPath = AssetDatabase.GetAssetPath(target);
+                    string newName = $"Body_{_partName.stringValue}";
+                    
+                    serializedObject.ApplyModifiedProperties();
+                    string msg = AssetDatabase.RenameAsset(assetPath, newName);
+                    if (string.IsNullOrEmpty(msg))
                     {
-                        _partName.stringValue = part;
+                        target.name = newName;
+                        EditorGUILayout.EndVertical();
+                        EditorGUILayout.EndHorizontal();
+                        return;
                     }
+                    _partName.stringValue = part;
+                    
                 }
                 #endregion
                 EditorGUILayout.PropertyField(_description);

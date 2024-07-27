@@ -21,11 +21,6 @@ namespace PlayerPartsManage
             _visualTrm = transform.Find("Visual");
         }
         
-        public void InitParts()
-        {
-            ChangePart(defaultPartType, defaultPart);
-        }
-        
         public void SkillTrigger(PartType type)
         {
             partList[(int)type].UseSkill();
@@ -45,7 +40,7 @@ namespace PlayerPartsManage
         {
             for (int i = 0; i < _legSpriteRenderers.Length; i++)
             {
-                _legSpriteRenderers[i].sprite = anotherPart.legPartSprite[i];
+                _legSpriteRenderers[i].sprite = anotherPart.legPartSprites[i];
             }
         }
 

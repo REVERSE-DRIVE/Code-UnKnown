@@ -12,6 +12,7 @@ public class RoomBase : MonoBehaviour
 {
     [SerializeField] TileBase groundTile;
     [SerializeField] bool defaultDoor = false;
+    [SerializeField] RandomSizeField sizeField;
 
     public Vector2Int Size { get; protected set; }
 
@@ -21,7 +22,7 @@ public class RoomBase : MonoBehaviour
     public Dictionary<MapGenerator.Direction, RoomDoorData> Doors { get; private set; } = new();
 
     public virtual void SetSize() {
-        Size = new Vector2Int(19,19);
+        Size = sizeField.GetValue();
     }
 
     public void SetRoomPos(Vector2Int min, Vector2Int max, Vector2Int mapPos) {
