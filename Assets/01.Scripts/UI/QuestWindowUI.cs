@@ -31,7 +31,7 @@ public class QuestWindowUI : MonoBehaviour, IPointerClickHandler
         _descriptionText.text = quest.description;
         _icon.sprite = quest.icon;
     }
-    
+
     /**
      * 퀘스트 데이터를 반환합니다.
      */
@@ -39,12 +39,31 @@ public class QuestWindowUI : MonoBehaviour, IPointerClickHandler
     {
         return new QuestData(_quest.id, _quest.goalValue);
     }
+    
+    public KillQuestData GetKillQuestData()
+    {
+        KillQuestSO killQuest = (KillQuestSO) _quest;
+        return new KillQuestData(_quest.id, _quest.goalValue, killQuest.enemyType);
+    }
+    
+    public CollectQuestData GetCollectQuestData()
+    {
+        CollectQuestSO collectQuest = (CollectQuestSO) _quest;
+        return new CollectQuestData(_quest.id, _quest.goalValue, collectQuest.itemType);
+    }
 
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (_isAccept) return;
         _isAccept = true;
-        QuestManager.Instance.AcceptQuest(GetQuestData());
+        if (_quest is KillQuestSO)
+        {
+            QuestManager.Instance.AcceptQuest(GetKillQuestData());
+        }
+        else if (_quest is CollectQuestSO)
+        {
+            QuestManager.Instance.AcceptQuest(GetCollectQuestData());
+        }
     }
 }

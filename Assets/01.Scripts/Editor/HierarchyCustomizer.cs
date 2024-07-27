@@ -25,14 +25,6 @@ public class HierarchyCustomizer
                 rect.x = 0;
                 rect.width = 1000;
                 EditorGUI.DrawRect(rect, new Color(0.1f, 0.1f, 0.1f, 0.5f));
-                EditorGUI.LabelField(rect, obj.name, new GUIStyle()
-                {
-                    normal = new GUIStyleState()
-                    {
-                        textColor = Color.white
-                    },
-                    alignment = TextAnchor.MiddleCenter
-                });
             }
             else if (obj.name is "Player")
             {
@@ -40,14 +32,6 @@ public class HierarchyCustomizer
                 rect.x = 0;
                 rect.width = 1000;
                 EditorGUI.DrawRect(rect, new Color(0f, 0f, 0.1f, 0.3f));
-                EditorGUI.LabelField(rect, obj.name, new GUIStyle()
-                {
-                    normal = new GUIStyleState()
-                    {
-                        textColor = Color.white
-                    },
-                    alignment = TextAnchor.MiddleCenter
-                });
             }
             // 오른쪽 끝에 토글버튼
             Rect toggleRect = new Rect(selectionRect.x + selectionRect.width - 25, selectionRect.y - 2.5f, 20, 20);

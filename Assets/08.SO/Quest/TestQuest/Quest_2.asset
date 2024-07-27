@@ -18,3 +18,4 @@ MonoBehaviour:
   description: "\uC598\uB3C4 \uC8FD\uC5EC\uB77C"
   icon: {fileID: 743323746, guid: a39d6f8195696474cacb5b40d5c42502, type: 3}
   goalValue: 0
+  enemyType: 1

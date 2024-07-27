@@ -34,6 +34,7 @@ namespace QuestManage
         /**
          * 퀘스트 UI 속 퀘스트 설정
          */
+        [ContextMenu("SettingQuestWindow")]
         private void SettingQuestWindow()
         {
             for (int i = 0; i < _questWindowUI.Length; i++)

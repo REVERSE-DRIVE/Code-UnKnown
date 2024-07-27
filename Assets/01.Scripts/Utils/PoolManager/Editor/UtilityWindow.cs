@@ -1,9 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using ItemManage;
-using ObjectPooling;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -14,7 +10,8 @@ public enum UtilType
     Item,
     PowerUp,
     Part,
-    Quest
+    Quest,
+    Sound
 }
 
 public partial class UtilityWindow : EditorWindow
@@ -117,6 +114,9 @@ public partial class UtilityWindow : EditorWindow
                 break;
             case 4:
                 DrawQuestItems();
+                break;
+            case 5:
+                DrawSoundItems();
                 break;
         }
     }
