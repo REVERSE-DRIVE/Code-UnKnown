@@ -87,7 +87,7 @@ public class PlayerStrongAttacker : MonoBehaviour
     {
         yield return StartCoroutine(_effect.RangeSizeUp(_rangeAttackSize, 1f));
         CameraManager.Instance.Shake(8f, 2f);
-        _effect.PlayBlading(2f);
+        _effect.PlayBlading(1f);
         StartCoroutine(RangeTargetAttackCoroutine());
 
     }
@@ -106,9 +106,10 @@ public class PlayerStrongAttacker : MonoBehaviour
     private void AttackRangeTarget()
     {
         int damage = _player.Stat.GetDamage();
+        _hits = new Collider2D[10];
         int amount = Physics2D.OverlapCircleNonAlloc(transform.position, _rangeAttackSize, _hits, _targetLayer);
         if (amount == 0) return;
-        for (int i = 0; i < _hits.Length; i++)
+        for (int i = 0; i < amount; i++)
         {
             if (_hits[i].transform.TryGetComponent(out IDamageable hit))
             {
