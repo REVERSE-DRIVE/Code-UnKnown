@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class PlayerStrongAttacker : MonoBehaviour
 {
+    [SerializeField] private int _rangeAttackAmount = 7;
+    [SerializeField] private float _rangeAttackSize = 8f;
+    [SerializeField] private PlayerHoldEffect _effect;
+    [SerializeField] private LayerMask _targetLayer;
     public Action OnHoldAttackEvent;
 
     private Player _player;
     private PlayerComboCounter _comboCounter;
 
     private int _damageBuffValue;
+    private Collider2D[] _hits;
     
     private void Awake()
     {
@@ -20,6 +25,14 @@ public class PlayerStrongAttacker : MonoBehaviour
     private void Start()
     {
         _player.PlayerInputCompo.controlButtons.actionButton.OnHoldEvent += HandleStrongAttack;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _comboCounter.BonusCombo(5);
+        }
     }
 
     public void HandleStrongAttack()
@@ -38,7 +51,7 @@ public class PlayerStrongAttacker : MonoBehaviour
             UseIncAtk();
         }else if (combo < 30)
         {
-            
+            RangeAttack();
         }else
         {
             
@@ -63,6 +76,50 @@ public class PlayerStrongAttacker : MonoBehaviour
         _player.Stat.damage.AddModifier(_damageBuffValue);
         yield return new WaitForSeconds(5f);
         _player.Stat.damage.RemoveModifier(_damageBuffValue);
+    }
+
+    private void RangeAttack()
+    {
+        StartCoroutine(RangeAttackCoroutine());
+    }
+
+    private IEnumerator RangeAttackCoroutine()
+    {
+        yield return StartCoroutine(_effect.RangeSizeUp(_rangeAttackSize, 1f));
+        CameraManager.Instance.Shake(8f, 2f);
+        _effect.PlayBlading(2f);
+        StartCoroutine(RangeTargetAttackCoroutine());
+
+    }
+
+    private IEnumerator RangeTargetAttackCoroutine()
+    {
+        for (int i = 0; i < _rangeAttackAmount; i++)
+        {
+            AttackRangeTarget();
+            yield return new WaitForSeconds(0.2f);
+        }
+        // 적 공격 구현
+        yield return null;
+    }
+
+    private void AttackRangeTarget()
+    {
+        int damage = _player.Stat.GetDamage();
+        int amount = Physics2D.OverlapCircleNonAlloc(transform.position, _rangeAttackSize, _hits, _targetLayer);
+        if (amount == 0) return;
+        for (int i = 0; i < _hits.Length; i++)
+        {
+            if (_hits[i].transform.TryGetComponent(out IDamageable hit))
+            {
+                hit.TakeDamage(damage);
+            }
+        }
+    }
+
+    private void DashAttack()
+    {
+        
     }
     
 }

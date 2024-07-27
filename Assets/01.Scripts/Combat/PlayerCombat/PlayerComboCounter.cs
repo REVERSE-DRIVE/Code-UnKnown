@@ -27,6 +27,12 @@ public class PlayerComboCounter : MonoBehaviour
     {
         comboCount = 0;
     }
+
+    public void BonusCombo(int amount)
+    {
+        comboCount += amount;
+        _comboTime = 0f;
+    }
     
 
 }
