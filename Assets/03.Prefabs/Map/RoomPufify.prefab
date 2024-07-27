@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55686c0ac47de8d87b854b6a3c09a52a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundTile: {fileID: 11400000, guid: 182940aa9985bfa4a99d06cc689d7c25, type: 2}
+  groundTile: {fileID: 11400000, guid: bb09ad80cc5da974cb384c70b32318f9, type: 2}
   defaultDoor: 0
   sizeField:
     min: 20
@@ -52,8 +52,12 @@ MonoBehaviour:
     width: 0
     height: 0
     isRandom: 1
-  enemyCount: {x: 3, y: 15}
-  enemyList: []
+  enemyCount: {x: 9, y: 15}
+  enemyList:
+  - percent: 90
+    entity: 2
+  - percent: 10
+    entity: 3
   randomData:
   - amount: 4
     list:
@@ -68,4 +72,4 @@ MonoBehaviour:
     - percent: 100
       entity: {fileID: 7009222893961563268, guid: b6d7929404efc7f21968cfef3c42739d, type: 3}
   mapTemplate: {fileID: 7096924795576456087, guid: d1330eca39210a8899639eab70a34863, type: 3}
-  tile: {fileID: 11400000, guid: 4e0442d1f992aad43b1955c7bc0391c1, type: 2}
+  tile: {fileID: 11400000, guid: 3ad7b8790a241874c9c59868a9db2ec3, type: 2}

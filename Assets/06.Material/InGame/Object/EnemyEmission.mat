@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6402372373829328534
+--- !u!114 &-1821183341967627295
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VirusGridMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 614b8cae7c880144787ed46769e6eb65, type: 3}
+  m_Name: EnemyEmission
+  m_Shader: {fileID: -6465566751694194690, guid: 816c7291e805fc641be50c421e60c73f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -36,7 +36,19 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -54,8 +66,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Width: 0.04
+    - _EnableExternalAlpha: 0
+    - _EnableSubColor: 0
+    - _Main_Emission: 1
+    - _Main_Range: 0.5
+    - _Sub_Emission: 1
+    - _Sub_Range: 0.5
     m_Colors:
-    - _Color: {r: 16.88647, g: 0, b: 0, a: 1}
-    - _GridX_Y: {r: 1, g: 1, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _Main_EmissionColor: {r: 3.7735841, g: 18.695593, b: 31.999998, a: 1}
+    - _MaskColor: {r: 0.24705884, g: 0.54901963, b: 0.8431373, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SubColor: {r: 0, g: 0, b: 0, a: 0}
+    - _Sub_EmissionColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

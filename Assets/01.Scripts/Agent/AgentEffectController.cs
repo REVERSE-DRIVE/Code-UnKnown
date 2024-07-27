@@ -7,8 +7,13 @@ public class AgentEffectController : MonoBehaviour
     public List<Effect> effectList;
 
     private float _currentTime = 0;
-    
-    
+
+
+    private void Awake()
+    {
+        effectList = new List<Effect>();
+    }
+
     private void Update()
     {
         _currentTime += Time.deltaTime;
