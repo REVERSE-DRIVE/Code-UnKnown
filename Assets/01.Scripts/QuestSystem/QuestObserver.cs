@@ -6,13 +6,24 @@ namespace QuestManage
 {
     public class QuestObserver : MonoSingleton<QuestObserver>
     {
-        [SerializeField] private QuestListSO _list;
         public QuestData[] currentQuestDatas;
 
 
         private void Awake()
         {
+            
+        }
+
+        [ContextMenu("Apply")]
+        private void Apply()
+        {
             currentQuestDatas = QuestManager.Instance.AcceptQuestDatas.ToArray();
+        }
+
+        [ContextMenu("TestKillTrigger")]
+        private void Test()
+        {
+            KillTrigger(EnemyType.Jail);
         }
 
         public void KillTrigger(EnemyType enemyType)
@@ -20,9 +31,12 @@ namespace QuestManage
             // EnemyType을 받아와서 킬 카운트 적립
             for (int i = 0; i < currentQuestDatas.Length; i++)
             {
-                if (currentQuestDatas[i].id == (int)enemyType)
+                if (currentQuestDatas[i] is KillQuestData killQuestData)
                 {
-                    currentQuestDatas[i].Trigger(1);
+                    if (killQuestData._enemyType == enemyType)
+                    {
+                        killQuestData.Trigger(1);
+                    }
                 }
             }
         }
@@ -32,9 +46,12 @@ namespace QuestManage
             // ItemType을 받아와서 아이템 카운트 적립
             for (int i = 0; i < currentQuestDatas.Length; i++)
             {
-                if (currentQuestDatas[i].id == (int)itemType - 10)
+                if (currentQuestDatas[i] is CollectQuestData collectQuestData)
                 {
-                    currentQuestDatas[i].Trigger(1);
+                    if (collectQuestData._itemType == itemType)
+                    {
+                        collectQuestData.Trigger(1);
+                    }
                 }
             }
         }
