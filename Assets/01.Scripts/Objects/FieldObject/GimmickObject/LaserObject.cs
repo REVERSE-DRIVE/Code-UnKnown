@@ -15,6 +15,7 @@ public class LaserObject : MonoBehaviour
 
     [SerializeField] LayerMask filter;
 
+    RaycastHit2D[] beamResults = new RaycastHit2D[2];
     Transform beamTrm;
     ILaserEvent hitObj;
     
@@ -22,14 +23,28 @@ public class LaserObject : MonoBehaviour
         beamTrm = beamCenter.GetChild(0);
     }
 
-    private void Update() {
-        if (lookAt) {
-            Vector3 diff = lookAt.position - transform.position;
-            beamCenter.up = diff.normalized;
+    private void Start() {
+        SpriteRenderer render = beamTrm.GetComponent<SpriteRenderer>();
+        
+        Color color = Color.black;
+        switch (LaserType)
+        {
+            case Type.Red:
+                color = Color.red;
+                break;
+            case Type.Green:
+                color = Color.green;
+                break;
         }
+        color.a = 0.8f;
 
-        float angle = Vector2.SignedAngle(transform.up, beamCenter.up);
-        RaycastHit2D result = Physics2D.BoxCast(beamCenter.position, beamSize, angle, beamCenter.up, 9999, filter);
+        render.color = color;
+    }
+
+    private void Update() {
+        LookAt();
+
+        RaycastHit2D result = Beam();
 
         float distance = 0;
         if (result.transform)
@@ -54,7 +69,25 @@ public class LaserObject : MonoBehaviour
             hitObj = newEvent;
         }
     }
+
+    public void LookAt() {
+        if (lookAt) {
+            Vector3 diff = lookAt.position - transform.position;
+            beamCenter.up = diff.normalized;
+        }
+    }
     
+    public RaycastHit2D Beam() {
+        float angle = Vector2.SignedAngle(transform.up, beamCenter.up);
+        Physics2D.BoxCastNonAlloc(beamCenter.position, beamSize, angle, beamCenter.up, beamResults, 9999, filter);
+
+        foreach (var item in beamResults) {
+            if (item.transform == null || item.transform.parent != transform) return item;
+        }
+        
+        return default;
+    }
+
     public void ForceHit(ILaserEvent obj) {
         hitObj = obj;
     }

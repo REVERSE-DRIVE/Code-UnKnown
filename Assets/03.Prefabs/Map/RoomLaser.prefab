@@ -54,4 +54,6 @@ MonoBehaviour:
     isRandom: 0
   suppressorPrefab: {fileID: 7016534840938247631, guid: 761f8443dea5f47f4b1f95efb7f8e106, type: 3}
   laserPrefab: {fileID: 2866885551845173439, guid: 229cda8b64f336bf1906e1bbe9a8a674, type: 3}
-  minMax: {x: 4, y: 8}
+  junkFile: {fileID: 3428563939568420150, guid: e3a8490442d4c61468443acb6fa22772, type: 3}
+  laserMinMax: {x: 4, y: 8}
+  junkMinMax: {x: 3, y: 6}
