@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class PlayerStrongAttacker : MonoBehaviour
 {
+    [Header("Range Blading Setting")]
     [SerializeField] private int _rangeAttackAmount = 7;
     [SerializeField] private float _rangeAttackSize = 8f;
     [SerializeField] private PlayerHoldEffect _effect;
     [SerializeField] private LayerMask _targetLayer;
     public Action OnHoldAttackEvent;
 
+    [Header("Dash Attack Setting")]
+    [SerializeField] private int _dashNormalDamage;
+    [SerializeField] private int _dashDamagePercent;
+    
     private Player _player;
     private PlayerComboCounter _comboCounter;
 
@@ -78,6 +83,8 @@ public class PlayerStrongAttacker : MonoBehaviour
         _player.Stat.damage.RemoveModifier(_damageBuffValue);
     }
 
+    #region Range Blading
+
     private void RangeAttack()
     {
         StartCoroutine(RangeAttackCoroutine());
@@ -118,9 +125,21 @@ public class PlayerStrongAttacker : MonoBehaviour
         }
     }
 
+    #endregion
+
     private void DashAttack()
     {
-        
+        StartCoroutine(DashCoroutine());
+    }
+
+    private IEnumerator DashCoroutine()
+    {
+        Vector2 attackDirection = _player.PlayerInputCompo.Direction;
+        VolumeEffectManager.Instance.SetGrayScale(-80f, 0.2f,  0.1f);
+        _effect.PlayDashReady();
+        yield return new WaitForSeconds(0.2f);
+        _effect.PlayDashImpact(attackDirection);
+
     }
     
 }

@@ -1,12 +1,22 @@
 ﻿using System.Collections;
+using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerHoldEffect : MonoBehaviour
 {
     [Header("Blading Setting")]
     [SerializeField] private ParticleSystem _bladingParticle;
     [SerializeField] private Transform _rangeCircleTrm;
+
+    [Header("Dash Setting")]
+    [SerializeField] private ParticleSystem _readyParticle;
+
+    [SerializeField] private Transform _dashImpactTrm;
+    [SerializeField] private float _dashImpactSize;
+    [SerializeField] private float _impactDuration = 0.2f;
+    
+    
+    #region Range Blading
     
     public void PlayBlading(float duration)
     {
@@ -39,4 +49,25 @@ public class PlayerHoldEffect : MonoBehaviour
         _rangeCircleTrm.localScale = new Vector2(size,size);
         _rangeCircleTrm.gameObject.SetActive(false);
     }
+
+    #endregion
+
+    #region Dash Attack
+
+
+    public void PlayDashReady()
+    {
+        _readyParticle.Play();
+    }
+
+    public void PlayDashImpact(Vector2 direction)
+    {
+        _dashImpactTrm.right = direction;
+        float halfDuration = _impactDuration / 2;
+        _dashImpactTrm.DOScaleY(_dashImpactSize, halfDuration);
+        _dashImpactTrm.DOScaleY(0f, halfDuration);
+    }
+
+    #endregion
+
 }
