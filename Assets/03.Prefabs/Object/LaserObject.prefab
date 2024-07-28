@@ -171,6 +171,10 @@ MonoBehaviour:
   lookAt: {fileID: 0}
   beamSize: {x: 0.2, y: 0.1}
   padding: 0.5
+  activeMove: 0
+  moveSpeed: 1
+  moveDistance: 3
+  moveDelay: 3
   filter:
     serializedVersion: 2
     m_Bits: 2560

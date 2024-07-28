@@ -51,6 +51,9 @@ public class RoomLaser : RoomBase
             laser.Init((LaserObject.Type)laserType, suppressor.transform);
             lasers.Add(laser);
 
+            if (i == 1 || (laserType == (int)LaserObject.Type.Green && Random.Range(0, 2) == Random.Range(0, 2)))
+                laser.SetMove(true);
+
             if (laserType == (int)LaserObject.Type.Red)
                 laser.OnRemove += OnRedLaserDestroy;
         }
@@ -132,7 +135,7 @@ public class RoomLaser : RoomBase
 
     void OnRedLaserDestroy() {
         if (isClear) return;
-        
+
         // 의뢰 완성도 감소
         // ...
     }

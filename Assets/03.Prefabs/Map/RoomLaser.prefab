@@ -57,3 +57,4 @@ MonoBehaviour:
   junkFile: {fileID: 3428563939568420150, guid: e3a8490442d4c61468443acb6fa22772, type: 3}
   laserMinMax: {x: 4, y: 8}
   junkMinMax: {x: 3, y: 6}
+  clearTime: 0

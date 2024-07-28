@@ -57,7 +57,6 @@ public class VirusSuppressorObject : MonoBehaviour, ILaserEvent
                 red++;
         });
 
-        print($"green {green}, red {red} / {redCount}");
         if (green > 0 || red != redCount) return;
 
         isClear = true;
