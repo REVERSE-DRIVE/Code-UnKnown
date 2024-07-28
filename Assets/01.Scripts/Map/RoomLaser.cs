@@ -11,8 +11,12 @@ public class RoomLaser : RoomBase
     [SerializeField] Vector2Int laserMinMax = new(4, 8);
     [SerializeField] Vector2Int junkMinMax = new(3, 6);
 
+    [SerializeField] int clearTime;
+
     List<LaserObject> lasers;
     HashSet<Vector2Int> alreadyPos;
+    bool isClear = false;
+    int timer;
 
     public override void OnComplete()
     {
@@ -46,6 +50,9 @@ public class RoomLaser : RoomBase
 
             laser.Init((LaserObject.Type)laserType, suppressor.transform);
             lasers.Add(laser);
+
+            if (laserType == (int)LaserObject.Type.Red)
+                laser.OnRemove += OnRedLaserDestroy;
         }
 
         // 정크 파일
@@ -72,6 +79,7 @@ public class RoomLaser : RoomBase
     
         // 확정
         suppressor.Init(lasers);
+        suppressor.OnClear += OnClear;
     }
 
     Vector3 GetRandomCoords() {
@@ -92,5 +100,46 @@ public class RoomLaser : RoomBase
         }
 
         return false;
+    }
+
+    public override void RoomEnter()
+    {
+        base.RoomEnter();
+        
+        if (isClear) return;
+
+        Transform player = PlayerManager.Instance.player.transform;
+        Vector2Int playerPos = MapManager.Instance.GetCellByWorldPos(player.position);
+
+        MapGenerator.Direction doorDir = ClosestDoor(playerPos);
+        Vector2Int doorPos = GetCenterPosDoor(doorDir) +  -MapGenerator.GetDirection(doorDir) * 2;
+
+        player.position = MapManager.Instance.GetWorldPosByCell(doorPos);
+
+        SetDoor(true);
+        StartCoroutine(TimeHandler());
+    }
+
+    IEnumerator TimeHandler() {
+        while (--timer > 0) {
+            yield return new WaitForSeconds(1);
+            if (timer < 0) yield break;
+        }
+
+        // 의뢰 완성도 감소
+        // ...
+    }
+
+    void OnRedLaserDestroy() {
+        if (isClear) return;
+        
+        // 의뢰 완성도 감소
+        // ...
+    }
+
+    void OnClear() {
+        timer = -1;
+        isClear = true;
+        SetDoor(false);
     }
 }

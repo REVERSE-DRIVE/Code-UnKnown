@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,8 @@ public class LaserObject : MonoBehaviour
     RaycastHit2D[] beamResults = new RaycastHit2D[2];
     Transform beamTrm;
     ILaserEvent hitObj;
+
+    public event Action OnRemove;
     
     private void Awake() {
         beamTrm = beamCenter.GetChild(0);
@@ -82,7 +85,7 @@ public class LaserObject : MonoBehaviour
         Physics2D.BoxCastNonAlloc(beamCenter.position, beamSize, angle, beamCenter.up, beamResults, 9999, filter);
 
         foreach (var item in beamResults) {
-            if (item.transform == null || item.transform.parent != transform) return item;
+            if (item.transform == null || item.transform != transform) return item;
         }
         
         return default;
@@ -95,5 +98,15 @@ public class LaserObject : MonoBehaviour
     public void Init(Type type, Transform look) {
         LaserType = type;
         lookAt = look;
+    }
+
+    private void OnDestroy() {
+        OnRemove?.Invoke();
+        hitObj?.OnLaserOut(this);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (!other.gameObject.TryGetComponent<JunkFileObject>(out var _)) return;
+        Destroy(gameObject);
     }
 }

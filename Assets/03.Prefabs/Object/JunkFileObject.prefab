@@ -5049,13 +5049,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19b59354d7843278ca702ff4b01e9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 5
   OnOutsideInteractEvent:
     m_PersistentCalls:
       m_Calls: []
   _detectMaterial: {fileID: 2100000, guid: 9b2f7f23d8d4f3c4098109f51a709a28, type: 2}
   _visualRenderer: {fileID: 8212220156931528587}
   isDetected: 0
+  _currentHealth: 5
   _hitMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}
   _collisionDestroy: 1
   _pushPower: 10
@@ -10131,6 +10131,6 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
