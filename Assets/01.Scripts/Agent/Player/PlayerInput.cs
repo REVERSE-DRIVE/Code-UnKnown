@@ -13,6 +13,7 @@ public class PlayerInput : MonoBehaviour
     public event Action<Vector2> OnMovementEvent;
 
     [SerializeField] private Vector2 _inputDirection;
+    public Vector2 Direction => _inputDirection;
     
     private void Awake()
     {

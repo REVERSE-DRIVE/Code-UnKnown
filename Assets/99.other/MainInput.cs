@@ -44,6 +44,15 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Tap,Hold"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Skill"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""6624b049-5af5-426b-b4ac-3151dc095d4f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap,Hold"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -170,17 +179,6 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9d6fc9ae-5618-4524-9540-cb784eb13b7a"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Android"",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""50b19a87-fa26-44b3-8202-7aea3d635f5c"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
@@ -192,8 +190,8 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""92816217-c704-45c4-8aa2-2e62048afc95"",
-                    ""path"": ""<Keyboard>/rightShift"",
+                    ""id"": ""7db3fe2a-e54a-499a-a551-ef8485156c9b"",
+                    ""path"": ""<Keyboard>/m"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Windows"",
@@ -203,12 +201,23 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7db3fe2a-e54a-499a-a551-ef8485156c9b"",
-                    ""path"": ""<Keyboard>/enter"",
+                    ""id"": ""b7da0fd8-4bed-44d1-b73f-82a6f6addf2a"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Android"",
+                    ""action"": ""Skill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eeddb448-bf29-4605-b150-7c4e4b82bded"",
+                    ""path"": ""<Keyboard>/l"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Windows"",
-                    ""action"": ""Attack"",
+                    ""action"": ""Skill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -249,6 +258,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+        m_Player_Skill = m_Player.FindAction("Skill", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -312,12 +322,14 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Attack;
+    private readonly InputAction m_Player_Skill;
     public struct PlayerActions
     {
         private @MainInput m_Wrapper;
         public PlayerActions(@MainInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
+        public InputAction @Skill => m_Wrapper.m_Player_Skill;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -333,6 +345,9 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
+            @Skill.started += instance.OnSkill;
+            @Skill.performed += instance.OnSkill;
+            @Skill.canceled += instance.OnSkill;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -343,6 +358,9 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
+            @Skill.started -= instance.OnSkill;
+            @Skill.performed -= instance.OnSkill;
+            @Skill.canceled -= instance.OnSkill;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -382,5 +400,6 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnSkill(InputAction.CallbackContext context);
     }
 }
