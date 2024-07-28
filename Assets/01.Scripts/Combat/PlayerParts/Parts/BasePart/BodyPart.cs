@@ -20,10 +20,5 @@ namespace PlayerPartsManage
         {
             _spriteRenderer.color = Color.red;
         }
-
-        public override void OnMount()
-        {
-            
-        }
     }
 }

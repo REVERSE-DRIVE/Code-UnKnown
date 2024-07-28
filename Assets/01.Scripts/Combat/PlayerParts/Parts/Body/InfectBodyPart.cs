@@ -1,7 +1,7 @@
 ﻿using PlayerPartsManage;
 using UnityEngine;
 
-public class InfectBodyPart : BodyPart
+public class InfectBodyPart : PlayerPart
 {
     public InfectBodyPart(Player owner) : base(owner)
     {
@@ -17,7 +17,7 @@ public class InfectBodyPart : BodyPart
         int random = Random.Range(0, 100);
         if (random < 5)
         {
-            
+            // 3초간 적 기절
         }
     }
 }

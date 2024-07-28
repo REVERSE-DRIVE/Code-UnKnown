@@ -19,8 +19,6 @@ namespace PlayerPartsManage
         }
 
         public abstract void UseSkill();
-
-        public abstract void OnMount();
     }
 
 }

@@ -1,6 +1,6 @@
 ﻿using PlayerPartsManage;
 
-public class CounterBodyPart : BodyPart
+public class CounterBodyPart : PlayerPart
 {
     private int count = 0;
     public CounterBodyPart(Player owner) : base(owner)

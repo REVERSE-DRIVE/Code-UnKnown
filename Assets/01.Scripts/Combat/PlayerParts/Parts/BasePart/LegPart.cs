@@ -12,11 +12,6 @@ namespace PlayerPartsManage
         public override void UseSkill()
         {
             throw new System.NotImplementedException();
-        }
-
-        public override void OnMount()
-        {
-            
-        }
+        }   
     }
 }

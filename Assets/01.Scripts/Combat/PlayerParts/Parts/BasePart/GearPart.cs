@@ -19,10 +19,5 @@ namespace PlayerPartsManage
         public override void UseSkill()
         {
         }
-
-        public override void OnMount()
-        {
-            
-        }
     }
 }

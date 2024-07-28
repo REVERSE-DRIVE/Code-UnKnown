@@ -1,16 +1,23 @@
 ﻿using PlayerPartsManage;
 
-public class FaterBodyPart : BodyPart
+public class FaterBodyPart : PlayerPart
 {
+    private int _maxHealth;
+    private int _damage;
+    private int _decreaseHealth;
+    private int _increaseDamage;
+    
     public FaterBodyPart(Player owner) : base(owner)
     {
     }
     
     public override void UseSkill()
     {
-        int maxHealth = _owner.HealthCompo.maxHealth;
-        int damage = _owner.Stat.GetDamage();
-        _owner.HealthCompo.maxHealth -= maxHealth * 10 / 100;
-        _owner.Stat.damage.AddModifier(damage * 20 / 100);
+        _maxHealth = _owner.HealthCompo.maxHealth;
+        _damage = _owner.Stat.GetDamage();
+        _decreaseHealth = _maxHealth * 10 / 100;
+        _increaseDamage = _damage * 20 / 100;
+        _owner.HealthCompo.maxHealth -= _decreaseHealth;
+        _owner.Stat.damage.AddModifier(_increaseDamage);
     }
 }
