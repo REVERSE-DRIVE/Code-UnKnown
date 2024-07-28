@@ -267,3 +267,6 @@ MonoBehaviour:
   _speed: 0
   _lifeTime: 1
   _isEnemy: 1
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
