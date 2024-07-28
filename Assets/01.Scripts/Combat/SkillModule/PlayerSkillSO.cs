@@ -9,6 +9,7 @@ namespace CombatSkillManage
         public string skillName;
         public Sprite skillIcon;
         public string description;
+        public SkillRecoveryType skillRecoveryType;
         public float coolTime;
         
         public PlayerSkill skillPrefab;

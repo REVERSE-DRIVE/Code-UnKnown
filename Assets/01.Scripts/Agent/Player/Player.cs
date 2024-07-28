@@ -7,12 +7,14 @@ public class Player : Agent
     public PlayerVFX PlayerVFXCompo { get; protected set; }
     public PlayerAttacker PlayerAttackCompo { get; protected set; }
     public PlayerController PlayerController { get; protected set; }
+    public PlayerAttacker PlayerAttacker { get; protected set; }
     [field:SerializeField] public AdditionalStat additionalStat { get; protected set; }
     
     protected override void Awake()
     {
         base.Awake();
         PlayerInputCompo = GetComponent<PlayerInput>();
+        PlayerAttacker = GetComponent<PlayerAttacker>();
         PlayerVFXCompo = VFXCompo  as PlayerVFX;
         PlayerController = MovementCompo as PlayerController;
         
