@@ -201,6 +201,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTile: {fileID: 11400000, guid: bb09ad80cc5da974cb384c70b32318f9, type: 2}
   defaultDoor: 0
+  sizeField:
+    min: 0
+    max: 0
+    width: 0
+    height: 0
+    isRandom: 0
   editorObject: {fileID: 6117450278809134429, guid: 922ffa7441dfcf76a872b0850f621037, type: 3}
 --- !u!4 &66057276
 Transform:
@@ -445,6 +451,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTile: {fileID: 11400000, guid: bb09ad80cc5da974cb384c70b32318f9, type: 2}
   defaultDoor: 0
+  sizeField:
+    min: 0
+    max: 0
+    width: 0
+    height: 0
+    isRandom: 0
 --- !u!1 &99952488
 GameObject:
   m_ObjectHideFlags: 0
@@ -2943,6 +2955,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTile: {fileID: 11400000, guid: 0f74e1cbd14eed549b1bc1331ca21ef0, type: 2}
   defaultDoor: 0
+  sizeField:
+    min: 0
+    max: 0
+    width: 0
+    height: 0
+    isRandom: 0
 --- !u!1001 &1286494502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3169,6 +3187,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTile: {fileID: 11400000, guid: bb09ad80cc5da974cb384c70b32318f9, type: 2}
   defaultDoor: 0
+  sizeField:
+    min: 0
+    max: 0
+    width: 0
+    height: 0
+    isRandom: 0
 --- !u!4 &1385689897
 Transform:
   m_ObjectHideFlags: 0
@@ -3215,7 +3239,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTile: {fileID: 11400000, guid: bb09ad80cc5da974cb384c70b32318f9, type: 2}
   defaultDoor: 0
+  sizeField:
+    min: 0
+    max: 0
+    width: 0
+    height: 0
+    isRandom: 0
   enemyCount: {x: 3, y: 8}
+  enemyList: []
   randomData:
   - amount: 6
     list:
@@ -5946,12 +5977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71167ae2cf688b940ae9f7548a943b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createRooms:
-  - {fileID: 1385689896}
-  - {fileID: 1403629607}
-  - {fileID: 1403629607}
-  - {fileID: 1403629607}
-  - {fileID: 1403629607}
+  option: {fileID: 11400000, guid: 427d050c3d3d7fb37bb83530c313de88, type: 2}
   wallTile: {fileID: 1488012034}
   bridgeTile: {fileID: 1150824858}
   groundTile: {fileID: 1475095301}
@@ -5959,7 +5985,6 @@ MonoBehaviour:
   wallBase: {fileID: 11400000, guid: 962d50ba78feff44aaf016886e689351, type: 2}
   bridgeBase: {fileID: 11400000, guid: bb09ad80cc5da974cb384c70b32318f9, type: 2}
   doorBase: {fileID: 11400000, guid: 8edd45e4a6399ec4586fb95e430d77d9, type: 2}
-  bridgeSize: {x: 5, y: 12}
 --- !u!156049354 &1943660591
 Grid:
   m_ObjectHideFlags: 0
@@ -6261,7 +6286,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTile: {fileID: 11400000, guid: bb09ad80cc5da974cb384c70b32318f9, type: 2}
   defaultDoor: 0
+  sizeField:
+    min: 0
+    max: 0
+    width: 0
+    height: 0
+    isRandom: 0
   enemyCount: {x: 0, y: 0}
+  enemyList: []
   randomData: []
   mapTemplate: {fileID: 7096924795576456087, guid: d1330eca39210a8899639eab70a34863, type: 3}
   tile: {fileID: 11400000, guid: 3ad7b8790a241874c9c59868a9db2ec3, type: 2}
