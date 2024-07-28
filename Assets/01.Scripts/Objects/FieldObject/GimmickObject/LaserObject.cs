@@ -54,4 +54,13 @@ public class LaserObject : MonoBehaviour
             hitObj = newEvent;
         }
     }
+    
+    public void ForceHit(ILaserEvent obj) {
+        hitObj = obj;
+    }
+
+    public void Init(Type type, Transform look) {
+        LaserType = type;
+        lookAt = look;
+    }
 }
