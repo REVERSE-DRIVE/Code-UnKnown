@@ -18,3 +18,4 @@ MonoBehaviour:
   description: "\uBB3C\uB9AC\uCCD0\uB77C \uC801. 10\uB9C8\uB9AC"
   icon: {fileID: -1344260747, guid: 2f47a463e1bf78a4ba9447ee9224bfad, type: 3}
   goalValue: 0
+  itemType: 11
