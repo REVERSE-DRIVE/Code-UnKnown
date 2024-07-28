@@ -124,6 +124,7 @@ public class PlayerStrongAttacker : MonoBehaviour
             if (_hits[i].transform.TryGetComponent(out IDamageable hit))
             {
                 hit.TakeDamage(damage);
+                _player.PlayerAttacker.HandleAttackJudge();
             }
         }
     }
@@ -165,6 +166,7 @@ public class PlayerStrongAttacker : MonoBehaviour
                     int percentDamage = (int)(health.maxHealth * _dashDamagePercent / 100f);
                     health.TakeDamage(percentDamage);
                 }
+                _player.PlayerAttacker.HandleAttackJudge();
             }
         }
 

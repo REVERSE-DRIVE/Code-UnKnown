@@ -30,7 +30,7 @@ namespace CombatSkillManage
             if (_currentSkill == null) return;
             if (_skillRecoveryType == SkillRecoveryType.Normal)
             {
-                
+                HandleCooling();
             }
                 
             

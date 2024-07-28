@@ -150,6 +150,7 @@ namespace CombatSkillManage
                 _hitList[i].TakeDamage(_damage);
                 EffectObject effect = PoolingManager.Instance.Pop(_hitParticle) as EffectObject;
                 effect.Initialize(_targets[i].transform.position);
+                _player.PlayerAttacker.HandleAttackJudge();
                 effect.Play();
             }
         }
