@@ -2,7 +2,7 @@
 
 namespace PlayerPartsManage
 {
-    public class GearPart : PlayerPart
+    public class BodyPart : PlayerPart
     {
         private SpriteRenderer _spriteRenderer;
 
@@ -12,13 +12,18 @@ namespace PlayerPartsManage
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        public GearPart(Player owner) : base(owner)
+        public BodyPart(Player owner) : base(owner)
         {
         }
 
         public override void UseSkill()
         {
-            throw new System.NotImplementedException();
+            _spriteRenderer.color = Color.red;
+        }
+
+        public override void OnMount()
+        {
+            
         }
     }
 }

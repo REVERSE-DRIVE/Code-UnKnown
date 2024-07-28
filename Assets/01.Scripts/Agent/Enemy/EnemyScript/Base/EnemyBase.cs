@@ -78,6 +78,19 @@ public class EnemyBase : Enemy, IPoolable
         }
         isHit = false;
     }
+    
+    public void OnFaint(float duration)
+    {
+        StartCoroutine(FaintCoroutine(duration));
+    }
+
+    private IEnumerator FaintCoroutine(float duration)
+    {
+        StateMachine.ChangeState(EnemyStateEnum.Idle);
+        MovementCompo.StopImmediately();
+        yield return new WaitForSeconds(duration);
+        StateMachine.ChangeState(EnemyStateEnum.Chase);
+    }
 
     public void ResetItem()
     {

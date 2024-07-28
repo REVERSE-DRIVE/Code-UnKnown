@@ -13,5 +13,10 @@ namespace PlayerPartsManage
         {
             throw new System.NotImplementedException();
         }
+
+        public override void OnMount()
+        {
+            
+        }
     }
 }
