@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class PlayerStrongAttacker : MonoBehaviour
 {
+    [SerializeField] private LayerMask _targetLayer;
+
     [Header("Range Blading Setting")]
     [SerializeField] private int _rangeAttackAmount = 7;
     [SerializeField] private float _rangeAttackSize = 8f;
     [SerializeField] private PlayerHoldEffect _effect;
-    [SerializeField] private LayerMask _targetLayer;
     public Action OnHoldAttackEvent;
 
     [Header("Dash Attack Setting")]
+    [SerializeField] private float _dashWidth;
     [SerializeField] private int _dashNormalDamage;
     [SerializeField] private int _dashDamagePercent;
-    
+    [SerializeField] private float _dashDistance = 10f;
     private Player _player;
     private PlayerComboCounter _comboCounter;
 
     private int _damageBuffValue;
     private Collider2D[] _hits;
+    private RaycastHit2D[] _castHits;
     
     private void Awake()
     {
@@ -59,7 +62,7 @@ public class PlayerStrongAttacker : MonoBehaviour
             RangeAttack();
         }else
         {
-            
+            DashAttack();
         }
         _comboCounter.ResetCombo();
         //_comboCounter
@@ -134,11 +137,36 @@ public class PlayerStrongAttacker : MonoBehaviour
 
     private IEnumerator DashCoroutine()
     {
+        Time.timeScale = 0.5f;
         Vector2 attackDirection = _player.PlayerInputCompo.Direction;
-        VolumeEffectManager.Instance.SetGrayScale(-80f, 0.2f,  0.1f);
+        VolumeEffectManager.Instance.SetGrayScale(-80f, 0.3f,  0.2f);
         _effect.PlayDashReady();
         yield return new WaitForSeconds(0.2f);
+        CameraManager.Instance.Shake(9f, 0.1f);
         _effect.PlayDashImpact(attackDirection);
+        Dash(attackDirection);
+        Time.timeScale = 1f;
+    }
+
+    private void Dash(Vector2 direction)
+    {
+        _player.MovementCompo.StopImmediately();
+        _castHits = new RaycastHit2D[10];
+        int amount = Physics2D.CircleCastNonAlloc(transform.position, _dashWidth, direction, _castHits, _dashDistance, _targetLayer);
+        if (amount == 0) return;
+        for (int i = 0; i < amount; i++)
+        {
+            if (_castHits[i].transform.TryGetComponent(out IDamageable hit))
+            {
+                hit.TakeDamage(_dashNormalDamage);
+                Health health = hit as Health;
+                if (health != null)
+                {
+                    int percentDamage = (int)(health.maxHealth * _dashDamagePercent / 100f);
+                    health.TakeDamage(percentDamage);
+                }
+            }
+        }
 
     }
     

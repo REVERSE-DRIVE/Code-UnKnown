@@ -424,7 +424,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4919,7 +4919,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f853a84105b27144cacb1231bde68686, type: 2}
+  - {fileID: 2100000, guid: f5afeda4a229e834289407f86ca307cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4939,7 +4939,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1277970697
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 65
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -5113,7 +5113,7 @@ Transform:
   m_GameObject: {fileID: 930256074857046161}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.95, y: 2.46, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21372,14 +21372,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4d4335f5324b109ee769c3bed730b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rangeAttackAmount: 7
-  _rangeAttackSize: 8
-  _effect: {fileID: 9194388059987096334}
   _targetLayer:
     serializedVersion: 2
     m_Bits: 640
-  _dashNormalDamage: 0
-  _dashDamagePercent: 0
+  _rangeAttackAmount: 7
+  _rangeAttackSize: 8
+  _effect: {fileID: 9194388059987096334}
+  _dashWidth: 3
+  _dashNormalDamage: 50
+  _dashDamagePercent: 30
+  _dashDistance: 10
 --- !u!114 &2834253321769687102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21632,6 +21634,8 @@ MonoBehaviour:
   _rangeCircleTrm: {fileID: 4847465586986609004}
   _readyParticle: {fileID: 331911568733524922}
   _dashImpactTrm: {fileID: 3983036848018590392}
+  _dashImpactSize: 2
+  _impactDuration: 0.13
 --- !u!1 &8159802786038571060
 GameObject:
   m_ObjectHideFlags: 0
