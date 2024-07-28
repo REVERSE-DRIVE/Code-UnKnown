@@ -4,10 +4,17 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine.UI;
 
+public enum ButtonType
+{
+    Attack,
+    Skill
+}
+
 public class HoldButton : MonoBehaviour
 {
     private MainInput _mainInput;
     [SerializeField] private bool _isHold;
+    [SerializeField] private ButtonType _buttonType;
     public event Action OnTapEvent;
     public event Action OnHoldEvent;
     public Image buttonImage;
@@ -21,15 +28,34 @@ public class HoldButton : MonoBehaviour
 
     private void OnEnable()
     {
-        _mainInput.Player.Attack.performed += Performed;
-        _mainInput.Player.Attack.canceled += Canceled;
+        switch (_buttonType)
+        {
+            case ButtonType.Attack:
+                _mainInput.Player.Attack.performed += Performed;
+                _mainInput.Player.Attack.canceled += Canceled;
+                break;
+            case ButtonType.Skill:
+                _mainInput.Player.Skill.performed += Performed;
+                _mainInput.Player.Skill.canceled += Canceled;
+                break;
+        }
+       
         _mainInput.Player.Enable();
     }
 
     private void OnDisable()
     {
-        _mainInput.Player.Attack.performed -= Performed;
-        _mainInput.Player.Attack.canceled -= Canceled;
+        switch (_buttonType)
+        {
+            case ButtonType.Attack:
+                _mainInput.Player.Attack.performed -= Performed;
+                _mainInput.Player.Attack.canceled -= Canceled;
+                break;
+            case ButtonType.Skill:
+                _mainInput.Player.Skill.performed -= Performed;
+                _mainInput.Player.Skill.canceled -= Canceled;
+                break;
+        }
         _mainInput.Player.Disable();
     }
 
