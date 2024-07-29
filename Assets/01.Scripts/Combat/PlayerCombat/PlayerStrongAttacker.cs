@@ -6,6 +6,9 @@ public class PlayerStrongAttacker : MonoBehaviour
 {
     [SerializeField] private LayerMask _targetLayer;
 
+    [Header("Shield  Setting")]
+    [SerializeField] private PlayerShield _shield;
+
     [Header("Range Blading Setting")]
     [SerializeField] private int _rangeAttackAmount = 7;
     [SerializeField] private float _rangeAttackSize = 8f;
@@ -71,7 +74,7 @@ public class PlayerStrongAttacker : MonoBehaviour
 
     private void UseShield()
     {
-        
+        _shield.SetShield(1);
     }
 
     private void UseIncAtk()
