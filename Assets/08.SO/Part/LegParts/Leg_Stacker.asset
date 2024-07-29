@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4550fff00ae46b8b1b876ed29b57cd8, type: 3}
-  m_Name: Leg_testLeg
+  m_Name: Leg_Stacker
   m_EditorClassIdentifier: 
   partType: 0
-  id: 0
-  partName: testLeg
+  id: 2
+  partName: Stacker
   description: 
-  partPrefab: {fileID: 4689970539849961176, guid: a1b5bc8b553f49a4bb4f2daea7a5baf3, type: 3}
+  partPrefab: {fileID: 2082242308503666648, guid: 98c19020fe0b0d94b9fc2340d1db19ee, type: 3}
   legPartSprites: []
