@@ -15,6 +15,9 @@ MonoBehaviour:
   partType: 1
   id: 0
   partName: Counter
-  description: 
+  description: "\uD50C\uB808\uC774\uC5B4\uAC00 3\uBC88 \uACF5\uACA9\uC5D0 \uB9DE\uC744
+    \uB54C \uB9C8\uB2E4 \uC790\uC2E0\uC744 \uC911\uC2EC\uC73C\uB85C \uC801\uC5D0\uAC8C
+    50\uC758 \uD53C\uD574\uB97C \uC785\uD788\uB294 3 * 3 \uD06C\uAE30\uC758\uC791\uC740
+    \uCDA9\uACA9\uD30C\uB97C \uBC1C\uC0B0\uD569\uB2C8\uB2E4."
   partPrefab: {fileID: 8326060650198095776, guid: 69067c4ffd0e6b744b3e482f4c457780, type: 3}
   bodyPartSprite: {fileID: 437015925, guid: 96164d9dd6d47a94eb9c22c4f6fc5647, type: 3}

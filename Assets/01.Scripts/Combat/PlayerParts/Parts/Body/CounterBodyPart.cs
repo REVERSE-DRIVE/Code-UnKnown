@@ -7,9 +7,14 @@ public class CounterBodyPart : PlayerPart
     {
     }
     
-    public override void UseSkill()
+    public override void OnMount()
     {
         _owner.HealthCompo.OnHealthChangedValueEvent += Shock;
+    }
+
+    public override void OnUnMount()
+    {
+        _owner.HealthCompo.OnHealthChangedValueEvent -= Shock;
     }
 
     private void Shock(int prevvalue, int newvalue, int max)

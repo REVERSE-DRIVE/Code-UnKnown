@@ -8,9 +8,14 @@ public class StackerLegPart : PlayerPart
     {
     }
 
-    public override void UseSkill()
+    public override void OnMount()
     {
         StartCoroutine(StackCount());
+    }
+
+    public override void OnUnMount()
+    {
+        StopAllCoroutines();
     }
 
     private IEnumerator StackCount()

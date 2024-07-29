@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _owner: {fileID: 0}
-  _data: {fileID: 0}
+  _data: {fileID: 11400000, guid: 900541dea5e718746810ccb6e61d6cfd, type: 2}

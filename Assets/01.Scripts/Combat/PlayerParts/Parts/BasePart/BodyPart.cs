@@ -16,9 +16,14 @@ namespace PlayerPartsManage
         {
         }
 
-        public override void UseSkill()
+        public override void OnMount()
         {
             _spriteRenderer.color = Color.red;
+        }
+
+        public override void OnUnMount()
+        {
+            
         }
     }
 }

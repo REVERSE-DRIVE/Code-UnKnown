@@ -10,6 +10,7 @@ namespace PlayerPartsManage
 
         protected virtual void Awake()
         {
+            _owner = transform.root.GetComponent<Player>();
         }
 
 
@@ -18,7 +19,8 @@ namespace PlayerPartsManage
             _owner = owner;
         }
 
-        public abstract void UseSkill();
+        public abstract void OnMount();
+        public abstract void OnUnMount();
     }
 
 }

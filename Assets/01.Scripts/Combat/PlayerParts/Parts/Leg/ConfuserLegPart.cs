@@ -9,17 +9,19 @@ public class ConfuserLegPart : PlayerPart
     {
     }
 
-    public override void UseSkill()
+    public override void OnMount()
     {
-        _owner.PlayerInputCompo.OnMovementEvent += Confuse;
+        _owner.PlayerInputCompo.IsReverse = true;
         _attackPower = _owner.Stat.GetDamage();
         _owner.Stat.damage.AddModifier(_attackPower * 20 / 100);
         //dashSpeed = _owner.DashSpeed;
         //_owner.DashSpeed += DashSpeed * 20 / 100;
     }
 
-    private void Confuse(Vector2 moveVector)
+    public override void OnUnMount()
     {
-        moveVector = new Vector2(-moveVector.x, -moveVector.y);
+        _owner.PlayerInputCompo.IsReverse = false;
+        _owner.Stat.damage.RemoveModifier(_attackPower * 20 / 100);
+        //_owner.DashSpeed -= DashSpeed * 20 / 100;
     }
 }

@@ -6031,6 +6031,14 @@ PrefabInstance:
       propertyPath: _skillCooltimeGaugeImage
       value: 
       objectReference: {fileID: 1761095182}
+    - target: {fileID: 5108899912060835987, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: defaultPart
+      value: 
+      objectReference: {fileID: 11400000, guid: 900541dea5e718746810ccb6e61d6cfd, type: 2}
+    - target: {fileID: 5108899912060835987, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: defaultPartType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6863284896352316412, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: controlButtons
       value: 

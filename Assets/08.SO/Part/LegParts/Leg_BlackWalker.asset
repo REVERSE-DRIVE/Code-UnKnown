@@ -15,6 +15,12 @@ MonoBehaviour:
   partType: 0
   id: 0
   partName: BlackWalker
-  description: 
+  description: "1\uCD08 \uC774\uB3D9\uD560\uB54C\uB9C8\uB2E4 20\uC758 \uBE14\uB799\uC544\uC6C3(\uAE30\uC808)
+    \uC911\uCCA9\uC744 \uC313\uC2B5\uB2C8\uB2E4. \uC911\uCCA9\uC774 100\uC774 \uB418\uACE0
+    \uACF5\uACA9\uD560 \uC2DC, \uC801\uC774 2\uCD08\uAC04 \uAE30\uC808\uD569\uB2C8\uB2E4."
   partPrefab: {fileID: 8855134521338273809, guid: 05dcda57bb6547c42a32ed782c138cfc, type: 3}
-  legPartSprites: []
+  legPartSprites:
+  - {fileID: 1739811529, guid: 8fa37e91e9eea124091a1a949506ef29, type: 3}
+  - {fileID: 1739811529, guid: 8fa37e91e9eea124091a1a949506ef29, type: 3}
+  - {fileID: 1739811529, guid: 8fa37e91e9eea124091a1a949506ef29, type: 3}
+  - {fileID: 1739811529, guid: 8fa37e91e9eea124091a1a949506ef29, type: 3}

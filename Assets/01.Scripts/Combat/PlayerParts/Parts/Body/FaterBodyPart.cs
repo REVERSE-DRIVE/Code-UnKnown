@@ -11,7 +11,7 @@ public class FaterBodyPart : PlayerPart
     {
     }
     
-    public override void UseSkill()
+    public override void OnMount()
     {
         _maxHealth = _owner.HealthCompo.maxHealth;
         _damage = _owner.Stat.GetDamage();
@@ -19,5 +19,11 @@ public class FaterBodyPart : PlayerPart
         _increaseDamage = _damage * 20 / 100;
         _owner.HealthCompo.maxHealth -= _decreaseHealth;
         _owner.Stat.damage.AddModifier(_increaseDamage);
+    }
+
+    public override void OnUnMount()
+    {
+        _owner.HealthCompo.maxHealth += _decreaseHealth;
+        _owner.Stat.damage.RemoveModifier(_increaseDamage);
     }
 }

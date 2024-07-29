@@ -14,6 +14,7 @@ public class PlayerInput : MonoBehaviour
 
     [SerializeField] private Vector2 _inputDirection;
     public Vector2 Direction => _inputDirection;
+    public bool IsReverse { get; set; }
     
     private void Awake()
     {
@@ -37,7 +38,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Move(InputAction.CallbackContext value)
     {
-        _inputDirection = value.ReadValue<Vector2>();
+        _inputDirection = IsReverse ? -value.ReadValue<Vector2>() : value.ReadValue<Vector2>();
     }
 
     

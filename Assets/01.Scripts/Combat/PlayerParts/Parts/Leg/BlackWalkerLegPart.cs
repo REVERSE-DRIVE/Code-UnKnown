@@ -9,9 +9,14 @@ public class BlackWalkerLegPart : PlayerPart
     {
     }
 
-    public override void UseSkill()
+    public override void OnMount()
     {
         StartCoroutine(Walk());
+    }
+
+    public override void OnUnMount()
+    {
+        StopAllCoroutines();
     }
 
     private IEnumerator Walk()
@@ -24,6 +29,7 @@ public class BlackWalkerLegPart : PlayerPart
                 if (blackOutCount >= 100 /*&& 공격했으면*/)
                 {
                     // 2초간 적 기절
+                    blackOutCount = 0;  
                 }
                 yield return new WaitForSeconds(1f);
                 blackOutCount += 20;

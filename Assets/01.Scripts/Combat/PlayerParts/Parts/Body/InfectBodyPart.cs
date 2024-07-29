@@ -7,9 +7,14 @@ public class InfectBodyPart : PlayerPart
     {
     }
     
-    public override void UseSkill()
+    public override void OnMount()
     {
         _owner.PlayerAttackCompo.OnAttackEvent += Attack;
+    }
+
+    public override void OnUnMount()
+    {
+        _owner.PlayerAttackCompo.OnAttackEvent -= Attack;
     }
 
     private void Attack()
