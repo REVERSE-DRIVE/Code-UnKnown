@@ -22,7 +22,7 @@ namespace EnemyManage
             base.Enter();
             _camManagerCashing = CameraManager.Instance;
             _bossAVGBase._structureObject.Active(_bossAVGBase.transform);
-            _bossAVGBase._chargingParticle.Play();
+            _bossAVGBase.AVGVFXCompo.PlayCharge();
             SetDefault();
         }
 
@@ -60,9 +60,9 @@ namespace EnemyManage
                 isPlayedSound = true;
 
             }
-            if (_bossAVGBase._chargingParticle.isPlaying && _chargingLevel > _chargeEnergyAmount - 3)
+            if ( _chargingLevel > _chargeEnergyAmount - 3)
             {
-                _bossAVGBase._chargingParticle.Stop();
+                _bossAVGBase.AVGVFXCompo.StopCharge();
             }
             if (_chargingLevel >= _chargeEnergyAmount)
             {
@@ -87,7 +87,7 @@ namespace EnemyManage
             _bossAVGBase._structureObject.OffObject();
 
             yield return new WaitForSeconds(0.2f);
-            _bossAVGBase._burstParticle.Play();
+            _bossAVGBase.AVGVFXCompo.PlayBurst();
 
             _bossAVGBase._structureObject.DefenseAVGBurst(_bossAVGBase._burstDamage);
 

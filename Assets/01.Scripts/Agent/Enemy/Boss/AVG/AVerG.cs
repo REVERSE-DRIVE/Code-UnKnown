@@ -26,8 +26,6 @@ namespace EnemyManage
         [SerializeField] internal int _burstDamage = 100;
         [SerializeField] internal float _chargingSpeed = 2;
         [SerializeField] internal AVGStructureObject _structureObject;
-        [SerializeField] internal ParticleSystem _chargingParticle;
-        [SerializeField] internal ParticleSystem _burstParticle;
 
         [Header("Green State Setting")] [SerializeField]
         internal float _greenStateDuration = 30f;
@@ -53,6 +51,7 @@ namespace EnemyManage
         
         #endregion
 
+        public AVGVFX AVGVFXCompo { get; protected set; }
 
         protected override void Awake()
         {
@@ -61,6 +60,8 @@ namespace EnemyManage
             //_soundObject = GetComponent<SoundObject>();
             //여기에 상태를 불러오는 코드가 필요하다.
             SetStateEnum();
+            AVGVFXCompo = VFXCompo as AVGVFX;
+            
 
         }
 
@@ -111,11 +112,6 @@ namespace EnemyManage
                 StateMachine.CurrentState.CustomTrigger();
                 _isResist = false;
             }
-        }
-
-
-        public void Attack()
-        {
         }
 
         public override void AnimationEndTrigger()
