@@ -5,6 +5,7 @@
         Idle,
         Chase,
         Attack,
+        Skill,
         Dead
     }
 }

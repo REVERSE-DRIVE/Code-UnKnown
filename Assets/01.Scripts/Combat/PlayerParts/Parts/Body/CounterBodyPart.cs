@@ -21,6 +21,7 @@ public class CounterBodyPart : PlayerPart
         if (count >= 3)
         {
             // 충격파 발사
+            count = 0;
         }
     }
 }

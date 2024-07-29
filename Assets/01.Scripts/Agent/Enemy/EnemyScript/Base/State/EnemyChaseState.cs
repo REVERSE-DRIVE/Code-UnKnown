@@ -6,11 +6,13 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
 {
     protected EnemyMovement _movementCompo;
     protected bool _isChase = false;
+    protected EnemyBase _enemy;
     private Coroutine _chaseCoroutine;
     
     public EnemyChaseState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
         _movementCompo = _enemyBase.MovementCompo as EnemyMovement;
+        _enemy = enemyBase as EnemyBase;
     }
 
     public override void Enter()
@@ -44,6 +46,18 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
                 _enemyBase.StopCoroutine(_chaseCoroutine);
             }
             _isChase = false;
+            if (_enemy.IsElete)
+            {
+                int random = Random.Range(0, 2);
+                if (random == 0)
+                {
+                    _stateMachine.ChangeState(EnemyStateEnum.Attack);
+                }
+                else
+                {
+                    _stateMachine.ChangeState(EnemyStateEnum.Skill);
+                }
+            }
             _stateMachine.ChangeState(EnemyStateEnum.Attack);
         }
         else

@@ -13,6 +13,7 @@ public class EnemyBase : Enemy, IPoolable
     public EnemyStateMachine<EnemyStateEnum> StateMachine { get; protected set; }
     private bool isInitEnd;
     private bool isHit;
+    [field:SerializeField] public bool IsElete { get; protected set; }
 
     protected override void Awake()
     {
@@ -70,7 +71,6 @@ public class EnemyBase : Enemy, IPoolable
         isHit = true;
         _spriteRenderer.material = _hitMaterial;
         yield return new WaitForSeconds(0.2f);
-        print("돌아옴");
         _spriteRenderer.material = _defaultMaterial;
         if (_spriteRenderer.material == _hitMaterial)
         {
