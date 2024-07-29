@@ -10,6 +10,7 @@ public class PlayerStrongAttacker : MonoBehaviour
     [SerializeField] private int _rangeAttackAmount = 7;
     [SerializeField] private float _rangeAttackSize = 8f;
     [SerializeField] private PlayerHoldEffect _effect;
+    [SerializeField] private LayerMask _rangeTargetLayer;
     public Action OnHoldAttackEvent;
 
     [Header("Dash Attack Setting")]
@@ -116,8 +117,8 @@ public class PlayerStrongAttacker : MonoBehaviour
     private void AttackRangeTarget()
     {
         int damage = _player.Stat.GetDamage();
-        _hits = new Collider2D[10];
-        int amount = Physics2D.OverlapCircleNonAlloc(transform.position, _rangeAttackSize, _hits, _targetLayer);
+        _hits = new Collider2D[15];
+        int amount = Physics2D.OverlapCircleNonAlloc(transform.position, _rangeAttackSize, _hits, _rangeTargetLayer);
         if (amount == 0) return;
         for (int i = 0; i < amount; i++)
         {

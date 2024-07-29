@@ -64,7 +64,7 @@ namespace CombatSkillManage
             yield return new WaitForSeconds(0.2f);
             
             SetTargetMarksDisable();
-            transform.position = _beforePosition;
+            _playerTrm.position = _beforePosition;
             
             Time.timeScale = 1f;
             _burstParticle.Play();

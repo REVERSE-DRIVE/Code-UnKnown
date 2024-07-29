@@ -97,7 +97,7 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
     {
         if (_isEnemy && other.CompareTag("Enemy")) return;
         if (!_isEnemy && other.CompareTag("Player")) return;
-        if (other.transform.TryGetComponent(out Health health))
+        if (other.transform.TryGetComponent(out IDamageable health))
         {
             health.TakeDamage(_damage);
         }
