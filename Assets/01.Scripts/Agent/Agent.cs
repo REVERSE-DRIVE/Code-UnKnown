@@ -16,7 +16,7 @@ public abstract class Agent : MonoBehaviour
 
     protected Transform _visualTrm;
     protected SpriteRenderer _spriteRenderer;
-    public bool CanStateChangeable { get; protected set; } = true;
+    public bool CanStateChangeable { get; set; } = true;
     public bool isDead;
 
     
