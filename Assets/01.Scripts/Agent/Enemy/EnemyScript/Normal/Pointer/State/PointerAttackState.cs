@@ -16,12 +16,6 @@ public class PointerAttackState : EnemyAttackState
         _shotCoroutine = _enemyBase.StartCoroutine(ShotCoroutine());
     }
 
-    public override void Exit()
-    {
-        base.Exit();
-        //_enemyBase.StopCoroutine(_shotCoroutine);
-    }
-
     private IEnumerator ShotCoroutine()
     {
         yield return new WaitForSeconds(1f);

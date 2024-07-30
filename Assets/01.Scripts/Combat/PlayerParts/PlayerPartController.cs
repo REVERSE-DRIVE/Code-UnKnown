@@ -21,15 +21,28 @@ namespace PlayerPartsManage
             _visualTrm = transform.Find("Visual");
         }
         
-        public void SkillTrigger(PartType type)
+        [ContextMenu("TestSkillTrigger")]
+        public void TestChangePart()
         {
-            partList[(int)type].UseSkill();
+            ChangePart(defaultPartType, defaultPart);
+        }
+        
+        public void MountTrigger(PartType type)
+        {
+            partList[(int)type].OnMount();
+        }
+        
+        public void UnMountTrigger(PartType type)
+        {
+            partList[(int)type].OnUnMount();
         }
 
         public void ChangePart(PartType type, PlayerPartDataSO anotherPart)
         {
+            UnMountTrigger(type);
             Destroy(partList[(int)type].gameObject);
             partList[(int)type] = Instantiate(anotherPart.partPrefab, _visualTrm);
+            MountTrigger(type);
             if (type == PartType.Body)
                 ChangeSprite(anotherPart as PlayerBodyPartDataSO);
             else if (type == PartType.Leg)

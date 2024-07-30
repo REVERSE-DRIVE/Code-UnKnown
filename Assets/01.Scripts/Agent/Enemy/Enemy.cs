@@ -25,6 +25,8 @@ namespace EnemyManage
         public float lastAttackTime;
         public Transform targetTrm;
         protected Collider2D[] _enemyCheckColliders;
+        
+        public LayerMask WhatIsPlayer => _whatIsPlayer;
 
         protected override void Awake()
         {

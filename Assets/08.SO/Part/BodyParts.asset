@@ -15,3 +15,5 @@ MonoBehaviour:
   partType: 1
   playerPartDataSOList:
   - {fileID: 11400000, guid: a38ae90c251ea0347aa85657db111be2, type: 2}
+  - {fileID: 11400000, guid: f24264e985b28a043abb00a87de3323c, type: 2}
+  - {fileID: 11400000, guid: ada5d00b8dc33ff4db2ab4b4c29046ef, type: 2}

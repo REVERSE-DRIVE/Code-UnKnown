@@ -1,9 +1,9 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class EnemyLaser : Projectile
 {
+    [SerializeField] private LayerMask _whatIsPlayer;
     public void Shot(Vector3 position)
     {
         StartCoroutine(Move(position, 0.05f));
@@ -18,7 +18,22 @@ public class EnemyLaser : Projectile
         {
             currentTime += Time.deltaTime;
             transform.position = Vector3.Lerp(startPosition, targetPosition, currentTime / f);
+            Vector3 dir = (targetPosition - startPosition).normalized;
+            ShotRay(dir);
             yield return null;
+        }
+        PoolingManager.Instance.Push(this);
+    }
+
+    private void ShotRay(Vector3 dir)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 100, _whatIsPlayer);
+        if (hit.collider != null)
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                hit.collider.GetComponent<IDamageable>()?.TakeDamage(_damage);
+            }
         }
     }
 }
