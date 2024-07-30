@@ -46,3 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _owner: {fileID: 0}
   _data: {fileID: 11400000, guid: a38ae90c251ea0347aa85657db111be2, type: 2}
+  _whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 128
+  _explosion: {fileID: 3089571827927618220, guid: 3ff762f23b8350e40aec23e4b12ccbbb, type: 3}
