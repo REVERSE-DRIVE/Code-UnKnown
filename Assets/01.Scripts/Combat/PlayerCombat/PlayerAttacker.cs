@@ -142,7 +142,7 @@ public class PlayerAttacker : MonoBehaviour
 
     private IEnumerator AttackCoroutine(Vector2 boundDir)
     {
-        CountCombo();
+        HandleAttackJudge();
         _player.Stat.isResist = true;
         float duration = Mathf.Clamp01(1.5f - _player.additionalStat.dashSpeed.GetValue() * 0.3f) * boundDir.magnitude / 15;
         _attackEffect.SetTargetAttack(true);
@@ -161,6 +161,11 @@ public class PlayerAttacker : MonoBehaviour
         _attackEffect.SetTrailActive(false);
         _isAttacking = false;
         _player.Stat.isResist = false;
+    }
+    public void HandleAttackJudge()
+    {
+        OnAttackEvent?.Invoke();
+        CountCombo();
     }
 
     private int CalcDamage()
@@ -189,6 +194,8 @@ public class PlayerAttacker : MonoBehaviour
         }, ((Vector2)_currentTargetTrm.position + Random.insideUnitCircle * 2));
         textEffect.Play();
     }
+
+    
 
    
 

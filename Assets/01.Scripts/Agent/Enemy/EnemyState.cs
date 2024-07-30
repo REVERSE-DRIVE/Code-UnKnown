@@ -36,5 +36,10 @@ namespace EnemyManage
         {
             _endTriggerCalled = true;
         }
+
+        public void CustomTrigger()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -6,10 +6,14 @@ public class PlayerStrongAttacker : MonoBehaviour
 {
     [SerializeField] private LayerMask _targetLayer;
 
+    [Header("Shield  Setting")]
+    [SerializeField] private PlayerShield _shield;
+
     [Header("Range Blading Setting")]
     [SerializeField] private int _rangeAttackAmount = 7;
     [SerializeField] private float _rangeAttackSize = 8f;
     [SerializeField] private PlayerHoldEffect _effect;
+    [SerializeField] private LayerMask _rangeTargetLayer;
     public Action OnHoldAttackEvent;
 
     [Header("Dash Attack Setting")]
@@ -70,7 +74,7 @@ public class PlayerStrongAttacker : MonoBehaviour
 
     private void UseShield()
     {
-        
+        _shield.SetShield(1);
     }
 
     private void UseIncAtk()
@@ -116,14 +120,15 @@ public class PlayerStrongAttacker : MonoBehaviour
     private void AttackRangeTarget()
     {
         int damage = _player.Stat.GetDamage();
-        _hits = new Collider2D[10];
-        int amount = Physics2D.OverlapCircleNonAlloc(transform.position, _rangeAttackSize, _hits, _targetLayer);
+        _hits = new Collider2D[15];
+        int amount = Physics2D.OverlapCircleNonAlloc(transform.position, _rangeAttackSize, _hits, _rangeTargetLayer);
         if (amount == 0) return;
         for (int i = 0; i < amount; i++)
         {
             if (_hits[i].transform.TryGetComponent(out IDamageable hit))
             {
                 hit.TakeDamage(damage);
+                _player.PlayerAttackCompo.HandleAttackJudge();
             }
         }
     }
@@ -165,6 +170,7 @@ public class PlayerStrongAttacker : MonoBehaviour
                     int percentDamage = (int)(health.maxHealth * _dashDamagePercent / 100f);
                     health.TakeDamage(percentDamage);
                 }
+                _player.PlayerAttackCompo.HandleAttackJudge();
             }
         }
 

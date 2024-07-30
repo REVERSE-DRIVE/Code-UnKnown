@@ -7,7 +7,7 @@ namespace CombatSkillManage
     {
         [SerializeField] private PlayerSkillSO _currentSkillSO;
         private PlayerSkill _currentSkill;
-
+        private SkillRecoveryType _skillRecoveryType;
         [SerializeField] private Image _skillIconImage;
         [SerializeField] private Image _skillCooltimeGaugeImage;
         [SerializeField] private float _currentTime;
@@ -28,7 +28,12 @@ namespace CombatSkillManage
         private void Update()
         {
             if (_currentSkill == null) return;
-            _currentTime += Time.deltaTime * _currentSkill.coolingPower;
+            if (_skillRecoveryType == SkillRecoveryType.Normal)
+            {
+                HandleCooling();
+            }
+                
+            
             Refresh();
         }
 
@@ -37,12 +42,34 @@ namespace CombatSkillManage
             _currentSkill = Instantiate(_currentSkillSO.skillPrefab, transform);
             _currentSkill.Initialize(_player);
             _skillIconImage.sprite = _currentSkillSO.skillIcon;
-            
+            _skillRecoveryType = _currentSkillSO.skillRecoveryType;
+
+            switch (_skillRecoveryType)
+            {
+                case SkillRecoveryType.Attack:
+                    _player.PlayerAttackCompo.OnAttackEvent += HandleCoolingInt;
+                    break;
+                
+                case SkillRecoveryType.Hit:
+                    _player.HealthCompo.OnHealthChangedEvent.AddListener(HandleCoolingInt);
+                    break;
+            }
         }
+
+        private void HandleCooling()
+        {
+            _currentTime += Time.deltaTime * _currentSkill.coolingPower;
+        }
+
+        private void HandleCoolingInt()
+        {
+            _currentTime += _currentSkill.coolingPower;
+        }
+        
+        
 
         public void HandleUseSkill()
         {
-            print("ming");
             if (!_canUseSkill) return;
             if (!IsCoolDown) return;
             _currentTime = 0;
