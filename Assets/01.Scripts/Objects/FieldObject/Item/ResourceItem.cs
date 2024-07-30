@@ -39,7 +39,7 @@ public class ResourceItem : Item
             transform.DOJump(targetPos + new Vector3(0, 1, 0), 1, 1, 0.5f).OnComplete(() =>
             {
                 LevelManager.Instance.ApplyExp(ItemSO.resourceValue);
-                gameObject.SetActive(false);
+                PoolingManager.Instance.Push(this);
             });
         }
     }

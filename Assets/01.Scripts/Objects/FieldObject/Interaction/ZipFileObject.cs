@@ -20,6 +20,7 @@ public class ZipFileObject : InteractObject
     private Transform _visualTransform;
     
     protected Animator _animator;
+    protected BoxCollider2D _boxCollider2D;
     
     private static readonly int Open = Animator.StringToHash("Open");
     private static readonly int DissolveLevel = Shader.PropertyToID("_DissolveLevel");
@@ -31,6 +32,7 @@ public class ZipFileObject : InteractObject
         _animator = _visualTransform.GetComponent<Animator>();
         _visualRenderer = _visualTransform.GetComponent<SpriteRenderer>();
         _defaultMaterial = _visualRenderer.material;
+        _boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
     private void OnEnable()
@@ -54,7 +56,8 @@ public class ZipFileObject : InteractObject
         _isInteracted = true;
         _animator.SetTrigger(Open);
         yield return new WaitForSeconds(0.7f);
-        Instantiate(_openParticle, transform.position, Quaternion.identity);    
+        Instantiate(_openParticle, transform.position, Quaternion.identity);   
+        _boxCollider2D.enabled = false;
         Dissolve();
         
         int dropAmount = Random.Range(_minDropAmount, _maxDropAmount);

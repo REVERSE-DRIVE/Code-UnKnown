@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -23,6 +22,7 @@ public class EnemyLaser : Projectile
             ShotRay(dir);
             yield return null;
         }
+        PoolingManager.Instance.Push(this);
     }
 
     private void ShotRay(Vector3 dir)
