@@ -70,7 +70,6 @@ namespace CombatSkillManage
 
         public void HandleUseSkill()
         {
-            print("ming");
             if (!_canUseSkill) return;
             if (!IsCoolDown) return;
             _currentTime = 0;

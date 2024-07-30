@@ -26347,6 +26347,7 @@ MonoBehaviour:
   _targetLayer:
     serializedVersion: 2
     m_Bits: 640
+  _shield: {fileID: 3731418866023317560}
   _rangeAttackAmount: 7
   _rangeAttackSize: 8
   _effect: {fileID: 9194388059987096334}

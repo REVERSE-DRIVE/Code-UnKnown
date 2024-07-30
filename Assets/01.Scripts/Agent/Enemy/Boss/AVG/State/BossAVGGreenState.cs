@@ -8,9 +8,12 @@ namespace EnemyManage
         private float _currentTime = 0;
         private float _currentStateTime = 0;
         private float _stateDuration;
+        private int _currentHealth;
+        
         public BossAVGGreenState(Enemy enemyBase, EnemyStateMachine<AVGStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
         {
         }
+        
 
         public override void Enter()
         {
@@ -19,8 +22,8 @@ namespace EnemyManage
             _currentStateTime = 0;
             _stateDuration = _bossAVGBase._greenStateDuration;
 
+            _currentHealth = _bossAVGBase.HealthCompo.CurrentHealth;
             OnAllHealingCore();
-            _bossAVGBase.OnHealDefense();
         }
 
         private void OnAllHealingCore()
@@ -81,5 +84,11 @@ namespace EnemyManage
             OffAllHealingCore();
             //_bossAVGBase.OffHealDefense();
         }
+
+        private void HandleHealDefence()
+        {
+            
+        }
+        
     }
 }

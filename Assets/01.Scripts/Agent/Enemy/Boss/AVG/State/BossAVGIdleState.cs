@@ -20,7 +20,9 @@ namespace EnemyManage
             base.Enter();
             isWaitOver = false;
             _playerTrm = PlayerManager.Instance.player.transform;
+            _playerLayer = _bossAVGBase.PlayerLayer;
             _bossAVGBase.StartCoroutine(IdleCoroutine());
+            
         }
 
         private IEnumerator IdleCoroutine()
@@ -48,7 +50,8 @@ namespace EnemyManage
             Vector2 pos = _bossAVGBase.transform.position;
             Vector2 direction = (Vector2)_playerTrm.position - pos;
             RaycastHit2D hit = Physics2D.Raycast(pos, direction.normalized, 10, _playerLayer);
-            if (hit.collider != null) 
+            Debug.DrawRay(pos, direction.normalized, Color.red);
+            if (hit.collider != null)
             {
                 SetRandomState();
             }        

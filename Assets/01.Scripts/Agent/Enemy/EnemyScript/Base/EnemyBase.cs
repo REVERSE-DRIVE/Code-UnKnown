@@ -70,7 +70,6 @@ public class EnemyBase : Enemy, IPoolable
         isHit = true;
         _spriteRenderer.material = _hitMaterial;
         yield return new WaitForSeconds(0.2f);
-        print("돌아옴");
         _spriteRenderer.material = _defaultMaterial;
         if (_spriteRenderer.material == _hitMaterial)
         {

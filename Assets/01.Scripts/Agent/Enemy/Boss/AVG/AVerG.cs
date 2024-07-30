@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace EnemyManage
 {
-
     public class AVerG : Boss
     {
         public EnemyStateMachine<AVGStateEnum> StateMachine { get; private set; }
@@ -12,13 +11,13 @@ namespace EnemyManage
         #region Settings
 
         //[SerializeField] internal SoundObject _soundObject;
-        [Header("Idle State Setting")] [SerializeField]
-        internal AVGStateEnum[] _randomPickState;
-
+        [Header("Idle State Setting")]
+        [SerializeField] internal AVGStateEnum[] _randomPickState;
         [SerializeField] internal float _idleWaitingTime = 5f;
+        internal LayerMask PlayerLayer => _whatIsPlayer;
 
-        [Header("Stun State Setting")] [SerializeField]
-        internal float _stunDuration = 5;
+        [Header("Stun State Setting")] 
+        [SerializeField] internal float _stunDuration = 5;
 
         [Header("Red State Setting")] 
         [SerializeField] internal int _chargeEnergy = 20;
@@ -27,11 +26,9 @@ namespace EnemyManage
         [SerializeField] internal float _chargingSpeed = 2;
         [SerializeField] internal AVGStructureObject _structureObject;
 
-        [Header("Green State Setting")] [SerializeField]
-        internal float _greenStateDuration = 30f;
-
+        [Header("Green State Setting")] 
+        [SerializeField] internal float _greenStateDuration = 30f;
         [SerializeField] internal int _healCoreHealAmountPerSecond = 30;
-
         [SerializeField] internal AVGHealingObject[] _healingObjects;
 
         //[SerializeField] private int _healMultiply = 3;
@@ -123,7 +120,7 @@ namespace EnemyManage
 
         public void OnHealDefense()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
