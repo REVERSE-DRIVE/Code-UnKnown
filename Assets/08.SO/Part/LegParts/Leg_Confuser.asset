@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4550fff00ae46b8b1b876ed29b57cd8, type: 3}
+  m_Name: Leg_Confuser
+  m_EditorClassIdentifier: 
+  partType: 0
+  id: 1
+  partName: Confuser
+  description: "\uD50C\uB808\uC774\uC5B4\uAC00 \uBC29\uD5A5\uD0A4\uAC00 \uBC18\uC804\uB418\uB294
+    \uB300\uC2E0, \uACF5\uACA9\uB825\uC774 20% \uC99D\uAC00\uD558\uACE0, \uB300\uC26C
+    \uC18D\uB3C4\uAC00 20% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  partPrefab: {fileID: 1883196479584005210, guid: 8434a91dec3f78a4197ba76b2a3989b9, type: 3}
+  legPartSprites:
+  - {fileID: 93553912, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
+  - {fileID: -1618839063, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
+  - {fileID: -727084448, guid: 8fa37e91e9eea124091a1a949506ef29, type: 3}
+  - {fileID: -727084448, guid: 8fa37e91e9eea124091a1a949506ef29, type: 3}

@@ -13,6 +13,7 @@ public class EnemyBase : Enemy, IPoolable
     public EnemyStateMachine<EnemyStateEnum> StateMachine { get; protected set; }
     private bool isInitEnd;
     private bool isHit;
+    [field:SerializeField] public bool IsElete { get; protected set; }
 
     protected override void Awake()
     {
@@ -76,6 +77,19 @@ public class EnemyBase : Enemy, IPoolable
             _spriteRenderer.material = _defaultMaterial;
         }
         isHit = false;
+    }
+    
+    public void OnFaint(float duration)
+    {
+        StartCoroutine(FaintCoroutine(duration));
+    }
+
+    private IEnumerator FaintCoroutine(float duration)
+    {
+        StateMachine.ChangeState(EnemyStateEnum.Idle);
+        MovementCompo.StopImmediately();
+        yield return new WaitForSeconds(duration);
+        StateMachine.ChangeState(EnemyStateEnum.Chase);
     }
 
     public void ResetItem()

@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 183983181}
   - component: {fileID: 183983180}
   - component: {fileID: 183983179}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 713113027}
   - component: {fileID: 713113026}
   - component: {fileID: 713113025}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2478,7 +2478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71167ae2cf688b940ae9f7548a943b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  option: {fileID: 11400000, guid: 427d050c3d3d7fb37bb83530c313de88, type: 2}
+  option: {fileID: 11400000, guid: d9d6b9d40d96fdf858eaeca72ced9d45, type: 2}
   wallTile: {fileID: 713113024}
   bridgeTile: {fileID: 368225346}
   groundTile: {fileID: 1651452657}
