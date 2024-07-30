@@ -152,6 +152,7 @@ public class JunkFileObject : InteractObject, IDamageable
     
     public void TakeDamage(int amount)
     {
+        if (_isActive) return;
         _currentHealth -= amount;
         Player player = PlayerManager.Instance.player;
         player.additionalStat.isStrongAttack = true;

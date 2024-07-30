@@ -64,7 +64,7 @@ namespace CombatSkillManage
             yield return new WaitForSeconds(0.2f);
             
             SetTargetMarksDisable();
-            transform.position = _beforePosition;
+            _playerTrm.position = _beforePosition;
             
             Time.timeScale = 1f;
             _burstParticle.Play();
@@ -150,6 +150,7 @@ namespace CombatSkillManage
                 _hitList[i].TakeDamage(_damage);
                 EffectObject effect = PoolingManager.Instance.Pop(_hitParticle) as EffectObject;
                 effect.Initialize(_targets[i].transform.position);
+                _player.PlayerAttackCompo.HandleAttackJudge();
                 effect.Play();
             }
         }

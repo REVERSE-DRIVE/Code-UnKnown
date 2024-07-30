@@ -13,6 +13,7 @@ public class Player : Agent
     {
         base.Awake();
         PlayerInputCompo = GetComponent<PlayerInput>();
+        PlayerAttackCompo = GetComponent<PlayerAttacker>();
         PlayerVFXCompo = VFXCompo  as PlayerVFX;
         PlayerController = MovementCompo as PlayerController;
         
