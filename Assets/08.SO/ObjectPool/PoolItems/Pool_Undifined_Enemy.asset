@@ -18,4 +18,4 @@ MonoBehaviour:
     \uD50C\uB808\uC774\uC5B4\uB97C \uD5A5\uD574 \uC77C\uC9C1\uC120\uC73C\uB85C \uBC1C\uC0AC\uD558\uBA70,
     \uC774\uB3D9\uC18D\uB3C4\uAC00 \uAD49\uC7A5\uD788 \uBE60\uB974\uB2E4.  "
   poolCount: 10
-  prefabObject: {fileID: 0}
+  prefabObject: {fileID: 2384511731109786797, guid: 2396379238f05c64887fef32acebe6d2, type: 3}

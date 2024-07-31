@@ -17,4 +17,4 @@ MonoBehaviour:
   description: "\uD50C\uB808\uC774\uC5B4\uB97C \uD5A5\uD574 \uC720\uB3C4\uB418\uB294
     \uD654\uC0B4\uD45C \uBAA8\uC591\uC758 \uD0C4\uD658\uC744 4\uAC1C \uBC1C\uC0AC\uD55C\uB2E4."
   poolCount: 10
-  prefabObject: {fileID: 0}
+  prefabObject: {fileID: 4190753647650057023, guid: 22f833367b2eb124ab3f689825b566df, type: 3}
