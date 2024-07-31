@@ -104,10 +104,12 @@ public class PlayerAttacker : MonoBehaviour
                 continue;
             }
 
-            if(hit.transform.TryGetComponent(out IDamageable target))
+            Transform targetTrm = hit.collider.transform;
+            if(targetTrm.TryGetComponent(out IDamageable target))
             {
+                print(targetTrm.gameObject.name);
                 isNoTarget = false;
-                _currentTargetTrm = hit.transform;
+                _currentTargetTrm = targetTrm;
                 _currentTarget = target;
                 HandleTargeted();
                 break;

@@ -52,7 +52,7 @@ ParticleSystem:
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
-  autoRandomSeed: 0
+  autoRandomSeed: 1
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -109,7 +109,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 342750836
+  randomSeed: 0
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -9773,8 +9773,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1277970697
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -9858,7 +9858,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 659921dac9a4f71408ac38f25cf332b3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9876,8 +9876,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1860675727
-  m_SortingLayer: 0
+  m_SortingLayerID: -829507261
+  m_SortingLayer: 2
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 58ec1538dc2230e4c918cff261fead2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -14951,7 +14951,7 @@ MonoBehaviour:
   attackCooldown: 0
   lastAttackTime: 0
   targetTrm: {fileID: 0}
-  _randomPickState: 02000000030000000400000005000000
+  _randomPickState: 030000000400000005000000
   _idleWaitingTime: 5
   _stunDuration: 5
   _chargeEnergy: 20
@@ -15113,6 +15113,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d12fd9276654c65b260b7de6c54adef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentHealth: 0
+  _maxHealth: 300
+  _shieldObject: {fileID: 9114579370483437398}
+  _thisObjectVisual: {fileID: 1405541688372998382}
+  _destroyParticle: {fileID: 1250487353774541666}
+  _shieldRadius: 1.5
+  _isShieldActivated: 0
 --- !u!58 &4059844319714203341
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -15120,7 +15127,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6033787437202674140}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -15554,11 +15561,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1314174330733031614, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3185711591353454785, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3971607595784911322, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Name
@@ -15566,7 +15573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3971607595784911322, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3971607595784911322, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_IsActive
@@ -15643,11 +15650,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1314174330733031614, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3185711591353454785, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3971607595784911322, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Name
@@ -15655,7 +15662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3971607595784911322, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3971607595784911322, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_IsActive
@@ -15732,11 +15739,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1314174330733031614, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3185711591353454785, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3971607595784911322, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Name
@@ -15744,7 +15751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3971607595784911322, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3971607595784911322, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_IsActive
@@ -15821,11 +15828,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1314174330733031614, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3185711591353454785, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3971607595784911322, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Name
@@ -15833,7 +15840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3971607595784911322, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3971607595784911322, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_IsActive
