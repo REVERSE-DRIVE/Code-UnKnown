@@ -5,18 +5,30 @@ using UnityEngine.UI;
 
 public class PlayerInput : MonoBehaviour
 {
+    private MainInput _mainInput;
     public ControlButtons controlButtons;
-    private Button _actionButton;
-    private Button _skillButton;
+    private HoldButton _actionButton;
+    private HoldButton _skillButton;
 
     public event Action<Vector2> OnMovementEvent;
 
     [SerializeField] private Vector2 _inputDirection;
+    public Vector2 Direction => _inputDirection;
+    public bool IsReverse { get; set; }
     
     private void Awake()
     {
+        _mainInput = new MainInput();
+        _mainInput.Player.Move.performed += Move;
+        _mainInput.Player.Move.canceled += Cancel;
+        _mainInput.Player.Enable();
         _actionButton = controlButtons.actionButton;
         _skillButton = controlButtons.skillButton;
+    }
+
+    private void Cancel(InputAction.CallbackContext obj)
+    {
+        _inputDirection = Vector2.zero;
     }
 
     private void Update()
@@ -24,9 +36,9 @@ public class PlayerInput : MonoBehaviour
         OnMovementEvent?.Invoke(_inputDirection);
     }
 
-    public void OnMove(InputValue value)
+    private void Move(InputAction.CallbackContext value)
     {
-        _inputDirection = value.Get<Vector2>();
+        _inputDirection = IsReverse ? -value.ReadValue<Vector2>() : value.ReadValue<Vector2>();
     }
 
     

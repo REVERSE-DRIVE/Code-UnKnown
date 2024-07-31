@@ -16,7 +16,7 @@ public abstract class Agent : MonoBehaviour
 
     protected Transform _visualTrm;
     protected SpriteRenderer _spriteRenderer;
-    public bool CanStateChangeable { get; protected set; } = true;
+    public bool CanStateChangeable { get; set; } = true;
     public bool isDead;
 
     
@@ -38,7 +38,7 @@ public abstract class Agent : MonoBehaviour
         // Agent에 만드는건 SOLID위반이 됨, 나중에 Enemy로 옮겨야함
         Stat = Instantiate(Stat);
         Stat.SetOwner(this);
-
+        
         HealthCompo.Initialize(this);
         //HealthCompo.SetHealth(Stat.health);
 

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: PowerUp_HealthUp
   m_EditorClassIdentifier: 
   code: HealthUp
+  powerUpRank: 4
   shouldBeUnlock: 0
   title: "\uC678\uAC11 \uC554\uD638\uD654"
-  description: "\uCD5C\uB300\uCCB4\uB825\uC744 30 \uC99D\uAC00 \uC2DC\uD0B5\uB2C8\uB2E4."
+  description: "\uCD5C\uB300\uCCB4\uB825\uC744 20 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
   icon: {fileID: 0}
   effectList:
   - {fileID: 11400000, guid: 9b5c464d514e00a438b77c6d06277277, type: 2}

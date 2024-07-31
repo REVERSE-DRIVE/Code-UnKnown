@@ -2,5 +2,6 @@
 {
     StatInc,
     SkillUnlock,
-    SkillUpgrade
+    SkillUpgrade,
+    AdditionalStatInc
 }

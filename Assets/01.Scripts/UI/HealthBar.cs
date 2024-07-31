@@ -18,7 +18,9 @@ public class HealthBar : MonoBehaviour
     private RectTransform _rectTrm;
     private Tween _currentShakeTween;
     private bool _isShaking;
-    
+
+
+    private Sequence _seq;
     private void Awake()
     {
         _rectTrm = transform as RectTransform;
@@ -34,65 +36,31 @@ public class HealthBar : MonoBehaviour
     {
         if(prevValue == newValue) return;
 
-        float prevFill = (float)prevValue / max;
+        //float prevFill = (float)prevValue / max;
         float newFill = (float)newValue / max;
+        _seq = DOTween.Sequence();
         if (prevValue > newValue)
         { // 감소한 경우
             ShakeBar();
-            StartCoroutine(DecreaseCoroutine(prevFill, newFill));
+            _seq.Append(_mainFillBar.DOFillAmount(newFill, _changeTime));
+            _seq.AppendInterval(_changeTerm);
+            _seq.Append(_subFillBar.DOFillAmount(newFill, _changeTime));
         }
         else
         { // 증가한 경우
-            StartCoroutine(IncreaseCoroutine(prevFill, newFill));
+            _seq.Append(_subFillBar.DOFillAmount(newFill, _changeTime));
+            _seq.AppendInterval(_changeTerm);
+            _seq.Append(_mainFillBar.DOFillAmount(newFill, _changeTime));
+
         }
-        
-
     }
 
-    private IEnumerator DecreaseCoroutine(float before, float target)
-    {
-        yield return StartCoroutine(MainGaugeFillCoroutine(before, target));
-        yield return new WaitForSeconds(_changeTerm);
-        StartCoroutine(SubGaugeFillCoroutine(before, target));
-    }
-    
-    private IEnumerator IncreaseCoroutine(float before, float target)
-    {
-        yield return StartCoroutine(SubGaugeFillCoroutine(before, target));
-        yield return new WaitForSeconds(_changeTerm);
-        StartCoroutine(MainGaugeFillCoroutine(before, target));
-    }
-
-    private IEnumerator SubGaugeFillCoroutine(float before, float target)
-    {
-        float currentTime = 0;
-        while (currentTime < _changeTime)
-        {
-            currentTime += Time.deltaTime;
-            _subFillBar.fillAmount = Mathf.Lerp(before, target, currentTime / _changeTime); 
-            yield return null;
-        }
-
-        _subFillBar.fillAmount = target;
-    }
-    private IEnumerator MainGaugeFillCoroutine(float before, float target)
-    {
-        float currentTime = 0;
-        while (currentTime < _changeTime)
-        {
-            currentTime += Time.deltaTime;
-            _mainFillBar.fillAmount = Mathf.Lerp(before, target, currentTime / _changeTime); 
-            yield return null;
-        }
-
-        _mainFillBar.fillAmount = target;
-    }
-
+   
     public void ShakeBar()
     {
         if (_isShaking) return;
         _isShaking = true;
-        _currentShakeTween = _rectTrm.DOShakeAnchorPos(0.1f).OnComplete(() => { _isShaking = false;});
+        _currentShakeTween = _rectTrm.DOShakeAnchorPos(0.1f, 40f).OnComplete(() => { _isShaking = false;});
     }
 
 }

@@ -4,7 +4,7 @@ namespace ObjectManage
 {
     public class ParticleVFXObject : EffectObject
     {
-        [SerializeField] private ParticleSystem[] _particles;
+        //[SerializeField] private ParticleSystem[] _particles;
 
         public void Play()
         {

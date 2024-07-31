@@ -2,8 +2,8 @@
 {
     public enum ItemType
     {
-        Resource,
-        Weapon
+        Weapon = 10,
+        Resource = 11
     }
 }
 

@@ -13,8 +13,9 @@ namespace EnemyManage
         
         [SerializeField] protected LayerMask _whatIsPlayer;
         [SerializeField] protected LayerMask _whatIsObstacle;
+        [field:SerializeField] public SpriteRenderer RendererCompo { get; protected set; }
         public Rigidbody2D RigidCompo { get; protected set; }
-        public SpriteRenderer RendererCompo { get; protected set; }
+        public Collider2D ColliderCompo { get; protected set; }
 
         [Header("Attack Settings")] public float runAwayDistance;
         public float attackDistance;
@@ -24,12 +25,14 @@ namespace EnemyManage
         public float lastAttackTime;
         public Transform targetTrm;
         protected Collider2D[] _enemyCheckColliders;
+        
+        public LayerMask WhatIsPlayer => _whatIsPlayer;
 
         protected override void Awake()
         {
             base.Awake();
             RigidCompo = GetComponent<Rigidbody2D>();
-            RendererCompo = transform.Find("Visual").GetComponent<SpriteRenderer>();
+            ColliderCompo = GetComponent<Collider2D>();
             MovementCompo.Initialize(this);
             _enemyCheckColliders = new Collider2D[_maxCheckEnemy];
         }
@@ -51,7 +54,7 @@ namespace EnemyManage
 
         public override void SetDead()
         {
-            //ItemDropManager.Instance.DropItem(_itemType, _id, transform.position);
+            ItemDropManager.Instance.DropItem(_itemType, _id, transform.position);
         }
 
         private void OnDrawGizmos()

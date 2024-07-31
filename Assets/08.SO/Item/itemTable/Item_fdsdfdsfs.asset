@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 550e5141d06b47d0936871a900ed4783, type: 3}
   m_Name: Item_fdsdfdsfs
   m_EditorClassIdentifier: 
+  itemType: 11
   id: 1
   itemName: fdsdfdsfs
-  itemIcon: {fileID: -170623123, guid: c1f79a481323808489d1aeb5d122ec76, type: 3}
+  itemIcon: {fileID: 21300000, guid: 5b9141bde8af3a44aaf31c84d0ef2e68, type: 3}
+  resourceRank: 1
+  resourceValue: 5
+  weaponInfoSO: {fileID: 0}

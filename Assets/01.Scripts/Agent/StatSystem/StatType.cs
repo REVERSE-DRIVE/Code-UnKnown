@@ -2,7 +2,9 @@
 {
     Damage,
     MaxHealth,
-    CriticalChance,
-    CriticalDamage,
     MoveSpeed,
+    CriticalRate,
+    Defence,
+    BadEffectResistance,
+    ReviveCount
 }

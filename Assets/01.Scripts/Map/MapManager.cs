@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class MapManager : MonoSingleton<MapManager>
 {
-    [SerializeField] MapGenerator generator;
+    [field: SerializeField] public MapGenerator Generator { get; private set; }
+    public MapTileManager TileManager { get; private set; }
 
     Dictionary<Vector2Int, RoomBase> map = new();
     List<BridgeBase> bridges = new();
 
+    private void Awake() {
+        TileManager = GetComponent<MapTileManager>();
+    }
+
     ///////////////////////////////// TEST
     private void Start() {
         Generate();
+        
+        // 만든 후 준비 방으로 플레이어 이동
+        RoomBase room = GetRoomByCoords(Vector2Int.zero);
+        Vector3 centerPos = room.GetCenterCoords();
+
+        PlayerManager.Instance.player.transform.position = centerPos;
     }
     ///////////////////////////////// TEST END
 
@@ -20,8 +31,8 @@ public class MapManager : MonoSingleton<MapManager>
         return result ? room : null;
     }
     
-    public Vector3 GetWorldPosByCell(Vector2Int cell) => generator.GetWorldCoordsByGroundCell(cell);
-    public Vector2Int GetCellByWorldPos(Vector3 cell) => generator.GetGroundCellByWorldCoords(cell);
+    public Vector3 GetWorldPosByCell(Vector2Int cell) => Generator.GetWorldCoordsByGroundCell(cell);
+    public Vector2Int GetCellByWorldPos(Vector3 cell) => Generator.GetGroundCellByWorldCoords(cell);
 
     public void SetRoom(Vector2Int coords, RoomBase room) {
         map[coords] = room;
@@ -31,17 +42,17 @@ public class MapManager : MonoSingleton<MapManager>
         bridges.Add(bridge);
     }
     
-    public void Generate() => generator.StartGenerate();
+    public void Generate() => Generator.StartGenerate();
 
     public void Generate(RoomBase[] templates) {
-        generator.StartGenerate(templates);
+        Generator.StartGenerate(templates);
         // (비동기가 아니기 때문에 이 밑에는 맵 생성이 완료된거임)
     }
 
     public void Clear() {
         map.Clear();
         bridges.Clear();
-        generator.Clear();
+        Generator.Clear();
     }
 
     public IEnumerable<KeyValuePair<Vector2Int, RoomBase>> GetMapIterator() {
@@ -66,9 +77,9 @@ public class MapManager : MonoSingleton<MapManager>
     }
 
     public void CreateWall(Vector2Int min, Vector2Int max) {
-        generator.CreateWall(min, max);
+        Generator.CreateWall(min, max);
     }
     public void DeleteWall(Vector2Int min, Vector2Int max) {
-        generator.DeleteWall(min, max);
+        Generator.DeleteWall(min, max);
     }
 }

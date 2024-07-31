@@ -41,13 +41,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _MaskRange: 0.49
+    - _MinAlpha: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Speed: 0.1
+    - _WaveAmount: 0.1
     - _WaveSpeed: 0.1
     - _Width: 22.84
     m_Colors:
-    - _EmissionColor: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
+    - _EmissionColor: {r: 0.46257564, g: 0.77313626, b: 0.9339623, a: 1}
     - _MaskColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &3616238017782440959

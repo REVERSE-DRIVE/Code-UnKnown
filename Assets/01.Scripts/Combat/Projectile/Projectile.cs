@@ -1,3 +1,4 @@
+using System;
 using ObjectManage;
 using ObjectPooling;
 using UnityEngine;
@@ -6,7 +7,8 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
 {
     [field: SerializeField] public PoolingType type { get; set; }
     public GameObject ObjectPrefab => gameObject;
-
+    public event Action OnDestroyEvent;
+    
     [SerializeField] protected PoolingType _destroyParticlePoolingType;
     [SerializeField] protected int _damage;
     [SerializeField] protected float _speed;
@@ -14,7 +16,6 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
     [SerializeField] protected bool _isEnemy = true;
     protected Rigidbody2D _rigidCompo;
     protected bool _isActive;
-    
     protected float _currentLifeTime = 0;
     protected Transform _visualTrm;
     protected Vector2 _direction;
@@ -87,6 +88,7 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
     {
         EffectObject effect = PoolingManager.Instance.Pop(_destroyParticlePoolingType) as EffectObject;
         effect.transform.position = transform.position;
+        OnDestroyEvent?.Invoke();
         _isActive = false;
         PoolingManager.Instance.Push(this);
     }
@@ -95,7 +97,7 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
     {
         if (_isEnemy && other.CompareTag("Enemy")) return;
         if (!_isEnemy && other.CompareTag("Player")) return;
-        if (other.transform.TryGetComponent(out Health health))
+        if (other.transform.TryGetComponent(out IDamageable health))
         {
             health.TakeDamage(_damage);
         }

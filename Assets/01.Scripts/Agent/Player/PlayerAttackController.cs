@@ -1,4 +1,5 @@
 ﻿using System;
+using ItemManage;
 using UnityEngine;
 using WeaponManage;
 
@@ -21,6 +22,7 @@ public class PlayerAttackController : MonoBehaviour
         
         
     }
+    
 
     private void Start()
     {
@@ -33,11 +35,16 @@ public class PlayerAttackController : MonoBehaviour
         _player = player;
     }
 
-    public void ChangeWeapon(Weapon newWeapon)
+    public void ChangeWeapon(WeaponInfoSO newWeaponSO)
     {
         _player.PlayerInputCompo.OnMovementEvent -= _currentWeapon.HandleRotateWeapon;
-        _currentWeapon = newWeapon;
+        WeaponInfoSO prevWeapon = _currentWeaponInfo;
+        _currentWeaponInfo = newWeaponSO;
+        Destroy(_currentWeapon.gameObject);
+        _currentWeapon = Instantiate(_currentWeaponInfo.WeaponPrefab, _weaponHandleTrm);
         WeaponInit();
+        ItemDropManager.Instance.DropItem(ItemType.Weapon, prevWeapon.id, transform.position);
+
         
     }
 

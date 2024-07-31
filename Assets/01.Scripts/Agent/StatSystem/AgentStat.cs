@@ -6,13 +6,18 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-[CreateAssetMenu(menuName = "SO/Stat")]
+[CreateAssetMenu(menuName = "SO/Status/Stat")]
 public class AgentStat : ScriptableObject
 {
     public Stat damage;
-    public Stat health;
+    public Stat maxHealth;
     public Stat moveSpeed;
-    
+    public Stat criticalRate;
+    public Stat defence; // 방어력과 같은 작용 ( 데미지 - def) => 실질 데미지
+    public Stat badEffectResistance; // 악효과 저항수치 %
+    public Stat reviveCount; // 부활 횟수
+    public bool isResist;
+
     protected Agent _owner;
     protected Dictionary<StatType, Stat> _statDictionary;
 
@@ -32,7 +37,7 @@ public class AgentStat : ScriptableObject
         yield return new WaitForSeconds(duration);
         targetStat.RemoveModifier(value);
     }
-
+    
     protected virtual void OnEnable()
     {
         _statDictionary = new Dictionary<StatType, Stat>();
@@ -86,11 +91,18 @@ public class AgentStat : ScriptableObject
 
     public void AddModifier(StatType type, int value)
     {
-        _statDictionary[type].AddModifier(value);
+        if (_statDictionary.TryGetValue(type, out Stat stat))
+        {
+            stat.AddModifier(value);
+        }
+        //_statDictionary[type].AddModifier(value);
     }
 
     public void RemoveModifier(StatType type, int value)
     {
-        _statDictionary[type].RemoveModifier(value);
+        if (_statDictionary.TryGetValue(type, out Stat stat))
+            stat.RemoveModifier(value);
+        else 
+            Debug.LogError($"{type.ToString()} : Modifier is Not Exist. (value:{value})");
     }
 }

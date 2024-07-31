@@ -54,9 +54,11 @@ MonoBehaviour:
   _detectMaterial: {fileID: 2100000, guid: 9b2f7f23d8d4f3c4098109f51a709a28, type: 2}
   _visualRenderer: {fileID: 3170825235135360049}
   isDetected: 0
+  <type>k__BackingField: 10
   <ItemSO>k__BackingField: {fileID: 0}
   _itemNameText: {fileID: 8316715013320359837}
-  <type>k__BackingField: 10
+  _itemType: 10
+  _activeMaterial: {fileID: 2100000, guid: 02b6253de25c40b449a0e470435636fb, type: 2}
 --- !u!61 &3473447056630540512
 BoxCollider2D:
   m_ObjectHideFlags: 0

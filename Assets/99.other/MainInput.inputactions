@@ -13,6 +13,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Attack",
+                    "type": "PassThrough",
+                    "id": "543a6918-eded-4ce4-a67a-0e5a4a36f60d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap,Hold",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Skill",
+                    "type": "PassThrough",
+                    "id": "6624b049-5af5-426b-b4ac-3151dc095d4f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap,Hold",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -136,6 +154,50 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "50b19a87-fa26-44b3-8202-7aea3d635f5c",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Android",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7db3fe2a-e54a-499a-a551-ef8485156c9b",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Windows",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b7da0fd8-4bed-44d1-b73f-82a6f6addf2a",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Android",
+                    "action": "Skill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eeddb448-bf29-4605-b150-7c4e4b82bded",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Windows",
+                    "action": "Skill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -147,6 +209,11 @@
             "devices": [
                 {
                     "devicePath": "<AndroidJoystick>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Gamepad>",
                     "isOptional": false,
                     "isOR": false
                 }

@@ -112,8 +112,9 @@ MonoBehaviour:
   <type>k__BackingField: 0
   _destroyParticlePoolingType: 5
   _damage: 3
-  _speed: 1
+  _speed: 3
   _lifeTime: 100
+  _isEnemy: 1
   _targetTrm: {fileID: 0}
   _isPlayerTarget: 0
   _accuracy: 0.5

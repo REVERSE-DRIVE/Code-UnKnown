@@ -15,8 +15,24 @@ public class HierarchyCustomizer
     private static void HandleHierarchyWindowItemOnGUI(int instanceId, Rect selectionRect)
     {
         GameObject obj = EditorUtility.InstanceIDToObject(instanceId) as GameObject;
+        
         if (obj != null)
         {
+            if (obj.name.Contains("==="))
+            {
+                obj.transform.position = new Vector3(0, 0, 0);
+                Rect rect = new Rect(selectionRect);
+                rect.x = 0;
+                rect.width = 1000;
+                EditorGUI.DrawRect(rect, new Color(0.1f, 0.1f, 0.1f, 0.5f));
+            }
+            else if (obj.name is "Player")
+            {
+                Rect rect = new Rect(selectionRect);
+                rect.x = 0;
+                rect.width = 1000;
+                EditorGUI.DrawRect(rect, new Color(0f, 0f, 0.1f, 0.3f));
+            }
             // 오른쪽 끝에 토글버튼
             Rect toggleRect = new Rect(selectionRect.x + selectionRect.width - 25, selectionRect.y - 2.5f, 20, 20);
             obj.SetActive(EditorGUI.Toggle(toggleRect, obj.activeSelf));
@@ -31,6 +47,7 @@ public class HierarchyCustomizer
 
             foreach (Component component in components)
             {
+                if (component is null) continue;
                 if (IsComponentIgnored(component)) continue;
                 if (iconCount >= 2) break;
 
@@ -52,12 +69,13 @@ public class HierarchyCustomizer
     private static bool IsComponentIgnored(Component component)
     {
         return
-            component is Transform ||
-            component is CanvasRenderer ||
-            component is CanvasScaler ||
-            component is GraphicRaycaster ||
-            component is AudioListener ||
-            component is UniversalAdditionalCameraData ||
-            component is StandaloneInputModule;
+            component is 
+                Transform or 
+                CanvasRenderer or 
+                CanvasScaler or 
+                GraphicRaycaster or 
+                AudioListener or
+                UniversalAdditionalCameraData or
+                StandaloneInputModule;
     }
 }

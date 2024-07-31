@@ -7,9 +7,17 @@ public class EnemyDeadState : EnemyState<EnemyStateEnum>
     {
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        
+        _enemyBase.ColliderCompo.enabled = false;
+    }
+
     public override void UpdateState()
     {
         base.UpdateState();
+        _enemyBase.MovementCompo.StopImmediately();
         if (_endTriggerCalled)
         {
             Die();

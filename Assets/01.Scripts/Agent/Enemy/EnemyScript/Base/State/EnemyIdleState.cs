@@ -28,7 +28,7 @@ public class EnemyIdleState : EnemyState<EnemyStateEnum>
         
         if (!_enemyBase.IsObstacleDetected(direction.magnitude, direction.normalized))
         {
-            _enemyBase.StopAllCoroutines();
+            //_enemyBase.StopAllCoroutines();
             _enemyBase.targetTrm = target.transform;
             _stateMachine.ChangeState(EnemyStateEnum.Chase);
         }

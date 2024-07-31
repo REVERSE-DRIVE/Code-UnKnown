@@ -12,16 +12,17 @@ public class RoomBase : MonoBehaviour
 {
     [SerializeField] TileBase groundTile;
     [SerializeField] bool defaultDoor = false;
+    [SerializeField] RandomSizeField sizeField;
 
     public Vector2Int Size { get; protected set; }
 
     public Vector2Int MinPos { get; private set; }
     public Vector2Int MaxPos { get; private set; }
     public Vector2Int MapPos { get; private set; }
-    protected Dictionary<MapGenerator.Direction, RoomDoorData> doors = new();
+    public Dictionary<MapGenerator.Direction, RoomDoorData> Doors { get; private set; } = new();
 
     public virtual void SetSize() {
-        Size = new Vector2Int(19,19);
+        Size = sizeField.GetValue();
     }
 
     public void SetRoomPos(Vector2Int min, Vector2Int max, Vector2Int mapPos) {
@@ -31,14 +32,14 @@ public class RoomBase : MonoBehaviour
     }
 
     public void SetDoor(MapGenerator.Direction dir, Vector2Int size, BridgeBase bridge) {
-        doors[dir] = new() {
+        Doors[dir] = new() {
             size = size,
             bridge = bridge           
         };
     }
     
     public Vector2Int GetCenterPosDoor(MapGenerator.Direction dir) {
-        var door = doors[dir];
+        var door = Doors[dir];
 
         int centerNum = (door.size.x + door.size.y) / 2;
 
@@ -57,7 +58,7 @@ public class RoomBase : MonoBehaviour
         MapGenerator.Direction nearDir = MapGenerator.Direction.Top;
         float nearDistance = float.MaxValue;
 
-        foreach (var item in doors)
+        foreach (var item in Doors)
         {
             Vector2Int doorPos = GetCenterPosDoor(item.Key);
             float distance = Vector2Int.Distance(pos, doorPos);
@@ -84,6 +85,14 @@ public class RoomBase : MonoBehaviour
         return pos;
     }
 
+    public Vector3 GetCenterCoords() {
+        Vector3 worldMin = MapManager.Instance.GetWorldPosByCell(MinPos);
+        Vector3 worldMax = MapManager.Instance.GetWorldPosByCell(MaxPos + Vector2Int.one);
+        
+        return (worldMin + worldMax) / 2f;
+    }
+    
+
     public TileBase GetGroundTile() => groundTile;
 
     public virtual void RoomEnter() {
@@ -95,7 +104,7 @@ public class RoomBase : MonoBehaviour
     }
 
     public virtual void SetDoor(bool active) {
-        foreach (var item in doors)
+        foreach (var item in Doors)
         {
             Vector2Int coords = (item.Key == MapGenerator.Direction.Top || item.Key == MapGenerator.Direction.Right) ? MaxPos : MinPos;
             
@@ -111,9 +120,9 @@ public class RoomBase : MonoBehaviour
             }
 
             if (active) {
-                MapManager.Instance.CreateWall(min, max);
+                MapManager.Instance.Generator.CreateDoor(min, max);
             } else {
-                MapManager.Instance.DeleteWall(min, max);
+                MapManager.Instance.Generator.DeleteDoor(min, max);
             }
         }
     }
@@ -126,7 +135,7 @@ public class RoomBase : MonoBehaviour
     #if UNITY_EDITOR
     private void OnDrawGizmosSelected() {
         // 모든 문 끝쪽
-        foreach (var item in doors)
+        foreach (var item in Doors)
         {
             Vector2Int coords;
             if (item.Key == MapGenerator.Direction.Top || item.Key == MapGenerator.Direction.Right) {

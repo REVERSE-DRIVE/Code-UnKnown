@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: IncSpeed1
   type: 0
-  targetStat: 4
+  targetStat: 2
   increaseValue: 1

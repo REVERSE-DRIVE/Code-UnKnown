@@ -8,16 +8,16 @@ public class Stat
     [SerializeField] private int _baseValue;
     public List<int> modifiers;
     public bool isPercent;
-
+    
     public int GetValue()
     {
-        int final = _baseValue;
+        int total = _baseValue;
         foreach (int value in modifiers)
         {
-            _baseValue += value;
+            total += value;
         }
 
-        return final;
+        return total;
     }
 
     public void AddModifier(int value)
