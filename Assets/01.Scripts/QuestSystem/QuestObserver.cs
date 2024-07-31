@@ -23,7 +23,7 @@ namespace QuestManage
         [ContextMenu("TestKillTrigger")]
         private void Test()
         {
-            KillTrigger(EnemyType.Jail);
+            KillTrigger(EnemyType.Decoy);
         }
 
         public void KillTrigger(EnemyType enemyType)
