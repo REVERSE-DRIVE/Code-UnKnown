@@ -49,6 +49,7 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
             if (_enemy.IsElete)
             {
                 int random = Random.Range(0, 2);
+                Debug.Log(random);
                 if (random == 0)
                 {
                     _stateMachine.ChangeState(EnemyStateEnum.Attack);
@@ -57,6 +58,7 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
                 {
                     _stateMachine.ChangeState(EnemyStateEnum.Skill);
                 }
+                return;
             }
             _stateMachine.ChangeState(EnemyStateEnum.Attack);
         }

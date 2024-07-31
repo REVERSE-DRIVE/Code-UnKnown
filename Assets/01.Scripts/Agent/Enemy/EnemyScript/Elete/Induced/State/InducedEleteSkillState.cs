@@ -11,6 +11,7 @@ public class InducedEleteSkillState : EnemySkillState
 
     protected override void TakeSkill()
     {
+        Debug.Log("Induced Elete Skill");
         int count = Physics.OverlapSphereNonAlloc(_enemyBase.transform.position, 3f, _colliders, _enemyBase.WhatIsPlayer);
         if (count > 0)
         {
@@ -21,6 +22,7 @@ public class InducedEleteSkillState : EnemySkillState
                     if (_colliders[i].CompareTag("Player"))
                     {
                         health.TakeDamage(_enemyBase.Stat.GetDamage());
+                        Debug.Log("Player Take Damage");
                     }
                 }
             }
