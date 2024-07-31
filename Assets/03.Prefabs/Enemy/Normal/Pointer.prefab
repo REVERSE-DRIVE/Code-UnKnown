@@ -70,6 +70,7 @@ MonoBehaviour:
   targetTrm: {fileID: 0}
   <type>k__BackingField: 2
   _hitMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}
+  <IsElete>k__BackingField: 0
 --- !u!114 &6761780637450821324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +253,7 @@ SpriteRenderer:
   m_SortingLayerID: -1044503619
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2094967649, guid: d6875cc705efae149b9e38c5ee82a5ce, type: 3}
+  m_Sprite: {fileID: -3136606206584293534, guid: 42678da617e7e9e439fdf529f10e6375, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -273,7 +274,7 @@ Animator:
   m_GameObject: {fileID: 3318305131816323373}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3abd3b23fb856d046b791ca3e580de8e, type: 2}
+  m_Controller: {fileID: 22100000, guid: 848d465f89353cc438f4947fab5f5e49, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
