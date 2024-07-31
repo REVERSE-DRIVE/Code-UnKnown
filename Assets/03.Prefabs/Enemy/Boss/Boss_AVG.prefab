@@ -14965,8 +14965,8 @@ MonoBehaviour:
   - {fileID: 8122696763160273038}
   - {fileID: 1867259719611551514}
   - {fileID: 2324196262735502343}
-  _attacktime: 10
-  _attackCooltime: 10
+  _attacktime: 15
+  _attackCooltime: 1
   _projectile: 0
   _fireProjectileAmount: 4
   _rotationSpeed: 3
@@ -15667,6 +15667,14 @@ PrefabInstance:
     - target: {fileID: 3971607595784911322, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215969259383185341, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215969259383185341, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
+      propertyPath: m_Color.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6579165777190920136, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_LocalPosition.x
