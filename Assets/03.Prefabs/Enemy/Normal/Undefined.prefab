@@ -68,7 +68,7 @@ MonoBehaviour:
   attackCooldown: 1
   lastAttackTime: 0
   targetTrm: {fileID: 0}
-  <type>k__BackingField: 2
+  <type>k__BackingField: 14
   _hitMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}
   <IsElete>k__BackingField: 0
 --- !u!114 &2710069964101042818
