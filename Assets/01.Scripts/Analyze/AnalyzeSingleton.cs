@@ -14,4 +14,9 @@ public class AnalyzeSingleton : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
     }
+
+    [ContextMenu("Clear Save")]
+    void ClearSave() {
+        PlayerPrefs.DeleteAll();
+    }
 }
