@@ -66,4 +66,9 @@ public static class AnalyzeManager
             }
         };
     }
+
+    // scene 전환
+    public static void SceneChange(string sceneName) {
+        Debug.Log($"[domiAnalyze] Scene Change {sceneName}");
+    }
 }
