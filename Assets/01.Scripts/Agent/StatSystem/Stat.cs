@@ -40,4 +40,14 @@ public class Stat
         }
     }
 
+    /**
+     * <summary>
+     * 매개변수 %에 해당하는 스테이터스 값을 반환합니다.
+     * </summary>
+     */
+    public int GetPercent(int percent)
+    {
+        return (int)((float)GetValue() / 100 * percent);
+    }
+
 }
