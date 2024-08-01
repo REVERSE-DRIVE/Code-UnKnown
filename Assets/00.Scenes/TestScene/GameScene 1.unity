@@ -6085,7 +6085,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: a38ae90c251ea0347aa85657db111be2, type: 2}
     - target: {fileID: 5108899912060835987, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: defaultPartType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6863284896352316412, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: controlButtons
@@ -6124,17 +6124,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2521794987052518811, guid: 22f833367b2eb124ab3f689825b566df, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1899483713392167994, guid: 3ec39d285c3eb1047923494936ff3ed2, type: 3}
     - target: {fileID: 4190753647650057023, guid: 22f833367b2eb124ab3f689825b566df, type: 3}
       propertyPath: m_Name
       value: Induced
       objectReference: {fileID: 0}
     - target: {fileID: 7030641847365653075, guid: 22f833367b2eb124ab3f689825b566df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.7608805
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 7030641847365653075, guid: 22f833367b2eb124ab3f689825b566df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.3006892
+      value: 10.16
       objectReference: {fileID: 0}
     - target: {fileID: 7030641847365653075, guid: 22f833367b2eb124ab3f689825b566df, type: 3}
       propertyPath: m_LocalPosition.z
