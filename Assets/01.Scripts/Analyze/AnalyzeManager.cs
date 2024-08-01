@@ -42,7 +42,11 @@ public static class AnalyzeManager
         //     return false;
         // }
 
-        string body = System.Text.Encoding.UTF8.GetString(handler.downloadHandler.data);
+        string body = "empty";
+        try {
+            body = System.Text.Encoding.UTF8.GetString(handler.downloadHandler.data);
+        } catch {}
+        
         if (handler.responseCode != 403 && handler.responseCode != 200) {
             Debug.LogError($"[domiAnalyze] 등록 실패. ({handler.responseCode}) {body}");            
             return false;
@@ -58,17 +62,44 @@ public static class AnalyzeManager
 
         var operation = handler.SendWebRequest();
         operation.completed += (AsyncOperation e) => {
-            string body = System.Text.Encoding.UTF8.GetString(handler.downloadHandler.data);
-            handler.Dispose();
+            string body = "empty";
+            try {
+                body = System.Text.Encoding.UTF8.GetString(handler.downloadHandler.data);
+            } catch {}
             
             if (handler.responseCode != 200) {
                 Debug.LogError($"[domiAnalyze] Ping 실패. ({handler.responseCode}) {body}");
             }
+            handler.Dispose();
         };
     }
 
     // scene 전환
-    public static void SceneChange(string sceneName) {
+    public static async Task<bool> SceneChange(string sceneName) {
+        if (!Registered) {
+            Debug.LogWarning("[domiAnalyze] 등록이 확실하지 않습니다.");
+        }
+
         Debug.Log($"[domiAnalyze] Scene Change {sceneName}");
+
+        using var handler = UnityWebRequest.Post(GetURL("scene"), $"{{\"scene\":\"{sceneName}\"}}", "application/json");
+        handler.SetRequestHeader("authorization", $"DOMI {SystemInfo.deviceUniqueIdentifier}");
+
+        var operation = handler.SendWebRequest();
+
+        while (!operation.isDone)
+            await Task.Yield();
+
+        string body = "empty";
+        try {
+            body = System.Text.Encoding.UTF8.GetString(handler.downloadHandler.data);
+        } catch {}
+
+        if (handler.responseCode != 200) {
+            Debug.LogError($"[domiAnalyze] Scene 실패. ({handler.responseCode}) {body}");
+            return false;
+        }
+
+        return true;
     }
 }

@@ -13,8 +13,13 @@ public class AnalyzeScene : MonoBehaviour
         SceneManager.activeSceneChanged -= OnChangeScene;
     }
 
-    void OnChangeScene(Scene current, Scene next) {
-        print($"Scene Move {current.name} -> {next.name}");
-        AnalyzeManager.SceneChange(next.name);
+    async void OnChangeScene(Scene current, Scene next) {
+        if (PlayerPrefs.GetInt($"domi.AnalyzeScene.{next.name}") == 1) return; // 이미 함
+
+        bool success = await AnalyzeManager.SceneChange(next.name);
+
+        if (success) {
+            PlayerPrefs.SetInt($"domi.AnalyzeScene.{next.name}", 1);
+        }
     }
 }

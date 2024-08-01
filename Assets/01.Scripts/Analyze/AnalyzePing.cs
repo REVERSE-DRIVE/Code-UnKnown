@@ -22,5 +22,6 @@ public class AnalyzePing : MonoBehaviour
 
         // 체크인
         AnalyzeManager.SendPing();
+        Destroy(this); // 마무리
     }
 }
