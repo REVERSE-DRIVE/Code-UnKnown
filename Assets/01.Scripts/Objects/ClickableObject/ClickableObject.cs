@@ -10,6 +10,7 @@ namespace ObjectManage
         public void OnPointerClick(PointerEventData eventData)
         {
             OnClickEvent?.Invoke(); 
+            Debug.Log($"[{eventData.pointerCurrentRaycast.gameObject.name}] Clicked");
         }
     }
 }
