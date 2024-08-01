@@ -14959,14 +14959,14 @@ MonoBehaviour:
   _chargingSpeed: 2
   _structureObject: {fileID: 7219145329601631173}
   _greenStateDuration: 30
-  _healCoreHealAmountPerSecond: 30
+  _healCoreHealAmountPerSecond: 5
   _healingObjects:
   - {fileID: 3533705195261002429}
   - {fileID: 8122696763160273038}
   - {fileID: 1867259719611551514}
   - {fileID: 2324196262735502343}
   _attacktime: 15
-  _attackCooltime: 1
+  _attackCooltime: 0.5
   _projectile: 0
   _fireProjectileAmount: 4
   _rotationSpeed: 3
@@ -15127,7 +15127,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6033787437202674140}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
