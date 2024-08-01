@@ -4,38 +4,43 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class AnalyzeManager : MonoBehaviour
+[System.Serializable]
+struct RegisterData {
+    public string uuid;
+    public string model;
+    public string platform;
+}
+
+public static class AnalyzeManager
 {
     static readonly string host = "172.30.1.10";
     static readonly ushort port = 3000;
 
     static string GetURL(string path) => $"http://{host}:{port}/game/{path}";
 
-    static bool registered = false; // 등록됨?
-
+    static public bool Registered { get; set; } = false; // 등록됨?
     
     // 등록하기
-    public async Task<bool> RegisterDevice() {
+    public static async Task<bool> RegisterDevice() {
         // 보낼 데이터
-        Dictionary<string, string> form = new()
+        RegisterData form = new()
         {
-            { "uuid", SystemInfo.deviceUniqueIdentifier },
-            { "model", SystemInfo.deviceModel },
-            { "platform", Application.platform.ToString() },
+            uuid = SystemInfo.deviceUniqueIdentifier,
+            model = SystemInfo.deviceModel,
+            platform = Application.platform.ToString(),
         };
 
-        using var handler = UnityWebRequest.Post(GetURL("register"), form);
-        handler.SetRequestHeader("Content-Type", "application/json");
+        using var handler = UnityWebRequest.Post(GetURL("register"), JsonUtility.ToJson(form), "application/json");
 
         var operation = handler.SendWebRequest();
         
         while (!operation.isDone)
             await Task.Yield();
 
-        if (handler.result != UnityWebRequest.Result.Success) {
-            Debug.LogError($"[domiAnalyze] 등록 실패. {handler.result}");            
-            return false;
-        }
+        // if (handler.result != UnityWebRequest.Result.Success) {
+        //     Debug.LogError($"[domiAnalyze] 등록 실패. {handler.result}");            
+        //     return false;
+        // }
 
         string body = System.Text.Encoding.UTF8.GetString(handler.downloadHandler.data);
         if (handler.responseCode != 403 && handler.responseCode != 200) {
@@ -44,5 +49,21 @@ public class AnalyzeManager : MonoBehaviour
         }
 
         return true; // 403 은 이미 등록된거라 정상 처리함
+    }
+
+    // Ping
+    public static void SendPing() {
+        var handler = UnityWebRequest.Post(GetURL("ping"), new WWWForm());
+        handler.SetRequestHeader("authorization", $"DOMI {SystemInfo.deviceUniqueIdentifier}");
+
+        var operation = handler.SendWebRequest();
+        operation.completed += (AsyncOperation e) => {
+            string body = System.Text.Encoding.UTF8.GetString(handler.downloadHandler.data);
+            handler.Dispose();
+            
+            if (handler.responseCode != 200) {
+                Debug.LogError($"[domiAnalyze] Ping 실패. ({handler.responseCode}) {body}");
+            }
+        };
     }
 }
