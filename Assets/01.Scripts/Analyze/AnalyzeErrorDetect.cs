@@ -63,6 +63,5 @@ public class AnalyzeErrorDetect : MonoBehaviour
         }
         
         stackObj[message] = count + 1;
-        print($"{errorType} / {firstFunc}");
     }
 }
