@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -9,6 +10,14 @@ struct RegisterData {
     public string uuid;
     public string model;
     public string platform;
+}
+
+[System.Serializable]
+public struct AnalyzeExceptionData {
+    public string type;
+    public string function;
+    public string stack;
+    public uint count;
 }
 
 public static class AnalyzeManager
@@ -101,5 +110,53 @@ public static class AnalyzeManager
         }
 
         return true;
+    }
+
+    public static async void SendExceptions(List<AnalyzeExceptionData> exceptions) {
+        if (!Registered) {
+            Debug.LogWarning("[domiAnalyze] 등록이 확실하지 않습니다.");
+        }
+
+        Debug.Log($"[domiAnalyze] Send Exceptions {exceptions.Count}..");
+        StringBuilder jsonformat = new StringBuilder("[");
+
+        int i = 0;
+        foreach (var item in exceptions)
+        {
+            jsonformat.Append(@$"{{
+                ""type"": ""{item.type}"",
+                ""function"": ""{item.function}()"",
+                ""stack"": ""{item.stack.Replace("\n", "\\n")}"",
+                ""count"": {item.count}
+            }}");
+            
+            if (i < exceptions.Count - 1)
+                jsonformat.Append(',');
+
+            i ++;
+        }
+
+        jsonformat.Append(']');
+
+
+        Debug.Log(jsonformat.ToString());
+        using var handler = UnityWebRequest.Post(GetURL("exception"), jsonformat.ToString(), "application/json");
+        handler.SetRequestHeader("authorization", $"DOMI {SystemInfo.deviceUniqueIdentifier}");
+
+        var operation = handler.SendWebRequest();
+
+        while (!operation.isDone)
+            await Task.Yield();
+            
+        
+        string body = "empty";
+        try {
+            body = System.Text.Encoding.UTF8.GetString(handler.downloadHandler.data);
+        } catch {}
+        
+        if (handler.responseCode != 200) {
+            Debug.LogError($"[domiAnalyze] Send Exception 실패. ({handler.responseCode}) {body}");
+            return;
+        }
     }
 }

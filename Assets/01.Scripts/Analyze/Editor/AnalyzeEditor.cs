@@ -23,6 +23,7 @@ public static class AnalyzeEditor
             entity.AddComponent<AnalyzeSingleton>();
             entity.AddComponent<AnalyzePing>();
             entity.AddComponent<AnalyzeScene>();
+            entity.AddComponent<AnalyzeErrorDetect>();
         }
     }
 }
