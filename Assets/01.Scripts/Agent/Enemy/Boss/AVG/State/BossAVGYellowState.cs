@@ -21,11 +21,11 @@ namespace EnemyManage
         public override void UpdateState()
         {
             base.UpdateState();
-            _currentTime += Time.deltaTime;
-            if (_currentTime >= _stateDuration)
-            {
-                _stateMachine.ChangeState(AVGStateEnum.Idle);
-            }
+            // _currentTime += Time.deltaTime;
+            // if (_currentTime >= _stateDuration)
+            // {
+            //     _stateMachine.ChangeState(AVGStateEnum.Idle);
+            // }
         }
 
         internal void BreakState()

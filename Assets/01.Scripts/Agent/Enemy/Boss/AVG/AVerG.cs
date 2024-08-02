@@ -42,7 +42,8 @@ namespace EnemyManage
 
         [Header("Yellow State Setting")] [SerializeField]
         internal float _yellowStateDuration = 30f;
-
+        [SerializeField] internal int _attackAmount;
+        [SerializeField] internal Transform _yellowAttackRangeTrm;
         [SerializeField] internal bool _isResist;
         
         
