@@ -1,5 +1,4 @@
-﻿using System;
-using ItemManage;
+﻿using ItemManage;
 using UnityEngine;
 
 namespace QuestManage
