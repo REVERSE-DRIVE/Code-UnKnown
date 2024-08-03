@@ -22,10 +22,10 @@ public struct AnalyzeExceptionData {
 
 public static class AnalyzeManager
 {
-    static readonly string host = "172.30.1.10";
-    static readonly ushort port = 3000;
+    static readonly string host = "ggm.domi.kr";
+    static readonly ushort port = 443;
 
-    static string GetURL(string path) => $"http://{host}:{port}/game/{path}";
+    static string GetURL(string path) => $"https://{host}:{port}/code_unknown/api/game/{path}";
 
     static public bool Registered { get; set; } = false; // 등록됨?
     
@@ -139,7 +139,6 @@ public static class AnalyzeManager
         jsonformat.Append(']');
 
 
-        Debug.Log(jsonformat.ToString());
         using var handler = UnityWebRequest.Post(GetURL("exception"), jsonformat.ToString(), "application/json");
         handler.SetRequestHeader("authorization", $"DOMI {SystemInfo.deviceUniqueIdentifier}");
 
