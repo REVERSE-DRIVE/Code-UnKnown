@@ -43,7 +43,7 @@ namespace EnemyManage
         [Header("Yellow State Setting")] 
 
         [SerializeField] internal int _yellowBurstDamage = 10;
-
+        [SerializeField] internal float _attackRadius = 7.5f;
         [SerializeField] internal float _attackInterval = 1f;
         [SerializeField] internal int _attackAmount;
         [SerializeField] internal Transform _yellowAttackRangeTrm;

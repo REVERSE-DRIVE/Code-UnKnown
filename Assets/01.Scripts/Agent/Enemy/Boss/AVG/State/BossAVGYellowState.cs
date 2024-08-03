@@ -82,7 +82,7 @@ namespace EnemyManage
             _rangeTrm.position = _playerTrm.position;
             _rangeRenderer.enabled = true;
             _rangeMaterial.SetInt(_blinkHash, 1);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             _rangeMaterial.SetInt(_blinkHash, 0);
             DamageBurst();
             _bossAVGBase.AVGVFXCompo.PlayYellowImpact();
@@ -108,7 +108,7 @@ namespace EnemyManage
 
         private void DamageBurst()
         {
-            Collider2D hit = Physics2D.OverlapCircle(_rangeTrm.position, 3.5f, _playerLayer);
+            Collider2D hit = Physics2D.OverlapCircle(_rangeTrm.position, _bossAVGBase._attackRadius, _playerLayer);
             if (hit == null)
             {
                 return;
