@@ -40,10 +40,15 @@ namespace EnemyManage
         [SerializeField] internal int _fireProjectileAmount = 4;
         [SerializeField] internal float _rotationSpeed = 3f;
 
-        [Header("Yellow State Setting")] [SerializeField]
-        internal float _yellowStateDuration = 30f;
+        [Header("Yellow State Setting")] 
+
+        [SerializeField] internal int _yellowBurstDamage = 10;
+
+        [SerializeField] internal float _attackInterval = 1f;
         [SerializeField] internal int _attackAmount;
         [SerializeField] internal Transform _yellowAttackRangeTrm;
+        internal SpriteRenderer _yellowRangeRenderer;
+        internal Material _rangeMaterial;
         [SerializeField] internal bool _isResist;
         
         
@@ -54,13 +59,16 @@ namespace EnemyManage
         protected override void Awake()
         {
             base.Awake();
+            _yellowRangeRenderer = _yellowAttackRangeTrm.GetComponent<SpriteRenderer>();
+            _rangeMaterial = _yellowRangeRenderer.material;
+            AVGVFXCompo = VFXCompo as AVGVFX;
+
             StateMachine = new EnemyStateMachine<AVGStateEnum>();
             //_soundObject = GetComponent<SoundObject>();
             //여기에 상태를 불러오는 코드가 필요하다.
             SetStateEnum();
-            AVGVFXCompo = VFXCompo as AVGVFX;
-            
 
+            
         }
 
         protected void SetStateEnum()

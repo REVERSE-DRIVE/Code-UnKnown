@@ -55,17 +55,17 @@ Material:
     m_Ints: []
     m_Floats:
     - _BlinkPower: 0
-    - _BlinkSize: 4.2
+    - _BlinkSize: 3
     - _Edge: 1.12
-    - _EdgeReduce: 6
+    - _EdgeReduce: 5
     - _GridWidth: 0.05
-    - _OutlineWidth: 0.197
+    - _OutlineWidth: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Speed: 20
-    - _UseBlink: 1
+    - _UseBlink: 0
     m_Colors:
-    - _BlinkColor: {r: 2, g: 0.27220282, b: 0, a: 0}
+    - _BlinkColor: {r: 3.9999998, g: 0.11737242, b: 0, a: 1}
     - _Color: {r: 1.498039, g: 1.1280136, b: 0, a: 0}
-    - _GridTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _GridTiling: {r: 1.5, g: 1.5, b: 0, a: 0}
   m_BuildTextureStacks: []
