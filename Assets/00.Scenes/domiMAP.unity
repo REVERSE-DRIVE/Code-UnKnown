@@ -2108,6 +2108,7 @@ GameObject:
   - component: {fileID: 1721935215}
   - component: {fileID: 1721935214}
   - component: {fileID: 1721935216}
+  - component: {fileID: 1721935217}
   m_Layer: 0
   m_Name: _Manager
   m_TagString: Untagged
@@ -2128,6 +2129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Generator>k__BackingField: {fileID: 2016025047}
+  <TearEffect>k__BackingField: {fileID: 1721935217}
 --- !u!4 &1721935215
 Transform:
   m_ObjectHideFlags: 0
@@ -2156,6 +2158,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 2016025046}
+--- !u!114 &1721935217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721935213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6397a6807627ca04b9a3e36ccb5a2ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliceCut: {x: 3, y: 3}
 --- !u!1001 &1745853866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2477,7 +2492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71167ae2cf688b940ae9f7548a943b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  option: {fileID: 11400000, guid: d9d6b9d40d96fdf858eaeca72ced9d45, type: 2}
+  option: {fileID: 11400000, guid: 427d050c3d3d7fb37bb83530c313de88, type: 2}
   wallTile: {fileID: 713113024}
   bridgeTile: {fileID: 368225346}
   groundTile: {fileID: 1651452657}

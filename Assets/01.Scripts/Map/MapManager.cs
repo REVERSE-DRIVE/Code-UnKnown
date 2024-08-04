@@ -5,6 +5,7 @@ using UnityEngine;
 public class MapManager : MonoSingleton<MapManager>
 {
     [field: SerializeField] public MapGenerator Generator { get; private set; }
+    [field: SerializeField] public MapTearEffect TearEffect { get; private set; }
     public MapTileManager TileManager { get; private set; }
 
     Dictionary<Vector2Int, RoomBase> map = new();
