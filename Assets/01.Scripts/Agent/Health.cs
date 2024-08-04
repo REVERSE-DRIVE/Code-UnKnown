@@ -1,6 +1,4 @@
-﻿using System;
-using ObjectPooling;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public delegate void OnValueChangedEvent(int prevValue, int newValue, int max);

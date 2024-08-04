@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BossInfoSO : ScriptableObject
 {
-    public string name;
+    public string bossName;
+    public Sprite bossIcon;
     public Color personalColor;
     public Boss bossPrefab;
 }
