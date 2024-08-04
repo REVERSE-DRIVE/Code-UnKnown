@@ -1,14 +1,15 @@
 ﻿using System;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class LaptopPanel : MonoBehaviour, IWindowPanel
+public class LaptopPanel : MonoBehaviour, IWindowPanel, IPointerClickHandler
 {
     [SerializeField] private float _openDuration, _openScaleX, _openScaleY;
     [SerializeField] private Ease _ease;
     private RectTransform _rectTransform;
 
-    private void Awake()
+    protected void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
     }
@@ -33,5 +34,11 @@ public class LaptopPanel : MonoBehaviour, IWindowPanel
         sequence.SetEase(_ease);
         
         sequence.Play();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        _rectTransform.SetAsLastSibling();
+        _rectTransform.localPosition = eventData.position;
     }
 }

@@ -10,7 +10,7 @@ namespace QuestManage
 
         private void Awake()
         {
-            
+            DontDestroyOnLoad(this);
         }
 
         [ContextMenu("Apply")]
