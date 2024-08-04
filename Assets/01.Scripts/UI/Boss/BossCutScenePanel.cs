@@ -37,6 +37,7 @@ public class BossCutScenePanel : MonoBehaviour, IWindowPanel
     [ContextMenu("DebugOpen")]
     public void Open()
     {
+        Time.timeScale = 0f;
         transform.localScale = new Vector3(1, 0f);
         _canvasGroup.alpha = 0f;
         _bossImageTrm.anchoredPosition = new Vector2(_bossImageDefaultPosition, 0);
@@ -45,6 +46,7 @@ public class BossCutScenePanel : MonoBehaviour, IWindowPanel
         _seq.Append(transform.DOScaleY(1f, _activeDuration));
         _seq.Join(_canvasGroup.DOFade(1, _activeDuration).SetEase(Ease.OutExpo));
         _seq.Append(_bossImageTrm.DOAnchorPosX(_bossImageActivePosition, _bossImageActiveDuration));
+        Time.timeScale = 1f;
     }
     
 
