@@ -22,8 +22,12 @@ namespace ObjectManage
 
         private void MonitorClickEvent()
         {
-            _monitorPanel.DOAnchorPos(_monitorMoveEndPos, _monitorPanelMoveDuration)
-                .SetEase(_monitorPanelMoveEase);
+            Sequence seq = DOTween.Sequence();
+            seq.Append(_monitorPanel.DOAnchorPos(_monitorMoveEndPos, _monitorPanelMoveDuration));
+            seq.AppendInterval(0.1f);
+            seq.Append(_monitorPanel.DOScale(new Vector3(1.3f, 1.3f), _monitorPanelMoveDuration));
+            seq.Append(_monitorPanel.DOAnchorPosY(-100f, _monitorPanelMoveDuration));
+            seq.SetEase(_monitorPanelMoveEase);
         }
     }
 }
