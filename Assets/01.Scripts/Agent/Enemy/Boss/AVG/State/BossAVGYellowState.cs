@@ -43,19 +43,7 @@ namespace EnemyManage
             _bossAVGBase.StartCoroutine(StateCoroutine());
         }
 
-        internal void BreakState()
-        {
-            _bossAVGBase._isResist = false;
-            _bossAVGBase.ForceStun();
-            
-        }
-
-        public void CustomTrigger()
-        {
-            BreakState();
-            
-        }
-
+        
         private IEnumerator StateCoroutine()
         {
             yield return waitSec;

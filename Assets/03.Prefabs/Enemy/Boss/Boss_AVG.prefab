@@ -25059,9 +25059,9 @@ MonoBehaviour:
   attackCooldown: 0
   lastAttackTime: 0
   targetTrm: {fileID: 0}
-  _randomPickState: 02000000030000000400000005000000
+  _randomPickState: 03000000
   _idleWaitingTime: 5
-  _stunDuration: 5
+  _stunDuration: 8
   _chargeEnergy: 20
   _burstDamage: 100
   _chargingSpeed: 2
@@ -25226,8 +25226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d12fd9276654c65b260b7de6c54adef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 0
-  _maxHealth: 300
+  _currentHealth: 70
+  _maxHealth: 70
   _shieldObject: {fileID: 9114579370483437398}
   _thisObjectVisual: {fileID: 1405541688372998382}
   _destroyParticle: {fileID: 1250487353774541666}

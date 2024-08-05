@@ -112,12 +112,9 @@ namespace EnemyManage
 
         public void TakeStrongDamage(int amount)
         {
-            print("AVG Stun");
-            if (_isResist)
-            {
-                StateMachine.CurrentState.CustomTrigger();
-                _isResist = false;
-            }
+            HealthCompo.TakeDamage(amount);
+            StateMachine.CurrentState.CustomTrigger();
+            _isResist = false;
         }
 
         public override void AnimationEndTrigger()
