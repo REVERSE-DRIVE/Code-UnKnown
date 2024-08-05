@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "Tap,Hold",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "TestHold",
+                    "type": "PassThrough",
+                    "id": "40bc5afb-8dc8-4cfd-bc03-6ed7762f80cd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -196,6 +205,17 @@
                     "processors": "",
                     "groups": "Windows",
                     "action": "Skill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc602538-8765-4a2d-bc0e-0b3deef1fe5f",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestHold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

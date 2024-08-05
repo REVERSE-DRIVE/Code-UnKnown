@@ -4,7 +4,10 @@ using UnityEngine;
 
 public enum WindowType {
     None,
-    Window
+    Body,
+    Leg,
+    Core,
+    SlamShop
 }
 
 public class WindowManager : MonoSingleton<WindowManager>

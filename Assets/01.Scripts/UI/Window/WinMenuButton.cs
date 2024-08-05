@@ -40,11 +40,11 @@ public class WinMenuButton : MonoBehaviour
     }
 
     private void OnWindowFocus(WindowType type) {
-        borderImg.color = this.type == type ? Color.cyan : Color.gray;   
+        //borderImg.color = this.type == type ? Color.cyan : Color.gray;   
     }
 
     private void OnWindowClose()
     {
-        borderImg.color = Color.gray;   
+        //borderImg.color = Color.gray;   
     }
 }

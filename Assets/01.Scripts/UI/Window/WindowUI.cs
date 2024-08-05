@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ public class WindowUI : MonoBehaviour, IPointerDownHandler
 
     Canvas canvas;
     CanvasGroup canvasGroup;
+    private RectTransform _rectTransform;
 
     private void Awake() {
         header.OnStartDrag += OnBeginDrag;
@@ -27,6 +29,7 @@ public class WindowUI : MonoBehaviour, IPointerDownHandler
         
         canvas = FindObjectOfType<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
+        _rectTransform = transform as RectTransform;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -55,18 +58,31 @@ public class WindowUI : MonoBehaviour, IPointerDownHandler
             // return;
         // }
 
-        canvasGroup.alpha = 1;
-        canvasGroup.blocksRaycasts = true;
-        canvasGroup.interactable = true;
+        //canvasGroup.alpha = 1;
+        //canvasGroup.blocksRaycasts = true;
+        //canvasGroup.interactable = true;
+        PlayAnimation(1);
         OnPointerDown(null, false); // 여는 동시에 맨앞
         OnFocus?.Invoke(); // focus 이벤트 무조건 함
     }
 
-    public void Close() {
+    public void Close()
+    {
         // gameObject.SetActive(false);
-        canvasGroup.alpha = 0;
-        canvasGroup.blocksRaycasts = false;
-        canvasGroup.interactable = false;
+        //canvasGroup.alpha = 0;
+        //canvasGroup.blocksRaycasts = false;
+        //canvasGroup.interactable = false;
+        PlayAnimation(0);
         OnClose?.Invoke();
+    }
+
+    private void PlayAnimation(float endValue)
+    {
+        Sequence seq = DOTween.Sequence();
+        seq.Append(_rectTransform.DOScaleX(endValue, 0.5f));
+        seq.AppendInterval(0.2f);
+        seq.Append(_rectTransform.DOScaleY(endValue, 0.5f));
+        seq.SetEase(Ease.InBack);
+        seq.Play();
     }
 }
