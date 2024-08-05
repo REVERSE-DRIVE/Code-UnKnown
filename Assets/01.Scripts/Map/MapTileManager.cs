@@ -5,7 +5,8 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public enum TileMapType {
-    Purify
+    Purify,
+    Debug
 }
 
 public class MapTileManager : MonoBehaviour

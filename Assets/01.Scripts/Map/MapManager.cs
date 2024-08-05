@@ -24,6 +24,9 @@ public class MapManager : MonoSingleton<MapManager>
         Vector3 centerPos = room.GetCenterCoords();
 
         PlayerManager.Instance.player.transform.position = centerPos;
+
+        // 방 찢기기 테스트
+        TearEffect.TearMap(GetRoomByCoords(Vector2Int.zero));
     }
     ///////////////////////////////// TEST END
 
