@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4550fff00ae46b8b1b876ed29b57cd8, type: 3}
+  m_Name: Leg_Normal
+  m_EditorClassIdentifier: 
+  partType: 0
+  id: 0
+  partName: Normal
+  description: "\uAE30\uBCF8 \uD30C\uCE20"
+  partPrefab: {fileID: 4082492033324851446, guid: f8737dea0a771574f91cdb080450e7bc, type: 3}
+  legPartSprites:
+  - {fileID: -6925884058545436885, guid: 21f4c820fc77e9f4ebb8affd1ebbf8a6, type: 3}
+  - {fileID: -8669621502954186873, guid: 21f4c820fc77e9f4ebb8affd1ebbf8a6, type: 3}
+  - {fileID: -7306721611508717379, guid: 21f4c820fc77e9f4ebb8affd1ebbf8a6, type: 3}
+  - {fileID: 206822040322773088, guid: 21f4c820fc77e9f4ebb8affd1ebbf8a6, type: 3}

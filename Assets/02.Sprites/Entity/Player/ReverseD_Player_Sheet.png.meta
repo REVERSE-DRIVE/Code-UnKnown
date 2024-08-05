@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_0
+      name: PlayerLegPart_Confuser_LeftBack
       rect:
         serializedVersion: 2
         x: 0
@@ -131,7 +131,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -144,7 +144,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_1
+      name: PlayerLegPart_Confuser_LeftFront
       rect:
         serializedVersion: 2
         x: 32
@@ -152,7 +152,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,7 +165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_2
+      name: PlayerBodyPart_Fater
       rect:
         serializedVersion: 2
         x: 64
@@ -173,7 +173,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,7 +186,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_3
+      name: PlayerLegPart_Confuser_RightBack
       rect:
         serializedVersion: 2
         x: 96
@@ -194,7 +194,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -207,7 +207,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_4
+      name: PlayerLegPart_Confuser_RightFront
       rect:
         serializedVersion: 2
         x: 128
@@ -215,7 +215,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -228,7 +228,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_5
+      name: PlayerLegPart_Stacker_LeftBack
       rect:
         serializedVersion: 2
         x: 0
@@ -236,7 +236,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,7 +249,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_6
+      name: PlayerLegPart_Stacker_LeftFront
       rect:
         serializedVersion: 2
         x: 32
@@ -257,7 +257,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -270,7 +270,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_7
+      name: PlayerBodyPart_Counter
       rect:
         serializedVersion: 2
         x: 64
@@ -278,7 +278,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -291,7 +291,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_8
+      name: PlayerLegPart_Stacker_RightBack
       rect:
         serializedVersion: 2
         x: 96
@@ -299,7 +299,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -312,7 +312,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_9
+      name: PlayerLegPart_Stacker_RightFront
       rect:
         serializedVersion: 2
         x: 128
@@ -320,7 +320,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -333,7 +333,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_10
+      name: PlayerLegPart_BlackWalker_LeftBack
       rect:
         serializedVersion: 2
         x: 0
@@ -341,7 +341,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -354,7 +354,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_11
+      name: PlayerLegPart_BlackWalker_LeftFront
       rect:
         serializedVersion: 2
         x: 32
@@ -362,7 +362,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -375,7 +375,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_12
+      name: PlayerBodyPart_Infector
       rect:
         serializedVersion: 2
         x: 64
@@ -383,7 +383,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -396,7 +396,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_13
+      name: PlayerLegPart_BlackWalker_RightBack
       rect:
         serializedVersion: 2
         x: 96
@@ -404,7 +404,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -417,7 +417,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_14
+      name: PlayerLegPart_BlackWalker_RightFront
       rect:
         serializedVersion: 2
         x: 128
@@ -425,7 +425,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -438,7 +438,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_15
+      name: PlayerLegPart_Normal_LeftBack
       rect:
         serializedVersion: 2
         x: 0
@@ -446,7 +446,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -459,7 +459,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_16
+      name: PlayerLegPart_Normal_LeftFront
       rect:
         serializedVersion: 2
         x: 32
@@ -467,7 +467,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -480,7 +480,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_17
+      name: PlayerBodyPart_Normal
       rect:
         serializedVersion: 2
         x: 64
@@ -488,7 +488,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -501,7 +501,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_18
+      name: PlayerLegPart_Normal_RightBack
       rect:
         serializedVersion: 2
         x: 96
@@ -509,7 +509,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -522,7 +522,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ReverseD_Player_Sheet_19
+      name: PlayerLegPart_Normal_RightFront
       rect:
         serializedVersion: 2
         x: 128
@@ -530,7 +530,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -553,26 +553,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ReverseD_Player_Sheet_0: -5949443750969709423
-      ReverseD_Player_Sheet_1: 3648626760576099805
-      ReverseD_Player_Sheet_10: -3043639190158818752
-      ReverseD_Player_Sheet_11: -8040969180927476913
-      ReverseD_Player_Sheet_12: 8341019477642361193
-      ReverseD_Player_Sheet_13: 3216870354485778345
-      ReverseD_Player_Sheet_14: -5413067727458416814
-      ReverseD_Player_Sheet_15: 206822040322773088
-      ReverseD_Player_Sheet_16: -7306721611508717379
-      ReverseD_Player_Sheet_17: -8421984089244881202
-      ReverseD_Player_Sheet_18: -8669621502954186873
-      ReverseD_Player_Sheet_19: -6925884058545436885
-      ReverseD_Player_Sheet_2: 3742542040602521694
-      ReverseD_Player_Sheet_3: -8188114200426978671
-      ReverseD_Player_Sheet_4: 6625338046064688166
-      ReverseD_Player_Sheet_5: 3308939042171038898
-      ReverseD_Player_Sheet_6: 5341800049356783051
-      ReverseD_Player_Sheet_7: 8308596247354524866
-      ReverseD_Player_Sheet_8: -4175609336911845733
-      ReverseD_Player_Sheet_9: 6734168659802040231
+      PlayerBodyPart_Counter: 8308596247354524866
+      PlayerBodyPart_Fater: 3742542040602521694
+      PlayerBodyPart_Infector: 8341019477642361193
+      PlayerBodyPart_Normal: -8421984089244881202
+      PlayerLegPart_BlackWalker_LeftBack: -3043639190158818752
+      PlayerLegPart_BlackWalker_LeftFront: -8040969180927476913
+      PlayerLegPart_BlackWalker_RightBack: 3216870354485778345
+      PlayerLegPart_BlackWalker_RightFront: -5413067727458416814
+      PlayerLegPart_Confuser_LeftBack: -5949443750969709423
+      PlayerLegPart_Confuser_LeftFront: 3648626760576099805
+      PlayerLegPart_Confuser_RightBack: -8188114200426978671
+      PlayerLegPart_Confuser_RightFront: 6625338046064688166
+      PlayerLegPart_Normal_LeftBack: 206822040322773088
+      PlayerLegPart_Normal_LeftFront: -7306721611508717379
+      PlayerLegPart_Normal_RightBack: -8669621502954186873
+      PlayerLegPart_Normal_RightFront: -6925884058545436885
+      PlayerLegPart_Stacker_LeftBack: 3308939042171038898
+      PlayerLegPart_Stacker_LeftFront: 5341800049356783051
+      PlayerLegPart_Stacker_RightBack: -4175609336911845733
+      PlayerLegPart_Stacker_RightFront: 6734168659802040231
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

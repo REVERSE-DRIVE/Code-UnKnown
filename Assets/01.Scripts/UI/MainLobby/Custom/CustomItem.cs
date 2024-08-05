@@ -9,6 +9,7 @@ public abstract class CustomItem : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] protected PlayerPartDataSO _partData;
+    [SerializeField] protected CustomIcon _customIcon;
     
     protected Button _button;
 

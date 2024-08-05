@@ -6082,10 +6082,10 @@ PrefabInstance:
     - target: {fileID: 5108899912060835987, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: defaultPart
       value: 
-      objectReference: {fileID: 11400000, guid: a38ae90c251ea0347aa85657db111be2, type: 2}
+      objectReference: {fileID: 11400000, guid: d59a96bf198f74f4e9a0ffa98d61eb54, type: 2}
     - target: {fileID: 5108899912060835987, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: defaultPartType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6863284896352316412, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: controlButtons
