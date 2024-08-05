@@ -1,3 +1,4 @@
+using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -8,8 +9,9 @@ public class BossCutScenePanel : MonoBehaviour, IWindowPanel
     [SerializeField] private TextMeshProUGUI _bossNameText;
     [SerializeField] private Image _bossImage;
     [SerializeField] private RectTransform _bossImageTrm;
-    
+
     [Header("Setting Values")] 
+    [SerializeField] private float _cutSceneTerm = 1f;
     [SerializeField] private float _activeDuration;
 
     [SerializeField] private float _bossImageDefaultPosition;
@@ -33,6 +35,16 @@ public class BossCutScenePanel : MonoBehaviour, IWindowPanel
         _bossImage.sprite = info.bossIcon;
         _bossNameText.text = info.bossName;
     }
+
+    public void ShowCutScene()
+    {
+        _seq = DOTween.Sequence();
+        _seq.SetUpdate(true);
+        Open();
+        _seq.AppendInterval(_cutSceneTerm);
+        Close();
+    }
+
     
     [ContextMenu("DebugOpen")]
     public void Open()
@@ -41,18 +53,18 @@ public class BossCutScenePanel : MonoBehaviour, IWindowPanel
         transform.localScale = new Vector3(1, 0f);
         _canvasGroup.alpha = 0f;
         _bossImageTrm.anchoredPosition = new Vector2(_bossImageDefaultPosition, 0);
-        _seq = DOTween.Sequence();
-        _seq.SetUpdate(true);
         _seq.Append(transform.DOScaleY(1f, _activeDuration));
         _seq.Join(_canvasGroup.DOFade(1, _activeDuration).SetEase(Ease.OutExpo));
         _seq.Append(_bossImageTrm.DOAnchorPosX(_bossImageActivePosition, _bossImageActiveDuration));
-        Time.timeScale = 1f;
+        
     }
     
 
     public void Close()
     {
-        
+        _seq.Append(transform.DOScaleY(0f, _activeDuration));
+        _seq.Join(_canvasGroup.DOFade(0f, _activeDuration).SetEase(Ease.OutExpo));
+        _seq.AppendCallback(() => Time.timeScale = 1f);
     }
     
     

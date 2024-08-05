@@ -1,15 +1,18 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BossHealthBar : MonoBehaviour
+public class BossHealthBar : MonoBehaviour, IWindowPanel
 {
     [SerializeField] private Image _gaugeFill;
     [SerializeField] private TextMeshProUGUI _binaryText;
+    [SerializeField] private float _moveDuration;
+    [SerializeField] private float _defaultYPos;
+    [SerializeField] private float _activeYPos;
+    private CanvasGroup _canvasGroup;
+    private RectTransform _rectTrm;
     public BossInfoSO bossInfo;
     private Boss _boss;
     
@@ -27,13 +30,21 @@ public class BossHealthBar : MonoBehaviour
     private float _countCoolTime = 0.2f;
     private bool _isChanging;
     private Color _gaugeColor;
-    
+
+    private void Awake()
+    {
+        _canvasGroup = GetComponent<CanvasGroup>();
+        _rectTrm = transform as RectTransform;
+        
+    }
+
     public void Initialize(BossInfoSO info, Boss bossInstance)
     {
         bossInfo = info;
         _boss = bossInstance;
         _gaugeColor = info.personalColor;
         _boss.HealthCompo.OnHealthChangedValueEvent += HandleRefreshGauge;
+        _boss.HealthCompo.OnDieEvent.AddListener(Close);
     }
 
     private void HandleRefreshGauge(int prevvalue, int newvalue, int max)
@@ -43,17 +54,13 @@ public class BossHealthBar : MonoBehaviour
 
     }
 
-    public void RefreshGauge()
-    {
-        // fillAmount를 관리해야한다
-    }
-
     private IEnumerator RefreshCoroutine()
     {
         _gaugeFill.color = Color.white;
         yield return new WaitForSeconds(0.1f);
         _gaugeFill.color = _gaugeColor;
     }
+    
 
     private void Update()
     {
@@ -70,5 +77,17 @@ public class BossHealthBar : MonoBehaviour
             _binaryText.text = binaryTextArr[_currentIndex];
             
         }
+    }
+
+    public void Open()
+    {
+        _canvasGroup.DOFade(1f, _moveDuration);
+        _rectTrm.DOAnchorPosY(_activeYPos, _moveDuration);
+    }
+
+    public void Close()
+    {
+        _canvasGroup.DOFade(0f, _moveDuration);
+        _rectTrm.DOAnchorPosY(_defaultYPos, _moveDuration);
     }
 }
