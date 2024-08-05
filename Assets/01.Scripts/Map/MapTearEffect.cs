@@ -20,7 +20,7 @@ public class MapTearEffect : MonoBehaviour
             }
         */
         Dictionary<int, int>[] xCuts = new Dictionary<int, int>[sliceCut.x];
-        Dictionary<int, int>[] yCuts = new Dictionary<int, int>[sliceCut.x];
+        Dictionary<int, int>[] yCuts = new Dictionary<int, int>[sliceCut.y];
         
         Vector2Int splitSize = new Vector2Int(room.Size.x / sliceCut.x, room.Size.y / sliceCut.y);
 
@@ -28,27 +28,28 @@ public class MapTearEffect : MonoBehaviour
         for (int i = 0; i < sliceCut.x - 1; i++)
         {
             xCuts[i] = new();
-            yCuts[i] = new();
 
             for (int y = room.MinPos.y; y <= room.MaxPos.y; y++)
             {
                 int startPos = room.MinPos.x + (splitSize.x * i);
                 xCuts[i][y] = Random.Range(startPos + splitSize.x - 2, startPos + splitSize.x + 1);
             }
+        }
 
+        for (int i = 0; i < sliceCut.y - 1; i++) {
+            yCuts[i] = new();
+            
             for (int x = room.MinPos.x; x <= room.MaxPos.x; x++)
             {
                 int startPos = room.MinPos.y + (splitSize.y * i);
                 yCuts[i][x] = Random.Range(startPos + splitSize.y - 2, startPos + splitSize.y + 1);
             }
         }
-
-        // Tilemap tilemap = MapManager.Instance.TileManager.CreateMap(TileMapType.Debug, debugTile);
     
         // 조각으로 묶음
         List<Vector2Int>[,] groups = new List<Vector2Int>[sliceCut.y, sliceCut.x];
         for (int i = 0; i < sliceCut.y; i++)
-            for (int v = 0; v < sliceCut.y; v++)
+            for (int v = 0; v < sliceCut.x; v++)
                 groups[i, v] = new();
             
         for (int y = room.MinPos.y; y <= room.MaxPos.y; y++) {
@@ -64,6 +65,20 @@ public class MapTearEffect : MonoBehaviour
             }
         }
 
+        // 타일 분리
+        Tilemap[,] tilemaps = new Tilemap[sliceCut.y, sliceCut.x];
+        for (int i = 0; i < sliceCut.y; i++)
+            for (int v = 0; v < sliceCut.x; v++) {
+                var tilemap = tilemaps[i, v] = MapManager.Instance.TileManager.CreateMap(TileMapType.TearEffect, debugTile, true);
+                
+                // 복제( 와 동시에 기존꺼 삭제 )
+                foreach (var pos in groups[i, v])
+                {
+                    var tilebase = MapManager.Instance.Generator.GetTileBaseByCoords(pos);
+                    tilemap.SetTile((Vector3Int)pos, tilebase);
+                }
+            }
+    
         
     }
 }

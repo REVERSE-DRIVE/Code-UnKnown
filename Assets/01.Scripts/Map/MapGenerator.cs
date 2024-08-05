@@ -653,4 +653,23 @@ public class MapGenerator : MonoBehaviour
     public Vector2Int GetGroundCellByWorldCoords(Vector3 coords) {
         return (Vector2Int)groundTile.WorldToCell(coords);
     }
+
+    // 좌표로 타일 베이스 가져오기 (우선순위로)
+    public TileBase GetTileBaseByCoords(Vector2Int pos) {
+        TileBase response;
+        
+        response = wallTile.GetTile((Vector3Int)pos);
+        if (response)
+            return response;
+        
+        response = bridgeTile.GetTile((Vector3Int)pos);
+        if (response)
+            return response;
+        
+        response = groundTile.GetTile((Vector3Int)pos);
+        if (response)
+            return response;
+
+        return null;
+    }
 }
