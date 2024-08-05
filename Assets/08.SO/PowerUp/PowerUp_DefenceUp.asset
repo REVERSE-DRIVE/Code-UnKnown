@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a1b71727e24c458e1f9b51a645071a, type: 3}
   m_Name: PowerUp_DefenceUp
   m_EditorClassIdentifier: 
+  id: 6
   code: DefenceUp
+  maxCollect: 3
   powerUpRank: 4
   shouldBeUnlock: 0
   title: "\uB808\uC9C0\uC2A4\uD2B8"

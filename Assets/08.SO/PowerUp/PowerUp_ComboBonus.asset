@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a1b71727e24c458e1f9b51a645071a, type: 3}
   m_Name: PowerUp_ComboBonus
   m_EditorClassIdentifier: 
+  id: 8
   code: ComboBonus
+  maxCollect: 4
   powerUpRank: 2
   shouldBeUnlock: 0
   title: "\uC815\uBC00 \uD0C0\uACA9"

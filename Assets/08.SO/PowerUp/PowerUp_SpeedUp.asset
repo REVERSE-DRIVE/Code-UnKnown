@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a1b71727e24c458e1f9b51a645071a, type: 3}
   m_Name: PowerUp_SpeedUp
   m_EditorClassIdentifier: 
+  id: 1
   code: SpeedUp
+  maxCollect: 1
   powerUpRank: 4
   shouldBeUnlock: 0
   title: "\uC5F0\uC0B0 \uAC00\uC18D"

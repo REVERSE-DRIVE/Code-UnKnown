@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a1b71727e24c458e1f9b51a645071a, type: 3}
   m_Name: PowerUp_DamageUp
   m_EditorClassIdentifier: 
+  id: 4
   code: DamageUp
+  maxCollect: 3
   powerUpRank: 4
   shouldBeUnlock: 0
   title: "\uC804\uD22C\uBAA8\uB4C8 \uAC15\uD654"

@@ -5,7 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "SO/Items/PowerUp/Data")]
 public class PowerUpSO : ScriptableObject
 {
+    public int id;
     public string code;
+    public int maxCollect;
     public PowerUpRank powerUpRank;
     public PlayerSkill shouldBeUnlock;
     public string title;
