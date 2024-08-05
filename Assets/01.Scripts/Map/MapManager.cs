@@ -27,6 +27,14 @@ public class MapManager : MonoSingleton<MapManager>
 
         // 방 찢기기 테스트
         TearEffect.TearMap(GetRoomByCoords(Vector2Int.zero));
+        
+        // var enumerator = map.GetEnumerator();
+        // enumerator.MoveNext();
+        // enumerator.MoveNext();
+        // enumerator.MoveNext();
+        // enumerator.MoveNext();
+
+        // TearEffect.TearMap(enumerator.Current.Value);
     }
     ///////////////////////////////// TEST END
 

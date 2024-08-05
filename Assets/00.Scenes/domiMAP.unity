@@ -2171,7 +2171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sliceCut: {x: 3, y: 3}
-  debugTile: {fileID: 7096924795576456087, guid: 21d89e8a919c59f41a9c6b4a5e1105fe, type: 3}
+  debugTile: {fileID: 1433141272445640173, guid: 21d89e8a919c59f41a9c6b4a5e1105fe, type: 3}
   red: {fileID: 11400000, guid: a1f0d08483c056c4ab94aa2dced4f719, type: 2}
   green: {fileID: 11400000, guid: fa762cb384e0ed04c9fe767e55ece427, type: 2}
   blue: {fileID: 11400000, guid: dc1561c16049e3e4e9d371951626d60c, type: 2}

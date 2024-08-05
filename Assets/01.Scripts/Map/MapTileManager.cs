@@ -6,8 +6,7 @@ using UnityEngine.Tilemaps;
 
 public enum TileMapType {
     Purify,
-    Debug,
-    TearEffect
+    Debug
 }
 
 public class MapTileManager : MonoBehaviour
@@ -42,4 +41,6 @@ public class MapTileManager : MonoBehaviour
 
         tilemaps.Clear();
     }
+
+    public Transform GetRoot() => root;
 }

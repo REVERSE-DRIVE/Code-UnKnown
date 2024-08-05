@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class MapTearEffect : MonoBehaviour
 {
     [SerializeField] Vector2Int sliceCut = new(3, 3); // 방을 3등분 함
-    [SerializeField] Tilemap debugTile;
+    [SerializeField] GameObject debugTile;
     [SerializeField] TileBase red;
     [SerializeField] TileBase green;
     [SerializeField] TileBase blue;
@@ -38,7 +39,7 @@ public class MapTearEffect : MonoBehaviour
 
         for (int i = 0; i < sliceCut.y - 1; i++) {
             yCuts[i] = new();
-            
+
             for (int x = room.MinPos.x; x <= room.MaxPos.x; x++)
             {
                 int startPos = room.MinPos.y + (splitSize.y * i);
@@ -65,11 +66,14 @@ public class MapTearEffect : MonoBehaviour
             }
         }
 
+        Vector3 centerPos = room.GetCenterCoords();
+
         // 타일 분리
-        Tilemap[,] tilemaps = new Tilemap[sliceCut.y, sliceCut.x];
+        GameObject[,] tilemaps = new GameObject[sliceCut.y, sliceCut.x];
         for (int i = 0; i < sliceCut.y; i++)
             for (int v = 0; v < sliceCut.x; v++) {
-                var tilemap = tilemaps[i, v] = MapManager.Instance.TileManager.CreateMap(TileMapType.TearEffect, debugTile, true);
+                GameObject tileEntity = tilemaps[i, v] = Instantiate(debugTile, MapManager.Instance.TileManager.GetRoot());
+                Tilemap tilemap = tileEntity.GetComponentInChildren<Tilemap>();
                 
                 // 복제( 와 동시에 기존꺼 삭제 )
                 foreach (var pos in groups[i, v])
@@ -77,8 +81,30 @@ public class MapTearEffect : MonoBehaviour
                     var tilebase = MapManager.Instance.Generator.GetTileBaseByCoords(pos);
                     tilemap.SetTile((Vector3Int)pos, tilebase);
                 }
+
+                // 날리기
+                
+                // 중간 값 구함
+                Vector2Int min = groups[i, v][0];
+                Vector2Int max = groups[i, v][0];
+
+                foreach (var item in groups[i, v]) {
+                    // if (item.x < min.x || item.y < min.y) min = item;
+                    // if (item.x > max.x || item.y > max.y) max = item;
+
+                    if (item.x < min.x) min.x = item.x;
+                    if (item.y < min.y) min.y = item.y;
+
+                    if (item.x > max.x) max.x = item.x;
+                    if (item.y > max.y) max.y = item.y;
+                }
+
+                Vector3 groupCenter = tilemap.CellToWorld((Vector3Int)(min + max) / 2);
+                Vector3 direction = (groupCenter - centerPos).normalized;
+
+                tilemap.transform.position -= groupCenter;
+                tileEntity.transform.position += groupCenter;
+                tileEntity.GetComponent<TilemapTear>().RegisterThrowTile(direction, 10);
             }
-    
-        
     }
 }
