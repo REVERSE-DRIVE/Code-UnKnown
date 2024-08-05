@@ -6,7 +6,8 @@ using UnityEngine;
 public enum WindowEnum
 {
     EffectSelect,
-    Dark
+    Dark,
+    BossCutScene
 }
 
 public class UIManager : MonoSingleton<UIManager>
@@ -19,7 +20,16 @@ public class UIManager : MonoSingleton<UIManager>
         panelDictionary = new Dictionary<WindowEnum, IWindowPanel>();
         foreach (WindowEnum windowEnum in Enum.GetValues(typeof(WindowEnum)))
         {
-            IWindowPanel panel = _canvasTrm.Find($"{windowEnum.ToString()}Panel").GetComponent<IWindowPanel>();
+            IWindowPanel panel;
+            try
+            {
+                panel = _canvasTrm.Find($"{windowEnum.ToString()}Panel").GetComponent<IWindowPanel>();
+            }
+            catch (Exception e)
+            {
+                panel = _canvasTrm.Find("BossCanvas").Find($"{windowEnum.ToString()}Panel").GetComponent<IWindowPanel>();
+            }
+            
             panelDictionary.Add(windowEnum, panel);
         }
     }

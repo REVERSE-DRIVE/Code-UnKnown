@@ -15,9 +15,6 @@ namespace EnemyManage
             _bossAVGBase = (AVerG)_enemyBase;
         }
 
-        public virtual void CustomTrigger()
-        {
         
-        }
     }
 }
