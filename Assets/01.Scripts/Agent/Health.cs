@@ -35,6 +35,10 @@ public class Health : MonoBehaviour, IDamageable, IHealable
     public void RestoreHealth(int amount)
     {
         _currentHealth += amount;
+        if (_currentHealth > maxHealth)
+        {
+            _currentHealth = maxHealth;
+        }
         CheckDie();
         HandleHealthChange(amount);
     }

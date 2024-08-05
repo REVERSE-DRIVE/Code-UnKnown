@@ -13,6 +13,7 @@ public class BossManager : MonoSingleton<BossManager>
 
     private void Start()
     {
+        
         GenerateBoss(0, Vector2.one);
     }
 

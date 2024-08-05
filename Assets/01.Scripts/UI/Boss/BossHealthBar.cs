@@ -44,6 +44,7 @@ public class BossHealthBar : MonoBehaviour, IWindowPanel
         _boss = bossInstance;
         _gaugeColor = info.personalColor;
         _boss.HealthCompo.OnHealthChangedValueEvent += HandleRefreshGauge;
+        HandleRefreshGauge(1,1,1);
         _boss.HealthCompo.OnDieEvent.AddListener(Close);
     }
 

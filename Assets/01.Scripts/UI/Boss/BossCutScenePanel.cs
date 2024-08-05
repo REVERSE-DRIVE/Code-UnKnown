@@ -63,7 +63,7 @@ public class BossCutScenePanel : MonoBehaviour, IWindowPanel
     public void Close()
     {
         _seq.Append(transform.DOScaleY(0f, _activeDuration));
-        _seq.Join(_canvasGroup.DOFade(0f, _activeDuration).SetEase(Ease.OutExpo));
+        _seq.Join(_canvasGroup.DOFade(0f, _activeDuration).SetEase(Ease.InExpo));
         _seq.AppendCallback(() => Time.timeScale = 1f);
     }
     

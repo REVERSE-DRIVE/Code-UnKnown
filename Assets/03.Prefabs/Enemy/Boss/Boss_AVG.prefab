@@ -25059,7 +25059,7 @@ MonoBehaviour:
   attackCooldown: 0
   lastAttackTime: 0
   targetTrm: {fileID: 0}
-  _randomPickState: 02000000
+  _randomPickState: 02000000030000000400000005000000
   _idleWaitingTime: 5
   _stunDuration: 5
   _chargeEnergy: 20
@@ -25067,7 +25067,7 @@ MonoBehaviour:
   _chargingSpeed: 2
   _structureObject: {fileID: 7219145329601631173}
   _greenStateDuration: 30
-  _healCoreHealAmountPerSecond: 5
+  _healCoreHealAmountPerSecond: 1
   _healingObjects:
   - {fileID: 3533705195261002429}
   - {fileID: 8122696763160273038}
@@ -30571,6 +30571,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3031281691787271411, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
+      propertyPath: _maxHealth
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3031281691787271411, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
+      propertyPath: _currentHealth
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3185711591353454785, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -30659,6 +30667,14 @@ PrefabInstance:
     - target: {fileID: 1314174330733031614, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3031281691787271411, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
+      propertyPath: _maxHealth
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3031281691787271411, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
+      propertyPath: _currentHealth
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3185711591353454785, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
@@ -30757,6 +30773,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3031281691787271411, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
+      propertyPath: _maxHealth
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3031281691787271411, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
+      propertyPath: _currentHealth
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3185711591353454785, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -30845,6 +30869,14 @@ PrefabInstance:
     - target: {fileID: 1314174330733031614, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3031281691787271411, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
+      propertyPath: _maxHealth
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3031281691787271411, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
+      propertyPath: _currentHealth
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3185711591353454785, guid: f19c94bbc393a6e42956dbeb840318f1, type: 3}
       propertyPath: m_Layer
