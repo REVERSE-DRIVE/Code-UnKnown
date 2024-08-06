@@ -24,7 +24,7 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
         LegPart = legPart;
     }
 
-    public void ChangePart()
+    public void ChangeAllPart()
     {
         var partController = PlayerManager.Instance.player.PlayerPartController;
         if (partController == null)
@@ -34,6 +34,17 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
         }
         partController.ChangePart(PartType.Body, BodyPart);
         partController.ChangePart(PartType.Leg, LegPart);
+    }
+    
+    public void ChangePart(PartType partType, PlayerPartDataSO partData)
+    {
+        var partController = PlayerManager.Instance.player.PlayerPartController;
+        if (partController == null)
+        {
+            Debug.LogWarning("PlayerPartController is null");
+            return;
+        }
+        partController.ChangePart(partType, partData);
     }
     
     public void AddPartData(PlayerPartDataSO partData)
