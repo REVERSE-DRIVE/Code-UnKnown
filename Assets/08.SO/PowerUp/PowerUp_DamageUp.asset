@@ -18,7 +18,7 @@ MonoBehaviour:
   powerUpRank: 4
   shouldBeUnlock: 0
   title: "\uC804\uD22C\uBAA8\uB4C8 \uAC15\uD654"
-  description: "\uACF5\uACA9\uB825\uC744 1 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4"
+  description: "\uACF5\uACA9\uB825\uC744 <color=red>1</color> \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4"
   icon: {fileID: 0}
   effectList:
   - {fileID: 11400000, guid: 6fb35bb0b2e1c034cb4076869551b6eb, type: 2}

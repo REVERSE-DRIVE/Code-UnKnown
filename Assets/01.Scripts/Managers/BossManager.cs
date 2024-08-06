@@ -14,7 +14,7 @@ public class BossManager : MonoSingleton<BossManager>
     private void Start()
     {
         
-        GenerateBoss(0, Vector2.one);
+        //GenerateBoss(0, Vector2.one);
     }
 
     public void GenerateBoss(int id, Vector2 position)

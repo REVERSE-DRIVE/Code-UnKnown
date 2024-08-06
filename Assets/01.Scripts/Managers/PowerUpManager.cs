@@ -28,6 +28,7 @@ public class PowerUpManager : MonoSingleton<PowerUpManager>
         if (powerUpDictionary.ContainsKey(id))
         {
             powerUpDictionary[id]++;
+            return;
         }
         powerUpDictionary.Add(id, 1);
     }

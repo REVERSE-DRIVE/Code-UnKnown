@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class EffectSelectOption : MonoBehaviour
 {
     [field :SerializeField] public PowerUpSO PowerUp { get; private set; }
-    [SerializeField] private TextMeshProUGUI _titleText, _descText;
+    [SerializeField] private TextMeshProUGUI _titleText, _descText, _levelText;
     [SerializeField] private Image _iconImage;
     private Button _selectBtn;
 
@@ -31,7 +31,9 @@ public class EffectSelectOption : MonoBehaviour
 
     private void SelectPowerUp()
     {
-        PowerUpManager.Instance.ApplyPowerUp(PowerUp.id);
+        if(PowerUp.maxCollect < 50) // 제한이 50을 초과하는 애들은 단순 즉시효과이기 때문에 제외
+            PowerUpManager.Instance.ApplyPowerUp(PowerUp.id);
+        
         PowerUp.effectList.ForEach(effect => effect.UseEffect());
         UIManager.Instance.Close(WindowEnum.EffectSelect);
     }
@@ -39,7 +41,23 @@ public class EffectSelectOption : MonoBehaviour
     private void UpdateUI()
     {
         if (_titleText != null)
+        {
             _titleText.text = PowerUp.title;
+            // 최대 개수에 따라서 레벨을 간접적으로 보여주는거 구현
+        }
+
+        if (_levelText != null)
+        {
+            if (PowerUp.maxCollect >= 50)
+            {
+                _levelText.text = "";
+            }
+            else
+            {
+                int level = PowerUpManager.Instance.Find(PowerUp.id);
+                _levelText.text = level == 0 ? "NEW" : $"{level} > {level+1}{(level+1 >= PowerUp.maxCollect ? "(MAX)" : "")}";
+            }
+        }
 
         if (_descText != null)
             _descText.text = PowerUp.description;
