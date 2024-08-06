@@ -21,7 +21,7 @@ public class WindowUI : MonoBehaviour, IPointerDownHandler
     CanvasGroup canvasGroup;
     private RectTransform _rectTransform;
 
-    private void Awake() {
+    protected virtual void Awake() {
         header.OnStartDrag += OnBeginDrag;
         header.OnDraging += OnDrag;
 

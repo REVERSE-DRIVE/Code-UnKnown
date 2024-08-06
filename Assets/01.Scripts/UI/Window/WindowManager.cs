@@ -7,7 +7,8 @@ public enum WindowType {
     Body,
     Leg,
     Core,
-    SlamShop
+    SlamShop,
+    Start
 }
 
 public class WindowManager : MonoSingleton<WindowManager>

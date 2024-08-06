@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using PlayerPartsManage;
 using UnityEngine;
 
 public class PlayerPartManager : MonoSingleton<PlayerPartManager>
 {
-    public PlayerBodyPartDataSO BodyPart { get; private set; }
-    public PlayerLegPartDataSO LegPart { get; private set; }
+    private List<PlayerPartDataSO> _playerPartDataList;
+    [field:SerializeField] public PlayerBodyPartDataSO BodyPart { get; private set; }
+    [field:SerializeField] public PlayerLegPartDataSO LegPart { get; private set; }
 
     private void Awake()
     {
@@ -32,5 +34,12 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
         }
         partController.ChangePart(PartType.Body, BodyPart);
         partController.ChangePart(PartType.Leg, LegPart);
+    }
+    
+    public void AddPartData(PlayerPartDataSO partData)
+    {
+        if (_playerPartDataList == null)
+            _playerPartDataList = new List<PlayerPartDataSO>();
+        _playerPartDataList.Add(partData);
     }
 }
