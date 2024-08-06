@@ -81,6 +81,7 @@ public class EnemyBase : Enemy, IPoolable
     
     public void OnFaint(float duration)
     {
+        if (IsElete) return;
         StartCoroutine(FaintCoroutine(duration));
     }
 
