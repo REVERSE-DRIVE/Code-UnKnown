@@ -15,7 +15,16 @@ public abstract class CustomItem : MonoBehaviour
     private void Awake()
     {
         _button = GetComponent<Button>();
+        _customIcon = FindObjectOfType<CustomIcon>();
         _button.onClick.AddListener(OnClick);
+    }
+
+    protected abstract void Start();
+
+    protected void SetUI(Sprite icon, string name)
+    {
+        _icon.sprite = icon;
+        _nameText.text = name;
     }
 
     protected abstract void OnClick();
