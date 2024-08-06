@@ -31,6 +31,7 @@ public class EffectSelectOption : MonoBehaviour
 
     private void SelectPowerUp()
     {
+        PowerUpManager.Instance.ApplyPowerUp(PowerUp.id);
         PowerUp.effectList.ForEach(effect => effect.UseEffect());
         UIManager.Instance.Close(WindowEnum.EffectSelect);
     }

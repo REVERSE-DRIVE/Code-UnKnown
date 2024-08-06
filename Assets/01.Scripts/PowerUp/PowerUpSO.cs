@@ -24,6 +24,9 @@ public class PowerUpSO : ScriptableObject
             if (skill.skillEnabled == false) return false;
         }
 
+        if (PowerUpManager.Instance.Find(id) >= maxCollect)
+            return false;
+
         if (effectList.Any(e => e.CanUpgradeEffect() == false)) 
             return false;
 
