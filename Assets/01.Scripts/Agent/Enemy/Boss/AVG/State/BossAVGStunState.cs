@@ -5,7 +5,7 @@ namespace EnemyManage
 {
     public class BossAVGStunState : BossAVGState
     {
-        private float _stateDuration;
+        private float _stateDuration = 10f;
         private float _currentTime = 0;
         public BossAVGStunState(Enemy enemyBase, EnemyStateMachine<AVGStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
         {
@@ -15,7 +15,9 @@ namespace EnemyManage
         {
             base.Enter();
             _bossAVGBase.CanStateChangeable = false;
+            _currentTime = 0;
             _stateDuration = _bossAVGBase._stunDuration;
+            Debug.Log("스턴 진입");
         }
 
         public override void UpdateState()
@@ -24,6 +26,7 @@ namespace EnemyManage
             _currentTime += Time.deltaTime;
             if (_currentTime >= _stateDuration)
             {
+                Debug.Log("스턴 쿨타임 종료");
                 _currentTime = 0;
                 _stateMachine.ChangeState(AVGStateEnum.Idle, true);
 
