@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partType: 0
   playerPartDataSOList:
+  - {fileID: 11400000, guid: 4257b5c1103592540a630f1932768afe, type: 2}
   - {fileID: 11400000, guid: d59a96bf198f74f4e9a0ffa98d61eb54, type: 2}
   - {fileID: 11400000, guid: 900541dea5e718746810ccb6e61d6cfd, type: 2}
   - {fileID: 11400000, guid: 00f66cb9e9a16074b85276ede2dad409, type: 2}
