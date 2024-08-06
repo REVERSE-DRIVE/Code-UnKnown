@@ -672,4 +672,13 @@ public class MapGenerator : MonoBehaviour
 
         return null;
     }
+    
+    public void DeleteAll(Vector2Int coords) {
+        Vector3Int pos = (Vector3Int)coords;
+        
+        wallTile.SetTile(pos, null);
+        bridgeTile.SetTile(pos, null);
+        groundTile.SetTile(pos, null);
+        doorTile.SetTile(pos, null);
+    }
 }

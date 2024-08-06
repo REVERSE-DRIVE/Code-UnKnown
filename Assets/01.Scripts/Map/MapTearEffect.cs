@@ -80,6 +80,7 @@ public class MapTearEffect : MonoBehaviour
                 {
                     var tilebase = MapManager.Instance.Generator.GetTileBaseByCoords(pos);
                     tilemap.SetTile((Vector3Int)pos, tilebase);
+                    MapManager.Instance.Generator.DeleteAll(pos);
                 }
 
                 // 날리기
