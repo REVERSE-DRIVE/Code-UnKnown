@@ -25,8 +25,10 @@ public class MapManager : MonoSingleton<MapManager>
 
         PlayerManager.Instance.player.transform.position = centerPos;
 
+        // Generator.BossGenerator.CreateBoss(GetRoomByCoords(Vector2Int.zero));
+
         // 방 찢기기 테스트
-        TearEffect.TearMap(GetRoomByCoords(Vector2Int.zero));
+        // TearEffect.TearMap(GetRoomByCoords(Vector2Int.zero));
         
         // var enumerator = map.GetEnumerator();
         // enumerator.MoveNext();

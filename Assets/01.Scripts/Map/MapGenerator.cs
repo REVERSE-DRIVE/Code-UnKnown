@@ -21,6 +21,7 @@ public class MapGenerator : MonoBehaviour
 {
     RoomBase[] createRooms;
     [SerializeField] MapGenerateSO option;
+    [field: SerializeField] public MapBossGenerator BossGenerator { get; private set; }
     int nowCreateIdx = -1;
 
     [SerializeField] Tilemap wallTile;
@@ -48,6 +49,7 @@ public class MapGenerator : MonoBehaviour
     private void Awake() {
         // Generate();
         // BoxGenerate(Direction.Top, null);
+        BossGenerator = new();
     }
 
     float time = 0;
@@ -646,6 +648,10 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
+    public void CreateGround(Vector2Int pos, TileBase tile) {
+        groundTile.SetTile((Vector3Int)pos, tile);
+    }
+
     public Vector3 GetWorldCoordsByGroundCell(Vector2Int coords) {
         return groundTile.CellToWorld((Vector3Int)coords);
     }
@@ -675,10 +681,12 @@ public class MapGenerator : MonoBehaviour
     
     public void DeleteAll(Vector2Int coords) {
         Vector3Int pos = (Vector3Int)coords;
-        
+
         wallTile.SetTile(pos, null);
         bridgeTile.SetTile(pos, null);
         groundTile.SetTile(pos, null);
         doorTile.SetTile(pos, null);
     }
+
+    public MapGenerateSO GetOption() => option;
 }
