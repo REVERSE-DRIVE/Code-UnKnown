@@ -30,6 +30,7 @@ namespace TitleScene
         {
             // 클릭했을때 각종 메뉴들을 띄워주는 이벤트를 호출한다.
             Close();
+            TitleSceneManager.Instance.Open(TitleWindowTypeEnum.Menu);
         }
 
         public void Open()

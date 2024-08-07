@@ -1,12 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
 public class DarkPanel : MonoBehaviour, IWindowPanel
 {
     private CanvasGroup _canvasGroup;
+    [SerializeField]
     private bool _isActive;
     private void Awake()
     {
