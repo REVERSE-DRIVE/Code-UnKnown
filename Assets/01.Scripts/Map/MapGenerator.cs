@@ -21,6 +21,7 @@ public class MapGenerator : MonoBehaviour
 {
     RoomBase[] createRooms;
     [SerializeField] MapGenerateSO option;
+    [field: SerializeField] public MapBossGenerator BossGenerator { get; private set; }
     int nowCreateIdx = -1;
 
     [SerializeField] Tilemap wallTile;
@@ -48,6 +49,7 @@ public class MapGenerator : MonoBehaviour
     private void Awake() {
         // Generate();
         // BoxGenerate(Direction.Top, null);
+        BossGenerator = new();
     }
 
     float time = 0;
@@ -646,6 +648,10 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
+    public void CreateGround(Vector2Int pos, TileBase tile) {
+        groundTile.SetTile((Vector3Int)pos, tile);
+    }
+
     public Vector3 GetWorldCoordsByGroundCell(Vector2Int coords) {
         return groundTile.CellToWorld((Vector3Int)coords);
     }
@@ -653,4 +659,36 @@ public class MapGenerator : MonoBehaviour
     public Vector2Int GetGroundCellByWorldCoords(Vector3 coords) {
         return (Vector2Int)groundTile.WorldToCell(coords);
     }
+
+    // 좌표로 타일 베이스 가져오기 (우선순위로)
+    public TileBase GetTileBaseByCoords(Vector2Int pos) {
+        TileBase response;
+        
+        response = wallTile.GetTile((Vector3Int)pos);
+        if (response)
+            return response;
+        
+        response = bridgeTile.GetTile((Vector3Int)pos);
+        if (response)
+            return response;
+        
+        response = groundTile.GetTile((Vector3Int)pos);
+        if (response)
+            return response;
+
+        return null;
+    }
+    
+    public void DeleteAll(Vector2Int coords) {
+        Vector3Int pos = (Vector3Int)coords;
+
+        wallTile.SetTile(pos, null);
+        bridgeTile.SetTile(pos, null);
+        groundTile.SetTile(pos, null);
+        doorTile.SetTile(pos, null);
+        foreach (var item in MapManager.Instance.TileManager.GetTileMapIterator())
+            item.Value.SetTile(pos, null);
+    }
+
+    public MapGenerateSO GetOption() => option;
 }

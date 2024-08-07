@@ -126,7 +126,7 @@ public static class AnalyzeManager
             jsonformat.Append(@$"{{
                 ""type"": ""{item.type}"",
                 ""function"": ""{item.function}()"",
-                ""stack"": ""{item.stack.Replace("\n", "\\n")}"",
+                ""stack"": ""{item.stack.Replace("\n", "\\n").Replace("\r", "\\r")}"",
                 ""count"": {item.count}
             }}");
             

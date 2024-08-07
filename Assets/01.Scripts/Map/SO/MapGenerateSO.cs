@@ -15,6 +15,7 @@ public class MapGenerateSO : ScriptableObject
     [SerializeField] RoomObject[] rooms;
     [SerializeField] RoomBase spawnPointRoom;
     [field: SerializeField] public Vector2Int BridgeSize { get; private set; }
+    [field: SerializeField] public BossRoomSO BossOption { get; private set; } // 보스 옵션이 null이면 생성 안하는거임
 
     public RoomBase[] GetRandomRooms() {
         int count = rooms.Sum(v => v.amount);

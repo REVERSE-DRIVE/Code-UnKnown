@@ -2146,6 +2146,7 @@ GameObject:
   - component: {fileID: 650162340}
   - component: {fileID: 650162339}
   - component: {fileID: 650162341}
+  - component: {fileID: 650162342}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -2166,6 +2167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Generator>k__BackingField: {fileID: 1943660590}
+  <TearEffect>k__BackingField: {fileID: 650162342}
 --- !u!4 &650162340
 Transform:
   m_ObjectHideFlags: 0
@@ -2194,6 +2196,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 1943660592}
+--- !u!114 &650162342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650162338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6397a6807627ca04b9a3e36ccb5a2ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliceCut: {x: 3, y: 3}
+  debugTile: {fileID: 1433141272445640173, guid: 21d89e8a919c59f41a9c6b4a5e1105fe, type: 3}
+  red: {fileID: 0}
+  green: {fileID: 0}
+  blue: {fileID: 0}
+  yellow: {fileID: 0}
 --- !u!1 &657289547
 GameObject:
   m_ObjectHideFlags: 0

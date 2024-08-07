@@ -123,6 +123,55 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &15198353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 15198355}
+  - component: {fileID: 15198354}
+  m_Layer: 0
+  m_Name: BossManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &15198354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15198353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19773fa14136dfa4dbfaff94ed78439c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  table: {fileID: 11400000, guid: cb442d1bef811d4408541d63c70256ea, type: 2}
+  _cutScenePanel: {fileID: 0}
+  _healthBar: {fileID: 0}
+  currentBossInfo: {fileID: 0}
+  currentBoss: {fileID: 0}
+--- !u!4 &15198355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15198353}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &183983177
 GameObject:
   m_ObjectHideFlags: 0
@@ -2108,6 +2157,7 @@ GameObject:
   - component: {fileID: 1721935215}
   - component: {fileID: 1721935214}
   - component: {fileID: 1721935216}
+  - component: {fileID: 1721935217}
   m_Layer: 0
   m_Name: _Manager
   m_TagString: Untagged
@@ -2128,6 +2178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Generator>k__BackingField: {fileID: 2016025047}
+  <TearEffect>k__BackingField: {fileID: 1721935217}
 --- !u!4 &1721935215
 Transform:
   m_ObjectHideFlags: 0
@@ -2156,6 +2207,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 2016025046}
+--- !u!114 &1721935217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721935213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6397a6807627ca04b9a3e36ccb5a2ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliceCut: {x: 3, y: 3}
+  debugTile: {fileID: 1433141272445640173, guid: 21d89e8a919c59f41a9c6b4a5e1105fe, type: 3}
+  red: {fileID: 11400000, guid: a1f0d08483c056c4ab94aa2dced4f719, type: 2}
+  green: {fileID: 11400000, guid: fa762cb384e0ed04c9fe767e55ece427, type: 2}
+  blue: {fileID: 11400000, guid: dc1561c16049e3e4e9d371951626d60c, type: 2}
+  yellow: {fileID: 11400000, guid: c0be9799503d3434b88c5ef88ccf2579, type: 2}
 --- !u!1001 &1745853866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2548,6 +2617,7 @@ SceneRoots:
   - {fileID: 530178320}
   - {fileID: 1904775766}
   - {fileID: 1377564528}
+  - {fileID: 15198355}
   - {fileID: 2016025046}
   - {fileID: 1643169402}
   - {fileID: 1745853866}
