@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a1b71727e24c458e1f9b51a645071a, type: 3}
   m_Name: PowerUp_DashSpeedUp
   m_EditorClassIdentifier: 
+  id: 5
   code: DashSpeedUp
+  maxCollect: 3
   powerUpRank: 4
   shouldBeUnlock: 0
   title: "\uBC18\uC751\uC2DC\uAC04 \uB2E8\uCD95"
-  description: "\uB300\uC26C \uC18D\uB3C4\uB97C 1 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+  description: "\uB300\uC26C \uC18D\uB3C4\uB97C <color=red>1</color> \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
   icon: {fileID: 0}
   effectList:
   - {fileID: 11400000, guid: 949357df968197341a784b0aa2202521, type: 2}

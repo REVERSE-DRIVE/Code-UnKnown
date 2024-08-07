@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class PlayerAttacker : MonoBehaviour
 {
-    public Action OnAttackEvent;
+    public event Action OnAttackEvent;
     
     [Header("Attack Setting")]
     [SerializeField] private float _detectDistance = 5.0f;  // 레이의 거리

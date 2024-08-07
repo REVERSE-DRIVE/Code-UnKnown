@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rooms:
   - room: {fileID: 630151482808616335, guid: 6a64a1638790524b3ae7c488c887a566, type: 3}
-    amount: 10
+    amount: 1
+  - room: {fileID: 195676783769170754, guid: 82ac4e84173d50b2e828e3749bd701da, type: 3}
+    amount: 1
+  - room: {fileID: 6286809604183912642, guid: a284c39426a31f2ec966121692a1d9bc, type: 3}
+    amount: 1
   spawnPointRoom: {fileID: 6294665977120734607, guid: 72a7aa6470cd05cfc83e7f4a04c305b2, type: 3}
   <BridgeSize>k__BackingField: {x: 3, y: 12}
+  <BossOption>k__BackingField: {fileID: 11400000, guid: d4b3665e52bae924182f7540ccf5f86d, type: 2}
