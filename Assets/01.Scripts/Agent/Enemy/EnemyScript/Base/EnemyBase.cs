@@ -14,6 +14,8 @@ public class EnemyBase : Enemy, IPoolable
     private bool isInitEnd;
     private bool isHit;
     [field:SerializeField] public bool IsElete { get; protected set; }
+    public bool IsFaint { get; private set; }
+    private Coroutine _faintCoroutine;
 
     protected override void Awake()
     {
@@ -82,15 +84,32 @@ public class EnemyBase : Enemy, IPoolable
     public void OnFaint(float duration)
     {
         if (IsElete) return;
-        StartCoroutine(FaintCoroutine(duration));
+        Debug.Log("Faint");
+        _faintCoroutine = StartCoroutine(FaintCoroutine(duration));
     }
 
     private IEnumerator FaintCoroutine(float duration)
     {
+        Debug.Log("FaintCoroutine");
+        if (IsFaint) yield break;
+        if (_faintCoroutine != null)
+        {
+            StopCoroutine(_faintCoroutine);
+        }
         StateMachine.ChangeState(EnemyStateEnum.Idle);
+        IsFaint = true;
         MovementCompo.StopImmediately();
-        yield return new WaitForSeconds(duration);
+        for (int i = 0; i < 3; i++)
+        {
+            transform.position += Vector3.right * 0.5f;
+            yield return new WaitForSeconds(0.2f);
+            transform.position += Vector3.left * 0.5f;
+            yield return new WaitForSeconds(0.2f);
+        }
+        yield return new WaitForSeconds(duration - 1.2f);
         StateMachine.ChangeState(EnemyStateEnum.Chase);
+        IsFaint = false;
+        _faintCoroutine = null;
     }
 
     public void ResetItem()
