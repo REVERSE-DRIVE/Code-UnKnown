@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a1b71727e24c458e1f9b51a645071a, type: 3}
   m_Name: PowerUp_RangeUp
   m_EditorClassIdentifier: 
+  id: 7
   code: RangeUp
+  maxCollect: 3
   powerUpRank: 3
   shouldBeUnlock: 0
   title: "\uAD11\uC5ED \uD0D0\uC9C0"
-  description: "\uACF5\uACA9 \uBC94\uC704\uB97C 1 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4"
+  description: "\uACF5\uACA9 \uBC94\uC704\uB97C <color=red>1</color> \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4"
   icon: {fileID: 0}
   effectList:
   - {fileID: 11400000, guid: c08a3b18d324b0a4bae630bcc25d2fc4, type: 2}
