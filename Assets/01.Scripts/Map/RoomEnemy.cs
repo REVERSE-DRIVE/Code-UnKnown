@@ -82,6 +82,17 @@ public class RoomEnemy : RoomBase
             }
         }
     
+        // 보스 등장?
+        BossRoomSO boss = MapManager.Instance.Generator.GetOption().BossOption;
+        if (boss == null) return; // 보스 소환이 없음
         
+        foreach (var item in MapManager.Instance.GetMapIterator())
+        {
+            RoomEnemy room = item.Value as RoomEnemy;
+            if (room && !room.isClear) return; // 모두 다 클리어 되지 않음
+        }
+
+        // 모두 클리어
+        MapManager.Instance.Generator.BossGenerator.CreateBoss(this);
     }
 }
