@@ -43,4 +43,9 @@ public class MapTileManager : MonoBehaviour
     }
 
     public Transform GetRoot() => root;
+
+    public IEnumerable<KeyValuePair<TileMapType, Tilemap>> GetTileMapIterator() {
+        foreach (var item in tilemaps)
+            yield return item;
+    }
 }

@@ -686,6 +686,8 @@ public class MapGenerator : MonoBehaviour
         bridgeTile.SetTile(pos, null);
         groundTile.SetTile(pos, null);
         doorTile.SetTile(pos, null);
+        foreach (var item in MapManager.Instance.TileManager.GetTileMapIterator())
+            item.Value.SetTile(pos, null);
     }
 
     public MapGenerateSO GetOption() => option;
