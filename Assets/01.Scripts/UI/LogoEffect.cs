@@ -1,6 +1,4 @@
-using System;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
@@ -29,9 +27,9 @@ public class LogoEffect : MonoBehaviour
         //_soundObject = GetComponent<AudioSource>();
     }
 
-    public void LogoEffectStart()
+    public Coroutine LogoEffectStart()
     {
-        StartCoroutine(LogoEffectCoroutine());
+        return StartCoroutine(LogoEffectCoroutine());
     }
     
     private IEnumerator LogoEffectCoroutine()
@@ -57,8 +55,7 @@ public class LogoEffect : MonoBehaviour
         MaterialSet(35, 43, 1);
         
         yield return new WaitForSeconds(0.15f);
-        // 씬 전환
-        //SceneManager.LoadScene("StartScene");
+        // 이후 씬 전환
     }
     
     /**
