@@ -6,25 +6,27 @@ using UnityEngine.UI;
 
 public abstract class CustomItem : MonoBehaviour
 {
-    [SerializeField] private Image _icon;
+    [SerializeField] private Image[] _icon;
     [SerializeField] private TextMeshProUGUI _nameText;
-    [SerializeField] protected CustomIcon _customIcon;
+    public CustomIcon _customIcon;
+    [field:SerializeField] public PlayerPartDataSO PartData { get; set; }
     
     protected Button _button;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _button = GetComponent<Button>();
         _customIcon = FindObjectOfType<CustomIcon>();
         _button.onClick.AddListener(OnClick);
     }
 
-    protected abstract void Start();
-
-    protected void SetUI(Sprite icon, string name)
+    public void SetUI(string name, params Sprite[] icon)
     {
-        _icon.sprite = icon;
         _nameText.text = name;
+        for (int i = 0; i < _icon.Length; i++)
+        {
+            _icon[i].sprite = icon[i];
+        }
     }
 
     protected abstract void OnClick();

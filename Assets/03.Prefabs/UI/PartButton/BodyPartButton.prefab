@@ -210,10 +210,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a2ae60172f4ccfa8c50a0193bd583a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _icon: {fileID: 3069598122361912210}
+  _icon:
+  - {fileID: 3069598122361912210}
   _nameText: {fileID: 1900507663808961735}
   _customIcon: {fileID: 0}
-  _bodyPartData: {fileID: 11400000, guid: a38ae90c251ea0347aa85657db111be2, type: 2}
+  <PartData>k__BackingField: {fileID: 0}
 --- !u!1 &9023158994850597446
 GameObject:
   m_ObjectHideFlags: 0

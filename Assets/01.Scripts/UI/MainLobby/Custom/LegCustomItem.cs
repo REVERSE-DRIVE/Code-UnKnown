@@ -3,15 +3,16 @@ using UnityEngine;
 
 public class LegCustomItem : CustomItem
 {
-    [SerializeField] private PlayerLegPartDataSO _legPartData;
-    protected override void Start()
+    private LegCustomPanel _legCustomPanel;
+
+    protected override void Awake()
     {
-        SetUI(_legPartData.legPartSprites[0], _legPartData.partName);
+        base.Awake();
+        _legCustomPanel = FindObjectOfType<LegCustomPanel>();
     }
 
     protected override void OnClick()
     {
-        _customIcon.ChangeIconImage(false, _legPartData.legPartSprites);
-        PlayerPartManager.Instance.SetLegPart(_legPartData);
+        _legCustomPanel._partWindow.SetChild(this);
     }
 }

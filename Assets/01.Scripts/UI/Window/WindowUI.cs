@@ -78,11 +78,6 @@ public class WindowUI : MonoBehaviour, IPointerDownHandler
 
     private void PlayAnimation(float endValue)
     {
-        Sequence seq = DOTween.Sequence();
-        seq.Append(_rectTransform.DOScaleX(endValue, 0.5f));
-        seq.AppendInterval(0.2f);
-        seq.Append(_rectTransform.DOScaleY(endValue, 0.5f));
-        seq.SetEase(Ease.InBack);
-        seq.Play();
+        _rectTransform.DOScaleY(endValue, 0.5f);
     }
 }

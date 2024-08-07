@@ -1,17 +1,15 @@
-﻿using PlayerPartsManage;
-using UnityEngine;
-
-public class BodyCustomItem : CustomItem
+﻿public class BodyCustomItem : CustomItem
 {
-    [SerializeField] private PlayerBodyPartDataSO _bodyPartData;
-    protected override void Start()
+    private BodyCustomPanel _bodyCustomPanel;
+
+    protected override void Awake()
     {
-        SetUI(_bodyPartData.bodyPartSprite, _bodyPartData.partName);
+        base.Awake();
+        _bodyCustomPanel = FindObjectOfType<BodyCustomPanel>();
     }
 
     protected override void OnClick()
     {
-        _customIcon.ChangeIconImage(true, _bodyPartData.bodyPartSprite);
-        PlayerPartManager.Instance.SetBodyPart(_bodyPartData);
+        _bodyCustomPanel._partWindow.SetChild(this);
     }
 }

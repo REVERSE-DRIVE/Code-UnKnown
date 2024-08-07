@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace PlayerPartsManage
+﻿namespace PlayerPartsManage
 {
     public class BodyPart : PlayerPart
     {
