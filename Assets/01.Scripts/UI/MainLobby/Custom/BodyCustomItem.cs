@@ -5,6 +5,7 @@
     protected override void Awake()
     {
         base.Awake();
+        _customIcon = FindObjectOfType<CustomIcon>();
         _bodyCustomPanel = FindObjectOfType<BodyCustomPanel>();
     }
 
