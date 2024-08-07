@@ -49,7 +49,7 @@ public class MapBossGenerator
     }
 
     IEnumerator DelayTile(Vector2Int pos, TileBase tile, float time) {
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSecondsRealtime(time);
 
         generator.DeleteAll(pos);
         generator.CreateGround(pos, tile);
