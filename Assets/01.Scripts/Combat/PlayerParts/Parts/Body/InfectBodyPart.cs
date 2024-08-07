@@ -26,7 +26,6 @@ public class InfectBodyPart : PlayerPart
         {
             _hits = new Collider2D[10];
             int Overlap = Physics2D.OverlapCircleNonAlloc(_owner.transform.position, 3f, _hits, _whatIsEnemy);
-            Debug.Log(Overlap);
             for (int i = 0; i < Overlap; i++)
             {
                 if (_hits[i].TryGetComponent(out EnemyBase enemy))

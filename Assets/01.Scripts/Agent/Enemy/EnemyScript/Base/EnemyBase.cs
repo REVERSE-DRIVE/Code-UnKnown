@@ -6,16 +6,22 @@ using UnityEngine;
 
 public class EnemyBase : Enemy, IPoolable
 {
+    public EnemyStateMachine<EnemyStateEnum> StateMachine { get; protected set; }
+    #region Pooling Setting
     [field:SerializeField] public PoolingType type { get; set; }
+    public GameObject ObjectPrefab => gameObject;
+    #endregion
+    #region Attack Setting
     [SerializeField] private Material _hitMaterial;
     private Material _defaultMaterial;
-    public GameObject ObjectPrefab => gameObject;
-    public EnemyStateMachine<EnemyStateEnum> StateMachine { get; protected set; }
-    private bool isInitEnd;
-    private bool isHit;
-    [field:SerializeField] public bool IsElete { get; protected set; }
-    public bool IsFaint { get; private set; }
     private Coroutine _faintCoroutine;
+    private bool isHit;
+    public bool IsFaint { get; private set; }
+    #endregion
+    #region Anothor Setting
+    private bool isInitEnd;
+    [field:SerializeField] public bool IsElete { get; protected set; }
+    #endregion
 
     protected override void Awake()
     {
