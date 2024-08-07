@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a1b71727e24c458e1f9b51a645071a, type: 3}
   m_Name: PowerUp_Heal20Per
   m_EditorClassIdentifier: 
+  id: 2
   code: Heal20Per
+  maxCollect: 50
   powerUpRank: 5
   shouldBeUnlock: 0
   title: "\uAE34\uAE09 \uBCF5\uAD6C"
-  description: "\uCCB4\uB825\uC744 20% \uC989\uC2DC \uD68C\uBCF5\uD569\uB2C8\uB2E4."
+  description: "\uCCB4\uB825\uC744 <color=red>20%</color> \uC989\uC2DC \uD68C\uBCF5\uD569\uB2C8\uB2E4."
   icon: {fileID: 0}
   effectList:
   - {fileID: 11400000, guid: 57d926a0b2aa5e6439895c287b055108, type: 2}
