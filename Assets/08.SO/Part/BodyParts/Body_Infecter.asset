@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Body_Infecter
   m_EditorClassIdentifier: 
   partType: 1
-  id: 2
+  id: 3
   partName: Infecter
-  description: "\uACF5\uACA9\uD560 \uB54C 5% \uD655\uB960\uB85C \uBC31\uC2E0\uC5D0\uAC8C
-    \uCE58\uBA85\uC801\uC778 \uBA40\uC6E8\uC5B4\uB97C \uC2EC\uC5B4\uC11C 3\uCD08\uAC04
-    \uAE30\uC808\uC2DC\uD0B5\uB2C8\uB2E4."
+  description: "\uAE30\uC0DD\uD558\uB294 \uD30C\uCE20.\n\uBC31\uC2E0\uC5D0\uAC8C
+    \uBA40\uC6E8\uC5B4\uB97C \uC2EC\uC5B4 \uACF5\uACA9\uD55C\uB2E4."
   partPrefab: {fileID: 7908479694222266130, guid: 2246caec4a3083543b43b3ea3fc2136b, type: 3}
-  bodyPartSprite: {fileID: 0}
+  bodyPartSprite: {fileID: 8341019477642361193, guid: 21f4c820fc77e9f4ebb8affd1ebbf8a6, type: 3}

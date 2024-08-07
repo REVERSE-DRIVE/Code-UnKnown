@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d78d1a2009b44bfbae3e4d65a839264, type: 3}
+  m_Name: Body_Normal
+  m_EditorClassIdentifier: 
+  partType: 1
+  id: 0
+  partName: Normal
+  description: "\uAE30\uBCF8 \uD30C\uCE20.\n\uBC14\uC774\uB7EC\uC2A4\uC758 \uAE30\uBCF8
+    \uD615\uD0DC."
+  partPrefab: {fileID: 7613306053014252633, guid: d9b6b81d817755d4f8c70d3b03758434, type: 3}
+  bodyPartSprite: {fileID: 994925531, guid: 6d5f876691e669a48bc257efb3bea819, type: 3}

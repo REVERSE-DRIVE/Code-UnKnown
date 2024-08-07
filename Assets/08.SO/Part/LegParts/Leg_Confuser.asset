@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Leg_Confuser
   m_EditorClassIdentifier: 
   partType: 0
-  id: 1
+  id: 2
   partName: Confuser
   description: "\uD50C\uB808\uC774\uC5B4\uAC00 \uBC29\uD5A5\uD0A4\uAC00 \uBC18\uC804\uB418\uB294
     \uB300\uC2E0, \uACF5\uACA9\uB825\uC774 20% \uC99D\uAC00\uD558\uACE0, \uB300\uC26C
     \uC18D\uB3C4\uAC00 20% \uC99D\uAC00\uD569\uB2C8\uB2E4."
   partPrefab: {fileID: 1883196479584005210, guid: 8434a91dec3f78a4197ba76b2a3989b9, type: 3}
   legPartSprites:
-  - {fileID: 93553912, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
-  - {fileID: -1618839063, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
-  - {fileID: -727084448, guid: 8fa37e91e9eea124091a1a949506ef29, type: 3}
-  - {fileID: -727084448, guid: 8fa37e91e9eea124091a1a949506ef29, type: 3}
+  - {fileID: 6625338046064688166, guid: 21f4c820fc77e9f4ebb8affd1ebbf8a6, type: 3}
+  - {fileID: -8188114200426978671, guid: 21f4c820fc77e9f4ebb8affd1ebbf8a6, type: 3}
+  - {fileID: 3648626760576099805, guid: 21f4c820fc77e9f4ebb8affd1ebbf8a6, type: 3}
+  - {fileID: -5949443750969709423, guid: 21f4c820fc77e9f4ebb8affd1ebbf8a6, type: 3}

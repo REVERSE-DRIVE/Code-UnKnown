@@ -53,6 +53,15 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Tap,Hold"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""TestHold"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""40bc5afb-8dc8-4cfd-bc03-6ed7762f80cd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -220,6 +229,17 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                     ""action"": ""Skill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fc602538-8765-4a2d-bc0e-0b3deef1fe5f"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TestHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -259,6 +279,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Skill = m_Player.FindAction("Skill", throwIfNotFound: true);
+        m_Player_TestHold = m_Player.FindAction("TestHold", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -323,6 +344,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Skill;
+    private readonly InputAction m_Player_TestHold;
     public struct PlayerActions
     {
         private @MainInput m_Wrapper;
@@ -330,6 +352,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Skill => m_Wrapper.m_Player_Skill;
+        public InputAction @TestHold => m_Wrapper.m_Player_TestHold;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -348,6 +371,9 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @Skill.started += instance.OnSkill;
             @Skill.performed += instance.OnSkill;
             @Skill.canceled += instance.OnSkill;
+            @TestHold.started += instance.OnTestHold;
+            @TestHold.performed += instance.OnTestHold;
+            @TestHold.canceled += instance.OnTestHold;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -361,6 +387,9 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @Skill.started -= instance.OnSkill;
             @Skill.performed -= instance.OnSkill;
             @Skill.canceled -= instance.OnSkill;
+            @TestHold.started -= instance.OnTestHold;
+            @TestHold.performed -= instance.OnTestHold;
+            @TestHold.canceled -= instance.OnTestHold;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -401,5 +430,6 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnSkill(InputAction.CallbackContext context);
+        void OnTestHold(InputAction.CallbackContext context);
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class FadeInOut : MonoBehaviour
 {
-    [SerializeField] private IntroManager _introManager;
     private Image _image;
     
     private void Awake()
@@ -12,8 +11,8 @@ public class FadeInOut : MonoBehaviour
         _image = GetComponent<Image>();
     }
 
-    public void Fade(float duration, float targetAlpha)
+    public void Fade(float duration, float targetAlpha, TweenCallback onComplete = null)
     {
-        _image.DOFade(targetAlpha, duration);
+        _image.DOFade(targetAlpha, duration).OnComplete(onComplete);
     }
 }
