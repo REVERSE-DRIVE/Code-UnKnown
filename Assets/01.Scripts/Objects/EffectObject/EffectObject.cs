@@ -62,6 +62,14 @@ namespace ObjectManage
         }
 
 
-        public abstract void ResetItem();
+        public virtual void ResetItem()
+        {
+            _currentLifeTime = 0;
+            if (_playOnSpawn)
+            {
+                _isActive = true;
+                Play();
+            }
+        }
     }
 }

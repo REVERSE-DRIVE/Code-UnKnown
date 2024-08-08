@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Concurrent;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace ObjectManage
@@ -12,25 +10,32 @@ namespace ObjectManage
         private Material _material;
         private int _dissolveHash;
         private int _noiseHash;
+        [SerializeField] private float _dissolveDelay = 4f;
         [SerializeField] private float _dissolveDuration = 1f;
         [SerializeField] private Vector2 _noiseRandomRange;
 
         private void Awake()
         {
-            _dissolveHash = Shader.PropertyToID("_");
+            _dissolveHash = Shader.PropertyToID("_Dissolve");
+            _noiseHash = Shader.PropertyToID("_LineDensity");
             _visualTrm = transform.Find("Visual");
-            _visualTrm.GetComponent<SpriteRenderer>();
+            _spriteRenderer = _visualTrm.GetComponent<SpriteRenderer>();
+            _material = _spriteRenderer.material;
         }
-
-
+        
+        
+        
         public override void Play()
         {
+            _material.SetFloat(_noiseHash, Random.Range(_noiseRandomRange.x, _noiseRandomRange.y));
+            _material.SetFloat(_dissolveHash, 1f);
             StartCoroutine(EffectPlayCoroutine());
 
         }
 
         private IEnumerator EffectPlayCoroutine()
         {
+            yield return new WaitForSeconds(_dissolveDelay);
             float currentTime = 0;
             while (currentTime < _dissolveDuration)
             {
@@ -45,8 +50,5 @@ namespace ObjectManage
             
         }
 
-        public override void ResetItem()
-        {
-        }
     }
 }

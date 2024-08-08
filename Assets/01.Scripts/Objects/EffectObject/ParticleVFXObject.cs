@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ObjectManage
 {
@@ -25,14 +23,5 @@ namespace ObjectManage
             }
         }
 
-        public override void ResetItem()
-        {
-            _currentLifeTime = 0;
-            if (_playOnSpawn)
-            {
-                _isActive = true;
-                Play();
-            }
-        }
     }
 }

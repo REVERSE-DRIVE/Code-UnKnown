@@ -41,19 +41,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CircleOpacity: 0.48
+    - _CircleOpacity: 0.8
     - _Dissolve: 1
     - _EdgeNoise: 0.052
     - _InSideCircleSize: 0.41
     - _InsideNoiseScale: 80
     - _InsizeNoiseLengthScale: 10
     - _LineDensity: 0.4
-    - _NoiseDensity: 201.98
+    - _NoiseDensity: 200
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scale: 32
     - _Size: 0.28
-    - _StepScale: 0.432
+    - _StepScale: 0.4
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
