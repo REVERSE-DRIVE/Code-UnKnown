@@ -4897,7 +4897,7 @@ GameObject:
   - component: {fileID: 7195175119568023339}
   - component: {fileID: 3369488892064773801}
   - component: {fileID: 3954869238432303262}
-  - component: {fileID: 7041500500441140613}
+  - component: {fileID: 6686135835551161244}
   m_Layer: 0
   m_Name: PlayerAttackVFX
   m_TagString: Untagged
@@ -9843,7 +9843,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &7041500500441140613
+--- !u!114 &6686135835551161244
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9852,14 +9852,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7688155230995429522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88755947f481491295699ab2d2866ffd, type: 3}
+  m_Script: {fileID: 11500000, guid: d43860ac810c46f1af6f5c6142c2da88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playOnSpawn: 0
+  <type>k__BackingField: 9
+  _lifeTime: 3
   _particles:
   - {fileID: 3369488892064773801}
-  _playOnSpawn: 1
-  <type>k__BackingField: 9
-  _lifeTime: 1
 --- !u!1 &7846157578413995973
 GameObject:
   m_ObjectHideFlags: 0

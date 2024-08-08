@@ -4906,9 +4906,9 @@ GameObject:
   - component: {fileID: 7329499535029030856}
   - component: {fileID: 7287587958398082143}
   - component: {fileID: 5814817797007430059}
-  - component: {fileID: -4152359702029552021}
+  - component: {fileID: 192329304287242267}
   m_Layer: 0
-  m_Name: StrongHitParticle
+  m_Name: CriticalHitParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9783,7 +9783,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &-4152359702029552021
+--- !u!114 &192329304287242267
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9792,11 +9792,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2041246829155142475}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88755947f481491295699ab2d2866ffd, type: 3}
+  m_Script: {fileID: 11500000, guid: d43860ac810c46f1af6f5c6142c2da88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particles:
-  - {fileID: 7287587958398082143}
-  _playOnSpawn: 1
+  _playOnSpawn: 0
   <type>k__BackingField: 5
   _lifeTime: 3
+  _particles:
+  - {fileID: 7287587958398082143}

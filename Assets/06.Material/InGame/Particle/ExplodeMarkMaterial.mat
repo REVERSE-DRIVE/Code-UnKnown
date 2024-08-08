@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_ExplodeMark
+  m_Name: ExplodeMarkMaterial
   m_Shader: {fileID: -6465566751694194690, guid: aa7e7f1e2684b2a489690c7eea6fec83, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -43,16 +43,17 @@ Material:
     m_Floats:
     - _CircleOpacity: 0.48
     - _Dissolve: 1
-    - _EdgeNoise: 0.059
+    - _EdgeNoise: 0.052
     - _InSideCircleSize: 0.41
-    - _InsideNoiseScale: 53.54
-    - _InsizeNoiseLengthScale: 16.34
+    - _InsideNoiseScale: 80
+    - _InsizeNoiseLengthScale: 10
     - _LineDensity: 0.4
     - _NoiseDensity: 201.98
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Scale: 32
     - _Size: 0.28
-    - _StepScale: 0.448
+    - _StepScale: 0.432
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
