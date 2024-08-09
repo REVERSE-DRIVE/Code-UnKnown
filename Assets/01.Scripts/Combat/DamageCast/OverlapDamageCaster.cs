@@ -14,6 +14,7 @@ public class OverlapDamageCaster : DamageCaster
         {
             if (hits[i].TryGetComponent(out Agent agent))
             {
+                agent.HealthCompo.TakeDamage(_damage);
                 OnCastEvent?.Invoke();
             }
         }

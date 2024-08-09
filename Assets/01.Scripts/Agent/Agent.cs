@@ -11,6 +11,7 @@ public abstract class Agent : MonoBehaviour
     public AgentVFX VFXCompo { get; protected set; }
     public AgentEffectController EffectCompo { get; protected set; }
     public Health HealthCompo { get; protected set; }
+    public DamageCaster DamageCasterCompo { get; protected set; }
 
     #endregion
 

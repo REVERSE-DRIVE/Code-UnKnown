@@ -18,6 +18,7 @@ public class RayDamageCaster : DamageCaster
         {
             if (hit.collider.TryGetComponent(out Agent agent))
             {
+                agent.HealthCompo.TakeDamage(_damage);
                 OnCastEvent?.Invoke();
             }
         }
