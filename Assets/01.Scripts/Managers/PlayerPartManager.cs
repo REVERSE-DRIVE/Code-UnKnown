@@ -34,6 +34,11 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
 
     public void ChangeAllPart()
     {
+        if (BodyPart == null || LegPart == null)
+        {
+            Debug.LogWarning("BodyPart or LegPart is null");
+            return;
+        }
         var partController = PlayerManager.Instance.player.PlayerPartController;
         if (partController == null)
         {
