@@ -54,10 +54,12 @@ MonoBehaviour:
     isRandom: 1
   enemyCount: {x: 3, y: 15}
   enemyList:
-  - percent: 70
+  - percent: 40
     entity: 2
   - percent: 30
     entity: 3
+  - percent: 30
+    entity: 13
   randomData:
   - amount: 6
     list:
