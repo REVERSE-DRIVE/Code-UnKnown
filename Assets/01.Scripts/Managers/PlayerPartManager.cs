@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PlayerPartsManage;
 using UnityEngine;
 
@@ -21,6 +22,14 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
     public void SetLegPart(PlayerLegPartDataSO legPart)
     {
         LegPart = legPart;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ChangeAllPart();
+        }
     }
 
     public void ChangeAllPart()

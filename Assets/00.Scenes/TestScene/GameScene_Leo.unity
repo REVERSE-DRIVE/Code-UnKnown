@@ -4847,10 +4847,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Induced
       objectReference: {fileID: 0}
-    - target: {fileID: 6993787774439891104, guid: 22f833367b2eb124ab3f689825b566df, type: 3}
-      propertyPath: chaseDistance
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7030641847365653075, guid: 22f833367b2eb124ab3f689825b566df, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.7608805

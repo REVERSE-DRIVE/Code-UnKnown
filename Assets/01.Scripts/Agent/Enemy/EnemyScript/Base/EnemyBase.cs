@@ -107,12 +107,12 @@ public class EnemyBase : Enemy, IPoolable
         MovementCompo.StopImmediately();
         for (int i = 0; i < 3; i++)
         {
-            transform.position += Vector3.right * 0.5f;
-            yield return new WaitForSeconds(0.2f);
-            transform.position += Vector3.left * 0.5f;
-            yield return new WaitForSeconds(0.2f);
+            RigidCompo.AddForce(Vector2.right * 5, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(0.1f);
+            RigidCompo.AddForce(Vector2.left * 5, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(0.1f);
         }
-        yield return new WaitForSeconds(duration - 1.2f);
+        yield return new WaitForSeconds(duration - 0.6f);
         StateMachine.ChangeState(EnemyStateEnum.Chase);
         IsFaint = false;
         _faintCoroutine = null;
