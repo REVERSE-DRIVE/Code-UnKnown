@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8084527640262442730}
   - component: {fileID: 3724141017333859905}
   - component: {fileID: 9218829714791506417}
-  - component: {fileID: 9181013176589587701}
+  - component: {fileID: 6276478648524853550}
   m_Layer: 0
   m_Name: ObjectBreakVFX
   m_TagString: Untagged
@@ -4888,7 +4888,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &9181013176589587701
+--- !u!114 &6276478648524853550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4897,14 +4897,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2409860255403586011}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88755947f481491295699ab2d2866ffd, type: 3}
+  m_Script: {fileID: 11500000, guid: d43860ac810c46f1af6f5c6142c2da88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playOnSpawn: 0
+  <type>k__BackingField: 7
+  _lifeTime: 3
   _particles:
   - {fileID: 3724141017333859905}
-  _playOnSpawn: 1
-  <type>k__BackingField: 7
-  _lifeTime: 2
 --- !u!1 &5603894351210205528
 GameObject:
   m_ObjectHideFlags: 0

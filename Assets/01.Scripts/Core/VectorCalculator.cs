@@ -22,5 +22,19 @@ namespace Calculator
             return result;
         }
 
+        
+        public static Vector2 RotateVector2(Vector2 vec, float degrees)
+        {
+            float radians = degrees * Mathf.Deg2Rad;
+            float sin = Mathf.Sin(radians);
+            float cos = Mathf.Cos(radians);
+            float x = vec.x;
+            float y = vec.y;
+            vec.x = x * cos - y * sin;
+            vec.y = x * sin + y * cos;
+            return vec;
+        }
     }
+    
+    
 }
