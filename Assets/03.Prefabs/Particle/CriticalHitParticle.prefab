@@ -9795,7 +9795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43860ac810c46f1af6f5c6142c2da88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playOnSpawn: 0
+  _playOnSpawn: 1
   <type>k__BackingField: 5
   _lifeTime: 3
   _particles:
