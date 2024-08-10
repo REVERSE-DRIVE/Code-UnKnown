@@ -11,13 +11,16 @@ public class EnemyBase : Enemy, IPoolable
     [field:SerializeField] public PoolingType type { get; set; }
     public GameObject ObjectPrefab => gameObject;
     #endregion
+    
     #region Attack Setting
+    [Header("Attack Setting")]
     [SerializeField] private Material _hitMaterial;
     private Material _defaultMaterial;
     private Coroutine _faintCoroutine;
     private bool isHit;
     public bool IsFaint { get; private set; }
     #endregion
+    
     #region Anothor Setting
     private bool isInitEnd;
     [field:SerializeField] public bool IsElete { get; protected set; }
@@ -58,6 +61,9 @@ public class EnemyBase : Enemy, IPoolable
         StateMachine.CurrentState.AnimationTrigger();
     }
 
+    /// <summary>
+    /// Chang To Dead State
+    /// </summary>
     public override void SetDead()
     {
         base.SetDead();
@@ -66,6 +72,9 @@ public class EnemyBase : Enemy, IPoolable
         StateMachine.ChangeState(EnemyStateEnum.Dead);
     }
     
+    /// <summary>
+    /// Change Material When Hit
+    /// </summary>
     public void SetHitMaterial()
     {
         if (isDead) return;
@@ -92,6 +101,10 @@ public class EnemyBase : Enemy, IPoolable
         }
     }
     
+    /// <summary>
+    /// Change Faint State When Hit
+    /// </summary>
+    /// <param name="duration">Faint duration</param>
     public void OnFaint(float duration)
     {
         if (IsElete) return;
