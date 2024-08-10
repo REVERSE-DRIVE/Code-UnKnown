@@ -23,4 +23,11 @@ public class RayDamageCaster : DamageCaster
             }
         }
     }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)Direction * _distance);
+        Gizmos.color = Color.white;
+    }
 }

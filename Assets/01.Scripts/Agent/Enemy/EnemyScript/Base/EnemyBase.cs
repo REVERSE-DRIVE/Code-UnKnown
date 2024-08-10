@@ -85,6 +85,11 @@ public class EnemyBase : Enemy, IPoolable
             _spriteRenderer.material = _defaultMaterial;
         }
         isHit = false;
+        
+        if (_spriteRenderer.material == _hitMaterial)
+        {
+            _spriteRenderer.material = _defaultMaterial;
+        }
     }
     
     public void OnFaint(float duration)

@@ -10,5 +10,6 @@ public class DecoyDeadState : EnemyDeadState
     protected override void Die()
     {
         base.Die();
+        _enemyBase.DamageCasterCompo.CastDamage();
     }
 }
