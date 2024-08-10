@@ -16,4 +16,4 @@ MonoBehaviour:
   poolingName: CrossExplodeVFX
   description: "\uC2ED\uC790 \uD3ED\uBC1C\uD6A8\uACFC VFX"
   poolCount: 5
-  prefabObject: {fileID: 0}
+  prefabObject: {fileID: 5388603964234940734, guid: 93c35f07242123c4b86a300a97756ad3, type: 3}
