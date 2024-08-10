@@ -1,4 +1,5 @@
-﻿using ItemManage;
+﻿using System.Collections.Generic;
+using ItemManage;
 using UnityEngine;
 
 namespace QuestManage
@@ -6,6 +7,7 @@ namespace QuestManage
     public class QuestObserver : MonoSingleton<QuestObserver>
     {
         public QuestData[] currentQuestDatas;
+        public List<QuestData> dailyQuestDatas;
 
 
         private void Awake()
@@ -14,7 +16,7 @@ namespace QuestManage
         }
 
         [ContextMenu("Apply")]
-        private void Apply()
+        private void ApplyAllQuest()
         {
             currentQuestDatas = QuestManager.Instance.AcceptQuestDatas.ToArray();
         }
