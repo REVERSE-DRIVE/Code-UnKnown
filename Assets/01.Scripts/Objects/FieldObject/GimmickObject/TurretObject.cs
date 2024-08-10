@@ -1,10 +1,6 @@
-using System;
-using System.Numerics;
+using DG.Tweening;
 using ObjectPooling;
 using UnityEngine;
-using Quaternion = UnityEngine.Quaternion;
-using Random = UnityEngine.Random;
-using Vector2 = UnityEngine.Vector2;
 
 namespace ObjectManage
 {
@@ -16,8 +12,11 @@ namespace ObjectManage
         [SerializeField] private int _rayAmount = 9;
         [SerializeField] private LayerMask _targetLayer;
         [SerializeField] private Transform _firePos;
+        [SerializeField] private PoolingType _destroyVFX;
+        [SerializeField] private ParticleSystem _fireVFX;
         [Header("Turret Detect Setting")]
         [SerializeField] private float _detectDistance;
+        [SerializeField] private float _detectOffMinDistance; // 이 거리내의 목표는 타게팅하지 않음
         [SerializeField] private float _detectDegree;
         [SerializeField] private bool _isSetAutoRandomDirection;
         [Space(10f)]
@@ -27,11 +26,12 @@ namespace ObjectManage
         [SerializeField] private float _attackCooltime;
         [Header("Projectile Setting")]
         [SerializeField] private int _damage;
-
         [SerializeField] private float _speed;
         [SerializeField] private float _lifeTime = 10f;
-        
-        private SpriteRenderer _spriteRenderer;
+
+        private Transform _visualTrm;
+        private Transform _headTrm;
+        private SpriteRenderer _headSpriteRenderer;
         private int _randomIndex;
         private Vector2 _origin;
         private Vector2 _direction;
@@ -50,14 +50,16 @@ namespace ObjectManage
             {
                 _randomIndex = Random.Range(0, _turretSprites.Length);
                 _direction = _directions[_randomIndex];
-                _spriteRenderer.sprite = _turretSprites[_randomIndex];
+                _headSpriteRenderer.sprite = _turretSprites[_randomIndex];
             }
         }
 
         private void Awake()
         {
-            _spriteRenderer = transform.Find("Visual").GetComponent<SpriteRenderer>();
-            
+            _visualTrm = transform.Find("Visual");
+            _headTrm = _visualTrm.Find("Head");
+            _headSpriteRenderer = _headTrm.GetComponent<SpriteRenderer>();
+            OnDestroyEvent += HandleDestroy;
             ResetItem();
         }
 
@@ -90,6 +92,8 @@ namespace ObjectManage
                 }
 
                 Transform targetTrm = hit.collider.transform;
+                if (Vector2.Distance(targetTrm.position, transform.position) < _detectOffMinDistance) return;
+                
                 if(targetTrm.TryGetComponent(out IDamageable target))
                 {
                     isNoTarget = false;
@@ -129,10 +133,23 @@ namespace ObjectManage
                                        Vector2.one * Random.Range(-_angleErrorRange, _angleErrorRange))
                     - (Vector2)transform.position;
                 Projectile projectile = PoolingManager.Instance.Pop(_projectile) as Projectile;
-                projectile.Initialize(_firePos.position, _damage, _speed, _lifeTime);
-                projectile.Shoot(newDirection);
-                
+                projectile.Initialize((Vector2)_firePos.position + _direction, _damage, _speed, _lifeTime);
+                projectile.Shoot(newDirection.normalized);
+                _fireVFX.Play();
+                _headTrm.DOShakePosition(0.09f, 0.3f, 20);
+
             }
+        }
+
+        private void HandleDestroy()
+        {
+            EffectObject effect = PoolingManager.Instance.Pop(_destroyVFX) as EffectObject;
+            EffectObject explode = PoolingManager.Instance.Pop(PoolingType.ExplodeMark) as EffectObject;
+            explode.Initialize(transform.position);
+            effect.Initialize(transform.position);
+            effect.Play();
+            Destroy(gameObject); // 나중에 풀링으로 교체
+            
         }
     }
 
