@@ -88,7 +88,7 @@ public class CustomSoundSO : Editor
                 //     EditorGUILayout.PropertyField(poolCountProp, GUIContent.none);
                 //     EditorGUILayout.PropertyField(prefabProp, GUIContent.none);
                 // }
-                EditorGUILayout.EndHorizontal();
+                //EditorGUILayout.EndHorizontal();
             }
             EditorGUILayout.EndVertical();
         }
