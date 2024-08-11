@@ -5,6 +5,7 @@ namespace SoundManage
     [CreateAssetMenu(menuName = "SO/SoundSO")]
     public class SoundSO : ScriptableObject
     {
+        public string soundName;
         public AudioType audioType;
         public AudioClip clip;
         public bool loop;
@@ -17,6 +18,14 @@ namespace SoundManage
         [Range(0.1f, 3f)]
         public float pitch = 1f;
 
-
+        /**
+         * private SerializedProperty typeProp;
+    private SerializedProperty clipProp;
+    private SerializedProperty loopProp;
+    private SerializedProperty randomizeProp;
+    private SerializedProperty randomPitchModifierProp;
+    private SerializedProperty volumeProp;
+    private SerializedProperty pitchProp;
+         */
     }  
 }

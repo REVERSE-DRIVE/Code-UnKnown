@@ -158,7 +158,7 @@ public partial class UtilityWindow
         {
             Directory.CreateDirectory(path);
         }
-        string fileName = AssetDatabase.GenerateUniqueAssetPath($"{path}/{soundSO.audioType}.asset");
+        string fileName = AssetDatabase.GenerateUniqueAssetPath($"{path}/{soundSO.soundName}.asset");
         AssetDatabase.CreateAsset(soundSO, fileName);
         _soundTable.soundSOList.Add(soundSO);
         EditorUtility.SetDirty(_soundTable);
