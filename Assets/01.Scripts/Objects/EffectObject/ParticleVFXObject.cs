@@ -4,14 +4,24 @@ namespace ObjectManage
 {
     public class ParticleVFXObject : EffectObject
     {
-        //[SerializeField] private ParticleSystem[] _particles;
+        [SerializeField] protected ParticleSystem[] _particles;
 
-        public void Play()
+        // 언젠가 이쪽으로 옮겨야함
+        public override void Play()
         {
             for (int i = 0; i < _particles.Length; i++)
             {
                 _particles[i].Play();
             }
         }
+
+        public override void Stop()
+        {
+            for (int i = 0; i < _particles.Length; i++)
+            {
+                _particles[i].Stop();
+            }
+        }
+
     }
 }
