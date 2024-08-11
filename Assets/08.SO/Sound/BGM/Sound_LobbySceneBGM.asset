@@ -15,7 +15,7 @@ MonoBehaviour:
   soundName: LobbySceneBGM
   audioType: 0
   clip: {fileID: 0}
-  loop: 0
+  loop: 1
   randomizePitch: 0
   randomPitchModifier: 0.1
   volume: 1
