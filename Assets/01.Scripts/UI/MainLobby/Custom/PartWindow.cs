@@ -11,7 +11,6 @@ public class PartWindow : MonoBehaviour, IWindowPanel
     [SerializeField] private TextMeshProUGUI _partNameText;
     [SerializeField] private TextMeshProUGUI _partDescriptionText;
     [SerializeField] private Button _closeButton;
-    [SerializeField] private Button _amountButton;
     
     private RectTransform _rectTransform;
     private CustomItem _customItem;
@@ -20,10 +19,9 @@ public class PartWindow : MonoBehaviour, IWindowPanel
     {
         _rectTransform = transform as RectTransform;
         _closeButton.onClick.AddListener(Close);
-        _amountButton.onClick.AddListener(Amount);
     }
 
-    private void Amount()
+    public void Amount()
     {
         if (_customItem == null) return;
         switch (_customItem.PartData)
@@ -37,6 +35,19 @@ public class PartWindow : MonoBehaviour, IWindowPanel
                 PlayerPartManager.Instance.SetBodyPart(bodyPartData);
                 break;
         }
+        Close();
+    }
+
+    public void BuyPart()
+    {
+        var slamShopItem = _customItem as SlamShopItem;
+        if (slamShopItem == null)
+        {
+            Debug.LogWarning("SlamShopItem is null");
+            return;
+        }
+        slamShopItem.BuyPart();
+        Close();
     }
 
     public void SetChild(CustomItem customItem)

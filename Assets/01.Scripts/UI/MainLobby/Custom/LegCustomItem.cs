@@ -8,6 +8,7 @@ public class LegCustomItem : CustomItem
     protected override void Awake()
     {
         base.Awake();
+        _customIcon = FindObjectOfType<CustomIcon>();
         _legCustomPanel = FindObjectOfType<LegCustomPanel>();
     }
 

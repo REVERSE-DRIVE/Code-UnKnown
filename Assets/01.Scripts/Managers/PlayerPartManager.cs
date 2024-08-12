@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PlayerPartsManage;
 using UnityEngine;
 
@@ -23,8 +24,21 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
         LegPart = legPart;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ChangeAllPart();
+        }
+    }
+
     public void ChangeAllPart()
     {
+        if (BodyPart == null || LegPart == null)
+        {
+            Debug.LogWarning("BodyPart or LegPart is null");
+            return;
+        }
         var partController = PlayerManager.Instance.player.PlayerPartController;
         if (partController == null)
         {

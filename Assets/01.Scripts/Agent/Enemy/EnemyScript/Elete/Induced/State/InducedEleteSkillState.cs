@@ -3,27 +3,23 @@ using UnityEngine;
 
 public class InducedEleteSkillState : EnemySkillState
 {
-    private Collider[] _colliders;
+    private Collider2D[] _colliders = new Collider2D[10];
     public InducedEleteSkillState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
-        _colliders = new Collider[10];
     }
 
     protected override void TakeSkill()
     {
         Debug.Log("Induced Elete Skill");
-        int count = Physics.OverlapSphereNonAlloc(_enemyBase.transform.position, 3f, _colliders, _enemyBase.WhatIsPlayer);
+        int count = Physics2D.OverlapCircleNonAlloc(_enemyBase.transform.position, 3, _colliders, _enemyBase.WhatIsPlayer);
+        Debug.Log(count);
         if (count > 0)
         {
             for (int i = 0; i < count; i++)
             {
-                if (_colliders[i].TryGetComponent(out Health health))
+                if (_colliders[i].TryGetComponent(out Player player))
                 {
-                    if (_colliders[i].CompareTag("Player"))
-                    {
-                        health.TakeDamage(_enemyBase.Stat.GetDamage());
-                        Debug.Log("Player Take Damage");
-                    }
+                    player.HealthCompo.TakeDamage(10);
                 }
             }
         }
