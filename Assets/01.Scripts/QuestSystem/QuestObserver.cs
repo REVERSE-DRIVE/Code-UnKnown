@@ -7,8 +7,6 @@ namespace QuestManage
     public class QuestObserver : MonoSingleton<QuestObserver>
     {
         public QuestData[] currentQuestDatas;
-        public List<QuestData> dailyQuestDatas;
-
 
         private void Awake()
         {

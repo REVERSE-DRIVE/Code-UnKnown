@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace QuestManage
 {
@@ -9,34 +10,56 @@ namespace QuestManage
         [SerializeField] private int _normalQuestCount;
         [SerializeField] private int _hardQuestCount;
         
+        private List<QuestData> _dailyQuestDatas;
+        
         private QuestSO GetDailyQuest(QuestDifficultyEnum difficulty)
         {
-            var index = (int)difficulty;
+            var index = (int)difficulty - 1;
             return _questTable[index].GetRandomQuest();
         }
 
         /// <summary>
         /// Give daily quest to player
         /// </summary>
+        [ContextMenu("GiveDailyQuest")]
         public void GiveDailyQuest()
         {
+            _dailyQuestDatas = new List<QuestData>();
             for (int i = 0; i < _easyQuestCount; i++)
             {
                 var quest = GetDailyQuest(QuestDifficultyEnum.Easy);
-                QuestObserver.Instance.dailyQuestDatas.Add(new QuestData(quest.id, quest.goalValue));
+                _dailyQuestDatas.Add(new QuestData(quest.id, quest.goalValue, quest.difficulty));
             }
             
             for (int i = 0; i < _normalQuestCount; i++)
             {
                 var quest = GetDailyQuest(QuestDifficultyEnum.Normal);
-                QuestObserver.Instance.dailyQuestDatas.Add(new QuestData(quest.id, quest.goalValue));
+                _dailyQuestDatas.Add(new QuestData(quest.id, quest.goalValue, quest.difficulty));
             }
             
             for (int i = 0; i < _hardQuestCount; i++)
             {
                 var quest = GetDailyQuest(QuestDifficultyEnum.Hard);
-                QuestObserver.Instance.dailyQuestDatas.Add(new QuestData(quest.id, quest.goalValue));
+                _dailyQuestDatas.Add(new QuestData(quest.id, quest.goalValue, quest.difficulty));
             }
+        }
+        
+        private bool IsQuestClear(int index)
+        {
+            return _dailyQuestDatas[index].isClear;
+        }
+        
+        private bool IsAllQuestClear()
+        {
+            for (int i = 0; i < _dailyQuestDatas.Count; i++)
+            {
+                if (!IsQuestClear(i))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
