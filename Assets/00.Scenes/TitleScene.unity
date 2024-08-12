@@ -5884,9 +5884,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c494dd2e154a79f489e6e2338167f19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skipBtn: {fileID: 810515195}
   _credirHandle: {fileID: 896403884}
   _startYDelta: -800
   _endYDelta: 3000
+  _duration: 10
 --- !u!1 &1515202180
 GameObject:
   m_ObjectHideFlags: 0
