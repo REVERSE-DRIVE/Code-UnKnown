@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +27,7 @@ public class WindowManager : MonoSingleton<WindowManager>
             item.OnFocus += () => OnFocus?.Invoke(item.Type);
         }
     }
-
+    
     public WindowUI GetWindow(WindowType type) {
         windowIndex.TryGetValue(type, out var item);
         return item;

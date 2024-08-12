@@ -12,6 +12,5 @@ namespace SaveSystem
         {
             return EasyToJson.FromJson<T>(fileName);
         }
-        
     }
 }

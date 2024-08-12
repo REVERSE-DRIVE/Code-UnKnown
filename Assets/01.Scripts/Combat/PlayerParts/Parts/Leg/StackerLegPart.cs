@@ -1,21 +1,23 @@
 ﻿using System.Collections;
 using PlayerPartsManage;
+using UnityEngine;
 
 public class StackerLegPart : PlayerPart
 {
     private int stackCount = 0;
+    private Coroutine _stackCountCoroutine;
     public StackerLegPart(Player owner) : base(owner)
     {
     }
 
     public override void OnMount()
     {
-        StartCoroutine(StackCount());
+        _stackCountCoroutine = StartCoroutine(StackCount());
     }
 
     public override void OnUnMount()
     {
-        StopAllCoroutines();
+        StopCoroutine(_stackCountCoroutine);
     }
 
     private IEnumerator StackCount()

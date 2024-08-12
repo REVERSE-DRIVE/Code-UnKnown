@@ -7,10 +7,11 @@ namespace EnemyManage
 {
     public abstract class Enemy : Agent
     {
-        [Header("Common settings")]
+        [Header("Drop Item settings")]
         [SerializeField] private ItemType _itemType;
         [SerializeField] private int _id;
         
+        [Header("Layer Settings")]
         [SerializeField] protected LayerMask _whatIsPlayer;
         [SerializeField] protected LayerMask _whatIsObstacle;
         [field:SerializeField] public SpriteRenderer RendererCompo { get; protected set; }

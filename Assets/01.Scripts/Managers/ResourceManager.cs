@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class ResourceManager : MonoBehaviour
+public class ResourceManager : MonoSingleton<ResourceManager>
 {
-    public int ResourceAmount { get; private set; }
+    public int ResourceAmount { get; private set; } = 1000;
 
     public void AddResource(int amount)
     {

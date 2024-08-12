@@ -37,19 +37,19 @@ public class QuestWindowUI : MonoBehaviour, IPointerClickHandler
      */
     public QuestData GetQuestData()
     {
-        return new QuestData(_quest.id, _quest.goalValue);
+        return new QuestData(_quest.id, _quest.goalValue, _quest.difficulty);
     }
     
     public KillQuestData GetKillQuestData()
     {
         KillQuestSO killQuest = (KillQuestSO) _quest;
-        return new KillQuestData(_quest.id, _quest.goalValue, killQuest.enemyType);
+        return new KillQuestData(_quest.id, _quest.goalValue, killQuest.enemyType, _quest.difficulty);
     }
     
     public CollectQuestData GetCollectQuestData()
     {
         CollectQuestSO collectQuest = (CollectQuestSO) _quest;
-        return new CollectQuestData(_quest.id, _quest.goalValue, collectQuest.itemType);
+        return new CollectQuestData(_quest.id, _quest.goalValue, collectQuest.itemType, _quest.difficulty);
     }
 
 

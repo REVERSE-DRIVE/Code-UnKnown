@@ -16,7 +16,6 @@ public abstract class CustomItem : MonoBehaviour
     protected virtual void Awake()
     {
         _button = GetComponent<Button>();
-        _customIcon = FindObjectOfType<CustomIcon>();
         _button.onClick.AddListener(OnClick);
     }
 
