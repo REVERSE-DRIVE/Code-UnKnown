@@ -6,7 +6,7 @@ public class AnalyzePing : MonoBehaviour
 {
     readonly string SAVE_NAME = "domi.AnalyzeRegister";
 
-    async void Start()
+    async void Awake()
     {
         if (!AnalyzeManager.Registered) { // 등록이 안되어 있으면
             bool cache = PlayerPrefs.GetInt(SAVE_NAME, 0) == 1;

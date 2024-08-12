@@ -24,6 +24,7 @@ public static class AnalyzeEditor
             entity.AddComponent<AnalyzePing>();
             entity.AddComponent<AnalyzeScene>();
             entity.AddComponent<AnalyzeErrorDetect>();
+            entity.AddComponent<AnalyzePlayTime>();
         }
     }
 }
