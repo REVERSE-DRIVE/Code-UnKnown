@@ -1,13 +1,11 @@
-﻿using System;
-using ObjectPooling;
+﻿using ObjectPooling;
 using UnityEngine;
 
 namespace ObjectManage
 {
-    public class EffectObject : MonoBehaviour, ILifeTimeLimited, IPoolable
+    public abstract class EffectObject : MonoBehaviour, ILifeTimeLimited, IPoolable
     {
-        [SerializeField] protected ParticleSystem[] _particles;
-        [SerializeField] private bool _playOnSpawn;
+        [SerializeField] protected bool _playOnSpawn;
         [field: SerializeField] public PoolingType type { get; set; }
         public GameObject ObjectPrefab => gameObject;
         
@@ -22,7 +20,7 @@ namespace ObjectManage
             set => _currentLifeTime = value;
         }
 
-        private void Update()
+        protected void Update()
         {
             if (!_isActive) return;
             _currentLifeTime += Time.deltaTime;
@@ -40,21 +38,9 @@ namespace ObjectManage
             transform.position = position;
         }
 
-        public void Play()
-        {
-            for (int i = 0; i < _particles.Length; i++)
-            {
-                _particles[i].Play();
-            }
-        }
+        public abstract void Play();
 
-        public void Stop()
-        {
-            for (int i = 0; i < _particles.Length; i++)
-            {
-                _particles[i].Stop();
-            }
-        }
+        public abstract void Stop();
         
 
 
@@ -75,8 +61,8 @@ namespace ObjectManage
             PoolingManager.Instance.Push(this);
         }
 
-        
-        public void ResetItem()
+
+        public virtual void ResetItem()
         {
             _currentLifeTime = 0;
             if (_playOnSpawn)

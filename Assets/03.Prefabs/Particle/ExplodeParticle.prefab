@@ -48,7 +48,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -9792,7 +9792,7 @@ GameObject:
   - component: {fileID: 116421957183558869}
   - component: {fileID: 1392063720459837377}
   - component: {fileID: 7434966986524783321}
-  - component: {fileID: 1948455437652562130}
+  - component: {fileID: 5644994671887337675}
   m_Layer: 0
   m_Name: ExplodeParticle
   m_TagString: Untagged
@@ -14671,7 +14671,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1948455437652562130
+--- !u!114 &5644994671887337675
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14680,11 +14680,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4723556616987594839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88755947f481491295699ab2d2866ffd, type: 3}
+  m_Script: {fileID: 11500000, guid: d43860ac810c46f1af6f5c6142c2da88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playOnSpawn: 0
+  <type>k__BackingField: 4
+  _lifeTime: 4
   _particles:
   - {fileID: 1392063720459837377}
-  _playOnSpawn: 1
-  <type>k__BackingField: 4
-  _lifeTime: 5

@@ -32,6 +32,7 @@ public class ExplodeObject : FieldObject
         EffectObject effect = PoolingManager.Instance.Pop(_explodeVFXPoolingType) as EffectObject;
         effect.Initialize(transform.position);
         effect.Play();
+        (PoolingManager.Instance.Pop(PoolingType.ExplodeMark) as EffectObject).Initialize(transform.position);
         OnExplodeEvent?.Invoke();
        
     }
