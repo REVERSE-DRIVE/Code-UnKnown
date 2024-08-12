@@ -1,4 +1,6 @@
 ﻿using EnemyManage;
+using ObjectManage;
+using ObjectPooling;
 using UnityEngine;
 
 public class DecoyDeadState : EnemyDeadState
@@ -11,5 +13,9 @@ public class DecoyDeadState : EnemyDeadState
     {
         base.Die();
         _enemyBase.DamageCasterCompo.CastDamage();
+        var effect = PoolingManager.Instance.Pop(PoolingType.DecoyExplodeVFX) as ParticleVFXObject;
+        effect.transform.position = _enemyBase.transform.position;
+        effect.Play();
+        CameraManager.Instance.Shake(10f, 0.1f);
     }
 }
