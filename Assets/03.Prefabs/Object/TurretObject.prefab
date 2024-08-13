@@ -5062,11 +5062,11 @@ MonoBehaviour:
   _fireVFX: {fileID: 5010429496796479364}
   _detectDistance: 15
   _detectOffMinDistance: 1
-  _detectDegree: 4
+  _detectDegree: 20
   _isSetAutoRandomDirection: 1
   _angleErrorRange: 1
-  _projectile: 0
-  _attackCooltime: 0.4
+  _projectile: 19
+  _attackCooltime: 0.25
   _damage: 5
   _speed: 4
   _lifeTime: 10
@@ -5122,7 +5122,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: e1386aee8223be44893f66ef0eebba21, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5228,7 +5228,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -263515655, guid: 0ecb03f4b5aff814f8755d243343d66c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.16201495, g: 0.38679248, b: 0.38430876, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -13,7 +13,6 @@ public class DecoyChaseState : EnemyChaseState
         
         if (distance <= _enemyBase.chaseDistance && distance > _enemyBase.attackDistance)
         {
-            _enemyBase.StopAllCoroutines();
             _isChase = false;
             _enemyBase.MovementCompo.StopImmediately();
             _enemyBase.MovementCompo.SetMovement(_enemyBase.targetTrm.position - _enemyBase.transform.position);
@@ -21,7 +20,6 @@ public class DecoyChaseState : EnemyChaseState
         }
         else if (distance <= _enemyBase.attackDistance)
         {
-            _enemyBase.StopAllCoroutines();
             _isChase = false;
             _stateMachine.ChangeState(EnemyStateEnum.Attack);
         }

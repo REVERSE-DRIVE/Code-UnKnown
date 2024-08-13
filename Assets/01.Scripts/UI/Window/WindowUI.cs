@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -75,7 +76,6 @@ public class WindowUI : MonoBehaviour, IPointerDownHandler
         PlayAnimation(0);
         OnClose?.Invoke();
     }
-
     private void PlayAnimation(float endValue)
     {
         _rectTransform.DOScaleY(endValue, 0.5f);

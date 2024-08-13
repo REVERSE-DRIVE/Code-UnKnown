@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   title: "\uD14C\uC2A4\uD2B8 \uC784\uBB342"
-  difficulty: 0
+  difficulty: 1
   description: "\uC598 \uC8FD\uC5EC\uB77C"
   icon: {fileID: -1170336602, guid: c1f79a481323808489d1aeb5d122ec76, type: 3}
   goalValue: 0
+  enemyType: 0

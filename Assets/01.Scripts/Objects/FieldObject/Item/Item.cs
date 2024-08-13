@@ -29,7 +29,8 @@ namespace ItemManage
         public virtual void SetItem(ItemSO itemSO)
         {
             ItemSO = itemSO;
-            _itemNameText.text = ItemSO.itemName;
+            if (_itemNameText != null)
+                _itemNameText.text = ItemSO.itemName;
             _visualRenderer.sprite = ItemSO.itemIcon;
         }
 
@@ -81,7 +82,8 @@ namespace ItemManage
 
         private void ItemNameTextActive(bool isActive)
         {
-            _itemNameText.gameObject.SetActive(isActive);
+            if (_itemNameText != null)
+                _itemNameText.gameObject.SetActive(isActive);
         }
 
         private void ChangeActiveMaterial(float firstViewOffsetValue, float changeViewOffsetValue, float duration, TweenCallback onCompleteCallback = null)

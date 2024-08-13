@@ -26,6 +26,7 @@ public class EnemyIdleState : EnemyState<EnemyStateEnum>
         
         Vector3 direction = target.transform.position - _enemyBase.transform.position;
         
+        if ((_enemyBase as EnemyBase).IsFaint) return;
         if (!_enemyBase.IsObstacleDetected(direction.magnitude, direction.normalized))
         {
             //_enemyBase.StopAllCoroutines();

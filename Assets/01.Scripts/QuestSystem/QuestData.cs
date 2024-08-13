@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace QuestManage
 {
@@ -8,12 +9,17 @@ namespace QuestManage
     {
         public int id;
         public int progressValue;
+        public QuestDifficultyEnum difficulty;
+        public bool isClear;
         [SerializeField] private int _goalValue;
+        
+        public Action OnClearEvent;
 
-        public QuestData(int id, int goal)
+        public QuestData(int id, int goal, QuestDifficultyEnum difficulty)
         {
             this.id = id;
             this._goalValue = goal;
+            this.difficulty = difficulty;
         }
     
         public void Trigger(int value)
@@ -22,6 +28,8 @@ namespace QuestManage
             if (progressValue >= _goalValue)
             {
                 // 클리어 이벤트
+                isClear = true;
+                OnClearEvent?.Invoke();
             }
         }
     }
