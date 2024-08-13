@@ -17,8 +17,6 @@ public class RoomReward : RoomBase
     {
         base.OnComplete();
 
-        print("RandomPosCenter");
-
         List<GameObject> spawnObjects = new();
         foreach (var item in randomData)
         {
@@ -43,8 +41,6 @@ public class RoomReward : RoomBase
     Vector3 RandomPosCenter(float limit) {
         limit = Mathf.Clamp(limit, 0, 1);
 
-        print(limit);
-        
         Vector3 centerPos = GetCenterCoords();
         Vector3 worldMax = MapManager.Instance.GetWorldPosByCell(MaxPos - Vector2Int.one);
         Vector3 worldMin = MapManager.Instance.GetWorldPosByCell(MinPos + Vector2Int.one);
