@@ -184,10 +184,10 @@ public static class AnalyzeManager
     }
 
     // 타임 저장
-    public static async Task SendPlayTime(string token) {
-        Debug.Log($"[domiAnalyze] 플레이타임 저장중... {token}");
+    public static async Task SendPlayTime(string token, string scene = null) {
+        Debug.Log($"[domiAnalyze] 플레이타임 - {scene ?? "all"} 저장중... {token}");
 
-        using var handler = UnityWebRequest.Post(GetURL("time/ingame"), $"{{\"token\":\"{token}\"}}", "application/json");
+        using var handler = UnityWebRequest.Post(GetURL(scene != null ? "time/scene" : "time/ingame"), $"{{\"token\":\"{token}\", \"scene\":\"{scene}\"}}", "application/json");
         handler.SetRequestHeader("authorization", $"DOMI {SystemInfo.deviceUniqueIdentifier}");
     
         var operation = handler.SendWebRequest();
@@ -201,6 +201,6 @@ public static class AnalyzeManager
         } catch {}
 
         if (handler.responseCode != 200)
-            Debug.LogError($"[domiAnalyze] 플레이타임 저장 실패 ({handler.responseCode}) {body}");
+            Debug.LogError($"[domiAnalyze] 플레이타임 - {scene ?? "all"} 저장 실패 ({handler.responseCode}) {body}");
     }
 }

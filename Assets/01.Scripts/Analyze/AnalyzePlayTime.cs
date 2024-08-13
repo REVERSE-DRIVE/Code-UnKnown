@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AnalyzePlayTimeScene;
 
 public class AnalyzePlayTime : MonoBehaviour
 {
     string token;
     bool needDispose = false;
     bool processSave = false;
+
+    AnalyzePlayTimeScene scenePlaytime;
 
     private void Awake() {
         AnalyzeManager.OnLogined += LoadTimeToken;
@@ -24,8 +27,12 @@ public class AnalyzePlayTime : MonoBehaviour
 
         processSave = true;
 
+        SceneTimeData sceneTime = new();
+        if (scenePlaytime)
+            scenePlaytime.GetData(ref sceneTime);
+
         // 토큰이 있는경우 처리하고 끔..
-        SaveAndQuit();
+        SaveAndQuit(sceneTime);
 
         // 유니티 에디터는 못끄게 할수 없어서 그냥 끄게 해줌
     #if UNITY_EDITOR
@@ -36,6 +43,8 @@ public class AnalyzePlayTime : MonoBehaviour
     }
 
     private void Start() {
+        scenePlaytime = GetComponent<AnalyzePlayTimeScene>();
+
         if (!AnalyzeManager.Registered) { // 등록이 안되어있음
             return;
         }
@@ -52,8 +61,12 @@ public class AnalyzePlayTime : MonoBehaviour
         token = await AnalyzeManager.GetTimeToken();
     }
 
-    async void SaveAndQuit() {
+    async void SaveAndQuit(SceneTimeData sceneTime) {
         await AnalyzeManager.SendPlayTime(token);
+
+        if (sceneTime.scene != null && sceneTime.token != null)
+            await AnalyzeManager.SendPlayTime(sceneTime.token, sceneTime.scene);
+
         Application.Quit();
     }
 }
