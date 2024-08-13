@@ -6,7 +6,13 @@ public class ReflectProjectile : Projectile
     
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        TakeDamageForAnotherAgent(other);
+        // Take Damage
+        if (_isEnemy && other.CompareTag("Enemy")) return;
+        if (!_isEnemy && other.CompareTag("Player")) return;
+        if (other.transform.TryGetComponent(out IDamageable health))
+        {
+            health.TakeDamage(_damage);
+        }
         // Reflect
         if (_reflectCount > 0)
         {
@@ -17,17 +23,6 @@ public class ReflectProjectile : Projectile
         else
         {
             base.OnTriggerEnter2D(other);
-        }
-    }
-
-    private void TakeDamageForAnotherAgent(Collider2D other)
-    {
-        // Take Damage
-        if (_isEnemy && other.CompareTag("Enemy")) return;
-        if (!_isEnemy && other.CompareTag("Player")) return;
-        if (other.transform.TryGetComponent(out IDamageable health))
-        {
-            health.TakeDamage(_damage);
         }
     }
 
