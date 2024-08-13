@@ -14,6 +14,7 @@ namespace EnemyManage
         public override void Enter()
         {
             base.Enter();
+            _bossAVGBase.Stat.isResist = false;
             _bossAVGBase.CanStateChangeable = false;
             _currentTime = 0;
             _stateDuration = _bossAVGBase._stunDuration;
@@ -37,7 +38,7 @@ namespace EnemyManage
         public override void Exit()
         {
             base.Exit();
-            
+            _bossAVGBase.Stat.isResist = true;
             _bossAVGBase.CanStateChangeable = true;
         }
     }

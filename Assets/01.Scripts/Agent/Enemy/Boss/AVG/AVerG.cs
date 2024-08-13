@@ -35,10 +35,12 @@ namespace EnemyManage
         [Header("Blue State Setting")] [SerializeField]
         internal float _attacktime = 10f;
 
+        [SerializeField] internal float _spinAttackRadius;
+        [SerializeField] internal float _spinAttackDamage;
+        [SerializeField] internal LayerMask _spinAttackTargetLayer;
+        [SerializeField] internal float _attackDuration;
+        [SerializeField] internal int _stunNeedHitCount = 3;
         [SerializeField] internal float _attackCooltime = 10f;
-        [SerializeField] internal PoolingType _projectile;
-        [SerializeField] internal int _fireProjectileAmount = 4;
-        [SerializeField] internal float _rotationSpeed = 3f;
 
         [Header("Yellow State Setting")] 
 

@@ -27,8 +27,6 @@ namespace EnemyManage
             base.Enter();
             _attackTime = _bossAVGBase._attacktime;
             _attackCooltime = _bossAVGBase._attackCooltime;
-            _projectileAmount = _bossAVGBase._fireProjectileAmount;
-            _projectile = _bossAVGBase._projectile;
             
         }
 
@@ -41,6 +39,18 @@ namespace EnemyManage
         public override void Exit()
         {
             base.Exit();
+            
+        }
+
+        private void Dash()
+        {
+            _bossAVGBase.StartCoroutine(DashCoroutine());
+        }
+
+        private IEnumerator DashCoroutine()
+        {
+            
+            yield return null;
         }
 
        
