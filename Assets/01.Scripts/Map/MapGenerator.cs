@@ -342,9 +342,9 @@ public class MapGenerator : MonoBehaviour
                 }
             }
             
-            print($"[{mapPos.x}, {mapPos.y}] ({dir.ToString()}) => {sameCount}");
-            print($"[{mapPos.x}, {mapPos.y}] center {GetDoorPos(minPos, maxPos, dir)}");
-            print($"[{mapPos.x}, {mapPos.y}] call {functionCall} {lastRoom}");
+            // print($"[{mapPos.x}, {mapPos.y}] ({dir.ToString()}) => {sameCount}");
+            // print($"[{mapPos.x}, {mapPos.y}] center {GetDoorPos(minPos, maxPos, dir)}");
+            // print($"[{mapPos.x}, {mapPos.y}] call {functionCall} {lastRoom}");
             if (sameCount >= bridgeSize.x) {
                 Vector2Int modifySize = bridgeSize;
                 Vector2Int endPoint = GetDoorPos(minPos, maxPos, dir);
@@ -560,7 +560,7 @@ public class MapGenerator : MonoBehaviour
     // point 기점으로 다리 범위 구함
     BridgeBase CreateBridge(Vector2Int point, Direction dir) => CreateBridge(point, dir, bridgeSize);
     BridgeBase CreateBridge(Vector2Int point, Direction dir, Vector2Int customSize) {
-        print($"CreateBridge({point},{dir},{customSize})");
+        // print($"CreateBridge({point},{dir},{customSize})");
         Vector2Int bridgeStart = point;
         Vector2Int bridgeEndPos = point;
 

@@ -5,7 +5,7 @@ namespace ObjectManage
 {
     public abstract class EffectObject : MonoBehaviour, ILifeTimeLimited, IPoolable
     {
-        [SerializeField] protected bool _playOnSpawn;
+        [SerializeField] protected bool _playOnSpawn = true;
         [field: SerializeField] public PoolingType type { get; set; }
         public GameObject ObjectPrefab => gameObject;
         

@@ -45,6 +45,14 @@ public class MapBossGenerator
             }
         }
     
+        // 플레이어 가까이 보내기
+        Vector3 minPos3 = MapManager.Instance.GetWorldPosByCell(minPos + Vector2Int.one * 2);
+        Vector3 maxPos3 = MapManager.Instance.GetWorldPosByCell(maxPos - Vector2Int.one);
+
+        Transform playerTrm = PlayerManager.Instance.player.transform;
+        Vector3 playerPos = playerTrm.position;
+        playerTrm.position = new( Mathf.Clamp(playerPos.x, minPos3.x, maxPos3.x), Mathf.Clamp(playerPos.y, minPos3.y, maxPos3.y) );
+
         BossManager.Instance.GenerateBoss(option.BossId, roomCenter);
     }
 
