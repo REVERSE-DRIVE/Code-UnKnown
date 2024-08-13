@@ -14,8 +14,6 @@ public class RoomEditor : RoomBase
         Vector3 worldMin = MapManager.Instance.GetWorldPosByCell(MinPos);
         Vector3 worldMax = MapManager.Instance.GetWorldPosByCell(MaxPos + Vector2Int.one);
 
-        print($"Editor {worldMin} ~ {worldMax}");
-
         Vector3 worldCenter = (worldMin + worldMax) / 2f;
 
         entity = Instantiate(editorObject, worldCenter, Quaternion.identity);

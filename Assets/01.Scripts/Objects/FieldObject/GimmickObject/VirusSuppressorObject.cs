@@ -29,14 +29,12 @@ public class VirusSuppressorObject : MonoBehaviour, ILaserEvent
 
     public void OnLaserIn(LaserObject entity)
     {
-        print("OnLaserIn");
         lasers.Add(entity);
         CheckClear();
     }
 
     public void OnLaserOut(LaserObject entity)
     {
-        print("OnLaserOut");
         lasers.Remove(entity);
         CheckClear();
     }
