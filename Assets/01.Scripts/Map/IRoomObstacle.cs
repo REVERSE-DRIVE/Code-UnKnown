@@ -142,7 +142,7 @@ public interface IRoomObstacle
             tryCount = 0;
 
             MapManager.Instance.CreateWall(min, max);
-            Debug.Log($"ming / {min} ~ {max}");
+            // Debug.Log($"ming / {min} ~ {max}");
     }
 }
 

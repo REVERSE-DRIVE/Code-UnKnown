@@ -28,6 +28,7 @@ public static class AnalyzeManager
     static string GetURL(string path) => $"https://{host}:{port}/code_unknown/api/game/{path}";
 
     static public bool Registered { get; set; } = false; // 등록됨?
+    static public event System.Action OnLogined;
     
     // 등록하기
     public static async Task<bool> RegisterDevice() {
@@ -61,6 +62,7 @@ public static class AnalyzeManager
             return false;
         }
 
+        OnLogined?.Invoke();
         return true; // 403 은 이미 등록된거라 정상 처리함
     }
 
@@ -157,5 +159,48 @@ public static class AnalyzeManager
             Debug.LogError($"[domiAnalyze] Send Exception 실패. ({handler.responseCode}) {body}");
             return;
         }
+    }
+    
+    public static async Task<string> GetTimeToken() { // 타임 토큰 발급
+        using var handler = UnityWebRequest.Post(GetURL("time/token"), new WWWForm());
+        handler.SetRequestHeader("authorization", $"DOMI {SystemInfo.deviceUniqueIdentifier}");
+
+        var operation = handler.SendWebRequest();
+        
+        while (!operation.isDone)
+            await Task.Yield();
+
+        string body = "empty";
+        try {
+            body = System.Text.Encoding.UTF8.GetString(handler.downloadHandler.data);
+        } catch {}
+        
+        if (handler.responseCode != 200) {
+            Debug.LogError($"[domiAnalyze] Time Token 발급 실패 ({handler.responseCode}) {body}");
+            return null;
+        }
+
+        return body;
+    }
+
+    // 타임 저장
+    public static async Task SendPlayTime(string token, string scene = null) {
+        Debug.Log($"[domiAnalyze] 플레이타임 - {scene ?? "all"} 저장중... {token}");
+
+        using var handler = UnityWebRequest.Post(GetURL(scene != null ? "time/scene" : "time/ingame"), $"{{\"token\":\"{token}\", \"scene\":\"{scene}\"}}", "application/json");
+        handler.SetRequestHeader("authorization", $"DOMI {SystemInfo.deviceUniqueIdentifier}");
+    
+        var operation = handler.SendWebRequest();
+        
+        while (!operation.isDone)
+            await Task.Yield();
+
+        string body = "empty";
+        try {
+            body = System.Text.Encoding.UTF8.GetString(handler.downloadHandler.data);
+        } catch {}
+
+        if (handler.responseCode != 200)
+            Debug.LogError($"[domiAnalyze] 플레이타임 - {scene ?? "all"} 저장 실패 ({handler.responseCode}) {body}");
     }
 }
