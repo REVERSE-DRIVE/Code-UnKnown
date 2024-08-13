@@ -5,6 +5,7 @@
         Menu,
         StartButton,
         PlayContinue,
-        Dark
+        Dark,
+        Loading
     }
 }

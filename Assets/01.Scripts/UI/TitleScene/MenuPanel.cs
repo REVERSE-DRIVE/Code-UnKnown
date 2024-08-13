@@ -1,4 +1,6 @@
+using System.Collections;
 using DG.Tweening;
+using TitleScene;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,7 +18,15 @@ public class MenuPanel : MonoBehaviour, IWindowPanel
 
     private void HandleStartButtonEvent()
     {
+        StartCoroutine(StartButtonCoroutine());
+    }
+
+    private IEnumerator StartButtonCoroutine()
+    {
+        TitleSceneManager.Instance.Open(TitleWindowTypeEnum.Loading);
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("MainLobbyScene");
+
     }
 
     public void Open()
