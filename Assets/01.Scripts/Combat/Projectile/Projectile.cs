@@ -42,7 +42,7 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
     [ContextMenu("DebugShootLeft")]
     private void DebugShoot()
     {
-        Shoot(Vector2.left);
+        Shoot(new Vector2(10, 10));
     }
 
     public void Initialize(Vector2 position)
