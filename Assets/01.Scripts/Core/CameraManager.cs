@@ -1,5 +1,7 @@
 using System.Collections;
 using Cinemachine;
+using DG.Tweening;
+using DG.Tweening.Core.Easing;
 using UnityEngine;
 
 public class CameraManager : MonoSingleton<CameraManager>
@@ -81,6 +83,10 @@ public class CameraManager : MonoSingleton<CameraManager>
         ZoomDefault(13, 1.5f);
     }
 
+    public void SetZoom(float lens)
+    {
+        _virtualCamera.m_Lens.OrthographicSize = lens;
+    }
     public void ZoomDefault()
     {
         _virtualCamera.m_Lens.OrthographicSize = cameraDefaultZoom;

@@ -10,6 +10,7 @@ public class Player : Agent
     public PlayerController PlayerController { get; protected set; }
     public PlayerPartController PlayerPartController { get; protected set; }
     [field:SerializeField] public AdditionalStat additionalStat { get; protected set; }
+
     
     protected override void Awake()
     {
@@ -19,7 +20,6 @@ public class Player : Agent
         PlayerPartController = GetComponent<PlayerPartController>();
         PlayerVFXCompo = VFXCompo  as PlayerVFX;
         PlayerController = MovementCompo as PlayerController;
-        
         // PlayerAttackCompo = GetComponent<PlayerAttackController>();
         // PlayerAttackCompo.Initialize(this);
 
@@ -35,5 +35,10 @@ public class Player : Agent
     {
         isDead = true;
         
+    }
+
+    public void SetVisualActive(bool value)
+    {
+        _visualTrm.gameObject.SetActive(value);
     }
 }
