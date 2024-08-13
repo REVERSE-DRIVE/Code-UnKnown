@@ -30,7 +30,6 @@ namespace ObjectManage
 
         private IEnumerator PlayCoroutine()
         {
-            yield return new WaitForSeconds(1f);
             float currentTime = 1;
             while (currentTime > 0f)
             {

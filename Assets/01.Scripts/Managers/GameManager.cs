@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using ObjectManage;
 using ObjectPooling;
 using UnityEngine;
@@ -11,15 +12,29 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
+        MapManager.Instance.Generate();
         GameStart();
     }
 
     public void GameStart()
     {
+        CameraManager.Instance.ZoomDefault(15, 0.3f);
+        PlayerManager.Instance.player.SetVisualActive(false);
+        PlayerManager.Instance.player.MovementCompo.isStun = true;
         Vector2 startPos = MapManager.Instance.GetRoomByCoords(Vector2Int.zero).GetCenterCoords();
         PlayerManager.Instance.player.transform.position = startPos;
         EffectObject effect = PoolingManager.Instance.Pop(PoolingType.PlayerAppearVFX) as EffectObject;
         effect.Initialize(startPos);
+        StartCoroutine(GameStartCoroutine());
+    }
+
+    private IEnumerator GameStartCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        CameraManager.Instance.ShakeHit();
+        PlayerManager.Instance.player.MovementCompo.isStun = false;
+        PlayerManager.Instance.player.SetVisualActive(true);
+
     }
     
 }

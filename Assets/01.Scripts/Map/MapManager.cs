@@ -19,12 +19,13 @@ public class MapManager : MonoSingleton<MapManager>
 
     ///////////////////////////////// TEST
     private void Start() {
-        Generate();
+        //Generate();
         
         // 만든 후 준비 방으로 플레이어 이동
-        RoomBase room = GetRoomByCoords(Vector2Int.zero);
-
-        
+        // RoomBase room = GetRoomByCoords(Vector2Int.zero);
+        // Vector3 centerPos = room.GetCenterCoords();
+        //
+        // PlayerManager.Instance.player.transform.position = centerPos;
         // Generator.BossGenerator.CreateBoss(GetRoomByCoords(Vector2Int.zero));
 
         // 방 찢기기 테스트
@@ -40,8 +41,6 @@ public class MapManager : MonoSingleton<MapManager>
     }
     ///////////////////////////////// TEST END
 
-    
-    
     public RoomBase GetRoomByCoords(Vector2Int coords) {
         bool result = map.TryGetValue(coords, out var room);
         return result ? room : null;

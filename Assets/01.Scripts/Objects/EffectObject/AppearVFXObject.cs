@@ -31,12 +31,12 @@ namespace ObjectManage
 
         private IEnumerator PlayCoroutine()
         {
-            yield return new WaitForSeconds(1f);
-            float currentTime = 1;
+            yield return new WaitForSeconds(0.3f);
+            float currentTime = 0.5f;
             while (currentTime > 0f)
             {
                 currentTime -= Time.deltaTime;
-                _pointerMat.SetFloat(_appearHeightHash, currentTime / 1f);
+                _pointerMat.SetFloat(_appearHeightHash, currentTime / 0.5f);
                 yield return null;
             }
             _impactLineTrm.localScale = new Vector3(1.5f, 16f,1);
