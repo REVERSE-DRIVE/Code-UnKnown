@@ -12,7 +12,7 @@ namespace ItemManage
         private SerializedProperty _itemIcon;
         private SerializedProperty _resourceAmount;
         private SerializedProperty _resourceRank;
-        private SerializedProperty _weaponInfoSO;
+        private SerializedProperty _partItemSO;
         
         private void OnEnable()
         {
@@ -22,7 +22,7 @@ namespace ItemManage
             _itemIcon = serializedObject.FindProperty("itemIcon");
             _resourceAmount = serializedObject.FindProperty("resourceValue");
             _resourceRank = serializedObject.FindProperty("resourceRank");
-            _weaponInfoSO = serializedObject.FindProperty("weaponInfoSO");
+            _partItemSO = serializedObject.FindProperty("partDataSO");
         }
         
         public override void OnInspectorGUI()
@@ -39,9 +39,10 @@ namespace ItemManage
                 EditorGUILayout.BeginVertical();
                 {
                     EditorGUILayout.PropertyField(_itemType);
+                    EditorGUILayout.PropertyField(_id);
                     if (_itemType.enumValueFlag == (int)ItemType.Resource)
                     {
-                        EditorGUILayout.PropertyField(_id);
+                        
                         EditorGUI.BeginChangeCheck();
                         string prevName = _itemName.stringValue;
                         EditorGUILayout.DelayedTextField(_itemName);
@@ -67,9 +68,9 @@ namespace ItemManage
                         EditorGUILayout.PropertyField(_resourceAmount);
                         EditorGUILayout.PropertyField(_resourceRank);
                     }
-                    else if (_itemType.enumValueFlag == (int)ItemType.Weapon)
+                    else if (_itemType.enumValueFlag == (int)ItemType.Part)
                     {
-                        EditorGUILayout.PropertyField(_weaponInfoSO);
+                        EditorGUILayout.PropertyField(_partItemSO);
                         AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(target), $"Item_{_itemName.stringValue}");
                     }
                 }

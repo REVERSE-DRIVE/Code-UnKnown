@@ -3,7 +3,8 @@
     public enum ItemType
     {
         Weapon = 10,
-        Resource = 11
+        Resource = 11,
+        Part = 26
     }
 }
 
