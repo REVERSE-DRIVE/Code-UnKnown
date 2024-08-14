@@ -175,5 +175,7 @@ public class JunkFileObject : InteractObject, IDamageable
         }
     }
     
-    
+    public void EnableActive() {
+        _isActive = true;
+    }
 }
