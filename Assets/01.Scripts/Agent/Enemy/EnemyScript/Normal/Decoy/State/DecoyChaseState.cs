@@ -28,4 +28,10 @@ public class DecoyChaseState : EnemyChaseState
             _stateMachine.ChangeState(EnemyStateEnum.Idle);
         }
     }
+
+    public override void Exit()
+    {
+        _enemyBase.MovementCompo.StopImmediately();
+        base.Exit();
+    }
 }

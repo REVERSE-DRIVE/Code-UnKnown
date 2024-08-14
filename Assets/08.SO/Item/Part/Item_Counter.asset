@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 550e5141d06b47d0936871a900ed4783, type: 3}
+  m_Name: Item_Counter
+  m_EditorClassIdentifier: 
+  itemType: 26
+  id: 1
+  itemName: Counter
+  itemIcon: {fileID: 8308596247354524866, guid: 21f4c820fc77e9f4ebb8affd1ebbf8a6, type: 3}
+  resourceRank: 0
+  resourceValue: 0
+  partDataSO: {fileID: 11400000, guid: a38ae90c251ea0347aa85657db111be2, type: 2}
