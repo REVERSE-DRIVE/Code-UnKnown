@@ -32,11 +32,9 @@ namespace EnemyManage
         [SerializeField] internal AVGHealingObject[] _healingObjects;
 
         //[SerializeField] private int _healMultiply = 3;
-        [Header("Blue State Setting")] [SerializeField]
-        internal float _attacktime = 10f;
-
+        [Header("Blue State Setting")]
         [SerializeField] internal float _spinAttackRadius;
-        [SerializeField] internal float _spinAttackDamage;
+        [SerializeField] internal int _spinAttackDamage;
         [SerializeField] internal LayerMask _spinAttackTargetLayer;
         [SerializeField] internal float _attackDuration;
         [SerializeField] internal int _stunNeedHitCount = 3;
