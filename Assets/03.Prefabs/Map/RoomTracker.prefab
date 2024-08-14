@@ -52,5 +52,5 @@ MonoBehaviour:
     width: 20
     height: 20
     isRandom: 0
-  junkPrefab: {fileID: 3397693732936793602, guid: e3a8490442d4c61468443acb6fa22772, type: 3}
+  junkPrefab: {fileID: 3428563939568420150, guid: e3a8490442d4c61468443acb6fa22772, type: 3}
   holePrefab: {fileID: 4586385090210889974, guid: 62f96fcc5c97fb36abb7ecea12685bd8, type: 3}

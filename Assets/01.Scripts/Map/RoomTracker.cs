@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RoomTracker : RoomBase
 {
-    [SerializeField] GameObject junkPrefab;
+    [SerializeField] JunkFileObject junkPrefab;
     [SerializeField] HoleObject holePrefab;
+
+    List<HoleObject> holes;
 
     bool isClear = false;
 
@@ -27,12 +30,18 @@ public class RoomTracker : RoomBase
         foreach (var item in junkDir)
         {
             var entity = Instantiate(junkPrefab, centerPos + (Vector3)item * spacing, Quaternion.identity);
+            entity.RestoreHealth(99999);
+            entity.GetComponent<Rigidbody2D>().mass = 3;
         }
+
+        holes = new();
 
         HoleSpawn(MinPos, new Vector2(1, 1), MapGenerator.Direction.Bottom); // 왼쪽 아래
         HoleSpawn(new Vector2Int(MinPos.x, MaxPos.y + 1), new Vector2(1, -1), MapGenerator.Direction.Top); // 왼쪽 위
         HoleSpawn(MaxPos + Vector2Int.one, new Vector2(-1, -1), MapGenerator.Direction.Top); // 오른쪽 위
         HoleSpawn(new Vector2Int(MaxPos.x + 1, MinPos.y), new Vector2(-1, 1), MapGenerator.Direction.Bottom); // 오른쪽 아래
+
+        holes.ForEach(v => v.InEvent += HoleClear);
     }
 
     void HoleSpawn(Vector2Int pos, Vector2 spacing, MapGenerator.Direction dir) {
@@ -51,7 +60,17 @@ public class RoomTracker : RoomBase
                 break;
         }
 
-        Instantiate(holePrefab, coords, Quaternion.Euler(0, 0, deg));
+        var hole = Instantiate(holePrefab, coords, Quaternion.Euler(0, 0, deg));
+        holes.Add(hole);
+    }
+
+    void HoleClear(HoleObject hole) {
+        // 끝났는지 확인
+        if (isClear || !holes.All(v => v.GetInEntity() != null)) return;
+
+        // 끝남
+        isClear = true;
+        SetDoor(false);
     }
 
     public override void RoomEnter()
