@@ -8,7 +8,7 @@ public class WeaponItem : Item
     public override void SetItem(ItemSO itemSO)
     {
         base.SetItem(itemSO);
-        _weaponInfoSO = itemSO.weaponInfoSO;
+        //_weaponInfoSO = itemSO.weaponInfoSO;
     }
 
     public override void Interact(InteractData data)

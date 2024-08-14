@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyStat
   m_EditorClassIdentifier: 
   damage:
-    _baseValue: 10
+    _baseValue: 20
     modifiers: 
     isPercent: 0
   maxHealth:
