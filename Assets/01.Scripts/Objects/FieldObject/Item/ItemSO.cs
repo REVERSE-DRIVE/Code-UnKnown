@@ -1,4 +1,5 @@
 ﻿using System;
+using PlayerPartsManage;
 using UnityEngine;
 using WeaponManage;
 
@@ -13,20 +14,19 @@ namespace ItemManage
         public Sprite itemIcon;
         public ResourceRank resourceRank;
         public int resourceValue;
-        public WeaponInfoSO weaponInfoSO;
+        public PlayerPartDataSO partDataSO;
 
         private void OnValidate()
         {
-            if (itemType == ItemType.Weapon)
+            if (itemType == ItemType.Part)
             {
-                if (weaponInfoSO == null)
+                if (partDataSO == null)
                 {
-                    Debug.LogWarning("[WeaponSO is Null] Insert WeaponSO");
+                    Debug.LogWarning("[PartSO is Null] Insert PartSO");
                     return;
                 }
-                id = weaponInfoSO.id;
-                itemName = weaponInfoSO.weaponName;
-                
+                id = partDataSO.id;
+                itemName = partDataSO.partName;
             }
         }
     }
