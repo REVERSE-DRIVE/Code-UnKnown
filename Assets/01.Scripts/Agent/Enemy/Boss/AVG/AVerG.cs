@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EnemyManage
 {
-    public class AVerG : Boss
+    public class AVerG : Boss, IStrongDamageable
     {
         public EnemyStateMachine<AVGStateEnum> StateMachine { get; private set; }
 

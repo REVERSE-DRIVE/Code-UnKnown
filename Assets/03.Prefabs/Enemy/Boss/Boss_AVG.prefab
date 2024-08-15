@@ -25060,7 +25060,7 @@ MonoBehaviour:
   attackCooldown: 0
   lastAttackTime: 0
   targetTrm: {fileID: 0}
-  _randomPickState: 04000000
+  _randomPickState: 04000000020000000300000005000000
   _idleWaitingTime: 5
   _stunDuration: 10
   _chargeEnergy: 20

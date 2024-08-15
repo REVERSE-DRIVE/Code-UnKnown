@@ -121,9 +121,16 @@ namespace EnemyManage
                 }
             }
         }
-        
-        
 
-       
+
+        public override void CustomTrigger()
+        {
+            _strongHitCount++;
+            if (_strongHitCount > _bossAVGBase._stunNeedHitCount)
+            {
+                _stateMachine.ChangeState(AVGStateEnum.Stun);
+            }
+
+        }
     }
 }
