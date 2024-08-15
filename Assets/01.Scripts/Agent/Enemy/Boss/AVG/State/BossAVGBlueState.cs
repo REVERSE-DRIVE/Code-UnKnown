@@ -45,7 +45,7 @@ namespace EnemyManage
             _damage = _bossAVGBase._spinAttackDamage;
             _stateDuration = _bossAVGBase._attackDuration;
             _bossTrm = _bossAVGBase.transform;
-
+            _strongHitCount = 0;
             _stateCoroutine = _bossAVGBase.StartCoroutine(StateCoroutine());
         }
 

@@ -75,6 +75,10 @@ public class JunkFileObject : InteractObject, IDamageable
         if (!_isActive) return;
         if(other.transform.TryGetComponent(out Health health))
             HandleCollisionEvent(health);
+        if (other.transform.TryGetComponent(out IStrongDamageable strongHit))
+        {
+            strongHit.TakeStrongDamage(_damage);
+        }
         
         if (!_collisionDestroy) return;
 

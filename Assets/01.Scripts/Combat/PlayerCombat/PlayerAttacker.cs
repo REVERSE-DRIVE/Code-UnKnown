@@ -157,7 +157,7 @@ public class PlayerAttacker : MonoBehaviour
         _attackEffect.Play(boundDir.normalized);
         EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
         effect.Initialize(_currentTargetTrm.position);
-        _currentTarget.TakeDamage(CalcDamage());
+        ApplyDamage();
         yield return new WaitForSeconds(0.2f);
         _attackEffect.SetTrailActive(true);
         _attackEffect.SetTargetAttack(false);
@@ -174,6 +174,18 @@ public class PlayerAttacker : MonoBehaviour
     {
         OnAttackEvent?.Invoke();
         CountCombo();
+    }
+
+    private void ApplyDamage()
+    {
+        if (_currentTargetTrm.TryGetComponent(out IStrongDamageable strongHit))
+        {
+            strongHit.TakeStrongDamage(10);
+        }
+        int damage = CalcDamage();
+        
+        _currentTarget.TakeDamage(damage);
+
     }
 
     private int CalcDamage()
