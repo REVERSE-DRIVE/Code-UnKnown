@@ -82,7 +82,7 @@ public class RoomLaser : RoomBase
     
         // 확정
         suppressor.Init(lasers);
-        suppressor.OnClear += OnClear;
+        suppressor.OnClear += AllClear;
     }
 
     Vector3 GetRandomCoords() {
@@ -120,28 +120,35 @@ public class RoomLaser : RoomBase
         player.position = MapManager.Instance.GetWorldPosByCell(doorPos);
 
         SetDoor(true);
-        StartCoroutine(TimeHandler());
+        TimerManager.Instance.ShowTimer(clearTime);
+        TimerManager.Instance.OnFinish += OnTimeEnd;
     }
 
-    IEnumerator TimeHandler() {
-        while (--timer > 0) {
-            yield return new WaitForSeconds(1);
-            if (timer < 0) yield break;
-        }
+    void OnTimeEnd() {
+        OnClear();
 
         // 의뢰 완성도 감소
         // ...
     }
 
-    void OnRedLaserDestroy() {
+    void OnRedLaserDestroy() { // 레이저 뿌셔서 끝남
         if (isClear) return;
 
+        TimerManager.Instance.CancelTimer();
+        OnClear();
+
         // 의뢰 완성도 감소
         // ...
+    }
+
+    void AllClear() {
+        if (isClear) return;
+        
+        TimerManager.Instance.CancelTimer();
+        OnClear();
     }
 
     void OnClear() {
-        timer = -1;
         isClear = true;
         SetDoor(false);
     }
