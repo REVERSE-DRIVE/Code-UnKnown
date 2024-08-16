@@ -9,6 +9,7 @@ namespace EnemyManage
         private float _currentStateTime = 0;
         private float _stateDuration;
         private int _currentHealth;
+        private int _currentCoreDestroyCount;
         
         public BossAVGGreenState(Enemy enemyBase, EnemyStateMachine<AVGStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
         {
