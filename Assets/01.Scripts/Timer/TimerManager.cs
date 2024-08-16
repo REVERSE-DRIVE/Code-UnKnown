@@ -85,6 +85,8 @@ public class TimerManager : MonoSingleton<TimerManager>
 
         StopCoroutine(process);
         process = null;
+        OnChangedTime = null;
+        OnFinish = null;
         
         seq?.Kill();
 

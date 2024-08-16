@@ -7,6 +7,7 @@ public class RoomTracker : RoomBase
 {
     [SerializeField] JunkFileObject junkPrefab;
     [SerializeField] HoleObject holePrefab;
+    [SerializeField] int clearTime = 60;
 
     List<HoleObject> holes;
 
@@ -71,6 +72,7 @@ public class RoomTracker : RoomBase
         // 끝남
         isClear = true;
         SetDoor(false);
+        TimerManager.Instance.CancelTimer();
     }
 
     public override void RoomEnter()
@@ -88,5 +90,18 @@ public class RoomTracker : RoomBase
         player.position = MapManager.Instance.GetWorldPosByCell(doorPos);
 
         SetDoor(true);
+
+        TimerManager.Instance.ShowTimer(clearTime);
+        TimerManager.Instance.OnFinish += OnTimeEnd;
+    }
+
+    void OnTimeEnd() { // 의뢰 실패
+        isClear = true;
+        SetDoor(false);
+
+        holes.ForEach(v => v.InEvent -= HoleClear);
+        
+        //////// 의뢰 완성도 감소
+        // ...
     }
 }
