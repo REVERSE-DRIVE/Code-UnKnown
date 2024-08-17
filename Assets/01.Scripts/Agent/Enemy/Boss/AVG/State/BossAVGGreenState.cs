@@ -21,6 +21,7 @@ namespace EnemyManage
             base.Enter();
             _currentTime = 0;
             _currentStateTime = 0;
+            _currentCoreDestroyCount = 0;
             _stateDuration = _bossAVGBase._greenStateDuration;
 
             _currentHealth = _bossAVGBase.HealthCompo.CurrentHealth;
@@ -31,7 +32,7 @@ namespace EnemyManage
         {
             for (int i = 0; i < _bossAVGBase._healingObjects.Length; i++)
             {
-                _bossAVGBase._healingObjects[i].OnCore();
+                _bossAVGBase._healingObjects[i].OnCore(_bossAVGBase);
             }
         }
 
@@ -90,6 +91,15 @@ namespace EnemyManage
         {
             
         }
-        
+
+        public override void CustomTrigger()
+        {
+            base.CustomTrigger();
+            _currentCoreDestroyCount++;
+            if (_currentCoreDestroyCount >= 4)
+            {
+                _bossAVGBase.ForceStun();
+            }
+        }
     }
 }
