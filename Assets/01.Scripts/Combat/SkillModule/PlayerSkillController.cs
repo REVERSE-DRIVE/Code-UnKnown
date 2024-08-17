@@ -32,7 +32,6 @@ namespace CombatSkillManage
             {
                 HandleCooling();
             }
-                
             
             Refresh();
         }

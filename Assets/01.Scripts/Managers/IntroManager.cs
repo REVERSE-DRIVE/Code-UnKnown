@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IntroManager : MonoBehaviour
 {
@@ -23,6 +22,8 @@ public class IntroManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         _warningText.enabled = false;
         _fadeInOut.Fade(0.5f, 0f);
-        _logoEffect.LogoEffectStart();
+        yield return _logoEffect.LogoEffectStart();
+        SceneManager.LoadScene("TitleScene");
+
     }
 }

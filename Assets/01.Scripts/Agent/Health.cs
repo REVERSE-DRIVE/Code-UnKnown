@@ -1,6 +1,4 @@
-﻿using System;
-using ObjectPooling;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public delegate void OnValueChangedEvent(int prevValue, int newValue, int max);
@@ -28,6 +26,7 @@ public class Health : MonoBehaviour, IDamageable, IHealable
     public void TakeDamage(int amount)
     {
         if (_owner.Stat.isResist) return;
+        amount = Mathf.Clamp(amount - _owner.Stat.defence.GetValue(), 0, 500);
         _currentHealth -= amount;
         CheckDie();
         HandleHealthChange(-amount);
@@ -36,6 +35,10 @@ public class Health : MonoBehaviour, IDamageable, IHealable
     public void RestoreHealth(int amount)
     {
         _currentHealth += amount;
+        if (_currentHealth > maxHealth)
+        {
+            _currentHealth = maxHealth;
+        }
         CheckDie();
         HandleHealthChange(amount);
     }

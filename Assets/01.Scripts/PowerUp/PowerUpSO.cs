@@ -5,7 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "SO/Items/PowerUp/Data")]
 public class PowerUpSO : ScriptableObject
 {
+    public int id;
     public string code;
+    public int maxCollect;
     public PowerUpRank powerUpRank;
     public PlayerSkill shouldBeUnlock;
     public string title;
@@ -21,6 +23,9 @@ public class PowerUpSO : ScriptableObject
             Skill skill = SkillManager.Instance.GetSkill(shouldBeUnlock);
             if (skill.skillEnabled == false) return false;
         }
+
+        if (PowerUpManager.Instance.Find(id) >= maxCollect)
+            return false;
 
         if (effectList.Any(e => e.CanUpgradeEffect() == false)) 
             return false;

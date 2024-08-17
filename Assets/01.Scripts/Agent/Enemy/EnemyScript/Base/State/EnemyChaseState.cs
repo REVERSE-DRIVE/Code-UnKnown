@@ -19,7 +19,7 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
     {
         base.Enter();
         _chaseCoroutine = _enemyBase.StartCoroutine(ChaseRoutine());
-        if (_chaseCoroutine == null) Debug.LogWarning("Coroutine is null");
+        if (_chaseCoroutine == null) Debug.Log("ChaseCoroutine is null");
     }
 
     public override void UpdateState()
@@ -64,8 +64,15 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
         }
         else
         {
-            _enemyBase.StartCoroutine(ChaseRoutine());
+            _chaseCoroutine = _enemyBase.StartCoroutine(ChaseRoutine());
         }
+    }
+    
+    public override void Exit()
+    {
+        if (_chaseCoroutine != null)
+            _enemyBase.StopCoroutine(_chaseCoroutine);
+        base.Exit();
     }
     
     protected virtual IEnumerator ChaseRoutine()

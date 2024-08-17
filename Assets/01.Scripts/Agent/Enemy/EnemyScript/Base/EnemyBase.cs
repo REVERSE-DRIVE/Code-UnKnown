@@ -6,14 +6,25 @@ using UnityEngine;
 
 public class EnemyBase : Enemy, IPoolable
 {
+    public EnemyStateMachine<EnemyStateEnum> StateMachine { get; protected set; }
+    #region Pooling Setting
     [field:SerializeField] public PoolingType type { get; set; }
+    public GameObject ObjectPrefab => gameObject;
+    #endregion
+    
+    #region Attack Setting
+    [Header("Attack Setting")]
     [SerializeField] private Material _hitMaterial;
     private Material _defaultMaterial;
-    public GameObject ObjectPrefab => gameObject;
-    public EnemyStateMachine<EnemyStateEnum> StateMachine { get; protected set; }
-    private bool isInitEnd;
+    private Coroutine _faintCoroutine;
     private bool isHit;
+    public bool IsFaint { get; private set; }
+    #endregion
+    
+    #region Anothor Setting
+    private bool isInitEnd;
     [field:SerializeField] public bool IsElete { get; protected set; }
+    #endregion
 
     protected override void Awake()
     {
@@ -50,6 +61,9 @@ public class EnemyBase : Enemy, IPoolable
         StateMachine.CurrentState.AnimationTrigger();
     }
 
+    /// <summary>
+    /// Chang To Dead State
+    /// </summary>
     public override void SetDead()
     {
         base.SetDead();
@@ -58,6 +72,9 @@ public class EnemyBase : Enemy, IPoolable
         StateMachine.ChangeState(EnemyStateEnum.Dead);
     }
     
+    /// <summary>
+    /// Change Material When Hit
+    /// </summary>
     public void SetHitMaterial()
     {
         if (isDead) return;
@@ -77,19 +94,46 @@ public class EnemyBase : Enemy, IPoolable
             _spriteRenderer.material = _defaultMaterial;
         }
         isHit = false;
+        
+        if (_spriteRenderer.material == _hitMaterial)
+        {
+            _spriteRenderer.material = _defaultMaterial;
+        }
     }
     
+    /// <summary>
+    /// Change Faint State When Hit
+    /// </summary>
+    /// <param name="duration">Faint duration</param>
     public void OnFaint(float duration)
     {
-        StartCoroutine(FaintCoroutine(duration));
+        if (IsElete) return;
+        Debug.Log("Faint");
+        _faintCoroutine = StartCoroutine(FaintCoroutine(duration));
     }
 
     private IEnumerator FaintCoroutine(float duration)
     {
+        Debug.Log("FaintCoroutine");
+        if (IsFaint) yield break;
+        if (_faintCoroutine != null)
+        {
+            StopCoroutine(_faintCoroutine);
+        }
         StateMachine.ChangeState(EnemyStateEnum.Idle);
+        IsFaint = true;
         MovementCompo.StopImmediately();
-        yield return new WaitForSeconds(duration);
+        for (int i = 0; i < 3; i++)
+        {
+            RigidCompo.AddForce(Vector2.right * 5, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(0.1f);
+            RigidCompo.AddForce(Vector2.left * 5, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return new WaitForSeconds(duration - 0.6f);
         StateMachine.ChangeState(EnemyStateEnum.Chase);
+        IsFaint = false;
+        _faintCoroutine = null;
     }
 
     public void ResetItem()

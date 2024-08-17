@@ -14,12 +14,10 @@ namespace ItemManage
         [field:SerializeField] public ItemSO ItemSO { get; private set; }
         [SerializeField] private TextMeshPro _itemNameText;
         [SerializeField] private ItemType _itemType;
-        [SerializeField] private Material _activeMaterial;
         public GameObject ObjectPrefab => gameObject;
         
         protected bool _isInteracted;
         protected bool _isSpawnig;
-        private readonly int _activeMaterialViewOffset = Shader.PropertyToID("_ViewOffset");
 
         private void Awake()
         {
@@ -29,7 +27,8 @@ namespace ItemManage
         public virtual void SetItem(ItemSO itemSO)
         {
             ItemSO = itemSO;
-            _itemNameText.text = ItemSO.itemName;
+            if (_itemNameText != null)
+                _itemNameText.text = ItemSO.itemName;
             _visualRenderer.sprite = ItemSO.itemIcon;
         }
 
@@ -64,7 +63,6 @@ namespace ItemManage
 
         protected IEnumerator InteractCoroutine()
         {
-            ChangeActiveMaterial(1.1f, 0f, 0.5f);
             yield return new WaitForSeconds(0.5f);
             PoolingManager.Instance.Push(this);
         }
@@ -76,19 +74,12 @@ namespace ItemManage
             isDetected = false;
             _isInteracted = false;
             ItemNameTextActive(false);
-            ChangeActiveMaterial(0f, 1.1f, 0.5f, () => _isSpawnig = false);
         }
 
         private void ItemNameTextActive(bool isActive)
         {
-            _itemNameText.gameObject.SetActive(isActive);
-        }
-
-        private void ChangeActiveMaterial(float firstViewOffsetValue, float changeViewOffsetValue, float duration, TweenCallback onCompleteCallback = null)
-        {
-            _visualRenderer.material = _activeMaterial;
-            _visualRenderer.material.SetFloat(_activeMaterialViewOffset, firstViewOffsetValue);
-            _visualRenderer.material.DOFloat(changeViewOffsetValue, _activeMaterialViewOffset, duration).OnComplete(onCompleteCallback);
+            if (_itemNameText != null)
+                _itemNameText.gameObject.SetActive(isActive);
         }
     }
 }

@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using ObjectManage;
+using ObjectPooling;
 using UnityEngine;
 
 public class MapManager : MonoSingleton<MapManager>
 {
     [field: SerializeField] public MapGenerator Generator { get; private set; }
+    [field: SerializeField] public MapTearEffect TearEffect { get; private set; }
     public MapTileManager TileManager { get; private set; }
 
     Dictionary<Vector2Int, RoomBase> map = new();
@@ -16,13 +19,25 @@ public class MapManager : MonoSingleton<MapManager>
 
     ///////////////////////////////// TEST
     private void Start() {
-        Generate();
+        //Generate();
         
         // 만든 후 준비 방으로 플레이어 이동
-        RoomBase room = GetRoomByCoords(Vector2Int.zero);
-        Vector3 centerPos = room.GetCenterCoords();
+        // RoomBase room = GetRoomByCoords(Vector2Int.zero);
+        // Vector3 centerPos = room.GetCenterCoords();
+        //
+        // PlayerManager.Instance.player.transform.position = centerPos;
+        // Generator.BossGenerator.CreateBoss(GetRoomByCoords(Vector2Int.zero));
 
-        PlayerManager.Instance.player.transform.position = centerPos;
+        // 방 찢기기 테스트
+        // TearEffect.TearMap(GetRoomByCoords(Vector2Int.zero));
+
+        // var enumerator = map.GetEnumerator();
+        // enumerator.MoveNext();
+        // enumerator.MoveNext();
+        // enumerator.MoveNext();
+        // enumerator.MoveNext();
+
+        // TearEffect.TearMap(enumerator.Current.Value);
     }
     ///////////////////////////////// TEST END
 

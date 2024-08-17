@@ -2,7 +2,7 @@
 
 namespace ObjectManage
 {
-    public class DirectionVFXObject : EffectObject
+    public class DirectionVFXObject : ParticleVFXObject
     {
         private ActionData _actionData;
         

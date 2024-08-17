@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Decoy
+  m_Controller: {fileID: 9100000, guid: 3abd3b23fb856d046b791ca3e580de8e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 71bf9da385bd36a439b6b6d6a3c34ecc, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0202512118ddd5d4ead3dc2614008198, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 23ebd87a51ed94a489351d2f8fc6151c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ecec339690b2e7b47b0ebd1b4983ec6f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 237c4e8d5ddf28b40a3102cd3d298d83, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5f727e3175b62364cb428456637c0d86, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 753effc0ba230e8478bc3a8e2756112b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7a9cd14e6a459b948bbeebaa0d0879dc, type: 2}

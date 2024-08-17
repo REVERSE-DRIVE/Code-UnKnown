@@ -68,6 +68,26 @@ public class RoomEnemy : RoomBase
         process = false;
         
         SetDoor(false);
+    
+        // 보스 등장?
+        BossRoomSO boss = MapManager.Instance.Generator.GetOption().BossOption;
+        if (boss != null) {
+            bool allClear = true;
+            foreach (var item in MapManager.Instance.GetMapIterator())
+            {
+                RoomEnemy room = item.Value as RoomEnemy;
+                if (room && !room.isClear) {
+                    allClear = false;
+                    break;
+                }
+            }
+
+            // 모두 클리어
+            if (allClear) {
+                MapManager.Instance.Generator.BossGenerator.CreateBoss(this);
+                return;
+            }
+        }
 
         // 보상
         foreach (var item in randomData)

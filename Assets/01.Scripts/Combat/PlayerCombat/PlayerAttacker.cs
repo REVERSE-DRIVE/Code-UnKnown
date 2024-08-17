@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class PlayerAttacker : MonoBehaviour
 {
-    public Action OnAttackEvent;
+    public event Action OnAttackEvent;
     
     [Header("Attack Setting")]
     [SerializeField] private float _detectDistance = 5.0f;  // 레이의 거리
@@ -32,6 +32,7 @@ public class PlayerAttacker : MonoBehaviour
     private Vector2 _direction;
     private Vector2 _origin;
     private float _currentTime = 0;
+    private int immediateDef;
     
     private void Awake()
     {
@@ -104,10 +105,11 @@ public class PlayerAttacker : MonoBehaviour
                 continue;
             }
 
-            if(hit.transform.TryGetComponent(out IDamageable target))
+            Transform targetTrm = hit.collider.transform;
+            if(targetTrm.TryGetComponent(out IDamageable target))
             {
                 isNoTarget = false;
-                _currentTargetTrm = hit.transform;
+                _currentTargetTrm = targetTrm;
                 _currentTarget = target;
                 HandleTargeted();
                 break;
@@ -143,7 +145,9 @@ public class PlayerAttacker : MonoBehaviour
     private IEnumerator AttackCoroutine(Vector2 boundDir)
     {
         HandleAttackJudge();
-        _player.Stat.isResist = true;
+        immediateDef = _player.Stat.defence.GetValue() * 10;
+        _player.Stat.defence.AddModifier(immediateDef);
+        //_player.Stat.isResist = true;
         float duration = Mathf.Clamp01(1.5f - _player.additionalStat.dashSpeed.GetValue() * 0.3f) * boundDir.magnitude / 15;
         _attackEffect.SetTargetAttack(true);
 
@@ -160,7 +164,8 @@ public class PlayerAttacker : MonoBehaviour
         _currentTime = 0;
         _attackEffect.SetTrailActive(false);
         _isAttacking = false;
-        _player.Stat.isResist = false;
+        _player.Stat.defence.RemoveModifier(immediateDef);
+        //_player.Stat.isResist = false;
     }
     public void HandleAttackJudge()
     {

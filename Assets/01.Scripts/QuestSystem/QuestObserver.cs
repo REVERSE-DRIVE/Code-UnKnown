@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using ItemManage;
 using UnityEngine;
 
@@ -8,14 +8,13 @@ namespace QuestManage
     {
         public QuestData[] currentQuestDatas;
 
-
         private void Awake()
         {
-            
+            DontDestroyOnLoad(this);
         }
 
         [ContextMenu("Apply")]
-        private void Apply()
+        private void ApplyAllQuest()
         {
             currentQuestDatas = QuestManager.Instance.AcceptQuestDatas.ToArray();
         }

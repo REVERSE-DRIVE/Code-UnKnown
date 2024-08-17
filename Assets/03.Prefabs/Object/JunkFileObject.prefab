@@ -5157,7 +5157,6 @@ GameObject:
   - component: {fileID: 5253078611119738763}
   - component: {fileID: 1545089972104653755}
   - component: {fileID: 5202393987061957022}
-  - component: {fileID: 1406208675944392623}
   m_Layer: 0
   m_Name: ShardVFX
   m_TagString: Untagged
@@ -10033,23 +10032,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1406208675944392623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4804462088323463962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88755947f481491295699ab2d2866ffd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _particles:
-  - {fileID: 1545089972104653755}
-  _playOnSpawn: 1
-  <type>k__BackingField: 0
-  _lifeTime: 0
 --- !u!1 &7279271077480944830
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using DG.Tweening.Core.Easing;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 namespace EnemyManage
@@ -12,7 +13,7 @@ namespace EnemyManage
         private bool isChargeOver;
         private bool isPlayedSound;
         private CameraManager _camManagerCashing;
-        
+        private Coroutine _coroutine;
         public BossAVGRedState(Enemy enemyBase, EnemyStateMachine<AVGStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
         {
         }
@@ -78,7 +79,7 @@ namespace EnemyManage
             _camManagerCashing.ShakeOff();
             _camManagerCashing.Shake(40f, 1);
             
-            _bossAVGBase.StartCoroutine(BurstOverCoroutine());
+            _coroutine = _bossAVGBase.StartCoroutine(BurstOverCoroutine());
             
         }
 
@@ -91,6 +92,18 @@ namespace EnemyManage
 
             _bossAVGBase._structureObject.DefenseAVGBurst(_bossAVGBase._burstDamage);
 
+        }
+
+        public override void CustomTrigger()
+        {
+            if(_coroutine != null) _bossAVGBase.StopCoroutine(_coroutine);
+            _bossAVGBase.AVGVFXCompo.StopCharge();
+            _bossAVGBase._structureObject.OffObject();
+            _camManagerCashing.ShakeOff();
+            _chargingLevel = 0;
+            isChargeOver = true;
+            _bossAVGBase.ForceStun();
+            //_stateMachine.ChangeState(AVGStateEnum.Stun, true); 
         }
     }
 }

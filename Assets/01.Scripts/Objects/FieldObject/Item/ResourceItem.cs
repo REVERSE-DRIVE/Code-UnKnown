@@ -38,6 +38,7 @@ public class ResourceItem : Item
             Vector3 targetPos = PlayerManager.Instance.player.transform.position;
             transform.DOJump(targetPos + new Vector3(0, 1, 0), 1, 1, 0.5f).OnComplete(() =>
             {
+                ResourceManager.Instance.AddResource(ItemSO.resourceValue);
                 LevelManager.Instance.ApplyExp(ItemSO.resourceValue);
                 PoolingManager.Instance.Push(this);
             });

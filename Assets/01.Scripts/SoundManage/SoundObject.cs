@@ -7,7 +7,7 @@ namespace SoundManage
 {
     public class SoundObject : MonoBehaviour, IPoolable
     {
-        public PoolingType type { get; set; }
+        [field:SerializeField] public PoolingType type { get; set; }
         public GameObject ObjectPrefab => gameObject;
         
         

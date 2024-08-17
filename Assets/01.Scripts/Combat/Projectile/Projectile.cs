@@ -42,15 +42,21 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
     [ContextMenu("DebugShootLeft")]
     private void DebugShoot()
     {
-        Shoot(Vector2.left);
+        Shoot(new Vector2(10, 10));
+    }
+
+    public void Initialize(Vector2 position)
+    {
+        transform.position = position;
     }
     
-    public void Initialize(int damage, float speed, float lifeTime)
+    public void Initialize(Vector2 position, int damage, float speed, float lifeTime, bool isEnemy = true)
     {
+        transform.position = position;
         this._damage = damage;
         this._speed = speed;
-        this._lifeTime = lifeTime; 
-        
+        this._lifeTime = lifeTime;
+        this._isEnemy = isEnemy;
     }
 
     public void Shoot(Vector2 direction)

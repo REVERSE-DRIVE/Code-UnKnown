@@ -1,4 +1,6 @@
-﻿using EnemyManage;
+﻿using System;
+using EnemyManage;
+using UnityEngine;
 
 public class InducedEleteEnemy : EnemyBase
 {
@@ -10,5 +12,12 @@ public class InducedEleteEnemy : EnemyBase
         StateMachine.AddState(EnemyStateEnum.Attack, new InducedEleteAttackState(this, StateMachine, "Attack"));
         StateMachine.AddState(EnemyStateEnum.Skill, new InducedEleteSkillState(this, StateMachine, "Skill"));
         StateMachine.AddState(EnemyStateEnum.Dead, new EnemyDeadState(this, StateMachine, "Dead"));
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, 3f);
+        Gizmos.color = Color.white;
     }
 }

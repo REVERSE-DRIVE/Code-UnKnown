@@ -24,7 +24,7 @@ public class EnemyDeadState : EnemyState<EnemyStateEnum>
         }
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         Debug.Log("Enemy Dead");
         PoolingManager.Instance.Push(_enemyBase as EnemyBase);
