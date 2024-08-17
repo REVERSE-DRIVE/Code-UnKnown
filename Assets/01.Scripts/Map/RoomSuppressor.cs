@@ -4,7 +4,7 @@ using System.Linq;
 using ObjectPooling;
 using UnityEngine;
 
-public class RoomSuppressor : RoomBase, IRoomObstacle
+public class RoomSuppressor : RoomBase, IRoomObstacle, IRoomCleable
 {
     [SerializeField] ZipSuppressorObject zipObject;
 
@@ -79,8 +79,7 @@ public class RoomSuppressor : RoomBase, IRoomObstacle
         }
 
         // 여기까지 왔다면 모든 적을 처치하지 못함
-        isClear = true;
-        SetDoor(false);
+        OnClear();
 
         Destroy(currentZip.gameObject);
         enemys.ToList().ForEach(e => {
@@ -100,7 +99,17 @@ public class RoomSuppressor : RoomBase, IRoomObstacle
             currentZip.Open();
         }
 
+        OnClear();
+    }
+
+    void OnClear() {
         isClear = true;
         SetDoor(false);
+
+        MapManager.Instance.CheckAllClear();
     }
+
+    public bool IsRoomClear() => isClear;
+
+    public void ClearRoomObjects() {}
 }
