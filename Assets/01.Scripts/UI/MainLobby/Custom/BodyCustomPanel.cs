@@ -23,6 +23,15 @@ public class BodyCustomPanel : WindowUI
     private void SetCustomPart()
     {
         var partManager = PlayerPartManager.Instance;
+        if (partManager.PlayerPartDataList.Count == 0)
+        {
+            for (int i = 0; i < _content.childCount; i++)
+            {
+                Destroy(_content.GetChild(i).gameObject);
+            }
+            _bodyCustomItems.Clear();
+            return;
+        }
         for (int i = 0; i < partManager.PlayerPartDataList.Count; i++)
         {
             if (partManager.PlayerPartDataList[i] is PlayerBodyPartDataSO body)
