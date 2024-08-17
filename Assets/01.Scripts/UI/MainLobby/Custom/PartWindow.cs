@@ -49,6 +49,13 @@ public class PartWindow : MonoBehaviour, IWindowPanel
         slamShopItem.BuyPart();
         Close();
     }
+    
+    public void SellPart()
+    {
+        PlayerPartManager.Instance.RemovePartData(_customItem.PartData);
+        Destroy(_customItem.gameObject);
+        Close();
+    }
 
     public void SetChild(CustomItem customItem)
     {

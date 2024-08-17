@@ -77,6 +77,15 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
             return;
         AddData(partData);
     }
+    
+    public void RemovePartData(PlayerPartDataSO partData)
+    {
+        if (PlayerPartDataList == null)
+            return;
+        if (!PlayerPartDataList.Contains(partData))
+            return;
+        PlayerPartDataList.Remove(partData);
+    }
 
     private void AddData(PlayerPartDataSO partData)
     {
