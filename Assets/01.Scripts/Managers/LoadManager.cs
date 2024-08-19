@@ -1,7 +1,6 @@
-﻿namespace _01.Scripts.Managers
+﻿using UnityEngine;
+
+public class LoadManager : MonoBehaviour
 {
-    public interface LoadManager
-    {
-        
-    }
+    
 }
