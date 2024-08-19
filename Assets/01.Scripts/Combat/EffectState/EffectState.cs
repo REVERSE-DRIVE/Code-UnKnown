@@ -20,8 +20,13 @@ namespace EffectState
         public void Apply(float time)
         {
             if (!isEffectEnabled)
+            {
                 isEffectEnabled = true;
-            duration = time;
+                Enter();
+                duration = time;
+                return;
+            }
+            duration += time;
         }
         
         public void Apply(float time, int level)
@@ -36,7 +41,6 @@ namespace EffectState
         {
             duration -= Time.deltaTime;
             _currentTime += Time.deltaTime;
-            
 
             if (_currentTime >= 1)
             {
@@ -50,5 +54,12 @@ namespace EffectState
         protected abstract void UpdateStateBySecond();
         
         public abstract void Over();
+
+        public void ResetEffect()
+        {
+            duration = 0;
+            isEffectEnabled = false;
+            _currentTime = 0;
+        }
     }
 }
