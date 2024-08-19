@@ -18,4 +18,4 @@ MonoBehaviour:
   description: "\uAE30\uBCF8 \uD30C\uCE20.\n\uBC14\uC774\uB7EC\uC2A4\uC758 \uAE30\uBCF8
     \uD615\uD0DC."
   partPrefab: {fileID: 7613306053014252633, guid: d9b6b81d817755d4f8c70d3b03758434, type: 3}
-  bodyPartSprite: {fileID: 994925531, guid: 6d5f876691e669a48bc257efb3bea819, type: 3}
+  bodyPartSprite: {fileID: -8421984089244881202, guid: 21f4c820fc77e9f4ebb8affd1ebbf8a6, type: 3}
