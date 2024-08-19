@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomLaser : RoomBase
+public class RoomLaser : RoomBase, IRoomCleable
 {
     [SerializeField] VirusSuppressorObject suppressorPrefab;
     [SerializeField] LaserObject laserPrefab;
@@ -14,9 +14,10 @@ public class RoomLaser : RoomBase
     [SerializeField] int clearTime;
 
     List<LaserObject> lasers;
+    List<JunkFileObject> junks;
+    VirusSuppressorObject suppressor;
     HashSet<Vector2Int> alreadyPos;
     bool isClear = false;
-    int timer;
 
     public override void OnComplete()
     {
@@ -24,10 +25,11 @@ public class RoomLaser : RoomBase
 
         lasers = new();
         alreadyPos = new();
+        junks = new();
 
         // 바이러스 억제기
         Vector3 centerPos = GetCenterCoords();
-        var suppressor = Instantiate(suppressorPrefab, centerPos, Quaternion.identity);
+        suppressor = Instantiate(suppressorPrefab, centerPos, Quaternion.identity);
 
         int spacing = 3;
         Vector2Int centerCell = MapManager.Instance.GetCellByWorldPos(centerPos);
@@ -61,7 +63,8 @@ public class RoomLaser : RoomBase
         // 정크 파일
         for (int i = 0; i < Random.Range(junkMinMax.x, junkMinMax.y + 1); i++)
         {
-            Instantiate(junkFile, GetRandomCoords(), Quaternion.identity);
+            var entity = Instantiate(junkFile, GetRandomCoords(), Quaternion.identity);
+            junks.Add(entity);
         }
 
         // 위치 재정의
@@ -82,7 +85,7 @@ public class RoomLaser : RoomBase
     
         // 확정
         suppressor.Init(lasers);
-        suppressor.OnClear += OnClear;
+        suppressor.OnClear += AllClear;
     }
 
     Vector3 GetRandomCoords() {
@@ -120,29 +123,54 @@ public class RoomLaser : RoomBase
         player.position = MapManager.Instance.GetWorldPosByCell(doorPos);
 
         SetDoor(true);
-        StartCoroutine(TimeHandler());
+        TimerManager.Instance.ShowTimer(clearTime);
+        TimerManager.Instance.OnFinish += OnTimeEnd;
     }
 
-    IEnumerator TimeHandler() {
-        while (--timer > 0) {
-            yield return new WaitForSeconds(1);
-            if (timer < 0) yield break;
-        }
+    void OnTimeEnd() {
+        OnClear();
 
         // 의뢰 완성도 감소
         // ...
     }
 
-    void OnRedLaserDestroy() {
+    void OnRedLaserDestroy() { // 레이저 뿌셔서 끝남
         if (isClear) return;
 
+        TimerManager.Instance.CancelTimer();
+        OnClear();
+
         // 의뢰 완성도 감소
         // ...
+    }
+
+    void AllClear() {
+        if (isClear) return;
+        
+        TimerManager.Instance.CancelTimer();
+        OnClear();
     }
 
     void OnClear() {
-        timer = -1;
         isClear = true;
         SetDoor(false);
+
+        MapManager.Instance.CheckAllClear();
+    }
+
+    public bool IsRoomClear() => isClear;
+
+    public void ClearRoomObjects()
+    {
+        lasers.ForEach(v => {
+            if (v != null)
+                Destroy(v.gameObject);
+        });
+        lasers.Clear();
+
+        junks.ForEach(v => Destroy(v.gameObject));
+        junks.Clear();
+
+        Destroy(suppressor.gameObject);
     }
 }

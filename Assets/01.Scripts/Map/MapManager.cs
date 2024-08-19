@@ -97,4 +97,35 @@ public class MapManager : MonoSingleton<MapManager>
     public void DeleteWall(Vector2Int min, Vector2Int max) {
         Generator.DeleteWall(min, max);
     }
+
+    // 보스가 나올 차례?
+    public bool CheckAllClear() {
+        int existClearRoom = 0;
+        int clearRoom = 0;
+        
+        foreach (var item in map.Values)
+        {
+            if (item is IRoomCleable room)
+            {
+                existClearRoom++;
+
+                if (room.IsRoomClear())
+                    clearRoom++;
+            }
+        }
+
+        ComputerManager.Instance.SetInfect((clearRoom == 0 || existClearRoom == 0) ? 0 : (clearRoom / existClearRoom) * 100);
+        if (existClearRoom == 0 || clearRoom != existClearRoom) return false; // 클리어 할 수 있는 맵이 없음 / 다 클리어가 안됨
+        
+        MapGenerateSO option = Generator.GetOption();
+        if (option.BossOption == null) return false; // 보스 소환할게 없넹
+
+        // 플레이어 위치로 방을 찾음
+        Vector3 playerPos = PlayerManager.Instance.player.transform.position;
+        RoomBase level = FindRoomByCoords(GetCellByWorldPos(playerPos));
+        if (level == null) return false; // 방 위치 어디임???
+
+        Generator.BossGenerator.CreateBoss(level);
+        return true;
+    }
 }

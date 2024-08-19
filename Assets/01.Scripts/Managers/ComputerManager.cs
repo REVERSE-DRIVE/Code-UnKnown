@@ -19,8 +19,15 @@ public class ComputerManager : MonoSingleton<ComputerManager>
     public void Infect(int amount)
     {
         if (amount < 0) return;
+        SetInfect(InfectionLevel + amount);
+    }
+
+    public void SetInfect(int value) {
+        if (value < 0) return;
+        
+        print($"Changed InfectionLevel = {value}");
         int before = InfectionLevel;
-        InfectionLevel += amount;
+        InfectionLevel = value;
         CheckMaxInfection();
         OnInfectionLevelChangedEvent?.Invoke(before, InfectionLevel);
     }

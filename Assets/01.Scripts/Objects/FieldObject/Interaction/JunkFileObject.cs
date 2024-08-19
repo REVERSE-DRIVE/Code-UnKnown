@@ -182,4 +182,6 @@ public class JunkFileObject : InteractObject, IDamageable
     public void EnableActive() {
         _isActive = true;
     }
+    
+    public bool GetActive() => _isActive;
 }
