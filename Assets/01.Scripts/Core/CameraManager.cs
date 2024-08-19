@@ -91,6 +91,12 @@ public class CameraManager : MonoSingleton<CameraManager>
     {
         _virtualCamera.m_Lens.OrthographicSize = cameraDefaultZoom;
     }
+
+    public void ZoomDefault(float duration)
+    {
+        StartCoroutine(ZoomCoroutine(_virtualCamera.m_Lens.OrthographicSize, cameraDefaultZoom, duration));
+    }
+    
     public void ZoomDefault(float before, float duration)
     {
         StartCoroutine(ZoomCoroutine(before, cameraDefaultZoom, duration));
@@ -100,8 +106,11 @@ public class CameraManager : MonoSingleton<CameraManager>
     {
         StartCoroutine(ZoomCoroutine(before, after, duration));
     }
-    
-    
+
+    public void ZoomFromDefault(float targetZoom ,float duration)
+    {
+        StartCoroutine(ZoomCoroutine(cameraDefaultZoom, targetZoom, duration));
+    }
 
     private IEnumerator ZoomCoroutine(float before, float after, float duration)
     {

@@ -7,6 +7,8 @@ namespace EnemyManage
     {
         private float _stateDuration;
         private float _currentTime = 0;
+        private int _selfHitCount = 0;
+        private int _selfHitLimit = 3; // 자해 데미지 한계
         private Transform _rangeTrm;
         private SpriteRenderer _rangeRenderer;
         private Material _rangeMaterial;
@@ -17,7 +19,7 @@ namespace EnemyManage
         private float _attackInterval;
         private LayerMask _playerLayer;
         private int _attackAmount;
-
+        private Coroutine _stateCoroutine;
         private WaitForSeconds waitSec;
         
         public BossAVGYellowState(Enemy enemyBase, EnemyStateMachine<AVGStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
@@ -37,10 +39,10 @@ namespace EnemyManage
             _playerLayer = _bossAVGBase.PlayerLayer;
             _attackAmount = _bossAVGBase._attackAmount;
             _attackInterval = _bossAVGBase._attackInterval;
-
+            _selfHitCount = 0;
             waitSec = new WaitForSeconds(1f);
 
-            _bossAVGBase.StartCoroutine(StateCoroutine());
+            _stateCoroutine = _bossAVGBase.StartCoroutine(StateCoroutine());
         }
 
         
@@ -105,12 +107,28 @@ namespace EnemyManage
             {
                 health.TakeDamage(_bossAVGBase._yellowBurstDamage);
             }
+
+            if (hit.TryGetComponent(out AgentMovement movement))
+            {
+                movement.GetKnockBack((hit.transform.position - _rangeTrm.position).normalized * 40f, 0.1f);
+            }
         }
 
         public override void Exit()
         {
             base.Exit();
-            _bossAVGBase._isResist = false;
+            if(_stateCoroutine != null)
+                _bossAVGBase.StopCoroutine(_stateCoroutine);
+        }
+
+        public override void CustomTrigger()
+        {
+            _selfHitCount++;
+            if (_selfHitCount >= _selfHitLimit)
+            {
+                _stateMachine.ChangeState(AVGStateEnum.Stun);
+            }
+
         }
     }
 }

@@ -275,7 +275,16 @@ public class LaserObject : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if (!other.gameObject.TryGetComponent<JunkFileObject>(out var _)) return;
+        if (!other.gameObject.TryGetComponent<JunkFileObject>(out var junkSys)) return;
+        if (!junkSys.GetActive()) return;
+    
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionStay2D(Collision2D other) {
+        if (!other.gameObject.TryGetComponent<JunkFileObject>(out var junkSys)) return;
+        if (!junkSys.GetActive()) return;
+        
         Destroy(gameObject);
     }
 }

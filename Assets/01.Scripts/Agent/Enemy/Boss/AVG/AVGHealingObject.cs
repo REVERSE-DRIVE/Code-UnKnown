@@ -1,4 +1,5 @@
-﻿using ObjectManage;
+﻿using EnemyManage;
+using ObjectManage;
 using ObjectPooling;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class AVGHealingObject : DestroyableObject
     [SerializeField] private ParticleSystem _generateParticle;
     [SerializeField] private PoolingType _destoryParticle;
     private SpriteRenderer _spriteRenderer;
+    private AVerG _bossBase;
     
     protected void Awake()
     {
@@ -25,9 +27,10 @@ public class AVGHealingObject : DestroyableObject
         effectObject.Play();
     }
 
-    public void OnCore()
+    public void OnCore(AVerG bossBase)
     {
         gameObject.SetActive(true);
+        _bossBase = bossBase;
         _generateParticle.Play();
         SetDefault();
     }
@@ -43,6 +46,7 @@ public class AVGHealingObject : DestroyableObject
     {
         HandleDestroy();
         isActive = false;
+        _bossBase.TakeStrongDamage(100);
         gameObject.SetActive(false);
     }
 }
