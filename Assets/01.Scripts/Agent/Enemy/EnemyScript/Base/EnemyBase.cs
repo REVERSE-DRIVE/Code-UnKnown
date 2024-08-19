@@ -66,10 +66,10 @@ public class EnemyBase : Enemy, IPoolable
     /// </summary>
     public override void SetDead()
     {
-        base.SetDead();
         
         Debug.Log("Enemy Dead");
         StateMachine.ChangeState(EnemyStateEnum.Dead);
+        base.SetDead();
     }
     
     /// <summary>
