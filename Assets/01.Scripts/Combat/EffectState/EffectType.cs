@@ -2,7 +2,7 @@
 {
     public enum EffectType
     {
-        Poison,
+        DataLose,
         Bondage
     }
 }

@@ -7,7 +7,7 @@ namespace EffectState
     public class EffectStateController : MonoBehaviour
     {
         private Agent _owner;
-        private Dictionary<EffectType, EffectState> _effectsDictionary;
+        private Dictionary<EffectType, EffectState> _effectsDictionary = new Dictionary<EffectType, EffectState>();
         
         // 리플렉션을 활용해서 구현하자
         private void Awake()
@@ -17,11 +17,12 @@ namespace EffectState
             foreach (EffectType effectEnum in Enum.GetValues(typeof(EffectType)))
             {
                 string typeName = effectEnum.ToString();
-                Type t = Type.GetType($"EffectState.Effect{typeName}State");
+                Type t = Type.GetType($"EffectState.Effect{typeName}");
 
                 try
                 {
-                    _effectsDictionary.Add(effectEnum, Activator.CreateInstance(t) as EffectState);
+                    EffectState effect = Activator.CreateInstance(t, _owner, false) as EffectState;
+                    _effectsDictionary.Add(effectEnum, effect);
                 }
                 catch (Exception ex)
                 {
