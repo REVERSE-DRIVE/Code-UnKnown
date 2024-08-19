@@ -1517,7 +1517,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2365,7 +2365,7 @@ MonoBehaviour:
   _virtualCamera: {fileID: 899788071}
   hitShakePower: 5
   hitShakeDuration: 0.1
-  cameraDefaultZoom: 6
+  cameraDefaultZoom: 5
 --- !u!4 &422571920
 Transform:
   m_ObjectHideFlags: 0
@@ -5028,7 +5028,7 @@ MonoBehaviour:
   m_Follow: {fileID: 5043262373099526137}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 6
+    OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
