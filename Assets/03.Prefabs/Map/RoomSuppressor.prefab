@@ -54,8 +54,8 @@ MonoBehaviour:
     isRandom: 0
   zipObject: {fileID: 9130539299137874396, guid: d64969e7dfe213b138f9248605209dea, type: 3}
   openDelay: 120
+  spawnInterval: 30
   phaseEnemys:
   - {fileID: 11400000, guid: 31283888a00bab7189c296a44f62248b, type: 2}
-  - {fileID: 11400000, guid: 31283888a00bab7189c296a44f62248b, type: 2}
-  - {fileID: 11400000, guid: 31283888a00bab7189c296a44f62248b, type: 2}
-  spawnInterval: 30
+  - {fileID: 11400000, guid: 10424a170fe11c59abf8fb13e26b492c, type: 2}
+  - {fileID: 11400000, guid: 60ca5bf1991f4582298b265ea963d7c4, type: 2}
