@@ -114,10 +114,16 @@ public class MapTearEffect : MonoBehaviour
             foreach (var item in tearEntitys)
             {
                 bool hasRigid = item.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigid);
-                if (!hasRigid)
+                if (!hasRigid) {
                     rigid = item.AddComponent<Rigidbody2D>();
-                    
+                    rigid.gravityScale = 0f;
+                }
+
+                foreach (var collider in item.GetComponentsInChildren<Collider2D>())
+                    collider.enabled = false; // 충돌 안해~~
                 
+                Vector2 dir = item.transform.position - centerPos;
+                item.AddComponent<TilemapTear>().RegisterThrowTile(dir.normalized, 10);
             }
     }
     
