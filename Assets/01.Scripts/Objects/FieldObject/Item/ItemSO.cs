@@ -25,7 +25,6 @@ namespace ItemManage
                     Debug.LogWarning("[PartSO is Null] Insert PartSO");
                     return;
                 }
-                id = partDataSO.id;
                 itemName = partDataSO.partName;
             }
         }

@@ -35,6 +35,12 @@ public class ZipFileObject : InteractObject
         _boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        ZipFileManager.Instance.SetZipFileSetting(this);
+    }
+
     private void OnEnable()
     {
         OnInteractEvent += HandleInteract;
@@ -82,5 +88,13 @@ public class ZipFileObject : InteractObject
     {
         _visualRenderer.material = _defaultMaterial;
         _dissolveMaterial.SetFloat(DissolveLevel, 1f);
+    }
+    
+    public void SetZip(ItemType dropType, int dropItemId, int minDropAmount, int maxDropAmount)
+    {
+        _dropType = dropType;
+        _dropItemId = dropItemId;
+        _minDropAmount = minDropAmount;
+        _maxDropAmount = maxDropAmount;
     }
 }

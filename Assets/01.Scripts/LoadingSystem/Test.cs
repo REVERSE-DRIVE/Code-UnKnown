@@ -7,10 +7,7 @@ public class Test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            LoadManager.Instance.StartLoad("MainLobbyScene", () =>
-            {
-                Debug.Log("MainLobby Load Complete");
-            });
+            LoadManager.Instance.StartLoad("MainLobbyScene");
         }
     }
 }

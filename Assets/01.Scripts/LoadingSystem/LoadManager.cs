@@ -15,13 +15,13 @@ public class LoadManager : MonoSingleton<LoadManager>
         DontDestroyOnLoad(gameObject);
     }
 
-    public void StartLoad(string sceneName, Action callback = null)
+    public void StartLoad(string sceneName)
     {
         SceneManager.LoadScene("LoadingScene");
-        StartCoroutine(LoadingCoroutine(sceneName, callback));
+        StartCoroutine(LoadingCoroutine(sceneName));
     }
 
-    private IEnumerator LoadingCoroutine(string sceneName, Action callback)
+    private IEnumerator LoadingCoroutine(string sceneName)
     {
         yield return new WaitForSeconds(1f);
         _loadUIManager = FindObjectOfType<LoadUIManager>();
