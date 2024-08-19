@@ -23,7 +23,6 @@ public class PowerUpSO : ScriptableObject
             Skill skill = SkillManager.Instance.GetSkill(shouldBeUnlock);
             if (skill.skillEnabled == false) return false;
         }
-
         if (PowerUpManager.Instance.Find(id) >= maxCollect)
             return false;
 

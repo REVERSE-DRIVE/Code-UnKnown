@@ -72,7 +72,7 @@ namespace EnemyManage
         {
             OffObject();
             _shieldObject.SetActive(true);
-            _boss.TakeStrongDamage(100);
+            _boss.TakeStrongDamage(300);
             _destroyParticle.Play();
         }
 
