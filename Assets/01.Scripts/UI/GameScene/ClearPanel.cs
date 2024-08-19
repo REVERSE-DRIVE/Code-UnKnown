@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,8 +10,11 @@ public class ClearPanel : MonoBehaviour, IWindowPanel
     [SerializeField] private float _defaultYDelta;
     [SerializeField] private float _activeYDeltas;
     [SerializeField] private float _moveDuration;
-    
-    [Header("Coloring Setting")]
+    [SerializeField] private float _panelDisableTerm;
+
+    [Header("Coloring Setting")] 
+    [SerializeField] private Color _targetColor;
+    [SerializeField] private Image _coloringGradientPanel;
     [SerializeField] private Image _coloringBarPanel;
     [SerializeField] private Image _coloringSubPanel;
     [SerializeField] private Image _coloringPanel;
@@ -28,16 +32,19 @@ public class ClearPanel : MonoBehaviour, IWindowPanel
         _canvasGroup = GetComponent<CanvasGroup>();
     }
 
-
+    [ContextMenu("Open")]
     public void Open()
     {
+        SetCanvas(true);
+        SetColorPanels(Color.white);
+
+        _rectTrm.DOAnchorPosY(_activeYDeltas, _moveDuration).OnComplete(() => StartCoroutine(OpenCoroutine()));
         
-        StartCoroutine(OpenCoroutine());
     }
 
     public void Close()
     {
-        throw new System.NotImplementedException();
+        _rectTrm.DOAnchorPosY(_defaultYDelta, _moveDuration);
     }
 
     private IEnumerator OpenCoroutine()
@@ -46,18 +53,29 @@ public class ClearPanel : MonoBehaviour, IWindowPanel
         while (currentTime < _coloringDuration)
         {
             currentTime += Time.deltaTime;
-            SetColorPanels(Color.Lerp(Color.white, Color.red, currentTime / _coloringDuration));
+            SetColorPanels(Color.Lerp(Color.white, _targetColor, currentTime / _coloringDuration));
             yield return null;
         }
 
+        yield return new WaitForSeconds(_panelDisableTerm);
+        _canvasGroup.DOFade(0f, 0.3f).OnComplete(() => SetCanvas(false));
+        Close();   
     }
 
     private void SetColorPanels(Color color)
     {
+        _coloringGradientPanel.color = color;
         _coloringBarPanel.color = color;
         _coloringSubPanel.color = color;
         _coloringPanel.color = color;
 
+    }
+
+    private void SetCanvas(bool value)
+    {
+        _canvasGroup.alpha = value ? 1f : 0;
+        _canvasGroup.interactable = value;
+        _canvasGroup.blocksRaycasts = value;
     }
     
     
