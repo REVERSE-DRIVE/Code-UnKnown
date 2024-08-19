@@ -59,3 +59,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 31283888a00bab7189c296a44f62248b, type: 2}
   - {fileID: 11400000, guid: 10424a170fe11c59abf8fb13e26b492c, type: 2}
   - {fileID: 11400000, guid: 60ca5bf1991f4582298b265ea963d7c4, type: 2}
+  canvasPrefab: {fileID: 6860502508107522455, guid: 415aed9376fc3fb2d9ebe000bc7ccf9c, type: 3}
