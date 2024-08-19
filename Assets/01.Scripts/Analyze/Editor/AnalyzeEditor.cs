@@ -15,17 +15,30 @@ public static class AnalyzeEditor
     private static void OnPlayModeStateChanged(PlayModeStateChange status)
     {
         if (status == PlayModeStateChange.EnteredPlayMode)
-        {
-            AnalyzeSingleton core = GameObject.FindAnyObjectByType<AnalyzeSingleton>();
-            if (core != null) return;
+            CreateCore(false);
+    }
 
-            GameObject entity = new GameObject("[AnalyzeCore]");
-            entity.AddComponent<AnalyzeSingleton>();
-            entity.AddComponent<AnalyzePing>();
-            entity.AddComponent<AnalyzeScene>();
-            entity.AddComponent<AnalyzeErrorDetect>();
-            entity.AddComponent<AnalyzePlayTime>();
-            entity.AddComponent<AnalyzePlayTimeScene>();
+    [MenuItem("Tools/Create Analyze Core")]
+    static void CreateCoreMenuItem() {
+        EditorUtility.SetDirty(CreateCore(true));
+    }
+
+    static GameObject CreateCore(bool autoChange = true) {
+        AnalyzeSingleton core = GameObject.FindAnyObjectByType<AnalyzeSingleton>();
+        if (core != null) {
+            if (!autoChange) return null;
+
+            GameManager.DestroyImmediate(core.gameObject);
+            Debug.Log("[AnalyzeCoreEditor] Changed Core!");
         }
+
+        GameObject entity = new GameObject("[AnalyzeCore]");
+        entity.AddComponent<AnalyzeSingleton>();
+        entity.AddComponent<AnalyzePing>();
+        entity.AddComponent<AnalyzeScene>();
+        entity.AddComponent<AnalyzeErrorDetect>();
+        entity.AddComponent<AnalyzePlayTime>();
+        entity.AddComponent<AnalyzePlayTimeScene>();
+        return entity;
     }
 }
