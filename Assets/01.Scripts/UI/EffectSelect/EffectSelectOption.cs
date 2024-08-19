@@ -11,10 +11,10 @@ public class EffectSelectOption : MonoBehaviour
 
     private void OnValidate()
     {
-        if (PowerUp != null)
-        {
-            UpdateUI();
-        }
+        // if (PowerUp != null)
+        // {
+        //     UpdateUI();
+        // } // 얘때문에 PowerUpManager가 복사되는거였다
     }
 
     private void Awake()

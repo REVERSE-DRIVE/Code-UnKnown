@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6718dbd5f8adafaf496dad67d682a26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundTile: {fileID: 11400000, guid: 182940aa9985bfa4a99d06cc689d7c25, type: 2}
+  groundTile: {fileID: 11400000, guid: 87177c553e013e849a8d8165345adbd6, type: 2}
   defaultDoor: 0
   sizeField:
     min: 0
@@ -54,8 +54,8 @@ MonoBehaviour:
     isRandom: 0
   zipObject: {fileID: 9130539299137874396, guid: d64969e7dfe213b138f9248605209dea, type: 3}
   openDelay: 120
+  spawnInterval: 30
   phaseEnemys:
   - {fileID: 11400000, guid: 31283888a00bab7189c296a44f62248b, type: 2}
   - {fileID: 11400000, guid: 31283888a00bab7189c296a44f62248b, type: 2}
   - {fileID: 11400000, guid: 31283888a00bab7189c296a44f62248b, type: 2}
-  spawnInterval: 30
