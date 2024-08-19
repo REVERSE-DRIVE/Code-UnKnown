@@ -66,7 +66,7 @@ public class ZipFileObject : InteractObject
         {
             position += new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
             ItemDropManager.Instance.DropItem(_dropType, _dropItemId, transform.position, position);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
         }
         yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
