@@ -100,6 +100,8 @@ public class MapManager : MonoSingleton<MapManager>
 
     // 보스가 나올 차례?
     public bool CheckAllClear() {
+        UIManager.Instance.Open(WindowEnum.Clear);
+
         int existClearRoom = 0;
         int clearRoom = 0;
         

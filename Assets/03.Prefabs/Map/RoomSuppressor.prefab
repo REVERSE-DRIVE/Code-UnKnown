@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6718dbd5f8adafaf496dad67d682a26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundTile: {fileID: 11400000, guid: 87177c553e013e849a8d8165345adbd6, type: 2}
+  groundTile: {fileID: 11400000, guid: 182940aa9985bfa4a99d06cc689d7c25, type: 2}
   defaultDoor: 0
   sizeField:
     min: 0
@@ -57,5 +57,6 @@ MonoBehaviour:
   spawnInterval: 30
   phaseEnemys:
   - {fileID: 11400000, guid: 31283888a00bab7189c296a44f62248b, type: 2}
-  - {fileID: 11400000, guid: 31283888a00bab7189c296a44f62248b, type: 2}
-  - {fileID: 11400000, guid: 31283888a00bab7189c296a44f62248b, type: 2}
+  - {fileID: 11400000, guid: 10424a170fe11c59abf8fb13e26b492c, type: 2}
+  - {fileID: 11400000, guid: 60ca5bf1991f4582298b265ea963d7c4, type: 2}
+  canvasPrefab: {fileID: 6860502508107522455, guid: 415aed9376fc3fb2d9ebe000bc7ccf9c, type: 3}

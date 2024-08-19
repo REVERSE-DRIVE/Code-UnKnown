@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using ObjectPooling;
+using TMPro;
 using UnityEngine;
 
 public class RoomSuppressor : RoomBase, IRoomObstacle, IRoomCleable
@@ -13,6 +15,7 @@ public class RoomSuppressor : RoomBase, IRoomObstacle, IRoomCleable
     // [SerializeField, Tooltip("페이즈 횟수")] int phaseCount = 3;
     [SerializeField, Tooltip("페이즈 간격")] int spawnInterval = 30;
     [SerializeField, Space] PhaseSpawnEntitySO[] phaseEnemys;
+    [SerializeField] GameObject canvasPrefab;
 
     List<EnemyBase> enemys; // 스폰된 에너미들
     List<UnityEngine.Events.UnityAction> enemyEvents; // 스폰된 에너미들
@@ -21,6 +24,9 @@ public class RoomSuppressor : RoomBase, IRoomObstacle, IRoomCleable
     float spawnTime;
     ZipSuppressorObject currentZip;
     bool isClear = false;
+
+    GameObject canvas;
+    TextMeshProUGUI textUI;
 
     List<ObstacleData> IRoomObstacle.Obstacles { get; set; }
 
@@ -39,6 +45,7 @@ public class RoomSuppressor : RoomBase, IRoomObstacle, IRoomCleable
         enemyEvents = new();
         timer = openDelay;
 
+        CreateUI();
         StartCoroutine(PhaseSpawnEnemy());
         StartCoroutine(TimeHandler());
     }
@@ -67,6 +74,7 @@ public class RoomSuppressor : RoomBase, IRoomObstacle, IRoomCleable
 
             EnemySpawn(phaseEnemys[i]);
             currentPhase = i + 1;
+            PhaseChanged();
             // yield return new WaitForSeconds(spawnInterval);
             yield return new WaitUntil(() => Time.time - spawnTime >= spawnInterval || enemys.Count == 0);
         }
@@ -105,6 +113,7 @@ public class RoomSuppressor : RoomBase, IRoomObstacle, IRoomCleable
     void OnClear() {
         isClear = true;
         SetDoor(false);
+        Destroy(canvas);
 
         MapManager.Instance.CheckAllClear();
     }
@@ -112,4 +121,17 @@ public class RoomSuppressor : RoomBase, IRoomObstacle, IRoomCleable
     public bool IsRoomClear() => isClear;
 
     public void ClearRoomObjects() {}
+
+    void CreateUI() {
+        canvas = Instantiate(canvasPrefab);
+        textUI = canvas.transform.GetComponentInChildren<TextMeshProUGUI>();
+        textUI.color = new Color(1, 1, 1, 0);
+    }
+
+    void PhaseChanged() {
+        textUI.text = $"Wave {currentPhase}";
+        textUI.DOKill();
+        textUI.DOFade(1, 0.5f);
+        textUI.DOFade(0, 0.5f).SetDelay(2);
+    }
 }
