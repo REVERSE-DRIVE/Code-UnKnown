@@ -4,7 +4,7 @@ using ObjectPooling;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RoomEnemy : RoomBase
+public class RoomEnemy : RoomBase, IRoomCleable
 {
     [SerializeField] Vector2Int enemyCount;
     [SerializeField] RandomPercentUtil<PoolingType>.Value[] enemyList;
@@ -15,6 +15,10 @@ public class RoomEnemy : RoomBase
 
     List<EnemyBase> enemys;
     List<UnityAction> enemyDieEvents;
+
+    public void ClearRoomObjects() {}
+
+    public bool IsRoomClear() => isClear;
 
     public override void RoomEnter()
     {
@@ -69,25 +73,7 @@ public class RoomEnemy : RoomBase
         
         SetDoor(false);
     
-        // 보스 등장?
-        BossRoomSO boss = MapManager.Instance.Generator.GetOption().BossOption;
-        if (boss != null) {
-            bool allClear = true;
-            foreach (var item in MapManager.Instance.GetMapIterator())
-            {
-                RoomEnemy room = item.Value as RoomEnemy;
-                if (room && !room.isClear) {
-                    allClear = false;
-                    break;
-                }
-            }
-
-            // 모두 클리어
-            if (allClear) {
-                MapManager.Instance.Generator.BossGenerator.CreateBoss(this);
-                return;
-            }
-        }
+        if (MapManager.Instance.CheckAllClear()) return; // 보스 나오는거면 보상 안줌
 
         // 보상
         foreach (var item in randomData)

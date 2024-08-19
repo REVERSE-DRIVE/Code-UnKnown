@@ -34,7 +34,11 @@ public class TilemapTear : MonoBehaviour
     private void Update() {
         if (activeTimer) {
             if (fadeOutDuration <= 0) {
-                DOTween.To(() => tilemap.color, color => tilemap.color = color, new Color(1,1,1, 0), 1f).Play().OnComplete(() => Destroy(gameObject));
+                if (tilemap)
+                    DOTween.To(() => tilemap.color, color => tilemap.color = color, new Color(1,1,1, 0), 1f).Play().OnComplete(() => Destroy(gameObject));
+                else
+                    Destroy(gameObject, 3f); // 페이드가 안되면 좀만 더 기다리자
+                
                 activeTimer = false;
             }
             fadeOutDuration -= Time.deltaTime;

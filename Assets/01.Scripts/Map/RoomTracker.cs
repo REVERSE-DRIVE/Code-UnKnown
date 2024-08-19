@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class RoomTracker : RoomBase
+public class RoomTracker : RoomBase, IRoomCleable
 {
     [SerializeField] JunkFileObject junkPrefab;
     [SerializeField] HoleObject holePrefab;
+    [SerializeField] int clearTime = 60;
 
     List<HoleObject> holes;
+    List<JunkFileObject> junks;
 
     bool isClear = false;
 
@@ -27,9 +29,12 @@ public class RoomTracker : RoomBase
         };
         float spacing = 1; // 간격
 
+        junks = new();
         foreach (var item in junkDir)
         {
             var entity = Instantiate(junkPrefab, centerPos + (Vector3)item * spacing, Quaternion.identity);
+            junks.Add(entity);
+
             entity.RestoreHealth(99999);
             entity.GetComponent<Rigidbody2D>().mass = 3;
         }
@@ -69,8 +74,8 @@ public class RoomTracker : RoomBase
         if (isClear || !holes.All(v => v.GetInEntity() != null)) return;
 
         // 끝남
-        isClear = true;
-        SetDoor(false);
+        TimerManager.Instance.CancelTimer();
+        OnClear();
     }
 
     public override void RoomEnter()
@@ -88,5 +93,37 @@ public class RoomTracker : RoomBase
         player.position = MapManager.Instance.GetWorldPosByCell(doorPos);
 
         SetDoor(true);
+
+        TimerManager.Instance.ShowTimer(clearTime);
+        TimerManager.Instance.OnFinish += OnTimeEnd;
+    }
+
+    void OnTimeEnd() { // 의뢰 실패
+        holes.ForEach(v => v.InEvent -= HoleClear);
+        OnClear();
+        
+        //////// 의뢰 완성도 감소
+        // ...
+    }
+
+    void OnClear() {
+        isClear = true;
+        SetDoor(false);
+
+        MapManager.Instance.CheckAllClear();
+    }
+
+    public bool IsRoomClear() => isClear;
+
+    public void ClearRoomObjects()
+    {
+        holes.ForEach(v => {
+            v.enabled = false;
+            MapManager.Instance.TearEffect.RegisterTearObject(v.gameObject);
+        });
+        junks.ForEach(v => MapManager.Instance.TearEffect.RegisterTearObject(v.gameObject));
+
+        // holes.ForEach(v => Destroy(v.gameObject));
+        // junks.ForEach(v => Destroy(v.gameObject));
     }
 }
