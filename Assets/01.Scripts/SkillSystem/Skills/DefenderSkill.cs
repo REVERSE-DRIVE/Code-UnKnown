@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 
 public class DefenderSkill : AttackCountSkill
 {
     public int effectTime = 3;
     public int buffPercent = 20;
     
-    private int _buffValue;
     private Stat _defStat;
     private float _leftTimer;
     private bool _isActive;
