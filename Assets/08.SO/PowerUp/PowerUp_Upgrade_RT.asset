@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a1b71727e24c458e1f9b51a645071a, type: 3}
+  m_Name: PowerUp_Upgrade_RT
+  m_EditorClassIdentifier: 
+  id: 14
+  code: Upgrade_RT
+  maxCollect: 2
+  powerUpRank: 3
+  shouldBeUnlock: 4
+  title: "TRACKER \uC99D\uAC15"
+  description: "\uACF5\uACA9 \uD6C4, \uC774\uB3D9\uC18D\uB3C4 \uC99D\uAC00 \uC9C0\uC18D
+    \uC2DC\uAC04\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  icon: {fileID: 133259157, guid: 6e29d61b4badad646ab4c49e1828ee89, type: 3}
+  effectList:
+  - {fileID: 11400000, guid: f648b2a1f30a90848a4f016b40d79d1d, type: 2}

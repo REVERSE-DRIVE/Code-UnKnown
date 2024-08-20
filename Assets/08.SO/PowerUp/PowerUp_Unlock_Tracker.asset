@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05a1b71727e24c458e1f9b51a645071a, type: 3}
-  m_Name: PowerUp_Unlock_Defender
+  m_Name: PowerUp_Unlock_Tracker
   m_EditorClassIdentifier: 
-  id: 9
-  code: Unlock_Defender
+  id: 13
+  code: Unlock_Tracker
   maxCollect: 1
   powerUpRank: 3
   shouldBeUnlock: 0
-  title: DEFENDER
-  description: "defender \uC7A0\uAE08\uD574\uC81C. \uACF5\uACA9 \uD6C4, 3\uCD08\uAC04
-    \uBC1B\uB294 \uBAA8\uB4E0 \uD53C\uD574\uB7C9\uC774 <color=red>20%</color> \uAC10\uC18C\uD569\uB2C8\uB2E4."
-  icon: {fileID: 1932145114, guid: 6e29d61b4badad646ab4c49e1828ee89, type: 3}
+  title: TRACKER
+  description: "tracker \uC7A0\uAE08\uD574\uC81C. \uACF5\uACA9 \uD6C4, 3\uCD08\uAC04
+    \uC774\uB3D9\uC18D\uB3C4\uAC00 <color=red>2</color> \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  icon: {fileID: 133259157, guid: 6e29d61b4badad646ab4c49e1828ee89, type: 3}
   effectList:
-  - {fileID: 11400000, guid: e0d4abbbc1006364492fd08ff2b64961, type: 2}
+  - {fileID: 11400000, guid: a3993e4f20bd40643900d60c56d101cf, type: 2}
