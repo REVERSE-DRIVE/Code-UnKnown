@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 6693960934253313967}
   - component: {fileID: 7635616445619810548}
   - component: {fileID: 5442644163227588894}
-  - component: {fileID: 7235751455624157941}
   - component: {fileID: 3583903837402704589}
+  - component: {fileID: 2917959495076934496}
   m_Layer: 7
   m_Name: Decoy
   m_TagString: Enemy
@@ -149,18 +149,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7235751455624157941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 831649790566083658}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94496b48b5f74692ac387ee3d00f49e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3583903837402704589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +169,18 @@ MonoBehaviour:
       m_Calls: []
   _currentHealth: 10
   maxHealth: 10
+--- !u!114 &2917959495076934496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831649790566083658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be6b4f9df8546ea9623a5296e346748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1502092011849670523
 GameObject:
   m_ObjectHideFlags: 0

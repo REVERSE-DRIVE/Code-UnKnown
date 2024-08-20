@@ -24930,6 +24930,7 @@ GameObject:
   - component: {fileID: 5725394928927060654}
   - component: {fileID: 149892492271041994}
   - component: {fileID: 4131882407902926194}
+  - component: {fileID: -6504024558146555455}
   m_Layer: 7
   m_Name: Boss_AVG
   m_TagString: Enemy
@@ -25133,6 +25134,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStun: 0
+--- !u!114 &-6504024558146555455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3436981169498616748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be6b4f9df8546ea9623a5296e346748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3968794258125241666
 GameObject:
   m_ObjectHideFlags: 0
