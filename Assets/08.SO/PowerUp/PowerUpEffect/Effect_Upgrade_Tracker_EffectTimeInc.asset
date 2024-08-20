@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: Upgrade_Tracker_EffectTimeInc
   type: 2
-  targetSkill: 4
+  targetSkill: 5
   upgradeType: 0
   isFloat: 0
   floatValue: 0

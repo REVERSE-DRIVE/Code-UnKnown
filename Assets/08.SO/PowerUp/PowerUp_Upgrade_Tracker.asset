@@ -16,7 +16,7 @@ MonoBehaviour:
   code: Upgrade_Tracker
   maxCollect: 2
   powerUpRank: 3
-  shouldBeUnlock: 4
+  shouldBeUnlock: 5
   title: "TRACKER \uC99D\uAC15"
   description: "\uACF5\uACA9 \uD6C4, \uC774\uB3D9\uC18D\uB3C4 \uC99D\uAC00 \uC9C0\uC18D
     \uC2DC\uAC04\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4."

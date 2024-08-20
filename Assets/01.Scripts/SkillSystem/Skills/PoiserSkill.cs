@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PoiserSkill : AttackTriggerEffectSkill
+public class PoiserSkill : AttackEffectStateSkill
 {
     
 }

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: Upgrade_Poiser_BuffAmountUp
   type: 2
-  targetSkill: 3
+  targetSkill: 4
   upgradeType: 0
   isFloat: 0
   floatValue: 0
-  intValue: 5
-  selectFieldIndex: 1
+  intValue: 1
+  selectFieldIndex: 0
   selectMethodIndex: -1
   callParams: 
