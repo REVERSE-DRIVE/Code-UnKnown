@@ -20,6 +20,6 @@ MonoBehaviour:
   title: "\uC815\uBC00 \uD0C0\uACA9"
   description: "\uCF64\uBCF4 \uC2DC \uACF5\uACA9\uB825 \uBCF4\uB108\uC2A4 \uD655\uB960\uC744
     <color=red>10%</color> \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4"
-  icon: {fileID: 0}
+  icon: {fileID: 1992414787, guid: 6e29d61b4badad646ab4c49e1828ee89, type: 3}
   effectList:
   - {fileID: 11400000, guid: 76afa4be8d650834a8b8d0b4fc1d15d1, type: 2}

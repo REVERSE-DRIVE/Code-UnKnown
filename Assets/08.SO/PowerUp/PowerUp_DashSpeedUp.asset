@@ -19,6 +19,6 @@ MonoBehaviour:
   shouldBeUnlock: 0
   title: "\uBC18\uC751\uC2DC\uAC04 \uB2E8\uCD95"
   description: "\uB300\uC26C \uC18D\uB3C4\uB97C <color=red>1</color> \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
-  icon: {fileID: 0}
+  icon: {fileID: -110111981, guid: 6e29d61b4badad646ab4c49e1828ee89, type: 3}
   effectList:
   - {fileID: 11400000, guid: 949357df968197341a784b0aa2202521, type: 2}
