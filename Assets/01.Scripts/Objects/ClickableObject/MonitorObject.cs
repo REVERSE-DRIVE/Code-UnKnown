@@ -22,6 +22,7 @@ namespace ObjectManage
 
         private void MonitorClickEvent()
         {
+            if (DOTween.IsTweening(_monitorPanel)) return;
             Sequence seq = DOTween.Sequence();
             seq.Append(_monitorPanel.DOAnchorPos(_monitorMoveEndPos, _monitorPanelMoveDuration));
             seq.AppendInterval(0.1f);

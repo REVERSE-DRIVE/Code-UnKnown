@@ -47,8 +47,8 @@ public class ResourceItem : Item
 
     public override void Interact(InteractData data)
     {
-        if (_isInteracted) return;
-        base.Interact(data);
-        LevelManager.Instance.ApplyExp(ItemSO.resourceValue);
+        //if (_isInteracted) return;
+        //base.Interact(data);
+        //LevelManager.Instance.ApplyExp(ItemSO.resourceValue);
     }
 }

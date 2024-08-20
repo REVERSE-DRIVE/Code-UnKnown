@@ -32,7 +32,7 @@ public class SlamShopItem : CustomItem
         if (ResourceManager.Instance.ResourceAmount < _resourceAmount)
             return;
         ResourceManager.Instance.UseResource(_resourceAmount);
-        PlayerPartManager.Instance.AddPartData(PartData);
+        PlayerPartManager.Instance.AddPartData(PartData.id, PartData.partType);
     }
 
     protected override void OnClick()

@@ -14,6 +14,7 @@ public class LegCustomItem : CustomItem
 
     protected override void OnClick()
     {
-        _legCustomPanel._partWindow.SetChild(this);
+        _legCustomPanel._partWindow.SetChild(this, 
+            PlayerPartManager.Instance.GetPartCount(PartData.id, PartData.partType));
     }
 }
