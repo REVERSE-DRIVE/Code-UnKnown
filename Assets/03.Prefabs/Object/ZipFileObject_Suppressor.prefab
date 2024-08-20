@@ -275,5 +275,13 @@ MonoBehaviour:
   isDetected: 0
   _openParticle: {fileID: 5357645379088792373, guid: a6c1b430eea8a39489d6eb9e7f421aa3, type: 3}
   _dissolveMaterial: {fileID: 2100000, guid: 3288c3a4a848b084f820f6e3b0253343, type: 2}
+  rewardAmount: {x: 1, y: 5}
+  rewardList:
+  - percent: 30
+    entity: {fileID: 11400000, guid: 1b5c68fc7de97884bb51b4ca0c9ccb85, type: 2}
+  - percent: 30
+    entity: {fileID: 11400000, guid: 456ed5d13d289144e884a01bca9adaeb, type: 2}
+  - percent: 40
+    entity: {fileID: 11400000, guid: 8d2c9cfc84d20514bb813dcb476509ff, type: 2}
   timer: {fileID: 3019485739488412235}
   anim: {fileID: 2092778135747572313}
