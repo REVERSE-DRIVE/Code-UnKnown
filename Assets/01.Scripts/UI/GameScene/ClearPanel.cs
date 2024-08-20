@@ -13,6 +13,7 @@ public class ClearPanel : MonoBehaviour, IWindowPanel
     [SerializeField] private float _panelDisableTerm;
 
     [Header("Coloring Setting")] 
+    [SerializeField] private Color _defualtColor;
     [SerializeField] private Color _targetColor;
     [SerializeField] private Image _coloringGradientPanel;
     [SerializeField] private Image _coloringBarPanel;
@@ -36,7 +37,7 @@ public class ClearPanel : MonoBehaviour, IWindowPanel
     public void Open()
     {
         SetCanvas(true);
-        SetColorPanels(Color.white);
+        SetColorPanels(_defualtColor);
 
         _rectTrm.DOAnchorPosY(_activeYDeltas, _moveDuration).OnComplete(() => StartCoroutine(OpenCoroutine()));
         
@@ -53,7 +54,7 @@ public class ClearPanel : MonoBehaviour, IWindowPanel
         while (currentTime < _coloringDuration)
         {
             currentTime += Time.deltaTime;
-            SetColorPanels(Color.Lerp(Color.white, _targetColor, currentTime / _coloringDuration));
+            SetColorPanels(Color.Lerp(_defualtColor, _targetColor, currentTime / _coloringDuration));
             yield return null;
         }
 

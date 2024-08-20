@@ -27,6 +27,8 @@ public class Health : MonoBehaviour, IDamageable, IHealable
     {
         if (_owner.Stat.isResist) return;
         amount = Mathf.Clamp(amount - _owner.Stat.defence.GetValue(), 0, 500);
+        amount -= (int)(amount / 100f * _owner.Stat.damageResist.GetValue());
+        amount = Mathf.Clamp(amount, 0, 500);
         _currentHealth -= amount;
         CheckDie();
         HandleHealthChange(-amount);

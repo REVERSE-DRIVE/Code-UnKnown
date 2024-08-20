@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 2593923601730286425}
   - component: {fileID: 7227609198659480049}
   - component: {fileID: 1542675034705952586}
-  - component: {fileID: 5639685923420124783}
+  - component: {fileID: 826228800930627603}
   m_Layer: 7
   m_Name: Crasher
   m_TagString: Enemy
@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c1c4125aa544b4b53f0a67c768de77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <DamageCasterCompo>k__BackingField: {fileID: 0}
   isDead: 0
   <Stat>k__BackingField: {fileID: 11400000, guid: 8245a9ceb99c50c4ca6496d089f977d9, type: 2}
   _itemType: 11
@@ -114,6 +115,7 @@ MonoBehaviour:
   targetTrm: {fileID: 0}
   <type>k__BackingField: 0
   _hitMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}
+  <IsElete>k__BackingField: 0
 --- !u!114 &1023934701268953149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,16 +211,16 @@ MonoBehaviour:
       m_Calls: []
   _currentHealth: 10
   maxHealth: 10
---- !u!114 &5639685923420124783
+--- !u!114 &826228800930627603
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373217714213459831}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94496b48b5f74692ac387ee3d00f49e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4be6b4f9df8546ea9623a5296e346748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6842304750170170320

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1c2beac19aa59a586d4a1e424e4e11, type: 3}
   m_Name: PhaseSpawnEntitySO
   m_EditorClassIdentifier: 
-  amount: 1
+  amount: 3
   enemys:
   - percent: 100
     entity: 2

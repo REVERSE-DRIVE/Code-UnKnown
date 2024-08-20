@@ -20413,7 +20413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3105438521678253351
 Transform:
   m_ObjectHideFlags: 0
@@ -26101,6 +26101,7 @@ GameObject:
   - component: {fileID: 7144478277773107146}
   - component: {fileID: 2834253321769687102}
   - component: {fileID: 5108899912060835987}
+  - component: {fileID: 4263810575900791599}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -26333,6 +26334,7 @@ MonoBehaviour:
   _hitVFX: 9
   _isTargeting: 0
   _isAttacking: 0
+  currentTargetTrm: {fileID: 0}
 --- !u!114 &7144478277773107146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26399,6 +26401,18 @@ MonoBehaviour:
   - {fileID: 6595055854653780408}
   defaultPart: {fileID: 11400000, guid: a38ae90c251ea0347aa85657db111be2, type: 2}
   defaultPartType: 1
+--- !u!114 &4263810575900791599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042404186746062641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be6b4f9df8546ea9623a5296e346748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7659530061220001109
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,6 +40,7 @@ namespace EnemyManage
             base.Exit();
             _bossAVGBase.Stat.isResist = true;
             _bossAVGBase.CanStateChangeable = true;
+            _bossAVGBase.ResetPosition();
         }
     }
 }

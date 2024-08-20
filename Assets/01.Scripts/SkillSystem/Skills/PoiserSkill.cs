@@ -1,9 +1,6 @@
-﻿public class PoiserSkill : Skill
+﻿using UnityEngine;
+
+public class PoiserSkill : AttackEffectStateSkill
 {
-    public override bool UseSkill()
-    {
-        if (base.UseSkill()) return false;
-        
-        return true;
-    }
+    
 }

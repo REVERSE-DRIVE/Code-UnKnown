@@ -1,9 +1,8 @@
-﻿public class KineticSkill : Skill
+﻿using EffectState;
+using UnityEngine;
+
+public class KineticSkill : AttackEffectStateSkill
 {
-    public override bool UseSkill()
-    {
-        if (base.UseSkill()) return false;
-        
-        return true;
-    }
+    
+    
 }

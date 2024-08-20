@@ -16,10 +16,12 @@ MonoBehaviour:
   - room: {fileID: 4074764594333466071, guid: aa59841f7b166c446926afb00cfd6de1, type: 3}
     amount: 1
   - room: {fileID: 1324240018877870150, guid: a571bc579c5749e4e867632b8423e4e6, type: 3}
-    amount: 1
+    amount: 2
   - room: {fileID: 6286809604183912642, guid: a284c39426a31f2ec966121692a1d9bc, type: 3}
     amount: 1
   - room: {fileID: 195676783769170754, guid: 82ac4e84173d50b2e828e3749bd701da, type: 3}
+    amount: 7
+  - room: {fileID: 195676783769170754, guid: 53be2c8c3bec75faf8917871a20ed7df, type: 3}
     amount: 1
   - room: {fileID: 630151482808616335, guid: 6a64a1638790524b3ae7c488c887a566, type: 3}
     amount: 1

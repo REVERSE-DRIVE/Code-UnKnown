@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 774545896074187860}
   - component: {fileID: 6205732641437290579}
   - component: {fileID: 5208807043665482881}
-  - component: {fileID: 724165070083301713}
+  - component: {fileID: 6301815100423787801}
   m_Layer: 7
   m_Name: Type_A_Upgrade
   m_TagString: Enemy
@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380f8b8d9b364d0e83abd6394d9fcb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <DamageCasterCompo>k__BackingField: {fileID: 0}
   isDead: 0
   <Stat>k__BackingField: {fileID: 11400000, guid: 8245a9ceb99c50c4ca6496d089f977d9, type: 2}
   _itemType: 11
@@ -70,6 +71,7 @@ MonoBehaviour:
   targetTrm: {fileID: 0}
   <type>k__BackingField: 3
   _hitMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}
+  <IsElete>k__BackingField: 0
 --- !u!114 &980620692920643155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +167,7 @@ MonoBehaviour:
       m_Calls: []
   _currentHealth: 10
   maxHealth: 10
---- !u!114 &724165070083301713
+--- !u!114 &6301815100423787801
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,7 +176,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 281801823993379482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94496b48b5f74692ac387ee3d00f49e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4be6b4f9df8546ea9623a5296e346748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4933195834410289956

@@ -39,6 +39,7 @@ public class RoomLaser : RoomBase, IRoomCleable
 
 
         // 레이정
+        int greenLaserAmount = 0;
         for (int i = 0; i < Random.Range(laserMinMax.x, laserMinMax.y + 1); i++)
         {
             LaserObject laser = Instantiate(laserPrefab, GetRandomCoords(), Quaternion.identity);
@@ -58,10 +59,12 @@ public class RoomLaser : RoomBase, IRoomCleable
 
             if (laserType == (int)LaserObject.Type.Red)
                 laser.OnRemove += OnRedLaserDestroy;
+            else
+                greenLaserAmount ++;
         }
 
         // 정크 파일
-        for (int i = 0; i < Random.Range(junkMinMax.x, junkMinMax.y + 1); i++)
+        for (int i = 0; i < greenLaserAmount + 2; i++)
         {
             var entity = Instantiate(junkFile, GetRandomCoords(), Quaternion.identity);
             junks.Add(entity);
