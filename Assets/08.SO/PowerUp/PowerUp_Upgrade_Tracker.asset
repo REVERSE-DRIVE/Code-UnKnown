@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05a1b71727e24c458e1f9b51a645071a, type: 3}
-  m_Name: PowerUp_Upgrade_RT
+  m_Name: PowerUp_Upgrade_Tracker
   m_EditorClassIdentifier: 
   id: 14
-  code: Upgrade_RT
+  code: Upgrade_Tracker
   maxCollect: 2
   powerUpRank: 3
   shouldBeUnlock: 4
