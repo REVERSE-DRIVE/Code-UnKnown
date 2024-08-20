@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 550e5141d06b47d0936871a900ed4783, type: 3}
+  m_Name: Item_Stacker
+  m_EditorClassIdentifier: 
+  itemType: 26
+  id: 7
+  itemName: Stacker
+  itemIcon: {fileID: 627186522206432302, guid: 43c05967891d516498076a12ad006ebc, type: 3}
+  resourceRank: 0
+  resourceValue: 0
+  partDataSO: {fileID: 11400000, guid: 00f66cb9e9a16074b85276ede2dad409, type: 2}

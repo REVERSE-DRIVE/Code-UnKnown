@@ -6,10 +6,17 @@ using UnityEngine.UI;
 
 public class PartWindow : MonoBehaviour, IWindowPanel
 {
+    [Header("Rect Setting")]
     [SerializeField] private RectTransform _partItemParent;
     [SerializeField] private RectTransform _partParent;
+    
+    [Header("Text Setting")]
     [SerializeField] private TextMeshProUGUI _partNameText;
     [SerializeField] private TextMeshProUGUI _partDescriptionText;
+    [SerializeField] private TextMeshProUGUI _partAmountText;
+    [SerializeField] private TextMeshProUGUI partRemainingPeriodText;
+    
+    [Header("Button Setting")]
     [SerializeField] private Button _closeButton;
     
     private RectTransform _rectTransform;
@@ -49,8 +56,15 @@ public class PartWindow : MonoBehaviour, IWindowPanel
         slamShopItem.BuyPart();
         Close();
     }
+    
+    public void SellPart()
+    {
+        PlayerPartManager.Instance.RemovePartData(_customItem.PartData);
+        Destroy(_customItem.gameObject);
+        Close();
+    }
 
-    public void SetChild(CustomItem customItem)
+    public void SetChild(CustomItem customItem, int amount = 0, int remainingPeriod = 0)
     {
         var rect = customItem.transform as RectTransform;
         Open();
@@ -65,6 +79,16 @@ public class PartWindow : MonoBehaviour, IWindowPanel
                 rect.anchorMax = new Vector2(0.5f, 0.5f);
                 rect.anchoredPosition = Vector2.zero;
             });
+
+        if (_partAmountText != null)
+        {
+            _partAmountText.text = amount.ToString();
+        }
+        
+        if (partRemainingPeriodText != null)
+        {
+            partRemainingPeriodText.text = $"{remainingPeriod}일";
+        }
     }
     
     private void SetPartInfo(CustomItem partData)

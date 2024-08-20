@@ -25,8 +25,8 @@ public class StartPanel : WindowUI
 
     private void StartGame()
     {
-        _fadeInOut.Fade(0.5f, 1f, 
-            () => SceneManager.LoadScene("GameScene"));
+        _fadeInOut.Fade(0.5f, 1f,
+                () => LoadManager.Instance.StartLoad("GameScene"));
     }
 
     private void OnDestroy()
