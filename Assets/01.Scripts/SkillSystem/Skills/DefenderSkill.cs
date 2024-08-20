@@ -4,8 +4,9 @@ using UnityEngine.Serialization;
 
 public class DefenderSkill : AttackCountSkill
 {
-    [SerializeField] private int _effectTime;
-    [SerializeField] private int _buffPercent = 20;
+    public int effectTime;
+    public int buffPercent = 20;
+    
     private int _buffValue;
     private Stat _defStat;
 
@@ -33,8 +34,8 @@ public class DefenderSkill : AttackCountSkill
 
     private IEnumerator DefenceUpCoroutine()
     {
-        _buffValue = _defStat.GetPercent(_buffPercent);
-        yield return new WaitForSeconds(_effectTime);
+        _buffValue = _defStat.GetPercent(buffPercent);
+        yield return new WaitForSeconds(effectTime);
         
     }
 }
