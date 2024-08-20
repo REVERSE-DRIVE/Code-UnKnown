@@ -269,7 +269,18 @@ public class LaserObject : MonoBehaviour
 
     public void SetMove(bool active) => activeMove = active;
 
+    private void OnEnable() {
+        if (beamTrm)
+            beamTrm.gameObject.SetActive(true);
+    }
+
+    private void OnDisable() {
+        if (beamTrm)
+            beamTrm.gameObject.SetActive(false);
+    }
+
     private void OnDestroy() {
+        enabled = false;
         OnRemove?.Invoke();
         hitObj?.OnLaserOut(this);
     }

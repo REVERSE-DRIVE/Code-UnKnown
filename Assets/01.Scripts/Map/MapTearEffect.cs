@@ -123,6 +123,10 @@ public class MapTearEffect : MonoBehaviour
                     collider.enabled = false; // 충돌 안해~~
                 
                 Vector2 dir = item.transform.position - centerPos;
+                if (dir.sqrMagnitude < 0.1f) {
+                    dir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+                }
+
                 item.AddComponent<TilemapTear>().RegisterThrowTile(dir.normalized, 10);
             }
     }
