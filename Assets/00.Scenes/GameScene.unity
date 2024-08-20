@@ -2516,6 +2516,9 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
+  effectTime: 3
+  buffAmount: 2
+  _type: 3
 --- !u!114 &437525655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2535,7 +2538,9 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 128
-  _targetController: {fileID: 0}
+  effectTime: 3
+  buffAmount: 5
+  _type: 1
 --- !u!114 &437525656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2555,6 +2560,7 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
+  _targetController: {fileID: 0}
 --- !u!114 &437525657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2574,9 +2580,9 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 128
-  _targetCount: 0
-  _effectTime: 0
-  _buffPercent: 20
+  effectTime: 3
+  buffAmount: 20
+  _type: 6
 --- !u!1 &439080733
 GameObject:
   m_ObjectHideFlags: 0

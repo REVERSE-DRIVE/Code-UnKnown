@@ -1,9 +1,4 @@
-﻿public class TrackerSkill: Skill
+﻿public class TrackerSkill: AttackTriggerEffectSkill
 {
-    public override bool UseSkill()
-    {
-        if (base.UseSkill()) return false;
-        
-        return true;
-    }
+    
 }

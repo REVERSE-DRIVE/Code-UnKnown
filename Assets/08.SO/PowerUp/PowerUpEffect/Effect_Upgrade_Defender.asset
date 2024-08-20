@@ -15,8 +15,8 @@ MonoBehaviour:
   code: Upgrade_Defender
   type: 2
   targetSkill: 1
-  upgradeType: 1
-  isFloat: 1
+  upgradeType: 0
+  isFloat: 0
   floatValue: 0
   intValue: 0
   selectFieldIndex: 0
