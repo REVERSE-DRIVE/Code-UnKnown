@@ -4,17 +4,31 @@ using UnityEngine.Serialization;
 
 public class DefenderSkill : AttackCountSkill
 {
-    public int effectTime;
+    public int effectTime = 3;
     public int buffPercent = 20;
     
     private int _buffValue;
     private Stat _defStat;
-
+    private float _leftTimer;
+    private bool _isActive;
     protected override void Start()
     {
         base.Start();
-        _defStat = player.Stat.defence;
-        onAttackCountEvent += HandleDefenceUp;
+        _defStat = player.Stat.damageResist;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        if (_isActive)
+        {
+            _leftTimer -= Time.deltaTime;
+            if (_leftTimer < 0)
+            {
+                _isActive = false;
+                HandleDefenceReset();
+            }
+        }
     }
 
     public override bool UseSkill()
@@ -23,19 +37,30 @@ public class DefenderSkill : AttackCountSkill
         
         return true;
     }
+    
+
+    protected override void HandlePlayerAttackEvent()
+    {
+        if (!_isActive)
+        {
+            HandleDefenceUp();
+        }
+            
+        _isActive = true;
+        _leftTimer = effectTime;
+        
+    }
 
 
     private void HandleDefenceUp()
     {
-        StartCoroutine(DefenceUpCoroutine());
-        // 방어력 증가랑 받는 피해 %감소는 다른 옵션이긴 함.
-        // 다른 방법을 마련해야함
+        _defStat.AddModifier(buffPercent);
     }
 
-    private IEnumerator DefenceUpCoroutine()
+    private void HandleDefenceReset()
     {
-        _buffValue = _defStat.GetPercent(buffPercent);
-        yield return new WaitForSeconds(effectTime);
-        
+        _defStat.RemoveModifier(buffPercent);
     }
+
+    
 }
