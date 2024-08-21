@@ -14,4 +14,10 @@ public class DecoyEnemy : EnemyBase
         StateMachine.AddState(EnemyStateEnum.Attack, new DecoyAttackState(this, StateMachine, "Attack"));
         StateMachine.AddState(EnemyStateEnum.Dead, new DecoyDeadState(this, StateMachine, "Dead"));
     }
+
+    protected override void Update()
+    {
+        base.Update();
+        Debug.Log("A<Color=red>"+StateMachine.CurrentState+"</Color>");
+    }
 }

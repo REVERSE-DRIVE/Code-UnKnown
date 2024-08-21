@@ -17,7 +17,7 @@ public class InducedEleteEnemy : EnemyBase
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, 4f);
+        Gizmos.DrawWireSphere(transform.position, 3f);
         Gizmos.color = Color.white;
     }
 }

@@ -6,6 +6,10 @@ public class DecoyChaseState : EnemyChaseState
     {
     }
 
+    public override void Enter()
+    {
+    }
+
     public override void UpdateState()
     {
         _movementCompo.LookToTarget(_enemyBase.targetTrm.position);

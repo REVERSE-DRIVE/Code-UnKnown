@@ -48,15 +48,13 @@ public class StackerLegPart : PlayerPart
     {
         int damage = _owner.Stat.GetDamage();
         int cnt = Physics2D.OverlapCircleNonAlloc(_owner.transform.position, 3, _hits, _whatIsEnemy);
-        if (cnt > 0)
+        if (cnt <= 0) return;
+        for (int i = 0; i < cnt; i++)
         {
-            for (int i = 0; i < cnt; i++)
+            if (_hits[i].TryGetComponent(out EnemyBase enemy))
             {
-                if (_hits[i].TryGetComponent(out EnemyBase enemy))
-                {
-                    enemy.OnFaint(3f);
-                    enemy.HealthCompo.TakeDamage(damage * 20 / 100);
-                }
+                enemy.OnFaint(3f);
+                enemy.HealthCompo.TakeDamage(damage * 20 / 100);
             }
         }
     }
