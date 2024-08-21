@@ -3,12 +3,7 @@ using UnityEngine;
 
 public class DecoySword : MonoBehaviour
 {
-    private DecoyEnemy _owner;
-
-    private void Awake()
-    {
-        _owner = transform.root.GetComponent<DecoyEnemy>();
-    }
+    [SerializeField]private DecoyEnemy _owner;
 
     public void Attack()
     {
