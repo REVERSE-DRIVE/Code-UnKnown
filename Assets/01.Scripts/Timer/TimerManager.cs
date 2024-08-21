@@ -81,6 +81,7 @@ public class TimerManager : MonoSingleton<TimerManager>
     public void CancelTimer() {
         if (process == null) {
             Debug.LogError("진행중인 타이머가 없습니다.");
+            return;
         }
 
         StopCoroutine(process);
