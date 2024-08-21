@@ -35,6 +35,8 @@ public class PlayerAttacker : MonoBehaviour
     private float _currentTime = 0;
     private int immediateDef;
     
+    public bool IsAttacking => _isAttacking;
+    
     private void Awake()
     {
         _player = GetComponent<Player>();
