@@ -65,9 +65,9 @@ MonoBehaviour:
     m_Bits: 0
   <RendererCompo>k__BackingField: {fileID: 5799715234792316084}
   runAwayDistance: 10
-  attackDistance: 1.5
-  chaseDistance: 3
-  attackCooldown: 1
+  attackDistance: 2
+  chaseDistance: 4
+  attackCooldown: 1.5
   lastAttackTime: 0
   targetTrm: {fileID: 0}
   <type>k__BackingField: 13

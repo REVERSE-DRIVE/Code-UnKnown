@@ -11,7 +11,7 @@ public class InducedEleteSkillState : EnemySkillState
     protected override void TakeSkill()
     {
         Debug.Log("Induced Elete Skill");
-        int count = Physics2D.OverlapCircleNonAlloc(_enemyBase.transform.position, 3, _colliders, _enemyBase.WhatIsPlayer);
+        int count = Physics2D.OverlapCircleNonAlloc(_enemyBase.transform.position, 4, _colliders, _enemyBase.WhatIsPlayer);
         Debug.Log(count);
         if (count > 0)
         {
