@@ -52,7 +52,7 @@ MonoBehaviour:
     width: 0
     height: 0
     isRandom: 1
-  enemyCount: {x: 3, y: 15}
+  enemyCount: {x: 1, y: 3}
   enemyList:
   - percent: 100
     entity: 3
