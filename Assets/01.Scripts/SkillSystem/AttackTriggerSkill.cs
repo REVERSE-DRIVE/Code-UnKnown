@@ -9,6 +9,7 @@
 
     protected virtual void HandlePlayerAttackEvent()
     {
+        if (!enabled) return;
         _attackCount++;
     }
 }

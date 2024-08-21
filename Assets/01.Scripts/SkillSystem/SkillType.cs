@@ -5,5 +5,6 @@
     Kinetic,
     Sharpnist,
     Poiser,
-    Tracker
+    Tracker,
+    Permoment
 }
