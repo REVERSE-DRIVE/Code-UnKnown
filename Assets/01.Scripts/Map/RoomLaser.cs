@@ -166,14 +166,16 @@ public class RoomLaser : RoomBase, IRoomCleable
     public void ClearRoomObjects()
     {
         lasers.ForEach(v => {
-            if (v != null)
-                Destroy(v.gameObject);
+            if (v != null && v.enabled) {
+                v.enabled = false;
+                MapManager.Instance.TearEffect.RegisterTearObject(v.gameObject);
+            }
         });
         lasers.Clear();
 
         junks.ForEach(v => Destroy(v.gameObject));
         junks.Clear();
 
-        Destroy(suppressor.gameObject);
+        MapManager.Instance.TearEffect.RegisterTearObject(suppressor.gameObject);
     }
 }
