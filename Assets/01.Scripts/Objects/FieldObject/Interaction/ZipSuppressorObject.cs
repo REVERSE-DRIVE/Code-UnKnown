@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using ItemManage;
 using ObjectManage;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,10 @@ public class ZipSuppressorObject : InteractObject
     [Header("Visual Setting")]
     [SerializeField] private ParticleSystem _openParticle;
     [SerializeField] private Material _dissolveMaterial;
+
+    [Header("Reward Setting")]
+    [SerializeField] Vector2Int rewardAmount = new(1, 3);
+    [SerializeField] RandomPercentUtil<ItemSO>.Value[] rewardList;
 
     [SerializeField] TextMeshPro timer;
     bool isActive = false;
@@ -57,7 +62,17 @@ public class ZipSuppressorObject : InteractObject
         yield return new WaitForSeconds(0.7f);
         
         Dissolve();
-        Instantiate(_openParticle, transform.position, Quaternion.identity);    
+        Instantiate(_openParticle, transform.position, Quaternion.identity);
+
+        RandomPercentUtil<ItemSO> randUtil = new RandomPercentUtil<ItemSO>(rewardList);
+        for (int i = 0; i < Random.Range(rewardAmount.x, rewardAmount.y + 1); i++)
+        {
+            ItemSO item = randUtil.GetValue();
+            Vector3 endPos = transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
+
+            ItemDropManager.Instance.DropItem(item.itemType, item.id, transform.position, endPos);
+            yield return new WaitForSeconds(0.5f);
+        }
         
         Destroy(gameObject, 0.5f);
     }

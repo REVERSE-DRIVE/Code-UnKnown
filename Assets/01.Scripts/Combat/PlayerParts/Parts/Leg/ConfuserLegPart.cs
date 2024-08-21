@@ -13,7 +13,7 @@ public class ConfuserLegPart : PlayerPart
         _owner.PlayerInputCompo.IsReverse = true;
         _attackPower = _owner.Stat.GetDamage();
         _owner.Stat.damage.AddModifier(_attackPower * 20 / 100);
-        //dashSpeed = _owner.DashSpeed;
+        //dashSpeed = _owner.PlayerAttackCompo.
         //_owner.DashSpeed += DashSpeed * 20 / 100;
     }
 

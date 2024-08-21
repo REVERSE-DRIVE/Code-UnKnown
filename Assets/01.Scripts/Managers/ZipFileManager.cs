@@ -3,14 +3,12 @@ using UnityEngine;
 
 public class ZipFileManager : MonoSingleton<ZipFileManager>
 {
-
+    [SerializeField] private float _zipfileIsPartRate = 0.9f;
     public void SetZipFileSetting(ZipFileObject zip)
     {
-        Debug.Log("SetZipFileSetting");
         float random = Random.Range(0f, 1f);
-        if (random < 0.9f)
+        if (random < _zipfileIsPartRate)
         {
-            Debug.Log("SetZipFileSetting 1");
             int partId = Random.Range(0, 8);
             zip.SetZip(ItemType.Part, partId, 1, 1);
         }
