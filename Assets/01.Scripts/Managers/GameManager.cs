@@ -23,6 +23,7 @@ public class GameManager : MonoSingleton<GameManager>
         PlayerManager.Instance.player.MovementCompo.isStun = true;
         Vector2 startPos = MapManager.Instance.GetRoomByCoords(Vector2Int.zero).GetCenterCoords();
         PlayerManager.Instance.player.transform.position = startPos;
+        PlayerPartManager.Instance.ChangeAllPart();
         EffectObject effect = PoolingManager.Instance.Pop(PoolingType.PlayerAppearVFX) as EffectObject;
         effect.Initialize(startPos);
         StartCoroutine(GameStartCoroutine());
