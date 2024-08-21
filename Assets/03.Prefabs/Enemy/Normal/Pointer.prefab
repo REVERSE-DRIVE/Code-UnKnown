@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6761780637450821324}
   - component: {fileID: 8693215098026375291}
   - component: {fileID: 6453620984627970900}
-  - component: {fileID: 7147610284889881298}
   - component: {fileID: 1194057922401312639}
   m_Layer: 7
   m_Name: Pointer
@@ -51,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376dc237355e4eb29e15c3fefdd38fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <DamageCasterCompo>k__BackingField: {fileID: 0}
   isDead: 0
   <Stat>k__BackingField: {fileID: 11400000, guid: 8245a9ceb99c50c4ca6496d089f977d9, type: 2}
   _itemType: 11
@@ -63,9 +63,9 @@ MonoBehaviour:
     m_Bits: 0
   <RendererCompo>k__BackingField: {fileID: 5204817865651052430}
   runAwayDistance: 10
-  attackDistance: 1.5
-  chaseDistance: 3
-  attackCooldown: 1
+  attackDistance: 2.5
+  chaseDistance: 4
+  attackCooldown: 1.2
   lastAttackTime: 0
   targetTrm: {fileID: 0}
   <type>k__BackingField: 15
@@ -146,18 +146,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7147610284889881298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1351782445703032057}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94496b48b5f74692ac387ee3d00f49e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1194057922401312639
 MonoBehaviour:
   m_ObjectHideFlags: 0
