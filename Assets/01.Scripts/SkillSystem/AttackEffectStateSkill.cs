@@ -17,6 +17,7 @@ public class AttackEffectStateSkill : AttackTriggerSkill
 
     protected override void HandlePlayerAttackEvent()
     {
+        base.HandlePlayerAttackEvent();
         if (player.PlayerAttackCompo.currentTargetTrm.TryGetComponent(out EffectStateController effectController))
         {
             _targetController = effectController;

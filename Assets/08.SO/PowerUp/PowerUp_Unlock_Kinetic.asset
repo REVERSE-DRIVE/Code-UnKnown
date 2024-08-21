@@ -18,7 +18,9 @@ MonoBehaviour:
   powerUpRank: 2
   shouldBeUnlock: 0
   title: KINETIC
-  description: "kinetic \uC7A0\uAE08\uD574\uC81C. "
+  description: "kinetic \uC7A0\uAE08\uD574\uC81C. \uACF5\uACA9\uC2DC \uACF5\uACA9
+    \uB300\uC0C1\uC774 <color=red>10%</color>\uC758 \uD655\uB960\uB85C <color=red>1\uCD08</color>
+    \uC18D\uBC15\uC2DC\uD0B5\uB2C8\uB2E4."
   icon: {fileID: 1921732805, guid: 6e29d61b4badad646ab4c49e1828ee89, type: 3}
   effectList:
   - {fileID: 11400000, guid: 75a35929e9ffd0345b279b2cb1bc0ae6, type: 2}
