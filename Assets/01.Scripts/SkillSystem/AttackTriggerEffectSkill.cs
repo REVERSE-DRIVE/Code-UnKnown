@@ -40,6 +40,7 @@ public abstract class AttackTriggerEffectSkill : AttackTriggerSkill
 
     protected override void HandlePlayerAttackEvent()
     {
+        base.HandlePlayerAttackEvent();
         if (!_isActive)
         {
             HandleEffectUp();
