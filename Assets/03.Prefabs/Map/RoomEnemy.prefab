@@ -73,3 +73,4 @@ MonoBehaviour:
     list:
     - percent: 100
       entity: {fileID: 7009222893961563268, guid: b6d7929404efc7f21968cfef3c42739d, type: 3}
+  nearObjectData: {fileID: 11400000, guid: 1c3f8eeea65831052a5b014d08872835, type: 2}
