@@ -2,7 +2,7 @@
 
 public class DecoyChaseState : EnemyChaseState
 {
-    public DecoyChaseState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public DecoyChaseState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName, float chase) : base(enemyBase, stateMachine, animBoolName, chase)
     {
     }
 
