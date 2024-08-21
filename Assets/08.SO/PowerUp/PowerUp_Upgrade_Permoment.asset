@@ -16,7 +16,7 @@ MonoBehaviour:
   code: Upgrade_Permoment
   maxCollect: 4
   powerUpRank: 2
-  shouldBeUnlock: 0
+  shouldBeUnlock: 6
   title: "PERMOMENT \uC99D\uAC15"
   description: "\uACF5\uACA9\uC2DC \uCD94\uAC00 1 \uCF64\uBCF4\uB97C \uC5BB\uC744
     \uD655\uB960\uC774 <color=red>10%</color> \uC99D\uAC00\uD569\uB2C8\uB2E4."
