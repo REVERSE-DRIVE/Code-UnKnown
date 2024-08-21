@@ -8,6 +8,7 @@ public class DecoyChaseState : EnemyChaseState
 
     public override void Enter()
     {
+        _enemyBase.MovementCompo.SetMovement(_enemyBase.targetTrm.position - _enemyBase.transform.position);
     }
 
     public override void UpdateState()
