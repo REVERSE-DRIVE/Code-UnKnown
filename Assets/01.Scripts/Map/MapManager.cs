@@ -99,8 +99,9 @@ public class MapManager : MonoSingleton<MapManager>
     }
 
     // 보스가 나올 차례?
-    public bool CheckAllClear() {
-        UIManager.Instance.Open(WindowEnum.Clear);
+    public bool CheckAllClear(bool success) {
+        if (success) // 성공시에만 띄움
+            UIManager.Instance.Open(WindowEnum.Clear);
 
         int existClearRoom = 0;
         int clearRoom = 0;

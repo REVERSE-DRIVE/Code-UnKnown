@@ -107,15 +107,15 @@ public class RoomSuppressor : RoomBase, IRoomObstacle, IRoomCleable
             currentZip.Open();
         }
 
-        OnClear();
+        OnClear(true);
     }
 
-    void OnClear() {
+    void OnClear(bool success = false) {
         isClear = true;
         SetDoor(false);
         Destroy(canvas);
 
-        MapManager.Instance.CheckAllClear();
+        MapManager.Instance.CheckAllClear(success);
     }
 
     public bool IsRoomClear() => isClear;
