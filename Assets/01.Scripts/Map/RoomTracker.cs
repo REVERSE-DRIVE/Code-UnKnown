@@ -99,7 +99,6 @@ public class RoomTracker : RoomBase, IRoomCleable
     }
 
     void OnTimeEnd() { // 의뢰 실패
-        holes.ForEach(v => v.InEvent -= HoleClear);
         OnClear();
         
         //////// 의뢰 완성도 감소
@@ -109,6 +108,7 @@ public class RoomTracker : RoomBase, IRoomCleable
     void OnClear() {
         isClear = true;
         SetDoor(false);
+        holes.ForEach(v => v.InEvent -= HoleClear);
 
         MapManager.Instance.CheckAllClear();
     }

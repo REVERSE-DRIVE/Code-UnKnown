@@ -65,9 +65,9 @@ MonoBehaviour:
     m_Bits: 0
   <RendererCompo>k__BackingField: {fileID: 5799715234792316084}
   runAwayDistance: 10
-  attackDistance: 1.5
-  chaseDistance: 3
-  attackCooldown: 1
+  attackDistance: 2
+  chaseDistance: 4
+  attackCooldown: 1.5
   lastAttackTime: 0
   targetTrm: {fileID: 0}
   <type>k__BackingField: 13
@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd77855462344f2c951ab6d7bd04c6d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _owner: {fileID: 4330206853947776388}
 --- !u!1 &4904728854973704545
 GameObject:
   m_ObjectHideFlags: 0

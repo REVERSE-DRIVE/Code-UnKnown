@@ -17,7 +17,6 @@ namespace ItemManage
         public GameObject ObjectPrefab => gameObject;
         
         protected bool _isInteracted;
-        protected bool _isSpawnig;
 
         private void Awake()
         {
@@ -34,7 +33,7 @@ namespace ItemManage
 
         public override void Detected()
         {
-            if (!_isInteracted || !_isSpawnig)
+            if (!_isInteracted)
             {
                 base.Detected();
             }
@@ -44,7 +43,7 @@ namespace ItemManage
         
         public override void UnDetected()
         {
-            if (!_isInteracted || !_isSpawnig)
+            if (!_isInteracted)
             {
                 base.UnDetected();
             }
@@ -54,11 +53,11 @@ namespace ItemManage
 
         public override void Interact(InteractData data)
         {
-            if (_isInteracted || _isSpawnig) return;
-            
+            if (_isInteracted) return;
+            Debug.Log("Interact");
             _isInteracted = true;
-            base.Interact(data);
             StartCoroutine(InteractCoroutine());
+            base.Interact(data);
         }
 
         protected IEnumerator InteractCoroutine()
@@ -70,7 +69,6 @@ namespace ItemManage
 
         public void ResetItem()
         {
-            _isSpawnig = true;
             isDetected = false;
             _isInteracted = false;
             ItemNameTextActive(false);
