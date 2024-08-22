@@ -112,7 +112,7 @@ public class RoomEnemy : RoomBase, IRoomCleable
         
         SetDoor(false);
     
-        if (MapManager.Instance.CheckAllClear()) return; // 보스 나오는거면 보상 안줌
+        if (MapManager.Instance.CheckAllClear(true)) return; // 보스 나오는거면 보상 안줌
 
         // 보상
         foreach (var item in randomData)

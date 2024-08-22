@@ -151,14 +151,14 @@ public class RoomLaser : RoomBase, IRoomCleable
         if (isClear) return;
         
         TimerManager.Instance.CancelTimer();
-        OnClear();
+        OnClear(true);
     }
 
-    void OnClear() {
+    void OnClear(bool success = false) {
         isClear = true;
         SetDoor(false);
 
-        MapManager.Instance.CheckAllClear();
+        MapManager.Instance.CheckAllClear(success);
     }
 
     public bool IsRoomClear() => isClear;

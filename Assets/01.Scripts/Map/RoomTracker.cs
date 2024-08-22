@@ -75,7 +75,7 @@ public class RoomTracker : RoomBase, IRoomCleable
 
         // 끝남
         TimerManager.Instance.CancelTimer();
-        OnClear();
+        OnClear(true);
     }
 
     public override void RoomEnter()
@@ -105,12 +105,12 @@ public class RoomTracker : RoomBase, IRoomCleable
         // ...
     }
 
-    void OnClear() {
+    void OnClear(bool success = false) {
         isClear = true;
         SetDoor(false);
         holes.ForEach(v => v.InEvent -= HoleClear);
 
-        MapManager.Instance.CheckAllClear();
+        MapManager.Instance.CheckAllClear(success);
     }
 
     public bool IsRoomClear() => isClear;

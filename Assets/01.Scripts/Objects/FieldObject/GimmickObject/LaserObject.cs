@@ -280,22 +280,20 @@ public class LaserObject : MonoBehaviour
     }
 
     private void OnDestroy() {
-        enabled = false;
-        OnRemove?.Invoke();
-        hitObj?.OnLaserOut(this);
+
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        if (!other.gameObject.TryGetComponent<JunkFileObject>(out var junkSys)) return;
-        if (!junkSys.GetActive()) return;
-    
-        Destroy(gameObject);
-    }
+    private void OnCollisionEnter2D(Collision2D other) => DestoryCheck(other);
+    private void OnCollisionStay2D(Collision2D other) => DestoryCheck(other);
 
-    private void OnCollisionStay2D(Collision2D other) {
+    void DestoryCheck(Collision2D other) {
         if (!other.gameObject.TryGetComponent<JunkFileObject>(out var junkSys)) return;
         if (!junkSys.GetActive()) return;
         
+        enabled = false;
+        OnRemove?.Invoke();
+        hitObj?.OnLaserOut(this);
+
         Destroy(gameObject);
     }
 }
