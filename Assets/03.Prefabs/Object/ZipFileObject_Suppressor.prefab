@@ -165,12 +165,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 7621985333484631477}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 7621985333484631477}
+  m_maskType: 0
 --- !u!1001 &8716094097862714696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -182,6 +182,14 @@ PrefabInstance:
     - target: {fileID: 1066204932706900731, guid: c192c68643fd78042adfe9d91ff24c3a, type: 3}
       propertyPath: m_Name
       value: ZipFileObject_Suppressor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1748003064566870012, guid: c192c68643fd78042adfe9d91ff24c3a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1748003064566870012, guid: c192c68643fd78042adfe9d91ff24c3a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1748003064566870012, guid: c192c68643fd78042adfe9d91ff24c3a, type: 3}
       propertyPath: m_LocalPosition.x

@@ -30,9 +30,9 @@ public class EnemyLaser : Projectile
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 100, _whatIsPlayer);
         if (hit.collider != null)
         {
-            if (hit.collider.CompareTag("Player"))
+            if (hit.collider.TryGetComponent(out Player player))
             {
-                hit.collider.GetComponent<IDamageable>()?.TakeDamage(_damage);
+                player.HealthCompo.TakeDamage(_damage);
             }
         }
     }

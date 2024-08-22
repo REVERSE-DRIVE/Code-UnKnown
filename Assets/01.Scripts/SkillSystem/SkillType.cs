@@ -3,6 +3,8 @@
     None = 0,
     Defender,
     Kinetic,
+    Sharpnist,
     Poiser,
-    Tracker
+    Tracker,
+    Permoment
 }

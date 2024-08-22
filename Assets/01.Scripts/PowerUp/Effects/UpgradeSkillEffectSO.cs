@@ -83,7 +83,6 @@ public class UpgradeSkillEffectSO : PowerUpEffectSO
         return false;
     }
     
-     // 이제부터 리플렉션 시작
     private void OnEnable()
      {
          GetReflectionInfo();

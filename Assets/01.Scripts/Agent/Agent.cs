@@ -9,7 +9,6 @@ public abstract class Agent : MonoBehaviour
     public Animator AnimatorCompo { get; protected set; }
     public AgentMovement MovementCompo { get; protected set; }
     public AgentVFX VFXCompo { get; protected set; }
-    public AgentEffectController EffectCompo { get; protected set; }
     public Health HealthCompo { get; protected set; }
     [field:SerializeField] public DamageCaster DamageCasterCompo { get; protected set; }
 
@@ -30,7 +29,7 @@ public abstract class Agent : MonoBehaviour
         MovementCompo = GetComponent<AgentMovement>();
         MovementCompo.Initialize(this);
         VFXCompo = transform.Find("AgentVFX").GetComponent<AgentVFX>();
-        EffectCompo = GetComponent<AgentEffectController>();
+        //EffectCompo = GetComponent<AgentEffectController>();
         HealthCompo = GetComponent<Health>();
         _visualTrm = transform.Find("Visual");
         AnimatorCompo = _visualTrm.GetComponent<Animator>();

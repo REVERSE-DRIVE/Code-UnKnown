@@ -16,3 +16,9 @@ MonoBehaviour:
   itemSOList:
   - {fileID: 11400000, guid: 89527054a23240c43969caa1f7776793, type: 2}
   - {fileID: 11400000, guid: 456ed5d13d289144e884a01bca9adaeb, type: 2}
+  - {fileID: 11400000, guid: e25fc90254a0bc24286c481093fa73c0, type: 2}
+  - {fileID: 11400000, guid: 913da9c4daea1ca41b20b7c5415d30e3, type: 2}
+  - {fileID: 11400000, guid: 0d7a4d8eee125c340bf64dfbc40ef285, type: 2}
+  - {fileID: 11400000, guid: 16cc957cc3370084cacbc3092745a5b5, type: 2}
+  - {fileID: 11400000, guid: b7c9f21b6da2ef44bb7ccd81f77d9542, type: 2}
+  - {fileID: 11400000, guid: 3634a5213a52750449a86c633fdb2504, type: 2}

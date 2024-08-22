@@ -35,6 +35,8 @@ public class PlayerAttacker : MonoBehaviour
     private float _currentTime = 0;
     private int immediateDef;
     
+    public bool IsAttacking => _isAttacking;
+    
     private void Awake()
     {
         _player = GetComponent<Player>();
@@ -191,6 +193,7 @@ public class PlayerAttacker : MonoBehaviour
     private int CalcDamage()
     {
         int damage = _player.Stat.GetDamage();
+        damage += (int)((damage / 100f) * _player.Stat.bonusAtk.GetValue());
         if (Random.Range(0, 10) < _comboRate.GetValue())
             damage += _comboCounter.comboCount;
         if (_player.additionalStat.isStrongAttack)

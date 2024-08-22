@@ -9,7 +9,7 @@ public class BlenderEnemy : EnemyBase
         base.Awake();
         SpikeGearSpinManager = GetComponentInChildren<SpikeGearSpinManager>();
         StateMachine.AddState(EnemyStateEnum.Idle, new BlenderIdleState(this, StateMachine, "Idle"));
-        StateMachine.AddState(EnemyStateEnum.Chase, new EnemyChaseState(this, StateMachine, "Chase"));
+        StateMachine.AddState(EnemyStateEnum.Chase, new EnemyChaseState(this, StateMachine, "Chase", 1));
         StateMachine.AddState(EnemyStateEnum.Attack, new EnemyAttackState(this, StateMachine, "Attack"));
         StateMachine.AddState(EnemyStateEnum.Dead, new BlenderDeadState(this, StateMachine, "Dead"));
     }

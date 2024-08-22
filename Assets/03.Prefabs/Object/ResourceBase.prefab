@@ -106,5 +106,5 @@ MonoBehaviour:
   <ItemSO>k__BackingField: {fileID: 0}
   _itemNameText: {fileID: 0}
   _itemType: 11
-  _activeMaterial: {fileID: 2100000, guid: 02b6253de25c40b449a0e470435636fb, type: 2}
   _resourceRank: 3
+  _speed: 30

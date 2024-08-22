@@ -65,17 +65,26 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
         partController.ChangePart(partType, partData);
     }
     
-    public void AddPartData(PlayerPartDataSO partData, bool isLoad = false)
+    public void AddPartData(int id, PartType type, bool isLoad = false)
     {
         if (PlayerPartDataList == null)
             PlayerPartDataList = new List<PlayerPartDataSO>();
+        var partData = _partTable.playerPartDataSOList
+            .Find(x => x.id == id && x.partType == type);
         
-        if (PlayerPartDataList.Contains(partData))
-            return;
         PlayerPartDataList.Add(partData);
         if (isLoad)
             return;
         AddData(partData);
+    }
+    
+    public void RemovePartData(PlayerPartDataSO partData)
+    {
+        if (PlayerPartDataList == null)
+            return;
+        if (!PlayerPartDataList.Contains(partData))
+            return;
+        PlayerPartDataList.Remove(partData);
     }
 
     private void AddData(PlayerPartDataSO partData)
@@ -106,38 +115,42 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
                       x.partType == partData.partType);
             if (PlayerPartDataList.Contains(partDataSO)) 
                 continue;
-            AddPartData(partDataSO, true);
+            AddPartData(partDataSO.id, partDataSO.partType, true);
         }
     }
     
-    [ContextMenu("Test")]
-    public void Test()
+    public int GetPartCount(int id, PartType type)
     {
-        var bodyPart = _partTable.
-            playerPartDataSOList.Find(
-                x => x.partType == PartType.Body && x.id == 0);
-        var legPart = _partTable.
-            playerPartDataSOList.Find(
-                x => x.partType == PartType.Leg && x.id == 0);
-        var leg2 = _partTable.
-            playerPartDataSOList.Find(
-                x => x.partType == PartType.Leg && x.id == 1);
-        AddPartData(bodyPart);
-        AddPartData(legPart);
-        AddPartData(leg2);
+        return PlayerPartDataList.FindAll(x => x.id == id && x.partType == type).Count;
+    }
+
+
+    [ContextMenu("Test1")]
+    public void Give()
+    {
+        AddPartData(0, PartType.Body);
+        AddPartData(0, PartType.Body);
+        AddPartData(1, PartType.Body);
+        AddPartData(0, PartType.Leg);
+        AddPartData(1, PartType.Leg);
+    }
+    
+    [ContextMenu("Test2")]
+    public void Save()
+    {
         SavePartData();
     }
     
-    [ContextMenu("Reset")]
-    public void Reseta()
-    {
-        _partDataList.Clear();
-        PlayerPartDataList.Clear();
-    }
-    
-    [ContextMenu("LoadTest")]
-    public void LoadTest()
+    [ContextMenu("Test3")]
+    public void Load()
     {
         LoadPartData();
+    }
+    
+    [ContextMenu("Test4")]
+    public void Clear()
+    {
+        PlayerPartDataList.Clear();
+        _partDataList.Clear();
     }
 }

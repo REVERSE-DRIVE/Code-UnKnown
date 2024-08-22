@@ -88,6 +88,7 @@ namespace EnemyManage
                 yield return _coroutine;
                 yield return new WaitForSeconds(1f);
             }
+            _bossAVGBase.ResetPosition();
             
         }
 

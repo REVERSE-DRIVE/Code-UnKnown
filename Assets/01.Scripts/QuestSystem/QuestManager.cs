@@ -26,7 +26,7 @@ namespace QuestManage
         /**
          * 퀘스트 UI 오픈
          */
-        private void SpawnQuestWindow()
+        public void SpawnQuestWindow()
         {
             _questUI.OpenQuestWindow();
         }
@@ -48,7 +48,19 @@ namespace QuestManage
          */
         public void AcceptQuest(QuestData getQuestData)
         {
+            Debug.Log(GetQuestDescription(getQuestData.id, getQuestData.difficulty));
             AcceptQuestDatas.Add(getQuestData);
+        }
+        
+        public string GetQuestDescription(int id, QuestDifficultyEnum difficulty)
+        {
+            var quest = FindQuest(id, difficulty);
+            return quest.description;
+        }
+        
+        private QuestSO FindQuest(int id, QuestDifficultyEnum difficulty)
+        {
+            return _questListSO.FineQuest(id, difficulty);
         }
     }
 }

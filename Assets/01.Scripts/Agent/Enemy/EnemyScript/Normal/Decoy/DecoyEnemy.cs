@@ -10,8 +10,14 @@ public class DecoyEnemy : EnemyBase
     {
         base.Awake();
         StateMachine.AddState(EnemyStateEnum.Idle, new EnemyIdleState(this, StateMachine, "Idle"));
-        StateMachine.AddState(EnemyStateEnum.Chase, new DecoyChaseState(this, StateMachine, "Chase"));
+        StateMachine.AddState(EnemyStateEnum.Chase, new DecoyChaseState(this, StateMachine, "Chase", 0));
         StateMachine.AddState(EnemyStateEnum.Attack, new DecoyAttackState(this, StateMachine, "Attack"));
         StateMachine.AddState(EnemyStateEnum.Dead, new DecoyDeadState(this, StateMachine, "Dead"));
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        Debug.Log("A<Color=red>"+StateMachine.CurrentState+"</Color>");
     }
 }

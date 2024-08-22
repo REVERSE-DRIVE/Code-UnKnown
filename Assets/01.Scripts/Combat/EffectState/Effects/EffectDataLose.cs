@@ -7,22 +7,22 @@
         }
         public override void Enter()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         protected override void UpdateState()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         protected override void UpdateStateBySecond()
         {
-            throw new System.NotImplementedException();
+            _owner.HealthCompo.TakeDamage(effectLevel);
         }
 
         public override void Over()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         

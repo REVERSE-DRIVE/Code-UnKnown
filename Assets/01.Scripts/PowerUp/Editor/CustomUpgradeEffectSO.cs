@@ -34,7 +34,7 @@ public class CustomUpgradeEffectSO : CustomPowerEffectSO
             {
                 return;
             }
-
+            Debug.Log("새로 그림");
             if(so.upgradeType == UpgradeSkillEffectSO.SkillUpgradeType.ByField)
             {
                 DrawFields(so);

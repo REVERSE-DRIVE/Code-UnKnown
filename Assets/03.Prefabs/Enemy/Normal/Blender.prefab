@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 258985818544451801}
   - component: {fileID: 1839720652524205532}
   - component: {fileID: 7506695015195665660}
-  - component: {fileID: 4665191098948342280}
+  - component: {fileID: 5969326627687486936}
   m_Layer: 7
   m_Name: Blender
   m_TagString: Enemy
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1dc0e1518c45359c4ba2a3018dabea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <DamageCasterCompo>k__BackingField: {fileID: 0}
   isDead: 0
   <Stat>k__BackingField: {fileID: 11400000, guid: 8245a9ceb99c50c4ca6496d089f977d9, type: 2}
   _itemType: 11
@@ -115,6 +116,7 @@ MonoBehaviour:
   targetTrm: {fileID: 0}
   <type>k__BackingField: 0
   _hitMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}
+  <IsElete>k__BackingField: 0
 --- !u!114 &1002054400334001017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,16 +212,16 @@ MonoBehaviour:
       m_Calls: []
   _currentHealth: 10
   maxHealth: 10
---- !u!114 &4665191098948342280
+--- !u!114 &5969326627687486936
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4309672874045168821}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94496b48b5f74692ac387ee3d00f49e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4be6b4f9df8546ea9623a5296e346748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4713382043623587286

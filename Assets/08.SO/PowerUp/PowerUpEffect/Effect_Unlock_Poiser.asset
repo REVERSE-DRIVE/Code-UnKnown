@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: Unlock_Poiser
   type: 1
-  unLockSkill: 3
+  unLockSkill: 4
