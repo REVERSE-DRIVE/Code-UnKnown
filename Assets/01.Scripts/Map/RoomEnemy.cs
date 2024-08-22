@@ -70,7 +70,7 @@ public class RoomEnemy : RoomBase, IRoomCleable
         Vector2Int playerPos = MapManager.Instance.GetCellByWorldPos(player.position);
 
         MapGenerator.Direction doorDir = ClosestDoor(playerPos);
-        Vector2Int doorPos = GetCenterPosDoor(doorDir) +  -MapGenerator.GetDirection(doorDir) * 2;
+        Vector2Int doorPos = GetCenterPosDoor(doorDir) +  -MapGenerator.GetDirection(doorDir) * 1;
 
         player.position = MapManager.Instance.GetWorldPosByCell(doorPos);
 
