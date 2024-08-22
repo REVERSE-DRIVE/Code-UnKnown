@@ -18,19 +18,18 @@ public class UndefinedAttackState : EnemyAttackState
     public override void Enter()
     {
         base.Enter();
-        _enemyBase.StartCoroutine(Shot());
+        Vector3 dir = (_enemyBase.targetTrm.transform.position - _enemyBase.transform.position).normalized;
+        Vector2 dir2 = Quaternion.Euler(0, 0, 30) * dir;
+        Vector3 dir3 = Quaternion.Euler(0, 0, -30) * dir;
+        Shot(dir);
+        Shot(dir2);
+        Shot(dir3);
     }
 
-    private IEnumerator Shot()
+    private void Shot(Vector3 dir)
     {
-        for (int i = 0; i < 3; i++)
-        {
-            var bullet = PoolingManager.Instance.Pop(PoolingType.Projectile_Normal) as Projectile;
-            bullet.Initialize
-                (_enemyBase.transform.position, _damage, _speed, _lifeTime);
-            Vector3 dir = (_enemyBase.targetTrm.position - _enemyBase.transform.position).normalized;
-            bullet.Shoot(dir);
-            yield return new WaitForSeconds(0.05f);
-        }
+        var bullet = PoolingManager.Instance.Pop(PoolingType.Projectile_Spining) as SpinProjectile;
+        bullet.Initialize(_enemyBase.transform.position, _enemyBase.Stat.GetDamage(), 5, 3f);
+        bullet.Shoot(dir);
     }
 }
