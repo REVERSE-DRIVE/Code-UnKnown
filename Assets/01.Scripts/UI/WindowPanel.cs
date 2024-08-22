@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class WindowPanel : MonoBehaviour
+public class WindowPanel : MonoBehaviour, IWindowPanel
 {
     [SerializeField] private Vector2 _openPosition;
     [SerializeField] private Vector2 _closePosition;
     [SerializeField] private float _duration = 0.5f;
     [SerializeField] private Ease _ease;
     
-    private RectTransform _rectTrm;
-    private bool _isOpen = false;
+    protected RectTransform _rectTrm;
+    protected bool _isOpen = false;
     
     private void Awake()
     {
@@ -20,8 +18,7 @@ public class WindowPanel : MonoBehaviour
         
     }
     
-    //[InspectorButton("Open", 10, true, "Open Window")]
-    public void Open()
+    public virtual void Open()
     {
         if (_isOpen)
             return;
@@ -30,8 +27,7 @@ public class WindowPanel : MonoBehaviour
         _rectTrm.DOAnchorPos(_openPosition, _duration).SetEase(_ease);
     }
     
-    //[InspectorButton("Close", 10, true, "Close Window")]
-    public void Close()
+    public virtual void Close()
     {
         if (!_isOpen)
             return;

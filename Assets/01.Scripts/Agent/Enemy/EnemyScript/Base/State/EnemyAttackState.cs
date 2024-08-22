@@ -24,9 +24,14 @@ public class EnemyAttackState : EnemyState<EnemyStateEnum>
         
         if (_endTriggerCalled)
         {
-            Debug.Log("Attack End");
-            //_enemyBase.StopAllCoroutines();
-            _stateMachine.ChangeState(EnemyStateEnum.Chase);
+            AttackEnd();
         }
+    }
+
+    protected virtual void AttackEnd()
+    {
+        Debug.Log("Attack End");
+        //_enemyBase.StopAllCoroutines();
+        _stateMachine.ChangeState(EnemyStateEnum.Chase);
     }
 }

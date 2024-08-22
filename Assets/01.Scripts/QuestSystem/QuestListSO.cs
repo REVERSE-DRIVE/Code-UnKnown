@@ -8,9 +8,9 @@ namespace QuestManage
     {
         public List<QuestSO> questList;
 
-        public QuestSO FineQuest(int id)
+        public QuestSO FineQuest(int id, QuestDifficultyEnum difficulty)
         {
-            return questList.Find(quest => quest.id == id);
+            return questList.Find(quest => quest.id == id && quest.difficulty == difficulty);
         }
         
         public QuestSO GetRandomQuest()

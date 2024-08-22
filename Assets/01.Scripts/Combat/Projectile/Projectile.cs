@@ -68,7 +68,7 @@ public class Projectile : MonoBehaviour, ILifeTimeLimited, IPoolable, IDamageabl
     }
     
 
-    public void ResetItem()
+    public virtual void ResetItem()
     {
         _isActive = false;
         _currentLifeTime = 0;
