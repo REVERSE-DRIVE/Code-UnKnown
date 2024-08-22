@@ -10,7 +10,7 @@ public class JailEnemy : EnemyBase
         AttackArea = GetComponentInChildren<AttackArea>();
         base.Awake();
         StateMachine.AddState(EnemyStateEnum.Idle, new JailIdleState(this, StateMachine, "Idle"));
-        StateMachine.AddState(EnemyStateEnum.Chase, new EnemyChaseState(this, StateMachine, "Chase"));
+        StateMachine.AddState(EnemyStateEnum.Chase, new EnemyChaseState(this, StateMachine, "Chase", 1f));
         StateMachine.AddState(EnemyStateEnum.Attack, new JailAttackState(this, StateMachine, "Attack"));
         StateMachine.AddState(EnemyStateEnum.Dead, new EnemyDeadState(this, StateMachine, "Dead"));
     }

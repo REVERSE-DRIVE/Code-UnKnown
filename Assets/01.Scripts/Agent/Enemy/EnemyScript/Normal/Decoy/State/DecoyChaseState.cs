@@ -2,8 +2,13 @@
 
 public class DecoyChaseState : EnemyChaseState
 {
-    public DecoyChaseState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    public DecoyChaseState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName, float chase) : base(enemyBase, stateMachine, animBoolName, chase)
     {
+    }
+
+    public override void Enter()
+    {
+        _enemyBase.MovementCompo.SetMovement(_enemyBase.targetTrm.position - _enemyBase.transform.position);
     }
 
     public override void UpdateState()

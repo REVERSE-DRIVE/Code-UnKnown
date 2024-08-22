@@ -51,7 +51,7 @@ public class EnemyBase : Enemy, IPoolable
         isInitEnd = true;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         StateMachine.CurrentState.UpdateState();
     }
