@@ -1,4 +1,5 @@
 ﻿using System;
+using QuestManage;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,7 +27,8 @@ public class StartPanel : WindowUI
     private void StartGame()
     {
         _fadeInOut.Fade(0.5f, 1f,
-                () => LoadManager.Instance.StartLoad("GameScene"));
+                () => LoadManager.Instance.StartLoad("GameScene 1"));
+        QuestObserver.Instance.ApplyAllQuest();
     }
 
     private void OnDestroy()

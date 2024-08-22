@@ -14,7 +14,7 @@ namespace QuestManage
         }
 
         [ContextMenu("Apply")]
-        private void ApplyAllQuest()
+        public void ApplyAllQuest()
         {
             currentQuestDatas = QuestManager.Instance.AcceptQuestDatas.ToArray();
         }

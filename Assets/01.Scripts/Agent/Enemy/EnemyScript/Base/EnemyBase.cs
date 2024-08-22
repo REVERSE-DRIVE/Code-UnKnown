@@ -2,6 +2,7 @@
 using System.Collections;
 using EnemyManage;
 using ObjectPooling;
+using QuestManage;
 using UnityEngine;
 
 public class EnemyBase : Enemy, IPoolable
@@ -24,6 +25,7 @@ public class EnemyBase : Enemy, IPoolable
     #region Anothor Setting
     private bool isInitEnd;
     [field:SerializeField] public bool IsElete { get; protected set; }
+    [SerializeField] private EnemyType _enemyType;
     #endregion
 
     protected override void Awake()
@@ -69,6 +71,7 @@ public class EnemyBase : Enemy, IPoolable
         
         Debug.Log("Enemy Dead");
         StateMachine.ChangeState(EnemyStateEnum.Dead);
+        QuestObserver.Instance.KillTrigger(_enemyType);
         base.SetDead();
     }
     

@@ -8,27 +8,42 @@ public class InGameQuestPanel : MonoBehaviour, IWindowPanel
 {
     [SerializeField] private TextMeshProUGUI _questTitle;
     [SerializeField] private TextMeshProUGUI _questDescription;
+    [SerializeField] private TextMeshProUGUI _goalText;
     [SerializeField] private RectTransform _questPanel;
     [SerializeField] private Image _icon;
     
     public QuestItem _questItem;
     public QuestSO _quest;
-
-    private void SetQuestUI(QuestSO quest)
+    public QuestData _questData;
+    
+    private CanvasGroup _canvasGroup;
+    
+    private void Awake()
     {
-        _questTitle.text = quest.title;
-        _questDescription.text = quest.description;
-        _icon.sprite = quest.icon;
+        _canvasGroup = GetComponent<CanvasGroup>();
+    }
+
+    private void SetQuestUI(QuestData quest)
+    {
+        _quest = QuestManager.Instance.FindQuest(quest.id, quest.difficulty);
+        _questData = quest;
+        _questTitle.text = _quest.title;
+        _questDescription.text = _quest.description;
+        _goalText.text = quest.progressValue + " / " + _quest.goalValue;
     }
 
     public void Open()
     {
-        _questPanel.gameObject.SetActive(true);
-        SetQuestUI(_quest);
+        _canvasGroup.alpha = 1;
+        _canvasGroup.blocksRaycasts = true;
+        _canvasGroup.interactable = true;
+        SetQuestUI(_questData);
     }
 
     public void Close()
     {
-        _questPanel.gameObject.SetActive(false);
+        _canvasGroup.alpha = 0;
+        _canvasGroup.blocksRaycasts = false;
+        _canvasGroup.interactable = false;
     }
 }

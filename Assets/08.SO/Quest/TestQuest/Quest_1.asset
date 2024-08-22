@@ -17,5 +17,5 @@ MonoBehaviour:
   difficulty: 1
   description: "\uC598 \uC8FD\uC5EC\uB77C"
   icon: {fileID: -1170336602, guid: c1f79a481323808489d1aeb5d122ec76, type: 3}
-  goalValue: 0
+  goalValue: 10
   enemyType: 0

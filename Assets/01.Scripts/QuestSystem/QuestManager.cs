@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace QuestManage
@@ -12,6 +13,10 @@ namespace QuestManage
         private List<QuestSO> _currentQuests = new List<QuestSO>();
         [field:SerializeField] public List<QuestData> AcceptQuestDatas { get; set; }
 
+        private void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
 
         /**
          * 퀘스트를 랜덤하게 설정
@@ -58,7 +63,7 @@ namespace QuestManage
             return quest.description;
         }
         
-        private QuestSO FindQuest(int id, QuestDifficultyEnum difficulty)
+        public QuestSO FindQuest(int id, QuestDifficultyEnum difficulty)
         {
             return _questListSO.FineQuest(id, difficulty);
         }

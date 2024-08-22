@@ -11,6 +11,13 @@ public class QuestItem : MonoBehaviour, IPointerClickHandler
     [SerializeField] private TextMeshProUGUI _titleText;
     [SerializeField] private InGameQuestPanel _inGameQuestPanel;
     [SerializeField] private QuestSO _quest;
+    
+    private QuestData _questData;
+
+    private void Start()
+    {
+        
+    }
 
     public void SetQuestItem(QuestSO quest)
     {
@@ -19,10 +26,20 @@ public class QuestItem : MonoBehaviour, IPointerClickHandler
         _titleText.text = quest.title;
     }
     
+    public void SetQuestItem(QuestData questData)
+    {
+        _questData = questData;
+        _icon.sprite = _quest.icon;
+        _titleText.text = _quest.title;
+        _quest = QuestManager.Instance.FindQuest(questData.id, questData.difficulty);
+        _inGameQuestPanel = FindObjectOfType<InGameQuestPanel>();
+    }
+    
     public void OnPointerClick(PointerEventData eventData)
     {
         _inGameQuestPanel._questItem = this;
         _inGameQuestPanel._quest = _quest;
+        _inGameQuestPanel._questData = _questData;
         _inGameQuestPanel.Open();
     }
 }
