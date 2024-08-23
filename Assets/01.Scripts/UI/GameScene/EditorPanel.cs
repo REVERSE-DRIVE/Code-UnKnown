@@ -8,6 +8,7 @@ public class EditorPanel : MonoBehaviour, IWindowPanel
     [SerializeField] private float _activeDuration;
     [SerializeField] private Button _partBtn;
     [SerializeField] private Button _fixBtn;
+    [SerializeField] private Button _exitBtn;
     [SerializeField] private PartEditorPanel _partEditorPanel;
     [SerializeField] private FixEditorPanel _fixEditorPanel;
         
@@ -21,6 +22,12 @@ public class EditorPanel : MonoBehaviour, IWindowPanel
 
         _fixBtn.onClick.AddListener(_partEditorPanel.Close);
         _fixBtn.onClick.AddListener(_fixEditorPanel.Open);
+        _exitBtn.onClick.AddListener(HandleExit);
+    }
+
+    private void HandleExit()
+    {
+        Close();
     }
 
     public void Open()

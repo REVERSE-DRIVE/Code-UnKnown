@@ -20,6 +20,7 @@ public abstract class PartSlot : MonoBehaviour
     protected void HandlePartSelect()
     {
         OnSelectEvent?.Invoke(_currentPart);
+        _selectDisplay.DOFillAmount(1f, 0.2f);
         _selectDisplay.DOFade(1f, 0.2f);
     }
 
