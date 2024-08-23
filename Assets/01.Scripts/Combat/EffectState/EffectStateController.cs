@@ -29,14 +29,18 @@ namespace EffectState
                     Debug.LogError($"Effect Controller : no Effect found [ {typeName} ] - {ex.Message}");
                 }
             }
+            
+            
+        }
+
+        private void Start()
+        {
+            _owner.HealthCompo.OnDieEvent.AddListener(ResetEffects);
         }
 
         private void OnEnable()
         {
-            foreach (EffectState effect in _effectsDictionary.Values)
-            {
-                effect.ResetEffect();
-            }
+            ResetEffects();
         }
 
         private void Update()
@@ -61,6 +65,14 @@ namespace EffectState
             if (_effectsDictionary.TryGetValue(type, out EffectState effect))
             {
                 effect.Apply(duration, level);
+            }
+        }
+
+        public void ResetEffects()
+        {
+            foreach (EffectState effect in _effectsDictionary.Values)
+            {
+                effect.ResetEffect();
             }
         }
     }

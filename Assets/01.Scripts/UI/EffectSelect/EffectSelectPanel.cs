@@ -33,7 +33,7 @@ public class EffectSelectPanel : UIPanel
         
     }
 
-    public void Open()
+    public override void Open()
     {
         _levelUpAmount++;
         if (_levelUpAmount > 1) return;
@@ -44,7 +44,7 @@ public class EffectSelectPanel : UIPanel
         _canvasGroup.DOFade(1, 0.3f).SetUpdate(true).OnComplete(() => SetInteract(true));
     }
 
-    public void Close()
+    public override void Close()
     {
         _levelUpAmount--;
         if (_levelUpAmount > 0)

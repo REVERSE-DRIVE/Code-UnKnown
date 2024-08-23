@@ -775,6 +775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e91b83f59848449a981e5bab7541f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _activeDuration: 1
+  _useUnscaleedTime: 0
   OptionSlots:
   - {fileID: 1068565320}
   - {fileID: 1722387147}
@@ -2463,8 +2465,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 693031303}
   - {fileID: 458150172}
+  - {fileID: 693031303}
   - {fileID: 1892307723}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2528,6 +2530,63 @@ MonoBehaviour:
   _buttonSprites:
   - {fileID: -1618839063, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
   - {fileID: 93553912, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
+--- !u!1001 &335102383
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.3523031
+      objectReference: {fileID: 0}
+    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.286669
+      objectReference: {fileID: 0}
+    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531016558741159220, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
+      propertyPath: m_Name
+      value: StunVFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
 --- !u!1 &335471940
 GameObject:
   m_ObjectHideFlags: 0
@@ -3322,7 +3381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cbe98dc28754af39cd5801ca72f0ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillEnabled: 0
+  skillEnabled: 1
   _coolDown: 0
   _isAutoSkill: 0
   player: {fileID: 0}
@@ -3333,7 +3392,7 @@ MonoBehaviour:
   _effectType: 1
   level: 2
   duration: 3
-  effectRate: 10
+  effectRate: 100
 --- !u!114 &437525657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4732,6 +4791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449a30217a2c45bd9fe16d23db9d2ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _activeDuration: 1
+  _useUnscaleedTime: 0
   _defaultYDelta: 400
   _activeYDeltas: -150
   _moveDuration: 1
@@ -5109,6 +5170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _activeDuration: 1
+  _useUnscaleedTime: 0
   _partBtn: {fileID: 854793932}
   _fixBtn: {fileID: 279848941}
   _exitBtn: {fileID: 1718455799}
@@ -6105,8 +6167,9 @@ GameObject:
   - component: {fileID: 805740697}
   - component: {fileID: 805740699}
   - component: {fileID: 805740698}
+  - component: {fileID: 805740700}
   m_Layer: 5
-  m_Name: PauiseButton
+  m_Name: PauseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6169,6 +6232,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 805740696}
   m_CullTransparentMesh: 1
+--- !u!114 &805740700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805740696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 805740698}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1399125731}
+        m_TargetAssemblyTypeName: UIPanel, Assembly-CSharp
+        m_MethodName: Open
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &809327152
 GameObject:
   m_ObjectHideFlags: 0
@@ -9978,6 +10097,7 @@ GameObject:
   - component: {fileID: 1399125729}
   - component: {fileID: 1399125728}
   - component: {fileID: 1399125730}
+  - component: {fileID: 1399125731}
   m_Layer: 5
   m_Name: PausePanel
   m_TagString: Untagged
@@ -10058,6 +10178,20 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &1399125731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399125726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b4934dfb6859043b43bd19a11cfe66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeDuration: 1
+  _useUnscaleedTime: 0
 --- !u!1 &1446740254
 GameObject:
   m_ObjectHideFlags: 0
@@ -16237,3 +16371,4 @@ SceneRoots:
   - {fileID: 1943660592}
   - {fileID: 5043262373099526136}
   - {fileID: 400789135}
+  - {fileID: 335102383}

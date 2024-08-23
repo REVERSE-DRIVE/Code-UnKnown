@@ -20,6 +20,7 @@ namespace EffectState
             _owner.Stat.moveSpeed.AddModifier(-_buffValue);
             effect = PoolingManager.Instance.Pop(PoolingType.StunVFX) as EffectObject;
             effect.Initialize(_owner.transform.position);
+            effect.Play();
         }
 
         protected override void UpdateState()
@@ -42,7 +43,10 @@ namespace EffectState
         public override void ResetEffect()
         {
             base.ResetEffect();
-            _owner.MovementCompo.isStun = false;
+            if(effect != null)
+                PoolingManager.Instance.Push(effect);
+            if(_owner.MovementCompo != null)
+                _owner.MovementCompo.isStun = false;
         }
     }
 }
