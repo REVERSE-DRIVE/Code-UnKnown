@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 14
   code: Upgrade_Tracker
+  powerUpColor: {r: 0.2784314, g: 0.63529414, b: 0.54509807, a: 1}
   needLevel: 5
   maxCollect: 2
   powerUpRank: 3

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 20
   code: Upgrade_Permoment
+  powerUpColor: {r: 0.49411765, g: 0.06666667, b: 0, a: 1}
   needLevel: 6
   maxCollect: 4
   powerUpRank: 2

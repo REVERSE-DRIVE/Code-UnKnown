@@ -7,6 +7,7 @@ public class PowerUpSO : ScriptableObject
 {
     public int id;
     public string code;
+    public Color powerUpColor;
     public int needLevel;
     public int maxCollect;
     public PowerUpRank powerUpRank;

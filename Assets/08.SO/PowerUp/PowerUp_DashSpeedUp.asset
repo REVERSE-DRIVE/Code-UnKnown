@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   code: DashSpeedUp
+  powerUpColor: {r: 1, g: 0.85272884, b: 0, a: 1}
+  needLevel: 0
   maxCollect: 3
   powerUpRank: 4
   shouldBeUnlock: 0

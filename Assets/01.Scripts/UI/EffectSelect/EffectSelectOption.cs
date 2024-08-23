@@ -64,5 +64,7 @@ public class EffectSelectOption : MonoBehaviour
 
         if (_iconImage != null)
             _iconImage.sprite = PowerUp.icon;
+
+        _iconImage.color = PowerUp.powerUpColor;
     }
 }

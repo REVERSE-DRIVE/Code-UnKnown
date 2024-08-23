@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   code: Heal20Per
+  powerUpColor: {r: 0.6415094, g: 0.011940634, b: 0, a: 1}
+  needLevel: 0
   maxCollect: 50
   powerUpRank: 5
   shouldBeUnlock: 0
