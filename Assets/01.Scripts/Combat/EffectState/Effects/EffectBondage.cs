@@ -14,7 +14,6 @@ namespace EffectState
 
         public override void Enter()
         {
-            Debug.Log("스턴에 걸림");
             _owner.MovementCompo.isStun = true;
             _buffValue = effectLevel;
             _owner.Stat.moveSpeed.AddModifier(-_buffValue);
