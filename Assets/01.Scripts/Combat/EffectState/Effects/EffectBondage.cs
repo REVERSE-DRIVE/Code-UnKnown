@@ -1,5 +1,6 @@
 ﻿using ObjectManage;
 using ObjectPooling;
+using UnityEngine;
 
 namespace EffectState
 {
@@ -13,9 +14,11 @@ namespace EffectState
 
         public override void Enter()
         {
+            Debug.Log("스턴에 걸림");
+            _owner.MovementCompo.isStun = true;
             _buffValue = effectLevel;
             _owner.Stat.moveSpeed.AddModifier(-_buffValue);
-            effect = PoolingManager.Instance.Pop(PoolingType.PoiserHitVFX) as EffectObject;
+            effect = PoolingManager.Instance.Pop(PoolingType.StunVFX) as EffectObject;
             effect.Initialize(_owner.transform.position);
         }
 
@@ -33,6 +36,13 @@ namespace EffectState
             if(effect != null)
                 PoolingManager.Instance.Push(effect);
             _owner.Stat.moveSpeed.RemoveModifier(-_buffValue);
+            _owner.MovementCompo.isStun = false;
+        }
+
+        public override void ResetEffect()
+        {
+            base.ResetEffect();
+            _owner.MovementCompo.isStun = false;
         }
     }
 }

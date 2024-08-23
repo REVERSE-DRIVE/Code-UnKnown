@@ -4,22 +4,16 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class EffectSelectPanel : MonoBehaviour, IWindowPanel
+public class EffectSelectPanel : UIPanel
 {
     [SerializeField] private EffectSelectOption[] OptionSlots;
     [SerializeField] private PowerUpListSO _powerUpList;
     
-    private CanvasGroup _canvasGroup;
     // 중첩 레벨업을 대비하여 이를 저장
     private int _levelUpAmount;
 
     private bool _isActive = false;
     
-    private void Awake()
-    {
-        _canvasGroup = GetComponent<CanvasGroup>();
-        
-    }
     
     private void SetUpPowerUpCards()
     {
