@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 96124177}
   - component: {fileID: 96124176}
   m_Layer: 5
-  m_Name: LegPart_LeftBack
+  m_Name: LegPart_RightBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5714,8 +5714,8 @@ GameObject:
   - component: {fileID: 788553750}
   - component: {fileID: 788553752}
   - component: {fileID: 788553751}
-  - component: {fileID: 788553753}
   - component: {fileID: 788553754}
+  - component: {fileID: 788553755}
   m_Layer: 5
   m_Name: BodtySelectBtn
   m_TagString: Untagged
@@ -5781,20 +5781,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788553749}
   m_CullTransparentMesh: 1
---- !u!114 &788553753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788553749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21f6889cf1df47869c1f958a2442da24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selectPartImage: {fileID: 1692756875}
-  _selectDisplay: {fileID: 815700966}
 --- !u!114 &788553754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5839,6 +5825,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &788553755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788553749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8295281605d454a90298f93ece5cee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectDisplay: {fileID: 815700966}
+  _image: {fileID: 1692756875}
 --- !u!1 &805569799
 GameObject:
   m_ObjectHideFlags: 0
@@ -6801,7 +6801,7 @@ MonoBehaviour:
   _gaugeFill: {fileID: 69024243}
   _gaugeSubFill: {fileID: 233255976}
   _openDuration: 0.1
-  _gaugeFillDuration: 0.2
+  _gaugeFillDuration: 0.6
 --- !u!1 &899788070
 GameObject:
   m_ObjectHideFlags: 0
@@ -7220,6 +7220,7 @@ Transform:
   - {fileID: 769684104}
   - {fileID: 486287373}
   - {fileID: 1849762069}
+  - {fileID: 2025917015}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &941542008
@@ -11819,7 +11820,7 @@ GameObject:
   - component: {fileID: 1658951764}
   - component: {fileID: 1658951763}
   m_Layer: 5
-  m_Name: LegPart_RightFront
+  m_Name: LegPart_LeftFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13307,8 +13308,8 @@ GameObject:
   - component: {fileID: 1789440092}
   - component: {fileID: 1789440094}
   - component: {fileID: 1789440093}
-  - component: {fileID: 1789440095}
   - component: {fileID: 1789440096}
+  - component: {fileID: 1789440097}
   m_Layer: 5
   m_Name: LegSelectBtn
   m_TagString: Untagged
@@ -13374,20 +13375,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789440091}
   m_CullTransparentMesh: 1
---- !u!114 &1789440095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789440091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21f6889cf1df47869c1f958a2442da24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selectPartImage: {fileID: 1009869452}
-  _selectDisplay: {fileID: 1591404964}
 --- !u!114 &1789440096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13432,6 +13419,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1789440097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789440091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8595c68500fe49ac99d6db0cface68c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectDisplay: {fileID: 1591404964}
+  _images:
+  - {fileID: 848138353}
+  - {fileID: 96124176}
+  - {fileID: 1658951763}
+  - {fileID: 1009869452}
 --- !u!1 &1799757378
 GameObject:
   m_ObjectHideFlags: 3
@@ -13733,8 +13738,8 @@ MonoBehaviour:
   _detailPanelImage: {fileID: 730881129}
   _partNameText: {fileID: 954846924}
   _partDescriptionText: {fileID: 439080735}
-  _bodySlot: {fileID: 788553753}
-  _legSlot: {fileID: 1789440095}
+  _bodySlot: {fileID: 788553755}
+  _legSlot: {fileID: 1789440097}
 --- !u!1 &1892307722
 GameObject:
   m_ObjectHideFlags: 0
@@ -14717,6 +14722,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022714662}
   m_CullTransparentMesh: 1
+--- !u!1 &2025917014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2025917015}
+  - component: {fileID: 2025917016}
+  m_Layer: 0
+  m_Name: PartManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2025917015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025917014}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 931045606}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2025917016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025917014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e6fa9036c5470eb6e395e905d99afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _partTable: {fileID: 11400000, guid: d6daef365fddb3e4a9a64bcc87a2ce0e, type: 2}
+  <PlayerPartDataList>k__BackingField: []
+  <BodyPart>k__BackingField: {fileID: 11400000, guid: a85b5614089248a43834628bb6863f6b, type: 2}
+  <LegPart>k__BackingField: {fileID: 11400000, guid: 4257b5c1103592540a630f1932768afe, type: 2}
 --- !u!1 &2032295509
 GameObject:
   m_ObjectHideFlags: 0

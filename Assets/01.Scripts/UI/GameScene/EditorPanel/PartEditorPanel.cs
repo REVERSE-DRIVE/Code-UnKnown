@@ -11,8 +11,8 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
     [SerializeField] private TextMeshProUGUI _partNameText;
     [SerializeField] private TextMeshProUGUI _partDescriptionText;
 
-    [SerializeField] private PartSlot _bodySlot;
-    [SerializeField] private PartSlot _legSlot;
+    [SerializeField] private BodySlot _bodySlot;
+    [SerializeField] private LegSlot _legSlot;
 
     private Player _player;
     private CanvasGroup _canvasGroup;
