@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 19
   code: Unlock_Permoment
+  needLevel: 6
   maxCollect: 1
   powerUpRank: 2
   shouldBeUnlock: 0

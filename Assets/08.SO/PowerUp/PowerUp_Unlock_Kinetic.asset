@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 17
   code: Unlock_Kinetic
+  needLevel: 5
   maxCollect: 1
   powerUpRank: 2
   shouldBeUnlock: 0

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 20
   code: Upgrade_Permoment
+  needLevel: 6
   maxCollect: 4
   powerUpRank: 2
   shouldBeUnlock: 6

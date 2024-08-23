@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 10
   code: Upgrade_Defender
+  needLevel: 6
   maxCollect: 3
   powerUpRank: 3
   shouldBeUnlock: 1

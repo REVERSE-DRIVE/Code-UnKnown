@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 13
   code: Unlock_Tracker
+  needLevel: 5
   maxCollect: 1
   powerUpRank: 3
   shouldBeUnlock: 0

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 12
   code: Upgrade_Poiser
+  needLevel: 7
   maxCollect: 5
   powerUpRank: 3
   shouldBeUnlock: 4

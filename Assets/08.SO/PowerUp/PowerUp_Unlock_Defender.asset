@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 9
   code: Unlock_Defender
+  needLevel: 6
   maxCollect: 1
   powerUpRank: 3
   shouldBeUnlock: 0
