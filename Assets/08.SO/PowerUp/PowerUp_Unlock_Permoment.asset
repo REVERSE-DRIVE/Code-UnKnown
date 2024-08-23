@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 19
   code: Unlock_Permoment
+  powerUpColor: {r: 0.49056602, g: 0.063974805, b: 0, a: 1}
+  needLevel: 6
   maxCollect: 1
   powerUpRank: 2
   shouldBeUnlock: 0

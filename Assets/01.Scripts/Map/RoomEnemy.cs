@@ -64,8 +64,8 @@ public class RoomEnemy : RoomBase, IRoomCleable
         if (isClear || process) return;
         
         process = true;
-        SetDoor(true);
-
+        SetDoor(true);  
+        CameraManager.Instance.HandleZoomCombatMode();
         Transform player = PlayerManager.Instance.player.transform;
         Vector2Int playerPos = MapManager.Instance.GetCellByWorldPos(player.position);
 
@@ -109,9 +109,10 @@ public class RoomEnemy : RoomBase, IRoomCleable
         // 끝
         isClear = true;
         process = false;
-        
+        CameraManager.Instance.HandleZoomNormalMode();
+
         SetDoor(false);
-    
+        
         if (MapManager.Instance.CheckAllClear(true)) return; // 보스 나오는거면 보상 안줌
 
         // 보상

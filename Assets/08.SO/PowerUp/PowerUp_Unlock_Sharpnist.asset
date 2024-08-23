@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 15
   code: Unlock_Sharpnist
+  needLevel: 6
   maxCollect: 1
   powerUpRank: 0
   shouldBeUnlock: 0

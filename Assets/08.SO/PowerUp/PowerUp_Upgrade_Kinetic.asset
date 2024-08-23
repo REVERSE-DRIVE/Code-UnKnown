@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 18
   code: Upgrade_Kinetic
+  powerUpColor: {r: 1, g: 0.44705883, b: 0, a: 1}
+  needLevel: 5
   maxCollect: 3
   powerUpRank: 2
   shouldBeUnlock: 2

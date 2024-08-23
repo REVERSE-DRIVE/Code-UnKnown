@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 10
   code: Upgrade_Defender
+  powerUpColor: {r: 0.44313726, g: 0.26666668, b: 0.59607846, a: 1}
+  needLevel: 6
   maxCollect: 3
   powerUpRank: 3
   shouldBeUnlock: 1

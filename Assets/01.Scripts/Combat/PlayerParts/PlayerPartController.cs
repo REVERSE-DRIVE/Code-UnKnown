@@ -9,6 +9,8 @@ namespace PlayerPartsManage
         public PlayerPartTableSO[] playerPartTableSO;
         
         private Transform _visualTrm;
+        public PlayerBodyPartDataSO CurrentBodyPart { get; private set; }
+        public PlayerLegPartDataSO CurrentLegPart { get; private set; }
         
         [SerializeField] private SpriteRenderer _bodySpriteRenderer;
         [SerializeField] private SpriteRenderer[] _legSpriteRenderers;
@@ -39,14 +41,23 @@ namespace PlayerPartsManage
 
         public void ChangePart(PartType type, PlayerPartDataSO anotherPart)
         {
+            print("파츠를 바꾸");
             UnMountTrigger(type);
             Destroy(partList[(int)type].gameObject);
             partList[(int)type] = Instantiate(anotherPart.partPrefab, _visualTrm);
             MountTrigger(type);
             if (type == PartType.Body)
-                ChangeSprite(anotherPart as PlayerBodyPartDataSO);
+            {
+                PlayerBodyPartDataSO part = anotherPart as PlayerBodyPartDataSO;
+                ChangeSprite(part);
+                CurrentBodyPart = part;
+            }
             else if (type == PartType.Leg)
-                ChangeSprite(anotherPart as PlayerLegPartDataSO);
+            {
+                PlayerLegPartDataSO part = anotherPart as PlayerLegPartDataSO;
+                ChangeSprite(part);
+                CurrentLegPart = part;
+            }
         }
 
         private void ChangeSprite(PlayerLegPartDataSO anotherPart)

@@ -8,7 +8,8 @@ public enum WindowEnum
     EffectSelect,
     Dark,
     BossCutScene,
-    Clear
+    Clear,
+    Editor
 }
 
 public enum WindowUITypeEnum

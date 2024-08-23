@@ -76,7 +76,14 @@ public class CameraManager : MonoSingleton<CameraManager>
     public void ShakeOff()
     {
         SetShake(0,0);
+        
     }
+
+
+    #region Zooom
+
+    
+
 
     public void StageStartCameraZoomEvent()
     {
@@ -90,6 +97,16 @@ public class CameraManager : MonoSingleton<CameraManager>
     public void ZoomDefault()
     {
         _virtualCamera.m_Lens.OrthographicSize = cameraDefaultZoom;
+    }
+
+    public void HandleZoomCombatMode()
+    {
+        ZoomFromDefault(8f, 0.2f);
+    }
+
+    public void HandleZoomNormalMode()
+    {
+        ZoomDefault(0.5f);
     }
 
     public void ZoomDefault(float duration)
@@ -124,4 +141,7 @@ public class CameraManager : MonoSingleton<CameraManager>
         }
         _virtualCamera.m_Lens.OrthographicSize = after;
     }
+    
+    #endregion
+
 }

@@ -18,6 +18,5 @@ public class DecoyEnemy : EnemyBase
     protected override void Update()
     {
         base.Update();
-        Debug.Log("A<Color=red>"+StateMachine.CurrentState+"</Color>");
     }
 }

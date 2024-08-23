@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 9
   code: Unlock_Defender
+  powerUpColor: {r: 0.44080848, g: 0.2657707, b: 0.5943396, a: 1}
+  needLevel: 6
   maxCollect: 1
   powerUpRank: 3
   shouldBeUnlock: 0
