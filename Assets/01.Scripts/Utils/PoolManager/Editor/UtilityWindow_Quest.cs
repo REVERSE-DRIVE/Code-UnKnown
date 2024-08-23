@@ -7,9 +7,7 @@ using UnityEngine;
 public partial class UtilityWindow
 {
     private readonly string _questDirectory = "Assets/08.SO/Quest";
-    private QuestListSO _questTable;
-    private string _questType;
-
+    private QuestTableSO _questTable;
 
     private void DrawQuestItems()
     {
@@ -68,7 +66,7 @@ public partial class UtilityWindow
 
     private void DrawQuestTable()
     {
-        foreach (QuestSO data in _questTable.questList)
+        foreach (QuestListSO data in _questTable.questList)
         {
             GUIStyle style = selectedItem[UtilType.Quest] == data
                 ? _selectStyle
@@ -95,7 +93,7 @@ public partial class UtilityWindow
         }
     }
 
-    private void GetQuestRect(QuestSO data)
+    private void GetQuestRect(QuestListSO data)
     {
         Rect rect = GUILayoutUtility.GetLastRect();
         
@@ -107,7 +105,7 @@ public partial class UtilityWindow
         }
     }
 
-    private void QuestDeleteButton(QuestSO data)
+    private void QuestDeleteButton(QuestListSO data)
     {
         GUI.color = Color.red;
         if (GUILayout.Button("X", GUILayout.Width(20f)))
@@ -126,18 +124,9 @@ public partial class UtilityWindow
         
         EditorGUILayout.BeginHorizontal();
         {
-            // Quest Type 입력
-            _questType = EditorGUILayout.TextField("Quest Type", _questType);
             GUI.color = new Color(0.19f, 0.76f, 0.08f);
             if (GUILayout.Button("New Quest Item"))
             {
-                if (_questType == string.Empty)
-                {
-                    Debug.LogError("Quest Type을 입력해주세요.");
-                    EditorGUILayout.EndHorizontal();
-                    return;
-                }
-                Debug.Log(_questType);
                 CreateQuestSO();
                 EditorUtility.SetDirty(_questTable);
                 AssetDatabase.SaveAssets();
@@ -148,14 +137,7 @@ public partial class UtilityWindow
 
     private void CreateQuestSO()
     {
-        Type type = Type.GetType($"QuestManage.{_questType}QuestSO, Assembly-CSharp");
-        if (type == null)
-        {
-            Debug.LogError("Quest Type을 확인해주세요.");
-            return;
-        }
-        
-        QuestSO newData = (QuestSO) CreateInstance(type);
+        QuestListSO newData = CreateInstance<QuestListSO>();
         string path = $"{_questDirectory}/{_questTable.name}";
         if (Directory.Exists(path) == false)
         {
@@ -175,7 +157,7 @@ public partial class UtilityWindow
         EditorGUILayout.BeginHorizontal();
         {
             EditorGUILayout.LabelField("Quest Table", GUILayout.Width(100f));
-            _questTable = (QuestListSO) EditorGUILayout.ObjectField(_questTable, typeof(QuestListSO), false);
+            _questTable = (QuestTableSO) EditorGUILayout.ObjectField(_questTable, typeof(QuestTableSO), false);
         }
         EditorGUILayout.EndHorizontal();
     }

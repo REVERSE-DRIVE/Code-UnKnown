@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using ItemManage;
 using PlayerPartsManage;
+using QuestManage;
 using UnityEngine;
 
 public class PartItem : Item
@@ -18,5 +19,6 @@ public class PartItem : Item
     {
         base.Interact(data);
         PlayerPartManager.Instance.ChangePart(_playerPartDataSO.partType, _playerPartDataSO);
+        QuestObserver.Instance.CollectTrigger(ItemType.Part);
     }
 }

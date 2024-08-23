@@ -1,6 +1,7 @@
 ﻿using System;
 using DG.Tweening;
 using ItemManage;
+using QuestManage;
 using UnityEngine;
 
 public class ResourceItem : Item
@@ -41,6 +42,7 @@ public class ResourceItem : Item
             {
                 ResourceManager.Instance.AddResource(ItemSO.resourceValue);
                 LevelManager.Instance.ApplyExp(ItemSO.resourceValue);
+                QuestObserver.Instance.CollectTrigger(ItemType.Resource);
                 PoolingManager.Instance.Push(this);
             });
         }

@@ -13,7 +13,7 @@ public class InGameQuestPanel : MonoBehaviour, IWindowPanel
     [SerializeField] private Image _icon;
     
     public QuestItem _questItem;
-    public QuestSO _quest;
+    public QuestListSO _quest;
     public QuestData _questData;
     
     private CanvasGroup _canvasGroup;
@@ -25,11 +25,11 @@ public class InGameQuestPanel : MonoBehaviour, IWindowPanel
 
     private void SetQuestUI(QuestData quest)
     {
-        _quest = QuestManager.Instance.FindQuest(quest.id, quest.difficulty);
+        _quest = QuestManager.Instance.FindQuestListSO(quest.id, quest.difficulty);
         _questData = quest;
         _questTitle.text = _quest.title;
         _questDescription.text = _quest.description;
-        _goalText.text = quest.progressValue + " / " + _quest.goalValue;
+        _goalText.text = $"{quest.progressValue}%";
     }
 
     public void Open()

@@ -71,7 +71,7 @@ public class EnemyBase : Enemy, IPoolable
         
         Debug.Log("Enemy Dead");
         StateMachine.ChangeState(EnemyStateEnum.Dead);
-        QuestObserver.Instance.KillTrigger(_enemyType);
+        QuestObserver.Instance.KillTrigger(_enemyType, 1);
         base.SetDead();
     }
     

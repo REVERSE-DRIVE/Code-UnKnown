@@ -10,7 +10,7 @@ public class QuestItem : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _titleText;
     [SerializeField] private InGameQuestPanel _inGameQuestPanel;
-    [SerializeField] private QuestSO _quest;
+    [SerializeField] private QuestListSO _quest;
     
     private QuestData _questData;
 
@@ -21,17 +21,17 @@ public class QuestItem : MonoBehaviour, IPointerClickHandler
 
     public void SetQuestItem(QuestSO quest)
     {
-        _quest = quest;
-        _icon.sprite = quest.icon;
-        _titleText.text = quest.title;
+        // _quest = quest;
+        // _icon.sprite = quest.icon;
+        // _titleText.text = quest.title;
     }
     
     public void SetQuestItem(QuestData questData)
     {
         _questData = questData;
+        _quest = QuestManager.Instance.FindQuestListSO(questData.id, questData.difficulty);
         _icon.sprite = _quest.icon;
         _titleText.text = _quest.title;
-        _quest = QuestManager.Instance.FindQuest(questData.id, questData.difficulty);
         _inGameQuestPanel = FindObjectOfType<InGameQuestPanel>();
     }
     
