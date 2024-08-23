@@ -2530,63 +2530,6 @@ MonoBehaviour:
   _buttonSprites:
   - {fileID: -1618839063, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
   - {fileID: 93553912, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
---- !u!1001 &335102383
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.3523031
-      objectReference: {fileID: 0}
-    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -8.286669
-      objectReference: {fileID: 0}
-    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 638691297842928729, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4531016558741159220, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
-      propertyPath: m_Name
-      value: StunVFX
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 576827de8c3056c47adf61eac2406e67, type: 3}
 --- !u!1 &335471940
 GameObject:
   m_ObjectHideFlags: 0
@@ -14390,7 +14333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecd5c6a5290409ca42b4b4e3fc0a05b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _zipfileIsPartRate: 0.9
+  _zipfileIsPartRate: 0.3
 --- !u!1 &1860786125
 GameObject:
   m_ObjectHideFlags: 0
@@ -16371,4 +16314,3 @@ SceneRoots:
   - {fileID: 1943660592}
   - {fileID: 5043262373099526136}
   - {fileID: 400789135}
-  - {fileID: 335102383}
