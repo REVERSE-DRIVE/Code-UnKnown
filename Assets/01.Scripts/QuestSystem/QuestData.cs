@@ -25,6 +25,7 @@ namespace QuestManage
         public void Trigger(int value)
         {
             progressValue += value;
+            Debug.Log($"Quest {id} : {progressValue}/{_goalValue}");
             if (progressValue >= _goalValue)
             {
                 // 클리어 이벤트

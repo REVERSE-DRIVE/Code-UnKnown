@@ -7,6 +7,6 @@ public class DecoySword : MonoBehaviour
 
     public void Attack()
     {
-        _owner.DamageCasterCompo.CastDamage(5f, _owner.Stat.GetDamage());
+        _owner.DamageCasterCompo.CastDamage(3f, _owner.Stat.GetDamage());
     } 
 }

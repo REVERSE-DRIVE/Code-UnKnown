@@ -12,10 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea49bc4cc69435b9564bac5df36bb1c, type: 3}
   m_Name: Quest_2
   m_EditorClassIdentifier: 
-  id: 2
-  title: "\uD14C\uC2A4\uD2B8 \uC784\uBB343"
-  difficulty: 1
-  description: "\uC598\uB3C4 \uC8FD\uC5EC\uB77C"
-  icon: {fileID: 743323746, guid: a39d6f8195696474cacb5b40d5c42502, type: 3}
-  goalValue: 0
+  goalValue: 10
   enemyType: 1
