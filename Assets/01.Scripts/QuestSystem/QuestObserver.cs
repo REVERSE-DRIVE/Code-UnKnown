@@ -18,6 +18,9 @@ namespace QuestManage
         [ContextMenu("Apply")]
         public void ApplyAllQuest()
         {
+            if (QuestManager.Instance == null) return;
+            if (IsNullOrEmpty(QuestManager.Instance.AcceptQuestDatas)) return;
+            if (IsNullOrEmpty(QuestManager.Instance.AcceptQuestListSOs)) return;
             currentQuestDatas = QuestManager.Instance.AcceptQuestDatas;
             currentQuestListSOs = QuestManager.Instance.AcceptQuestListSOs;
         }
@@ -30,6 +33,7 @@ namespace QuestManage
 
         public void KillTrigger(EnemyType enemyType, int triggerValue)
         {
+            if (IsNullOrEmpty(currentQuestListSOs)) return;
             // EnemyType을 받아와서 킬 카운트 적립
             for (int i = 0; i < currentQuestListSOs.Count; i++)
             {
@@ -48,6 +52,7 @@ namespace QuestManage
 
         public void CollectTrigger(ItemType itemType, int triggerValue)
         {
+            if (IsNullOrEmpty(currentQuestListSOs)) return;
             // ItemType을 받아와서 아이템 카운트 적립
             for (int i = 0; i < currentQuestListSOs.Count; i++)
             {
@@ -62,6 +67,11 @@ namespace QuestManage
                     }
                 }
             }
+        }
+        
+        private bool IsNullOrEmpty<T>(List<T> list)
+        {
+            return list == null || list.Count == 0;
         }
     }
     

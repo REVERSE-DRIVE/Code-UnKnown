@@ -21,7 +21,7 @@ public class InducedEleteAttackState : EnemyAttackState
         for (int i = 0; i < 4; i++)
         {
             var bullet = PoolingManager.Instance.Pop(PoolingType.Projectile_Tracing) as TracingProjectile;
-            bullet.Initialize(_enemyBase.transform.position, _damage, 10f, 1f);
+            bullet.Initialize(_enemyBase.transform.position, _damage, 5f, 1f);
             bullet.Shoot(_enemyBase.targetTrm.position - _enemyBase.transform.position);
             yield return new WaitForSeconds(0.5f);
         }

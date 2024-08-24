@@ -33,6 +33,7 @@ public class InGameQuestManager : MonoBehaviour
     private void SpawnQuestItem()
     {
         var quests = QuestObserver.Instance.currentQuestDatas;
+        if (quests == null) return;
 
         foreach (var quest in quests)
         {
