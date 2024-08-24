@@ -95,6 +95,7 @@ public class RoomEnemy : RoomBase, IRoomCleable
 
     public override void RoomLeave()
     {
+        base.RoomLeave();
         if (isClear || process) return;
 
     }

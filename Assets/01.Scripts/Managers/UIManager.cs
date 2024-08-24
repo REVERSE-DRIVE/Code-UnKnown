@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +8,8 @@ public enum WindowEnum
     Dark,
     BossCutScene,
     Clear,
-    Editor
+    Editor,
+    Minimap
 }
 
 public enum WindowUITypeEnum
