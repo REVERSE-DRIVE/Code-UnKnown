@@ -66,6 +66,8 @@ public class RoomEnemy : RoomBase, IRoomCleable
         process = true;
         SetDoor(true);  
         CameraManager.Instance.HandleZoomCombatMode();
+        UIManager.Instance.Close(WindowEnum.Minimap);
+
         Transform player = PlayerManager.Instance.player.transform;
         Vector2Int playerPos = MapManager.Instance.GetCellByWorldPos(player.position);
 
@@ -111,7 +113,7 @@ public class RoomEnemy : RoomBase, IRoomCleable
         isClear = true;
         process = false;
         CameraManager.Instance.HandleZoomNormalMode();
-
+        UIManager.Instance.Open(WindowEnum.Minimap);
         SetDoor(false);
         
         if (MapManager.Instance.CheckAllClear(true)) return; // 보스 나오는거면 보상 안줌

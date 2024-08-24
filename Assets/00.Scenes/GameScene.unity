@@ -15158,6 +15158,8 @@ MonoBehaviour:
     windowType: 2
   - window: 4
     windowType: 2
+  - window: 5
+    windowType: 0
   _canvasTrm: {fileID: 319232986}
 --- !u!4 &1694410971
 Transform:
@@ -17087,8 +17089,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1927222284}
   - component: {fileID: 1927222286}
+  - component: {fileID: 1927222287}
+  - component: {fileID: 1927222288}
   m_Layer: 5
-  m_Name: MiniMapPanel
+  m_Name: MinimapPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17115,7 +17119,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -169, y: -227}
+  m_AnchoredPosition: {x: -130, y: -227}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1927222286
@@ -17126,6 +17130,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927222283}
   m_CullTransparentMesh: 1
+--- !u!225 &1927222287
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927222283}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &1927222288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927222283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06789c6f5fbb43cc8f6e970a04668045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeDuration: 1
+  _useUnscaleedTime: 0
+  _defaultYDelta: 500
+  _activetYDelta: -130
 --- !u!1 &1930025959
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIPanel : MonoBehaviour, IWindowPanel
 {
-    [SerializeField] private float _activeDuration = 1f;
+    [SerializeField] protected float _activeDuration = 1f;
     [SerializeField] private bool _useUnscaleedTime;
     protected CanvasGroup _canvasGroup;
 
