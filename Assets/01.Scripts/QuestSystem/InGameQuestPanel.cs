@@ -11,6 +11,7 @@ public class InGameQuestPanel : MonoBehaviour, IWindowPanel
     [SerializeField] private TextMeshProUGUI _goalText;
     [SerializeField] private RectTransform _questPanel;
     [SerializeField] private Image _icon;
+    [SerializeField] private Image _progressBar;
     
     public QuestItem _questItem;
     public QuestListSO _quest;
@@ -30,6 +31,8 @@ public class InGameQuestPanel : MonoBehaviour, IWindowPanel
         _questTitle.text = _quest.title;
         _questDescription.text = _quest.description;
         _goalText.text = $"{quest.progressValue}%";
+        _icon.sprite = _quest.icon;
+        _progressBar.fillAmount = quest.progressValue * 0.01f;
     }
 
     public void Open()

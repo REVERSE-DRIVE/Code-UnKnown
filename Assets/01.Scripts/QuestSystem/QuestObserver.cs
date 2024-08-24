@@ -46,7 +46,7 @@ namespace QuestManage
             }
         }
 
-        public void CollectTrigger(ItemType itemType)
+        public void CollectTrigger(ItemType itemType, int triggerValue)
         {
             // ItemType을 받아와서 아이템 카운트 적립
             for (int i = 0; i < currentQuestListSOs.Count; i++)
@@ -57,7 +57,7 @@ namespace QuestManage
                     {
                         if (collectQuestSO.itemType == itemType)
                         {
-                            currentQuestDatas[i].Trigger(1);
+                            currentQuestDatas[i].Trigger(triggerValue);
                         }
                     }
                 }
