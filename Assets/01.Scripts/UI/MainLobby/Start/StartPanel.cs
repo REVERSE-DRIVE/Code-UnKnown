@@ -27,7 +27,7 @@ public class StartPanel : WindowUI
     private void StartGame()
     {
         _fadeInOut.Fade(0.5f, 1f,
-                () => LoadManager.Instance.StartLoad("GameScene 1"));
+                () => LoadManager.Instance.StartLoad("GameScene"));
         QuestObserver.Instance.ApplyAllQuest();
     }
 
@@ -47,5 +47,6 @@ public class StartPanel : WindowUI
         
         _descriptionText.text 
             = $"현재 장착한 파츠는 \n{_playerPartManager.BodyPart.partName}, {_playerPartManager.LegPart.partName}입니다.\n계속하시겠습니까?";
+        QuestManager.Instance.CloseQuestWindow();
     }
 }

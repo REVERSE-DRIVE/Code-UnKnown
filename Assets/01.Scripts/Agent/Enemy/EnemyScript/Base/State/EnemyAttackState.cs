@@ -24,6 +24,7 @@ public class EnemyAttackState : EnemyState<EnemyStateEnum>
         
         if (_endTriggerCalled)
         {
+            _enemyBase.lastAttackTime = Time.time;
             AttackEnd();
         }
     }

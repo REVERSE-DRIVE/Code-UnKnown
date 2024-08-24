@@ -39,6 +39,14 @@ namespace QuestManage
         }
         
         /**
+         * 퀘스트 UI 클로즈
+         */
+        public void CloseQuestWindow()
+        {
+            _questUI.CloseQuestWindow();
+        }
+        
+        /**
          * 퀘스트 UI 속 퀘스트 설정
          */
         [ContextMenu("SettingQuestWindow")]

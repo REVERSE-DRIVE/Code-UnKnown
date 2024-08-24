@@ -5,7 +5,8 @@ public class ReflectProjectile : Projectile
     [SerializeField] private int _reflectCount;
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if (_reflectCount <= 0)
+        if (_isEnemy && other.CompareTag("Enemy")) return;
+        if (_reflectCount <= 0 || other.CompareTag("Player"))
         {
             base.OnTriggerEnter2D(other);
             return;

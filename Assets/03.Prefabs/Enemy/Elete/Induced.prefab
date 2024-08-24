@@ -110,7 +110,7 @@ MonoBehaviour:
   runAwayDistance: 10
   attackDistance: 3
   chaseDistance: 6
-  attackCooldown: 1
+  attackCooldown: 2
   lastAttackTime: 0
   targetTrm: {fileID: 0}
   <type>k__BackingField: 16
