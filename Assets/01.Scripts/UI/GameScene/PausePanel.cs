@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PausePanel : UIPanel
 {
-    public void Open()
+    public override void Open()
     {
         
     }
