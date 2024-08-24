@@ -10,7 +10,7 @@ namespace PlayerPartsManage
 
         protected virtual void Awake()
         {
-            _owner = transform.root.GetComponent<Player>();
+            _owner = PlayerManager.Instance.player;
         }
 
 

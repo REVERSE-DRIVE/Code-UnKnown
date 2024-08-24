@@ -41,7 +41,7 @@ public class EnemyChaseState : EnemyState<EnemyStateEnum>
             _enemyBase.MovementCompo.SetMovement(_enemyBase.targetTrm.position - _enemyBase.transform.position);
             
         }
-        else if (distance <= _enemyBase.attackDistance)
+        else if (distance <= _enemyBase.attackDistance && _enemyBase.attackCooldown <= Time.time - _enemyBase.lastAttackTime)
         {
             if (_chaseCoroutine != null)
             {

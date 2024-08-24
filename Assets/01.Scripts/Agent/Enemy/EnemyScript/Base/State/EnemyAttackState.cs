@@ -24,6 +24,7 @@ public class EnemyAttackState : EnemyState<EnemyStateEnum>
         
         if (_endTriggerCalled)
         {
+            _enemyBase.lastAttackTime = Time.time;
             AttackEnd();
         }
     }
@@ -32,6 +33,6 @@ public class EnemyAttackState : EnemyState<EnemyStateEnum>
     {
         Debug.Log("Attack End");
         //_enemyBase.StopAllCoroutines();
-        _stateMachine.ChangeState(EnemyStateEnum.Chase);
+        _stateMachine.ChangeState(EnemyStateEnum.Idle);
     }
 }

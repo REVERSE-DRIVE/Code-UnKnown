@@ -66,12 +66,13 @@ MonoBehaviour:
   runAwayDistance: 10
   attackDistance: 10
   chaseDistance: 18
-  attackCooldown: 3
+  attackCooldown: 4
   lastAttackTime: 0
   targetTrm: {fileID: 0}
   <type>k__BackingField: 14
   _hitMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}
   <IsElete>k__BackingField: 0
+  _enemyType: 1
 --- !u!114 &2710069964101042818
 MonoBehaviour:
   m_ObjectHideFlags: 0

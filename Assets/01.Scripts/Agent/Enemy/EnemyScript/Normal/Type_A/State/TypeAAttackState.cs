@@ -10,7 +10,7 @@ public class TypeAAttackState : EnemyAttackState
     {
         base.Enter();
         var bullet = PoolingManager.Instance.Pop(PoolingType.Projectile_Tracing) as TracingProjectile;
-        bullet.transform.position = _enemyBase.transform.position;
+        bullet.Initialize(_enemyBase.transform.position, _enemyBase.Stat.GetDamage(), 10f, 1f);
         bullet.Shoot(_enemyBase.targetTrm.position - _enemyBase.transform.position);
     }
 }
