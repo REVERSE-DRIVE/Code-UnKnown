@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   code: BonusEXP10Per
+  powerUpColor: {r: 0.35803604, g: 0.6415094, b: 0.22029188, a: 1}
+  needLevel: 0
   maxCollect: 50
   powerUpRank: 5
   shouldBeUnlock: 0

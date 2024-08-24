@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 12
   code: Upgrade_Poiser
+  powerUpColor: {r: 0.5849056, g: 0.4609651, b: 0.3167319, a: 1}
+  needLevel: 7
   maxCollect: 5
   powerUpRank: 3
   shouldBeUnlock: 4

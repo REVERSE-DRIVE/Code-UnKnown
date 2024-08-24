@@ -6,6 +6,8 @@ public class CustomPowerUp : Editor
 {
     private SerializedProperty idProp;
     private SerializedProperty codeProp;
+    private SerializedProperty colorProp;
+    private SerializedProperty needLevelProp;
     private SerializedProperty maxCollectProp;
     private SerializedProperty rankProp;
     private SerializedProperty shouldBeUnlockProp;
@@ -24,6 +26,8 @@ public class CustomPowerUp : Editor
         GUIUtility.keyboardControl = 0;
         idProp = serializedObject.FindProperty("id");
         codeProp = serializedObject.FindProperty("code");
+        colorProp = serializedObject.FindProperty("powerUpColor");
+        needLevelProp = serializedObject.FindProperty("needLevel");
         maxCollectProp = serializedObject.FindProperty("maxCollect");
         rankProp = serializedObject.FindProperty("powerUpRank");
         shouldBeUnlockProp = serializedObject.FindProperty("shouldBeUnlock");
@@ -91,6 +95,8 @@ public class CustomPowerUp : Editor
                     }
                 }
                 EditorGUILayout.EndHorizontal();
+                EditorGUILayout.PropertyField(colorProp);
+                EditorGUILayout.PropertyField(needLevelProp);
 
                 EditorGUILayout.PropertyField(maxCollectProp);
                 EditorGUILayout.PropertyField(rankProp);

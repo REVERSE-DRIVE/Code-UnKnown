@@ -7,6 +7,8 @@ public class PowerUpSO : ScriptableObject
 {
     public int id;
     public string code;
+    public Color powerUpColor;
+    public int needLevel;
     public int maxCollect;
     public PowerUpRank powerUpRank;
     public PlayerSkill shouldBeUnlock;
@@ -25,6 +27,8 @@ public class PowerUpSO : ScriptableObject
         }
         if (PowerUpManager.Instance.Find(id) >= maxCollect)
             return false;
+
+        if (LevelManager.Instance.CurrentLevel < needLevel) return false;
 
         if (effectList.Any(e => e.CanUpgradeEffect() == false)) 
             return false;

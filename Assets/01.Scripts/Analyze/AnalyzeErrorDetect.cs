@@ -41,6 +41,7 @@ public class AnalyzeErrorDetect : MonoBehaviour
 
             if (exceptions.Count == 0) return;
             AnalyzeManager.SendExceptions(exceptions);
+            errorStack.Clear();
         }
     }
 

@@ -154,7 +154,6 @@ public class PlayerAttacker : MonoBehaviour
         //_player.Stat.isResist = true;
         float duration = Mathf.Clamp01(1.5f - _player.additionalStat.dashSpeed.GetValue() * 0.3f) * boundDir.magnitude / 15;
         _attackEffect.SetTargetAttack(true);
-        _cameraManager.ZoomFromDefault(8f,0.2f);
         yield return _player.PlayerController.Dash(currentTargetTrm.position, duration);
         _attackEffect.Play(boundDir.normalized);
         EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
@@ -164,7 +163,6 @@ public class PlayerAttacker : MonoBehaviour
         _attackEffect.SetTrailActive(true);
         _attackEffect.SetTargetAttack(false);
         _movementCompo.GetKnockBack(_direction.normalized * _boundPower, 0.2f);
-        _cameraManager.ZoomDefault(0.15f);
         yield return new WaitForSeconds(0.2f);
         _currentTime = 0;
         _attackEffect.SetTrailActive(false);

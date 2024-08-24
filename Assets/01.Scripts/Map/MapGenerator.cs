@@ -271,8 +271,14 @@ public class MapGenerator : MonoBehaviour
         {
             var min = item.Value.MinPos;
             var max = item.Value.MaxPos;
-            if (maxPos.x < min.x || minPos.x > max.x) continue;
-            if (maxPos.y < min.y || minPos.y > max.y) continue;
+            
+            // 여백 줘서 방이랑 너무 가깝게 안함
+            Vector2Int padding = new Vector2Int(5,5);
+            Vector2Int padding_minPos = minPos - padding;
+            Vector2Int padding_maxPos = maxPos + padding;
+
+            if (padding_maxPos.x < min.x || padding_minPos.x > max.x) continue;
+            if (padding_maxPos.y < min.y || padding_minPos.y > max.y) continue;
 
             // 박스 겹침 (만들기 중단)
             Destroy(room.gameObject);

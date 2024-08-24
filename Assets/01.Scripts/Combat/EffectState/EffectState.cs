@@ -57,7 +57,7 @@ namespace EffectState
         
         public abstract void Over();
 
-        public void ResetEffect()
+        public virtual void ResetEffect()
         {
             duration = 0;
             isEffectEnabled = false;

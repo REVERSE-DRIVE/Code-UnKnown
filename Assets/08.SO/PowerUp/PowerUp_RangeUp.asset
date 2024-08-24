@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 7
   code: RangeUp
+  powerUpColor: {r: 1, g: 0.40362978, b: 0, a: 1}
+  needLevel: 0
   maxCollect: 3
   powerUpRank: 3
   shouldBeUnlock: 0

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 11
   code: Unlock_Poiser
+  powerUpColor: {r: 0.5882353, g: 0.4627451, b: 0.31764707, a: 1}
+  needLevel: 7
   maxCollect: 1
   powerUpRank: 3
   shouldBeUnlock: 0

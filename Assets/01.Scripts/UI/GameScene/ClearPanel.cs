@@ -4,7 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ClearPanel : MonoBehaviour, IWindowPanel
+public class ClearPanel : UIPanel
 {
     [Header("PanelMove Setting")]
     [SerializeField] private float _defaultYDelta;
@@ -25,18 +25,17 @@ public class ClearPanel : MonoBehaviour, IWindowPanel
     [SerializeField] private RectTransform _redTextPanel;
     [SerializeField] private RectTransform _cyanTextPanel;
     private RectTransform _rectTrm;
-    private CanvasGroup _canvasGroup;
 
-    private void Awake()
+    protected virtual void Awake()
     {
+        base.Awake();
         _rectTrm = transform as RectTransform;
-        _canvasGroup = GetComponent<CanvasGroup>();
     }
 
     [ContextMenu("Open")]
     public void Open()
     {
-        SetCanvas(true);
+        SetCanvasGroup(true);
         SetColorPanels(_defualtColor);
 
         _rectTrm.DOAnchorPosY(_activeYDeltas, _moveDuration).OnComplete(() => StartCoroutine(OpenCoroutine()));
@@ -59,7 +58,7 @@ public class ClearPanel : MonoBehaviour, IWindowPanel
         }
 
         yield return new WaitForSeconds(_panelDisableTerm);
-        _canvasGroup.DOFade(0f, 0.3f).OnComplete(() => SetCanvas(false));
+        _canvasGroup.DOFade(0f, 0.3f).OnComplete(() => SetCanvasGroup(false));
         Close();   
     }
 
@@ -72,12 +71,7 @@ public class ClearPanel : MonoBehaviour, IWindowPanel
 
     }
 
-    private void SetCanvas(bool value)
-    {
-        _canvasGroup.alpha = value ? 1f : 0;
-        _canvasGroup.interactable = value;
-        _canvasGroup.blocksRaycasts = value;
-    }
+   
     
     
 }

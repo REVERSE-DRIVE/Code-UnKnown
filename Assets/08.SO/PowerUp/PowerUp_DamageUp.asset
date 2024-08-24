@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4
   code: DamageUp
+  powerUpColor: {r: 1, g: 0.31755728, b: 0.1830188, a: 1}
+  needLevel: 0
   maxCollect: 3
   powerUpRank: 4
   shouldBeUnlock: 0

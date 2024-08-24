@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 13
   code: Unlock_Tracker
+  powerUpColor: {r: 0.27668205, g: 0.6320754, b: 0.5411908, a: 1}
+  needLevel: 5
   maxCollect: 1
   powerUpRank: 3
   shouldBeUnlock: 0

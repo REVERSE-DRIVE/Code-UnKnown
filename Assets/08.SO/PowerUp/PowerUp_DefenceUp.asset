@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 6
   code: DefenceUp
+  powerUpColor: {r: 0.31014588, g: 0.20617655, b: 0.9339623, a: 1}
+  needLevel: 0
   maxCollect: 3
   powerUpRank: 4
   shouldBeUnlock: 0
