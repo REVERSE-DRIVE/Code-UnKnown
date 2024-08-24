@@ -18,7 +18,7 @@ public class TypeAUpgradeAttackState : EnemyAttackState
     {
         yield return new WaitForSeconds(0.5f);
         var laser = PoolingManager.Instance.Pop(PoolingType.EnemyLaser) as EnemyLaser;
-        laser.Initialize(_enemyBase.transform.position, _enemyBase.Stat.GetDamage(), 10f, 1f);
+        laser.Initialize(_enemyBase.transform.position, _damage, 10f, 1f);
         laser.Shot(_enemyBase.targetTrm.position);
     }
 }
