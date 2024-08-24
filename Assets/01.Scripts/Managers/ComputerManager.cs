@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using ObjectPooling;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -8,6 +10,8 @@ public class ComputerManager : MonoSingleton<ComputerManager>
     public event Action<int, int> OnInfectionLevelChangedEvent;
     public event Action OnInfectionMaxEvent;
     public int InfectionLevel { get; private set; } = 0;
+
+    private List<ErrorPanelObject> _errorPanels = new List<ErrorPanelObject>();
     // 감염도 알림을 어떻게 띄울 것인가?
     // 팝업을 통해 띄울 것인가?
 
@@ -37,6 +41,13 @@ public class ComputerManager : MonoSingleton<ComputerManager>
         if (InfectionLevel < 100) return;
         InfectionLevel = 100;
         OnInfectionMaxEvent?.Invoke();
+    }
+
+    public void GenerateErrorPanel(Vector2 pos)
+    {
+         ErrorPanelObject errorPanel = PoolingManager.Instance.Pop(PoolingType.EnemyHitVFX) as ErrorPanelObject;
+         _errorPanels.Add(errorPanel);
+         errorPanel.Initialize(pos);
     }
     
 
