@@ -4,7 +4,14 @@
     protected override void Start()
     {
         base.Start();
-        player.PlayerAttackCompo.OnAttackEvent += HandlePlayerAttackEvent;
+        player.PlayerAttackCompo.OnAttackEvent += HandleAttack;
+    }
+
+    private void HandleAttack()
+    {
+        if (!skillEnabled) return;
+
+        HandlePlayerAttackEvent();
     }
 
     protected virtual void HandlePlayerAttackEvent()

@@ -1,48 +1,52 @@
 ﻿using System;
+using System.Collections;
 using ObjectPooling;
 using UnityEngine;
 
 namespace EnemyManage
 {
-    public class AVerG : Boss
+    public class AVerG : Boss, IStrongDamageable
     {
         public EnemyStateMachine<AVGStateEnum> StateMachine { get; private set; }
 
         #region Settings
 
         //[SerializeField] internal SoundObject _soundObject;
-        [Header("Idle State Setting")]
-        [SerializeField] internal AVGStateEnum[] _randomPickState;
+        [Header("Idle State Setting")] [SerializeField]
+        internal AVGStateEnum[] _randomPickState;
+
         [SerializeField] internal float _idleWaitingTime = 5f;
         internal LayerMask PlayerLayer => _whatIsPlayer;
 
-        [Header("Stun State Setting")] 
-        [SerializeField] internal float _stunDuration = 5;
+        [Header("Stun State Setting")] [SerializeField]
+        internal float _stunDuration = 5;
 
-        [Header("Red State Setting")] 
-        [SerializeField] internal int _chargeEnergy = 20;
+        [Header("Red State Setting")] [SerializeField]
+        internal int _chargeEnergy = 20;
 
         [SerializeField] internal int _burstDamage = 100;
         [SerializeField] internal float _chargingSpeed = 2;
         [SerializeField] internal AVGStructureObject _structureObject;
 
-        [Header("Green State Setting")] 
-        [SerializeField] internal float _greenStateDuration = 30f;
+        [Header("Green State Setting")] [SerializeField]
+        internal float _greenStateDuration = 30f;
+
         [SerializeField] internal int _healCoreHealAmountPerSecond = 30;
         [SerializeField] internal AVGHealingObject[] _healingObjects;
 
         //[SerializeField] private int _healMultiply = 3;
         [Header("Blue State Setting")] [SerializeField]
-        internal float _attacktime = 10f;
+        internal float _spinAttackRadius;
 
+        [SerializeField] internal int _spinAttackDamage;
+        [SerializeField] internal LayerMask _spinAttackTargetLayer;
+        [SerializeField] internal float _attackDuration;
+        [SerializeField] internal int _stunNeedHitCount = 3;
         [SerializeField] internal float _attackCooltime = 10f;
-        [SerializeField] internal PoolingType _projectile;
-        [SerializeField] internal int _fireProjectileAmount = 4;
-        [SerializeField] internal float _rotationSpeed = 3f;
 
-        [Header("Yellow State Setting")] 
+        [Header("Yellow State Setting")] [SerializeField]
+        internal int _yellowBurstDamage = 10;
 
-        [SerializeField] internal int _yellowBurstDamage = 10;
         [SerializeField] internal float _attackRadius = 7.5f;
         [SerializeField] internal float _attackInterval = 1f;
         [SerializeField] internal int _attackAmount;
@@ -50,8 +54,8 @@ namespace EnemyManage
         internal SpriteRenderer _yellowRangeRenderer;
         internal Material _rangeMaterial;
         [SerializeField] internal bool _isResist;
-        
-        
+        internal Vector2 _generatePos;
+
         #endregion
 
         public AVGVFX AVGVFXCompo { get; protected set; }
@@ -59,6 +63,7 @@ namespace EnemyManage
         protected override void Awake()
         {
             base.Awake();
+            _generatePos = transform.position;
             _yellowRangeRenderer = _yellowAttackRangeTrm.GetComponent<SpriteRenderer>();
             _rangeMaterial = _yellowRangeRenderer.material;
             AVGVFXCompo = VFXCompo as AVGVFX;
@@ -68,7 +73,7 @@ namespace EnemyManage
             //여기에 상태를 불러오는 코드가 필요하다.
             SetStateEnum();
 
-            
+
         }
 
         protected void SetStateEnum()
@@ -122,6 +127,24 @@ namespace EnemyManage
             StateMachine.CurrentState.AnimationTrigger();
         }
 
+        public void ResetPosition()
+        {
+            StartCoroutine(ResetPositionCoroutine());
+        }
+
+        private IEnumerator ResetPositionCoroutine()
+        {
+            float currentTime = 0;
+            Vector2 beforePos = transform.position;
+            float duration = (_generatePos - beforePos).magnitude / 10f;
+            while (currentTime < duration)
+            {
+                currentTime += Time.deltaTime;
+                transform.position = Vector2.Lerp(beforePos, _generatePos, currentTime / duration);
+                yield return null;
+            }
+            transform.position = _generatePos;
+        }
 
 
         public void OnHealDefense()

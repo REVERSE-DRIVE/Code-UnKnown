@@ -12,6 +12,8 @@ public class MapTearEffect : MonoBehaviour
     [SerializeField] TileBase green;
     [SerializeField] TileBase blue;
     [SerializeField] TileBase yellow;
+    
+    List<GameObject> tearEntitys;
 
     public void TearMap(RoomBase room) {
         // X 정하기 (Y 정하기라면 반대)
@@ -107,5 +109,32 @@ public class MapTearEffect : MonoBehaviour
                 tileEntity.transform.position += groupCenter;
                 tileEntity.GetComponent<TilemapTear>().RegisterThrowTile(direction, 10);
             }
+
+        if (tearEntitys != null)
+            foreach (var item in tearEntitys)
+            {
+                bool hasRigid = item.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigid);
+                if (!hasRigid) {
+                    rigid = item.AddComponent<Rigidbody2D>();
+                    rigid.gravityScale = 0f;
+                }
+
+                foreach (var collider in item.GetComponentsInChildren<Collider2D>())
+                    collider.enabled = false; // 충돌 안해~~
+                
+                Vector2 dir = item.transform.position - centerPos;
+                if (dir.sqrMagnitude < 0.1f) {
+                    dir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+                }
+
+                item.AddComponent<TilemapTear>().RegisterThrowTile(dir.normalized, 10);
+            }
+    }
+    
+    public void TearEntitysClear() {
+        tearEntitys = new();
+    }
+    public void RegisterTearObject(GameObject entity) {
+        tearEntitys.Add(entity);
     }
 }

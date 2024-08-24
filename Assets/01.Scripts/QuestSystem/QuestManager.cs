@@ -1,24 +1,31 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace QuestManage
 {
     public class QuestManager : MonoSingleton<QuestManager>
     {
-        [SerializeField] private QuestListSO _questListSO;
+        [SerializeField] private QuestTableSO _questListSO;
         [SerializeField] private QuestWindowUI[] _questWindowUI;
         [SerializeField] private QuestUI _questUI;
         
-        private List<QuestSO> _currentQuests = new List<QuestSO>();
+        private List<QuestListSO> _currentQuests = new List<QuestListSO>();
         [field:SerializeField] public List<QuestData> AcceptQuestDatas { get; set; }
+        [field:SerializeField] public List<QuestListSO> AcceptQuestListSOs { get; set; }
 
+        private void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+            SettingQuestWindow();
+        }
 
         /**
          * 퀘스트를 랜덤하게 설정
          */
         private void GetRandomQuest(int index)
         {
-            var randomQuest = _questListSO.GetRandomQuest();
+            var randomQuest = _questListSO.GetRandomQuestSO();
             _currentQuests.Add(randomQuest);
             _questWindowUI[index].SetQuest(randomQuest);
         }
@@ -26,9 +33,17 @@ namespace QuestManage
         /**
          * 퀘스트 UI 오픈
          */
-        private void SpawnQuestWindow()
+        public void SpawnQuestWindow()
         {
             _questUI.OpenQuestWindow();
+        }
+        
+        /**
+         * 퀘스트 UI 클로즈
+         */
+        public void CloseQuestWindow()
+        {
+            _questUI.CloseQuestWindow();
         }
         
         /**
@@ -46,9 +61,15 @@ namespace QuestManage
         /**
          * 퀘스트 수락 메서드
          */
-        public void AcceptQuest(QuestData getQuestData)
+        public void AcceptQuest(QuestListSO listSO, QuestData getQuestData)
         {
             AcceptQuestDatas.Add(getQuestData);
+            AcceptQuestListSOs.Add(listSO);
+        }
+        
+        public QuestListSO FindQuestListSO(int id, QuestDifficultyEnum difficulty)
+        {
+            return _questListSO.GetQuestList(id, difficulty);
         }
     }
 }

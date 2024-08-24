@@ -91,7 +91,7 @@ MonoBehaviour:
   <type>k__BackingField: 26
   <ItemSO>k__BackingField: {fileID: 0}
   _itemNameText: {fileID: 0}
-  _itemType: 12
+  _itemType: 26
   _playerPartDataSO: {fileID: 0}
 --- !u!212 &9052215398239444749 stripped
 SpriteRenderer:

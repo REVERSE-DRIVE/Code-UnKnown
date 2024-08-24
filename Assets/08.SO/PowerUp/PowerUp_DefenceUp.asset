@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 6
   code: DefenceUp
+  powerUpColor: {r: 0.31014588, g: 0.20617655, b: 0.9339623, a: 1}
+  needLevel: 0
   maxCollect: 3
   powerUpRank: 4
   shouldBeUnlock: 0
   title: "\uB808\uC9C0\uC2A4\uD2B8"
   description: "\uBC29\uC5B4\uB825\uC744 <color=red>1</color> \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4"
-  icon: {fileID: 0}
+  icon: {fileID: -1245717031, guid: 6e29d61b4badad646ab4c49e1828ee89, type: 3}
   effectList:
   - {fileID: 11400000, guid: 1327938007b2224459310c4d9d6cb4ab, type: 2}

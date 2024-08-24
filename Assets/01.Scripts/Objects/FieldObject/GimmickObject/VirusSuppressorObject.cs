@@ -13,7 +13,7 @@ public class VirusSuppressorObject : MonoBehaviour, ILaserEvent
     bool isClear;
 
     public void Init(List<LaserObject> _lasers) {
-        lasers = _lasers;
+        lasers = _lasers.ToList();
         isClear = false;
 
         // redCount = lasers.Count(v => v.LaserType == LaserObject.Type.Red);

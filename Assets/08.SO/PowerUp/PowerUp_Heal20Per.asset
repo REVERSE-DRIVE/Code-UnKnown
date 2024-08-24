@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   code: Heal20Per
+  powerUpColor: {r: 0.6415094, g: 0.011940634, b: 0, a: 1}
+  needLevel: 0
   maxCollect: 50
   powerUpRank: 5
   shouldBeUnlock: 0
   title: "\uAE34\uAE09 \uBCF5\uAD6C"
   description: "\uCCB4\uB825\uC744 <color=red>20%</color> \uC989\uC2DC \uD68C\uBCF5\uD569\uB2C8\uB2E4."
-  icon: {fileID: 0}
+  icon: {fileID: -1449845137, guid: 6e29d61b4badad646ab4c49e1828ee89, type: 3}
   effectList:
   - {fileID: 11400000, guid: 57d926a0b2aa5e6439895c287b055108, type: 2}

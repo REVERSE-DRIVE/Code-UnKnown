@@ -10,7 +10,7 @@ public class RoomObstacleEnemy : RoomEnemy, IRoomObstacle
 
     public override void OnComplete()
     {
-        base.OnComplete();
         (this as IRoomObstacle).ObstacleInit(this);
+        base.OnComplete();
     }
 }

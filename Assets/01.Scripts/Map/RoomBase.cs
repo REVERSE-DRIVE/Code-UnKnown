@@ -44,11 +44,11 @@ public class RoomBase : MonoBehaviour
         int centerNum = (door.size.x + door.size.y) / 2;
 
         if (dir == MapGenerator.Direction.Top) {
-            return new(centerNum, MaxPos.y);
+            return new(centerNum, MaxPos.y + 1);
         } else if (dir == MapGenerator.Direction.Bottom) {
-            return new(centerNum, MinPos.y);
+            return new(centerNum, MinPos.y + 1);
         } else if (dir == MapGenerator.Direction.Left) {
-            return new(MinPos.x, centerNum);
+            return new(MinPos.x + 1, centerNum);
         } else {
             return new(MaxPos.x, centerNum);
         }

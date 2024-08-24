@@ -7,30 +7,64 @@ public enum WindowEnum
 {
     EffectSelect,
     Dark,
-    BossCutScene
+    BossCutScene,
+    Clear,
+    Editor
+}
+
+public enum WindowUITypeEnum
+{
+    Game,
+    System,
+    Event,
+    Boss
+}
+
+[Serializable]
+public struct WindowData
+{
+    public WindowEnum window;
+    public WindowUITypeEnum windowType;
 }
 
 public class UIManager : MonoSingleton<UIManager>
 {
+    [SerializeField] private WindowData[] windowDatas;
     public Dictionary<WindowEnum, IWindowPanel> panelDictionary;
     [SerializeField] private Transform _canvasTrm;
+    private Transform _gameCanvas;
+    private Transform _eventCanvas;
+    private Transform _systemCanvas;
 
     private void Awake()
     {
+        _gameCanvas = _canvasTrm.Find("GameCanvas");
+        _eventCanvas = _canvasTrm.Find("EventCanvas");
+        _systemCanvas = _canvasTrm.Find("SystemCanvas");
+        
         panelDictionary = new Dictionary<WindowEnum, IWindowPanel>();
-        foreach (WindowEnum windowEnum in Enum.GetValues(typeof(WindowEnum)))
+        foreach (WindowData window in windowDatas)
         {
             IWindowPanel panel;
-            try
+            switch (window.windowType)
             {
-                panel = _canvasTrm.Find($"{windowEnum.ToString()}Panel").GetComponent<IWindowPanel>();
-            }
-            catch (Exception e)
-            {
-                panel = _canvasTrm.Find("BossCanvas").Find($"{windowEnum.ToString()}Panel").GetComponent<IWindowPanel>();
+                case WindowUITypeEnum.Game:
+                    panel = _gameCanvas.Find($"{window.window.ToString()}Panel").GetComponent<IWindowPanel>();
+                    break;
+                case WindowUITypeEnum.System:
+                    panel = _systemCanvas.Find($"{window.window.ToString()}Panel").GetComponent<IWindowPanel>();
+                    break;
+                case WindowUITypeEnum.Event:
+                    panel = _eventCanvas.Find($"{window.window.ToString()}Panel").GetComponent<IWindowPanel>();
+                    break;
+                case WindowUITypeEnum.Boss:
+                    panel = _eventCanvas.Find("BossCanvas").Find($"{window.window.ToString()}Panel").GetComponent<IWindowPanel>();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
             
-            panelDictionary.Add(windowEnum, panel);
+            panelDictionary.Add(window.window, panel);
         }
     }
 

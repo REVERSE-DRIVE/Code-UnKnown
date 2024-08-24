@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50611bae33474aabb63f8b5054818748, type: 3}
+  m_Name: Quest_1
+  m_EditorClassIdentifier: 
+  id: 1
+  title: Test2
+  difficulty: 0
+  description: asdf
+  icon: {fileID: -710392846, guid: 8fa81db69c9881f499d853ef5318c760, type: 3}
+  questList:
+  - {fileID: 11400000, guid: 65487b89da60c3546abfec00ff524633, type: 2}
+  - {fileID: 11400000, guid: 65487b89da60c3546abfec00ff524633, type: 2}
+  - {fileID: 11400000, guid: 65487b89da60c3546abfec00ff524633, type: 2}

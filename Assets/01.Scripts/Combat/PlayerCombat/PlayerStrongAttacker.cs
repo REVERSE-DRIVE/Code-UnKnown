@@ -164,6 +164,10 @@ public class PlayerStrongAttacker : MonoBehaviour
             if (_castHits[i].transform.TryGetComponent(out IDamageable hit))
             {
                 hit.TakeDamage(_dashNormalDamage);
+                if (_castHits[i].transform.TryGetComponent(out IStrongDamageable strongHit))
+                {
+                    strongHit.TakeStrongDamage(10);
+                }
                 Health health = hit as Health;
                 if (health != null)
                 {

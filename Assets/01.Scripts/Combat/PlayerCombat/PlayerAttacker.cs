@@ -23,16 +23,19 @@ public class PlayerAttacker : MonoBehaviour
     [Header("Current State")] 
     [SerializeField] private bool _isTargeting;
     [SerializeField] private bool _isAttacking;
-    
+
+    private CameraManager _cameraManager;
     private Player _player;
     private PlayerComboCounter _comboCounter;
     private IMovement _movementCompo;
     private IDamageable _currentTarget;
-    private Transform _currentTargetTrm;
+    public Transform currentTargetTrm;
     private Vector2 _direction;
     private Vector2 _origin;
     private float _currentTime = 0;
     private int immediateDef;
+    
+    public bool IsAttacking => _isAttacking;
     
     private void Awake()
     {
@@ -47,6 +50,7 @@ public class PlayerAttacker : MonoBehaviour
          _player.PlayerInputCompo.OnMovementEvent += HandleAiming;
         _attackRange = _player.additionalStat.attackRange;
         _comboRate = _player.additionalStat.comboBonusRate;
+        _cameraManager = CameraManager.Instance;
     }
 
     private void Update()
@@ -54,7 +58,7 @@ public class PlayerAttacker : MonoBehaviour
         DetectEnemy();
         if (_isTargeting)
         {
-            _attackEffect.SetTarget(_currentTargetTrm.position);
+            _attackEffect.SetTarget(currentTargetTrm.position);
             _attackEffect.SetStrongAttackMode(_player.additionalStat.isStrongAttack);
         }
         _currentTime += Time.deltaTime;
@@ -79,7 +83,7 @@ public class PlayerAttacker : MonoBehaviour
         if (_isTargeting && !_isAttacking)
         {
             _isAttacking = true;
-            Vector2 attackDirection = _currentTargetTrm.position - transform.position;
+            Vector2 attackDirection = currentTargetTrm.position - transform.position;
             StartCoroutine(AttackCoroutine(attackDirection));
         }
     }
@@ -109,7 +113,7 @@ public class PlayerAttacker : MonoBehaviour
             if(targetTrm.TryGetComponent(out IDamageable target))
             {
                 isNoTarget = false;
-                _currentTargetTrm = targetTrm;
+                currentTargetTrm = targetTrm;
                 _currentTarget = target;
                 HandleTargeted();
                 break;
@@ -127,7 +131,7 @@ public class PlayerAttacker : MonoBehaviour
         _isTargeting = true;
         _attackEffect.SetLineActive(true);
         _attackEffect.SetRangeActive(false);
-        _attackEffect.RefreshLine(_currentTargetTrm.position);
+        _attackEffect.RefreshLine(currentTargetTrm.position);
 
     }
     
@@ -145,17 +149,16 @@ public class PlayerAttacker : MonoBehaviour
     private IEnumerator AttackCoroutine(Vector2 boundDir)
     {
         HandleAttackJudge();
-        immediateDef = _player.Stat.defence.GetValue() * 10;
+        immediateDef = _player.Stat.defence.GetValue() * 5;
         _player.Stat.defence.AddModifier(immediateDef);
         //_player.Stat.isResist = true;
         float duration = Mathf.Clamp01(1.5f - _player.additionalStat.dashSpeed.GetValue() * 0.3f) * boundDir.magnitude / 15;
         _attackEffect.SetTargetAttack(true);
-
-        yield return _player.PlayerController.Dash(_currentTargetTrm.position, duration);
+        yield return _player.PlayerController.Dash(currentTargetTrm.position, duration);
         _attackEffect.Play(boundDir.normalized);
         EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
-        effect.Initialize(_currentTargetTrm.position);
-        _currentTarget.TakeDamage(CalcDamage());
+        effect.Initialize(currentTargetTrm.position);
+        ApplyDamage();
         yield return new WaitForSeconds(0.2f);
         _attackEffect.SetTrailActive(true);
         _attackEffect.SetTargetAttack(false);
@@ -165,7 +168,7 @@ public class PlayerAttacker : MonoBehaviour
         _attackEffect.SetTrailActive(false);
         _isAttacking = false;
         _player.Stat.defence.RemoveModifier(immediateDef);
-        //_player.Stat.isResist = false;
+        
     }
     public void HandleAttackJudge()
     {
@@ -173,9 +176,22 @@ public class PlayerAttacker : MonoBehaviour
         CountCombo();
     }
 
+    private void ApplyDamage()
+    {
+        if (currentTargetTrm.TryGetComponent(out IStrongDamageable strongHit) && _player.additionalStat.isStrongAttack)
+        {
+            strongHit.TakeStrongDamage(10);
+        }
+        int damage = CalcDamage();
+        
+        _currentTarget.TakeDamage(damage);
+
+    }
+
     private int CalcDamage()
     {
         int damage = _player.Stat.GetDamage();
+        damage += (int)((damage / 100f) * _player.Stat.bonusAtk.GetValue());
         if (Random.Range(0, 10) < _comboRate.GetValue())
             damage += _comboCounter.comboCount;
         if (_player.additionalStat.isStrongAttack)
@@ -196,7 +212,7 @@ public class PlayerAttacker : MonoBehaviour
             content = $"{_comboCounter.comboCount}<color=red>HIT</color>",
             size = 11,
             lifeTime = 0.7f
-        }, ((Vector2)_currentTargetTrm.position + Random.insideUnitCircle * 2));
+        }, ((Vector2)currentTargetTrm.position + Random.insideUnitCircle * 2));
         textEffect.Play();
     }
 

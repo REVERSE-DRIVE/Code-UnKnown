@@ -1,9 +1,15 @@
-﻿public class KineticSkill : Skill
+﻿using UnityEngine;
+
+public class KineticSkill : AttackEffectStateSkill
 {
-    public override bool UseSkill()
+    public int effectRate = 10;
+    
+    protected override void HandlePlayerAttackEvent()
     {
-        if (base.UseSkill()) return false;
-        
-        return true;
+        if (Random.Range(0, 100) < effectRate)
+        {
+            base.HandlePlayerAttackEvent();
+            
+        }
     }
 }

@@ -29,7 +29,9 @@ public class AgentMovement : MonoBehaviour, IMovement
     {
         if (isStun) return;
         //if (movement.magnitude < 0.1f)
-        _velocity = movement.normalized * _agent.Stat.moveSpeed.GetValue();
+        int speed = _agent.Stat.moveSpeed.GetValue();
+        speed = speed < 0 ? 0: speed;
+        _velocity = movement.normalized * speed;
         _rigidCompo.velocity = _velocity;
 
     }

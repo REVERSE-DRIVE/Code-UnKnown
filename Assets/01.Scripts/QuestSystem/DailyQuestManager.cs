@@ -12,11 +12,11 @@ namespace QuestManage
         
         private List<QuestData> _dailyQuestDatas;
         
-        private QuestSO GetDailyQuest(QuestDifficultyEnum difficulty)
-        {
-            var index = (int)difficulty - 1;
-            return _questTable[index].GetRandomQuest();
-        }
+        // private QuestSO GetDailyQuest(QuestDifficultyEnum difficulty)
+        // {
+        //     var index = (int)difficulty - 1;
+        //     return _questTable[index].GetRandomQuest();
+        // }
 
         /// <summary>
         /// Give daily quest to player
@@ -27,20 +27,20 @@ namespace QuestManage
             _dailyQuestDatas = new List<QuestData>();
             for (int i = 0; i < _easyQuestCount; i++)
             {
-                var quest = GetDailyQuest(QuestDifficultyEnum.Easy);
-                _dailyQuestDatas.Add(new QuestData(quest.id, quest.goalValue, quest.difficulty));
+                //var quest = GetDailyQuest(QuestDifficultyEnum.Easy);
+                //_dailyQuestDatas.Add(new QuestData(quest.id, quest.goalValue, quest.difficulty));
             }
             
             for (int i = 0; i < _normalQuestCount; i++)
             {
-                var quest = GetDailyQuest(QuestDifficultyEnum.Normal);
-                _dailyQuestDatas.Add(new QuestData(quest.id, quest.goalValue, quest.difficulty));
+                // var quest = GetDailyQuest(QuestDifficultyEnum.Normal);
+                // _dailyQuestDatas.Add(new QuestData(quest.id, quest.goalValue, quest.difficulty));
             }
             
             for (int i = 0; i < _hardQuestCount; i++)
             {
-                var quest = GetDailyQuest(QuestDifficultyEnum.Hard);
-                _dailyQuestDatas.Add(new QuestData(quest.id, quest.goalValue, quest.difficulty));
+                // var quest = GetDailyQuest(QuestDifficultyEnum.Hard);
+                // _dailyQuestDatas.Add(new QuestData(quest.id, quest.goalValue, quest.difficulty));
             }
         }
         

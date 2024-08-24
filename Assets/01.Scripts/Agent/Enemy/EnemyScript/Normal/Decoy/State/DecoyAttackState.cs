@@ -5,6 +5,7 @@ using UnityEngine;
 public class DecoyAttackState : EnemyAttackState
 {
     private DecoyEnemy _decoyEnemy;
+    private Coroutine _attackCoroutine;
     public DecoyAttackState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
         _decoyEnemy = enemyBase as DecoyEnemy;

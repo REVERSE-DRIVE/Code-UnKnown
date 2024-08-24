@@ -6,16 +6,12 @@ namespace QuestManage
     [CreateAssetMenu(menuName = "SO/Quest/QuestListSO")]
     public class QuestListSO : ScriptableObject
     {
+        public int id;
+        public string title;
+        public QuestDifficultyEnum difficulty;
+        [TextArea(3, 10)]
+        public string description;
+        public Sprite icon;
         public List<QuestSO> questList;
-
-        public QuestSO FineQuest(int id)
-        {
-            return questList.Find(quest => quest.id == id);
-        }
-        
-        public QuestSO GetRandomQuest()
-        {
-            return questList[Random.Range(0, questList.Count)];
-        }
     }
 }

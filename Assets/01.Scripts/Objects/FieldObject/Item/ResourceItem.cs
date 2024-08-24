@@ -1,11 +1,13 @@
 ﻿using System;
 using DG.Tweening;
 using ItemManage;
+using QuestManage;
 using UnityEngine;
 
 public class ResourceItem : Item
 {
     [SerializeField] private ResourceRank _resourceRank;
+    [SerializeField] private float _speed;
     
     public override void SetItem(ItemSO itemSO)
     {
@@ -26,7 +28,7 @@ public class ResourceItem : Item
         float distance = (targetPos - transform.position).magnitude;
         if (distance > 0.5f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, 0.1f);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, _speed * Time.deltaTime);
         }
     }
 
@@ -40,6 +42,7 @@ public class ResourceItem : Item
             {
                 ResourceManager.Instance.AddResource(ItemSO.resourceValue);
                 LevelManager.Instance.ApplyExp(ItemSO.resourceValue);
+                QuestObserver.Instance.CollectTrigger(ItemType.Resource, 1);
                 PoolingManager.Instance.Push(this);
             });
         }
@@ -47,8 +50,8 @@ public class ResourceItem : Item
 
     public override void Interact(InteractData data)
     {
-        if (_isInteracted) return;
-        base.Interact(data);
-        LevelManager.Instance.ApplyExp(ItemSO.resourceValue);
+        //if (_isInteracted) return;
+        //base.Interact(data);
+        //LevelManager.Instance.ApplyExp(ItemSO.resourceValue);
     }
 }

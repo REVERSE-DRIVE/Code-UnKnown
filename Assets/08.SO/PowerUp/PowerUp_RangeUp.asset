@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 7
   code: RangeUp
+  powerUpColor: {r: 1, g: 0.40362978, b: 0, a: 1}
+  needLevel: 0
   maxCollect: 3
   powerUpRank: 3
   shouldBeUnlock: 0
   title: "\uAD11\uC5ED \uD0D0\uC9C0"
   description: "\uACF5\uACA9 \uBC94\uC704\uB97C <color=red>1</color> \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4"
-  icon: {fileID: 0}
+  icon: {fileID: 1580849196, guid: 6e29d61b4badad646ab4c49e1828ee89, type: 3}
   effectList:
   - {fileID: 11400000, guid: c08a3b18d324b0a4bae630bcc25d2fc4, type: 2}

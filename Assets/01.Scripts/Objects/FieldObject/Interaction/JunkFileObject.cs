@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Calculator;
 using ObjectManage;
 using UnityEngine;
 
@@ -16,10 +17,13 @@ public class JunkFileObject : InteractObject, IDamageable
     private WaitForSeconds ws = new WaitForSeconds(0.05f);
     [SerializeField] private ParticleSystem _pushVFX;
     [SerializeField] private Transform _arrowTrm;
+    
+    private Vector2 _previousDirection;
     private Collider2D _collider;
     private int _dissolveHash;
     private Agent _agent;
     private Vector2 _direction;
+    private LayerMask _wallLayer;
     
     private void Awake()
     {
@@ -28,6 +32,7 @@ public class JunkFileObject : InteractObject, IDamageable
         OnInteractEvent += HandlePush;
         _collider = GetComponent<Collider2D>();
         _dissolveHash = Shader.PropertyToID("_DissolveLevel");
+        _wallLayer = LayerMask.GetMask("Wall");
         
         OnDetectedEvent += HandleDetected;
         OnUnDetectedEvent += HandleUnDetected;
@@ -52,13 +57,19 @@ public class JunkFileObject : InteractObject, IDamageable
             return;
 
         }
-            
-        float magnitude = _rigidCompo.velocity.magnitude;
+
+        _previousDirection = _rigidCompo.velocity;
+        float magnitude = _previousDirection.magnitude;
         if (magnitude <= 0.1f)
         {
             _isActive = false;
             
         }
+    }
+
+    public void SetHealth(int amount = 3)
+    {
+        _currentHealth = amount;
     }
 
     private void HandleDetected()
@@ -73,8 +84,12 @@ public class JunkFileObject : InteractObject, IDamageable
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (!_isActive) return;
-        if(other.transform.TryGetComponent(out Health health))
+        if(other.transform.TryGetComponent(out IDamageable health))
             HandleCollisionEvent(health);
+        if (other.transform.TryGetComponent(out IStrongDamageable strongHit))
+        {
+            strongHit.TakeStrongDamage(_damage);
+        }
         
         if (!_collisionDestroy) return;
 
@@ -82,6 +97,12 @@ public class JunkFileObject : InteractObject, IDamageable
         if (_currentHealth <= 0)
         {
             Destroy();
+        }
+        
+        if (other.transform.CompareTag("Wall"))
+        {
+            Vector2 dir = RayCalculator.Reflect(transform.position, _previousDirection.normalized, 10,_wallLayer);
+            _rigidCompo.AddForce(dir.normalized * (_previousDirection * 0.6f), ForceMode2D.Impulse);
         }
     }
 
@@ -102,7 +123,7 @@ public class JunkFileObject : InteractObject, IDamageable
         StartCoroutine(PushCoroutine());
     }
 
-    private void HandleCollisionEvent(Health hit)
+    private void HandleCollisionEvent(IDamageable hit)
     {
         hit.TakeDamage(_damage);
         CameraManager.Instance.Shake(5, 0.1f);
@@ -178,4 +199,6 @@ public class JunkFileObject : InteractObject, IDamageable
     public void EnableActive() {
         _isActive = true;
     }
+    
+    public bool GetActive() => _isActive;
 }

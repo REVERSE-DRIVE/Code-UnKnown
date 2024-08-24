@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a1b71727e24c458e1f9b51a645071a, type: 3}
+  m_Name: PowerUp_Unlock_Poiser
+  m_EditorClassIdentifier: 
+  id: 11
+  code: Unlock_Poiser
+  powerUpColor: {r: 0.5882353, g: 0.4627451, b: 0.31764707, a: 1}
+  needLevel: 7
+  maxCollect: 1
+  powerUpRank: 3
+  shouldBeUnlock: 0
+  title: POISER
+  description: "poiser \uC7A0\uAE08\uD574\uC81C. \uACF5\uACA9 \uC2DC 3\uCD08\uAC04
+    1 \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
+  icon: {fileID: 578419746, guid: 6e29d61b4badad646ab4c49e1828ee89, type: 3}
+  effectList:
+  - {fileID: 11400000, guid: f56c77e001889d14bae40d0d6fb33c40, type: 2}

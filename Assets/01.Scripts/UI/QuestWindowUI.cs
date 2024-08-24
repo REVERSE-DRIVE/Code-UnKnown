@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class QuestWindowUI : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] private QuestSO _quest;
+    [SerializeField] private QuestListSO _quest;
     [SerializeField] private TextMeshProUGUI _titleText;
     [SerializeField] private TextMeshProUGUI _difficultyText;
     [SerializeField] private TextMeshProUGUI _descriptionText;
@@ -23,7 +23,7 @@ public class QuestWindowUI : MonoBehaviour, IPointerClickHandler
     /**
      * 퀘스트 데이터를 설정
      */
-    public void SetQuest(QuestSO quest)
+    public void SetQuest(QuestListSO quest)
     {
         _quest = quest;
         _titleText.text = quest.title;
@@ -37,19 +37,7 @@ public class QuestWindowUI : MonoBehaviour, IPointerClickHandler
      */
     public QuestData GetQuestData()
     {
-        return new QuestData(_quest.id, _quest.goalValue, _quest.difficulty);
-    }
-    
-    public KillQuestData GetKillQuestData()
-    {
-        KillQuestSO killQuest = (KillQuestSO) _quest;
-        return new KillQuestData(_quest.id, _quest.goalValue, killQuest.enemyType, _quest.difficulty);
-    }
-    
-    public CollectQuestData GetCollectQuestData()
-    {
-        CollectQuestSO collectQuest = (CollectQuestSO) _quest;
-        return new CollectQuestData(_quest.id, _quest.goalValue, collectQuest.itemType, _quest.difficulty);
+        return new QuestData(_quest.id, 100, _quest.difficulty);
     }
 
 
@@ -57,13 +45,8 @@ public class QuestWindowUI : MonoBehaviour, IPointerClickHandler
     {
         if (_isAccept) return;
         _isAccept = true;
-        if (_quest is KillQuestSO)
-        {
-            QuestManager.Instance.AcceptQuest(GetKillQuestData());
-        }
-        else if (_quest is CollectQuestSO)
-        {
-            QuestManager.Instance.AcceptQuest(GetCollectQuestData());
-        }
+        Debug.Log("Accept Quest");
+        if (_quest == null) Debug.LogError("Quest is null");
+        QuestManager.Instance.AcceptQuest(_quest, GetQuestData());
     }
 }

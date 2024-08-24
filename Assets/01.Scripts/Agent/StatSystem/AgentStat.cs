@@ -10,10 +10,12 @@ using Random = UnityEngine.Random;
 public class AgentStat : ScriptableObject
 {
     public Stat damage;
+    public Stat bonusAtk;
     public Stat maxHealth;
     public Stat moveSpeed;
     public Stat criticalRate;
     public Stat defence; // 방어력과 같은 작용 ( 데미지 - def) => 실질 데미지
+    public Stat damageResist;
     public Stat badEffectResistance; // 악효과 저항수치 %
     public Stat reviveCount; // 부활 횟수
     public bool isResist;
@@ -88,6 +90,15 @@ public class AgentStat : ScriptableObject
 
     protected bool IsHitPercent(int statValue) => Random.Range(1, 10000) < statValue;
 
+    public Stat GetStat(StatType type)
+    {
+        if (_statDictionary.TryGetValue(type, out Stat stat))
+        {
+            return stat;
+        }
+        return null;
+    }
+    
 
     public void AddModifier(StatType type, int value)
     {

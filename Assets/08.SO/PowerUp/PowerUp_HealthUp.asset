@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   code: HealthUp
+  powerUpColor: {r: 0.764151, g: 0.13938396, b: 0, a: 1}
+  needLevel: 0
   maxCollect: 5
   powerUpRank: 4
   shouldBeUnlock: 0
   title: "\uC678\uAC11 \uC554\uD638\uD654"
   description: "\uCD5C\uB300\uCCB4\uB825\uC744 <color=red>20</color> \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
-  icon: {fileID: 0}
+  icon: {fileID: -1449845137, guid: 6e29d61b4badad646ab4c49e1828ee89, type: 3}
   effectList:
   - {fileID: 11400000, guid: 9b5c464d514e00a438b77c6d06277277, type: 2}

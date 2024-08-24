@@ -11,6 +11,8 @@
 
     protected override void OnClick()
     {
-        _bodyCustomPanel._partWindow.SetChild(this);
+        _bodyCustomPanel._partWindow.SetChild
+            (this, 
+                PlayerPartManager.Instance.GetPartCount(PartData.id, PartData.partType));
     }
 }

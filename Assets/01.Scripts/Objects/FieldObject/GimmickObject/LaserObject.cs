@@ -269,13 +269,31 @@ public class LaserObject : MonoBehaviour
 
     public void SetMove(bool active) => activeMove = active;
 
-    private void OnDestroy() {
-        OnRemove?.Invoke();
-        hitObj?.OnLaserOut(this);
+    private void OnEnable() {
+        if (beamTrm)
+            beamTrm.gameObject.SetActive(true);
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        if (!other.gameObject.TryGetComponent<JunkFileObject>(out var _)) return;
+    private void OnDisable() {
+        if (beamTrm)
+            beamTrm.gameObject.SetActive(false);
+    }
+
+    private void OnDestroy() {
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) => DestoryCheck(other);
+    private void OnCollisionStay2D(Collision2D other) => DestoryCheck(other);
+
+    void DestoryCheck(Collision2D other) {
+        if (!other.gameObject.TryGetComponent<JunkFileObject>(out var junkSys)) return;
+        if (!junkSys.GetActive()) return;
+        
+        enabled = false;
+        OnRemove?.Invoke();
+        hitObj?.OnLaserOut(this);
+
         Destroy(gameObject);
     }
 }
