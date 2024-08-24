@@ -2960,8 +2960,8 @@ MonoBehaviour:
   actionButton: {fileID: 1997351967}
   skillButton: {fileID: 1495788403}
   _buttonSprites:
-  - {fileID: -1618839063, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
-  - {fileID: 93553912, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
+  - {fileID: 21300000, guid: 3a7d9dfb603a0c247810e2f5ebbaa87c, type: 3}
+  - {fileID: 21300000, guid: 1a73cfcfd2e24364ba85f5bbd77de394, type: 3}
 --- !u!1 &335471940
 GameObject:
   m_ObjectHideFlags: 0
@@ -9831,11 +9831,11 @@ PrefabInstance:
     - target: {fileID: 894299310258580910, guid: 01d5cf980528f504ab3d327263f2e135, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 96916138, guid: c3a3b60f5008aba4d86ec9891d3a4ffd, type: 3}
+      objectReference: {fileID: 21300000, guid: 66a80718b157ba645b2b46fe8dd1e8e2, type: 3}
     - target: {fileID: 1751922492360832068, guid: 01d5cf980528f504ab3d327263f2e135, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1609734504, guid: c3a3b60f5008aba4d86ec9891d3a4ffd, type: 3}
+      objectReference: {fileID: 21300000, guid: 892eafe06ad6f92408b6af51ff168fdc, type: 3}
     - target: {fileID: 1751922492360832068, guid: 01d5cf980528f504ab3d327263f2e135, type: 3}
       propertyPath: m_Color.a
       value: 0.8
@@ -9931,6 +9931,14 @@ PrefabInstance:
     - target: {fileID: 2652026675448607524, guid: 01d5cf980528f504ab3d327263f2e135, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3606053679716157862, guid: 01d5cf980528f504ab3d327263f2e135, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 3606053679716157862, guid: 01d5cf980528f504ab3d327263f2e135, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 170
       objectReference: {fileID: 0}
     - target: {fileID: 7020447142687696442, guid: 01d5cf980528f504ab3d327263f2e135, type: 3}
       propertyPath: m_Name
@@ -12544,7 +12552,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1609734504, guid: c3a3b60f5008aba4d86ec9891d3a4ffd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d503ea13b1b616247b596a698ab40bc8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17736,7 +17744,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1618839063, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3a7d9dfb603a0c247810e2f5ebbaa87c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
