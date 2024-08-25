@@ -10,6 +10,8 @@ public class GoogleServiceTest : MonoBehaviour
 {
     [SerializeField] Button activeBtn;
     [SerializeField] Button leaderboardBtn;
+    [SerializeField] Button rankScoreBtn;
+    [SerializeField] Button customRankBtn;
 
     public string Token;
     public string Error;
@@ -17,7 +19,30 @@ public class GoogleServiceTest : MonoBehaviour
     void Awake()
     {
         activeBtn.onClick.AddListener(LoginGoogleService);    
-        leaderboardBtn.onClick.AddListener(OpenLeaderBoard);    
+        leaderboardBtn.onClick.AddListener(OpenLeaderBoard);
+        rankScoreBtn.onClick.AddListener(SetRankScore);
+        customRankBtn.onClick.AddListener(GetCustomRank);
+    }
+
+    private void GetCustomRank()
+    {
+        print("GetCustomRank");
+        PlayGamesPlatform.Instance.LoadScores("CgkInoqooYweEAIQAg", scores => {
+            print($"length: {scores.Length}");
+            
+            foreach (var item in scores)
+            {
+                print($"[{item.rank}] {item.userID} {item.value}");
+            }
+        });
+    }
+
+    private void SetRankScore()
+    {
+        print("SetRankScore");
+        PlayGamesPlatform.Instance.ReportScore(2, "CgkInoqooYweEAIQAg", success => {
+            print($"save Score : {success}");
+        });
     }
 
     void LoginGoogleService() {
