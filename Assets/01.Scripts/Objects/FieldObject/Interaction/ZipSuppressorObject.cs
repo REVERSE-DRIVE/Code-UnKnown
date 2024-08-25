@@ -44,10 +44,10 @@ public class ZipSuppressorObject : InteractObject
     }
 
     IEnumerator TimeHandler() {
-        while (--delayTime > 0) {
-            yield return new WaitForSeconds(1);
+        do {
             timer.text = $"{delayTime / 60}:{delayTime % 60:D2}";
-        }
+            yield return new WaitForSeconds(1);
+        } while (--delayTime > 0);
     }
 
     public void Open() {

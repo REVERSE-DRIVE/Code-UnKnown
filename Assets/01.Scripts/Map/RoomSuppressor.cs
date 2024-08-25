@@ -81,7 +81,7 @@ public class RoomSuppressor : RoomBase, IRoomObstacle, IRoomCleable
     }
 
     IEnumerator TimeHandler() {
-        while (--timer > 0) {
+        while (timer-- > 0) {
             yield return new WaitForSeconds(1);
             if (timer < 0) yield break;
         }
