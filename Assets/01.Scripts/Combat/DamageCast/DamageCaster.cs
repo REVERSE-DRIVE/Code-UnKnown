@@ -10,5 +10,5 @@ public abstract class DamageCaster : MonoBehaviour
         _owner = owner;
     }
     
-    public abstract void CastDamage(float radius, int damage);
+    public abstract bool CastDamage(float radius, int damage);
 }

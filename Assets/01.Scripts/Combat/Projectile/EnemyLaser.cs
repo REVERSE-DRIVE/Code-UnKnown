@@ -4,6 +4,8 @@ using UnityEngine;
 public class EnemyLaser : Projectile
 {
     [SerializeField] private LayerMask _whatIsPlayer;
+
+    private bool _isShot;
     public void Shot(Vector3 position)
     {
         StartCoroutine(Move(position, 0.05f));
@@ -19,10 +21,12 @@ public class EnemyLaser : Projectile
             currentTime += Time.deltaTime;
             transform.position = Vector3.Lerp(startPosition, targetPosition, currentTime / f);
             Vector3 dir = (targetPosition - startPosition).normalized;
+            _isShot = true;
             ShotRay(dir);
             yield return null;
         }
         PoolingManager.Instance.Push(this);
+        _isShot = false;
     }
 
     private void ShotRay(Vector3 dir)
@@ -32,6 +36,7 @@ public class EnemyLaser : Projectile
         {
             if (hit.collider.TryGetComponent(out Player player))
             {
+                if (!_isShot) return;
                 player.HealthCompo.TakeDamage(_damage);
             }
         }
