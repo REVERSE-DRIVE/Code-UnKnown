@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using ObjectManage;
+using ObjectPooling;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -83,6 +85,14 @@ public class MapGenerator : MonoBehaviour
 
     public void GenerateHole(Vector2 pos)
     {
+        StartCoroutine(GenerateHoleCoroutine(pos));
+    }
+
+    private IEnumerator GenerateHoleCoroutine(Vector2 pos)
+    {
+        yield return new WaitForSeconds(4f);
+        EffectObject effect = PoolingManager.Instance.Pop(PoolingType.PlayerAppearVFX) as EffectObject;
+        effect.Initialize(pos);
         Instantiate(_stageHolePrefab, pos, Quaternion.identity);
     }
 

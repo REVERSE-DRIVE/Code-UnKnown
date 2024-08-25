@@ -117,8 +117,8 @@ public class MapManager : MonoSingleton<MapManager>
             }
         }
 
-        ComputerManager.Instance.SetInfect((clearRoom == 0 || existClearRoom == 0) ? 0 : (clearRoom / existClearRoom) * 100);
-        if (existClearRoom == 0 || clearRoom != existClearRoom) return false; // 클리어 할 수 있는 맵이 없음 / 다 클리어가 안됨
+        //ComputerManager.Instance.SetInfect((clearRoom == 0 || existClearRoom == 0) ? 0 : (clearRoom / existClearRoom) * 100);
+        //if (existClearRoom == 0 || clearRoom != existClearRoom) return false; // 클리어 할 수 있는 맵이 없음 / 다 클리어가 안됨
         
         MapGenerateSO option = Generator.GetOption();
         if (option.BossOption == null) return false; // 보스 소환할게 없넹
@@ -128,6 +128,7 @@ public class MapManager : MonoSingleton<MapManager>
 
         if (ComputerManager.Instance.InfectionLevel < 99)
         {
+            print("구멍 생성");
             Generator.GenerateHole(playerPos);
             return false;
         }

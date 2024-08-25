@@ -8,7 +8,8 @@ public class PoolingManager : MonoSingleton<PoolingManager>
         = new Dictionary<PoolingType, Pool>();
 
     public PoolingTableSO listSO;
-
+    private List<IPoolable> _generatedObjects = new List<IPoolable>();
+    
     private void Awake()
     {
         Debug.Log(listSO.datas.Count);
@@ -35,6 +36,7 @@ public class PoolingManager : MonoSingleton<PoolingManager>
         
         IPoolable item = _pools[type].Pop();
         item.ResetItem();
+        _generatedObjects.Add(item);
         return item;
     }
 
@@ -43,5 +45,15 @@ public class PoolingManager : MonoSingleton<PoolingManager>
         if (resetParent)
             obj.ObjectPrefab.transform.SetParent(transform);
         _pools[obj.type].Push(obj);
+        _generatedObjects.Remove(obj);
+    }
+
+    public void ResetPool()
+    {
+        foreach (IPoolable pool in _generatedObjects)
+        {
+            _pools[pool.type].Push(pool);
+        }
+        _generatedObjects.Clear();
     }
 }

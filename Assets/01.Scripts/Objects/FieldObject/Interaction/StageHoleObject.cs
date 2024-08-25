@@ -10,6 +10,8 @@ public class StageHoleObject : InteractObject
     private void HandleStageChange()
     {
         MapManager.Instance.Clear();
+        MapManager.Instance.Generate();
+        PoolingManager.Instance.ResetPool();
         Destroy(gameObject);
     }
 }

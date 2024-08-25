@@ -17150,6 +17150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   option: {fileID: 11400000, guid: 427d050c3d3d7fb37bb83530c313de88, type: 2}
+  _stageHolePrefab: {fileID: 156434749849372843, guid: a6c6158176e34554c9ab0e62149b5797, type: 3}
   wallTile: {fileID: 1488012034}
   bridgeTile: {fileID: 1150824858}
   groundTile: {fileID: 1475095301}
