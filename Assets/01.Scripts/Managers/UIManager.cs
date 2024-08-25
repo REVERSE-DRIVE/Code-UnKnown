@@ -36,6 +36,10 @@ public class UIManager : MonoSingleton<UIManager>
     private Transform _eventCanvas;
     private Transform _systemCanvas;
 
+    public bool isPause;
+    public bool isEffectSelecting;
+    public bool IsTimeStopped => isPause || isEffectSelecting;
+    
     private void Awake()
     {
         _gameCanvas = _canvasTrm.Find("GameCanvas");

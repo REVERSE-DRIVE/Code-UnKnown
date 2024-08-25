@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class SettingPanel : MonoBehaviour
+public class SettingPanel : UIPanel
 {
     [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private Slider _bgmSlider;
@@ -13,8 +13,9 @@ public class SettingPanel : MonoBehaviour
     private readonly string bgmMixerName = "Volume_BGM";
     private readonly string sfxMixerName = "Volume_SFX";
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         LoadSoundSetting();
         
         _bgmSlider.onValueChanged.AddListener(HandleBGMValueChanged);
