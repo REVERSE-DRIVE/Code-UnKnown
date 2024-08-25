@@ -5055,6 +5055,7 @@ MonoBehaviour:
   _detectMaterial: {fileID: 2100000, guid: 9b2f7f23d8d4f3c4098109f51a709a28, type: 2}
   _visualRenderer: {fileID: 8212220156931528587}
   isDetected: 0
+  <type>k__BackingField: 31
   _currentHealth: 5
   _hitMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}
   _collisionDestroy: 1

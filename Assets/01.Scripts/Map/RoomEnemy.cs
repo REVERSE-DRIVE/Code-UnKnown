@@ -33,8 +33,16 @@ public class RoomEnemy : RoomBase, IRoomCleable
             foreach (var item in nearObjectData.GetValue())
             {
                 Vector3 coords = RandomPosWithNearObject(item.spacing);
+                GameObject entity;
+                if (item.entity.TryGetComponent(out IPoolable poolable))
+                {
+                    entity = PoolingManager.Instance.Pop(poolable.type).ObjectPrefab;
+                }
+                else
+                {
+                    entity = Instantiate(item.entity, coords, Quaternion.identity);
 
-                var entity = Instantiate(item.entity, coords, Quaternion.identity);
+                }
 
                 nearObjects.Add(new() {
                     entity = entity,
