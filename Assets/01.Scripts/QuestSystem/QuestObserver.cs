@@ -43,6 +43,7 @@ namespace QuestManage
                     {
                         if (killQuestSO.enemyType == enemyType)
                         {
+                            Debug.Log(killQuestSO.enemyType);
                             currentQuestDatas[i].Trigger(triggerValue);
                         }
                     }
