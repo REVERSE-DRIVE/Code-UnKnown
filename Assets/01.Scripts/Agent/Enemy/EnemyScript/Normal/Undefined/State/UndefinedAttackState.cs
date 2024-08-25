@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using EnemyManage;
+﻿using EnemyManage;
 using ObjectPooling;
 using UnityEngine;
 

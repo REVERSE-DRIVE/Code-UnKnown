@@ -37,6 +37,11 @@ public class CounterBodyPart : PlayerPart
         }
         if (count >= 3)
         {
+            
+            if (DOTween.IsTweening(_shockWave))
+            {
+                DOTween.Kill(_shockWave);
+            }
             Instantiate(_explosion, _owner.transform.position, Quaternion.identity);
             _shockWave.DOPunchScale(new Vector3(2f, 2f, 1), 0.5f, 1).OnComplete(() =>
             {
