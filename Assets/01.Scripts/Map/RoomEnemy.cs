@@ -114,6 +114,7 @@ public class RoomEnemy : RoomBase, IRoomCleable
         process = false;
         CameraManager.Instance.HandleZoomNormalMode();
         UIManager.Instance.Open(WindowEnum.Minimap);
+        ComputerManager.Instance.GenerateErrorPanels(GetCenterCoords(), (Size.x + Size.y)/2f, 10);
         SetDoor(false);
         
         if (MapManager.Instance.CheckAllClear(true)) return; // 보스 나오는거면 보상 안줌

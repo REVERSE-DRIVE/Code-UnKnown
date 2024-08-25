@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ObjectPooling;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using Random = UnityEngine.Random;
 
 public class ComputerManager : MonoSingleton<ComputerManager>
 {
@@ -43,9 +44,18 @@ public class ComputerManager : MonoSingleton<ComputerManager>
         OnInfectionMaxEvent?.Invoke();
     }
 
-    public void GenerateErrorPanel(Vector2 pos)
+    public void GenerateErrorPanels(Vector2 center, float radius, int amount)
     {
-         ErrorPanelObject errorPanel = PoolingManager.Instance.Pop(PoolingType.EnemyHitVFX) as ErrorPanelObject;
+        for (int i = 0; i < amount; i++)
+        {
+            Vector2 position = (Random.insideUnitCircle * radius) + center;
+            GenerateErrorPanel(position);
+            
+        }
+    }
+    private void GenerateErrorPanel(Vector2 pos)
+    {
+         ErrorPanelObject errorPanel = PoolingManager.Instance.Pop(PoolingType.ErrorPanel) as ErrorPanelObject;
          _errorPanels.Add(errorPanel);
          errorPanel.Initialize(pos);
     }

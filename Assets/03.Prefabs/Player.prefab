@@ -15225,7 +15225,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 10241
+    m_Bits: 2049
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 0d0b8f2ba77e6284a826746f34095891, type: 2}
   m_TargetDisplay: 0
@@ -15257,7 +15257,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 10241
+    m_Bits: 2049
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
@@ -26366,7 +26366,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 8192
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: d5c02bae08ee2c04f83d50477f2fe5ba, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 0bf8c2411ebf8e54ab5b2b454b3c0abc, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
