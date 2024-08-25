@@ -157,7 +157,8 @@ public class PlayerAttacker : MonoBehaviour
         yield return _player.PlayerController.Dash(currentTargetTrm.position, duration);
         _attackEffect.Play(boundDir.normalized);
         EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
-        effect.Initialize(currentTargetTrm.position);
+        if(currentTargetTrm != null)
+            effect.Initialize(currentTargetTrm.position);
         ApplyDamage();
         yield return new WaitForSeconds(0.2f);
         _attackEffect.SetTrailActive(true);

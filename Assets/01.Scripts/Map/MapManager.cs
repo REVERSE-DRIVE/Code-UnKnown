@@ -9,7 +9,7 @@ public class MapManager : MonoSingleton<MapManager>
     [field: SerializeField] public MapGenerator Generator { get; private set; }
     [field: SerializeField] public MapTearEffect TearEffect { get; private set; }
     public MapTileManager TileManager { get; private set; }
-
+    
     Dictionary<Vector2Int, RoomBase> map = new();
     List<BridgeBase> bridges = new();
 
@@ -125,6 +125,12 @@ public class MapManager : MonoSingleton<MapManager>
 
         // 플레이어 위치로 방을 찾음
         Vector3 playerPos = PlayerManager.Instance.player.transform.position;
+
+        if (ComputerManager.Instance.InfectionLevel < 99)
+        {
+            Generator.GenerateHole(playerPos);
+            return false;
+        }
         RoomBase level = FindRoomByCoords(GetCellByWorldPos(playerPos));
         if (level == null) return false; // 방 위치 어디임???
 

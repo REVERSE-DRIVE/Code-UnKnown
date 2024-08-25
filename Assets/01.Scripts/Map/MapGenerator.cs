@@ -24,6 +24,8 @@ public class MapGenerator : MonoBehaviour
     [field: SerializeField] public MapBossGenerator BossGenerator { get; private set; }
     int nowCreateIdx = -1;
 
+    [SerializeField] private StageHoleObject _stageHolePrefab;
+    
     [SerializeField] Tilemap wallTile;
     [SerializeField] Tilemap bridgeTile;
     [SerializeField] Tilemap groundTile;
@@ -77,6 +79,11 @@ public class MapGenerator : MonoBehaviour
         wallTile.ClearAllTiles();
         bridgeTile.ClearAllTiles();
         groundTile.ClearAllTiles();
+    }
+
+    public void GenerateHole(Vector2 pos)
+    {
+        Instantiate(_stageHolePrefab, pos, Quaternion.identity);
     }
 
     void Generate() {

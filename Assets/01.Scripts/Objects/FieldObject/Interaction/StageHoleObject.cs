@@ -1,10 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using ObjectManage;
-using UnityEngine;
 
 public class StageHoleObject : InteractObject
 {
-    
-    
+    private void Awake()
+    {
+        OnInteractEvent += HandleStageChange;
+    }
+
+    private void HandleStageChange()
+    {
+        MapManager.Instance.Clear();
+        Destroy(gameObject);
+    }
 }
