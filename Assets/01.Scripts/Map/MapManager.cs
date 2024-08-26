@@ -65,6 +65,10 @@ public class MapManager : MonoSingleton<MapManager>
     }
 
     public void Clear() {
+        foreach (RoomBase room in map.Values)
+        {
+            Destroy(room.gameObject);
+        }
         map.Clear();
         bridges.Clear();
         Generator.Clear();

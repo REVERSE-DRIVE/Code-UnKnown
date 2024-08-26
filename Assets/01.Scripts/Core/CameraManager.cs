@@ -144,4 +144,27 @@ public class CameraManager : MonoSingleton<CameraManager>
     
     #endregion
 
+    #region Rotation
+
+    public void SetRotationToDefault(float rotate, float duration)
+    {
+        StartCoroutine(SetRotationToDefaultCoroutine(rotate, duration));
+    }
+
+    private IEnumerator SetRotationToDefaultCoroutine(float rotate, float duration)
+    {
+        _virtualCamera.m_Lens.Dutch = rotate;
+        float currentTime = 0;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            _virtualCamera.m_Lens.Dutch = Mathf.Lerp(rotate, 0, currentTime / duration);
+            yield return null;
+        }
+
+        _virtualCamera.m_Lens.Dutch = 0;
+    }
+
+    #endregion
+    
 }

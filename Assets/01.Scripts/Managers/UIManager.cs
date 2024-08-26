@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,8 @@ public enum WindowEnum
     BossCutScene,
     Clear,
     Editor,
-    Minimap
+    Minimap,
+    StageChange
 }
 
 public enum WindowUITypeEnum
@@ -32,10 +34,12 @@ public class UIManager : MonoSingleton<UIManager>
     [SerializeField] private WindowData[] windowDatas;
     public Dictionary<WindowEnum, IWindowPanel> panelDictionary;
     [SerializeField] private Transform _canvasTrm;
+
+    private StageChangePanel _stageChangePanel;
     private Transform _gameCanvas;
     private Transform _eventCanvas;
     private Transform _systemCanvas;
-
+    
     public bool isPause;
     public bool isEffectSelecting;
     public bool IsTimeStopped => isPause || isEffectSelecting;
@@ -70,6 +74,8 @@ public class UIManager : MonoSingleton<UIManager>
             
             panelDictionary.Add(window.window, panel);
         }
+
+        _stageChangePanel = panelDictionary[WindowEnum.StageChange] as StageChangePanel;
     }
 
     public void Open(WindowEnum target)
@@ -86,5 +92,22 @@ public class UIManager : MonoSingleton<UIManager>
         {
             panel.Close();
         }
+    }
+
+    public void ShowStageChange()
+    {
+        StartCoroutine(ShowStageChangeCoroutine());
+    }
+
+    private IEnumerator ShowStageChangeCoroutine()
+    {
+        Open(WindowEnum.StageChange);
+        _stageChangePanel.SetZeroGauge();
+        yield return new WaitForSeconds(0.6f);
+        _stageChangePanel.FillGauge();
+        yield return new WaitForSeconds(2.6f);
+        Close(WindowEnum.StageChange);        
+        CameraManager.Instance.SetRotationToDefault(180, 1f);
+        GameManager.Instance.ResetPlayer();
     }
 }
