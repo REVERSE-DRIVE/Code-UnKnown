@@ -50,6 +50,7 @@ public class EnemyBase : Enemy, IPoolable
         ColliderCompo.enabled = true;
         StateMachine.Initialize(EnemyStateEnum.Idle, this);
         HealthCompo.SetHealth(Stat.maxHealth.GetValue());
+        CanStateChangeable = true;
         isInitEnd = true;
     }
 
@@ -68,9 +69,9 @@ public class EnemyBase : Enemy, IPoolable
     /// </summary>
     public override void SetDead()
     {
-        
         Debug.Log("Enemy Dead");
         StateMachine.ChangeState(EnemyStateEnum.Dead);
+        CanStateChangeable = false;
         QuestObserver.Instance.KillTrigger(_enemyType, 1);
         base.SetDead();
     }

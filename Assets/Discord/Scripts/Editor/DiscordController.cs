@@ -41,11 +41,6 @@ namespace Discord.Scripts.Editor
             DiscordController.smallImageKey = smallImageKey;
             
             DiscordSaveGet();
-
-            Debug.Log("Discord Rich Presence Setup Complete");
-            Debug.Log($"Application ID: {applicationId}");
-            Debug.Log($"Large Image Key: {largeImageKey}");
-            Debug.Log($"Small Image Key: {smallImageKey}");
         }
 
         private static void SetUpDiscord()
