@@ -15382,7 +15382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3879ef90cdb84300a249e335e86f9352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _soundData: {fileID: 0}
+  _soundData: {fileID: 11400000, guid: 7d19ab3d5790d9e45bf85fecce9bd21c, type: 2}
 --- !u!1 &3546939141038824658
 GameObject:
   m_ObjectHideFlags: 0
@@ -26801,7 +26801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb390396e4bcec244a9ae7042ba17769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _detectDistance: 5
+  _attackFeedback: {fileID: 4496939943931464288}
   _detectDegree: 360
   _rayAmount: 50
   layerMask:
@@ -27629,7 +27629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3879ef90cdb84300a249e335e86f9352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _soundData: {fileID: 11400000, guid: b8c90a37898f67f418ca085549e5737b, type: 2}
+  _soundData: {fileID: 11400000, guid: ed6af7aa4f3563c42b0a8887bf61a7a0, type: 2}
 --- !u!1001 &769286560034187274
 PrefabInstance:
   m_ObjectHideFlags: 0

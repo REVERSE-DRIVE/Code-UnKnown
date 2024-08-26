@@ -8,9 +8,9 @@ using Random = UnityEngine.Random;
 public class PlayerAttacker : MonoBehaviour
 {
     public event Action OnAttackEvent;
-    
-    [Header("Attack Setting")]
-    [SerializeField] private float _detectDistance = 5.0f;  // 레이의 거리
+
+    [Header("Attack Setting")] [SerializeField]
+    private FeedbackPlayer _attackFeedback;
     [SerializeField] private float _detectDegree = 70f;
     [SerializeField] private int _rayAmount = 10;
     [SerializeField] private LayerMask layerMask;    // 충돌할 레이어 설정
@@ -174,6 +174,7 @@ public class PlayerAttacker : MonoBehaviour
     public void HandleAttackJudge()
     {
         OnAttackEvent?.Invoke();
+        _attackFeedback.PlayFeedback();
         CountCombo();
     }
 

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundName: Player_Attack
   audioType: 1
-  clip: {fileID: 8300000, guid: 1309b8dd8379f3c478715664c09e85f5, type: 3}
+  clip: {fileID: 8300000, guid: 47969e104f51df1438f5fe45b2450057, type: 3}
   loop: 0
   randomizePitch: 1
-  randomPitchModifier: 0.4
-  volume: 1.2
+  randomPitchModifier: 0.1
+  volume: 1
   pitch: 1

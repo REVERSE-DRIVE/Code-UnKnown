@@ -16,3 +16,5 @@ MonoBehaviour:
   soundSOList:
   - {fileID: 11400000, guid: ed6af7aa4f3563c42b0a8887bf61a7a0, type: 2}
   - {fileID: 11400000, guid: 7d19ab3d5790d9e45bf85fecce9bd21c, type: 2}
+  - {fileID: 11400000, guid: 458d2b7f438c5e64b81e21090b023544, type: 2}
+  - {fileID: 11400000, guid: babc6d180927ad242a0fa9b18cb23db9, type: 2}
