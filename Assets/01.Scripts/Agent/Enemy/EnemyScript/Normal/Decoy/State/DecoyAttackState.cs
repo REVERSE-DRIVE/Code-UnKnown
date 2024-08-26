@@ -21,6 +21,5 @@ public class DecoyAttackState : EnemyAttackState
     {
         yield return new WaitForSeconds(0.2f);
         _decoyEnemy.SwordCompo.Attack();
-        CameraManager.Instance.Shake(5f, 0.1f);
     }
 }
