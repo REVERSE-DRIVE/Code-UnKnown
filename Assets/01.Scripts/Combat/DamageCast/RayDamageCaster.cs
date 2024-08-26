@@ -11,7 +11,7 @@ public class RayDamageCaster : DamageCaster
         get => transform.right;
         set => transform.right = value;
     }
-    public override void CastDamage(float radius, int damage)
+    public override bool CastDamage(float radius, int damage)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Direction, _distance, _whatIsAgent);
         if (hit.collider != null)
@@ -20,8 +20,15 @@ public class RayDamageCaster : DamageCaster
             {
                 agent.HealthCompo.TakeDamage(damage);
                 OnCastEvent?.Invoke();
+                return true;
             }
         }
+        else
+        {
+            return false;
+        }
+        
+        return false;
     }
     
     private void OnDrawGizmos()

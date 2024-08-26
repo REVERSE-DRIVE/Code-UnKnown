@@ -15,13 +15,13 @@ public class LoadManager : MonoSingleton<LoadManager>
         DontDestroyOnLoad(gameObject);
     }
 
-    public void StartLoad(string sceneName)
+    public void StartLoad(string sceneName, Action callback = null)
     {
         SceneManager.LoadScene("LoadingScene");
-        StartCoroutine(LoadingCoroutine(sceneName));
+        StartCoroutine(LoadingCoroutine(sceneName, callback));
     }
 
-    private IEnumerator LoadingCoroutine(string sceneName)
+    private IEnumerator LoadingCoroutine(string sceneName, Action callback)
     {
         yield return new WaitForSeconds(1f);
         _loadUIManager = FindObjectOfType<LoadUIManager>();
@@ -46,6 +46,8 @@ public class LoadManager : MonoSingleton<LoadManager>
                 _fadeImage.Fade(1f, 1f);
                 yield return new WaitForSeconds(1f);
                 operation.allowSceneActivation = true;
+                
+                callback?.Invoke();
             }
 
             yield return null;

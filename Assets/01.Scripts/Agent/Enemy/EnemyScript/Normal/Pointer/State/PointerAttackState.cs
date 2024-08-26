@@ -7,7 +7,7 @@ public class PointerAttackState : EnemyAttackState
 {
     private Coroutine _shotCoroutine;
     private float _waitTime = 1f;
-    private float _bulletSpeed = 10f;
+    private float _bulletSpeed = 5f;
     private float _bulletLifeTime = 3f;
     public PointerAttackState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {

@@ -14,6 +14,10 @@ public class DecoySword : MonoBehaviour
 
     public void Attack()
     {
-        _owner.DamageCasterCompo.CastDamage(3f, _damage);
+        bool success = _owner.DamageCasterCompo.CastDamage(3f, _damage);
+        if (success)
+        {
+            CameraManager.Instance.Shake(5f, 0.1f);
+        }
     } 
 }
