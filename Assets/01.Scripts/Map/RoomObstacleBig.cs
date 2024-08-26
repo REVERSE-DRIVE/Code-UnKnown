@@ -25,6 +25,7 @@ public class RoomObstacleBig : RoomBase, IRoomObstacle
 
     public override void RoomLeave()
     {
+        base.RoomLeave();
         print("RoomLeave RoomObstacleBig");
     }
 

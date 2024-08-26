@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UIPanel : MonoBehaviour, IWindowPanel
 {
-    [SerializeField] private float _activeDuration = 1f;
-    [SerializeField] private bool _useUnscaleedTime;
+    [SerializeField] protected float _activeDuration = 1f;
+    [SerializeField] protected bool _useUnscaleedTime;
     protected CanvasGroup _canvasGroup;
 
     protected virtual void Awake()

@@ -33,8 +33,16 @@ public class RoomEnemy : RoomBase, IRoomCleable
             foreach (var item in nearObjectData.GetValue())
             {
                 Vector3 coords = RandomPosWithNearObject(item.spacing);
+                GameObject entity;
+                if (item.entity.TryGetComponent(out IPoolable poolable))
+                {
+                    entity = PoolingManager.Instance.Pop(poolable.type).ObjectPrefab;
+                }
+                else
+                {
+                    entity = Instantiate(item.entity, coords, Quaternion.identity);
 
-                var entity = Instantiate(item.entity, coords, Quaternion.identity);
+                }
 
                 nearObjects.Add(new() {
                     entity = entity,
@@ -66,6 +74,8 @@ public class RoomEnemy : RoomBase, IRoomCleable
         process = true;
         SetDoor(true);  
         CameraManager.Instance.HandleZoomCombatMode();
+        UIManager.Instance.Close(WindowEnum.Minimap);
+
         Transform player = PlayerManager.Instance.player.transform;
         Vector2Int playerPos = MapManager.Instance.GetCellByWorldPos(player.position);
 
@@ -95,6 +105,7 @@ public class RoomEnemy : RoomBase, IRoomCleable
 
     public override void RoomLeave()
     {
+        base.RoomLeave();
         if (isClear || process) return;
 
     }
@@ -110,7 +121,9 @@ public class RoomEnemy : RoomBase, IRoomCleable
         isClear = true;
         process = false;
         CameraManager.Instance.HandleZoomNormalMode();
-
+        UIManager.Instance.Open(WindowEnum.Minimap);
+        ComputerManager.Instance.Infect();
+        ComputerManager.Instance.GenerateErrorPanels(GetCenterCoords(), (Size.x + Size.y)/2f, 10);
         SetDoor(false);
         
         if (MapManager.Instance.CheckAllClear(true)) return; // 보스 나오는거면 보상 안줌
