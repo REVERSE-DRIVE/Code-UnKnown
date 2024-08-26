@@ -19,7 +19,7 @@ public class GameManager : MonoSingleton<GameManager>
     public void GameStart()
     {
         ResetPlayer();
-        PlayerPartManager.Instance.ChangeAllPart();
+        
 
     }
 
@@ -42,7 +42,7 @@ public class GameManager : MonoSingleton<GameManager>
         CameraManager.Instance.ShakeHit();
         PlayerManager.Instance.player.MovementCompo.isStun = false;
         PlayerManager.Instance.player.SetVisualActive(true);
-
+        PlayerPartManager.Instance.ChangeAllPart();
     }
     
 }
