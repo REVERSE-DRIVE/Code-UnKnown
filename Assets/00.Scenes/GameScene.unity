@@ -18920,6 +18920,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 915759150840042551, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
+      propertyPath: _soundData
+      value: 
+      objectReference: {fileID: 11400000, guid: ed6af7aa4f3563c42b0a8887bf61a7a0, type: 2}
     - target: {fileID: 3265901195153479272, guid: 43dd05e20a7306d42a4a0e2bed941fae, type: 3}
       propertyPath: _skillIconImage
       value: 

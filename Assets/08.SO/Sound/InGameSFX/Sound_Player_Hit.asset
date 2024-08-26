@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c48cc30c6d5c4683849fa3b8d9c3c741, type: 3}
-  m_Name: InGameSFX
+  m_Script: {fileID: 11500000, guid: 6c2712056d603dc41a76ecb87f3d7d01, type: 3}
+  m_Name: Sound_Player_Hit
   m_EditorClassIdentifier: 
+  soundName: Player_Hit
   audioType: 1
-  soundSOList:
-  - {fileID: 11400000, guid: ed6af7aa4f3563c42b0a8887bf61a7a0, type: 2}
-  - {fileID: 11400000, guid: 7d19ab3d5790d9e45bf85fecce9bd21c, type: 2}
+  clip: {fileID: 8300000, guid: 47969e104f51df1438f5fe45b2450057, type: 3}
+  loop: 0
+  randomizePitch: 0
+  randomPitchModifier: 0.1
+  volume: 1
+  pitch: 1
