@@ -25,11 +25,10 @@ namespace ObjectManage
 
         public override void Play()
         {
-            OnPlayEvent?.Invoke();
             _pointerMat.SetFloat(_appearHeightHash, 1f);
             StartCoroutine(PlayCoroutine());
         }
-
+        
         private IEnumerator PlayCoroutine()
         {
             yield return new WaitForSeconds(0.3f);
@@ -43,8 +42,10 @@ namespace ObjectManage
             _impactLineTrm.localScale = new Vector3(1.5f, 16f,1);
 
             _impactLineTrm.DOScaleX(0f, 0.2f);
-            yield return new WaitForSeconds(0.1f);
             _explodeImpact.Play();
+            yield return new WaitForSeconds(0.1f);
+            OnPlayEvent?.Invoke();
+
             EffectObject effect = PoolingManager.Instance.Pop(PoolingType.ExplodeMark) as EffectObject;
             effect.Initialize(transform.position);
 

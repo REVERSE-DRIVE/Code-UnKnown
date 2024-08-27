@@ -107,8 +107,8 @@ public class MapManager : MonoSingleton<MapManager>
         if (success) // 성공시에만 띄움
             UIManager.Instance.Open(WindowEnum.Clear);
 
-        int existClearRoom = 0;
-        int clearRoom = 0;
+        int existClearRoom = 0; // 방개수
+        int clearRoom = 0; // 클리어된 방개수
         
         foreach (var item in map.Values)
         {
@@ -132,6 +132,10 @@ public class MapManager : MonoSingleton<MapManager>
 
         if (ComputerManager.Instance.InfectionLevel < 99)
         {
+            if (clearRoom != existClearRoom)
+            {
+                return false;
+            }
             print("구멍 생성");
             Generator.GenerateHole(playerPos);
             return false;
