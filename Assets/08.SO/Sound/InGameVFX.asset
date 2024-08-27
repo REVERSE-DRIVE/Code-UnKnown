@@ -15,3 +15,8 @@ MonoBehaviour:
   audioType: 1
   soundSOList:
   - {fileID: 11400000, guid: 6292e6e267ad3b540ae6b0be2ccd5d7b, type: 2}
+  - {fileID: 11400000, guid: efcdd8548dcb10442ad63ba2a75d2642, type: 2}
+  - {fileID: 11400000, guid: f73ffbef06aeac640ba5d5e69efee4ab, type: 2}
+  - {fileID: 11400000, guid: 9a954d6c824788946a1cf805c9f0085f, type: 2}
+  - {fileID: 11400000, guid: 2059af6007ecd7741b6f83bd9a58d275, type: 2}
+  - {fileID: 11400000, guid: d98603247a27d4049a3f14246f8702c8, type: 2}

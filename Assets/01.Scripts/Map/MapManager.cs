@@ -1,7 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using ObjectManage;
-using ObjectPooling;
 using UnityEngine;
 
 public class MapManager : MonoSingleton<MapManager>
@@ -12,9 +9,11 @@ public class MapManager : MonoSingleton<MapManager>
     
     Dictionary<Vector2Int, RoomBase> map = new();
     List<BridgeBase> bridges = new();
-
+    private AudioSource _doorAudio;
+    
     private void Awake() {
         TileManager = GetComponent<MapTileManager>();
+        _doorAudio = GetComponent<AudioSource>();
     }
 
     ///////////////////////////////// TEST
@@ -145,5 +144,10 @@ public class MapManager : MonoSingleton<MapManager>
 
         Generator.BossGenerator.CreateBoss(level);
         return true;
+    }
+
+    public void PlayDoorSound()
+    {
+        _doorAudio.Play();
     }
 }
