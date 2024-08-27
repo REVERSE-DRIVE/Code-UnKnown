@@ -25,6 +25,7 @@ namespace ObjectManage
 
         public override void Play()
         {
+            OnPlayEvent?.Invoke();
             _pointerMat.SetFloat(_appearHeightHash, 1f);
             StartCoroutine(PlayCoroutine());
         }
