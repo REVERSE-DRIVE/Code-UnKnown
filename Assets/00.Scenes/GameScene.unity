@@ -8224,7 +8224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b4726b66502794c9584466e89da01b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requireResource: 400
+  _requireResource: 10
   _healAmount: 20
   _fixBtn: {fileID: 1015459502}
   _gaugeFill: {fileID: 69024243}
@@ -8233,6 +8233,7 @@ MonoBehaviour:
   _requireResourceText: {fileID: 397713725}
   _openDuration: 0.1
   _gaugeFillDuration: 0.6
+  _lockPanel: {fileID: 1100661631}
 --- !u!1 &879691196
 GameObject:
   m_ObjectHideFlags: 0
@@ -10004,6 +10005,7 @@ GameObject:
   - component: {fileID: 1100661628}
   - component: {fileID: 1100661627}
   - component: {fileID: 1100661630}
+  - component: {fileID: 1100661631}
   m_Layer: 5
   m_Name: LockPanel
   m_TagString: Untagged
@@ -10093,9 +10095,23 @@ CanvasGroup:
   m_GameObject: {fileID: 1100661625}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &1100661631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100661625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb03afc0c5c40dd96eac77a9a9c81ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeDuration: 1
+  _useUnscaleedTime: 0
 --- !u!1 &1102516313
 GameObject:
   m_ObjectHideFlags: 0
