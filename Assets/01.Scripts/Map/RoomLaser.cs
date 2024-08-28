@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -25,8 +26,10 @@ public class RoomLaser : RoomBase, IRoomCleable
     {
         foreach (LaserObject laser in lasers)
         {
+            if (laser == null) continue;
             Destroy(laser.gameObject);
         }
+        lasers.Clear();
     }
 
     public override void OnComplete()
