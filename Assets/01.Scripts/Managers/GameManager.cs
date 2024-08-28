@@ -71,6 +71,11 @@ public class GameManager : MonoSingleton<GameManager>
         SaveManager.Instance.Save<InGameData>(data, "InGameData");
     }
 
+    public void LoadInGameData()
+    {
+        
+    }
+
     public void ExitGame()
     {
         
