@@ -8850,25 +8850,6 @@ MonoBehaviour:
   itemBox: {fileID: 3260892062015638083, guid: e7347e6b37774474cb3767b7422d3818, type: 3}
   topBox: {fileID: 596215298}
   closeBtn: {fileID: 1620864482}
-  prefixs:
-  - name: Class_C
-    color: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
-    minScore: 0
-  - name: Class_B
-    color: {r: 0.8773585, g: 0.6241939, b: 0.17933422, a: 1}
-    minScore: 1000
-  - name: Class_A
-    color: {r: 0.3269253, g: 0.5406896, b: 0.8962264, a: 1}
-    minScore: 2000
-  - name: Class_S
-    color: {r: 0.5902197, g: 0.8980392, b: 0.32549024, a: 1}
-    minScore: 3500
-  - name: Class_Pretinum
-    color: {r: 0.8980392, g: 0.32549024, b: 0.36076975, a: 1}
-    minScore: 5000
-  - name: Class_Prestige
-    color: {r: 0.7114627, g: 0.32549024, b: 0.8980392, a: 1}
-    minScore: 10000
 --- !u!1 &337333960
 GameObject:
   m_ObjectHideFlags: 0
@@ -46125,6 +46106,7 @@ MonoBehaviour:
   image: {fileID: 965400280}
   rankT: {fileID: 0}
   expprefixT: {fileID: 801158454}
+  rankPrefix: {fileID: 11400000, guid: d2b6d271fa0b3084eb8c79f1221fc21b, type: 2}
   expT: {fileID: 1010392068}
 --- !u!1 &606453345
 GameObject:
