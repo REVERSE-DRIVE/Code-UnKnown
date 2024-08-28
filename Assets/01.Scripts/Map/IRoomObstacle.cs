@@ -38,6 +38,20 @@ public interface IRoomObstacle
             int rand = Random.Range(1, 4);
             if (size.x > size.y) {
                 min.y = Random.Range(room.MinPos.y + size.y + 1, room.MaxPos.y - 1 - size.y * 2);
+
+                // if (min.y == rangeMin + 1) {
+                //     if (min.y + 1 < rangeMax) // 범위 벗어남
+                //         min.y++;
+                //     else
+                //         min.y--;
+
+                // } else if (min.y == rangeMax - 2 /* max가 포함되어있지 않아서 2 뺌 */) {
+                //     if (min.y - 1 >= rangeMin) // 범위 벗어남
+                //         min.y--;
+                //     else
+                //         min.y++;
+                // }
+
                 max.y = min.y + size.y;
 
                 if (rand == 1) {
@@ -47,13 +61,35 @@ public interface IRoomObstacle
                     max.x = room.MaxPos.x - 1;
                     min.x = max.x - size.x;
                 } else {
-                    min.x = Random.Range(room.MinPos.x + 1, (room.MinPos.x + 1) + (room.Size.x - 2 - size.x));
+                    int rangeMin = room.MinPos.x + 1;
+                    int rangeMax = (room.MinPos.x + 1) + (room.Size.x - 2 - size.x);
+                    min.x = Random.Range(rangeMin, rangeMax);
+
+                    if (min.x == rangeMin + 1) {
+                        min.x --; // 다시 뒤로 가
+                    } else if (min.x == rangeMax - 2) {
+                        min.x ++; // 다시 앞으로 가
+                    }
+
                     max.x = min.x + size.x;
                 }
             } else if (size.x < size.y) {
                 min.x = Random.Range(room.MinPos.x + size.x + 1, room.MaxPos.x - 1 - size.x * 2);
-                max.x = min.x + size.x;
+                
+                // if (min.x == rangeMin + 1) {
+                //     if (min.x + 1 < rangeMax) // 범위 벗어남
+                //         min.x++;
+                //     else
+                //         min.x--;
 
+                // } else if (min.x == rangeMax - 2 /* max가 포함되어있지 않아서 2 뺌 */) {
+                //     if (min.x - 1 >= rangeMin) // 범위 벗어남
+                //         min.x--;
+                //     else
+                //         min.x++;
+                // }
+
+                max.x = min.x + size.x;
 
                 if (rand == 1) {
                     min.y = room.MinPos.y + 1;
@@ -62,7 +98,16 @@ public interface IRoomObstacle
                     max.y = room.MaxPos.y - 1;
                     min.y = max.y - size.y;
                 } else if (rand == 3) {
-                    min.y = Random.Range(room.MinPos.y + 1, (room.MinPos.y + 1) + (room.Size.y - 2 - size.y));
+                    int rangeMin = room.MinPos.y + 1;
+                    int rangeMax = (room.MinPos.y + 1) + (room.Size.y - 2 - size.y);
+                    min.y = Random.Range(rangeMin, rangeMax);
+
+                    if (min.y == rangeMin + 1) {
+                        min.y --; // 다시 뒤로 가
+                    } else if (min.y == rangeMax - 2) {
+                        min.y ++; // 다시 앞으로 가
+                    }
+                    
                     max.y = min.y + size.y;
                 }
             } else {
