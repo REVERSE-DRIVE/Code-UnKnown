@@ -1,18 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class RankTopUI : MonoBehaviour
+public class RankTopUI : RankItemUI
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    [SerializeField] TextMeshProUGUI expT;
+    public override void Init(RankItemUI.Data data) {
+        base.Init(data); // 기존꺼 실행
+        expT.text = $"exp.{data.score:N0}";
     }
 }

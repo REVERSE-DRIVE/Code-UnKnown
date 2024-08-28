@@ -16,6 +16,7 @@ public class RankUI : MonoBehaviour
     [SerializeField] GameObject errorAlert;
     [SerializeField] Transform list;
     [SerializeField] RankItemUI itemBox;
+    [SerializeField] RankTopUI topBox;
     [SerializeField] Button closeBtn;
 
     private void Awake() {
@@ -101,6 +102,12 @@ public class RankUI : MonoBehaviour
 
         for (int i = 0; i < data.Length; i++)
         {
+            int rank = data[i].rank;
+            if (rank == 1) {
+                topBox.Init(data[i]); // 1등은 아주 좋은 자리로~~
+                continue;
+            }
+
             var item = Instantiate(itemBox, list);    
             item.Init(data[i]);
 
@@ -108,11 +115,10 @@ public class RankUI : MonoBehaviour
             RectTransform trm = item.transform as RectTransform;
             Vector2 pos = trm.anchoredPosition;
 
-            int rank = data[i].rank;
-            pos.y = -(trm.rect.height * (rank - 1));
+            pos.y = -(trm.rect.height * (rank - 1 - 1));
 
             if (pos.y != 0)
-                pos.y -= spacing * (rank - 1);
+                pos.y -= spacing * (rank - 1 - 1);
 
             sizeSum = pos.y - trm.rect.height;
 

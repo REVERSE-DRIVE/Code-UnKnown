@@ -19,9 +19,10 @@ public class RankItemUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI rankT;
     [SerializeField] TextMeshProUGUI expprefixT;
 
-    public void Init(Data data) {
+    public virtual void Init(Data data) {
         nameT.text = data.name;
-        rankT.text = data.rank.ToString();
+        if (rankT)
+            rankT.text = data.rank.ToString();
         expprefixT.text = "test";
         
         if (data.profile != null)
