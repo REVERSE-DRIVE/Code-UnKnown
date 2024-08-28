@@ -10,6 +10,8 @@ using UnityEngine.UI;
 public class RankUI : MonoBehaviour
 {
     readonly string RANK_ID = "CgkInoqooYweEAIQAg";
+    readonly int RANK_AMOUNT = 50;
+    readonly int RANK_AMOUNT_MAX = 30;
 
     [SerializeField] GameObject errorAlert;
     [SerializeField] Transform list;
@@ -45,36 +47,56 @@ public class RankUI : MonoBehaviour
             errorAlert.SetActive(true);
             return;   
         }
+
+        HandleResultScore(0, null);
+    }
+
+    void HandleResultScore(int count, ScorePageToken nextToken) {
+        print($"HandleResultScore {count} / {nextToken}");
+
+        int rowCount = Mathf.Clamp(RANK_AMOUNT - count, 0, RANK_AMOUNT_MAX);
+        if (rowCount == 0) return;
         
-        PlayGamesPlatform.Instance.LoadScores(
-            RANK_ID,
-            LeaderboardStart.PlayerCentered,
-            50, // 최대 50개만~~
-            LeaderboardCollection.Public,
-            LeaderboardTimeSpan.AllTime,
-            (datas) => {
-                string[] userIds = datas.Scores.Select(v => v.userID).ToArray();
-                PlayGamesPlatform.Instance.LoadUsers(userIds, (IUserProfile[] profiles) => {
-                    RankItemUI.Data[] data = new RankItemUI.Data[datas.Scores.Length];
+        if (count == 0) { // 0부ㅜ터 시작 하면 처음 하는거임
+            PlayGamesPlatform.Instance.LoadScores(
+                RANK_ID,
+                LeaderboardStart.TopScores,
+                rowCount, // 최대 50개만~~
+                LeaderboardCollection.Public,
+                LeaderboardTimeSpan.AllTime,
+                (data) => AddResultScoreUI(data, () => HandleResultScore(rowCount, data.NextPageToken))
+            );
+            return;
+        }
 
-                    for (int i = 0; i < datas.Scores.Length; i++)
-                    {
-                        data[i] = new() {
-                            rank = i + 1,
-                            name = profiles[i].userName,
-                            image = profiles[i].image,
-                            score = datas.Scores[i].value
-                        };
-                    }
-
-                    CreateItems(data);
-                });
-            }
+        PlayGamesPlatform.Instance.LoadMoreScores(
+            nextToken,
+            rowCount,
+            (data) => AddResultScoreUI(data, () => HandleResultScore(count + rowCount, data.NextPageToken))
         );
     }
 
+    void AddResultScoreUI(LeaderboardScoreData data, System.Action cb) {
+        string[] userIds = data.Scores.Select(v => v.userID).ToArray();
+        PlayGamesPlatform.Instance.LoadUsers(userIds, (IUserProfile[] profiles) => {
+            RankItemUI.Data[] result = new RankItemUI.Data[data.Scores.Length];
+            for (int i = 0; i < data.Scores.Length; i++)
+            {
+                result[i] = new() {
+                    rank = data.Scores[i].rank,
+                    name = profiles[i].userName,
+                    image = profiles[i].image,
+                    score = data.Scores[i].value
+                };
+            }
+
+            CreateItems(result);
+            cb();
+        });
+    }
+
     void CreateItems(RankItemUI.Data[] data) {
-        float startY = 0;
+        float sizeSum = 0;
         const float spacing = 20;
 
         for (int i = 0; i < data.Length; i++)
@@ -85,14 +107,21 @@ public class RankUI : MonoBehaviour
             // 위치 조정
             RectTransform trm = item.transform as RectTransform;
             Vector2 pos = trm.anchoredPosition;
-            
-            pos.y = -startY;
-            trm.anchoredPosition = pos;
 
-            startY += trm.rect.height + spacing;
+            int rank = data[i].rank;
+            pos.y = -(trm.rect.height * (rank - 1));
+
+            if (pos.y != 0)
+                pos.y -= spacing * (rank - 1);
+
+            sizeSum = pos.y - trm.rect.height;
+
+            trm.anchoredPosition = pos;
         }
 
-        (list as RectTransform).sizeDelta = new(0, startY);
+        Vector2 size = (list as RectTransform).sizeDelta;
+        size = new(0, size.y - sizeSum);
+        (list as RectTransform).sizeDelta = size;
     }
 
     void Clear() {
