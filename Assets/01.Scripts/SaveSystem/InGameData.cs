@@ -17,7 +17,6 @@ public struct InGameData
 {
     public int ResourceAmount;
     public int infectLevel;
-    public float adaptability;
     public int level;
     public int exp;
     public PowerUpData[] powerUpDatas;
