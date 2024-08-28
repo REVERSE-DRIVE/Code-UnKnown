@@ -72,7 +72,7 @@ public class EnemyBase : Enemy, IPoolable
         Debug.Log("Enemy Dead");
         StateMachine.ChangeState(EnemyStateEnum.Dead);
         CanStateChangeable = false;
-        QuestObserver.Instance.KillTrigger(_enemyType, 1);
+        //QuestObserver.Instance.KillTrigger(_enemyType, 1);
         base.SetDead();
     }
     
@@ -82,6 +82,7 @@ public class EnemyBase : Enemy, IPoolable
     public void SetHitMaterial()
     {
         if (isDead) return;
+        Vibration.Vibrate(200);
         if (isInitEnd)
             StartCoroutine(ChangeMaterial());
     }

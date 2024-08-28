@@ -42,7 +42,7 @@ public class ResourceItem : Item
             {
                 ResourceManager.Instance.AddResource(ItemSO.resourceValue);
                 LevelManager.Instance.ApplyExp(ItemSO.resourceValue);
-                QuestObserver.Instance.CollectTrigger(ItemType.Resource, 1);
+                //QuestObserver.Instance.CollectTrigger(ItemType.Resource, 1);
                 PoolingManager.Instance.Push(this);
             });
         }

@@ -8,14 +8,14 @@ public static class DiscordSettingSave
     private static string _path;
     public static void SaveSetting()
     {
-        _path = Application.dataPath + "/Discord/Save/DiscordSetting.json";
+        _path = Application.dataPath + "/Resources/Discord/Save/DiscordSetting.json";
         string json = JsonUtility.ToJson(_discordSetting);
         File.WriteAllText(_path, json);
     }
     
     public static DiscordSetting LoadSetting()
     {
-        _path = Application.dataPath + "/Discord/Save/DiscordSetting.json";
+        _path = Application.dataPath + "/Resources/Discord/Save/DiscordSetting.json";
         if (File.Exists(_path))
         {
             string json = File.ReadAllText(_path);

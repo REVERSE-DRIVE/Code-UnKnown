@@ -8,7 +8,7 @@ namespace QuestManage
     public class QuestData
     {
         public int id;
-        public int progressValue;
+        public int completenessValue;
         public QuestDifficultyEnum difficulty;
         public bool isClear;
         [SerializeField] private int _goalValue;
@@ -24,9 +24,8 @@ namespace QuestManage
     
         public void Trigger(int value)
         {
-            progressValue += value;
-            Debug.Log($"Quest {id} : {progressValue}/{_goalValue}");
-            if (progressValue >= _goalValue)
+            completenessValue += value;
+            if (completenessValue >= _goalValue)
             {
                 // 클리어 이벤트
                 isClear = true;
