@@ -13,6 +13,13 @@ public class RankItemUI : MonoBehaviour
         public UnityEngine.SocialPlatforms.IUserProfile profile;
         public long score;
     }
+    
+    [System.Serializable]
+    public struct Prefix {
+        public string name;
+        public Color color;
+        public long minScore;
+    }
 
     [SerializeField] TextMeshProUGUI nameT;
     [SerializeField] RawImage image;
@@ -23,7 +30,10 @@ public class RankItemUI : MonoBehaviour
         nameT.text = data.name;
         if (rankT)
             rankT.text = data.rank.ToString();
-        expprefixT.text = "test";
+
+        Prefix prefix = RankUI.Instance.GetPrefix(data.score);
+        expprefixT.text = prefix.name;
+        expprefixT.color = prefix.color;
         
         if (data.profile != null)
             StartCoroutine(ImageLoadWait(data.profile));

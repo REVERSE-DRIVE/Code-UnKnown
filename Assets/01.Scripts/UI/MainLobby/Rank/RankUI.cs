@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 
-public class RankUI : MonoBehaviour
+public class RankUI : MonoSingleton<RankUI>
 {
     readonly string RANK_ID = "CgkInoqooYweEAIQAg";
     readonly int RANK_AMOUNT = 50;
@@ -19,8 +20,20 @@ public class RankUI : MonoBehaviour
     [SerializeField] RankTopUI topBox;
     [SerializeField] Button closeBtn;
 
-    private void Awake() {
+    [SerializeField] RankItemUI.Prefix[] prefixs;
+
+    protected override void Awake() {
+        base.Awake();
         closeBtn.onClick.AddListener(Close);
+
+        // 정렬
+        Array.Sort(prefixs, (a, b) => {
+            if (a.minScore > b.minScore) {
+                return -1;
+            } else if (a.minScore < b.minScore) {
+                return 1;
+            } else return 0;
+        });
 
         // CreateItems(new RankItemUI.Data[] {
         //     new RankItemUI.Data() {
@@ -31,7 +44,7 @@ public class RankUI : MonoBehaviour
         //     new RankItemUI.Data() {
         //         name = "도미222222",
         //         rank = 2,
-        //         score = 436
+        //         score = 4360
         //     },
         //     new RankItemUI.Data() {
         //         name = "ㅁㄴㅇㄹ",
@@ -43,7 +56,7 @@ public class RankUI : MonoBehaviour
 
     private void OnEnable() {
         Clear();
-    
+
         if (!GoogleLoginSystem.isLogined) { // 만약 google 서비스에 연결 되어있지 않은 경우
             errorAlert.SetActive(true);
             return;   
@@ -128,6 +141,17 @@ public class RankUI : MonoBehaviour
         Vector2 size = (list as RectTransform).sizeDelta;
         size = new(0, size.y - sizeSum);
         (list as RectTransform).sizeDelta = size;
+    }
+
+    public RankItemUI.Prefix GetPrefix(long score) {
+        foreach (var item in prefixs)
+        {
+            if (item.minScore <= score) {
+                return item;
+            }
+        }
+
+        return default; // 뭐 해야지
     }
 
     void Clear() {
