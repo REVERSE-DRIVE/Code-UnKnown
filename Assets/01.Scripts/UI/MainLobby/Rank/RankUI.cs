@@ -85,7 +85,7 @@ public class RankUI : MonoBehaviour
                 result[i] = new() {
                     rank = data.Scores[i].rank,
                     name = profiles[i].userName,
-                    image = profiles[i].image,
+                    profile = profiles[i],
                     score = data.Scores[i].value
                 };
             }

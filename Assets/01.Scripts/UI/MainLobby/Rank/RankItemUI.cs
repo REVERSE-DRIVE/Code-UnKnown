@@ -10,6 +10,7 @@ public class RankItemUI : MonoBehaviour
         public int rank;
         public string name;
         public Texture2D image;
+        public UnityEngine.SocialPlatforms.IUserProfile profile;
         public long score;
     }
 
@@ -21,7 +22,21 @@ public class RankItemUI : MonoBehaviour
     public void Init(Data data) {
         nameT.text = data.name;
         rankT.text = data.rank.ToString();
-        image.texture = data.image;
         expprefixT.text = "test";
+        
+        if (data.profile != null)
+            StartCoroutine(ImageLoadWait(data.profile));
+    }
+
+    readonly uint LOAD_TIMEOUT = 30;
+    IEnumerator ImageLoadWait(UnityEngine.SocialPlatforms.IUserProfile profile) {
+        uint timer = 0;
+        while (profile.image == null || timer <= LOAD_TIMEOUT) {
+            yield return new WaitForSeconds(1f);
+            timer ++;
+        }
+        
+        if (profile.image)
+            image.texture = profile.image;
     }
 }
