@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RoomLaser : RoomBase, IRoomCleable
 {
@@ -18,6 +20,14 @@ public class RoomLaser : RoomBase, IRoomCleable
     VirusSuppressorObject suppressor;
     HashSet<Vector2Int> alreadyPos;
     bool isClear = false;
+
+    private void OnDestroy()
+    {
+        foreach (LaserObject laser in lasers)
+        {
+            Destroy(laser.gameObject);
+        }
+    }
 
     public override void OnComplete()
     {

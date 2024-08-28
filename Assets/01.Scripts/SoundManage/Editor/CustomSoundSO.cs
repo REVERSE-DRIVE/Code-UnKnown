@@ -65,6 +65,7 @@ public class CustomSoundSO : Editor
                 
                 //EditorGUILayout.PropertyField(nameProp);
                 EditorGUILayout.PropertyField(typeProp);
+                EditorGUILayout.PropertyField(clipProp);
                 EditorGUILayout.PropertyField(loopProp);
                 EditorGUILayout.PropertyField(randomizeProp);
                 EditorGUILayout.Slider(randomPitchModifierProp, 0f, 1f);

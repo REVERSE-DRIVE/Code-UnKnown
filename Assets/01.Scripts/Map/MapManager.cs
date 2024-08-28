@@ -9,7 +9,7 @@ public class MapManager : MonoSingleton<MapManager>
     [field: SerializeField] public MapGenerator Generator { get; private set; }
     [field: SerializeField] public MapTearEffect TearEffect { get; private set; }
     public MapTileManager TileManager { get; private set; }
-
+    
     Dictionary<Vector2Int, RoomBase> map = new();
     List<BridgeBase> bridges = new();
 
@@ -65,6 +65,10 @@ public class MapManager : MonoSingleton<MapManager>
     }
 
     public void Clear() {
+        foreach (RoomBase room in map.Values)
+        {
+            Destroy(room.gameObject);
+        }
         map.Clear();
         bridges.Clear();
         Generator.Clear();
@@ -117,14 +121,21 @@ public class MapManager : MonoSingleton<MapManager>
             }
         }
 
-        ComputerManager.Instance.SetInfect((clearRoom == 0 || existClearRoom == 0) ? 0 : (clearRoom / existClearRoom) * 100);
-        if (existClearRoom == 0 || clearRoom != existClearRoom) return false; // 클리어 할 수 있는 맵이 없음 / 다 클리어가 안됨
+        //ComputerManager.Instance.SetInfect((clearRoom == 0 || existClearRoom == 0) ? 0 : (clearRoom / existClearRoom) * 100);
+        //if (existClearRoom == 0 || clearRoom != existClearRoom) return false; // 클리어 할 수 있는 맵이 없음 / 다 클리어가 안됨
         
         MapGenerateSO option = Generator.GetOption();
         if (option.BossOption == null) return false; // 보스 소환할게 없넹
 
         // 플레이어 위치로 방을 찾음
         Vector3 playerPos = PlayerManager.Instance.player.transform.position;
+
+        if (ComputerManager.Instance.InfectionLevel < 99)
+        {
+            print("구멍 생성");
+            Generator.GenerateHole(playerPos);
+            return false;
+        }
         RoomBase level = FindRoomByCoords(GetCellByWorldPos(playerPos));
         if (level == null) return false; // 방 위치 어디임???
 

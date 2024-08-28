@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,15 @@ public class RoomTracker : RoomBase, IRoomCleable
     List<JunkFileObject> junks;
 
     bool isClear = false;
+
+    private void OnDestroy()
+    {
+        foreach (HoleObject hole in holes)
+        {
+            Destroy(hole.gameObject);
+        }
+        holes.Clear();
+    }
 
     public override void OnComplete()
     {

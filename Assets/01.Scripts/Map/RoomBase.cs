@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 public struct RoomDoorData {
     public Vector2Int size;
@@ -13,13 +15,20 @@ public class RoomBase : MonoBehaviour
     [SerializeField] TileBase groundTile;
     [SerializeField] bool defaultDoor = false;
     [SerializeField] RandomSizeField sizeField;
-
+    protected Transform _iconTrm;
+    protected SpriteRenderer _iconRenderer;
     public Vector2Int Size { get; protected set; }
 
     public Vector2Int MinPos { get; private set; }
     public Vector2Int MaxPos { get; private set; }
     public Vector2Int MapPos { get; private set; }
     public Dictionary<MapGenerator.Direction, RoomDoorData> Doors { get; private set; } = new();
+
+    protected virtual void Awake()
+    {
+        _iconTrm = transform.Find("MapIcon");
+        _iconRenderer = _iconTrm.GetComponent<SpriteRenderer>();
+    }
 
     public virtual void SetSize() {
         Size = sizeField.GetValue();
@@ -99,6 +108,7 @@ public class RoomBase : MonoBehaviour
     }
 
     public virtual void RoomLeave() {
+        HandleIconActive();
     }
 
     public virtual void SetDoor(bool active) {
@@ -128,6 +138,17 @@ public class RoomBase : MonoBehaviour
     // 방 만들어짐 (bridge, min, max 등 값 안전)
     public virtual void OnComplete() {
         SetDoor(defaultDoor);
+        SetMapIcon();
+    }
+
+    protected void HandleIconActive()
+    {
+        _iconRenderer.color = new Color(0.2f, 0.2f, 0.2f);
+    }
+
+    protected void SetMapIcon()
+    {
+        _iconTrm.position = GetCenterCoords();
     }
 
     #if UNITY_EDITOR

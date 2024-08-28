@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RoomEditor : RoomBase
@@ -17,6 +15,11 @@ public class RoomEditor : RoomBase
         Vector3 worldCenter = (worldMin + worldMax) / 2f;
 
         entity = Instantiate(editorObject, worldCenter, Quaternion.identity);
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(editorObject);
     }
 
     public override void RoomLeave()

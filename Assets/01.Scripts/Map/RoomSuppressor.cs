@@ -32,6 +32,7 @@ public class RoomSuppressor : RoomBase, IRoomObstacle, IRoomCleable
 
     public override void OnComplete()
     {
+        SetMapIcon();
         // (this as IRoomObstacle).ObstacleInit(this);
         currentZip = Instantiate(zipObject, GetCenterCoords(), Quaternion.identity);
         currentZip.Init(this, openDelay);
