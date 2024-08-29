@@ -23,8 +23,31 @@ public class RoomPurify : RoomEnemy
         if (purifyMap == null)
             purifyMap = MapManager.Instance.TileManager.CreateMap(TileMapType.Purify, mapTemplate);
 
+        const int TRY_MAX_COUNT = 5;
+        int tryCount = 0; // 5번 정도면 ㄹㅇ 억까
+        List<PurifyData> tempList = null;
+        
+        while (tryCount++ < TRY_MAX_COUNT) {
+            tempList = new();
+            CreatePurify(tempList);
+        
+            if (CheckProblem(tempList)) { // 화긴~~
+                break;
+            }
+        }
+
+        // 이제 진짜 마무리
+        purifies = tempList;
+
+        // 타일 깔아~~
+        foreach (var item in purifies)
+            for (int y = item.min.y; y <= item.max.y; y++)
+                for (int x = item.min.x; x <= item.max.x; x++)
+                    purifyMap.SetTile(new Vector3Int(x, y), tile);
+    }
+
+    void CreatePurify(List<PurifyData> temp_purifies) {
         int createNum = Random.Range(1, 5);
-        // int createNum = Random.Range(1, 2); // TEST
         int created = 0, failCount = 0;
         int nearSize = 3;
 
@@ -134,7 +157,7 @@ public class RoomPurify : RoomEnemy
                 continue;
             }
             // 정화구역 만들때 다른 구역 비교해서 구멍이 너무 작을 경우 스탑 처리
-            foreach (var item in purifies) {
+            foreach (var item in temp_purifies) {
                 // 겹치면 상관없다.
                 if (item.max.x >= minPos.x - 1 && item.min.x <= maxPos.x + 1 && item.max.y >= minPos.y - 1 && item.min.y <= maxPos.y + 1) continue;
 
@@ -152,14 +175,14 @@ public class RoomPurify : RoomEnemy
             }
             
 
-            for (int y = minPos.y; y < minPos.y + size.y; y++)
-            {
-                for (int x = minPos.x; x < minPos.x + size.x; x++) {
-                    purifyMap.SetTile(new Vector3Int(x, y), tile);
-                }
-            }
+            // for (int y = minPos.y; y < minPos.y + size.y; y++)
+            // {
+            //     for (int x = minPos.x; x < minPos.x + size.x; x++) {
+            //         purifyMap.SetTile(new Vector3Int(x, y), tile);
+            //     }
+            // }
 
-            purifies.Add(new() {
+            temp_purifies.Add(new() {
                 min = minPos,
                 max = maxPos
             });
@@ -167,6 +190,27 @@ public class RoomPurify : RoomEnemy
             failCount = 0;
             created ++;
         }
+    }
+
+    bool CheckProblem(List<PurifyData> temp_purifies) {
+        HashSet<Vector2Int> deadPos = new();
+        
+        // 막힌 좌표 마킹
+        foreach (var item in temp_purifies)
+        {
+            for (int y = item.min.y; y <= item.max.y; y++)
+                for (int x = item.min.x; x <= item.max.x; x++) {
+                    deadPos.Add(new() { x = x, y = y });                    
+                }
+        }
+
+        // (한번씩 이동하면서 카운팅) == (현재 막히지 않은곳 카운팅) 이여야 억까가 아닌 맵임
+        int originCount = (Size.x - 1) * (Size.y - 1) - deadPos.Count; // 원래 그거
+        int findCount = 0; // 찾은거
+
+        print($"원본 갯수: {(Size.x - 1) * (Size.y - 1)} / 제외: {originCount}");
+        
+        return true;
     }
 
     public override Vector2Int FindPossibleRandomPos(int spacing)
