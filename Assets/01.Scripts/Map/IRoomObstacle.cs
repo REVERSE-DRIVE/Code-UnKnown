@@ -37,16 +37,18 @@ public interface IRoomObstacle
 
             int rand = Random.Range(1, 4);
             if (size.x > size.y) {
-                min.y = Random.Range(room.MinPos.y + size.y + 1, room.MaxPos.y - 1 - size.y * 2);
+                int rangeMin2 = room.MinPos.y + size.y + 1;
+                int rangeMax2 = room.MaxPos.y - 1 - size.y * 2;
+                min.y = Random.Range(rangeMin2, rangeMax2);
 
-                // if (min.y == rangeMin + 1) {
-                //     if (min.y + 1 < rangeMax) // 범위 벗어남
+                // if (min.y == rangeMin2 + 1) {
+                //     if (min.y + 1 < rangeMax2) // 범위 벗어남
                 //         min.y++;
                 //     else
                 //         min.y--;
 
-                // } else if (min.y == rangeMax - 2 /* max가 포함되어있지 않아서 2 뺌 */) {
-                //     if (min.y - 1 >= rangeMin) // 범위 벗어남
+                // } else if (min.y == rangeMax2 - 2 /* max가 포함되어있지 않아서 2 뺌 */) {
+                //     if (min.y - 1 >= rangeMin2) // 범위 벗어남
                 //         min.y--;
                 //     else
                 //         min.y++;
@@ -74,16 +76,18 @@ public interface IRoomObstacle
                     max.x = min.x + size.x;
                 }
             } else if (size.x < size.y) {
-                min.x = Random.Range(room.MinPos.x + size.x + 1, room.MaxPos.x - 1 - size.x * 2);
+                int rangeMin2 = room.MinPos.x + size.x + 1;
+                int rangeMax2 = room.MaxPos.x - 1 - size.x * 2;
+                min.x = Random.Range(rangeMin2, rangeMax2);
                 
-                // if (min.x == rangeMin + 1) {
-                //     if (min.x + 1 < rangeMax) // 범위 벗어남
+                // if (min.x == rangeMin2 + 1) {
+                //     if (min.x + 1 < rangeMax2) // 범위 벗어남
                 //         min.x++;
                 //     else
                 //         min.x--;
 
-                // } else if (min.x == rangeMax - 2 /* max가 포함되어있지 않아서 2 뺌 */) {
-                //     if (min.x - 1 >= rangeMin) // 범위 벗어남
+                // } else if (min.x == rangeMax2 - 2 /* max가 포함되어있지 않아서 2 뺌 */) {
+                //     if (min.x - 1 >= rangeMin2) // 범위 벗어남
                 //         min.x--;
                 //     else
                 //         min.x++;
@@ -172,6 +176,13 @@ public interface IRoomObstacle
 
                 isStop = true;
                 break;
+            }
+
+            // 너무 붙어있지 않은지 확인
+            Vector2Int diffMin = min - room.MinPos;
+            Vector2Int diffMax = room.MaxPos - max;
+            if (Mathf.Abs(diffMax.x) == 2 || Mathf.Abs(diffMax.y) == 2 || Mathf.Abs(diffMin.x) == 2 || Mathf.Abs(diffMin.y) == 2) {
+                isStop = true;
             }
 
             if (isStop) {
