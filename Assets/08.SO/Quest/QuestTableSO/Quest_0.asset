@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: Quest_0
   m_EditorClassIdentifier: 
   id: 0
-  title: Test
-  difficulty: 0
-  description: asdfg
-  icon: {fileID: 1076751422, guid: c503312ecb6cd6b46ac1a70d6ad0cab4, type: 3}
+  title: "[\uBC14\uC774\uB7EC\uC2A4 \uC7A0\uC785 \uC9C0\uC6D0]"
+  difficulty: 3
+  description: "1. \uAE30\uBBF9 \uAD6C\uC5ED\uC5D0 \uC704\uCE58\uD55C \uC5B5\uC81C\uAE30\uD615
+    \uAE30\uBBF9 2\uD68C \uC644\uB8CC (\uC5B5\uC81C\uAE30\uD615 \uAE30\uBBF9 \uD074\uB9AC\uC5B4
+    \uD558\uB098\uB2F9 \uC758\uB8B0 \uC644\uC131\uB3C4 25%)\r\n2. \uBC1C\uAC01 0\uD68C
+    (\uC758\uB8B0 \uC644\uC131\uB3C4 30%)\r\n3. \uBCF4\uC2A4 \uCC98\uCE58\uD558\uAE30
+    (\uC758\uB8B0 \uC644\uC131\uB3C4 10%)\r\n4. '\uD2B8\uB798\uCEE4' \uAE30\uBBF9
+    \uC815\uD06C\uD30C\uC77C \uD22C\uCC99 \uD69F\uC218 4\uD68C \uC774\uD558\uB85C
+    \uD074\uB9AC\uC5B4 (\uC758\uB8B0 \uC644\uC131\uB3C4 10%)"
+  icon: {fileID: -39544752, guid: c503312ecb6cd6b46ac1a70d6ad0cab4, type: 3}
   questList:
-  - {fileID: 11400000, guid: 3c384605daeb8b24ab7d0357b587b0ad, type: 2}
-  - {fileID: 11400000, guid: 65487b89da60c3546abfec00ff524633, type: 2}
-  - {fileID: 11400000, guid: 5108b92de0ebeda42958e0ecc1c1f401, type: 2}
+  - {fileID: 0}

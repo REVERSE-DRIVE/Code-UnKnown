@@ -2,9 +2,11 @@
 {
     public enum QuestType
     {
-        Gimic,
         Kill,
         Detection,
-        Skill
+        Skill,
+        Focus,
+        TheFile,
+        Tracker
     }
 }

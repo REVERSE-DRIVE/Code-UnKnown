@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using ItemManage;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace QuestManage
@@ -20,7 +17,7 @@ namespace QuestManage
         [ContextMenu("Debug")]
         public void DebugQuest()
         {
-            KillTrigger(1, 10);
+            Trigger(QuestType.Tracker, 0, 1);
         }
 
         [ContextMenu("Apply")]
@@ -30,9 +27,10 @@ namespace QuestManage
             currentQuestDatas = QuestManager.Instance.AcceptQuestDatas;
             currentQuestListSOs = QuestManager.Instance.AcceptQuestListSOs;
         }
-        public void KillTrigger(int index, int count)
+        
+        public void Trigger(QuestType type, int index, int count)
         {
-            var quest = GetQuestSO(index, QuestType.Kill);
+            var quest = GetQuestSO(index, type);
             if (quest.goalValue <= count)
             {
                 var data = currentQuestDatas.Find(x => x.id == currentQuestListSOs[index].id);
