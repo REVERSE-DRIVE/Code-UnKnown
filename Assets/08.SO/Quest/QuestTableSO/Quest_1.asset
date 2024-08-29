@@ -18,6 +18,6 @@ MonoBehaviour:
   description: asdf
   icon: {fileID: -710392846, guid: 8fa81db69c9881f499d853ef5318c760, type: 3}
   questList:
+  - {fileID: 11400000, guid: 3c384605daeb8b24ab7d0357b587b0ad, type: 2}
   - {fileID: 11400000, guid: 65487b89da60c3546abfec00ff524633, type: 2}
-  - {fileID: 11400000, guid: 65487b89da60c3546abfec00ff524633, type: 2}
-  - {fileID: 11400000, guid: 65487b89da60c3546abfec00ff524633, type: 2}
+  - {fileID: 11400000, guid: 5108b92de0ebeda42958e0ecc1c1f401, type: 2}

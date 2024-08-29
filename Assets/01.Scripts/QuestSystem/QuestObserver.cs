@@ -16,6 +16,12 @@ namespace QuestManage
         {
             DontDestroyOnLoad(this);
         }
+        
+        [ContextMenu("Debug")]
+        public void DebugQuest()
+        {
+            KillTrigger(1, 10);
+        }
 
         [ContextMenu("Apply")]
         public void ApplyAllQuest()
@@ -24,22 +30,19 @@ namespace QuestManage
             currentQuestDatas = QuestManager.Instance.AcceptQuestDatas;
             currentQuestListSOs = QuestManager.Instance.AcceptQuestListSOs;
         }
-        
-        public void CollectTrigger(ItemType type, int value)
+        public void KillTrigger(int index, int count)
         {
-            foreach (var quest in currentQuestDatas)
+            var quest = GetQuestSO(index, QuestType.Kill);
+            if (quest.goalValue <= count)
             {
-                if (quest.isClear) continue;
-                if (quest.id != (int) type) continue;
-                quest.Trigger(value);
+                var data = currentQuestDatas.Find(x => x.id == currentQuestListSOs[index].id);
+                data.Trigger(count);
             }
         }
         
-        public void KillTrigger(int value)
+        private QuestSO GetQuestSO(int index, QuestType type)
         {
-            foreach (var quest in currentQuestDatas)
-            {
-            }
+            return currentQuestListSOs[index].questList.Find(x => x.questType == type);
         }
     }
 }
