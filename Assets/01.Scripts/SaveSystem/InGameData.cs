@@ -12,6 +12,7 @@ public struct PowerUpData
         this.amount = amount;
     }
 }
+
 [System.Serializable]
 public struct InGameData
 {

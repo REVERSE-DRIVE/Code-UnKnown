@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace EnemyManage
 {
@@ -30,7 +29,7 @@ namespace EnemyManage
                 Debug.Log("스턴 쿨타임 종료");
                 _currentTime = 0;
                 _stateMachine.ChangeState(AVGStateEnum.Idle, true);
-
+        
             }
         }
 
