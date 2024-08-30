@@ -205,11 +205,56 @@ public class RoomPurify : RoomEnemy
         }
 
         // (한번씩 이동하면서 카운팅) == (현재 막히지 않은곳 카운팅) 이여야 억까가 아닌 맵임
-        int originCount = (Size.x - 1) * (Size.y - 1) - deadPos.Count; // 원래 그거
-        int findCount = 0; // 찾은거
+        Vector2Int size = ((MaxPos + Vector2Int.one) - MinPos) - Vector2Int.one * 2 /* 테두리 제외 */;
+        int originCount = size.x * size.y - deadPos.Count; // 원래 그거
+        // int findCount = 0; // 찾은거
 
-        print($"원본 갯수: {(Size.x - 1) * (Size.y - 1)} / 제외: {originCount}");
+        HashSet<Vector2Int> groundPos = new();
+        Vector2Int GetStartPos() {
+            Vector2Int randPos = FindPossibleRandomPos(1);
+            if (deadPos.Contains(randPos)) return GetStartPos();
+
+            return randPos;
+        }
+
+        Vector2Int min = MinPos + Vector2Int.one;
+        Vector2Int max = MaxPos;
+        bool CheckGround(Vector2Int pos) {
+            if (pos.x < min.x || pos.y < min.y || pos.x > max.x || pos.y > max.y) return false; // 범위가 벗어남
+            if (deadPos.Contains(pos) || groundPos.Contains(pos)) return false; // 안됨
+            return true;
+        }
+
+        Vector2Int nowPos = GetStartPos();
         
+        while (true) {
+            groundPos.Add(nowPos);
+
+            if (CheckGround(nowPos + Vector2Int.left)) {
+                nowPos += Vector2Int.left;
+            } else if (CheckGround(nowPos + Vector2Int.right)) {
+                nowPos += Vector2Int.right;
+            } else if (CheckGround(nowPos + Vector2Int.down)) {
+                nowPos += Vector2Int.down;
+            } else if (CheckGround(nowPos + Vector2Int.up)) {
+                nowPos += Vector2Int.up;
+            } else { // 아무것도 할 수 없음
+                bool isFind = false;
+                foreach (var item in groundPos)
+                {
+                    if (CheckGround(item + Vector2Int.left) || CheckGround(item + Vector2Int.right) || CheckGround(item + Vector2Int.down) || CheckGround(item + Vector2Int.up)) {
+                        nowPos = item; // 이 위치 기점으로 다시 ㄱㄱ
+                        isFind = true;
+                        break;
+                    }
+                }
+
+                if (!isFind) // 그래도 못찾앗다
+                    break;
+            }
+        }
+        
+        print($"원본 사이즈: {originCount} / 찾은 사이즈: {groundPos.Count}");
         return true;
     }
 
