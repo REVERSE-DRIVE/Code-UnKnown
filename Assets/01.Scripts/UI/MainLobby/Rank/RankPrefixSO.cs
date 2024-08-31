@@ -16,7 +16,7 @@ public class RankPrefixSO : ScriptableObject
     Prefix[] prefixs_cache;
 
     private void OnEnable() {
-        if (prefixs_cache.Length != prefixs.Length)
+        if (prefixs_cache == null || prefixs_cache.Length != prefixs.Length)
             PrefixIndeing();
     }
 
@@ -36,7 +36,7 @@ public class RankPrefixSO : ScriptableObject
     }
 
     public Prefix GetPrefix(long score) {
-        if (prefixs_cache.Length != prefixs.Length)
+        if (prefixs_cache == null || prefixs_cache.Length != prefixs.Length)
             PrefixIndeing();
 
         foreach (var item in prefixs_cache)

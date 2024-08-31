@@ -22,6 +22,8 @@ public class RankUI : MonoBehaviour
     [SerializeField] Button closeBtn;
     [SerializeField] RankLoadUI loadScreen;
 
+    bool loading = false;
+
     private void Awake() {
         closeBtn.onClick.AddListener(Close);
 
@@ -52,14 +54,12 @@ public class RankUI : MonoBehaviour
             return;   
         }
 
+        loading = true;
         loadScreen.Show();
         HandleResultScore(0, null);
     }
 
     void HandleResultScore(int count, ScorePageToken nextToken) {
-        if (count == 0) // 처음
-            loadScreen.Hide();
-
         int rowCount = Mathf.Clamp(RANK_AMOUNT - count, 0, RANK_AMOUNT_MAX);
         if (rowCount == 0) return;
         
@@ -83,6 +83,11 @@ public class RankUI : MonoBehaviour
     }
 
     void AddResultScoreUI(LeaderboardScoreData data, System.Action cb) {
+        if (loading) {
+            loading = false;
+            loadScreen.Hide();
+        }
+
         string[] userIds = data.Scores.Select(v => v.userID).ToArray();
         PlayGamesPlatform.Instance.LoadUsers(userIds, (IUserProfile[] profiles) => {
             RankItemUI.Data[] result = new RankItemUI.Data[data.Scores.Length];
