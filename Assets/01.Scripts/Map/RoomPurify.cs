@@ -218,7 +218,7 @@ public class RoomPurify : RoomEnemy
         }
 
         Vector2Int min = MinPos + Vector2Int.one;
-        Vector2Int max = MaxPos;
+        Vector2Int max = MaxPos - Vector2Int.one;
         bool CheckGround(Vector2Int pos) {
             if (pos.x < min.x || pos.y < min.y || pos.x > max.x || pos.y > max.y) return false; // 범위가 벗어남
             if (deadPos.Contains(pos) || groundPos.Contains(pos)) return false; // 안됨
@@ -253,9 +253,8 @@ public class RoomPurify : RoomEnemy
                     break;
             }
         }
-        
-        print($"원본 사이즈: {originCount} / 찾은 사이즈: {groundPos.Count}");
-        return true;
+
+        return originCount == groundPos.Count;
     }
 
     public override Vector2Int FindPossibleRandomPos(int spacing)
