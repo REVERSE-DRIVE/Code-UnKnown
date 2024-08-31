@@ -2,6 +2,7 @@
 using System.Collections;
 using ObjectManage;
 using ObjectPooling;
+using QuestManage;
 using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
@@ -10,10 +11,16 @@ public class GameManager : MonoSingleton<GameManager>
     [field:SerializeField] public Transform PlayerTrm { get; private set; }
 
 
+    protected override void Awake()
+    {
+        QuestObserver.Instance.ApplyAllQuest();
+    }
+
     private void Start()
     {
         MapManager.Instance.Generate();
         GameStart();
+        
     }
 
     public void GameStart()

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Quest_1
   m_EditorClassIdentifier: 
   goalValue: 10
-  questType: 1
+  questType: 0
   enemyType: 0
