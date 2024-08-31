@@ -140,6 +140,7 @@ public class RankUI : MonoBehaviour
             Destroy(list.GetChild(0).gameObject);
 
         errorAlert.SetActive(false);
+        topBox.Clear();
     }
 
     

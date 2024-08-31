@@ -45,4 +45,12 @@ public class RankItemUI : MonoBehaviour
         if (profile.image)
             image.texture = profile.image;
     }
+
+    public virtual void Clear() {
+        image.texture = null;
+        nameT.text = "";
+        if (rankT)
+            rankT.text = "";
+        expprefixT.text = "";
+    }
 }
