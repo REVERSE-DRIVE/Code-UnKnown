@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine;
@@ -141,7 +142,19 @@ public class RankUI : MonoBehaviour
         errorAlert.SetActive(false);
     }
 
-    void Close() {
-        gameObject.SetActive(false);
+    
+    RectTransform RectTrm => transform as RectTransform;
+
+    public void Open() {
+        RectTrm.anchoredPosition = new Vector2(RectTrm.anchoredPosition.x, -Screen.height);
+        gameObject.SetActive(true);
+
+        RectTrm.DOKill();
+        RectTrm.DOAnchorPos(Vector2.zero, 0.3f).SetEase(Ease.OutQuad);
+    }
+
+    public void Close() {
+        RectTrm.DOKill();
+        RectTrm.DOAnchorPos(new Vector2(RectTrm.anchoredPosition.x, -Screen.height), 0.3f).OnComplete(() => gameObject.SetActive(false)).SetEase(Ease.OutQuad);
     }
 }
