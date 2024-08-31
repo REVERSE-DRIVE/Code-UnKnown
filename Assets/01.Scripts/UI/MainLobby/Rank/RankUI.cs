@@ -19,6 +19,7 @@ public class RankUI : MonoBehaviour
     [SerializeField] RankItemUI itemBox;
     [SerializeField] RankTopUI topBox;
     [SerializeField] Button closeBtn;
+    [SerializeField] RankLoadUI loadScreen;
 
     private void Awake() {
         closeBtn.onClick.AddListener(Close);
@@ -50,11 +51,13 @@ public class RankUI : MonoBehaviour
             return;   
         }
 
+        loadScreen.Show();
         HandleResultScore(0, null);
     }
 
     void HandleResultScore(int count, ScorePageToken nextToken) {
-        print($"HandleResultScore {count} / {nextToken}");
+        if (count == 0) // 처음
+            loadScreen.Hide();
 
         int rowCount = Mathf.Clamp(RANK_AMOUNT - count, 0, RANK_AMOUNT_MAX);
         if (rowCount == 0) return;
