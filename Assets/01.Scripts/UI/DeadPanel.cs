@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using DG.Tweening;
+using QuestManage;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
@@ -28,7 +29,10 @@ public class DeadPanel : MonoBehaviour, IWindowPanel
 
     private void HandleLobbyMove()
     {
-        LoadManager.Instance.StartLoad("MainLobbyScene");
+        LoadManager.Instance.StartLoad("MainLobbyScene", () =>
+        {
+            QuestObserver.Instance.ResetQuest();
+        });
     }
 
 

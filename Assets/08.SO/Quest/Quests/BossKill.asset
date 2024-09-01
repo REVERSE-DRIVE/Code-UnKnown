@@ -15,5 +15,5 @@ MonoBehaviour:
   goalValue: 10
   triggerValue: 10
   questType: 0
-  isClear: 0
+  isClear: 1
   enemyType: 2

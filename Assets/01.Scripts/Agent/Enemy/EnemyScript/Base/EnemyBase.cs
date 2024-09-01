@@ -72,8 +72,8 @@ public class EnemyBase : Enemy, IPoolable
         Debug.Log("Enemy Dead");
         if (QuestObserver.Instance == null) Debug.Log("QuestObserver is Null");
         if (QuestObserver.Instance.questCounter == null) Debug.Log("QuestCounter is Null");
-        QuestObserver.Instance.Trigger(QuestType.Kill, QuestObserver.Instance.questCounter.AddEnemyKillCount());
         StateMachine.ChangeState(EnemyStateEnum.Dead);
+        QuestObserver.Instance.Trigger(QuestType.Kill, QuestObserver.Instance.questCounter.AddEnemyKillCount());
         CanStateChangeable = false;
         
         base.SetDead();

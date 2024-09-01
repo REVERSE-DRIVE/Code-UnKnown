@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace QuestManage
@@ -13,7 +14,6 @@ namespace QuestManage
 
         protected override void Awake()
         {
-            DontDestroyOnLoad(this);
         }
         
         [ContextMenu("Debug")]
@@ -36,14 +36,29 @@ namespace QuestManage
             {
                 var quest = GetQuestSO(i, type);
                 if (quest == null) continue;
-                if (quest.goalValue <= count)
+                if (quest.goalValue <= count && !quest.isClear)
                 {
                     var data = currentQuestDatas.Find(x => x.id == currentQuestListSOs[i].id);
-                    data.Trigger(count);
+                    data.Trigger(quest.triggerValue);
+                    quest.isClear = true;
                 }
             }
             
         }
+
+        [ContextMenu("Reset")]
+        public void ResetQuest()
+        {
+            for (int i = 0; i < currentQuestListSOs.Count; i++)
+            {
+                var quest = currentQuestListSOs[i].questList;
+                for (int j = 0; j < quest.Count; j++)
+                {
+                    quest[j].isClear = false;
+                }
+            }
+        }
+
         private QuestSO GetQuestSO(int index, QuestType type)
         {
             return currentQuestListSOs[index].questList.Find(x => x.questType == type);
