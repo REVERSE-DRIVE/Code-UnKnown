@@ -94,7 +94,7 @@ public class RoomEnemy : RoomBase, IRoomCleable
             var enemy = PoolingManager.Instance.Pop(randUtil.GetValue()) as EnemyBase;
             enemys.Add(enemy);
 
-            enemy.transform.position = MapManager.Instance.GetWorldPosByCell(FindPossibleRandomPos(1));
+            enemy.transform.position = RandomPosWithNearObject(1);
 
             int idx = i;
             enemyDieEvents.Add(() => OnEnemyDied(idx, enemy));

@@ -14,6 +14,6 @@ public class RankObject : ClickableObject
 
     void OpenRank()
     {
-        screen.gameObject.SetActive(true);
+        screen.Open();
     }
 }
