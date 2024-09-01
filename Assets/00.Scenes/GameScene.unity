@@ -11930,7 +11930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b4934dfb6859043b43bd19a11cfe66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _activeDuration: 1
+  _activeDuration: 0.4
   _useUnscaleedTime: 1
 --- !u!1 &1446740254
 GameObject:
@@ -18171,7 +18171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08c36090ab777e3479cf6c61a5449e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _activeDuration: 1
+  _activeDuration: 0.4
   _useUnscaleedTime: 1
   _audioMixer: {fileID: 24100000, guid: 04f03c6db84ce1141aea0bf113f56030, type: 2}
   _bgmSlider: {fileID: 183686047}
