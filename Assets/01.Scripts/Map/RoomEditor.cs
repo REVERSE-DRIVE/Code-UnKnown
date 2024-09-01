@@ -19,7 +19,8 @@ public class RoomEditor : RoomBase
 
     private void OnDestroy()
     {
-        Destroy(editorObject);
+        if(editorObject != null)
+            Destroy(editorObject);
     }
 
     public override void RoomLeave()

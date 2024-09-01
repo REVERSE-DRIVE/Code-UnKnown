@@ -21,6 +21,12 @@ public class ComputerManager : MonoSingleton<ComputerManager>
         
     }
 
+    [ContextMenu("DebugInfect")]
+    public void DebugInfect()
+    {
+        Infect(80);
+    }
+
     public void Infect()
     {
         Infect(Random.Range(3,6));

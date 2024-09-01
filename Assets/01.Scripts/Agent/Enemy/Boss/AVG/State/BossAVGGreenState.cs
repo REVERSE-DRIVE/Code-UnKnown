@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace EnemyManage
 {
@@ -40,11 +39,8 @@ namespace EnemyManage
         {
             for (int i = 0; i < _bossAVGBase._healingObjects.Length; i++)
             {
-                if (_bossAVGBase._healingObjects[i].isActive)
-                {
-                    _bossAVGBase._healingObjects[i].Destroy();
+                _bossAVGBase._healingObjects[i].Destroy();
 
-                }
             }
         }
 
@@ -96,9 +92,14 @@ namespace EnemyManage
         {
             base.CustomTrigger();
             _currentCoreDestroyCount++;
+            
+            // 이 위까지는 이상무
             if (_currentCoreDestroyCount >= 4)
             {
-                _bossAVGBase.ForceStun();
+                _currentCoreDestroyCount = 0;
+                Debug.Log("여기서 스턴이 먹어야되는데???");
+                _currentStateTime = 0;
+                _stateMachine.ChangeState(AVGStateEnum.Stun, true);
             }
         }
     }

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 15
   code: Unlock_Sharpnist
+  powerUpColor: {r: 0, g: 0.14020586, b: 1, a: 1}
   needLevel: 6
   maxCollect: 1
   powerUpRank: 0

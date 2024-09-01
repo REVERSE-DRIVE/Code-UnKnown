@@ -19,6 +19,8 @@ public class RoomTracker : RoomBase, IRoomCleable
     {
         foreach (HoleObject hole in holes)
         {
+            if(hole == null)
+                continue;
             Destroy(hole.gameObject);
         }
         holes.Clear();
