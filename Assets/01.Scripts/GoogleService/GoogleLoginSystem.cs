@@ -35,6 +35,8 @@ public class GoogleLoginSystem : MonoBehaviour
         PlayGamesPlatform.Instance.ManuallyAuthenticate(status => ResponseLogin(status, false, callback));
     }
 
+    public static bool isLogined => PlayGamesPlatform.Instance != null && PlayGamesPlatform.Instance.IsAuthenticated();
+
     ////////////////////////// instance
     private void Start() {
         if (EnabledGoogle() && (PlayGamesPlatform.Instance == null || PlayGamesPlatform.Instance.IsAuthenticated() == false)) { // google login에 동의를 한 경우
