@@ -10,4 +10,10 @@ public class RankTopUI : RankItemUI
         base.Init(data); // 기존꺼 실행
         expT.text = $"exp.{data.score:N0}";
     }
+
+    public override void Clear()
+    {
+        base.Clear();
+        expT.text = "";
+    }
 }

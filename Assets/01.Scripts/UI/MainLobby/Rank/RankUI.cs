@@ -2,15 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 
-public class RankUI : MonoSingleton<RankUI>
+public class RankUI : MonoBehaviour
 {
-    readonly string RANK_ID = "CgkInoqooYweEAIQAg";
+    readonly string RANK_ID = "CggI7Pe4yXMQAhAC";
     readonly int RANK_AMOUNT = 50;
     readonly int RANK_AMOUNT_MAX = 30;
 
@@ -19,21 +20,12 @@ public class RankUI : MonoSingleton<RankUI>
     [SerializeField] RankItemUI itemBox;
     [SerializeField] RankTopUI topBox;
     [SerializeField] Button closeBtn;
+    [SerializeField] RankLoadUI loadScreen;
 
-    [SerializeField] RankItemUI.Prefix[] prefixs;
+    bool loading = false;
 
-    protected override void Awake() {
-        base.Awake();
+    private void Awake() {
         closeBtn.onClick.AddListener(Close);
-
-        // 정렬
-        Array.Sort(prefixs, (a, b) => {
-            if (a.minScore > b.minScore) {
-                return -1;
-            } else if (a.minScore < b.minScore) {
-                return 1;
-            } else return 0;
-        });
 
         // CreateItems(new RankItemUI.Data[] {
         //     new RankItemUI.Data() {
@@ -62,12 +54,12 @@ public class RankUI : MonoSingleton<RankUI>
             return;   
         }
 
+        loading = true;
+        loadScreen.Show();
         HandleResultScore(0, null);
     }
 
     void HandleResultScore(int count, ScorePageToken nextToken) {
-        print($"HandleResultScore {count} / {nextToken}");
-
         int rowCount = Mathf.Clamp(RANK_AMOUNT - count, 0, RANK_AMOUNT_MAX);
         if (rowCount == 0) return;
         
@@ -91,6 +83,11 @@ public class RankUI : MonoSingleton<RankUI>
     }
 
     void AddResultScoreUI(LeaderboardScoreData data, System.Action cb) {
+        if (loading) {
+            loading = false;
+            loadScreen.Hide();
+        }
+
         string[] userIds = data.Scores.Select(v => v.userID).ToArray();
         PlayGamesPlatform.Instance.LoadUsers(userIds, (IUserProfile[] profiles) => {
             RankItemUI.Data[] result = new RankItemUI.Data[data.Scores.Length];
@@ -143,25 +140,27 @@ public class RankUI : MonoSingleton<RankUI>
         (list as RectTransform).sizeDelta = size;
     }
 
-    public RankItemUI.Prefix GetPrefix(long score) {
-        foreach (var item in prefixs)
-        {
-            if (item.minScore <= score) {
-                return item;
-            }
-        }
-
-        return default; // 뭐 해야지
-    }
-
     void Clear() {
         for (int i = 0; i < list.childCount; i++)
             Destroy(list.GetChild(0).gameObject);
 
         errorAlert.SetActive(false);
+        topBox.Clear();
     }
 
-    void Close() {
-        gameObject.SetActive(false);
+    
+    RectTransform RectTrm => transform as RectTransform;
+
+    public void Open() {
+        RectTrm.anchoredPosition = new Vector2(RectTrm.anchoredPosition.x, -Screen.height);
+        gameObject.SetActive(true);
+
+        RectTrm.DOKill();
+        RectTrm.DOAnchorPos(Vector2.zero, 0.3f).SetEase(Ease.OutQuad);
+    }
+
+    public void Close() {
+        RectTrm.DOKill();
+        RectTrm.DOAnchorPos(new Vector2(RectTrm.anchoredPosition.x, -Screen.height), 0.3f).OnComplete(() => gameObject.SetActive(false)).SetEase(Ease.OutQuad);
     }
 }

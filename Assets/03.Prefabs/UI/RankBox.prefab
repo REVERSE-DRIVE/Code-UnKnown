@@ -526,6 +526,7 @@ MonoBehaviour:
   image: {fileID: 7732861704315794859}
   rankT: {fileID: 4392759924683237217}
   expprefixT: {fileID: 581974750399395085}
+  rankPrefix: {fileID: 11400000, guid: d2b6d271fa0b3084eb8c79f1221fc21b, type: 2}
 --- !u!1 &5710128151279032316
 GameObject:
   m_ObjectHideFlags: 0
