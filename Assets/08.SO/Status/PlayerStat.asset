@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage:
     _baseValue: 3
+    modifiers: 64000000
+    isPercent: 0
+  bonusAtk:
+    _baseValue: 0
     modifiers: 
     isPercent: 0
   maxHealth:
@@ -30,6 +34,10 @@ MonoBehaviour:
     isPercent: 0
   defence:
     _baseValue: 1
+    modifiers: 
+    isPercent: 0
+  damageResist:
+    _baseValue: 0
     modifiers: 
     isPercent: 0
   badEffectResistance:

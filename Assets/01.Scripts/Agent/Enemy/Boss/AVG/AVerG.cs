@@ -119,7 +119,6 @@ namespace EnemyManage
         {
             HealthCompo.TakeDamage(amount);
             StateMachine.CurrentState.CustomTrigger();
-            _isResist = false;
         }
 
         public override void AnimationEndTrigger()

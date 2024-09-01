@@ -12,7 +12,9 @@ public class LevelManager : MonoSingleton<LevelManager>
      * </summary>
      */
     private int _currentLevel;
-    public int CurrentLevel => _currentLevel; 
+    public int CurrentLevel => _currentLevel;
+    public int CurrentExp => _currentExp;
+    
     private int _gainExp;
     public event Action OnExpGainEvent;
     public event Action OnLevelUpEvent;

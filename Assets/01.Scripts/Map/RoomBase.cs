@@ -132,6 +132,7 @@ public class RoomBase : MonoBehaviour
             } else {
                 MapManager.Instance.Generator.DeleteDoor(min, max);
             }
+            MapManager.Instance.PlayDoorSound();
         }
     }
 
