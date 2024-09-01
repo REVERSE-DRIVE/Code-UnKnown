@@ -24,4 +24,7 @@ MonoBehaviour:
     \uD074\uB9AC\uC5B4 (\uC758\uB8B0 \uC644\uC131\uB3C4 10%)"
   icon: {fileID: -39544752, guid: c503312ecb6cd6b46ac1a70d6ad0cab4, type: 3}
   questList:
-  - {fileID: 11400000, guid: 65487b89da60c3546abfec00ff524633, type: 2}
+  - {fileID: 11400000, guid: 1fb634492626e174bbad01a74f15e1f8, type: 2}
+  - {fileID: 11400000, guid: e17ed931e8d815a4e99854e5d3414b0a, type: 2}
+  - {fileID: 11400000, guid: 18b20852e073a3e4ea0b1f9c54e68979, type: 2}
+  - {fileID: 11400000, guid: 01953a3913f8f2b468e1a006a081010e, type: 2}

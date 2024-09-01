@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace QuestManage
 {
-    public class QuestManager : MonoSingleton<QuestManager>
+    public class QuestManager : MonoSingletonButNoDontDestroyOnLoad<QuestManager>
     {
         [SerializeField] private QuestTableSO _questListSO;
         [SerializeField] private QuestWindowUI[] _questWindowUI;
@@ -14,7 +14,7 @@ namespace QuestManage
         [field:SerializeField] public List<QuestData> AcceptQuestDatas { get; set; }
         [field:SerializeField] public List<QuestListSO> AcceptQuestListSOs { get; set; }
 
-        private void Awake()
+        protected void Awake()
         {
             DontDestroyOnLoad(gameObject);
             SettingQuestWindow();
@@ -53,6 +53,7 @@ namespace QuestManage
         [ContextMenu("SettingQuestWindow")]
         private void SettingQuestWindow()
         {
+            if (_questWindowUI == null) return;
             for (int i = 0; i < _questWindowUI.Length; i++)
             {
                 GetRandomQuest(i);
