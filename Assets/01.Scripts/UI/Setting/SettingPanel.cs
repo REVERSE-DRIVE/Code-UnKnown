@@ -1,3 +1,4 @@
+using System;
 using SaveSystem;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -8,7 +9,7 @@ public class SettingPanel : UIPanel
     [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private Slider _bgmSlider;
     [SerializeField] private Slider _sfxSlider;
-    private AudioSetting _currentSetting;
+    [SerializeField] private AudioSetting _currentSetting;
     private readonly string fileName = "AudioSetting";
     private readonly string bgmMixerName = "Volume_BGM";
     private readonly string sfxMixerName = "Volume_SFX";
@@ -16,24 +17,29 @@ public class SettingPanel : UIPanel
     protected override void Awake()
     {
         base.Awake();
+        
+        
+    }
+
+    private void Start()
+    {
         LoadSoundSetting();
         
         _bgmSlider.onValueChanged.AddListener(HandleBGMValueChanged);
         _sfxSlider.onValueChanged.AddListener(HandleSFXValueChanged);
-        
-        
+
     }
 
     private void HandleBGMValueChanged(float value)
     {
         _currentSetting.bgmVolume = (int)value;
-        _audioMixer.SetFloat(bgmMixerName, value);
+        SetBGMAudio(value);
     }
 
     private void HandleSFXValueChanged(float value)
     {
-        _currentSetting.bgmVolume = (int)value;
-        _audioMixer.SetFloat(sfxMixerName, value);
+        _currentSetting.sfxVolume = (int)value;
+        SetSFXAudio(value);
     }
 
     private void LoadSoundSetting()
@@ -44,11 +50,30 @@ public class SettingPanel : UIPanel
         {
             _currentSetting = new AudioSetting();
         }
+        
+        _bgmSlider.value = _currentSetting.bgmVolume;
+        _sfxSlider.value = _currentSetting.sfxVolume;
+        _audioMixer.SetFloat(bgmMixerName, _currentSetting.bgmVolume);
+        SetBGMAudio(_currentSetting.bgmVolume);
+        SetSFXAudio(_currentSetting.sfxVolume);
     }
     
 
     public void SaveSoundSetting()
     {
         SaveManager.Instance.Save(_currentSetting, fileName);
+    }
+    
+    private void SetBGMAudio(float level)
+    {
+        print("BGM level을 "+level+"로 설정했습니다.");
+        _audioMixer.SetFloat(bgmMixerName, level);
+
+    }
+
+    private void SetSFXAudio(float level)
+    {
+        _audioMixer.SetFloat(sfxMixerName, level);
+
     }
 }
