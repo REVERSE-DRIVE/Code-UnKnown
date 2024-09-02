@@ -2,7 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
+using SaveSystem;
 using UnityEngine;
+
+[System.Serializable]
+public struct GoogleSaveData {
+    public bool active;
+}
 
 public class GoogleLoginSystem : MonoBehaviour
 {
@@ -35,7 +41,13 @@ public class GoogleLoginSystem : MonoBehaviour
         PlayGamesPlatform.Instance.ManuallyAuthenticate(status => ResponseLogin(status, false, callback));
     }
 
+    public static void SetService(bool active) {
+        GoogleSaveData data = new() { active = active };
+        SaveManager.Instance.Save(data, saveFileName);
+    }
+
     public static bool isLogined => PlayGamesPlatform.Instance != null && PlayGamesPlatform.Instance.IsAuthenticated();
+    public static readonly string saveFileName = "GoogleService";
 
     ////////////////////////// instance
     private void Start() {
@@ -45,5 +57,8 @@ public class GoogleLoginSystem : MonoBehaviour
         }
     }
 
-    bool EnabledGoogle() => true; // TEST
+    bool EnabledGoogle() {
+        var data = SaveManager.Instance.Load<GoogleSaveData>(saveFileName);
+        return data.active;
+    }
 }
