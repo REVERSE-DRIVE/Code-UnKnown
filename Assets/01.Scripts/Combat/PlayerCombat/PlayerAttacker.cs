@@ -152,8 +152,8 @@ public class PlayerAttacker : MonoBehaviour
         immediateDef = _player.Stat.defence.GetValue() * 5;
         _player.Stat.defence.AddModifier(immediateDef);
         //_player.Stat.isResist = true;
-        float duration = Mathf.Clamp01(1.5f - _player.additionalStat.dashSpeed.GetValue() * 0.3f) * boundDir.magnitude / 15;
-        _attackEffect.SetTargetAttack(true);
+        float duration = Mathf.Clamp01(1.5f - _player.additionalStat.dashSpeed.GetValue() * 0.45f) * boundDir.magnitude / 15;
+        _attackEffect.SetTargetAttack(true);   
         yield return _player.PlayerController.Dash(currentTargetTrm.position, duration);
         _attackEffect.Play(boundDir.normalized);
         EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;

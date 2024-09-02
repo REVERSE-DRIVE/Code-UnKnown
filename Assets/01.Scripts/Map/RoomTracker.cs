@@ -1,7 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using ObjectPooling;
 using UnityEngine;
 
 public class RoomTracker : RoomBase, IRoomCleable
@@ -44,7 +43,8 @@ public class RoomTracker : RoomBase, IRoomCleable
         junks = new();
         foreach (var item in junkDir)
         {
-            var entity = Instantiate(junkPrefab, centerPos + (Vector3)item * spacing, Quaternion.identity);
+            var entity = PoolingManager.Instance.Pop(PoolingType.JunkFileObject) as JunkFileObject;
+            entity.transform.position = centerPos + (Vector3)item * spacing;
             junks.Add(entity);
 
             entity.RestoreHealth(99999);
