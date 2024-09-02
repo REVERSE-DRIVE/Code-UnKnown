@@ -27,9 +27,9 @@ public class GoogleAccountPanel : MonoBehaviour
         bool isLogin = PlayGamesPlatform.Instance != null && PlayGamesPlatform.Instance.IsAuthenticated();
 
         if (isLogin)
-            print("연동해제 interaction ...");
+            GoogleLoginSystem.SetService(false);
         else
-            GoogleLoginSystem.RequestGoogleLogin(true); // 재시도해라
+            GoogleLoginSystem.RequestGoogleLogin(true, ResultGoogleLogin); // 재시도해라
     }
 
     void OnChangedLoginStatus(GooglePlayGames.BasicApi.SignInStatus _) {
@@ -46,6 +46,12 @@ public class GoogleAccountPanel : MonoBehaviour
             nameT.text = $"{name}님 환영합니다!";
         } else {
             nameT.text = "연동되어 있지 않음";
+        }
+    }
+
+    void ResultGoogleLogin(GooglePlayGames.BasicApi.SignInStatus status) {
+        if (status == GooglePlayGames.BasicApi.SignInStatus.Success) { // 로그인 성공함
+            GoogleLoginSystem.SetService(true);
         }
     }
 }

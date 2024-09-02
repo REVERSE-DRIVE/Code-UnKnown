@@ -11,7 +11,7 @@ using UnityEngine.UI;
 
 public class RankUI : MonoBehaviour
 {
-    readonly string RANK_ID = "CggI7Pe4yXMQAhAC";
+    public static readonly string RANK_ID = "CggI7Pe4yXMQAhAC";
     readonly int RANK_AMOUNT = 50;
     readonly int RANK_AMOUNT_MAX = 30;
 

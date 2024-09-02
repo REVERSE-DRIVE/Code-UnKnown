@@ -63,4 +63,9 @@ public class LevelManager : MonoSingleton<LevelManager>
         UIManager.Instance.Open(WindowEnum.EffectSelect);
     }
 
+    public void SetLevelExp(int level, int exp) {
+        _currentExp = exp;
+        _currentLevel = level;
+        _expPanel.Refresh(_currentLevel, _currentExp, MaxExp);
+    }
 }
