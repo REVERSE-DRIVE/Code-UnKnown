@@ -29,7 +29,7 @@ public class ComputerManager : MonoSingleton<ComputerManager>
 
     public void Infect()
     {
-        Infect(Random.Range(3,6));
+        Infect(Random.Range(8,11));
     }
     
     public void Infect(int amount)

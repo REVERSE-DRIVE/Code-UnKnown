@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage:
     _baseValue: 3
-    modifiers: 64000000
+    modifiers: 
     isPercent: 0
   bonusAtk:
     _baseValue: 0
