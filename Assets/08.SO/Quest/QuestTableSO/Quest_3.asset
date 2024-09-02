@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 2
   title: "[\uC758\uB3C4\uCE58 \uC54A\uC740 \uD611\uB825]"
   difficulty: 1
-  description: "Undefined\n\uC801\uC744 20\uB9C8\uB9AC \uCC98\uCE58\uD558\uC2DC\uC624."
+  description: "\uC801\uC744 20\uB9C8\uB9AC \uCC98\uCE58\uD558\uC2DC\uC624."
   icon: {fileID: -1328456598186223767, guid: bfdd1ae3dddf4ec4ca3dcfa517ed1cb8, type: 3}
   questList:
   - {fileID: 11400000, guid: 4af464c9ce21b7b4ab5a34a11195d3d9, type: 2}

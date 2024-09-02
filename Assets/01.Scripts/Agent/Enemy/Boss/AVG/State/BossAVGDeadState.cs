@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using QuestManage;
+using UnityEngine;
 
 namespace EnemyManage
 {
-    public class BossDeadState : BossAVGState
+    public class BossAVGDeadState : BossAVGState
     {
-        public BossDeadState(Enemy enemyBase, EnemyStateMachine<AVGStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+        public BossAVGDeadState(Enemy enemyBase, EnemyStateMachine<AVGStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
         {
         }
 
@@ -25,6 +26,8 @@ namespace EnemyManage
 
         private void Die()
         {
+            _bossAVGBase.CanStateChangeable = false;
+            QuestObserver.Instance.Trigger(QuestType.Kill, 1, EnemyType.Boss);
             _bossAVGBase.isDead = true;
             _bossAVGBase.ColliderCompo.enabled = false;
             Object.Destroy(_bossAVGBase.gameObject);

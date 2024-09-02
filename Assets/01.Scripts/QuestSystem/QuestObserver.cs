@@ -30,8 +30,9 @@ namespace QuestManage
             currentQuestListSOs = QuestManager.Instance.AcceptQuestListSOs;
         }
         
-        public void Trigger(QuestType type, int count)
+        public void Trigger(QuestType type, int count, EnemyType enemyType = EnemyType.NULL)
         {
+            if (currentQuestDatas == null || currentQuestListSOs == null) return;
             for (int i = 0; i < currentQuestDatas.Count; i++)
             {
                 var quest = GetQuestSO(i, type);
@@ -39,8 +40,16 @@ namespace QuestManage
                 if (quest.goalValue <= count && !quest.isClear)
                 {
                     var data = currentQuestDatas.Find(x => x.id == currentQuestListSOs[i].id);
-                    data.Trigger(quest.triggerValue);
-                    quest.isClear = true;
+                    if (enemyType == (quest as KillQuestSO).enemyType)
+                    {
+                        data.Trigger(quest.triggerValue);
+                        quest.isClear = true;
+                    }
+                    else if (quest is not KillQuestSO)
+                    {
+                        data.Trigger(quest.triggerValue);
+                        quest.isClear = true;
+                    }
                 }
             }
         }
@@ -48,6 +57,7 @@ namespace QuestManage
         [ContextMenu("Reset")]
         public void ResetQuest()
         {
+            if (currentQuestListSOs == null) return;
             for (int i = 0; i < currentQuestListSOs.Count; i++)
             {
                 var quest = currentQuestListSOs[i].questList;
