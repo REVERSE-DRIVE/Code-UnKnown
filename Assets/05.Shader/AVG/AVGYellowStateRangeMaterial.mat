@@ -66,6 +66,6 @@ Material:
     - _UseBlink: 0
     m_Colors:
     - _BlinkColor: {r: 3.9999998, g: 0.11737242, b: 0, a: 1}
-    - _Color: {r: 0.7178391, g: 0.16037738, b: 2, a: 0}
+    - _Color: {r: 2.519016, g: 2.3864937, b: 0.13070367, a: 1}
     - _GridTiling: {r: 2, g: 2, b: 0, a: 0}
   m_BuildTextureStacks: []
