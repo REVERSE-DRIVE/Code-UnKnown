@@ -1,3 +1,5 @@
+using System;
+using DG.Tweening;
 using QuestManage;
 using TMPro;
 using UnityEngine;
@@ -12,7 +14,13 @@ public class QuestWindowUI : MonoBehaviour, IPointerClickHandler
     [SerializeField] private TextMeshProUGUI _descriptionText;
     [SerializeField] private Image _icon;
     private bool _isAccept;
-    
+    private Image _panelImage;
+
+    private void Awake()
+    {
+        _panelImage = GetComponent<Image>();
+    }
+
     private void OnValidate()
     {
         if (_quest == null) return;
@@ -47,6 +55,9 @@ public class QuestWindowUI : MonoBehaviour, IPointerClickHandler
         _isAccept = true;
         Debug.Log("Accept Quest");
         if (_quest == null) Debug.LogError("Quest is null");
+        _panelImage.color = Color.green;
+        (transform as RectTransform).DOAnchorPosX(1000f, 0.5f).SetEase(Ease.InOutBack)
+            .OnComplete(() => transform.SetParent(null));
         QuestManager.Instance.AcceptQuest(_quest, GetQuestData());
     }
 }

@@ -15,9 +15,7 @@ MonoBehaviour:
   id: 1
   title: "[\uC218\uBB38\uC7A5]"
   difficulty: 2
-  description: "1. \uBC31\uC2E0 1\uB9C8\uB9AC \uCC98\uCE58\uD558\uAE30 (\uC758\uB8B0
-    \uC644\uC131\uB3C4 50%)\r\n2. \uBC1C\uAC01 1\uD68C \uC774\uD558 (\uC758\uB8B0
-    \uC644\uC131\uB3C4 30%)\r\n3. \uC2A4\uD0AC 3\uD68C \uC774\uC0C1 \uC0AC\uC6A9
-    (\uC758\uB8B0 \uC644\uC131\uB3C4 20%)"
-  icon: {fileID: -1378584049, guid: 8baad0992f9d4b44e929acb2b88d529f, type: 3}
-  questList: []
+  description: "Type_A \uC801\uC744 30\uB9C8\uB9AC \uCC98\uCE58\uD558\uC2DC\uC624."
+  icon: {fileID: -1344260747, guid: 2f47a463e1bf78a4ba9447ee9224bfad, type: 3}
+  questList:
+  - {fileID: 11400000, guid: 22ec6fc429df47440aa53695ff71f3fe, type: 2}

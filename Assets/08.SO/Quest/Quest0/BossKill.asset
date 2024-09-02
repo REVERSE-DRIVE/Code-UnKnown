@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BossKill
   m_EditorClassIdentifier: 
   goalValue: 10
-  triggerValue: 10
+  triggerValue: 100
   questType: 0
   isClear: 0
   enemyType: 2

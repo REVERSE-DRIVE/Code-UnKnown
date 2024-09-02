@@ -46,10 +46,10 @@ public class SettingPanel : UIPanel
     {
         // 오디오 세팅 데이터를 불러온다
         _currentSetting = SaveManager.Instance.Load<AudioSetting>(fileName);
-        // if (_currentSetting == null)
-        // {
-        //     _currentSetting = new AudioSetting();
-        // }
+        if (_currentSetting == null)
+        {
+            _currentSetting = new AudioSetting();
+        }
         
         _bgmSlider.value = _currentSetting.bgmVolume;
         _sfxSlider.value = _currentSetting.sfxVolume;

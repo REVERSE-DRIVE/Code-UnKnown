@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c3bc803b119d44dac6602a25b65bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quest: {fileID: 11400000, guid: 3c384605daeb8b24ab7d0357b587b0ad, type: 2}
+  _quest: {fileID: 0}
   _titleText: {fileID: 1318516405830655311}
   _difficultyText: {fileID: 2468671568633505691}
   _descriptionText: {fileID: 3460850497167850014}
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_fontSize: 25
   m_fontSizeBase: 25
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
