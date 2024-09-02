@@ -43,7 +43,6 @@ namespace QuestManage
                     quest.isClear = true;
                 }
             }
-            
         }
 
         [ContextMenu("Reset")]
@@ -62,6 +61,11 @@ namespace QuestManage
         private QuestSO GetQuestSO(int index, QuestType type)
         {
             return currentQuestListSOs[index].questList.Find(x => x.questType == type);
+        }
+
+        private void OnApplicationQuit()
+        {
+            ResetQuest();
         }
     }
 }
