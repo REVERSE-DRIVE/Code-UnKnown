@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Quest_1
   m_EditorClassIdentifier: 
   id: 1
-  title: Test2
-  difficulty: 0
-  description: asdf
-  icon: {fileID: -710392846, guid: 8fa81db69c9881f499d853ef5318c760, type: 3}
+  title: "[\uC218\uBB38\uC7A5]"
+  difficulty: 2
+  description: "\uC801\uC744 30\uB9C8\uB9AC \uCC98\uCE58\uD558\uC2DC\uC624."
+  icon: {fileID: -1344260747, guid: 2f47a463e1bf78a4ba9447ee9224bfad, type: 3}
   questList:
-  - {fileID: 11400000, guid: 65487b89da60c3546abfec00ff524633, type: 2}
-  - {fileID: 11400000, guid: 65487b89da60c3546abfec00ff524633, type: 2}
-  - {fileID: 11400000, guid: 65487b89da60c3546abfec00ff524633, type: 2}
+  - {fileID: 11400000, guid: 22ec6fc429df47440aa53695ff71f3fe, type: 2}

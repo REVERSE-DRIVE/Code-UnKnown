@@ -6,5 +6,6 @@ public enum EnemyType
 	Undefined,
 	Pointer,
 	Induced,
-
+	Boss,
+	NULL
 }

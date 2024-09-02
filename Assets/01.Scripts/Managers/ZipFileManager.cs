@@ -15,7 +15,7 @@ public class ZipFileManager : MonoSingleton<ZipFileManager>
         else
         {
             int itemId = 0;
-            zip.SetZip(ItemType.Resource, itemId, 3, 5);
+            zip.SetZip(ItemType.Resource, itemId, 2, 5);
         }
     }
 }

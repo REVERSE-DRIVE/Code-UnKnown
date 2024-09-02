@@ -6,7 +6,7 @@ public class BlackWalkerLegPart : PlayerPart
 {
     [SerializeField] private LayerMask _whatIsEnemy;
     [SerializeField] private float _attackRadius;
-    private Collider2D[] _hits = new Collider2D[10];
+    private Collider2D[] _hits;
     private int blackOutCount = 0;
     private Coroutine _blackOutCoroutine;
     
@@ -16,6 +16,7 @@ public class BlackWalkerLegPart : PlayerPart
 
     public override void OnMount()
     {
+        _hits = new Collider2D[10];
         _blackOutCoroutine = StartCoroutine(Walk());
     }
 
@@ -33,7 +34,8 @@ public class BlackWalkerLegPart : PlayerPart
                 if (blackOutCount >= 100 && _owner.PlayerAttackCompo.IsAttacking)
                 {
                     DamageCast();
-                    blackOutCount = 0;  
+                    blackOutCount = 0;
+                    yield return null;
                 }
                 yield return new WaitForSeconds(1f);
                 blackOutCount += 20;
@@ -47,6 +49,8 @@ public class BlackWalkerLegPart : PlayerPart
     {
         int cnt = Physics2D.OverlapCircleNonAlloc(_owner.transform.position, _attackRadius, _hits, _whatIsEnemy);
         
+        if (cnt == 0) return;
+        if (_hits.Length == 0) return;
         if (cnt > 0)
         {
             for (int i = 0; i < cnt; i++)

@@ -70,9 +70,12 @@ public class EnemyBase : Enemy, IPoolable
     public override void SetDead()
     {
         Debug.Log("Enemy Dead");
+        if (QuestObserver.Instance == null) Debug.Log("QuestObserver is Null");
+        if (QuestObserver.Instance.questCounter == null) Debug.Log("QuestCounter is Null");
         StateMachine.ChangeState(EnemyStateEnum.Dead);
+        QuestObserver.Instance.Trigger(QuestType.Kill, QuestObserver.Instance.questCounter.AddEnemyKillCount());
         CanStateChangeable = false;
-        QuestObserver.Instance.KillTrigger(_enemyType, 1);
+        
         base.SetDead();
     }
     
@@ -82,6 +85,7 @@ public class EnemyBase : Enemy, IPoolable
     public void SetHitMaterial()
     {
         if (isDead) return;
+        Vibration.Vibrate(200);
         if (isInitEnd)
             StartCoroutine(ChangeMaterial());
     }

@@ -28,7 +28,7 @@ public class StartPanel : WindowUI
     {
         _fadeInOut.Fade(0.5f, 1f,
                 () => LoadManager.Instance.StartLoad("GameScene"));
-        QuestObserver.Instance.ApplyAllQuest();
+        
     }
 
     private void OnDestroy()

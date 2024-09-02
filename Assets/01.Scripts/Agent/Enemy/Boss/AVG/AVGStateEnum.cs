@@ -6,4 +6,5 @@
     Red,
     Blue,
     Green,
+    Dead
 }

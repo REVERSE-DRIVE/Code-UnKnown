@@ -63,6 +63,10 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
             return;
         }
         partController.ChangePart(partType, partData);
+        if (partType == PartType.Body)
+            SetBodyPart(partData as PlayerBodyPartDataSO);
+        else if (partType == PartType.Leg)
+            SetLegPart(partData as PlayerLegPartDataSO);
     }
     
     public void AddPartData(int id, PartType type, bool isLoad = false)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using DG.Tweening;
+using QuestManage;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
@@ -11,6 +12,14 @@ public class DeadPanel : MonoBehaviour, IWindowPanel
     [SerializeField] private TextMeshProUGUI _liveTimeText;
     [SerializeField] private TextMeshProUGUI _resourceText;
     [SerializeField] private TextMeshProUGUI _partText;
+    
+    private CanvasGroup _canvasGroup;
+    private bool _isShow;
+
+    private void Awake()
+    {
+        _canvasGroup = GetComponent<CanvasGroup>();
+    }
 
     private void Start()
     {
@@ -20,18 +29,23 @@ public class DeadPanel : MonoBehaviour, IWindowPanel
 
     private void HandleLobbyMove()
     {
-        LoadManager.Instance.StartLoad("MainLobbyScene");
+        LoadManager.Instance.StartLoad("MainLobbyScene", () =>
+        {
+            QuestObserver.Instance.ResetQuest();
+        });
     }
 
 
     [ContextMenu("Open")]
     public void Open()
     {
+        SetVisible(true);
         SetUI(601, 10, 5);
     }
 
     public void SetUI(float time, int resourceAmount, int partAmount)
     {
+        if (_isShow) return;
         _liveTimeText.text = string.Empty;
         _resourceText.text = string.Empty;
         _partText.text = string.Empty;
@@ -40,6 +54,7 @@ public class DeadPanel : MonoBehaviour, IWindowPanel
     
     private IEnumerator TextAnimation(float time, int resourceAmount, int partAmount)
     {
+        _isShow = true;
         var liveTime = TimeSpan.FromSeconds(time);
         _liveTimeText.text = $"생존 시간: {liveTime}";
         yield return new WaitForSeconds(0.5f);
@@ -54,5 +69,12 @@ public class DeadPanel : MonoBehaviour, IWindowPanel
     public void Close()
     {
         
+    }
+    
+    private void SetVisible(bool visible)
+    {
+        _canvasGroup.alpha = visible ? 1 : 0;
+        _canvasGroup.blocksRaycasts = visible;
+        _canvasGroup.interactable = visible;
     }
 }
