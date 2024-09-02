@@ -9,7 +9,7 @@ public class RoomTracker : RoomBase, IRoomCleable
     [SerializeField] HoleObject holePrefab;
     [SerializeField] int clearTime = 60;
 
-    List<HoleObject> holes;
+    List<HoleObject> holes = new List<HoleObject>();
     List<JunkFileObject> junks;
 
     bool isClear = false;
