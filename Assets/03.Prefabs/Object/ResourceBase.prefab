@@ -1,5 +1,63 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6494543887305406857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 389726215765784961}
+  - component: {fileID: 8493171144310802337}
+  - component: {fileID: 6615295666239653647}
+  m_Layer: 9
+  m_Name: FeadbackPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &389726215765784961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494543887305406857}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1161081221493028238}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8493171144310802337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494543887305406857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d79371bb95958489332ca296d5504e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6615295666239653647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494543887305406857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3879ef90cdb84300a249e335e86f9352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundData: {fileID: 11400000, guid: c269ccc6e4036e84d81abffb6d6b92c1, type: 2}
 --- !u!1001 &8592836091162291304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68,12 +126,20 @@ PrefabInstance:
     - {fileID: 1056380664780486099, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3537689523293205937, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7431818847504931302, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 389726215765784961}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1155980433810045956, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
       insertIndex: 1
       addedObject: {fileID: 2091124791559542080}
   m_SourcePrefab: {fileID: 100100000, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+--- !u!4 &1161081221493028238 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7431818847504931302, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
+  m_PrefabInstance: {fileID: 8592836091162291304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &6574949952855998553 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3170825235135360049, guid: c1fa04b69870b5d4eb12f6638d5fe9d5, type: 3}
@@ -102,6 +168,21 @@ MonoBehaviour:
   _detectMaterial: {fileID: 2100000, guid: 9b2f7f23d8d4f3c4098109f51a709a28, type: 2}
   _visualRenderer: {fileID: 6574949952855998553}
   isDetected: 0
+  OnInteractEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8493171144310802337}
+        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <type>k__BackingField: 11
   <ItemSO>k__BackingField: {fileID: 0}
   _itemNameText: {fileID: 0}

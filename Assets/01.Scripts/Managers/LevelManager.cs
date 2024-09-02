@@ -55,7 +55,7 @@ public class LevelManager : MonoSingleton<LevelManager>
     public int CalcMaxExp(int level)
     {
         //return (int)(Mathf.Pow(3.5f, (float)level / 6  -0.2f) * 6 - 1.8f);
-        return 36 * level;
+        return 50 * level;
     }
 
     private void HandleLevelUp()

@@ -44,6 +44,7 @@ public class ResourceItem : Item
                 LevelManager.Instance.ApplyExp(ItemSO.resourceValue);
                 QuestObserver.Instance.CollectTrigger(ItemType.Resource, 1);
                 PoolingManager.Instance.Push(this);
+                OnInteractEvent?.Invoke();
             });
         }
     }
