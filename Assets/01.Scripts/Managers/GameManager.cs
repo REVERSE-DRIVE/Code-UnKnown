@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
+using GooglePlayGames;
 using ObjectManage;
 using ObjectPooling;
 using SaveSystem;
@@ -70,6 +71,14 @@ public class GameManager : MonoSingleton<GameManager>
             
         };
         SaveManager.Instance.Save<InGameData>(data, "InGameData");
+
+        // 랭킹 등록 만약 있다면
+        if (GoogleLoginSystem.isLogined) { // 로그인중
+            print($"Google Rank Save Request {LevelManager.Instance.CurrentExp}");
+            PlayGamesPlatform.Instance.ReportScore(LevelManager.Instance.CurrentExp, RankUI.RANK_ID, success => {
+                print($"Google Rank Save Result {LevelManager.Instance.CurrentExp} ({success})");
+            });
+        }
     }
 
     public void LoadInGameData()
