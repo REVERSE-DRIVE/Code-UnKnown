@@ -40,12 +40,12 @@ namespace QuestManage
                 if (quest.goalValue <= count && !quest.isClear)
                 {
                     var data = currentQuestDatas.Find(x => x.id == currentQuestListSOs[i].id);
-                    if (enemyType == (quest as KillQuestSO).enemyType)
+                    if (enemyType == EnemyType.Boss && ((KillQuestSO)quest).enemyType == EnemyType.Boss)
                     {
                         data.Trigger(quest.triggerValue);
                         quest.isClear = true;
                     }
-                    else if (quest is not KillQuestSO)
+                    else if (quest is not KillQuestSO || enemyType == EnemyType.NULL)
                     {
                         data.Trigger(quest.triggerValue);
                         quest.isClear = true;

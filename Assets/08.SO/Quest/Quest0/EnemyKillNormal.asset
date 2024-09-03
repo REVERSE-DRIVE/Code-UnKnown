@@ -16,4 +16,4 @@ MonoBehaviour:
   triggerValue: 100
   questType: 0
   isClear: 0
-  enemyType: 0
+  enemyType: 7
