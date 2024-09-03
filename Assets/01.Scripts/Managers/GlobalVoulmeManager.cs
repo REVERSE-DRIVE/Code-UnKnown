@@ -25,7 +25,7 @@ public class GlobalVoulmeManager : MonoBehaviour
 
     private void HandleInfectionLevelChanged(int arg1, int arg2)
     {
-        float value = arg2 / 100f;
+        float value = arg2 / 200f;
         _vignette.intensity.value = value;
         _chromaticAberration.intensity.value = value;
     }
