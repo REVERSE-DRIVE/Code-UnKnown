@@ -21,8 +21,8 @@ public class StageHoleObject : InteractObject
     {
         yield return new WaitForSeconds(2.5f);
         MapManager.Instance.Clear();
-        MapManager.Instance.Generate();
         PoolingManager.Instance.ResetPool();
+        MapManager.Instance.Generate();
         Destroy(gameObject);
 
     }
