@@ -18,6 +18,8 @@ public class LoadManager : MonoSingleton<LoadManager>
     public void StartLoad(string sceneName, Action callback = null)
     {
         SceneManager.LoadScene("LoadingScene");
+        
+        Time.timeScale = 1;
         StartCoroutine(LoadingCoroutine(sceneName, callback));
     }
 
