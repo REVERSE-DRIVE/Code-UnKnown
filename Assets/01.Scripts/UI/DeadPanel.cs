@@ -30,11 +30,7 @@ public class DeadPanel : MonoBehaviour, IWindowPanel
     private void HandleLobbyMove()
     {
         Time.timeScale = 1;
-        Destroy(QuestManager.Instance.gameObject);
-        LoadManager.Instance.StartLoad("MainLobbyScene", () =>
-        {
-            QuestObserver.Instance.ResetQuest();
-        });
+        GameManager.Instance.ExitGame();
     }
 
 

@@ -109,10 +109,11 @@ public class GameManager : MonoSingleton<GameManager>
                 powerUpDatas.Add(item.id, item.amount);
     }
 
-    public void ExitGame()
+    public void ExitGame(System.Action cb = null)
     {
         SaveInGameData(); // 저장해
-        LoadManager.Instance.StartLoad("MainLobbyScene");
+        QuestObserver.Instance.ResetQuest();
+        LoadManager.Instance.StartLoad("MainLobbyScene", cb);
         Destroy(QuestManager.Instance.gameObject);
     }
     
