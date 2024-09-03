@@ -28,6 +28,14 @@ namespace QuestManage
             if (QuestManager.Instance == null) return;
             currentQuestDatas = QuestManager.Instance.AcceptQuestDatas;
             currentQuestListSOs = QuestManager.Instance.AcceptQuestListSOs;
+            foreach (var quest in currentQuestDatas)
+            {
+                quest.OnClearEvent += () =>
+                {
+                    int amount = 100;
+                    ResourceManager.Instance.AddResource(amount);
+                };
+            }
         }
         
         public void Trigger(QuestType type, int count, EnemyType enemyType = EnemyType.NULL)
