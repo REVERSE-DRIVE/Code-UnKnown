@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace QuestManage
 {
-    public class QuestManager : MonoSingletonButNoDontDestroyOnLoad<QuestManager>
+    public class QuestManager : MonoSingleton<QuestManager>
     {
         [SerializeField] private QuestTableSO _questListSO;
         [SerializeField] private QuestWindowUI[] _questWindowUI;
@@ -17,7 +17,7 @@ namespace QuestManage
         protected void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            SettingQuestWindow();
+            //SettingQuestWindow();
         }
 
         /**

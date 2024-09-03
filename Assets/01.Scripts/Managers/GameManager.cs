@@ -77,6 +77,8 @@ public class GameManager : MonoSingleton<GameManager>
             
         };
         SaveManager.Instance.Save<InGameData>(data, "InGameData");
+        
+        PlayerPartManager.Instance.SavePartData();
 
         // 랭킹 등록 만약 있다면
         if (GoogleLoginSystem.isLogined) { // 로그인중
@@ -97,6 +99,8 @@ public class GameManager : MonoSingleton<GameManager>
 
         // 레벨
         LevelManager.Instance.SetLevelExp(data.level, data.exp);
+        
+        PlayerPartManager.Instance.LoadPartData();
 
         // 파워업
         var powerUpDatas = PowerUpManager.Instance.powerUpDictionary = new(); // 다시 만들어
@@ -109,6 +113,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         SaveInGameData(); // 저장해
         LoadManager.Instance.StartLoad("MainLobbyScene");
+        Destroy(QuestManager.Instance.gameObject);
     }
     
 }

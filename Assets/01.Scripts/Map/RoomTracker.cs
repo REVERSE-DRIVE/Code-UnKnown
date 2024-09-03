@@ -133,7 +133,7 @@ public class RoomTracker : RoomBase, IRoomCleable
             v.enabled = false;
             MapManager.Instance.TearEffect.RegisterTearObject(v.gameObject);
         });
-        junks.ForEach(v => MapManager.Instance.TearEffect.RegisterTearObject(v.gameObject));
+        junks.ForEach(v => PoolingManager.Instance.Push(v));
 
         // holes.ForEach(v => Destroy(v.gameObject));
         // junks.ForEach(v => Destroy(v.gameObject));
