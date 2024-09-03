@@ -29,6 +29,7 @@ public class DeadPanel : MonoBehaviour, IWindowPanel
 
     private void HandleLobbyMove()
     {
+        Time.timeScale = 1;
         LoadManager.Instance.StartLoad("MainLobbyScene", () =>
         {
             QuestObserver.Instance.ResetQuest();
@@ -55,14 +56,15 @@ public class DeadPanel : MonoBehaviour, IWindowPanel
     private IEnumerator TextAnimation(float time, int resourceAmount, int partAmount)
     {
         _isShow = true;
+        Time.timeScale = 0;
         var liveTime = TimeSpan.FromSeconds(time);
         _liveTimeText.text = $"생존 시간: {liveTime}";
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSecondsRealtime (0.5f);
         _resourceText.text = $"수집한 리소스: {resourceAmount}";
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSecondsRealtime (0.5f);
         _partText.text = $"수집한 파츠 개수: {partAmount}";
         
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime (1f);
         _backButton.gameObject.SetActive(true);
     }
 
