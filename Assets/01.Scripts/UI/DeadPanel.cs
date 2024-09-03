@@ -30,6 +30,7 @@ public class DeadPanel : MonoBehaviour, IWindowPanel
     private void HandleLobbyMove()
     {
         Time.timeScale = 1;
+        Destroy(QuestManager.Instance.gameObject);
         LoadManager.Instance.StartLoad("MainLobbyScene", () =>
         {
             QuestObserver.Instance.ResetQuest();
@@ -41,7 +42,7 @@ public class DeadPanel : MonoBehaviour, IWindowPanel
     public void Open()
     {
         SetVisible(true);
-        SetUI(601, 10, 5);
+        SetUI(InGameCounter.Instance.TimeCounter, 10, 5);
     }
 
     public void SetUI(float time, int resourceAmount, int partAmount)
@@ -58,11 +59,11 @@ public class DeadPanel : MonoBehaviour, IWindowPanel
         _isShow = true;
         Time.timeScale = 0;
         var liveTime = TimeSpan.FromSeconds(time);
-        _liveTimeText.text = $"생존 시간: {liveTime}";
+        _liveTimeText.text = $"생존 시간: --:--";
         yield return new WaitForSecondsRealtime (0.5f);
-        _resourceText.text = $"수집한 리소스: {resourceAmount}";
+        _resourceText.text = $"수집한 리소스: 0";
         yield return new WaitForSecondsRealtime (0.5f);
-        _partText.text = $"수집한 파츠 개수: {partAmount}";
+        _partText.text = $"수집한 파츠 개수: 0";
         
         yield return new WaitForSecondsRealtime (1f);
         _backButton.gameObject.SetActive(true);

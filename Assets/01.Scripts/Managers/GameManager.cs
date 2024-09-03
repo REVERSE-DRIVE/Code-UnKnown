@@ -113,6 +113,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         SaveInGameData(); // 저장해
         LoadManager.Instance.StartLoad("MainLobbyScene");
+        Destroy(QuestManager.Instance.gameObject);
     }
     
 }

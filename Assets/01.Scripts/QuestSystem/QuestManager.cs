@@ -17,12 +17,7 @@ namespace QuestManage
         protected void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            SettingQuestWindow();
-        }
-
-        private void Update()
-        {
-            
+            //SettingQuestWindow();
         }
 
         /**
