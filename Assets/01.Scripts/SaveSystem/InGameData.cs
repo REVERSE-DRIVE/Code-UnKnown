@@ -21,6 +21,5 @@ public struct InGameData
     public int level;
     public int exp;
     public PowerUpData[] powerUpDatas;
-    
-    
+    public bool saved;
 }

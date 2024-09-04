@@ -115,6 +115,8 @@ public class GameManager : MonoSingleton<GameManager>
                 powerUpDatas.Add(item.id, item.amount);
     }
 
+    public bool IsSavedInGameData() => SaveManager.Instance.Load<InGameData>(INGAME_DATA_FILE).saved;
+
     public void ExitGame()
     {
         // SaveInGameData(); // 저장해
