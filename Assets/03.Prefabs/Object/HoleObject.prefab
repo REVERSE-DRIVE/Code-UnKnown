@@ -164,6 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fixedPos: {fileID: 5506267239899426661}
+  checkColor: {r: 0, g: 2, b: 1.8660827, a: 0}
+  _renderer: {fileID: 792795310862370897}
 --- !u!61 &2353316751190070922
 BoxCollider2D:
   m_ObjectHideFlags: 0
