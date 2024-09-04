@@ -18676,6 +18676,7 @@ GameObject:
   - component: {fileID: 1943660592}
   - component: {fileID: 1943660591}
   - component: {fileID: 1943660590}
+  - component: {fileID: 1943660593}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -18696,6 +18697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   option: {fileID: 11400000, guid: 427d050c3d3d7fb37bb83530c313de88, type: 2}
+  <BossGenerator>k__BackingField: {fileID: 1943660593}
   _stageHolePrefab: {fileID: 156434749849372843, guid: a6c6158176e34554c9ab0e62149b5797, type: 3}
   wallTile: {fileID: 1488012034}
   bridgeTile: {fileID: 1150824858}
@@ -18737,6 +18739,19 @@ Transform:
   - {fileID: 167572347}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1943660593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943660589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4d130230b249014490754fc449d6b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadPanel: {fileID: 471194520}
 --- !u!1 &1951373238
 GameObject:
   m_ObjectHideFlags: 0

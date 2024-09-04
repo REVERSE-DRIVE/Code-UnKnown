@@ -30,6 +30,7 @@ public class DeadPanel : MonoBehaviour, IWindowPanel
     private void HandleLobbyMove()
     {
         Time.timeScale = 1;
+        GameManager.Instance.ClearInGameData(); // 죽었으니 초기화
         GameManager.Instance.ExitGame();
     }
 

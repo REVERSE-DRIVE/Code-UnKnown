@@ -11,7 +11,7 @@ public class StageHoleObject : InteractObject
 
     private void HandleStageChange()
     {
-       
+       GameManager.Instance.SaveInGameData();
         UIManager.Instance.ShowStageChange();
 
         StartCoroutine(HandleStageChangeCoroutine());
