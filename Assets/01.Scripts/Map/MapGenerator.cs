@@ -53,7 +53,7 @@ public class MapGenerator : MonoBehaviour
     private void Awake() {
         // Generate();
         // BoxGenerate(Direction.Top, null);
-        BossGenerator = new();
+        // BossGenerator = new();
     }
 
     float time = 0;
