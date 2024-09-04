@@ -10,6 +10,7 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    const string INGAME_DATA_FILE = "InGameData";
     [field:SerializeField] public Player Player { get; private set; }
     [field:SerializeField] public Transform PlayerTrm { get; private set; }
 
@@ -76,7 +77,7 @@ public class GameManager : MonoSingleton<GameManager>
             powerUpDatas = powerUpDatas
             
         };
-        SaveManager.Instance.Save<InGameData>(data, "InGameData");
+        SaveManager.Instance.Save<InGameData>(data, INGAME_DATA_FILE);
         
         PlayerPartManager.Instance.SavePartData();
 
@@ -88,10 +89,15 @@ public class GameManager : MonoSingleton<GameManager>
             });
         }
     }
+    
+    // 초기화
+    public void ClearInGameData() {
+        SaveManager.Instance.Save<InGameData>(default, INGAME_DATA_FILE);
+    }
 
     public void LoadInGameData()
     {
-        InGameData data = SaveManager.Instance.Load<InGameData>("InGameData");
+        InGameData data = SaveManager.Instance.Load<InGameData>(INGAME_DATA_FILE);
 
         // 리소스
         ResourceManager.Instance.UseResource(ResourceManager.Instance.ResourceAmount);
@@ -111,7 +117,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void ExitGame()
     {
-        SaveInGameData(); // 저장해
+        // SaveInGameData(); // 저장해
         QuestObserver.Instance.ResetQuest();
         LoadManager.Instance.StartLoad("MainLobbyScene");
         Destroy(QuestManager.Instance.gameObject);
