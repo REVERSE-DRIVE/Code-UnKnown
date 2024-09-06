@@ -28,6 +28,7 @@ namespace QuestManage
             if (QuestManager.Instance == null) return;
             currentQuestDatas = QuestManager.Instance.AcceptQuestDatas;
             currentQuestListSOs = QuestManager.Instance.AcceptQuestListSOs;
+            if (currentQuestDatas == null || currentQuestListSOs == null) return;
             foreach (var quest in currentQuestDatas)
             {
                 quest.OnClearEvent += () =>
