@@ -11,6 +11,13 @@ public class VirusSuppressorObject : MonoBehaviour, ILaserEvent
 
     public event Action OnClear;
     bool isClear;
+    
+    Animator animator;
+    readonly int ANIM_FINISH = Animator.StringToHash("Finish");
+
+    private void Awake() {
+        animator = GetComponent<Animator>();
+    }
 
     public void Init(List<LaserObject> _lasers) {
         lasers = _lasers.ToList();
@@ -58,6 +65,7 @@ public class VirusSuppressorObject : MonoBehaviour, ILaserEvent
         if (green > 0 || red != redCount) return;
 
         isClear = true;
+        animator.SetTrigger(ANIM_FINISH);
         OnClear?.Invoke();
     }
 }

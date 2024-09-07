@@ -12,6 +12,13 @@ enum LaserDirection {
 public class LaserObject : MonoBehaviour
 {
     public enum Type { Red, Green }
+    [System.Serializable]
+    struct ObjectSprite {
+        public Type type;
+        public Sprite sprite;
+    }
+
+
     [field: SerializeField] public Type LaserType { get; private set; }
 
     [SerializeField] Transform beamCenter;
@@ -25,6 +32,10 @@ public class LaserObject : MonoBehaviour
     [SerializeField] float moveSpeed = 0.5f;
     [SerializeField] float moveDistance = 1.5f;
     [SerializeField] float moveDelay = 3f;
+
+    [Header("sprites")]
+    [SerializeField] SpriteRenderer visualRender;
+    [SerializeField] ObjectSprite[] sprites;
 
     [SerializeField] LayerMask filter;
 
@@ -59,6 +70,13 @@ public class LaserObject : MonoBehaviour
         color.a = 0.8f;
 
         render.color = color;
+
+        Sprite colorSprite = System.Array.Find(sprites, v => v.type == LaserType).sprite;
+        if (colorSprite != null) {
+            visualRender.sprite = colorSprite;
+        } else {
+            Debug.LogError($"{LaserType} Sprite Not Found");
+        }
 
         if (activeMove)
             StartCoroutine(WaitDomi());
