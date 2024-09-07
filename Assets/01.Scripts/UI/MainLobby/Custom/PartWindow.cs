@@ -10,11 +10,12 @@ public class PartWindow : MonoBehaviour, IWindowPanel
     [SerializeField] private RectTransform _partItemParent;
     [SerializeField] private RectTransform _partParent;
     
-    [Header("Text Setting")]
+    [Header("UI Setting")]
     [SerializeField] private TextMeshProUGUI _partNameText;
     [SerializeField] private TextMeshProUGUI _partDescriptionText;
     [SerializeField] private TextMeshProUGUI _partAmountText;
     [SerializeField] private TextMeshProUGUI partRemainingPeriodText;
+    [SerializeField] private Button _sellButton;
     
     [Header("Button Setting")]
     [SerializeField] private Button _closeButton;
@@ -48,6 +49,7 @@ public class PartWindow : MonoBehaviour, IWindowPanel
     public void BuyPart()
     {
         var slamShopItem = _customItem as SlamShopItem;
+        
         if (slamShopItem == null)
         {
             Debug.LogWarning("SlamShopItem is null");
@@ -88,6 +90,16 @@ public class PartWindow : MonoBehaviour, IWindowPanel
         if (partRemainingPeriodText != null)
         {
             partRemainingPeriodText.text = $"{remainingPeriod}일";
+        }
+        
+        if (_sellButton == null) return;
+        if (_customItem.PartData.id == 0)
+        {
+            _sellButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            _sellButton.gameObject.SetActive(true);
         }
     }
     
