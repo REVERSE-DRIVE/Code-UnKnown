@@ -14,5 +14,6 @@ public class ExitObject : ClickableObject
     {
         SceneManager.LoadScene("TitleScene");
         Destroy(QuestManager.Instance.gameObject);
+        Destroy(PlayerPartManager.Instance.gameObject);
     }
 }
