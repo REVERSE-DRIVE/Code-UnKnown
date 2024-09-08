@@ -61,6 +61,7 @@ namespace EasySave.Json
                 return defaultObj;
             }
             string json = File.ReadAllText(path);
+            Debug.Log($"[EasyToJson]{json}");
             T obj = JsonUtility.FromJson<T>(json);
             return obj;
         }
@@ -101,6 +102,7 @@ namespace EasySave.Json
                 return defaultList;
             }
             string json = File.ReadAllText(path);
+            Debug.Log(json);
             List<T> obj = JsonConvert.DeserializeObject<List<T>>(json);
             return obj;
         }
