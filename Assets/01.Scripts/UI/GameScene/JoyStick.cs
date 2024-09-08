@@ -11,15 +11,11 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     
     private RectTransform _stickBGRect;
     private RectTransform _baseRect;
-    private Camera cam;
-    private Canvas canvas;
 
     private void Awake()
     {
-        canvas = GetComponentInParent<Canvas>();
         _stickBGRect = _stickBG.GetComponent<RectTransform>();
         _baseRect = GetComponent<RectTransform>();
-        cam = canvas.worldCamera;
     }
 
 
