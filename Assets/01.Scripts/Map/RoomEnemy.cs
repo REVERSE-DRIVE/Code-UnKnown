@@ -27,9 +27,9 @@ public class RoomEnemy : RoomBase, IRoomCleable
     {
         base.OnComplete();
         
-        if (nearObjectData) {
-            nearObjects = new();
+        nearObjects = new();
 
+        if (nearObjectData) {
             foreach (var item in nearObjectData.GetValue())
             {
                 Vector3 coords = RandomPosWithNearObject(item.spacing);
