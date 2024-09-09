@@ -1,5 +1,6 @@
 ﻿using System;
 using ObjectManage;
+using QuestManage;
 using UnityEngine.SceneManagement;
 
 public class ExitObject : ClickableObject
@@ -12,5 +13,7 @@ public class ExitObject : ClickableObject
     private void HandleTitleMoveScene()
     {
         SceneManager.LoadScene("TitleScene");
+        Destroy(QuestManager.Instance.gameObject);
+        Destroy(PlayerPartManager.Instance.gameObject);
     }
 }

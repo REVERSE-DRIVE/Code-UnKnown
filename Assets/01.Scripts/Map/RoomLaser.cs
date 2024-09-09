@@ -141,6 +141,8 @@ public class RoomLaser : RoomBase, IRoomCleable
         SetDoor(true);
         TimerManager.Instance.ShowTimer(clearTime);
         TimerManager.Instance.OnFinish += OnTimeEnd;
+
+        NotifyPanel.Instance.Show("초록색 레이저는 억제기를 방해합니다.", 8);
     }
 
     void OnTimeEnd() {

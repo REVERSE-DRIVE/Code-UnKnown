@@ -1,9 +1,9 @@
 ﻿namespace SaveSystem
 {
     [System.Serializable]
-    public class AudioSetting
+    public struct AudioSetting
     {
-        public int bgmVolume = 0;
-        public int sfxVolume = 0;
+        public int bgmVolume;
+        public int sfxVolume;
     }
 }

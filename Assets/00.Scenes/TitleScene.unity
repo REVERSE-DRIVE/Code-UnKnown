@@ -6552,6 +6552,7 @@ GameObject:
   - component: {fileID: 1566013346}
   - component: {fileID: 1566013345}
   - component: {fileID: 1566013347}
+  - component: {fileID: 1566013348}
   m_Layer: 5
   m_Name: SettingPanel
   m_TagString: Untagged
@@ -6634,12 +6635,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _activeDuration: 1
   _useUnscaleedTime: 0
-  _audioMixer: {fileID: 24300002, guid: 04f03c6db84ce1141aea0bf113f56030, type: 2}
+  _audioMixer: {fileID: 24100000, guid: 04f03c6db84ce1141aea0bf113f56030, type: 2}
   _bgmSlider: {fileID: 504388865}
   _sfxSlider: {fileID: 2008253823}
   _currentSetting:
     bgmVolume: 0
     sfxVolume: 0
+--- !u!225 &1566013348
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566013343}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1570990002
 GameObject:
   m_ObjectHideFlags: 0
@@ -8728,7 +8741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2000, y: -20}
+  m_AnchoredPosition: {x: 2000, y: -20.000122}
   m_SizeDelta: {x: 1200, y: -120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1992145007

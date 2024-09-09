@@ -6,6 +6,8 @@ public class SlamShopItem : CustomItem
     [SerializeField] private PartType _partType;
     [SerializeField] public int _resourceAmount;
     private SlamShopPanel _slamShopPanel;
+    
+    public PartType PartType => _partType;
 
     protected override void Awake()
     {
