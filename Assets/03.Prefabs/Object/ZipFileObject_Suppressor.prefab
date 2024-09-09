@@ -368,7 +368,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1195807326809224400}
@@ -491,11 +491,11 @@ PrefabInstance:
       objectReference: {fileID: 1144399384, guid: fdb95b0873758864199dba01dfe6dfe1, type: 3}
     - target: {fileID: 6506238200824130326, guid: c192c68643fd78042adfe9d91ff24c3a, type: 3}
       propertyPath: m_Size.x
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6506238200824130326, guid: c192c68643fd78042adfe9d91ff24c3a, type: 3}
       propertyPath: m_Size.y
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7349526899989436177, guid: c192c68643fd78042adfe9d91ff24c3a, type: 3}
       propertyPath: m_Controller
@@ -556,6 +556,7 @@ MonoBehaviour:
   isDetected: 0
   _openParticle: {fileID: 5357645379088792373, guid: a6c1b430eea8a39489d6eb9e7f421aa3, type: 3}
   _dissolveMaterial: {fileID: 2100000, guid: 3288c3a4a848b084f820f6e3b0253343, type: 2}
+  _progressBar: {fileID: 1195807326809224400}
   rewardAmount: {x: 1, y: 5}
   rewardList:
   - percent: 30
