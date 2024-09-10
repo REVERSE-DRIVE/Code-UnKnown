@@ -20,6 +20,8 @@ public class FixEditorPanel : MonoBehaviour, IWindowPanel
     [SerializeField] private float _openDuration = 0.1f;
     [SerializeField] private float _gaugeFillDuration = 0.2f;
     [SerializeField] private LockPanel _lockPanel;
+    [SerializeField] private GameObject _notEnoughPanel;
+    
     private bool IsEnough => ResourceManager.Instance.ResourceAmount >= _requireResource;
     private Vector3 _defaultScale = Vector3.one;
     private Player _player;
@@ -96,6 +98,7 @@ public class FixEditorPanel : MonoBehaviour, IWindowPanel
 
     private void SetCanvas(bool value)
     {
+        _notEnoughPanel.SetActive(!IsEnough);
         _canvasGroup.alpha = value ? 1f : 0f;
         _canvasGroup.interactable = value;
         _canvasGroup.blocksRaycasts = value;

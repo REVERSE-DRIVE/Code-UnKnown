@@ -51,7 +51,7 @@ public class GameManager : MonoSingleton<GameManager>
     private IEnumerator GameStartCoroutine()
     {
         yield return new WaitForSeconds(1f);
-        CameraManager.Instance.ShakeHit();
+        CameraManager.Instance.Shake(10f, 0.2f);
         PlayerManager.Instance.player.MovementCompo.isStun = false;
         PlayerManager.Instance.player.SetVisualActive(true);
         PlayerPartManager.Instance.ChangeAllPart();
