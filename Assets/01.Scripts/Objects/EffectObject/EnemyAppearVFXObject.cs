@@ -40,7 +40,7 @@ namespace ObjectManage
             _impactLineTrm.localScale = new Vector3(1.5f, 16f,1);
 
             _impactLineTrm.DOScaleX(0f, 0.2f);
-            yield return new WaitForSeconds(0.1f);
+            OnPlayEvent?.Invoke();
 
         }
 

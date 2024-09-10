@@ -5,7 +5,7 @@ namespace SoundManage
     [CreateAssetMenu(menuName = "SO/SoundSO")]
     public class SoundSO : ScriptableObject
     {
-        public string soundName;
+        public string soundName = "None Title";
         public AudioType audioType;
         public AudioClip clip;
         public bool loop;

@@ -12,7 +12,9 @@ public class LevelManager : MonoSingleton<LevelManager>
      * </summary>
      */
     private int _currentLevel;
-    public int CurrentLevel => _currentLevel; 
+    public int CurrentLevel => _currentLevel;
+    public int CurrentExp => _currentExp;
+    
     private int _gainExp;
     public event Action OnExpGainEvent;
     public event Action OnLevelUpEvent;
@@ -53,7 +55,7 @@ public class LevelManager : MonoSingleton<LevelManager>
     public int CalcMaxExp(int level)
     {
         //return (int)(Mathf.Pow(3.5f, (float)level / 6  -0.2f) * 6 - 1.8f);
-        return 36 * level;
+        return 50 * level;
     }
 
     private void HandleLevelUp()
@@ -61,4 +63,9 @@ public class LevelManager : MonoSingleton<LevelManager>
         UIManager.Instance.Open(WindowEnum.EffectSelect);
     }
 
+    public void SetLevelExp(int level, int exp) {
+        _currentExp = exp;
+        _currentLevel = level;
+        _expPanel.Refresh(_currentLevel, _currentExp, MaxExp);
+    }
 }

@@ -13,10 +13,20 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
     
     private List<PartData> _partDataList;
 
-    private void Awake()
+    protected override void Awake()
     {
+        //base.Awake();
         DontDestroyOnLoad(this);
         _partDataList = new List<PartData>();
+    }
+
+    private void Start()
+    {
+        // for (int i = 0; i < PlayerPartDataList.Count; i++)
+        // {
+        //     AddData(PlayerPartDataList[i]);
+        // }
+        LoadPartData();
     }
 
     public void SetBodyPart(PlayerBodyPartDataSO bodyPart)
@@ -63,6 +73,10 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
             return;
         }
         partController.ChangePart(partType, partData);
+        if (partType == PartType.Body)
+            SetBodyPart(partData as PlayerBodyPartDataSO);
+        else if (partType == PartType.Leg)
+            SetLegPart(partData as PlayerLegPartDataSO);
     }
     
     public void AddPartData(int id, PartType type, bool isLoad = false)

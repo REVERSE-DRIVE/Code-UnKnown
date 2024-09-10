@@ -5,11 +5,13 @@ using ObjectManage;
 using ObjectPooling;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ItemManage
 {
     public class Item : InteractObject, IPoolable
     {
+        public UnityEvent OnInteractEvent;
         [field:SerializeField] public PoolingType type { get; set; }
         [field:SerializeField] public ItemSO ItemSO { get; private set; }
         [SerializeField] private TextMeshPro _itemNameText;

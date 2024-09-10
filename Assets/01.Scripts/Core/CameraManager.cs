@@ -10,8 +10,6 @@ public class CameraManager : MonoSingleton<CameraManager>
     private CinemachineVirtualCamera _virtualCamera;
     private CinemachineBasicMultiChannelPerlin _cinemachineBasicMultiChannelPerlin;
     
-    [SerializeField] private float hitShakePower = 5;
-    [SerializeField] private float hitShakeDuration = 0.1f;
     [SerializeField] private float cameraDefaultZoom = 8f;
 
     private Transform _defaultCameraTarget;
@@ -45,11 +43,7 @@ public class CameraManager : MonoSingleton<CameraManager>
         //GameManager.Instance._UIManager.JoyStickEnable(true);
     }
 
-    public void ShakeHit()
-    {
-        Shake(hitShakePower, hitShakeDuration);
-    }
-
+    
     public void Shake(float shakePower, float duration)
     {
         StartCoroutine(ShakeCoroutine(shakePower, duration));
@@ -144,4 +138,27 @@ public class CameraManager : MonoSingleton<CameraManager>
     
     #endregion
 
+    #region Rotation
+
+    public void SetRotationToDefault(float rotate, float duration)
+    {
+        StartCoroutine(SetRotationToDefaultCoroutine(rotate, duration));
+    }
+
+    private IEnumerator SetRotationToDefaultCoroutine(float rotate, float duration)
+    {
+        _virtualCamera.m_Lens.Dutch = rotate;
+        float currentTime = 0;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            _virtualCamera.m_Lens.Dutch = Mathf.Lerp(rotate, 0, currentTime / duration);
+            yield return null;
+        }
+
+        _virtualCamera.m_Lens.Dutch = 0;
+    }
+
+    #endregion
+    
 }

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class MapBossGenerator
+public class MapBossGenerator : MonoBehaviour
 {
-    MapGenerator generator;
+    [SerializeField] DeadPanel deadPanel;
 
-    public MapBossGenerator() {
+    MapGenerator generator;
+    void Awake() {
         generator = MapManager.Instance.Generator;
     }
 
@@ -58,6 +59,7 @@ public class MapBossGenerator
         playerTrm.position = new( Mathf.Clamp(playerPos.x, minPos3.x, maxPos3.x), Mathf.Clamp(playerPos.y, minPos3.y, maxPos3.y) );
 
         BossManager.Instance.GenerateBoss(option.BossId, roomCenter);
+        BossManager.Instance.currentBoss.HealthCompo.OnDieEvent.AddListener(OnBossDead);
     }
 
     IEnumerator DelayTile(Vector2Int pos, TileBase tile, float time) {
@@ -65,5 +67,12 @@ public class MapBossGenerator
 
         generator.DeleteAll(pos);
         generator.CreateGround(pos, tile);
+    }
+
+    void OnBossDead() {
+        BossManager.Instance.currentBoss.HealthCompo.OnDieEvent.RemoveListener(OnBossDead);
+
+        Time.timeScale = 0;
+        deadPanel.Open();        
     }
 }

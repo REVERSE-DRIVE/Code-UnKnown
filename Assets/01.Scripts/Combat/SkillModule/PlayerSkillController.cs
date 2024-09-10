@@ -36,6 +36,13 @@ namespace CombatSkillManage
             Refresh();
         }
 
+        public void ChangeSkill(PlayerSkillSO newSkill)
+        {
+            Destroy(_currentSkill.gameObject);
+            _currentSkillSO = newSkill;
+            Initialize();
+        }
+
         public void Initialize()
         {
             _currentSkill = Instantiate(_currentSkillSO.skillPrefab, transform);

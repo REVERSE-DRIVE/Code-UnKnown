@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using ObjectPooling;
 using UnityEngine;
 
 public class RoomTracker : RoomBase, IRoomCleable
@@ -9,10 +9,21 @@ public class RoomTracker : RoomBase, IRoomCleable
     [SerializeField] HoleObject holePrefab;
     [SerializeField] int clearTime = 60;
 
-    List<HoleObject> holes;
+    List<HoleObject> holes = new List<HoleObject>();
     List<JunkFileObject> junks;
 
     bool isClear = false;
+
+    private void OnDestroy()
+    {
+        foreach (HoleObject hole in holes)
+        {
+            if(hole == null)
+                continue;
+            Destroy(hole.gameObject);
+        }
+        holes.Clear();
+    }
 
     public override void OnComplete()
     {
@@ -32,7 +43,8 @@ public class RoomTracker : RoomBase, IRoomCleable
         junks = new();
         foreach (var item in junkDir)
         {
-            var entity = Instantiate(junkPrefab, centerPos + (Vector3)item * spacing, Quaternion.identity);
+            var entity = PoolingManager.Instance.Pop(PoolingType.JunkFileObject) as JunkFileObject;
+            entity.transform.position = centerPos + (Vector3)item * spacing;
             junks.Add(entity);
 
             entity.RestoreHealth(99999);
@@ -121,7 +133,7 @@ public class RoomTracker : RoomBase, IRoomCleable
             v.enabled = false;
             MapManager.Instance.TearEffect.RegisterTearObject(v.gameObject);
         });
-        junks.ForEach(v => MapManager.Instance.TearEffect.RegisterTearObject(v.gameObject));
+        junks.ForEach(v => PoolingManager.Instance.Push(v));
 
         // holes.ForEach(v => Destroy(v.gameObject));
         // junks.ForEach(v => Destroy(v.gameObject));

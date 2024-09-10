@@ -1,11 +1,25 @@
 ﻿using System.Collections.Generic;
 
 [System.Serializable]
+public struct PowerUpData
+{
+    public int id;
+    public int amount;
+
+    public PowerUpData(int id, int amount)
+    {
+        this.id = id;
+        this.amount = amount;
+    }
+}
+
+[System.Serializable]
 public struct InGameData
 {
-    public List<PartData> PartDatas;
     public int ResourceAmount;
-    public float Infection;
-    public float Adaptability;
-    public float Exp;
+    public int infectLevel;
+    public int level;
+    public int exp;
+    public PowerUpData[] powerUpDatas;
+    public bool saved;
 }

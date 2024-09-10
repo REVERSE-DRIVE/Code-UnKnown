@@ -14,10 +14,10 @@ namespace QuestManage
         [field:SerializeField] public List<QuestData> AcceptQuestDatas { get; set; }
         [field:SerializeField] public List<QuestListSO> AcceptQuestListSOs { get; set; }
 
-        private void Awake()
+        protected void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            SettingQuestWindow();
+            //SettingQuestWindow();
         }
 
         /**
@@ -29,6 +29,7 @@ namespace QuestManage
             _currentQuests.Add(randomQuest);
             _questWindowUI[index].SetQuest(randomQuest);
         }
+
 
         /**
          * 퀘스트 UI 오픈
@@ -52,6 +53,7 @@ namespace QuestManage
         [ContextMenu("SettingQuestWindow")]
         private void SettingQuestWindow()
         {
+            if (_questWindowUI == null) return;
             for (int i = 0; i < _questWindowUI.Length; i++)
             {
                 GetRandomQuest(i);

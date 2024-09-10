@@ -113,13 +113,18 @@ namespace EnemyManage
             StateMachine.ChangeState(AVGStateEnum.Stun, true);
 
         }
+        
+        public void SetDead()
+        {
+            StateMachine.ChangeState(AVGStateEnum.Dead, true);
+        }
+
 
 
         public void TakeStrongDamage(int amount)
         {
             HealthCompo.TakeDamage(amount);
             StateMachine.CurrentState.CustomTrigger();
-            _isResist = false;
         }
 
         public override void AnimationEndTrigger()
@@ -145,6 +150,7 @@ namespace EnemyManage
             }
             transform.position = _generatePos;
         }
+        
 
 
         public void OnHealDefense()

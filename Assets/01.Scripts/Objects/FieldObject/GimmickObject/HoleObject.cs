@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class HoleObject : MonoBehaviour
 {
+    const string COLOR_MAT_ID = "_Color";
+    const string BLINK_MAT_ID = "_UseBlink";
+
     [SerializeField] Transform fixedPos;
+    
+    [Header("visual")]
+    [SerializeField, ColorUsage(true, true)] Color checkColor;
+    [SerializeField] SpriteRenderer _renderer;
     
     GameObject inEntity = null;
     public event System.Action<HoleObject> InEvent;
@@ -20,12 +27,8 @@ public class HoleObject : MonoBehaviour
         inEntity = other.gameObject;
         InEvent?.Invoke(this);
 
-        Vector3 dir = (fixedPos.position - inEntity.transform.position).normalized;
-        Rigidbody2D rigid = inEntity.GetComponent<Rigidbody2D>();
         
         junkSys.EnableActive();
-        rigid.velocity = dir * 10;
-    
         StartCoroutine(AttachObject());
     }
 
@@ -37,7 +40,18 @@ public class HoleObject : MonoBehaviour
     }
 
     IEnumerator AttachObject() {
-        yield return new WaitUntil(() => Vector3.Distance(inEntity.transform.position, fixedPos.position) < 0.1f);
+        Rigidbody2D rigid = inEntity.GetComponent<Rigidbody2D>();
+
+        while (Vector3.Distance(inEntity.transform.position, fixedPos.position) > 0.1f) {
+            Vector3 dir = (fixedPos.position - inEntity.transform.position).normalized;
+            rigid.velocity = dir * 10;
+            yield return null;
+        }
+
         fixedObject = true;
+
+        // 장착 됨
+        _renderer.material.SetColor(COLOR_MAT_ID, checkColor);
+        _renderer.material.SetInt(BLINK_MAT_ID, 0);
     }
 }

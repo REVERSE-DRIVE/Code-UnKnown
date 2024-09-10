@@ -30,5 +30,15 @@ namespace ObjectManage
             seq.Append(_monitorPanel.DOAnchorPosY(-100f, _monitorPanelMoveDuration));
             seq.SetEase(_monitorPanelMoveEase);
         }
+        
+        public void MonitorReset()
+        {
+            if (DOTween.IsTweening(_monitorPanel)) return;
+            Sequence seq = DOTween.Sequence();
+            seq.Append(_monitorPanel.DOAnchorPos(Vector2.zero, _monitorPanelMoveDuration));
+            seq.Append(_monitorPanel.DOScale(new Vector3(1f, 1f), _monitorPanelMoveDuration));
+            seq.Append(_monitorPanel.DOAnchorPosY(-5000f, _monitorPanelMoveDuration));
+            seq.SetEase(_monitorPanelMoveEase);
+        }
     }
 }

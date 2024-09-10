@@ -32,6 +32,7 @@ public class RoomSuppressor : RoomBase, IRoomObstacle, IRoomCleable
 
     public override void OnComplete()
     {
+        SetMapIcon();
         // (this as IRoomObstacle).ObstacleInit(this);
         currentZip = Instantiate(zipObject, GetCenterCoords(), Quaternion.identity);
         currentZip.Init(this, openDelay);
@@ -81,7 +82,7 @@ public class RoomSuppressor : RoomBase, IRoomObstacle, IRoomCleable
     }
 
     IEnumerator TimeHandler() {
-        while (--timer > 0) {
+        while (timer-- > 0) {
             yield return new WaitForSeconds(1);
             if (timer < 0) yield break;
         }

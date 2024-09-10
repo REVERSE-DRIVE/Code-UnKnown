@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RoomLaser : RoomBase, IRoomCleable
 {
@@ -18,6 +21,16 @@ public class RoomLaser : RoomBase, IRoomCleable
     VirusSuppressorObject suppressor;
     HashSet<Vector2Int> alreadyPos;
     bool isClear = false;
+
+    private void OnDestroy()
+    {
+        foreach (LaserObject laser in lasers)
+        {
+            if (laser == null) continue;
+            Destroy(laser.gameObject);
+        }
+        lasers.Clear();
+    }
 
     public override void OnComplete()
     {
@@ -128,6 +141,8 @@ public class RoomLaser : RoomBase, IRoomCleable
         SetDoor(true);
         TimerManager.Instance.ShowTimer(clearTime);
         TimerManager.Instance.OnFinish += OnTimeEnd;
+
+        NotifyPanel.Instance.Show("초록색 레이저는 억제기를 방해합니다.", 8);
     }
 
     void OnTimeEnd() {

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using EnemyManage;
+﻿using EnemyManage;
 using ObjectPooling;
 using UnityEngine;
 
@@ -12,7 +11,6 @@ public class UndefinedAttackState : EnemyAttackState
     
     public UndefinedAttackState(Enemy enemyBase, EnemyStateMachine<EnemyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
-        _damage = _enemyBase.Stat.GetDamage();
     }
     
     public override void Enter()
@@ -29,7 +27,7 @@ public class UndefinedAttackState : EnemyAttackState
     private void Shot(Vector3 dir)
     {
         var bullet = PoolingManager.Instance.Pop(PoolingType.Projectile_Spining) as SpinProjectile;
-        bullet.Initialize(_enemyBase.transform.position, _enemyBase.Stat.GetDamage(), 5, 3f);
+        bullet.Initialize(_enemyBase.transform.position, _damage, 5, 3f);
         bullet.Shoot(dir);
     }
 }

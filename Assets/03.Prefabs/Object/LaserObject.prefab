@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -829507261
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: 476773070283217340, guid: b84667c434d814c41b96fc1da9f79a29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -175,6 +175,12 @@ MonoBehaviour:
   moveSpeed: 1
   moveDistance: 3
   moveDelay: 3
+  visualRender: {fileID: 8269622752886128688}
+  sprites:
+  - type: 0
+    sprite: {fileID: 476773070283217340, guid: b84667c434d814c41b96fc1da9f79a29, type: 3}
+  - type: 1
+    sprite: {fileID: 1989420068553635743, guid: b84667c434d814c41b96fc1da9f79a29, type: 3}
   filter:
     serializedVersion: 2
     m_Bits: 2560

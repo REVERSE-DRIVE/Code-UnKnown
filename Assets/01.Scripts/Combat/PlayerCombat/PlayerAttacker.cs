@@ -8,9 +8,9 @@ using Random = UnityEngine.Random;
 public class PlayerAttacker : MonoBehaviour
 {
     public event Action OnAttackEvent;
-    
-    [Header("Attack Setting")]
-    [SerializeField] private float _detectDistance = 5.0f;  // 레이의 거리
+
+    [Header("Attack Setting")] [SerializeField]
+    private FeedbackPlayer _attackFeedback;
     [SerializeField] private float _detectDegree = 70f;
     [SerializeField] private int _rayAmount = 10;
     [SerializeField] private LayerMask layerMask;    // 충돌할 레이어 설정
@@ -152,12 +152,13 @@ public class PlayerAttacker : MonoBehaviour
         immediateDef = _player.Stat.defence.GetValue() * 5;
         _player.Stat.defence.AddModifier(immediateDef);
         //_player.Stat.isResist = true;
-        float duration = Mathf.Clamp01(1.5f - _player.additionalStat.dashSpeed.GetValue() * 0.3f) * boundDir.magnitude / 15;
-        _attackEffect.SetTargetAttack(true);
+        float duration = Mathf.Clamp01(1.5f - _player.additionalStat.dashSpeed.GetValue() * 0.45f) * boundDir.magnitude / 15;
+        _attackEffect.SetTargetAttack(true);   
         yield return _player.PlayerController.Dash(currentTargetTrm.position, duration);
         _attackEffect.Play(boundDir.normalized);
         EffectObject effect = PoolingManager.Instance.Pop(_hitVFX) as EffectObject;
-        effect.Initialize(currentTargetTrm.position);
+        if(currentTargetTrm != null)
+            effect.Initialize(currentTargetTrm.position);
         ApplyDamage();
         yield return new WaitForSeconds(0.2f);
         _attackEffect.SetTrailActive(true);
@@ -173,6 +174,7 @@ public class PlayerAttacker : MonoBehaviour
     public void HandleAttackJudge()
     {
         OnAttackEvent?.Invoke();
+        _attackFeedback.PlayFeedback();
         CountCombo();
     }
 

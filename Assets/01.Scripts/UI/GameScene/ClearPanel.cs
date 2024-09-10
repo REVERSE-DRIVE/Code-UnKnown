@@ -33,7 +33,7 @@ public class ClearPanel : UIPanel
     }
 
     [ContextMenu("Open")]
-    public void Open()
+    public override void Open()
     {
         SetCanvasGroup(true);
         SetColorPanels(_defualtColor);
@@ -42,7 +42,7 @@ public class ClearPanel : UIPanel
         
     }
 
-    public void Close()
+    public override void Close()
     {
         _rectTrm.DOAnchorPosY(_defaultYDelta, _moveDuration);
     }

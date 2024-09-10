@@ -30,9 +30,9 @@ public class InGameQuestPanel : MonoBehaviour, IWindowPanel
         _questData = quest;
         _questTitle.text = _quest.title;
         _questDescription.text = _quest.description;
-        _goalText.text = $"{quest.progressValue}%";
+        _goalText.text = $"{quest.completenessValue}%";
         _icon.sprite = _quest.icon;
-        _progressBar.fillAmount = quest.progressValue * 0.01f;
+        _progressBar.fillAmount = quest.completenessValue * 0.01f;
     }
 
     public void Open()

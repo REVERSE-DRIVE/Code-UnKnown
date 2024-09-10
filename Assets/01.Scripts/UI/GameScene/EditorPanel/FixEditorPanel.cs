@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class FixEditorPanel : MonoBehaviour, IWindowPanel
 {
+    public static int leftFixCount = 1;
+    
     [Header("fix Setting")]
     [SerializeField] private int _requireResource;
     [SerializeField] private int _healAmount;
@@ -17,8 +19,10 @@ public class FixEditorPanel : MonoBehaviour, IWindowPanel
     [SerializeField] private TextMeshProUGUI _requireResourceText;
     [SerializeField] private float _openDuration = 0.1f;
     [SerializeField] private float _gaugeFillDuration = 0.2f;
-
-    private bool IsEnough => ResourceManager.Instance.ResourceAmount < _requireResource;
+    [SerializeField] private LockPanel _lockPanel;
+    [SerializeField] private GameObject _notEnoughPanel;
+    
+    private bool IsEnough => ResourceManager.Instance.ResourceAmount >= _requireResource;
     private Vector3 _defaultScale = Vector3.one;
     private Player _player;
     private RectTransform _rectTrm;
@@ -44,15 +48,30 @@ public class FixEditorPanel : MonoBehaviour, IWindowPanel
         _rectTrm.localScale = Vector3.zero;
         ResetGauge();
         if (IsEnough)
+        {
             _requireResourceText.color = Color.white;
-        else 
+            _fixBtn.interactable = true;
+        }
+        else
+        {
             _requireResourceText.color = Color.red;
+            _fixBtn.interactable = false;
+        }
         _requireResourceText.text = _requireResource.ToString();
+        if (leftFixCount <= 0)
+        {
+            _lockPanel.Open();
+        }
+        else
+        {
+            _lockPanel.Close();
+        }
         
         seq.SetUpdate(true);
         seq.Append(_rectTrm.DOScaleX(_defaultScale.x, _openDuration));
         seq.Append(_rectTrm.DOScaleY(_defaultScale.y, _openDuration));
         seq.AppendCallback(RefreshGauge);
+        
     }
 
     private void RefreshGauge()
@@ -79,6 +98,7 @@ public class FixEditorPanel : MonoBehaviour, IWindowPanel
 
     private void SetCanvas(bool value)
     {
+        _notEnoughPanel.SetActive(!IsEnough);
         _canvasGroup.alpha = value ? 1f : 0f;
         _canvasGroup.interactable = value;
         _canvasGroup.blocksRaycasts = value;
@@ -86,8 +106,13 @@ public class FixEditorPanel : MonoBehaviour, IWindowPanel
 
     private void HandleFixPlayer()
     {
-        if (IsEnough) return;
-        
+        if (!IsEnough) return;
+
+        leftFixCount--;
+        if (leftFixCount <= 0)
+        {
+            _lockPanel.Open();
+        }
         ResourceManager.Instance.UseResource(_requireResource);
         _player.HealthCompo.RestoreHealth(_healAmount);
         RefreshGauge();

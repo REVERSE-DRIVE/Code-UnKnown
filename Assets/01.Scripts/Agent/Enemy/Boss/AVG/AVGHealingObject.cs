@@ -21,10 +21,16 @@ public class AVGHealingObject : DestroyableObject
 
     protected void HandleDestroy()
     {
+        if (!isActive) return;
         EffectObject effectObject = PoolingManager.Instance.Pop(_destoryParticle) as EffectObject;
         effectObject.Initialize(transform.position);
         _spriteRenderer.color = Color.red;
+        _bossBase.TakeStrongDamage(100);
+        isActive = false;
+
         effectObject.Play();
+        gameObject.SetActive(false);
+
     }
 
     public void OnCore(AVerG bossBase)
@@ -44,9 +50,6 @@ public class AVGHealingObject : DestroyableObject
 
     public void Destroy()
     {
-        HandleDestroy();
-        isActive = false;
-        _bossBase.TakeStrongDamage(100);
         gameObject.SetActive(false);
     }
 }

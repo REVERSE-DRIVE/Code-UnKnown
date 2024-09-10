@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using Calculator;
 using ObjectManage;
+using ObjectPooling;
 using UnityEngine;
 
-public class JunkFileObject : InteractObject, IDamageable
+public class JunkFileObject : InteractObject, IDamageable, IPoolable
 {
+    [field:SerializeField] public PoolingType type { get; set; }
+    public GameObject ObjectPrefab => gameObject;
     private Rigidbody2D _rigidCompo;
     [SerializeField] protected int _currentHealth;
 
@@ -201,4 +204,9 @@ public class JunkFileObject : InteractObject, IDamageable
     }
     
     public bool GetActive() => _isActive;
+    
+    public void ResetItem()
+    {
+        
+    }
 }

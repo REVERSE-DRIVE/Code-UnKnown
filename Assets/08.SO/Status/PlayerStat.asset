@@ -16,6 +16,10 @@ MonoBehaviour:
     _baseValue: 3
     modifiers: 
     isPercent: 0
+  bonusAtk:
+    _baseValue: 0
+    modifiers: 
+    isPercent: 0
   maxHealth:
     _baseValue: 100
     modifiers: 
@@ -30,6 +34,10 @@ MonoBehaviour:
     isPercent: 0
   defence:
     _baseValue: 1
+    modifiers: 
+    isPercent: 0
+  damageResist:
+    _baseValue: 0
     modifiers: 
     isPercent: 0
   badEffectResistance:

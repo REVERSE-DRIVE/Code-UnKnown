@@ -16,6 +16,7 @@ public class RoomBig : RoomBase
 
     public override void RoomLeave()
     {
+        base.RoomLeave();
         print("RoomLeave RoomBig");
     }
 }

@@ -1,11 +1,13 @@
 ﻿using ObjectPooling;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ObjectManage
 {
     public abstract class EffectObject : MonoBehaviour, ILifeTimeLimited, IPoolable
     {
         [SerializeField] protected bool _playOnSpawn = true;
+        public UnityEvent OnPlayEvent;
         [field: SerializeField] public PoolingType type { get; set; }
         public GameObject ObjectPrefab => gameObject;
         

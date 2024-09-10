@@ -19,6 +19,6 @@ public class PartItem : Item
     {
         base.Interact(data);
         PlayerPartManager.Instance.ChangePart(_playerPartDataSO.partType, _playerPartDataSO);
-        QuestObserver.Instance.CollectTrigger(ItemType.Part, 1);
+        //QuestObserver.Instance.CollectTrigger(ItemType.Part, 1);
     }
 }

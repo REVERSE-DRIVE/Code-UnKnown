@@ -10594,7 +10594,7 @@ ParticleSystem:
     arc:
       value: 360
       mode: 0
-      spread: 0
+      spread: 0.25
       speed:
         serializedVersion: 2
         minMaxState: 0
@@ -14684,6 +14684,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playOnSpawn: 0
+  OnPlayEvent:
+    m_PersistentCalls:
+      m_Calls: []
   <type>k__BackingField: 4
   _lifeTime: 4
   _particles:
