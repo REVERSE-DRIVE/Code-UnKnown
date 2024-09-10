@@ -13,15 +13,19 @@ MonoBehaviour:
   m_Name: InducedStat
   m_EditorClassIdentifier: 
   damage:
-    _baseValue: 40
+    _baseValue: 6
+    modifiers: 
+    isPercent: 0
+  bonusAtk:
+    _baseValue: 0
     modifiers: 
     isPercent: 0
   maxHealth:
-    _baseValue: 500
+    _baseValue: 60
     modifiers: 
     isPercent: 0
   moveSpeed:
-    _baseValue: 50
+    _baseValue: 10
     modifiers: 
     isPercent: 1
   criticalRate:
@@ -29,6 +33,10 @@ MonoBehaviour:
     modifiers: 
     isPercent: 0
   defence:
+    _baseValue: 0
+    modifiers: 
+    isPercent: 0
+  damageResist:
     _baseValue: 0
     modifiers: 
     isPercent: 0
