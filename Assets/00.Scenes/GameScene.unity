@@ -4742,6 +4742,7 @@ RectTransform:
   - {fileID: 325271705}
   - {fileID: 1341116552}
   - {fileID: 1927222284}
+  - {fileID: 1052185732}
   m_Father: {fileID: 319232986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -11281,6 +11282,120 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047865509}
   m_CullTransparentMesh: 1
+--- !u!1001 &1052185731
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 458150172}
+    m_Modifications:
+    - target: {fileID: 996741282925914115, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_Name
+      value: JoyStick
+      objectReference: {fileID: 0}
+    - target: {fileID: 996741282925914115, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770479711141075091, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -872564384, guid: 9cdd21e267ee7e04c8f8d66e0e64bf4e, type: 3}
+    - target: {fileID: 3624162793286287737, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1903794929, guid: 9cdd21e267ee7e04c8f8d66e0e64bf4e, type: 3}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+--- !u!224 &1052185732 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5246583241041637811, guid: e6dcc3e617b09e54b90c5cf9c6d4f245, type: 3}
+  m_PrefabInstance: {fileID: 1052185731}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1068565316 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2040883092136430697, guid: 6bb0ea6743f01614085dc67c554d9ee7, type: 3}
@@ -11798,6 +11913,10 @@ PrefabInstance:
     - target: {fileID: 7020447142687696442, guid: 01d5cf980528f504ab3d327263f2e135, type: 3}
       propertyPath: m_Name
       value: JoyStick
+      objectReference: {fileID: 0}
+    - target: {fileID: 7020447142687696442, guid: 01d5cf980528f504ab3d327263f2e135, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
