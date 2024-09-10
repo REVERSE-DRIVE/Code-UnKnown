@@ -2,7 +2,7 @@ name: Automated Build ⭐
 
 on:
   push: # Master 브랜치에 Push가 되면 빌드가 되도록 동작시킵니다.
-    branches: [ main ]
+    branches: [ base ]
     
 jobs:
   buildWindows:
@@ -32,7 +32,7 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          targetPlatform: StandaloneWindows64
+          targetPlatform: Android
 
       # Output
       - uses: actions/upload-artifact@v4
