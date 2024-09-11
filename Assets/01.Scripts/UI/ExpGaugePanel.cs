@@ -35,7 +35,7 @@ public class ExpGaugePanel : MonoBehaviour
         currentExp = Mathf.Clamp(currentExp, 0, max);
         float ratio = (float)currentExp / max;
 
-        _expTmp.text = $"{((int)(ratio * 100)).ToString()}%";
+        _expTmp.text = $"{(Mathf.Clamp((int)(ratio * 100),0, 100)).ToString()}%";
         
         _seq = DOTween.Sequence();
         _seq.Append(_gaugeFill.DOFillAmount(ratio, _duration).SetUpdate(true));
