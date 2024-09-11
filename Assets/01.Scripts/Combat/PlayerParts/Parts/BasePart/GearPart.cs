@@ -6,9 +6,9 @@ namespace PlayerPartsManage
     {
         private SpriteRenderer _spriteRenderer;
 
-        protected override void Awake()
+        public override void Init()
         {
-            base.Awake();
+            base.Init();
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 

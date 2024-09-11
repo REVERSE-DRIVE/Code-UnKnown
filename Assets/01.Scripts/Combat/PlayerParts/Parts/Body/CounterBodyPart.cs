@@ -13,9 +13,9 @@ public class CounterBodyPart : PlayerPart
     {
     }
 
-    protected override void Awake()
+    public override void Init()
     {
-        base.Awake();
+        base.Init();
         _colliders = new Collider2D[10];
     }
 

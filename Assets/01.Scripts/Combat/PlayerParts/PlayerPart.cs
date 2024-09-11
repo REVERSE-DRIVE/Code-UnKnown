@@ -1,4 +1,5 @@
 using System;
+using CombatSkillManage;
 using UnityEngine;
 
 namespace PlayerPartsManage
@@ -7,10 +8,12 @@ namespace PlayerPartsManage
     {
         [SerializeField] protected Player _owner;
         [SerializeField] protected PlayerPartDataSO _data;
+        protected PlayerSkillController playerSkillController;
 
-        protected virtual void Awake()
+        public virtual void Init()
         {
             _owner = PlayerManager.Instance.player;
+            playerSkillController = _owner.transform.GetChild(5).GetComponent<PlayerSkillController>();
         }
 
 
