@@ -12,6 +12,7 @@ public class ItemDropManager : MonoSingleton<ItemDropManager>
 
     public Item DropItem(ItemType type, int id, Vector2 position)
     {
+        if (type == ItemType.None) return null;
         ItemSO itemSO = FindItemSo(type, id);
         Item item = PoolingManager.Instance.Pop((PoolingType)(int)type) as Item;
         item.SetItem(itemSO);
@@ -21,6 +22,7 @@ public class ItemDropManager : MonoSingleton<ItemDropManager>
     
     public Item DropItem(ItemType type, int id, Vector2 startPosition, Vector2 endPosition)
     {
+        if (type == ItemType.None) return null;
         ItemSO itemSO = FindItemSo(type, id);
         Item item = PoolingManager.Instance.Pop((PoolingType)(int)type) as Item;
         item.SetItem(itemSO);

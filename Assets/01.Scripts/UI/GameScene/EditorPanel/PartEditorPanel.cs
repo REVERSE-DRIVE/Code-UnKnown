@@ -39,6 +39,7 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
 
     private void Update()
     {
+        if (!_canvasGroup.interactable) return;
         if (_isEnough)
             return;
         
