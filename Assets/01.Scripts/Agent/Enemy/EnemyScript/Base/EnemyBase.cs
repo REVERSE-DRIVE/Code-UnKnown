@@ -36,6 +36,8 @@ public class EnemyBase : Enemy, IPoolable
         isInitEnd = false;
     }
     
+    
+    
     public virtual void Start()
     {
         Init();

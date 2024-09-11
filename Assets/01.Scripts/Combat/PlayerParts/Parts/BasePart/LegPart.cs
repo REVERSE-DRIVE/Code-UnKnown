@@ -12,8 +12,6 @@ namespace PlayerPartsManage
 
         public override void OnMount()
         {
-            Debug.Log(playerSkillController);
-            Debug.Log("daddds"+_skill);
             playerSkillController.ChangeSkill(_skill);
         }
 

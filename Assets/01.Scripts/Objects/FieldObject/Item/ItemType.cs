@@ -4,7 +4,8 @@
     {
         Weapon = 10,
         Resource = 11,
-        Part = 26
+        Part = 26,
+        None = 0
     }
 }
 
