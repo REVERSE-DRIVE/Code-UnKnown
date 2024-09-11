@@ -45,6 +45,7 @@ namespace PlayerPartsManage
             UnMountTrigger(type);
             Destroy(partList[(int)type].gameObject);
             partList[(int)type] = Instantiate(anotherPart.partPrefab, _visualTrm);
+            partList[(int)type].Init();
             MountTrigger(type);
             if (type == PartType.Body)
             {
