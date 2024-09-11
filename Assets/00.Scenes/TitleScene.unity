@@ -7476,6 +7476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startButton: {fileID: 531453716}
+  _quitButton: {fileID: 1589663327}
   _duration: 0.2
 --- !u!1 &1772963732
 GameObject:

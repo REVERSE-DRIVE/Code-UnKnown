@@ -21,7 +21,7 @@ public class AnalyzePlayTime : MonoBehaviour
         Application.wantsToQuit += WantsToQuit;
     }
 
-    private bool WantsToQuit()
+    public bool WantsToQuit()
     {
         if (token == null|| processSave) { // 한번 더 누르면 급한거라서 그냥 끄게 해드림
             return true; // 아무것도 못함
