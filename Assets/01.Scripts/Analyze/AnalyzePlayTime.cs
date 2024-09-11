@@ -9,6 +9,8 @@ public class AnalyzePlayTime : MonoBehaviour
     string token;
     bool needDispose = false;
     bool processSave = false;
+    int autoSendTime = 60 * 5; // 5분
+
 
     AnalyzePlayTimeScene scenePlaytime;
 
@@ -45,6 +47,8 @@ public class AnalyzePlayTime : MonoBehaviour
     private void Start() {
         scenePlaytime = GetComponent<AnalyzePlayTimeScene>();
 
+        StartCoroutine(AutoSaveHandler());
+
         if (!AnalyzeManager.Registered) { // 등록이 안되어있음
             return;
         }
@@ -68,5 +72,26 @@ public class AnalyzePlayTime : MonoBehaviour
             await AnalyzeManager.SendPlayTime(sceneTime.token, sceneTime.scene);
 
         Application.Quit();
+    }
+
+    IEnumerator AutoSaveHandler() {
+        while (true) {
+            yield return new WaitForSecondsRealtime(autoSendTime);
+            if (token == null) continue;
+
+            AutoSave();
+        }
+    }
+
+    async void AutoSave() {
+        processSave = true;
+            
+        string temp = token;
+        token = null;
+
+        await AnalyzeManager.SendPlayTime(temp);
+
+        processSave = false;
+        LoadTimeToken();
     }
 }
