@@ -36,7 +36,7 @@ namespace EnemyManage
             _rangeTrm = _bossAVGBase._yellowAttackRangeTrm;
             _rangeRenderer = _bossAVGBase._yellowRangeRenderer;
             _rangeMaterial = _bossAVGBase._rangeMaterial;
-            _playerLayer = _bossAVGBase.PlayerLayer;
+            _playerLayer = _bossAVGBase._yellowAttackLayer;
             _attackAmount = _bossAVGBase._attackAmount;
             _attackInterval = _bossAVGBase._attackInterval;
             _selfHitCount = 0;
@@ -107,6 +107,11 @@ namespace EnemyManage
             {
                 health.TakeDamage(_bossAVGBase._yellowBurstDamage);
             }
+            
+            if (hit.TryGetComponent(out IStrongDamageable strongHealth))
+            {
+                strongHealth.TakeStrongDamage(_bossAVGBase._yellowBurstDamage);
+            }
 
             if (hit.TryGetComponent(out AgentMovement movement))
             {
@@ -124,6 +129,8 @@ namespace EnemyManage
         public override void CustomTrigger()
         {
             _selfHitCount++;
+            Debug.Log("여기서 스턴이 먹어야되는데???");
+            Debug.Log($"<color=yellow>Self Hit Count : {_selfHitCount}</color>");
             if (_selfHitCount >= _selfHitLimit)
             {
                 _stateMachine.ChangeState(AVGStateEnum.Stun);
