@@ -6008,7 +6008,7 @@ MonoBehaviour:
   _credirHandle: {fileID: 896403884}
   _startYDelta: -800
   _endYDelta: 3000
-  _duration: 10
+  _duration: 20
 --- !u!1 &1450635484
 GameObject:
   m_ObjectHideFlags: 0
