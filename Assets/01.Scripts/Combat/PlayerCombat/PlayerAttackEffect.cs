@@ -10,6 +10,9 @@ public class PlayerAttackEffect : MonoBehaviour
     [SerializeField] private Transform _targetMarkTrm;
     [SerializeField] private Transform _rangeTrm;
     private SpriteRenderer _rangeRenderer;
+    private Material _rangeMaterial;
+    private int _attackModeHash;
+    
     [SerializeField] private LineRenderer _targetingLine;
     [SerializeField] private float _impactSize = 0.6f;
     private TrailRenderer _trailRenderer;
@@ -22,6 +25,8 @@ public class PlayerAttackEffect : MonoBehaviour
     {
         _trailRenderer = GetComponent<TrailRenderer>();
         _rangeRenderer = _rangeTrm.GetComponent<SpriteRenderer>();
+        _rangeMaterial = _rangeRenderer.material;
+        _attackModeHash = Shader.PropertyToID("_IsAttackMode");
     }
 
     public void Play(Vector2 direction)
@@ -58,6 +63,7 @@ public class PlayerAttackEffect : MonoBehaviour
     public void SetTargetAttack(bool value)
     {
         _targetMark.SetAttack(value);
+        
     }
 
     public void SetStrongAttackMode(bool value)
@@ -72,7 +78,7 @@ public class PlayerAttackEffect : MonoBehaviour
 
     public void SetRangeActive(bool value)
     {
-        _rangeRenderer.enabled = value;
+        _rangeMaterial.SetInt(_attackModeHash, value ? 0 : 1);
         //_rangeTrm.gameObject.SetActive(value);
     }
 
