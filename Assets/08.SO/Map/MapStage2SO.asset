@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b278b3d98645bcc80825559fdcf992, type: 3}
+  m_Name: MapStage2SO
+  m_EditorClassIdentifier: 
+  rooms:
+  - room: {fileID: 7687478580329456756, guid: 4c3a20b452ed5e348baaaeb685f73e12, type: 3}
+    amount: 3
+  - room: {fileID: 8520024686563421952, guid: 126e83371873bf142a3179ecd69b9597, type: 3}
+    amount: 1
+  - room: {fileID: 1607929063334780051, guid: 0a93659c4d68dad4f81b4a934e2a135c, type: 3}
+    amount: 2
+  - room: {fileID: 146851567956581514, guid: fc0517eb59515f5438264990d3f91e2e, type: 3}
+    amount: 1
+  - room: {fileID: 5051802746313857357, guid: 4b37985c97b427741ae160a195bee39c, type: 3}
+    amount: 1
+  - room: {fileID: 3974273704559402096, guid: 0133c399024db3545a814cdde72ed195, type: 3}
+    amount: 1
+  - room: {fileID: 3836284588945794361, guid: fa5d357a0d893b640bbeff0535324a5b, type: 3}
+    amount: 1
+  - room: {fileID: 3098612554976876693, guid: f76bd64ed5e82a24eadfed858224adef, type: 3}
+    amount: 2
+  spawnPointRoom: {fileID: 7687478580329456756, guid: 4c3a20b452ed5e348baaaeb685f73e12, type: 3}
+  <BridgeSize>k__BackingField: {x: 3, y: 12}
+  <BossOption>k__BackingField: {fileID: 11400000, guid: d4b3665e52bae924182f7540ccf5f86d, type: 2}
+  <WallTile>k__BackingField: {fileID: 11400000, guid: c0be9799503d3434b88c5ef88ccf2579, type: 2}
+  <BridgeTile>k__BackingField: {fileID: 11400000, guid: fa762cb384e0ed04c9fe767e55ece427, type: 2}

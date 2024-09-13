@@ -8,6 +8,7 @@ public class RoomTracker : RoomBase, IRoomCleable
     [SerializeField] JunkFileObject junkPrefab;
     [SerializeField] HoleObject holePrefab;
     [SerializeField] int clearTime = 60;
+    [SerializeField] float holeSpace = 3f;
 
     List<HoleObject> holes = new List<HoleObject>();
     List<JunkFileObject> junks;
@@ -62,7 +63,7 @@ public class RoomTracker : RoomBase, IRoomCleable
     }
 
     void HoleSpawn(Vector2Int pos, Vector2 spacing, MapGenerator.Direction dir) {
-        Vector3 coords = MapManager.Instance.GetWorldPosByCell(pos) + (Vector3)spacing * 3;
+        Vector3 coords = MapManager.Instance.GetWorldPosByCell(pos) + (Vector3)spacing * holeSpace;
         
         float deg = 0;
         switch (dir)

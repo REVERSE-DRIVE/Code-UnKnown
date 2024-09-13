@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class AnalyzeSingleton : MonoBehaviour
 {
-    static AnalyzeSingleton instance;
+    public static AnalyzeSingleton Instance { get; private set; }
 
     private void Awake() {
-        if (instance) {
+        if (Instance) {
             Destroy(gameObject);
             return;
         }
 
         DontDestroyOnLoad(gameObject);
+        Instance = this;
     }
 
     [ContextMenu("Clear Save")]

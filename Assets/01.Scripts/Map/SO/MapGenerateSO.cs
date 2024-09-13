@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 [System.Serializable]
 struct RoomObject {
@@ -16,6 +17,8 @@ public class MapGenerateSO : ScriptableObject
     [SerializeField] RoomBase spawnPointRoom;
     [field: SerializeField] public Vector2Int BridgeSize { get; private set; }
     [field: SerializeField] public BossRoomSO BossOption { get; private set; } // 보스 옵션이 null이면 생성 안하는거임
+    [field: SerializeField] public TileBase WallTile { get; private set; }
+    [field: SerializeField] public TileBase BridgeTile { get; private set; }
 
     public RoomBase[] GetRandomRooms() {
         int count = rooms.Sum(v => v.amount);

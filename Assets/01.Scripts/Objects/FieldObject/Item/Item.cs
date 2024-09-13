@@ -20,7 +20,7 @@ namespace ItemManage
         
         protected bool _isInteracted;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _defaultMaterial = _visualRenderer.material;
         }

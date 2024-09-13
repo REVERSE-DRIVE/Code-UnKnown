@@ -51,6 +51,7 @@ namespace EnemyManage
         [SerializeField] internal float _attackInterval = 1f;
         [SerializeField] internal int _attackAmount;
         [SerializeField] internal Transform _yellowAttackRangeTrm;
+        [SerializeField] internal LayerMask _yellowAttackLayer;
         internal SpriteRenderer _yellowRangeRenderer;
         internal Material _rangeMaterial;
         [SerializeField] internal bool _isResist;
@@ -105,6 +106,10 @@ namespace EnemyManage
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StateMachine.ChangeState(AVGStateEnum.Dead, true);
+            }
             StateMachine.CurrentState.UpdateState();
         }
 
