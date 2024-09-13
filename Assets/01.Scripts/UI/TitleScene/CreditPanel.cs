@@ -22,9 +22,6 @@ public class CreditPanel : MonoBehaviour, IWindowPanel
 
     private void HandleSkip()
     {
-        if(_tween != null)
-            _tween.Kill();
-        
         Close();
     }
 
@@ -39,6 +36,8 @@ public class CreditPanel : MonoBehaviour, IWindowPanel
 
     public void Close()
     {
+        _credirHandle.DOKill();
+
         _canvasGroup.alpha = 0f;
         _canvasGroup.interactable = false;
         _canvasGroup.blocksRaycasts = false;
@@ -48,7 +47,7 @@ public class CreditPanel : MonoBehaviour, IWindowPanel
     public void Play()
     {
         _credirHandle.anchoredPosition = new Vector2(0, _startYDelta);
-        _tween = _credirHandle.DOAnchorPosY(_endYDelta, _duration).OnComplete(Close);
+        _credirHandle.DOAnchorPosY(_endYDelta, _duration).OnComplete(Close);
     }
     
 }

@@ -14,6 +14,7 @@ public class ZipSuppressorObject : InteractObject
     [Header("Visual Setting")]
     [SerializeField] private ParticleSystem _openParticle;
     [SerializeField] private Material _dissolveMaterial;
+    [SerializeField] Transform _progressBar;
 
     [Header("Reward Setting")]
     [SerializeField] Vector2Int rewardAmount = new(1, 3);
@@ -23,12 +24,13 @@ public class ZipSuppressorObject : InteractObject
     bool isActive = false;
     [SerializeField] Animator anim;
 
+    int originTime;
     int delayTime;
     RoomSuppressor room;
 
     public void Init(RoomSuppressor _room, int time) {
         room = _room;
-        delayTime = time;
+        originTime = delayTime = time;
     }
 
     public override void Interact(InteractData data)
@@ -39,13 +41,14 @@ public class ZipSuppressorObject : InteractObject
         isActive = true;
 
         // 시작
-        timer.gameObject.SetActive(true);
+        // timer.gameObject.SetActive(true);
         StartCoroutine(TimeHandler());
     }
 
     IEnumerator TimeHandler() {
         do {
-            timer.text = $"{delayTime / 60}:{delayTime % 60:D2}";
+            // timer.text = $"{delayTime / 60}:{delayTime % 60:D2}";
+            _progressBar.localScale = new Vector3((float)delayTime / originTime, 1, 1);
             yield return new WaitForSeconds(1);
         } while (--delayTime > 0);
     }
@@ -58,6 +61,7 @@ public class ZipSuppressorObject : InteractObject
     }
 
     IEnumerator OpenEffect() {
+        _progressBar.localScale = Vector3.zero;
         anim.SetTrigger(openHash);
         yield return new WaitForSeconds(0.7f);
         
