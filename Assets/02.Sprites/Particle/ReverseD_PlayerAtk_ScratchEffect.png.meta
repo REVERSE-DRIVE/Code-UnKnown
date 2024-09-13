@@ -127,7 +127,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -148,7 +148,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -169,7 +169,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -181,6 +181,69 @@ TextureImporter:
       bones: []
       spriteID: 6f539f4e96b130f4a8b235b58d359995
       internalID: 950466037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReverseD_PlayerAtk_ScratchEffect_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3337a535ef096c54c830afa79e2a7a07
+      internalID: 1500350060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReverseD_PlayerAtk_ScratchEffect_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02281f0c91a73584d81509d4bf87d9a1
+      internalID: 1560320947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReverseD_PlayerAtk_ScratchEffect_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98f818ab42ec63d479a612d3b6761ee8
+      internalID: -494882583
       vertices: []
       indices: 
       edges: []
@@ -199,6 +262,9 @@ TextureImporter:
       ReverseD_PlayerAtk_ScratchEffect_0: -214630776
       ReverseD_PlayerAtk_ScratchEffect_1: 286639316
       ReverseD_PlayerAtk_ScratchEffect_2: 950466037
+      ReverseD_PlayerAtk_ScratchEffect_3: 1500350060
+      ReverseD_PlayerAtk_ScratchEffect_4: 1560320947
+      ReverseD_PlayerAtk_ScratchEffect_5: -494882583
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

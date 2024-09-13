@@ -49,6 +49,9 @@ MonoBehaviour:
   - {fileID: -214630776, guid: e1393c44c7435d24a9871f97b54a63e2, type: 3}
   - {fileID: 286639316, guid: e1393c44c7435d24a9871f97b54a63e2, type: 3}
   - {fileID: 950466037, guid: e1393c44c7435d24a9871f97b54a63e2, type: 3}
+  - {fileID: 1500350060, guid: e1393c44c7435d24a9871f97b54a63e2, type: 3}
+  - {fileID: 1560320947, guid: e1393c44c7435d24a9871f97b54a63e2, type: 3}
+  - {fileID: -494882583, guid: e1393c44c7435d24a9871f97b54a63e2, type: 3}
   _duration: 0.3
   <type>k__BackingField: 32
 --- !u!1 &5383245579927424235
