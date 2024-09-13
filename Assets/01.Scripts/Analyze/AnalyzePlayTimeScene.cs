@@ -16,6 +16,7 @@ public class AnalyzePlayTimeScene : MonoBehaviour
     string lastScene;
     string token;
     bool tokenLoad = false;
+    int autoSendTime = 60 * 10; // 10분
 
     private void Awake() {
         SceneManager.activeSceneChanged += OnChangeScene;
@@ -24,6 +25,15 @@ public class AnalyzePlayTimeScene : MonoBehaviour
 
     private void Start() {
         if (AnalyzeManager.Registered) {
+            RegisterCurrentScene();
+        }
+
+        StartCoroutine(AutoSaveHandler());
+    }
+
+    IEnumerator AutoSaveHandler() {
+        while (true) {
+            yield return new WaitForSecondsRealtime(autoSendTime);
             RegisterCurrentScene();
         }
     }

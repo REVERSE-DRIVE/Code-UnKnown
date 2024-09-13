@@ -33,8 +33,8 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] Tilemap groundTile;
     [SerializeField] Tilemap doorTile;
 
-    [SerializeField] TileBase wallBase;
-    [SerializeField] TileBase bridgeBase;
+    TileBase wallBase;
+    TileBase bridgeBase;
     [SerializeField] TileBase doorBase;
 
     Vector2Int bridgeSize;
@@ -60,6 +60,8 @@ public class MapGenerator : MonoBehaviour
     int functionCall;
 
     public void StartGenerate() {
+        bridgeBase = option.BridgeTile;
+        wallBase = option.WallTile;
         createRooms = option.GetRandomRooms();
         bridgeSize = option.BridgeSize;
 

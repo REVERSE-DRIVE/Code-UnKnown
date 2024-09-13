@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5c1acac203078a09e75a2e92bdd733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundTile: {fileID: 11400000, guid: 87177c553e013e849a8d8165345adbd6, type: 2}
+  groundTile: {fileID: 11400000, guid: 46ac55a17be53074f87a9777cd93cedc, type: 2}
   defaultDoor: 0
   sizeField:
     min: 0
@@ -140,3 +140,4 @@ MonoBehaviour:
   junkPrefab: {fileID: 3428563939568420150, guid: e3a8490442d4c61468443acb6fa22772, type: 3}
   holePrefab: {fileID: 4586385090210889974, guid: 62f96fcc5c97fb36abb7ecea12685bd8, type: 3}
   clearTime: 60
+  holeSpace: 3
