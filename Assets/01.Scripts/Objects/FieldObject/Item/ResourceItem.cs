@@ -9,10 +9,19 @@ public class ResourceItem : Item
     [SerializeField] private ResourceRank _resourceRank;
     [SerializeField] private float _speed;
     
+    private BoxCollider2D _collider;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _collider = GetComponent<BoxCollider2D>();
+    }
+
     public override void SetItem(ItemSO itemSO)
     {
         base.SetItem(itemSO);
         _resourceRank = itemSO.resourceRank;
+        _collider.enabled = true;
     }
 
     private void Update()
@@ -37,13 +46,15 @@ public class ResourceItem : Item
         if (other.CompareTag("Player"))
         {
             _isInteracted = true;
+            _collider.enabled = false;
             Vector3 targetPos = PlayerManager.Instance.player.transform.position;
+            
             transform.DOJump(targetPos + new Vector3(0, 1, 0), 1, 1, 0.5f).OnComplete(() =>
             {
+                PoolingManager.Instance.Push(this);
                 ResourceManager.Instance.AddResource(ItemSO.resourceValue);
                 LevelManager.Instance.ApplyExp(ItemSO.resourceValue);
                 //QuestObserver.Instance.CollectTrigger(ItemType.Resource, 1);
-                PoolingManager.Instance.Push(this);
                 OnInteractEvent?.Invoke();
             });
         }

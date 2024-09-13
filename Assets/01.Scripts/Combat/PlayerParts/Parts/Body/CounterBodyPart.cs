@@ -6,7 +6,8 @@ public class CounterBodyPart : PlayerPart
 {
     [SerializeField] private LayerMask _whatIsEnemy;
     [SerializeField] private ParticleSystem _explosion;
-    [SerializeField] private Transform _shockWave;
+    [SerializeField] private ParticleSystem _shockWave;
+    [SerializeField] private ParticleSystem _shield;
     private int count = 0;
     private Collider2D[] _colliders;
     public CounterBodyPart(Player owner) : base(owner)
@@ -37,16 +38,9 @@ public class CounterBodyPart : PlayerPart
         }
         if (count >= 3)
         {
-            
-            if (DOTween.IsTweening(_shockWave))
-            {
-                DOTween.Kill(_shockWave);
-            }
-            Instantiate(_explosion, _owner.transform.position, Quaternion.identity);
-            _shockWave.DOPunchScale(new Vector3(2f, 2f, 1), 0.5f, 1).OnComplete(() =>
-            {
-                _shockWave.transform.localScale = Vector3.zero;
-            });
+            _explosion.Play();
+            _shockWave.Play();
+            _shield.Play();
             CameraManager.Instance.Shake(5, 0.5f);
             int enemyCount = 
                 Physics2D.OverlapBoxNonAlloc(_owner.transform.position, new Vector2(3, 3), 0, _colliders, _whatIsEnemy);
@@ -63,6 +57,7 @@ public class CounterBodyPart : PlayerPart
     
     private void OnDrawGizmos()
     {
+        if (_owner == null) return;
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(_owner.transform.position, new Vector3(3, 3, 0));
     }
