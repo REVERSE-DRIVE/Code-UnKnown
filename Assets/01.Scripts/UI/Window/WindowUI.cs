@@ -62,7 +62,7 @@ public class WindowUI : MonoBehaviour, IPointerDownHandler
         //canvasGroup.alpha = 1;
         //canvasGroup.blocksRaycasts = true;
         //canvasGroup.interactable = true;
-        PlayAnimation(1);
+        PlayAnimation(0.7f);
         OnPointerDown(null, false); // 여는 동시에 맨앞
         OnFocus?.Invoke(); // focus 이벤트 무조건 함
     }
