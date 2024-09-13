@@ -185,7 +185,9 @@ public class PlayerAttacker : MonoBehaviour
             strongHit.TakeStrongDamage(10);
         }
         int damage = CalcDamage();
-        
+        ScratchEffectObject effect = PoolingManager.Instance.Pop(PoolingType.ScratchObject) as ScratchEffectObject;
+        effect.SetPostion((Vector2)transform.position + Random.insideUnitCircle);
+
         _currentTarget.TakeDamage(damage);
 
     }

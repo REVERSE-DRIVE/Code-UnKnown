@@ -7,7 +7,7 @@ public class PlayerHitEffectFeedback : Feedback
     
     public override void CreateFeedback()
     {
-        VolumeEffectManager.Instance.SetChromaticAb(1, 0.1f, 0.05f);
+        VolumeEffectManager.Instance.SetChromaticAb(0.6f, 0.1f, 0.05f);
         CameraManager.Instance.Shake(_shakePower, _shakeDuration);
     }
 
