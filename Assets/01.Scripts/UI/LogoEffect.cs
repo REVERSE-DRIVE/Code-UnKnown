@@ -7,7 +7,7 @@ using DG.Tweening;
 public class LogoEffect : MonoBehaviour
 {
     [SerializeField] private IntroManager introManager;
-    [SerializeField] private Renderer2DData renderer2DData;
+    [field:SerializeField] public Renderer2DData renderer2DData { get; private set; }
     [SerializeField] private Material screenMaterial;
     [SerializeField] private Image[] logoImages;
     [SerializeField] private Ease logoMoveEase;
@@ -55,7 +55,6 @@ public class LogoEffect : MonoBehaviour
         MaterialSet(35, 43, 1);
         
         yield return new WaitForSeconds(0.15f);
-        // 이후 씬 전환
     }
     
     /**

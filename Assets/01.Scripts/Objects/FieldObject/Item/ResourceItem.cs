@@ -1,7 +1,5 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using ItemManage;
-using QuestManage;
 using UnityEngine;
 
 public class ResourceItem : Item
