@@ -55,7 +55,6 @@ public class LogoEffect : MonoBehaviour
         MaterialSet(35, 43, 1);
         
         yield return new WaitForSeconds(0.15f);
-        // 이후 씬 전환
     }
     
     /**
