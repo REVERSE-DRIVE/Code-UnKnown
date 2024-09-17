@@ -16,6 +16,9 @@ public class PillPiece : Enemy
     public PillDirection Direction { get; private set; }
     public PillBody Body { get; private set; }
 
+    public float disbandBack = 0.2f; // 해체될때 뒤로 얼마나 뺄건지
+    public float disbandDuration = 0.3f; // 해체 뒤로 뺄때 걸리는 시간
+
     protected override void Awake()
     {
         base.Awake();

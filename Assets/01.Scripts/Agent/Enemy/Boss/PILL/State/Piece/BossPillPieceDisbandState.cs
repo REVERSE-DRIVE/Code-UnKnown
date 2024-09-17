@@ -16,6 +16,8 @@ namespace EnemyManage {
         {
             base.Enter();
 
+            PillPiece agent = _enemyBase as PillPiece;
+
             // 루트 변경
             _enemyBase.transform.SetParent(null, true);
 
@@ -23,9 +25,9 @@ namespace EnemyManage {
 
             // 조금뒤로 빼기
             Vector3 movePos = _enemyBase.transform.position;
-            movePos += _enemyBase.transform.up * 0.2f;
+            movePos += _enemyBase.transform.up * agent.disbandBack;
 
-            _sequence.Append(_enemyBase.transform.DOMove(movePos, 0.3f).SetEase(Ease.Linear));
+            _sequence.Append(_enemyBase.transform.DOMove(movePos, agent.disbandDuration).SetEase(Ease.Linear));
             _sequence.AppendInterval(0.3f);
 
             // 방향 원래로
