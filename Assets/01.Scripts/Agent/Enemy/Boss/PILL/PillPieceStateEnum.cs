@@ -1,4 +1,6 @@
 public enum PillPieceStateEnum {
     Idle,
-    TargetFollow
+    TargetFollow,
+    Disband, // 해제
+    Equip //장착
 }

@@ -4,11 +4,17 @@ using System.Collections.Generic;
 using EnemyManage;
 using UnityEngine;
 
+public enum PillDirection {
+    Left,
+    Right
+}
+
 public class PillPiece : Enemy
 {
     public EnemyStateMachine<PillPieceStateEnum> StateMachine { get; private set; }
 
-    PillBody _body;
+    public PillDirection Direction { get; private set; }
+    public PillBody Body { get; private set; }
 
     protected override void Awake()
     {
@@ -19,16 +25,17 @@ public class PillPiece : Enemy
     }
 
     private void Start() {
-        StateMachine.Initialize(PillPieceStateEnum.Idle, this);
+        StateMachine.Initialize(PillPieceStateEnum.Disband, this);
     }
 
     private void Update() {
         StateMachine.CurrentState.UpdateState();
     }
 
-    public void Init(PillBody body, Transform target) {
-        _body = body;
+    public void Init(PillBody body, Transform target, PillDirection dir) {
+        Body = body;
         targetTrm = target;
+        Direction = dir;
     }
 
     protected void SetStateEnum()
