@@ -231,7 +231,7 @@ MonoBehaviour:
     m_Bits: 2048
   <RendererCompo>k__BackingField: {fileID: 7961626618461309317}
   runAwayDistance: 0
-  attackDistance: 2
+  attackDistance: 2.5
   chaseDistance: 0
   attackCooldown: 0
   lastAttackTime: 0
@@ -241,6 +241,7 @@ MonoBehaviour:
   rushCooltime: 6
   rushDuration: 1
   rushSpeed: 8
+  rushDamage: 10
 --- !u!114 &1238865915867848094
 MonoBehaviour:
   m_ObjectHideFlags: 0

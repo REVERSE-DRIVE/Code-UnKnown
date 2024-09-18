@@ -10,6 +10,7 @@ namespace EnemyManage {
             agent = enemyBase as PillPiece;
         }
         
+        bool alreadyHit;
         Vector3 rushDir;
         float timer;
 
@@ -18,6 +19,7 @@ namespace EnemyManage {
             base.Enter();
 
             timer = 0;
+            alreadyHit = false;
 
             // 방향 정하기
             rushDir = (agent.targetTrm.position - agent.transform.position).normalized;
@@ -40,6 +42,13 @@ namespace EnemyManage {
         {
             base.Exit();
             agent.Stat.RemoveModifier(StatType.MoveSpeed, agent.rushSpeed);
+        }
+    
+        // enter로 하면 이미 부딪혀도 이벤트 발생 안함
+        public void OnAgentCollisionStay(Collision2D collider) {
+            if (alreadyHit || collider.transform != agent.targetTrm || !collider.transform.TryGetComponent(out Agent target)) return;
+            alreadyHit = true;
+            target.HealthCompo.TakeDamage(agent.rushDamage);
         }
     }
 }

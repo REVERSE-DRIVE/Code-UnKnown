@@ -22,6 +22,7 @@ public class PillPiece : Enemy
     public float rushCooltime = 6f;
     public float rushDuration = 1.5f; // 3초간 돌진~~~
     public int rushSpeed = 8; // 돌진할때 속도
+    public int rushDamage = 10;
 
     protected override void Awake()
     {
@@ -68,4 +69,10 @@ public class PillPiece : Enemy
     {
 
     }    
+    
+    private void OnCollisionStay2D(Collision2D other) {
+        if (StateMachine.CurrentState is BossPillPieceTargetRushState nowState) {
+            nowState.OnAgentCollisionStay(other);
+        }
+    }
 }
