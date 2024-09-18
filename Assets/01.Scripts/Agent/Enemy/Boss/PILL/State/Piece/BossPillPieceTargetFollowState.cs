@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace EnemyManage {
-    public class BossPillPieceTargetFollowState : EnemyState<PillPieceStateEnum>
+    public class BossPillPieceTargetFollowState : BossPillPieceLookState
     {
         PillPiece _agent;
         float rushTime = 0;

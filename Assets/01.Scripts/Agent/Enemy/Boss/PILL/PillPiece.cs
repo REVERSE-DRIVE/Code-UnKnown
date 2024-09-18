@@ -23,6 +23,7 @@ public class PillPiece : Enemy
     public float rushDuration = 1.5f; // 3초간 돌진~~~
     public int rushSpeed = 8; // 돌진할때 속도
     public int rushDamage = 10;
+    public float lookSpeed = 10;
 
     protected override void Awake()
     {
