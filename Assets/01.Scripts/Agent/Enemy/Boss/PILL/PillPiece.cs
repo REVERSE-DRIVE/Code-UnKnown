@@ -24,6 +24,10 @@ public class PillPiece : Enemy
     public int rushSpeed = 8; // 돌진할때 속도
     public int rushDamage = 10;
     public float lookSpeed = 10;
+    public float healBulletFireCooltime = 1f; // 치유액 발사 쿨탐
+    public float cureAttackDuration = 7f;
+    public CureProjectile cureBulletPrefab;
+    public Transform firePos;
 
     protected override void Awake()
     {
@@ -68,7 +72,7 @@ public class PillPiece : Enemy
 
     public override void AnimationEndTrigger()
     {
-
+        StateMachine.CurrentState.AnimationTrigger();
     }    
     
     private void OnCollisionStay2D(Collision2D other) {

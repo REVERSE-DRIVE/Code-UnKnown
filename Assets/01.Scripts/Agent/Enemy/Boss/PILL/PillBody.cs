@@ -29,13 +29,16 @@ public class PillBody : MonoBehaviour
 
     IEnumerator Testtesttest() {
 
-        while (true) {
-            yield return new WaitForSeconds(10);
-            EquipStatus.Start();
-            yield return new WaitForSeconds(10);
-            LeftPiece.StateMachine.ChangeState(PillPieceStateEnum.Disband);
-            RightPiece.StateMachine.ChangeState(PillPieceStateEnum.Disband);
-        }
+        // while (true) {
+            yield return new WaitForSeconds(5);
+            LeftPiece.StateMachine.ChangeState(PillPieceStateEnum.CureAttack);
+            RightPiece.StateMachine.ChangeState(PillPieceStateEnum.CureAttack);
+
+            // EquipStatus.Start();
+            // yield return new WaitForSeconds(10);
+            // LeftPiece.StateMachine.ChangeState(PillPieceStateEnum.Disband);
+            // RightPiece.StateMachine.ChangeState(PillPieceStateEnum.Disband);
+        // }
     }
 
     public Transform GetEquipPoint(PillDirection dir) {

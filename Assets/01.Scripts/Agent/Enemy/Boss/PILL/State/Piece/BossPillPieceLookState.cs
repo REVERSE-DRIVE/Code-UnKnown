@@ -5,7 +5,7 @@ using UnityEngine;
 namespace EnemyManage {
     public class BossPillPieceLookState : EnemyState<PillPieceStateEnum>
     {
-        private PillPiece _agent;
+        protected PillPiece _agent;
         public BossPillPieceLookState(Enemy enemyBase, EnemyStateMachine<PillPieceStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
         {
             _agent = enemyBase as PillPiece;
