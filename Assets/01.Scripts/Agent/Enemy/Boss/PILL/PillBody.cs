@@ -23,7 +23,7 @@ public class PillBody : MonoBehaviour
         RightPiece.Init(this, _targetTrm, PillDirection.Right);
 
         // TEST
-        StartCoroutine(Testtesttest());
+        // StartCoroutine(Testtesttest());
         // TEST END
     }
 
