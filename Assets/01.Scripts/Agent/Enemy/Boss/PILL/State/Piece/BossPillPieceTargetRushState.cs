@@ -38,9 +38,9 @@ namespace EnemyManage {
             
             if (!alreadyHit) {
                 int count = Physics2D.OverlapCircleNonAlloc(agent.transform.position, (agent.ColliderCompo as CircleCollider2D).radius, colliders, agent.WhatIsPlayer);
-                if (count > 0 && colliders[0].transform.TryGetComponent(out Agent target)) {
+                if (count > 0 && colliders[0].transform.TryGetComponent(out IDamageable damageable)) {
                     alreadyHit = true;
-                    target.HealthCompo.TakeDamage(agent.rushDamage);
+                    damageable.TakeDamage(agent.rushDamage);
                 }
             }
             

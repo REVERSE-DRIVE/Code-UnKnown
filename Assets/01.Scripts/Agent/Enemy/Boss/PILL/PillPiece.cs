@@ -5,7 +5,7 @@ using EnemyManage;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum PillDirection {
+public enum PillDirection : byte {
     Left,
     Right
 }
@@ -33,9 +33,20 @@ public class PillPiece : Enemy
     protected override void Awake()
     {
         base.Awake();
+
+        HealthCompo.OnHealthChangedValueEvent += HandleHealthChanged;
         
         StateMachine = new();
         SetStateEnum();
+    }
+
+    private void HandleHealthChanged(int prevValue, int newValue, int max)
+    {
+        int amount = prevValue - newValue;
+        if (amount <= 0) return; // 이건 힐 한거 아님??
+        
+        HealthCompo.RestoreHealth(amount); // 자신 체력은 닳지 않게
+        Body.TakeHit(Direction, amount);
     }
 
     private void Start() {
@@ -75,4 +86,8 @@ public class PillPiece : Enemy
     {
         StateMachine.CurrentState.AnimationTrigger();
     }    
+    
+    public void SetHighlight(bool active) {
+        _spriteRenderer.color = active ? Color.white : new Color(0.5f, 0.5f, 0.5f, 1);
+    }
 }
