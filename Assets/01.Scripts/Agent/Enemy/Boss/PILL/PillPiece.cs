@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using EnemyManage;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum PillDirection {
@@ -74,10 +75,4 @@ public class PillPiece : Enemy
     {
         StateMachine.CurrentState.AnimationTrigger();
     }    
-    
-    private void OnCollisionStay2D(Collision2D other) {
-        if (StateMachine.CurrentState is BossPillPieceTargetRushState nowState) {
-            nowState.OnAgentCollisionStay(other);
-        }
-    }
 }

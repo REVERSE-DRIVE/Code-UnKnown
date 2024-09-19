@@ -13,6 +13,7 @@ namespace EnemyManage {
         bool alreadyHit;
         Vector3 rushDir;
         float timer;
+        Collider2D[] colliders = new Collider2D[1];
 
         public override void Enter()
         {
@@ -35,6 +36,14 @@ namespace EnemyManage {
                 return;
             }
             
+            if (!alreadyHit) {
+                int count = Physics2D.OverlapCircleNonAlloc(agent.transform.position, (agent.ColliderCompo as CircleCollider2D).radius, colliders, agent.WhatIsPlayer);
+                if (count > 0 && colliders[0].transform.TryGetComponent(out Agent target)) {
+                    alreadyHit = true;
+                    target.HealthCompo.TakeDamage(agent.rushDamage);
+                }
+            }
+            
             agent.MovementCompo.SetMovement(rushDir);
         }
 
@@ -42,13 +51,6 @@ namespace EnemyManage {
         {
             base.Exit();
             agent.Stat.RemoveModifier(StatType.MoveSpeed, agent.rushSpeed);
-        }
-    
-        // enter로 하면 이미 부딪혀도 이벤트 발생 안함
-        public void OnAgentCollisionStay(Collision2D collider) {
-            if (alreadyHit || collider.transform != agent.targetTrm || !collider.transform.TryGetComponent(out Agent target)) return;
-            alreadyHit = true;
-            target.HealthCompo.TakeDamage(agent.rushDamage);
         }
     }
 }
