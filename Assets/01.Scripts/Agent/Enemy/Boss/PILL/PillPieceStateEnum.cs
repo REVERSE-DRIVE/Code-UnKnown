@@ -6,3 +6,8 @@ public enum PillPieceStateEnum {
     Disband, // 해제
     Equip //장착
 }
+
+public enum PillBodyStateEnum {
+    Idle,
+    ShockWave
+}
