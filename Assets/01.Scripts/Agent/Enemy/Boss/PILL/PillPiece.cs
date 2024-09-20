@@ -16,6 +16,7 @@ public class PillPiece : Enemy
 
     public PillDirection Direction { get; private set; }
     public PillBody Body { get; private set; }
+    [field: SerializeField] public PillPieceLeaser Leaser { get; private set; }
 
 
     public float disbandBack = 0.2f; // 해체될때 뒤로 얼마나 뺄건지
@@ -29,6 +30,8 @@ public class PillPiece : Enemy
     public float cureAttackDuration = 7f;
     public CureProjectile cureBulletPrefab;
     public Transform firePos;
+    public int leaserDamage = 5;
+    public float leaserCooltime = 1f; // 레이저로 맞고 나서 무시 되는 시간
 
     protected override void Awake()
     {

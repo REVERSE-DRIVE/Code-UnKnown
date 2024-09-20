@@ -3,6 +3,7 @@ public enum PillPieceStateEnum {
     TargetFollow,
     TargetRush,
     CureAttack,
+    LeaserAttack,
     Disband, // 해제
     Equip //장착
 }

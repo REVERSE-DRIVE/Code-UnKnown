@@ -46,7 +46,7 @@ public class PillBody : Boss
         SetStateEnum();
 
         // TEST
-        StartCoroutine(Testtesttest());
+        // StartCoroutine(Testtesttest());
         // TEST END
     }
 
