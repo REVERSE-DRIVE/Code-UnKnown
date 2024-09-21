@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2a2150d036d3e48a55b5312c383fe8, type: 3}
+  m_Name: MapBossRoom_Stage2 SO
+  m_EditorClassIdentifier: 
+  <BossId>k__BackingField: 1
+  <Size>k__BackingField:
+    min: 0
+    max: 0
+    width: 30
+    height: 30
+    isRandom: 0
+  <ground>k__BackingField: {fileID: 11400000, guid: d8a180a124557834bb9b21d3d6018351, type: 2}
