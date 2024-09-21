@@ -80,6 +80,9 @@ MonoBehaviour:
   laserRotateDuration: 5
   laserRotateSpeed: 50
   laserCamShakePower: 3
+  skillUseTime: {x: 5, y: 25}
+  useSkills: 0100000002000000
+  usePieceSkills: 03000000
 --- !u!114 &7839440678249194226
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -27,6 +27,11 @@ public class PillBody : Boss
     public float laserRotateSpeed = 10f;
     public float laserCamShakePower = 3f;
 
+    [Header("Skill Section")]
+    public Vector2 skillUseTime = new Vector2(5, 25);
+    public PillBodyStateEnum[] useSkills;
+    public PillPieceStateEnum[] usePieceSkills;
+
     public PillEquipStatus EquipStatus { get; private set; }
     Transform _targetTrm;
     IDamageable targetDamageable;
