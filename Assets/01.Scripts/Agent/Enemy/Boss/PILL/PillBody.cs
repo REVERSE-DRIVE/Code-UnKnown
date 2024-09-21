@@ -134,7 +134,6 @@ public class PillBody : Boss
 
     // 자식이 쳐맞음
     public void TakeHit(PillDirection dir, int amount) {
-        print($"TakeHit {dir}");
         // 왼쪽 때려야하는지 오른쪽 때려야 하는지 체크
         if (hitEnemyDir != dir) {
             // 어따 떄림??
