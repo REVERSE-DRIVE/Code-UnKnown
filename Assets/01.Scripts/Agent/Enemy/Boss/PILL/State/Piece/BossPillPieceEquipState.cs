@@ -29,6 +29,7 @@ namespace EnemyManage {
         public override void Enter()
         {
             base.Enter();
+            agent.ColliderCompo.enabled = false;
             
             if (status == null) {
                 status = agent.Body.EquipStatus;
@@ -43,6 +44,7 @@ namespace EnemyManage {
         {
             base.Exit();
             sequence?.Kill();
+            agent.ColliderCompo.enabled = true;
         }
 
         public override void UpdateState()
