@@ -18,7 +18,7 @@ namespace EnemyManage {
             Vector3 dir = _agent.targetTrm.position - _agent.transform.position;
             float rotationZ = Mathf.Acos(dir.x / dir.magnitude) * 180 / Mathf.PI * Mathf.Sign(dir.y);
             
-            _agent.transform.rotation = Quaternion.Lerp(_agent.transform.rotation, Quaternion.Euler(0, 0, rotationZ + 90), Time.deltaTime * _agent.lookSpeed);
+            _agent.transform.rotation = Quaternion.Lerp(_agent.transform.rotation, Quaternion.Euler(0, 0, rotationZ + 90), Mathf.Clamp(Time.deltaTime * _agent.lookSpeed, 0, 1));
         }
     }
 }

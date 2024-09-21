@@ -22,6 +22,24 @@ public class PillBody : Boss
     public float shockWaveWait = 0.3f;
     public GameObject shockWavePrefab;
 
+    [Header("CureWaveSkill Section")]
+    [Range(0, 1)] public float cureWaveRunHealth = 0.5f; // 피가 50% 이하믄
+    public float cureWaveRadius = 12f;
+    public int cureWaveDamage = 5;
+    public float cureWaveWait = 0.3f;
+    [Range(0, 1)] public float cureWaveSkillMoveUp = 0.2f; // 20% 빨라짐
+    public GameObject cureWavePrefab;
+
+    [Header("LaserRotate Section")]
+    public float laserRotateDuration = 5f;
+    public float laserRotateSpeed = 10f;
+    public float laserCamShakePower = 3f;
+
+    [Header("Skill Section")]
+    public Vector2 skillUseTime = new Vector2(5, 25);
+    public PillBodyStateEnum[] useSkills;
+    public PillPieceStateEnum[] usePieceSkills;
+
     public PillEquipStatus EquipStatus { get; private set; }
     Transform _targetTrm;
     IDamageable targetDamageable;
@@ -83,11 +101,12 @@ public class PillBody : Boss
 
         // while (true) {
             yield return new WaitForSeconds(5);
-            LeftPiece.StateMachine.ChangeState(PillPieceStateEnum.CureAttack);
-            RightPiece.StateMachine.ChangeState(PillPieceStateEnum.CureAttack);
+            StateMachine.ChangeState(PillBodyStateEnum.CureWave);
+            // LeftPiece.StateMachine.ChangeState(PillPieceStateEnum.CureAttack);
+            // RightPiece.StateMachine.ChangeState(PillPieceStateEnum.CureAttack);
 
-            yield return new WaitForSeconds(5);
-            StateMachine.ChangeState(PillBodyStateEnum.ShockWave);
+            // yield return new WaitForSeconds(5);
+            // StateMachine.ChangeState(PillBodyStateEnum.ShockWave);
 
             // EquipStatus.Start();
             // yield return new WaitForSeconds(10);
@@ -108,14 +127,13 @@ public class PillBody : Boss
         RightPiece.SetHighlight(hitEnemyDir == PillDirection.Right);
     }
 
-    public void AllCangeState(PillPieceStateEnum e) {
+    public void AllChangeState(PillPieceStateEnum e) {
         LeftPiece.StateMachine.ChangeState(e);
         RightPiece.StateMachine.ChangeState(e);
     }
 
     // 자식이 쳐맞음
     public void TakeHit(PillDirection dir, int amount) {
-        print($"TakeHit {dir}");
         // 왼쪽 때려야하는지 오른쪽 때려야 하는지 체크
         if (hitEnemyDir != dir) {
             // 어따 떄림??

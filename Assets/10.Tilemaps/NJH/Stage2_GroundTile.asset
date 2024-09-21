@@ -21,15 +21,19 @@ MonoBehaviour:
     - {fileID: 113511146, guid: 730d0c0d79d7652459832eb158d19b04, type: 3}
     - {fileID: 1066152703, guid: 730d0c0d79d7652459832eb158d19b04, type: 3}
     - {fileID: 2056964016, guid: 730d0c0d79d7652459832eb158d19b04, type: 3}
-    - {fileID: -124154390, guid: 730d0c0d79d7652459832eb158d19b04, type: 3}
+    - {fileID: 1066152703, guid: 730d0c0d79d7652459832eb158d19b04, type: 3}
     - {fileID: -1660979784, guid: 730d0c0d79d7652459832eb158d19b04, type: 3}
+    - {fileID: -226087217, guid: 730d0c0d79d7652459832eb158d19b04, type: 3}
     - {fileID: -226087217, guid: 730d0c0d79d7652459832eb158d19b04, type: 3}
     - {fileID: 751887313, guid: 730d0c0d79d7652459832eb158d19b04, type: 3}
     - {fileID: 1697828820, guid: 730d0c0d79d7652459832eb158d19b04, type: 3}
+    - {fileID: 113511146, guid: 730d0c0d79d7652459832eb158d19b04, type: 3}
+    - {fileID: 1066152703, guid: 730d0c0d79d7652459832eb158d19b04, type: 3}
+    - {fileID: 113511146, guid: 730d0c0d79d7652459832eb158d19b04, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
-    m_PerlinScale: 0.4
+    m_PerlinScale: 0.5
     m_Output: 1
     m_ColliderType: 1
     m_RandomTransform: 0

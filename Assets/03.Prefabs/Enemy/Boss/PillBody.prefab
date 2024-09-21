@@ -58,10 +58,10 @@ MonoBehaviour:
   _id: 0
   _whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   _whatIsObstacle:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   <RendererCompo>k__BackingField: {fileID: 0}
   runAwayDistance: 0
   attackDistance: 0
@@ -74,9 +74,21 @@ MonoBehaviour:
   leftPoint: {fileID: 6007648731236097195}
   rightPoint: {fileID: 4504301633131917063}
   shockWaveRadius: 5
-  shockWaveDamage: 50
+  shockWaveDamage: 30
   shockWaveWait: 0.3
   shockWavePrefab: {fileID: 7450118676014592283, guid: 0fc87775cdb3cfd429dccfb1d599ef31, type: 3}
+  cureWaveRunHealth: 0.5
+  cureWaveRadius: 12
+  cureWaveDamage: 20
+  cureWaveWait: 0.3
+  cureWaveSkillMoveUp: 0.2
+  cureWavePrefab: {fileID: 4495150886889200815, guid: 2dd39dd502efa1e49b4e99a8817a8f0d, type: 3}
+  laserRotateDuration: 5
+  laserRotateSpeed: 50
+  laserCamShakePower: 3
+  skillUseTime: {x: 5, y: 25}
+  useSkills: 0100000003000000
+  usePieceSkills: 03000000
 --- !u!114 &7839440678249194226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +170,7 @@ Transform:
   m_GameObject: {fileID: 8763710702339682886}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.9396927, w: 0.34202018}
-  m_LocalPosition: {x: -0.696, y: -0.06400013, z: 0}
+  m_LocalPosition: {x: -0.39499995, y: -0.4749998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -189,7 +201,7 @@ Transform:
   m_GameObject: {fileID: 9120936725769642742}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: 0.34202027, w: -0.9396926}
-  m_LocalPosition: {x: 0.101, y: 0.897, z: 0}
+  m_LocalPosition: {x: 0.402, y: 0.486, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -205,11 +217,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 798888830955474872, guid: 84b5834760e20f24aa70fe71b1ea5197, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.696
+      value: -0.39499995
       objectReference: {fileID: 0}
     - target: {fileID: 798888830955474872, guid: 84b5834760e20f24aa70fe71b1ea5197, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06400013
+      value: -0.4749998
       objectReference: {fileID: 0}
     - target: {fileID: 798888830955474872, guid: 84b5834760e20f24aa70fe71b1ea5197, type: 3}
       propertyPath: m_LocalPosition.z
@@ -247,6 +259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PillPieceLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 6346768420102393530, guid: 84b5834760e20f24aa70fe71b1ea5197, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 10dfbe100dd786b4b8cc5e58ca02af79, type: 2}
     - target: {fileID: 6675437746788026544, guid: 84b5834760e20f24aa70fe71b1ea5197, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -290,11 +306,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 798888830955474872, guid: 84b5834760e20f24aa70fe71b1ea5197, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.101
+      value: 0.402
       objectReference: {fileID: 0}
     - target: {fileID: 798888830955474872, guid: 84b5834760e20f24aa70fe71b1ea5197, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.897
+      value: 0.486
       objectReference: {fileID: 0}
     - target: {fileID: 798888830955474872, guid: 84b5834760e20f24aa70fe71b1ea5197, type: 3}
       propertyPath: m_LocalPosition.z

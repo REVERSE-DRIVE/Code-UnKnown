@@ -5,12 +5,10 @@ using UnityEngine;
 namespace EnemyManage {
     public class BossPillPieceTargetFollowState : BossPillPieceLookState
     {
-        PillPiece _agent;
         float rushTime = 0;
 
         public BossPillPieceTargetFollowState(Enemy enemyBase, EnemyStateMachine<PillPieceStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
         {
-            _agent = enemyBase as PillPiece;
         }
 
         public override void UpdateState()
@@ -30,6 +28,12 @@ namespace EnemyManage {
     
             Vector3 dir = _agent.targetTrm.position - _agent.transform.position;
             _enemyBase.MovementCompo.SetMovement(dir.normalized);
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            _agent.MovementCompo.StopImmediately();
         }
     }
 }
