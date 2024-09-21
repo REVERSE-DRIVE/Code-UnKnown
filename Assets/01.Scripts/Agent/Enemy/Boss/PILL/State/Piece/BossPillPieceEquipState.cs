@@ -76,6 +76,10 @@ namespace EnemyManage {
 
             Vector3 diff = pointPos - agent.transform.position;
             agent.MovementCompo.SetMovement(diff);
+
+            // 내눈을 바라봐
+            float rotationZ = Mathf.Acos(diff.x / diff.magnitude) * 180 / Mathf.PI * Mathf.Sign(diff.y);
+            agent.transform.rotation = Quaternion.Lerp(agent.transform.rotation, Quaternion.Euler(0, 0, rotationZ + 90), Time.deltaTime * agent.lookSpeed);
         }
 
         void MyRotate() {
