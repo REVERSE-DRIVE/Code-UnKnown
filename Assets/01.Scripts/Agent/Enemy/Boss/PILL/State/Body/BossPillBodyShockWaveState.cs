@@ -31,7 +31,7 @@ namespace EnemyManage {
             timer += Time.deltaTime;
             if (timer < agent.shockWaveWait) return;
             
-            var effect = GameObject.Instantiate(agent.shockWavePrefab).transform;
+            var effect = GameObject.Instantiate(agent.shockWavePrefab, agent.transform.position, Quaternion.identity).transform;
             effect.Find("Visual").localScale = new Vector3(agent.shockWaveRadius * 2, agent.shockWaveRadius * 2, 1);
 
             agent.DamageCasterCompo.CastDamage(agent.shockWaveRadius, agent.shockWaveDamage);

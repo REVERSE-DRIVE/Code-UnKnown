@@ -31,7 +31,7 @@ namespace EnemyManage {
             timer += Time.deltaTime;
             if (timer < agent.cureWaveWait) return;
             
-            var effect = GameObject.Instantiate(agent.cureWavePrefab).transform;
+            var effect = GameObject.Instantiate(agent.cureWavePrefab, agent.transform.position, Quaternion.identity).transform;
             effect.Find("Visual").localScale = new Vector3(agent.cureWaveRadius * 2, agent.cureWaveRadius * 2, 1);
 
             agent.DamageCasterCompo.CastDamage(agent.cureWaveRadius, agent.cureWaveDamage);
