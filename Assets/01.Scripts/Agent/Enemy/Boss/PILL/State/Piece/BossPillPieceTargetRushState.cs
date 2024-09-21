@@ -50,6 +50,7 @@ namespace EnemyManage {
         public override void Exit()
         {
             base.Exit();
+            agent.MovementCompo.StopImmediately();
             agent.Stat.RemoveModifier(StatType.MoveSpeed, agent.rushSpeed);
         }
     }

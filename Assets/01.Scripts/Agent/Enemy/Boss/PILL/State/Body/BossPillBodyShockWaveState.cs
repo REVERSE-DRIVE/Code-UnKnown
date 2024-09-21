@@ -44,7 +44,7 @@ namespace EnemyManage {
         {
             base.Exit();
             agent.EquipStatus.Clear();
-            agent.AllCangeState(PillPieceStateEnum.Disband);
+            agent.AllChangeState(PillPieceStateEnum.Disband);
         }
     }
 }

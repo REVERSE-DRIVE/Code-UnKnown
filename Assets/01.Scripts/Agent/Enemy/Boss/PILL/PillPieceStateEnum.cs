@@ -10,5 +10,6 @@ public enum PillPieceStateEnum {
 
 public enum PillBodyStateEnum {
     Idle,
-    ShockWave
+    ShockWave,
+    LaserAttack
 }

@@ -22,6 +22,11 @@ public class PillBody : Boss
     public float shockWaveWait = 0.3f;
     public GameObject shockWavePrefab;
 
+    [Header("LaserRotate Section")]
+    public float laserRotateDuration = 5f;
+    public float laserRotateSpeed = 10f;
+    public float laserCamShakePower = 3f;
+
     public PillEquipStatus EquipStatus { get; private set; }
     Transform _targetTrm;
     IDamageable targetDamageable;
@@ -83,11 +88,12 @@ public class PillBody : Boss
 
         // while (true) {
             yield return new WaitForSeconds(5);
-            LeftPiece.StateMachine.ChangeState(PillPieceStateEnum.CureAttack);
-            RightPiece.StateMachine.ChangeState(PillPieceStateEnum.CureAttack);
+            StateMachine.ChangeState(PillBodyStateEnum.LaserAttack);
+            // LeftPiece.StateMachine.ChangeState(PillPieceStateEnum.CureAttack);
+            // RightPiece.StateMachine.ChangeState(PillPieceStateEnum.CureAttack);
 
-            yield return new WaitForSeconds(5);
-            StateMachine.ChangeState(PillBodyStateEnum.ShockWave);
+            // yield return new WaitForSeconds(5);
+            // StateMachine.ChangeState(PillBodyStateEnum.ShockWave);
 
             // EquipStatus.Start();
             // yield return new WaitForSeconds(10);
@@ -108,7 +114,7 @@ public class PillBody : Boss
         RightPiece.SetHighlight(hitEnemyDir == PillDirection.Right);
     }
 
-    public void AllCangeState(PillPieceStateEnum e) {
+    public void AllChangeState(PillPieceStateEnum e) {
         LeftPiece.StateMachine.ChangeState(e);
         RightPiece.StateMachine.ChangeState(e);
     }
