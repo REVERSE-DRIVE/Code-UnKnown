@@ -8,8 +8,10 @@ public class ExplainPanel : MonoBehaviour
     [SerializeField] private float _delay = 0;
     [SerializeField] private float _activeDuration = 0.2f;
     [SerializeField] private float _displayLifeTime = 5f;
+    private FeedbackPlayer _feedbackPlayer;
     private void Awake()
     {
+        _feedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
         if(_isPlayAwake)
             ShowDisplay();
     }
@@ -26,6 +28,8 @@ public class ExplainPanel : MonoBehaviour
         if(_delay != 0)
             yield return new WaitForSeconds(_delay);
         Show();
+        _feedbackPlayer.PlayFeedback();
+
         yield return new WaitForSeconds(_displayLifeTime);
         Disable();
     }
