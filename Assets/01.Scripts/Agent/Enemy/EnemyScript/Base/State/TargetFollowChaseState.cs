@@ -29,14 +29,15 @@ public class TargetFollowChaseState : EnemyChaseState
         while (true)
         {
             if (Vector3.Distance(_enemy.transform.position, _enemy.targetTrm.position) < _enemy.attackDistance)
+            {
+                _stateMachine.ChangeState(EnemyStateEnum.Attack);
+                yield break;
+            }
             _enemyBase.MovementCompo.SetMovement(targetTrm.position);
             _movementCompo.LookToTarget(targetTrm.position);
             yield return ws;
             _enemyBase.MovementCompo.StopImmediately();
             yield return ws;
-
         }
-        
-        
     }
 }
