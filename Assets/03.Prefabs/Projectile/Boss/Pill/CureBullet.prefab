@@ -4963,8 +4963,8 @@ MonoBehaviour:
   <type>k__BackingField: 0
   _destroyParticlePoolingType: 0
   _damage: 3
-  _speed: 10
-  _lifeTime: 10
+  _speed: 7
+  _lifeTime: 7
   _isEnemy: 1
 --- !u!61 &4174947977166618053
 BoxCollider2D:

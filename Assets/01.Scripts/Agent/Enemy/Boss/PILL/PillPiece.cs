@@ -26,8 +26,7 @@ public class PillPiece : Enemy
     public int rushSpeed = 8; // 돌진할때 속도
     public int rushDamage = 10;
     public float lookSpeed = 10;
-    public float healBulletFireCooltime = 1f; // 치유액 발사 쿨탐
-    public float cureAttackDuration = 7f;
+    public float healBulletFireCooltime = 1f; // 치유액 발사 대기시간
     public CureProjectile cureBulletPrefab;
     public Transform firePos;
     public int leaserDamage = 5;

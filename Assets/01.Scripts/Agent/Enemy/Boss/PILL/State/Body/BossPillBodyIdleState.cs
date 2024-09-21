@@ -21,7 +21,6 @@ namespace EnemyManage {
             waitTimer -= Time.deltaTime;
 
             // 피가 너무 적은가???
-            Debug.Log($"{agent.HealthCompo.CurrentHealth} <= {agent.HealthCompo.maxHealth * agent.cureWaveRunHealth}");
             if (!useCureWave && agent.HealthCompo.CurrentHealth <= agent.HealthCompo.maxHealth * agent.cureWaveRunHealth) {
                 useCureWave = true;
                 _stateMachine.ChangeState(PillBodyStateEnum.CureWave);
