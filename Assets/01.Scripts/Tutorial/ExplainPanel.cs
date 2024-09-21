@@ -20,7 +20,7 @@ public class ExplainPanel : MonoBehaviour
     {
         transform.localScale = Vector3.zero;
         StartCoroutine(ShowCoroutine());
-       
+
     }
 
     private IEnumerator ShowCoroutine()
