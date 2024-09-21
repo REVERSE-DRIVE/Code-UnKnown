@@ -253,6 +253,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PillPieceLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 6346768420102393530, guid: 84b5834760e20f24aa70fe71b1ea5197, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 10dfbe100dd786b4b8cc5e58ca02af79, type: 2}
     - target: {fileID: 6675437746788026544, guid: 84b5834760e20f24aa70fe71b1ea5197, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

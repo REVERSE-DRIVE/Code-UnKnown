@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PillPiece_White
+  m_Controller: {fileID: 9100000, guid: e918d7067d4609b46bd6fba62782d0c6, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: b4a4e0135ae94c845b010b765a01143c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0eed4cf3222ddbf48aee3d787b5a9af2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3780c828cbbf05a45bb43257ef1f0a24, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: dc4937d993bda9c44b9435db2cd85d7c, type: 2}
