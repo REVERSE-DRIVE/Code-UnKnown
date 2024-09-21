@@ -8,6 +8,7 @@ namespace EnemyManage {
     {
         PillBody agent;
         float waitTimer;
+        bool useCureWave = false; // 피가 없을떄 쓰는 스킬 썻나?
         
         public BossPillBodyIdleState(Enemy enemyBase, EnemyStateMachine<PillBodyStateEnum> stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
         {
@@ -18,6 +19,14 @@ namespace EnemyManage {
         public override void UpdateState()
         {
             waitTimer -= Time.deltaTime;
+
+            // 피가 너무 적은가???
+            Debug.Log($"{agent.HealthCompo.CurrentHealth} <= {agent.HealthCompo.maxHealth * agent.cureWaveRunHealth}");
+            if (!useCureWave && agent.HealthCompo.CurrentHealth <= agent.HealthCompo.maxHealth * agent.cureWaveRunHealth) {
+                useCureWave = true;
+                _stateMachine.ChangeState(PillBodyStateEnum.CureWave);
+            }
+
             if (waitTimer <= 0) { // 스킬 써야지ㅣㅣ
 
                 int idx = Random.Range(0, agent.useSkills.Length + agent.usePieceSkills.Length);

@@ -22,6 +22,14 @@ public class PillBody : Boss
     public float shockWaveWait = 0.3f;
     public GameObject shockWavePrefab;
 
+    [Header("CureWaveSkill Section")]
+    [Range(0, 1)] public float cureWaveRunHealth = 0.5f; // 피가 50% 이하믄
+    public float cureWaveRadius = 12f;
+    public int cureWaveDamage = 5;
+    public float cureWaveWait = 0.3f;
+    [Range(0, 1)] public float cureWaveSkillMoveUp = 0.2f; // 20% 빨라짐
+    public GameObject cureWavePrefab;
+
     [Header("LaserRotate Section")]
     public float laserRotateDuration = 5f;
     public float laserRotateSpeed = 10f;
@@ -93,7 +101,7 @@ public class PillBody : Boss
 
         // while (true) {
             yield return new WaitForSeconds(5);
-            StateMachine.ChangeState(PillBodyStateEnum.LaserAttack);
+            StateMachine.ChangeState(PillBodyStateEnum.CureWave);
             // LeftPiece.StateMachine.ChangeState(PillPieceStateEnum.CureAttack);
             // RightPiece.StateMachine.ChangeState(PillPieceStateEnum.CureAttack);
 

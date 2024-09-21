@@ -58,10 +58,10 @@ MonoBehaviour:
   _id: 0
   _whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   _whatIsObstacle:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   <RendererCompo>k__BackingField: {fileID: 0}
   runAwayDistance: 0
   attackDistance: 0
@@ -74,14 +74,20 @@ MonoBehaviour:
   leftPoint: {fileID: 6007648731236097195}
   rightPoint: {fileID: 4504301633131917063}
   shockWaveRadius: 5
-  shockWaveDamage: 50
+  shockWaveDamage: 30
   shockWaveWait: 0.3
   shockWavePrefab: {fileID: 7450118676014592283, guid: 0fc87775cdb3cfd429dccfb1d599ef31, type: 3}
+  cureWaveRunHealth: 0.5
+  cureWaveRadius: 12
+  cureWaveDamage: 20
+  cureWaveWait: 0.3
+  cureWaveSkillMoveUp: 0.2
+  cureWavePrefab: {fileID: 4495150886889200815, guid: 2dd39dd502efa1e49b4e99a8817a8f0d, type: 3}
   laserRotateDuration: 5
   laserRotateSpeed: 50
   laserCamShakePower: 3
   skillUseTime: {x: 5, y: 25}
-  useSkills: 0100000002000000
+  useSkills: 0100000003000000
   usePieceSkills: 03000000
 --- !u!114 &7839440678249194226
 MonoBehaviour:
