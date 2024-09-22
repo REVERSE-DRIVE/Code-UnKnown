@@ -8,6 +8,7 @@ public class TutorialManager : MonoSingleton<TutorialManager>
 {
     [SerializeField] private Player _player;
     [SerializeField] private TutorialFailurePanel _tutorialFailurePanel;
+    [SerializeField] private TutorialOverPanel _tutorialOverPanel;
 
     private void Start()
     {
@@ -30,9 +31,19 @@ public class TutorialManager : MonoSingleton<TutorialManager>
         SceneManager.LoadScene("TutorialScene");
     }
     
-    private void ExitScene()
+    public void ExitScene()
     {
+        StartCoroutine(ExitCoroutine());
+    }
+
+    private IEnumerator ExitCoroutine()
+    {
+        _tutorialOverPanel.Open();
+        yield return new WaitForSeconds(1f);
+        UIManager.Instance.Open(WindowEnum.Dark);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("TitleScene");
+
     }
 
 
