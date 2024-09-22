@@ -31,6 +31,6 @@ MonoBehaviour:
     amount: 2
   spawnPointRoom: {fileID: 7687478580329456756, guid: 4c3a20b452ed5e348baaaeb685f73e12, type: 3}
   <BridgeSize>k__BackingField: {x: 3, y: 12}
-  <BossOption>k__BackingField: {fileID: 11400000, guid: d4b3665e52bae924182f7540ccf5f86d, type: 2}
+  <BossOption>k__BackingField: {fileID: 11400000, guid: ad22954f4745cd242a0982f6f0120281, type: 2}
   <WallTile>k__BackingField: {fileID: 11400000, guid: c0be9799503d3434b88c5ef88ccf2579, type: 2}
-  <BridgeTile>k__BackingField: {fileID: 11400000, guid: fa762cb384e0ed04c9fe767e55ece427, type: 2}
+  <BridgeTile>k__BackingField: {fileID: 11400000, guid: c4de6aa6e1d23ce4ba9d511fb9c8fc1c, type: 2}
