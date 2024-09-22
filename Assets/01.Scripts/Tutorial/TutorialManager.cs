@@ -31,7 +31,7 @@ public class TutorialManager : MonoSingleton<TutorialManager>
         SceneManager.LoadScene("TutorialScene");
     }
     
-    public void ExitScene()
+    public void ExitScene() 
     {
         StartCoroutine(ExitCoroutine());
     }

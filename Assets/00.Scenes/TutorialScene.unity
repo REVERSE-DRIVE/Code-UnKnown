@@ -42271,6 +42271,7 @@ MonoBehaviour:
   - window: 6
     windowType: 1
   _canvasTrm: {fileID: 40740399}
+  _clickFeedback: {fileID: 2118492642}
   isPause: 0
   isEffectSelecting: 0
 --- !u!114 &2006012092 stripped
@@ -48772,7 +48773,7 @@ GameObject:
   - component: {fileID: 2118492642}
   - component: {fileID: 2118492641}
   m_Layer: 0
-  m_Name: UIFeedback
+  m_Name: ButonClickFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48805,7 +48806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3879ef90cdb84300a249e335e86f9352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _soundData: {fileID: 0}
+  _soundData: {fileID: 11400000, guid: 39763bd1970a3cf4391f4caf94ceadfa, type: 2}
 --- !u!114 &2118492642
 MonoBehaviour:
   m_ObjectHideFlags: 0

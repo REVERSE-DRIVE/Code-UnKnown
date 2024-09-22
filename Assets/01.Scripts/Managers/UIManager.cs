@@ -35,21 +35,24 @@ public class UIManager : MonoSingleton<UIManager>
     public Dictionary<WindowEnum, IWindowPanel> panelDictionary;
     [SerializeField] private Transform _canvasTrm;
 
+    [Header("Feedbacks")]
+    [SerializeField] private FeedbackPlayer _clickFeedback;
+
     private StageChangePanel _stageChangePanel;
     private Transform _gameCanvas;
     private Transform _eventCanvas;
     private Transform _systemCanvas;
-    
+
     public bool isPause;
     public bool isEffectSelecting;
     public bool IsTimeStopped => isPause || isEffectSelecting;
-    
+
     private void Awake()
     {
         _gameCanvas = _canvasTrm.Find("GameCanvas");
         _eventCanvas = _canvasTrm.Find("EventCanvas");
         _systemCanvas = _canvasTrm.Find("SystemCanvas");
-        
+
         panelDictionary = new Dictionary<WindowEnum, IWindowPanel>();
         foreach (WindowData window in windowDatas)
         {
@@ -71,7 +74,7 @@ public class UIManager : MonoSingleton<UIManager>
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
+
             panelDictionary.Add(window.window, panel);
         }
 
@@ -106,8 +109,13 @@ public class UIManager : MonoSingleton<UIManager>
         yield return new WaitForSeconds(0.6f);
         _stageChangePanel.FillGauge();
         yield return new WaitForSeconds(2.6f);
-        Close(WindowEnum.StageChange);        
+        Close(WindowEnum.StageChange);
         CameraManager.Instance.SetRotationToDefault(180, 1f);
         GameManager.Instance.ResetPlayer();
+    }
+
+    public void PlayClickSFX()
+    {
+        _clickFeedback.PlayFeedback();
     }
 }
