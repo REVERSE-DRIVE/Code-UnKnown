@@ -44,8 +44,11 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
     {
         if (!_canvasGroup.interactable) return;
         if (_isEnough)
+        {
+            _notEnoughPanel.SetActive(false);
             return;
-        
+
+        }
         _currentTime += Time.deltaTime;
         if (_currentTime > _blinkTerm)
         {

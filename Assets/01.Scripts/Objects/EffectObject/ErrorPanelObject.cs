@@ -43,6 +43,12 @@ public class ErrorPanelObject : MonoBehaviour, IPoolable
 
     }
 
+    public void SetInfectText(int level)
+    {
+        _text.text = $"{level}%";
+
+    }
+
     public void ResetItem()
     {
     }
