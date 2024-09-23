@@ -35,7 +35,12 @@ public class ComputerManager : MonoSingleton<ComputerManager>
     public void Infect(int amount)
     {
         if (amount < 0) return;
+        
         SetInfect(InfectionLevel + amount);
+        foreach (ErrorPanelObject panel in _errorPanels)
+        {
+            panel.SetInfectText(InfectionLevel);
+        }
     }
 
     public void SetInfect(int value) {
