@@ -136,6 +136,11 @@ namespace CombatSkillManage
             WaitForSeconds ws = new WaitForSeconds(0.03f);
             for (int i = 0; i < _targetAmount; i++)
             {
+                if (_targets[i] == null)
+                {
+                    Debug.Log("Target is null");
+                    continue;
+                }
                 _playerTrm.position = _targets[i].transform.position;
                 yield return ws;
             }
@@ -147,6 +152,7 @@ namespace CombatSkillManage
         {
             for (int i = 0; i < _hitList.Count; i++)
             {
+                if (_hitList[i] == null) continue;
                 _hitList[i].TakeDamage(_damage);
                 EffectObject effect = PoolingManager.Instance.Pop(_hitParticle) as EffectObject;
                 effect.Initialize(_targets[i].transform.position);

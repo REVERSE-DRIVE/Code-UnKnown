@@ -21,7 +21,12 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        _stickBGRect.anchoredPosition = eventData.position - _baseRect.sizeDelta / 2;
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                _baseRect, eventData.position,
+                eventData.pressEventCamera, out Vector2 localVector))
+        {
+            _stickBGRect.anchoredPosition = localVector - _baseRect.sizeDelta / 2;
+        }
         _stickBG.gameObject.SetActive(true);
         _stick.OnPointerDown(eventData);
     }
