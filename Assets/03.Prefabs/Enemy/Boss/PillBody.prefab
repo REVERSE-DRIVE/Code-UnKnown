@@ -80,7 +80,7 @@ MonoBehaviour:
   cureWaveRunHealth: 0.5
   cureWaveRadius: 12
   cureWaveDamage: 20
-  cureWaveWait: 0.3
+  cureWaveWait: 3
   cureWaveSkillMoveUp: 0.2
   cureWavePrefab: {fileID: 4495150886889200815, guid: 2dd39dd502efa1e49b4e99a8817a8f0d, type: 3}
   laserRotateDuration: 5
