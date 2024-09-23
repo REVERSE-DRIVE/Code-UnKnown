@@ -9,6 +9,7 @@ using TMPro;
 public class DeadPanel : MonoBehaviour, IWindowPanel
 {
     [SerializeField] private Button _backButton;
+    [SerializeField] private TextMeshProUGUI _titleText;
     [SerializeField] private TextMeshProUGUI _liveTimeText;
     [SerializeField] private TextMeshProUGUI _resourceText;
     [SerializeField] private TextMeshProUGUI _partText;
@@ -35,11 +36,15 @@ public class DeadPanel : MonoBehaviour, IWindowPanel
     }
 
 
-    [ContextMenu("Open")]
     public void Open()
     {
         SetVisible(true);
         SetUI(InGameCounter.Instance.TimeCounter, 10, 5);
+    }
+    
+    public void SetTitle(string title)
+    {
+        _titleText.text = title;
     }
 
     public void SetUI(float time, int resourceAmount, int partAmount)
