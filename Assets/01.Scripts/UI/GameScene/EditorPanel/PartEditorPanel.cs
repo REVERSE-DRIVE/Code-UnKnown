@@ -13,7 +13,8 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
     [SerializeField] private TextMeshProUGUI _partNameText;
     [SerializeField] private TextMeshProUGUI _partDescriptionText;
     [SerializeField] private GameObject _notEnoughPanel;
-
+    [SerializeField] private Button _saveBtn;
+    
     [SerializeField] private BodySlot _bodySlot;
     [SerializeField] private LegSlot _legSlot;
 
@@ -24,10 +25,12 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
 
     private float _currentTime = 0;
     private float _blinkTerm = 0.7f;
-
+    private PlayerPartDataSO _currentPartData;
+    
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
+        _saveBtn.onClick.AddListener(Save);
     }
 
     private void Start()
@@ -41,12 +44,8 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
     {
         if (!_canvasGroup.interactable) return;
         if (_isEnough)
-        {
-            _notEnoughPanel.SetActive(false);
             return;
-
-        }
-
+        
         _currentTime += Time.deltaTime;
         if (_currentTime > _blinkTerm)
         {
@@ -57,6 +56,7 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
 
     public void RefreshInfo(PlayerPartDataSO dataSO)
     {
+        _currentPartData = dataSO;
         _partNameText.text = dataSO.partName;
         _partDescriptionText.text = dataSO.description;
     }
@@ -75,11 +75,18 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
     {
         SetCanvas(false);
     }
-
+    
     private void SetCanvas(bool value)
     {
         _canvasGroup.alpha = value ? 1f : 0f;
         _canvasGroup.interactable = value;
         _canvasGroup.blocksRaycasts = value;
+    }
+
+    private void Save()
+    {
+        if (!_isEnough) return;
+        PlayerPartManager.Instance.AddPartData(_currentPartData);
+        ResourceManager.Instance.UseResource(_requireResource);
     }
 }

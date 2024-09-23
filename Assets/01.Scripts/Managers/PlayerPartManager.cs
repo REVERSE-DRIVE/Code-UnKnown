@@ -92,6 +92,14 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
         AddData(partData);
     }
     
+    public void AddPartData(PlayerPartDataSO partData)
+    {
+        if (PlayerPartDataList == null)
+            PlayerPartDataList = new List<PlayerPartDataSO>();
+        PlayerPartDataList.Add(partData);
+        AddData(partData);
+    }
+    
     public void RemovePartData(PlayerPartDataSO partData)
     {
         if (PlayerPartDataList == null)

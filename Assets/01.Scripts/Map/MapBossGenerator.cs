@@ -73,6 +73,7 @@ public class MapBossGenerator : MonoBehaviour
         BossManager.Instance.currentBoss.HealthCompo.OnDieEvent.RemoveListener(OnBossDead);
 
         Time.timeScale = 0;
-        deadPanel.Open();        
+        deadPanel.Open();       
+        deadPanel.SetTitle("보스를 물리쳤습니다!");
     }
 }
