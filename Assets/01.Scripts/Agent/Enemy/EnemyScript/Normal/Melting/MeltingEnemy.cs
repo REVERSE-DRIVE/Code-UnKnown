@@ -1,7 +1,10 @@
 ﻿using EnemyManage;
+using UnityEngine;
 
 public class MeltingEnemy : EnemyBase
 {
+    [field: SerializeField] public AreaAttack AttackAreaPrefab { get; private set; }
+
     protected override void Awake()
     {
         base.Awake();

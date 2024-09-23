@@ -28,7 +28,8 @@ public class TargetFollowChaseState : EnemyChaseState
 
         while (true)
         {
-            if (Vector3.Distance(_enemy.transform.position, _enemy.targetTrm.position) < _enemy.attackDistance)
+            if (Vector3.Distance(_enemy.transform.position, _enemy.targetTrm.position) < _enemy.attackDistance &&
+                Time.time - _enemyBase.lastAttackTime >= _enemy.attackCooldown)
             {
                 _stateMachine.ChangeState(EnemyStateEnum.Attack);
                 yield break;

@@ -17,13 +17,18 @@ public class OverlapDamageCaster : DamageCaster
         if (hitCount == 0) return false;
         for (int i = 0; i < hitCount; i++)
         {
-            if (hits[i].TryGetComponent(out Agent agent))
+            if (hits[i].TryGetComponent(out IDamageable agent))
             {
-                agent.HealthCompo.TakeDamage(damage);
+                agent.TakeDamage(damage);
                 OnCastEvent?.Invoke();
             }
         }
 
         return true;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, 5f);
     }
 }
