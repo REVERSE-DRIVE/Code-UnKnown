@@ -60,6 +60,9 @@ public class MapBossGenerator : MonoBehaviour
 
         BossManager.Instance.GenerateBoss(option.BossId, roomCenter);
         BossManager.Instance.currentBoss.HealthCompo.OnDieEvent.AddListener(OnBossDead);
+
+        var roomSys = Instantiate(option.Room);
+        // roomSys.SetRoomPos();...
     }
 
     IEnumerator DelayTile(Vector2Int pos, TileBase tile, float time) {
