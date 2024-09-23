@@ -13,7 +13,7 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
     [SerializeField] private TextMeshProUGUI _partNameText;
     [SerializeField] private TextMeshProUGUI _partDescriptionText;
     [SerializeField] private GameObject _notEnoughPanel;
-    
+
     [SerializeField] private BodySlot _bodySlot;
     [SerializeField] private LegSlot _legSlot;
 
@@ -23,8 +23,8 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
     private bool _isEnough;
 
     private float _currentTime = 0;
-    private float _blinkTerm= 0.7f;
-    
+    private float _blinkTerm = 0.7f;
+
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
@@ -41,8 +41,12 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
     {
         if (!_canvasGroup.interactable) return;
         if (_isEnough)
+        {
+            _notEnoughPanel.SetActive(false);
             return;
-        
+
+        }
+
         _currentTime += Time.deltaTime;
         if (_currentTime > _blinkTerm)
         {
@@ -71,7 +75,7 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
     {
         SetCanvas(false);
     }
-    
+
     private void SetCanvas(bool value)
     {
         _canvasGroup.alpha = value ? 1f : 0f;
