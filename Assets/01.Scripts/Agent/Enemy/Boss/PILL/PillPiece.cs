@@ -31,6 +31,9 @@ public class PillPiece : Enemy
     public Transform firePos;
     public int leaserDamage = 5;
     public float leaserCooltime = 1f; // 레이저로 맞고 나서 무시 되는 시간
+    public Material highlightMat;
+
+    Material lastMat;
 
     protected override void Awake()
     {
@@ -90,6 +93,12 @@ public class PillPiece : Enemy
     }    
     
     public void SetHighlight(bool active) {
-        _spriteRenderer.color = active ? Color.white : new Color(0.5f, 0.5f, 0.5f, 1);
+        // _spriteRenderer.color = active ? Color.white : new Color(0.5f, 0.5f, 0.5f, 1);
+        if (active) {
+            lastMat = _spriteRenderer.material;
+            _spriteRenderer.material = highlightMat;
+        } else if (lastMat != null) {
+            _spriteRenderer.material = lastMat;
+        }
     }
 }

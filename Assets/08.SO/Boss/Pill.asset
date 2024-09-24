@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pill
   m_EditorClassIdentifier: 
   id: 1
-  bossName: Pill
+  bossName: Capsule
   bossIcon: {fileID: 21300000, guid: 325c5d4511580b841b49cbdf7aee7237, type: 3}
   personalColor: {r: 0.28261834, g: 0.8207547, b: 0.30685532, a: 1}
   bossPrefab: {fileID: 6723071936998433115, guid: aecf323675e988844bb91d24ff22570e, type: 3}
