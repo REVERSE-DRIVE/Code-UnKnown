@@ -20,3 +20,4 @@ MonoBehaviour:
     height: 30
     isRandom: 0
   <ground>k__BackingField: {fileID: 11400000, guid: d8a180a124557834bb9b21d3d6018351, type: 2}
+  <Room>k__BackingField: {fileID: 2067535943330138601, guid: a03fe871c462d424f95b5505d318e725, type: 3}

@@ -9,4 +9,5 @@ public class BossRoomSO : ScriptableObject
     [field: SerializeField] public int BossId { get; private set; }
     [field: SerializeField] public RandomSizeField Size { get; private set; }
     [field: SerializeField] public TileBase ground { get; private set; }
+    [field: SerializeField] public RoomBoss Room { get; private set; }
 }

@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: MapStage2SO
   m_EditorClassIdentifier: 
   rooms:
-  - room: {fileID: 7687478580329456756, guid: 4c3a20b452ed5e348baaaeb685f73e12, type: 3}
-    amount: 3
   - room: {fileID: 8520024686563421952, guid: 126e83371873bf142a3179ecd69b9597, type: 3}
     amount: 1
   - room: {fileID: 1607929063334780051, guid: 0a93659c4d68dad4f81b4a934e2a135c, type: 3}
