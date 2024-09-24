@@ -5123,11 +5123,11 @@ MonoBehaviour:
   rushDamage: 10
   lookSpeed: 10
   healBulletFireCooltime: 1
-  cureAttackDuration: 7
   cureBulletPrefab: {fileID: 7017446607169699717, guid: 6c8aa2541776afa43ab9255475e1ad42, type: 3}
   firePos: {fileID: 5366011571111507731}
   leaserDamage: 5
   leaserCooltime: 1
+  highlightMat: {fileID: 2100000, guid: 9b2f7f23d8d4f3c4098109f51a709a28, type: 2}
 --- !u!114 &1238865915867848094
 MonoBehaviour:
   m_ObjectHideFlags: 0
