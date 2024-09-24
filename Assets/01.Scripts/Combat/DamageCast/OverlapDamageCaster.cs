@@ -11,7 +11,7 @@ public class OverlapDamageCaster : DamageCaster
         hits = new Collider2D[10];
     }
 
-    public override bool CastDamage(float radius, int damage)
+    public override bool CastDamage(int damage, float radius = 1)
     {
         int hitCount = Physics2D.OverlapCircleNonAlloc(transform.position, radius, hits, _whatIsAgent);
         if (hitCount == 0) return false;

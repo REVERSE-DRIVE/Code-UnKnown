@@ -34,7 +34,7 @@ namespace EnemyManage {
             var effect = GameObject.Instantiate(agent.cureWavePrefab, agent.transform.position, Quaternion.identity).transform;
             effect.Find("Visual").localScale = new Vector3(agent.cureWaveRadius * 2, agent.cureWaveRadius * 2, 1);
 
-            agent.DamageCasterCompo.CastDamage(agent.cureWaveRadius, agent.cureWaveDamage);
+            agent.DamageCasterCompo.CastDamage(agent.cureWaveDamage, agent.cureWaveRadius);
             CameraManager.Instance.Shake(10, 1);
 
             agent.LeftPiece.Stat.moveSpeed.AddModifier((int)(agent.LeftPiece.Stat.moveSpeed.GetValue() * agent.cureWaveSkillMoveUp));

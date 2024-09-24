@@ -12,7 +12,7 @@ public class DecoyDeadState : EnemyDeadState
     protected override void Die()
     {
         base.Die();
-        _enemyBase.DamageCasterCompo.CastDamage(2f, _enemyBase.Stat.GetDamage());
+        _enemyBase.DamageCasterCompo.CastDamage(_enemyBase.Stat.GetDamage(), 2f);
         var effect = PoolingManager.Instance.Pop(PoolingType.DecoyExplodeVFX) as ParticleVFXObject;
         effect.transform.position = _enemyBase.transform.position;
         effect.Play();

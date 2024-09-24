@@ -61,7 +61,7 @@ MonoBehaviour:
     m_Bits: 64
   _whatIsObstacle:
     serializedVersion: 2
-    m_Bits: 16896
+    m_Bits: 512
   <RendererCompo>k__BackingField: {fileID: 2914432920013937673}
   runAwayDistance: 10
   attackDistance: 4
@@ -300,7 +300,7 @@ SpriteRenderer:
   m_SortingLayerID: -1044503619
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2094967649, guid: d6875cc705efae149b9e38c5ee82a5ce, type: 3}
+  m_Sprite: {fileID: 908308349, guid: ded94aaee213bc04985c8298bcb6e200, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -321,7 +321,7 @@ Animator:
   m_GameObject: {fileID: 6420486282585449256}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3abd3b23fb856d046b791ca3e580de8e, type: 2}
+  m_Controller: {fileID: 22100000, guid: 1c8e112d9d7bcfb44835fc14ca218f23, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
