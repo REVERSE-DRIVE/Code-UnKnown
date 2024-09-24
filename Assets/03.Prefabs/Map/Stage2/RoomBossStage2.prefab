@@ -49,7 +49,7 @@ MonoBehaviour:
   sizeField:
     min: 0
     max: 0
-    width: 0
-    height: 0
+    width: 30
+    height: 30
     isRandom: 0
-  randomSpawnSO: {fileID: 11400000, guid: 1c3f8eeea65831052a5b014d08872835, type: 2}
+  randomSpawnSO: {fileID: 11400000, guid: cfbd52f63f1a0ab49964e5a82e980946, type: 2}
