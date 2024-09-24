@@ -17,5 +17,5 @@ MonoBehaviour:
   skillIcon: {fileID: -1609734504, guid: c3a3b60f5008aba4d86ec9891d3a4ffd, type: 3}
   description: 
   skillRecoveryType: 0
-  coolTime: 0
-  skillPrefab: {fileID: 0}
+  coolTime: 10
+  skillPrefab: {fileID: 6100806193191872567, guid: 9d93ea9119cd82546867b8980bbe5474, type: 3}
