@@ -46,8 +46,8 @@ namespace EnemyManage {
             var tween = effectVisual.DOFade(basicColor.a, agent.cureWaveWait).SetEase(Ease.Linear);
             yield return tween.WaitForCompletion(); // 다 될때까지 ㄱㄷ
 
+            agent.DamageCasterCompo.CastDamage(agent.cureWaveDamage, agent.cureWaveRadius);
             effectSys.enabled = true;
-            agent.DamageCasterCompo.CastDamage(agent.cureWaveRadius, agent.cureWaveDamage);
             CameraManager.Instance.Shake(10, 1);
 
             agent.LeftPiece.Stat.moveSpeed.AddModifier((int)(agent.LeftPiece.Stat.moveSpeed.GetValue() * agent.cureWaveSkillMoveUp));

@@ -34,7 +34,7 @@ namespace EnemyManage {
             var effect = GameObject.Instantiate(agent.shockWavePrefab, agent.transform.position, Quaternion.identity).transform;
             effect.Find("Visual").localScale = new Vector3(agent.shockWaveRadius * 2, agent.shockWaveRadius * 2, 1);
 
-            agent.DamageCasterCompo.CastDamage(agent.shockWaveRadius, agent.shockWaveDamage);
+            agent.DamageCasterCompo.CastDamage(agent.shockWaveDamage, agent.shockWaveRadius);
             CameraManager.Instance.Shake(10, 1);
 
             _stateMachine.ChangeState(PillBodyStateEnum.Idle);

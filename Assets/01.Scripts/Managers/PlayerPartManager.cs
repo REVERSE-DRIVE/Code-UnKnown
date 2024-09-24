@@ -12,6 +12,7 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
     [field:SerializeField] public PlayerLegPartDataSO LegPart { get; private set; }
     
     private List<PartData> _partDataList;
+    private List<PartData> _amountList;
 
     protected override void Awake()
     {
@@ -117,15 +118,27 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
     public void SavePartData()
     {
         SaveManager.Instance.SaveToList(_partDataList, "PlayerPartData");
+        _amountList = new List<PartData>();
+        _amountList.Add(new PartData(BodyPart.id, PartType.Body));
+        _amountList.Add(new PartData(LegPart.id, PartType.Leg));
+        SaveManager.Instance.SaveToList(_amountList, "PlayerAmountData");
     }
     
     public void LoadPartData()
     {
         _partDataList = SaveManager.Instance.LoadFromList<PartData>("PlayerPartData");
+        _amountList = SaveManager.Instance.LoadFromList<PartData>("PlayerAmountData");
+        if (_amountList == null)
+            return;
         if (_partDataList == null)
             return;
 
         GivePart();
+        
+        if (_amountList.Count == 0)
+            return;
+        BodyPart = _partTable.playerPartDataSOList.Find(x => x.id == _amountList[0].partID && x.partType == PartType.Body) as PlayerBodyPartDataSO;
+        LegPart = _partTable.playerPartDataSOList.Find(x => x.id == _amountList[1].partID && x.partType == PartType.Leg) as PlayerLegPartDataSO;
     }
 
     private void GivePart()
