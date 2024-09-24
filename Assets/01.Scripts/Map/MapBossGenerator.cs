@@ -27,7 +27,10 @@ public class MapBossGenerator : MonoBehaviour
 
         Vector2Int roomCenter = MapManager.Instance.GetCellByWorldPos(room.GetCenterCoords());
         BossRoomSO option = generator.GetOption().BossOption;
-        Vector2Int size = option.Size.GetValue();
+        var roomSys = Instantiate(option.Room);
+
+        roomSys.SetSize();
+        Vector2Int size = roomSys.Size;
         
         Vector2Int minPos = new Vector2Int(roomCenter.x, roomCenter.y) - (size / 2);
         Vector2Int maxPos = new Vector2Int(roomCenter.x, roomCenter.y) + (size / 2);
@@ -44,7 +47,7 @@ public class MapBossGenerator : MonoBehaviour
             for (int x = minPos.x + 1; x <= maxPos.x - 1; x++)
             {
                 Vector2Int pos = new(x, y);
-                MapManager.Instance.StartCoroutine(DelayTile(pos, option.ground, (i % divide) * 0.05f));
+                MapManager.Instance.StartCoroutine(DelayTile(pos, roomSys.GetGroundTile(), (i % divide) * 0.05f));
   
                 i++;
             }
@@ -61,8 +64,8 @@ public class MapBossGenerator : MonoBehaviour
         BossManager.Instance.GenerateBoss(option.BossId, roomCenter);
         BossManager.Instance.currentBoss.HealthCompo.OnDieEvent.AddListener(OnBossDead);
 
-        var roomSys = Instantiate(option.Room);
-        // roomSys.SetRoomPos();...
+        roomSys.SetRoomPos(minPos, maxPos, Vector2Int.one * -99);
+        roomSys.OnComplete();
     }
 
     IEnumerator DelayTile(Vector2Int pos, TileBase tile, float time) {
