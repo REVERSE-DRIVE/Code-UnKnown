@@ -19,9 +19,11 @@ namespace CombatSkillManage
         [SerializeField] private Transform _laserTrm;
         [SerializeField] private ParticleSystem[] _vfxs;
         private RaycastHit2D[] _hits = new RaycastHit2D[10];
+        private FeedbackPlayer _soundFeedbackPlayer;
 
         private void Awake()
         {
+            _soundFeedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
         }
 
 
@@ -34,7 +36,8 @@ namespace CombatSkillManage
             {
                 _vfxs[i].Play();
             }
-
+            CameraManager.Instance.Shake(30f, 0.2f);
+            _soundFeedbackPlayer.PlayFeedback();
 
         }
 
