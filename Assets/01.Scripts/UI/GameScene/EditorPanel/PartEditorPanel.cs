@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.InteropServices.WindowsRuntime;
 using DG.Tweening;
 using PlayerPartsManage;
 using TMPro;
@@ -13,8 +11,9 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
     [SerializeField] private TextMeshProUGUI _partNameText;
     [SerializeField] private TextMeshProUGUI _partDescriptionText;
     [SerializeField] private GameObject _notEnoughPanel;
+    [SerializeField] private CanvasGroup _useLimitPanel;
     [SerializeField] private Button _saveBtn;
-    
+
     [SerializeField] private BodySlot _bodySlot;
     [SerializeField] private LegSlot _legSlot;
 
@@ -26,7 +25,7 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
     private float _currentTime = 0;
     private float _blinkTerm = 0.7f;
     private PlayerPartDataSO _currentPartData;
-    
+
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
@@ -42,6 +41,7 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
 
     private void Update()
     {
+        _isEnough = IsEnough;
         if (!_canvasGroup.interactable) return;
         if (_isEnough)
         {
@@ -55,6 +55,11 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
             _currentTime = 0;
             _notEnoughPanel.SetActive(!_notEnoughPanel.activeInHierarchy);
         }
+    }
+
+    public void ResetEditor()
+    {
+        SetActiveUseLimitPanel(false);
     }
 
     public void RefreshInfo(PlayerPartDataSO dataSO)
@@ -78,7 +83,7 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
     {
         SetCanvas(false);
     }
-    
+
     private void SetCanvas(bool value)
     {
         _canvasGroup.alpha = value ? 1f : 0f;
@@ -91,5 +96,13 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
         if (!_isEnough) return;
         PlayerPartManager.Instance.AddPartData(_currentPartData);
         ResourceManager.Instance.UseResource(_requireResource);
+        SetActiveUseLimitPanel(true);
+    }
+
+    private void SetActiveUseLimitPanel(bool value)
+    {
+        _useLimitPanel.DOFade(value ? 1f : 0f, 0.2f);
+        _useLimitPanel.interactable = value;
+        _useLimitPanel.blocksRaycasts = value;
     }
 }

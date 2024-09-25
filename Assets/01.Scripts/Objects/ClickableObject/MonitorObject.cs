@@ -34,6 +34,7 @@ namespace ObjectManage
         public void MonitorReset()
         {
             if (DOTween.IsTweening(_monitorPanel)) return;
+            WindowManager.Instance.CloseAll();
             Sequence seq = DOTween.Sequence();
             seq.Append(_monitorPanel.DOAnchorPos(Vector2.zero, _monitorPanelMoveDuration));
             seq.Append(_monitorPanel.DOScale(new Vector3(1f, 1f), _monitorPanelMoveDuration));

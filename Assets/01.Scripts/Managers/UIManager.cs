@@ -47,8 +47,10 @@ public class UIManager : MonoSingleton<UIManager>
     public bool isEffectSelecting;
     public bool IsTimeStopped => isPause || isEffectSelecting;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         _gameCanvas = _canvasTrm.Find("GameCanvas");
         _eventCanvas = _canvasTrm.Find("EventCanvas");
         _systemCanvas = _canvasTrm.Find("SystemCanvas");
@@ -95,6 +97,15 @@ public class UIManager : MonoSingleton<UIManager>
         {
             panel.Close();
         }
+    }
+
+    public IWindowPanel GetPanel(WindowEnum type)
+    {
+        if (panelDictionary.TryGetValue(type, out IWindowPanel panel))
+        {
+            return panel;
+        }
+        return null;
     }
 
     public void ShowStageChange()

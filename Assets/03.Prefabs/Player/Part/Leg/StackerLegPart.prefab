@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _owner: {fileID: 0}
   _data: {fileID: 11400000, guid: 00f66cb9e9a16074b85276ede2dad409, type: 2}
-  _skill: {fileID: 11400000, guid: 69319685070ecde4d9953608479515ca, type: 2}
+  _skill: {fileID: 11400000, guid: 17b76fc282cc9e041b8538f6b9d65df9, type: 2}

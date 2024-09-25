@@ -56,6 +56,6 @@ Material:
     m_Floats:
     - _Width: 0.03
     m_Colors:
-    - _Color: {r: 6.3396235, g: 0.38386118, b: 0, a: 1}
+    - _Color: {r: 3.999999, g: 0.015686272, b: 0, a: 1}
     - _GridX_Y: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
