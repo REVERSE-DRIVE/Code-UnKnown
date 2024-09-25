@@ -21,8 +21,9 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     private Player _player;
     
-    private void Awake()
+    protected override void Awake()
     {
+        //base.Awake();
         OnExpGainEvent += CheckLevelUp;
         OnLevelUpEvent += HandleLevelUp;
 
