@@ -42,6 +42,7 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
 
     private void Update()
     {
+        _isEnough = IsEnough;
         if (!_canvasGroup.interactable) return;
         if (_isEnough)
         {
@@ -91,5 +92,6 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
         if (!_isEnough) return;
         PlayerPartManager.Instance.AddPartData(_currentPartData);
         ResourceManager.Instance.UseResource(_requireResource);
+        _partDescriptionText.text = "획득 완료";
     }
 }

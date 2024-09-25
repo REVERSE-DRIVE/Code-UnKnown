@@ -26,7 +26,7 @@ public class EditorPanel : UIPanel
 
     private void Start()
     {
-        ResourceManager.Instance.OnResourceChnaged += HandleRefreshResourceText;
+        ResourceManager.Instance.OnResourceChanged += HandleRefreshResourceText;
     }
 
     public override void Open()

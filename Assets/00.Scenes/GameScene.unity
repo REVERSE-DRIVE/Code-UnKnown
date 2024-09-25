@@ -7802,6 +7802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d4dd23ccd245ac9765638a94591bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ResourceAmount: 0
 --- !u!1 &784400927
 GameObject:
   m_ObjectHideFlags: 0
@@ -17573,6 +17574,7 @@ MonoBehaviour:
   - window: 6
     windowType: 1
   _canvasTrm: {fileID: 319232986}
+  _clickFeedback: {fileID: 0}
   isPause: 0
   isEffectSelecting: 0
 --- !u!4 &1694410971
@@ -19118,7 +19120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eaa6fa98294fd645b0a4cc158d74df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requireResource: 0
+  _requireResource: 500
   _detailPanelImage: {fileID: 730881129}
   _partNameText: {fileID: 954846924}
   _partDescriptionText: {fileID: 439080735}
