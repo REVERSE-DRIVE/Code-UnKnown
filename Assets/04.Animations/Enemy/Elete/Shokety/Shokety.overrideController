@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shokety
+  m_Controller: {fileID: 9100000, guid: 2b54ffe1f129693489b703b460d86616, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 8c0ddf0232934ed42991ab900e01bd4b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 65d6893bb9968984d9705d611002fa3c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a55a8312253b50446824d4516a7e84c8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4bdaa97532f88264f80990b43dbed8b5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a8c4052de6470b442a24c582c35bfd38, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 403d6b247d34b9740a3eb32917b578f1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 449b75fbced3d7b4e90f19976cd688e6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4e3a2a48a14fab44484f4ca861831cbc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a00cd550d20c50a4388c5e9464a11d45, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ca5d4c03055104a44b91422e8589e7f4, type: 2}

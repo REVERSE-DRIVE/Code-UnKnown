@@ -96,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 2552595964040167939}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 1c8e112d9d7bcfb44835fc14ca218f23, type: 2}
+  m_Controller: {fileID: 22100000, guid: f74fe9c4c7675ef428f0d0dbe41ac9ac, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7425308392178191448}
   - component: {fileID: 9185433346794331368}
+  - component: {fileID: 8219958839870733061}
   m_Layer: 7
   m_Name: DamageCaster
   m_TagString: Untagged
@@ -171,6 +172,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _distance: 10
+--- !u!114 &8219958839870733061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5516497979376926777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544e50e1884644ae861f9a4a326e6003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _whatIsAgent:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &5889851284562570317
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,9 +260,10 @@ MonoBehaviour:
   targetTrm: {fileID: 0}
   <type>k__BackingField: 13
   _hitMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}
-  <IsElete>k__BackingField: 0
+  <IsElete>k__BackingField: 1
   _enemyType: 7
   <LineRendererCompo>k__BackingField: {fileID: 3418520421561472986}
+  <OverlapDamageCaster>k__BackingField: {fileID: 8219958839870733061}
 --- !u!114 &8484937028611303152
 MonoBehaviour:
   m_ObjectHideFlags: 0
