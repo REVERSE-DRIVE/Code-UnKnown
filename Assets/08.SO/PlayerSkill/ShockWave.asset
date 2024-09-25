@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6afc7a78264841f58da365e4bddb5582, type: 3}
-  m_Name: Berserk
+  m_Name: ShockWave
   m_EditorClassIdentifier: 
-  id: 0
-  skillName: "\uBC84\uC11C\uD06C"
-  skillIcon: {fileID: -1618839063, guid: 5c9724ab4a1e344439aaa40758827287, type: 3}
+  id: 4
+  skillName: "\uC1FC\uD06C\uC6E8\uC774\uBE0C"
+  skillIcon: {fileID: -1609734504, guid: c3a3b60f5008aba4d86ec9891d3a4ffd, type: 3}
   description: 
   skillRecoveryType: 0
-  coolTime: 20
-  skillPrefab: {fileID: 0}
+  coolTime: 10
+  skillPrefab: {fileID: 6100806193191872567, guid: 9d93ea9119cd82546867b8980bbe5474, type: 3}
