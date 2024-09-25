@@ -18,4 +18,4 @@ MonoBehaviour:
   description: 
   skillRecoveryType: 1
   coolTime: 8
-  skillPrefab: {fileID: 0}
+  skillPrefab: {fileID: 1453164243296638943, guid: ce0f6237deec0384eaa1742d75c136bb, type: 3}
