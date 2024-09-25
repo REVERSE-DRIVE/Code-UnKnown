@@ -41,6 +41,7 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
 
     private void Update()
     {
+        _isEnough = IsEnough;
         if (!_canvasGroup.interactable) return;
         if (_isEnough)
         {
@@ -103,6 +104,5 @@ public class PartEditorPanel : MonoBehaviour, IWindowPanel
         _useLimitPanel.DOFade(value ? 1f : 0f, 0.2f);
         _useLimitPanel.interactable = value;
         _useLimitPanel.blocksRaycasts = value;
-
     }
 }
