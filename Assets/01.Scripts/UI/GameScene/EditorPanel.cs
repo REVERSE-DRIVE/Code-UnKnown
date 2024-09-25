@@ -39,6 +39,12 @@ public class EditorPanel : UIPanel
         Close();
     }
 
+    public void ResetEditor()
+    {// 이걸 맵이 새로 생성될때 실행해야됨 -> 맵 초기화시에 에디터도 초기화
+        _partEditorPanel.ResetEditor();
+        _fixEditorPanel.ResetEditor();
+    }
+
     private void HandleRefreshResourceText(int amount)
     {
         _resourceAmountText.text = amount.ToString();

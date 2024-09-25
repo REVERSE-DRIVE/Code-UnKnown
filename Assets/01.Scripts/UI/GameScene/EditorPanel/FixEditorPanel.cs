@@ -117,4 +117,11 @@ public class FixEditorPanel : MonoBehaviour, IWindowPanel
         _player.HealthCompo.RestoreHealth(_healAmount);
         RefreshGauge();
     }
+
+    public void ResetEditor()
+    {
+        _lockPanel.Close();
+        leftFixCount = 1;
+    }
+
 }
