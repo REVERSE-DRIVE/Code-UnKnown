@@ -12,7 +12,7 @@ namespace PlayerPartsManage
 
         public override void OnMount()
         {
-            //playerSkillController.ChangeSkill(_skill);
+            playerSkillController.ChangeSkill(_skill);
         }
 
         public override void OnUnMount()

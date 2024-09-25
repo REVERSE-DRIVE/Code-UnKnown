@@ -12,6 +12,7 @@ public class StartPanel : WindowUI
     [SerializeField] private Image[] _legIcon;
     [SerializeField] private TextMeshProUGUI _descriptionText;
     [SerializeField] private Button _startButton;
+    [SerializeField] private Button _startButton2;
     [SerializeField] private Button _clearButton;
     [SerializeField] private FadeInOut _fadeInOut;
     
@@ -23,10 +24,21 @@ public class StartPanel : WindowUI
         base.Awake();
         _playerPartManager = PlayerPartManager.Instance;
         _startButton.onClick.AddListener(StartGame);
+        _startButton2.onClick.AddListener(StartGame2);
         _clearButton.onClick.AddListener(ClearAndStartGame);
         OnFocus += SetUI;
 
         _startBtnText = _startButton.GetComponentInChildren<TextMeshProUGUI>();
+    }
+
+    private void StartGame2()
+    {
+        PlayerPartManager.Instance.SavePartData();
+        _fadeInOut.Fade(0.5f, 1f,
+            () =>
+            {
+                LoadManager.Instance.StartLoad("GameScene");
+            });
     }
 
     private void Start()
@@ -36,6 +48,7 @@ public class StartPanel : WindowUI
 
     private void StartGame()
     {
+        PlayerPartManager.Instance.SavePartData();
         _fadeInOut.Fade(0.5f, 1f,
                 () => LoadManager.Instance.StartLoad("GameScene"));
         

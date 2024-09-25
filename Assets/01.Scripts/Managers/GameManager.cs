@@ -6,7 +6,6 @@ using ObjectManage;
 using ObjectPooling;
 using QuestManage;
 using SaveSystem;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>

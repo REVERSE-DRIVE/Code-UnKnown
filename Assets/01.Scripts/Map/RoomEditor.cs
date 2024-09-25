@@ -27,7 +27,7 @@ public class RoomEditor : RoomBase
     {
         base.RoomLeave();
 
-        if (entity)
-            Destroy(entity);
+        // if (entity)
+        //     Destroy(entity);
     }
 }
