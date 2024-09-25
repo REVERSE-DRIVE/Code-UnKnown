@@ -81,5 +81,6 @@ public class MapBossGenerator : MonoBehaviour
         Time.timeScale = 0;
         deadPanel.Open();       
         deadPanel.SetTitle("보스를 물리쳤습니다!");
+        deadPanel.RevivalBtnHide(); // 부활은 안해도됨
     }
 }

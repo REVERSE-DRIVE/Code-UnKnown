@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RankObject : ClickableObject
 {
-    [SerializeField] RankUI screen; // fuck (옛날 개발자 스러운)
+    [SerializeField] RankUI screen;
 
     private void Awake()
     {
