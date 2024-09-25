@@ -36,6 +36,7 @@ public class StartPanel : WindowUI
 
     private void StartGame()
     {
+        PlayerPartManager.Instance.SavePartData();
         _fadeInOut.Fade(0.5f, 1f,
                 () => LoadManager.Instance.StartLoad("GameScene"));
         

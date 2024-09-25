@@ -32,4 +32,10 @@ public class WindowManager : MonoSingleton<WindowManager>
         windowIndex.TryGetValue(type, out var item);
         return item;
     }
+    
+    public void CloseAll() {
+        foreach (var item in windows) {
+            item.Close();
+        }
+    }
 }
