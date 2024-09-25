@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RayDamageCaster : DamageCaster
 {
-    [SerializeField] private float _distance = 3f;
+    public float _distance = 3f;
     public event Action OnCastEvent;
 
     public Vector2 Direction
@@ -11,7 +11,13 @@ public class RayDamageCaster : DamageCaster
         get => transform.right;
         set => transform.right = value;
     }
-    public override bool CastDamage(float radius, int damage)
+    
+    public void Init(Agent owner, Vector2 direction)
+    {
+        base.Init(owner);
+        Direction = direction;
+    }
+    public override bool CastDamage(int damage, float radius = 1)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Direction, _distance, _whatIsAgent);
         if (hit.collider != null)

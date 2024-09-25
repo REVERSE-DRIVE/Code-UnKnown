@@ -29,6 +29,11 @@ public class StartPanel : WindowUI
         _startBtnText = _startButton.GetComponentInChildren<TextMeshProUGUI>();
     }
 
+    private void Start()
+    {
+        PlayerPartManager.Instance.LoadPartData();
+    }
+
     private void StartGame()
     {
         _fadeInOut.Fade(0.5f, 1f,
