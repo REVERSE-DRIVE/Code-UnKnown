@@ -69,7 +69,7 @@ MonoBehaviour:
   attackCooldown: 2
   lastAttackTime: 0
   targetTrm: {fileID: 0}
-  <type>k__BackingField: 13
+  <type>k__BackingField: 33
   _hitMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}
   <IsElete>k__BackingField: 0
   _enemyType: 7
@@ -321,7 +321,7 @@ Animator:
   m_GameObject: {fileID: 6420486282585449256}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 1c8e112d9d7bcfb44835fc14ca218f23, type: 2}
+  m_Controller: {fileID: 22100000, guid: 3858d5e59c1e0084a8983fd3e4f3e0ff, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
