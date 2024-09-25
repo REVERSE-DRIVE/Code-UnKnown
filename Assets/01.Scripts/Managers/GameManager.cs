@@ -6,13 +6,14 @@ using ObjectManage;
 using ObjectPooling;
 using QuestManage;
 using SaveSystem;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
     const string INGAME_DATA_FILE = "InGameData";
-    [field:SerializeField] public Player Player { get; private set; }
-    [field:SerializeField] public Transform PlayerTrm { get; private set; }
+    [field: SerializeField] public Player Player { get; private set; }
+    [field: SerializeField] public Transform PlayerTrm { get; private set; }
 
 
     protected override void Awake()
@@ -25,19 +26,31 @@ public class GameManager : MonoSingleton<GameManager>
         LoadInGameData();
         MapManager.Instance.Generate();
         GameStart();
-        
+
     }
 
     public void GameStart()
     {
         ResetPlayer();
-        
+
 
     }
 
-    
+
     public void ResetPlayer()
     {
+        IWindowPanel panel = UIManager.Instance.GetPanel(WindowEnum.Editor);
+        if (panel == null)
+        {
+            Debug.LogWarning("EditorPanel is Null > UIManager");
+        }
+        else
+        {
+            EditorPanel editorPanel = panel as EditorPanel;
+            editorPanel.ResetEditor();
+
+        }
+
         CameraManager.Instance.ZoomDefault(15, 0.3f);
         PlayerManager.Instance.player.SetVisualActive(false);
         PlayerManager.Instance.player.MovementCompo.isStun = true;
@@ -61,13 +74,13 @@ public class GameManager : MonoSingleton<GameManager>
     {
 
         PowerUpManager powerUpManager = PowerUpManager.Instance;
-        
+
         PowerUpData[] powerUpDatas;
         powerUpDatas = powerUpManager.powerUpDictionary
             .Select(kvp => new PowerUpData(kvp.Key, kvp.Value))
             .ToArray();
-        
-        
+
+
         InGameData data = new InGameData()
         {
             ResourceAmount = ResourceManager.Instance.ResourceAmount,
@@ -75,23 +88,26 @@ public class GameManager : MonoSingleton<GameManager>
             level = LevelManager.Instance.CurrentLevel,
             exp = LevelManager.Instance.CurrentExp,
             powerUpDatas = powerUpDatas
-            
+
         };
         SaveManager.Instance.Save<InGameData>(data, INGAME_DATA_FILE);
-        
+
         PlayerPartManager.Instance.SavePartData();
 
         // 랭킹 등록 만약 있다면
-        if (GoogleLoginSystem.isLogined) { // 로그인중
+        if (GoogleLoginSystem.isLogined)
+        { // 로그인중
             print($"Google Rank Save Request {LevelManager.Instance.CurrentExp}");
-            PlayGamesPlatform.Instance.ReportScore(LevelManager.Instance.CurrentExp, RankUI.RANK_ID, success => {
+            PlayGamesPlatform.Instance.ReportScore(LevelManager.Instance.CurrentExp, RankUI.RANK_ID, success =>
+            {
                 print($"Google Rank Save Result {LevelManager.Instance.CurrentExp} ({success})");
             });
         }
     }
-    
+
     // 초기화
-    public void ClearInGameData() {
+    public void ClearInGameData()
+    {
         SaveManager.Instance.Save<InGameData>(default, INGAME_DATA_FILE);
     }
 
@@ -105,7 +121,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         // 레벨
         LevelManager.Instance.SetLevelExp(data.level, data.exp);
-        
+
         PlayerPartManager.Instance.LoadPartData();
 
         // 파워업
@@ -124,5 +140,5 @@ public class GameManager : MonoSingleton<GameManager>
         LoadManager.Instance.StartLoad("MainLobbyScene");
         Destroy(QuestManager.Instance.gameObject);
     }
-    
+
 }
