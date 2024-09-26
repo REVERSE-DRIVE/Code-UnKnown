@@ -13,6 +13,10 @@ PrefabInstance:
       value: RoomTracker_Stage2
       objectReference: {fileID: 0}
     - target: {fileID: 2335101677198304547, guid: a2b633ac1eff30449bd4190bb4fc53a0, type: 3}
+      propertyPath: holeSpace
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2335101677198304547, guid: a2b633ac1eff30449bd4190bb4fc53a0, type: 3}
       propertyPath: groundTile
       value: 
       objectReference: {fileID: 11400000, guid: 674c2bff163f9944c9193e5aafd643a4, type: 2}
