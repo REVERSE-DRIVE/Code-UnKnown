@@ -41,12 +41,6 @@ namespace PlayerPartsManage
 
         public void ChangePart(PartType type, PlayerPartDataSO anotherPart)
         {
-            print("파츠를 바꾸");
-            UnMountTrigger(type);
-            Destroy(partList[(int)type].gameObject);
-            partList[(int)type] = Instantiate(anotherPart.partPrefab, _visualTrm);
-            partList[(int)type].Init();
-            MountTrigger(type);
             if (type == PartType.Body)
             {
                 if (CurrentBodyPart != null)
@@ -63,6 +57,13 @@ namespace PlayerPartsManage
                 ChangeSprite(part);
                 CurrentLegPart = part;
             }
+            print("파츠를 바꾸");
+            UnMountTrigger(type);
+            Destroy(partList[(int)type].gameObject);
+            partList[(int)type] = Instantiate(anotherPart.partPrefab, _visualTrm);
+            partList[(int)type].Init();
+            MountTrigger(type);
+            
         }
 
         private void ChangeSprite(PlayerLegPartDataSO anotherPart)

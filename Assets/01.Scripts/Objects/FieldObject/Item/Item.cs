@@ -64,7 +64,7 @@ namespace ItemManage
 
         protected IEnumerator InteractCoroutine()
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
             PoolingManager.Instance.Push(this);
         }
 

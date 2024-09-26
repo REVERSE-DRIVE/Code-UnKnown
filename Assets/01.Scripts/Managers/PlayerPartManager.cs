@@ -73,11 +73,12 @@ public class PlayerPartManager : MonoSingleton<PlayerPartManager>
             Debug.LogWarning("PlayerPartController is null");
             return;
         }
-        partController.ChangePart(partType, partData);
         if (partType == PartType.Body)
             SetBodyPart(partData as PlayerBodyPartDataSO);
         else if (partType == PartType.Leg)
             SetLegPart(partData as PlayerLegPartDataSO);
+        partController.ChangePart(partType, partData);
+        
     }
     
     public void AddPartData(int id, PartType type, bool isLoad = false)
