@@ -121,7 +121,11 @@ public class RoomSuppressor : RoomBase, IRoomObstacle, IRoomCleable
 
     public bool IsRoomClear() => isClear;
 
-    public void ClearRoomObjects() {}
+    public void ClearRoomObjects(bool force) {
+        if (force) {
+            Destroy(currentZip.gameObject);
+        }
+    }
 
     void CreateUI() {
         canvas = Instantiate(canvasPrefab);

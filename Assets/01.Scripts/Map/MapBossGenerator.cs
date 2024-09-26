@@ -15,7 +15,7 @@ public class MapBossGenerator : MonoBehaviour
     public void CreateBoss(RoomBase room) {
         if (room is IRoomCleable cleable) {
             MapManager.Instance.TearEffect.TearEntitysClear();
-            cleable.ClearRoomObjects(); // 삭제하고 뿌수자..
+            cleable.ClearRoomObjects(false); // 삭제하고 뿌수자..
         }
         MapManager.Instance.TearEffect.TearMap(room);
         MapManager.Instance.StartCoroutine(CreateBossRoom(room));

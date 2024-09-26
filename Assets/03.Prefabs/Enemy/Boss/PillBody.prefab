@@ -74,17 +74,17 @@ MonoBehaviour:
   leftPoint: {fileID: 6007648731236097195}
   rightPoint: {fileID: 4504301633131917063}
   shockWaveRadius: 5
-  shockWaveDamage: 30
+  shockWaveDamage: 25
   shockWaveWait: 0.3
   shockWavePrefab: {fileID: 7450118676014592283, guid: 0fc87775cdb3cfd429dccfb1d599ef31, type: 3}
   cureWaveRunHealth: 0.5
   cureWaveRadius: 12
-  cureWaveDamage: 20
+  cureWaveDamage: 30
   cureWaveWait: 3
   cureWaveSkillMoveUp: 0.2
   cureWavePrefab: {fileID: 4495150886889200815, guid: 2dd39dd502efa1e49b4e99a8817a8f0d, type: 3}
   laserRotateDuration: 5
-  laserRotateSpeed: 50
+  laserRotateSpeed: 75
   laserCamShakePower: 3
   skillUseTime: {x: 5, y: 25}
   useSkills: 0100000003000000

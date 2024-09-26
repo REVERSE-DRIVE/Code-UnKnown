@@ -37,7 +37,7 @@ public class MapTileManager : MonoBehaviour
 
     public void RemoveAllMap() {
         foreach (var item in tilemaps)
-            Destroy(item.Value);
+            Destroy(item.Value.gameObject);
 
         tilemaps.Clear();
     }

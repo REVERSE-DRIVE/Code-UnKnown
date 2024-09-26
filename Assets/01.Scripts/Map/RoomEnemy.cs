@@ -19,7 +19,20 @@ public class RoomEnemy : RoomBase, IRoomCleable
     List<UnityAction> enemyDieEvents;
     List<MapNearObjectSO.NearObject> nearObjects;
 
-    public void ClearRoomObjects() {}
+    public void ClearRoomObjects(bool force) {
+        if (force) {
+            nearObjects.ForEach(v => {
+                if (v.entity != null) {
+                    if (v.entity.TryGetComponent(out IPoolable poolable))
+                        PoolingManager.Instance.Push(poolable);
+                    else
+                        Destroy(v.entity);
+
+                }
+            });
+            nearObjects.Clear();
+        }
+    }
 
     public bool IsRoomClear() => isClear;
 

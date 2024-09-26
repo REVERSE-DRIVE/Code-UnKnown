@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: groundTile
       value: 
       objectReference: {fileID: 11400000, guid: 674c2bff163f9944c9193e5aafd643a4, type: 2}
+    - target: {fileID: 829201749642127981, guid: ca144aa2cc24cccbb893cb7880748d2f, type: 3}
+      propertyPath: phaseEnemys.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e7b30dab25f5aa646a7283c9564e6a50, type: 2}
+    - target: {fileID: 829201749642127981, guid: ca144aa2cc24cccbb893cb7880748d2f, type: 3}
+      propertyPath: phaseEnemys.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d10bbb5fdca00249935eaf20c6088a1, type: 2}
+    - target: {fileID: 829201749642127981, guid: ca144aa2cc24cccbb893cb7880748d2f, type: 3}
+      propertyPath: phaseEnemys.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: f0f128371afad9e4995d4137f139b966, type: 2}
     - target: {fileID: 1482989585107273551, guid: ca144aa2cc24cccbb893cb7880748d2f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -54,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7950460976954976515, guid: ca144aa2cc24cccbb893cb7880748d2f, type: 3}
       propertyPath: m_Name
-      value: RoomSuppressor Variant
+      value: RoomSuppressor_Stage2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

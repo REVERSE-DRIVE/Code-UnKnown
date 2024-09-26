@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,17 +25,24 @@ public class ClearPanel : UIPanel
     [Header("TextGlitch Setting")]
     [SerializeField] private RectTransform _redTextPanel;
     [SerializeField] private RectTransform _cyanTextPanel;
+    [SerializeField] private TextMeshProUGUI _mainText;
+
     private RectTransform _rectTrm;
+    private TextMeshProUGUI _redText;
+    private TextMeshProUGUI _cyanText;
 
     protected virtual void Awake()
     {
         base.Awake();
         _rectTrm = transform as RectTransform;
+        _redText = _redTextPanel.GetComponent<TextMeshProUGUI>();
+        _cyanText = _cyanTextPanel.GetComponent<TextMeshProUGUI>();
     }
 
     [ContextMenu("Open")]
     public override void Open()
     {
+        SetText("구역 점령");
         SetCanvasGroup(true);
         SetColorPanels(_defualtColor);
 
@@ -42,15 +50,23 @@ public class ClearPanel : UIPanel
         
     }
 
+    public void Fail() {
+        SetText("구역 실패");
+        SetCanvasGroup(true);
+        SetColorPanels(_defualtColor);
+
+        _rectTrm.DOAnchorPosY(_activeYDeltas, _moveDuration).OnComplete(() => StartCoroutine(OpenCoroutine(false)));
+    }
+
     public override void Close()
     {
         _rectTrm.DOAnchorPosY(_defaultYDelta, _moveDuration);
     }
 
-    private IEnumerator OpenCoroutine()
+    private IEnumerator OpenCoroutine(bool colorAnim = true)
     {
         float currentTime = 0;
-        while (currentTime < _coloringDuration)
+        while (currentTime < _coloringDuration && colorAnim)
         {
             currentTime += Time.deltaTime;
             SetColorPanels(Color.Lerp(_defualtColor, _targetColor, currentTime / _coloringDuration));
@@ -71,7 +87,11 @@ public class ClearPanel : UIPanel
 
     }
 
-   
+    private void SetText(string text) {
+        _redText.text = text;
+        _cyanText.text = text;
+        _mainText.text = text;
+    }
     
     
 }

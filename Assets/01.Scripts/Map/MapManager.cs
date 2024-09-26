@@ -72,14 +72,19 @@ public class MapManager : MonoSingleton<MapManager>
         // (비동기가 아니기 때문에 이 밑에는 맵 생성이 완료된거임)
     }
 
+    [ContextMenu("Clear")]
     public void Clear() {
         foreach (RoomBase room in map.Values)
         {
+            if (room is IRoomCleable roomClean)
+                roomClean.ClearRoomObjects(true);
+
             Destroy(room.gameObject);
         }
         map.Clear();
         bridges.Clear();
         Generator.Clear();
+        TileManager.RemoveAllMap();
     }
 
     public IEnumerable<KeyValuePair<Vector2Int, RoomBase>> GetMapIterator() {
@@ -114,6 +119,8 @@ public class MapManager : MonoSingleton<MapManager>
     public bool CheckAllClear(bool success) {
         if (success) // 성공시에만 띄움
             UIManager.Instance.Open(WindowEnum.Clear);
+        else
+            (UIManager.Instance.GetPanel(WindowEnum.Clear) as ClearPanel).Fail();
 
         int existClearRoom = 0; // 방개수
         int clearRoom = 0; // 클리어된 방개수

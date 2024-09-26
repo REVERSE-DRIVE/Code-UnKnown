@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PillPieceStat
   m_EditorClassIdentifier: 
   damage:
-    _baseValue: 10
+    _baseValue: 20
     modifiers: 
     isPercent: 0
   bonusAtk:
@@ -21,7 +21,7 @@ MonoBehaviour:
     modifiers: 
     isPercent: 0
   maxHealth:
-    _baseValue: 200
+    _baseValue: 400
     modifiers: 
     isPercent: 0
   moveSpeed:

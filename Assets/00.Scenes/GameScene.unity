@@ -7017,6 +7017,7 @@ MonoBehaviour:
   _coloringDuration: 1.3
   _redTextPanel: {fileID: 414857758}
   _cyanTextPanel: {fileID: 1592416896}
+  _mainText: {fileID: 79077273}
 --- !u!1 &657289547
 GameObject:
   m_ObjectHideFlags: 0
@@ -9840,7 +9841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b4726b66502794c9584466e89da01b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requireResource: 250
+  _requireResource: 500
   _healAmount: 50
   _fixBtn: {fileID: 1015459502}
   _gaugeFill: {fileID: 69024243}
@@ -19736,7 +19737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eaa6fa98294fd645b0a4cc158d74df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requireResource: 500
+  _requireResource: 1000
   _detailPanelImage: {fileID: 730881129}
   _partNameText: {fileID: 954846924}
   _partDescriptionText: {fileID: 439080735}
