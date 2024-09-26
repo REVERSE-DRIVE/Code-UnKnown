@@ -80,7 +80,7 @@ public class StartPanel : WindowUI
 
         // 데이터 불러옴
         bool lastSaved = GameManager.Instance.IsSavedInGameData();
-        _startBtnText.text = lastSaved ? "이어서 하기" : "시작!";
+        // _startBtnText.text = lastSaved ? "이어서 하기" : "시작!";
         _clearButton.gameObject.SetActive(lastSaved);
     }
 }
