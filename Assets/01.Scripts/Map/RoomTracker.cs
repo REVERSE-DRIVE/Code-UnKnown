@@ -128,12 +128,16 @@ public class RoomTracker : RoomBase, IRoomCleable
 
     public bool IsRoomClear() => isClear;
 
-    public void ClearRoomObjects()
+    public void ClearRoomObjects(bool force)
     {
-        holes.ForEach(v => {
-            v.enabled = false;
-            MapManager.Instance.TearEffect.RegisterTearObject(v.gameObject);
-        });
+        if (force) {
+            holes.ForEach(v => Destroy(v.gameObject));
+        } else {
+            holes.ForEach(v => {
+                v.enabled = false;
+                MapManager.Instance.TearEffect.RegisterTearObject(v.gameObject);
+            });
+        }
         junks.ForEach(v => PoolingManager.Instance.Push(v));
 
         // holes.ForEach(v => Destroy(v.gameObject));

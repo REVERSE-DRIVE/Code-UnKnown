@@ -178,8 +178,14 @@ public class RoomLaser : RoomBase, IRoomCleable
 
     public bool IsRoomClear() => isClear;
 
-    public void ClearRoomObjects()
+    public void ClearRoomObjects(bool force)
     {
+        if (force) {
+            lasers.ForEach(v => Destroy(v.gameObject));
+            junks.ForEach(v => Destroy(v.gameObject));
+            return;
+        }
+
         lasers.ForEach(v => {
             if (v != null && v.enabled) {
                 v.enabled = false;

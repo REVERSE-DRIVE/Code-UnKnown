@@ -1,5 +1,5 @@
 public interface IRoomCleable
 {
     bool IsRoomClear();
-    void ClearRoomObjects();
+    void ClearRoomObjects(bool force);
 }

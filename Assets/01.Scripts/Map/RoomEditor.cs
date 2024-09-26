@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RoomEditor : RoomBase
+public class RoomEditor : RoomBase, IRoomCleable
 {
     [SerializeField] GameObject editorObject;
     GameObject entity; // 소환된 에디터
@@ -29,5 +29,13 @@ public class RoomEditor : RoomBase
 
         // if (entity)
         //     Destroy(entity);
+    }
+
+    public bool IsRoomClear() => true;
+
+    public void ClearRoomObjects(bool force)
+    {
+        if (force)
+            Destroy(entity);
     }
 }
