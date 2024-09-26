@@ -22,8 +22,13 @@ public class RoomEnemy : RoomBase, IRoomCleable
     public void ClearRoomObjects(bool force) {
         if (force) {
             nearObjects.ForEach(v => {
-                if (v.entity != null)
-                    Destroy(v.entity);
+                if (v.entity != null) {
+                    if (v.entity.TryGetComponent(out IPoolable poolable))
+                        PoolingManager.Instance.Push(poolable);
+                    else
+                        Destroy(v.entity);
+
+                }
             });
             nearObjects.Clear();
         }
