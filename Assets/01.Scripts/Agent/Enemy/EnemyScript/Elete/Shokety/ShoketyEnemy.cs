@@ -15,4 +15,15 @@ public class ShoketyEnemy : EnemyBase
         StateMachine.AddState(EnemyStateEnum.Skill, new ShoketySkillState(this, StateMachine, "Skill"));
         StateMachine.AddState(EnemyStateEnum.Dead, new EnemyDeadState(this, StateMachine, "Dead"));
     }
+
+    protected override void Update() {
+        if (isDead){
+            PlayerNoStun();
+        }
+        base.Update();
+    }
+
+    private void PlayerNoStun(){
+        PlayerManager.Instance.player.MovementCompo.isStun = false;
+    }
 }
