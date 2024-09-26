@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   skillName: "\uD30C\uC778\uB354"
-  skillIcon: {fileID: -1744614551, guid: c73106fe101f81e4abee7ca07e0f9b14, type: 3}
-  description: "\uC8FC\uBCC0\uC758 \uC801\uB4E4\uC744 \uAC10\uC9C0\uD574 \uC5F0\uC18D\uACF5\uACA9\uC744
-    \uC2DC\uC804\uD569\uB2C8\uB2E4."
+  skillIcon: {fileID: 21300000, guid: c6c8f82ff961e9841aceeb34b7770737, type: 3}
+  description: "\uC774\uB3D9\uBC29\uD5A5\uC73C\uB85C \uAC15\uB825\uD55C \uD55C\uBC29\uC744
+    \uB0A0\uB9BD\uB2C8\uB2E4."
   skillRecoveryType: 0
   coolTime: 20
   skillPrefab: {fileID: 9084076055207906092, guid: 2985cf8fe23db4b4eae295033e8c12ce, type: 3}
