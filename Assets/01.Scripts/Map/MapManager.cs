@@ -3,9 +3,15 @@ using UnityEngine;
 
 public class MapManager : MonoSingleton<MapManager>
 {
+    static int stageID = 0;
+    static public void SetStage(int id) {
+        stageID = id;
+    }
+
     [field: SerializeField] public MapGenerator Generator { get; private set; }
     [field: SerializeField] public MapTearEffect TearEffect { get; private set; }
     public MapTileManager TileManager { get; private set; }
+    [SerializeField] MapListSO mapList;
     
     Dictionary<Vector2Int, RoomBase> map = new();
     List<BridgeBase> bridges = new();
@@ -56,7 +62,10 @@ public class MapManager : MonoSingleton<MapManager>
         bridges.Add(bridge);
     }
     
-    public void Generate() => Generator.StartGenerate();
+    public void Generate() {
+        MapGenerateSO stageData = mapList.GetStage(stageID);
+        Generator.StartGenerate(stageData);
+    }
 
     public void Generate(RoomBase[] templates) {
         Generator.StartGenerate(templates);

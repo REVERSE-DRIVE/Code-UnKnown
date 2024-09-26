@@ -78,6 +78,10 @@ public class MapGenerator : MonoBehaviour
         createRooms = templates;
         StartGenerate();
     }
+    public void StartGenerate(MapGenerateSO _option) {
+        option = _option;
+        StartGenerate();
+    }
     
     public void Clear() {
         wallTile.ClearAllTiles();

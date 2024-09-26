@@ -33,12 +33,8 @@ public class StartPanel : WindowUI
 
     private void StartGame2()
     {
-        PlayerPartManager.Instance.SavePartData();
-        _fadeInOut.Fade(0.5f, 1f,
-            () =>
-            {
-                LoadManager.Instance.StartLoad("GameScene");
-            });
+        MapManager.SetStage(1);
+        GotoGameScene();
     }
 
     private void Start()
@@ -48,10 +44,14 @@ public class StartPanel : WindowUI
 
     private void StartGame()
     {
+        MapManager.SetStage(0);
+        GotoGameScene();
+    }
+
+    void GotoGameScene() {
         PlayerPartManager.Instance.SavePartData();
         _fadeInOut.Fade(0.5f, 1f,
                 () => LoadManager.Instance.StartLoad("GameScene"));
-        
     }
     
     private void ClearAndStartGame()
