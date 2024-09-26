@@ -260,7 +260,7 @@ MonoBehaviour:
   targetTrm: {fileID: 0}
   <type>k__BackingField: 35
   _hitMaterial: {fileID: 2100000, guid: a52514c37f15f7041b15479d69daba49, type: 2}
-  <IsElete>k__BackingField: 1
+  <IsElete>k__BackingField: 0
   _enemyType: 7
   <LineRendererCompo>k__BackingField: {fileID: 3418520421561472986}
   <OverlapDamageCaster>k__BackingField: {fileID: 8219958839870733061}
