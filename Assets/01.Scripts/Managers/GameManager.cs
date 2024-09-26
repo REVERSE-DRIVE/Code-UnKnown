@@ -134,7 +134,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void ExitGame()
     {
-        SaveInGameData(); // 저장해
+        // SaveInGameData(); // 저장해
         QuestObserver.Instance.ResetQuest();
         LoadManager.Instance.StartLoad("MainLobbyScene");
         Destroy(QuestManager.Instance.gameObject);

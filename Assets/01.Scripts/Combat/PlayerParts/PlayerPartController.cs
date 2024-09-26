@@ -49,12 +49,16 @@ namespace PlayerPartsManage
             MountTrigger(type);
             if (type == PartType.Body)
             {
+                if (CurrentBodyPart != null)
+                    ItemDropManager.Instance.DropItem(ItemManage.ItemType.Part, CurrentBodyPart.id, transform.position);
                 PlayerBodyPartDataSO part = anotherPart as PlayerBodyPartDataSO;
                 ChangeSprite(part);
                 CurrentBodyPart = part;
             }
             else if (type == PartType.Leg)
             {
+                if (CurrentLegPart != null)
+                    ItemDropManager.Instance.DropItem(ItemManage.ItemType.Part, CurrentLegPart.id, transform.position);
                 PlayerLegPartDataSO part = anotherPart as PlayerLegPartDataSO;
                 ChangeSprite(part);
                 CurrentLegPart = part;

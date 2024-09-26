@@ -27,6 +27,8 @@ MonoBehaviour:
     amount: 1
   - room: {fileID: 3098612554976876693, guid: f76bd64ed5e82a24eadfed858224adef, type: 3}
     amount: 2
+  - room: {fileID: 174062728063176077, guid: 9eb1fd0f5b5b6c04d8f31f684fe9a382, type: 3}
+    amount: 3
   spawnPointRoom: {fileID: 7687478580329456756, guid: 4c3a20b452ed5e348baaaeb685f73e12, type: 3}
   <BridgeSize>k__BackingField: {x: 3, y: 12}
   <BossOption>k__BackingField: {fileID: 11400000, guid: ad22954f4745cd242a0982f6f0120281, type: 2}

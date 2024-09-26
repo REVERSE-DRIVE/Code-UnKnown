@@ -141,6 +141,7 @@ namespace CombatSkillManage
                     Debug.Log("Target is null");
                     continue;
                 }
+                Vibration.Vibrate(20);
                 _playerTrm.position = _targets[i].transform.position;
                 yield return ws;
             }

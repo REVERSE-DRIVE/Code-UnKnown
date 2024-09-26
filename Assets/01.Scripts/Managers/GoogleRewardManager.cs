@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GoogleRewardManager : MonoSingleton<GoogleRewardManager>
 {
-    readonly string AD_ID = "ca-app-pub-3940256099942544/5224354917";
+    readonly string AD_ID = "ca-app-pub-3801684956140957/4635108602";
 
     RewardedAd rewardedAd = null;
     bool process = false;

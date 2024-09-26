@@ -87,7 +87,6 @@ public class EnemyBase : Enemy, IPoolable
     public void SetHitMaterial()
     {
         if (isDead) return;
-        Vibration.Vibrate(200);
         if (isInitEnd)
             StartCoroutine(ChangeMaterial());
     }
