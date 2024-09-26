@@ -37,6 +37,8 @@ namespace CombatSkillManage
                 _vfxs[i].Play();
             }
             CameraManager.Instance.Shake(30f, 0.2f);
+            Vibration.Vibrate(200);
+
             _soundFeedbackPlayer.PlayFeedback();
 
         }

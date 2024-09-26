@@ -50,6 +50,7 @@ namespace CombatSkillManage
                 _edgeVFXTrm.position = _edgeDirection[i] + (Vector2)transform.position;
                 _edgeVFX.Play();
                 DamageToTarget(i);
+                Vibration.Vibrate(200);
                 yield return new WaitForSeconds(0.1f);
             }
         }

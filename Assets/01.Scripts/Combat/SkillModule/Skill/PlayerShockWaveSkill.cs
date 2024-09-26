@@ -38,7 +38,7 @@ namespace CombatSkillManage
             CameraManager.Instance.SetShake(20f, 40f);
             for (int i = 0; i < 3; i++)
             {
-                
+                Vibration.Vibrate(100);
                 DamageToTarget();
                 _impactSoundFeedback.PlayFeedback();
                 yield return new WaitForSeconds(0.15f);
