@@ -12,9 +12,13 @@ PrefabInstance:
       propertyPath: groundTile
       value: 
       objectReference: {fileID: 11400000, guid: c4de6aa6e1d23ce4ba9d511fb9c8fc1c, type: 2}
+    - target: {fileID: 195676783769170754, guid: 53be2c8c3bec75faf8917871a20ed7df, type: 3}
+      propertyPath: enemyList.Array.data[0].entity
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 325282442759938458, guid: 53be2c8c3bec75faf8917871a20ed7df, type: 3}
       propertyPath: m_Name
-      value: RoomEnemyElete Variant
+      value: RoomEnemyElete_Stage2
       objectReference: {fileID: 0}
     - target: {fileID: 2473756439734671826, guid: 53be2c8c3bec75faf8917871a20ed7df, type: 3}
       propertyPath: m_LocalPosition.x
