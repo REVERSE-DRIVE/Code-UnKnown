@@ -10,12 +10,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1643103514972686812, guid: a2b633ac1eff30449bd4190bb4fc53a0, type: 3}
       propertyPath: m_Name
-      value: RoomTracker Variant
+      value: RoomTracker_Stage2
       objectReference: {fileID: 0}
     - target: {fileID: 2335101677198304547, guid: a2b633ac1eff30449bd4190bb4fc53a0, type: 3}
       propertyPath: groundTile
       value: 
       objectReference: {fileID: 11400000, guid: 674c2bff163f9944c9193e5aafd643a4, type: 2}
+    - target: {fileID: 2335101677198304547, guid: a2b633ac1eff30449bd4190bb4fc53a0, type: 3}
+      propertyPath: holePrefab
+      value: 
+      objectReference: {fileID: 1195679198792890677, guid: 182bb60547b7c7746bcada2930f8b49d, type: 3}
     - target: {fileID: 6760523920569799216, guid: a2b633ac1eff30449bd4190bb4fc53a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
