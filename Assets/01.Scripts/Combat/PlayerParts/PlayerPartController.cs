@@ -58,7 +58,7 @@ namespace PlayerPartsManage
             else if (type == PartType.Leg)
             {
                 if (CurrentLegPart != null)
-                    ItemDropManager.Instance.DropItem(ItemManage.ItemType.Part, CurrentLegPart.id, transform.position);
+                    ItemDropManager.Instance.DropItem(ItemManage.ItemType.Part, CurrentLegPart.id + 4, transform.position);
                 PlayerLegPartDataSO part = anotherPart as PlayerLegPartDataSO;
                 ChangeSprite(part);
                 CurrentLegPart = part;
