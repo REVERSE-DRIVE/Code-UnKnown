@@ -114,6 +114,8 @@ public class MapManager : MonoSingleton<MapManager>
     public bool CheckAllClear(bool success) {
         if (success) // 성공시에만 띄움
             UIManager.Instance.Open(WindowEnum.Clear);
+        else
+            (UIManager.Instance.GetPanel(WindowEnum.Clear) as ClearPanel).Fail();
 
         int existClearRoom = 0; // 방개수
         int clearRoom = 0; // 클리어된 방개수
