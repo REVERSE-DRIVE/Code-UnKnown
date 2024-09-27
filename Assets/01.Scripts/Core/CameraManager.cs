@@ -95,7 +95,7 @@ public class CameraManager : MonoSingleton<CameraManager>
 
     public void HandleZoomCombatMode()
     {
-        ZoomFromDefault(8f, 0.2f);
+        ZoomFromDefault(7.2f, 0.2f);
     }
 
     public void HandleZoomNormalMode()

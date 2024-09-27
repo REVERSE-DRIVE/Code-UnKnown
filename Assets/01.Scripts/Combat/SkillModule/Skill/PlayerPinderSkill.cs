@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
 
 
 namespace CombatSkillManage
 {
-
     public class PlayerPinderSkill : PlayerSkill
     {
         [SerializeField] private int _damage;
@@ -19,7 +15,7 @@ namespace CombatSkillManage
         [SerializeField] private Transform _laserTrm;
         [SerializeField] private ParticleSystem[] _vfxs;
         private RaycastHit2D[] _hits = new RaycastHit2D[10];
-        private FeedbackPlayer _soundFeedbackPlayer;
+        private FeedbackPlayer _soundFeedbackPlayer; 
 
         private void Awake()
         {
@@ -29,6 +25,7 @@ namespace CombatSkillManage
 
         public override void UseSkill()
         {
+            // 레이저 임팩트
             _laserTrm.DOScaleY(2f, 0.1f).OnComplete(() => _laserTrm.DOScaleY(0f, 0.15f));
             _laserTrm.right = _player.PlayerInputCompo.Direction;
             DamageToTarget();
@@ -37,13 +34,13 @@ namespace CombatSkillManage
                 _vfxs[i].Play();
             }
             CameraManager.Instance.Shake(30f, 0.2f);
-            Vibration.Vibrate(200);
+            Vibration.Vibrate(200); // 진동
 
             _soundFeedbackPlayer.PlayFeedback();
 
         }
-
-        private void DamageToTarget()
+   
+        private void DamageToTarget() // 타겟 감지후 데미지 적용
         {
             int amount = Physics2D.CircleCastNonAlloc(_player.transform.position, _castCircleRadius, _player.PlayerInputCompo.Direction, _hits, _range, _targetLayer);
             for (int i = 0; i < amount; i++)
@@ -52,11 +49,8 @@ namespace CombatSkillManage
                     hit.TakeDamage(_damage);
                 }
             }
-
         }
 
 
-
     }
-
 }
