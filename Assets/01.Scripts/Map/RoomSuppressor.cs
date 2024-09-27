@@ -122,7 +122,7 @@ public class RoomSuppressor : RoomBase, IRoomObstacle, IRoomCleable
     public bool IsRoomClear() => isClear;
 
     public void ClearRoomObjects(bool force) {
-        if (force) {
+        if (force && currentZip != null) {
             Destroy(currentZip.gameObject);
         }
     }

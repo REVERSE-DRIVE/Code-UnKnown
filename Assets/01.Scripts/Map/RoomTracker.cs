@@ -131,7 +131,10 @@ public class RoomTracker : RoomBase, IRoomCleable
     public void ClearRoomObjects(bool force)
     {
         if (force) {
-            holes.ForEach(v => Destroy(v.gameObject));
+            holes.ForEach(v => {
+                if (v != null)
+                    Destroy(v.gameObject);
+            });
         } else {
             holes.ForEach(v => {
                 v.enabled = false;

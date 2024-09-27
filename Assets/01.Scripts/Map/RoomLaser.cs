@@ -182,11 +182,11 @@ public class RoomLaser : RoomBase, IRoomCleable
     {
         if (force) {
             lasers.ForEach(v => {
-                if (v.gameObject)
+                if (v != null)
                     Destroy(v.gameObject);
             });
             junks.ForEach(v => {
-                if (v.gameObject)
+                if (v != null)
                     Destroy(v.gameObject);
             });
             return;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -76,8 +77,13 @@ public class MapManager : MonoSingleton<MapManager>
     public void Clear() {
         foreach (RoomBase room in map.Values)
         {
-            if (room is IRoomCleable roomClean)
-                roomClean.ClearRoomObjects(true);
+            if (room is IRoomCleable roomClean) {
+                try {
+                    roomClean.ClearRoomObjects(true);
+                } catch (Exception e) {
+                    Debug.LogError(e.ToString());
+                }
+            }
 
             Destroy(room.gameObject);
         }
